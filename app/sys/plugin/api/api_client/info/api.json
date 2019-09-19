@@ -4,15 +4,9 @@
     "title": "用户信息接口",
     "description": "",
     "method": "ALL",
-    "cache": 60,
+    "cache": 0,
     "client_cache": true,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true,
-    "oauth": {
-        "scope": true,
-        "signIn": true,
-        "user_group": [],
-        "admin_group": []
-    }
+    "check_param": true
 }
