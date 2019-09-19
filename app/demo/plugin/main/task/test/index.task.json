@@ -1,0 +1,13 @@
+{
+	"name": "demo",
+	"title": "示例事件",
+	"description": "描述事件使用方法",
+	"func_file": "./index.js",
+	"func_name": "main",
+	"num": 10,
+	"interval": 1000,
+	"wait": 0,
+	"time": "",
+	"date_start": "",
+	"date_end": ""
+}

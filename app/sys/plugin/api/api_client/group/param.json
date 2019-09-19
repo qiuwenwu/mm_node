@@ -1,0 +1,310 @@
+{
+    "title": "用户组验证模型",
+    "name": "sys_user_group",
+    "add": {
+        "body": [
+            "level",
+            "exp",
+            "discount",
+            "bonus",
+            "next_group_id"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [
+            "level",
+            "exp",
+            "discount",
+            "bonus",
+            "next_group_id"
+        ],
+        "query_required": [
+            "group_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "level",
+            "exp",
+            "discount",
+            "bonus",
+            "next_group_id"
+        ],
+        "query_required": [
+            "group_id"
+        ],
+        "body": [
+            "group_id",
+            "name",
+            "level",
+            "level_add",
+            "exp",
+            "exp_add",
+            "discount",
+            "discount_add",
+            "bonus",
+            "bonus_add",
+            "next_group_id",
+            "icon",
+            "description",
+            "type"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "name",
+            "level",
+            "level_min",
+            "level_max",
+            "exp",
+            "exp_min",
+            "exp_max",
+            "discount",
+            "discount_min",
+            "discount_max",
+            "bonus",
+            "bonus_min",
+            "bonus_max",
+            "next_group_id",
+            "icon",
+            "description",
+            "type"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "group_id",
+            "title": "用户组ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "min": 1,
+                "max": 8388607,
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 16,
+                "range": [],
+                "format": ""
+            }
+        },
+        {
+            "name": "level",
+            "title": "等级划分",
+            "description": "用于识别级别分组",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "min": 0,
+                "max": 1000,
+                "range": []
+            }
+        },
+        {
+            "name": "level_min",
+            "title": "等级划分——最小值",
+            "description": "用于识别级别分组",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "min": 0,
+                "max": 1000,
+                "range": []
+            }
+        },
+        {
+            "name": "level_max",
+            "title": "等级划分——最大值",
+            "description": "用于识别级别分组",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "min": 0,
+                "max": 1000,
+                "range": []
+            }
+        },
+        {
+            "name": "exp",
+            "title": "升级所需经验",
+            "description": "用于确定用户的升级",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "min": 0,
+                "max": 2147483647,
+                "range": []
+            }
+        },
+        {
+            "name": "exp_min",
+            "title": "升级所需经验——最小值",
+            "description": "用于确定用户的升级",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "min": 0,
+                "max": 2147483647,
+                "range": []
+            }
+        },
+        {
+            "name": "exp_max",
+            "title": "升级所需经验——最大值",
+            "description": "用于确定用户的升级",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "min": 0,
+                "max": 2147483647,
+                "range": []
+            }
+        },
+        {
+            "name": "discount",
+            "title": "折扣",
+            "description": "用于确定用户的消费折扣",
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            }
+        },
+        {
+            "name": "discount_min",
+            "title": "折扣——最小值",
+            "description": "用于确定用户的消费折扣",
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            }
+        },
+        {
+            "name": "discount_max",
+            "title": "折扣——最大值",
+            "description": "用于确定用户的消费折扣",
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            }
+        },
+        {
+            "name": "bonus",
+            "title": "奖励比例",
+            "description": "用于确定用户的积分奖励",
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            }
+        },
+        {
+            "name": "bonus_min",
+            "title": "奖励比例——最小值",
+            "description": "用于确定用户的积分奖励",
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            }
+        },
+        {
+            "name": "bonus_max",
+            "title": "奖励比例——最大值",
+            "description": "用于确定用户的积分奖励",
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            }
+        },
+        {
+            "name": "next_group_id",
+            "title": "下级用户组ID",
+            "description": "决定用户升级后所属用户组",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "min": 1,
+                "max": 8388607,
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "icon",
+            "title": "图标",
+            "description": "用于标识用户组",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 255,
+                "range": [],
+                "format": ""
+            }
+        },
+        {
+            "name": "description",
+            "title": "描述",
+            "description": "描述该用户组的特点或权限范围",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 255,
+                "range": [],
+                "format": ""
+            }
+        },
+        {
+            "name": "type",
+            "title": "分类",
+            "description": "用于区分用户组使用范围",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 12,
+                "range": [],
+                "format": ""
+            }
+        }
+    ]
+}

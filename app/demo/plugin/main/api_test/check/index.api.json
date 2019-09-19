@@ -1,0 +1,10 @@
+{
+	"path": "/test/check",
+	"name": "test_check",
+	"title": "示例接口",
+	"description": "描述接口使用方法",
+	"func_file": "./index.js",
+	"method": "all",
+	"param_path": "./index.param.json",
+	"sql_path": "./index.sql.json"
+}

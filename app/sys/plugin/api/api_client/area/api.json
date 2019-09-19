@@ -1,0 +1,12 @@
+{
+    "path": "/api/address/area",
+    "name": "sys_address_area",
+    "title": "地区接口",
+    "description": "",
+    "method": "ALL",
+    "cache": 60,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

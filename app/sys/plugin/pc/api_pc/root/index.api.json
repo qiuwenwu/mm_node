@@ -1,0 +1,9 @@
+{
+	"path": "/",
+	"name": "root",
+	"title": "网站首页",
+	"cache": 0,
+	"description": "描述接口使用方法",
+	"func_file": "./index.js",
+	"method": "all"
+}

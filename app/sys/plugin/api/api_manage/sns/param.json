@@ -1,0 +1,142 @@
+{
+    "title": "用户社交账号验证模型",
+    "name": "sys_user_sns2",
+    "add": {
+        "body": [],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "user_id"
+        ]
+    },
+    "set": {
+        "query": [],
+        "query_required": [
+            "user_id"
+        ],
+        "body": [
+            "user_id",
+            "qq",
+            "wechat",
+            "mm",
+            "baidu",
+            "taobao"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "qq",
+            "wechat",
+            "mm",
+            "baidu",
+            "taobao"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "user_id",
+            "title": "用户ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "min": 1,
+                "max": 8388607,
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "qq",
+            "title": "QQ号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 5,
+                "max": 12,
+                "range": [
+                    5,
+                    12
+                ],
+                "format": ""
+            }
+        },
+        {
+            "name": "wechat",
+            "title": "微信号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 5,
+                "max": 16,
+                "range": [
+                    5,
+                    16
+                ],
+                "format": ""
+            }
+        },
+        {
+            "name": "mm",
+            "title": "MM号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 5,
+                "max": 16,
+                "range": [
+                    5,
+                    16
+                ],
+                "format": ""
+            }
+        },
+        {
+            "name": "baidu",
+            "title": "百度账号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 5,
+                "max": 14,
+                "range": [
+                    5,
+                    14
+                ],
+                "format": ""
+            }
+        },
+        {
+            "name": "taobao",
+            "title": "淘宝账号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 5,
+                "max": 10,
+                "range": [
+                    5,
+                    10
+                ],
+                "format": ""
+            }
+        }
+    ]
+}

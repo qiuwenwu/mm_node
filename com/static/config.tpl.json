@@ -1,0 +1,12 @@
+{
+	"path": "/",
+	"index": "index.html",
+	"maxAge": 0,
+	"immutable": false,
+	"brotli": true,
+	"gzip": true,
+	"extensions": null,
+	"convert_amd": false,
+	"func_file": "./static.js",
+	"func_name": ""
+}

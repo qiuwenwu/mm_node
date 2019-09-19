@@ -1,0 +1,11 @@
+{
+	"name": "mm",
+	"title": "超级美眉应用",
+	"description": "该应用带网站常见功能模块（文章、商城、论坛）",
+	"version": "1.0",
+	"identifier": "mm",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "mm",
+	"sort": 10
+}

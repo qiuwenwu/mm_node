@@ -1,0 +1,21 @@
+{
+	"path": "/demo",
+	"name": "demo",
+	"title": "示例接口",
+	"description": "描述接口使用方法",
+	"func_file": "./demo.js",
+	"method": "ALL",
+	"scope": true,
+	"cache": 60,
+	"client_cache": false,
+	"sql_path": "./sql.json",
+	"param_path": "./param.json",
+	"oauth": {
+		"signIn": false,
+		"vip": 0,
+		"gm": 0,
+		"mc": 0,
+		"user_group": ["vip1"],
+		"admin_group": ["master"]
+	}
+}

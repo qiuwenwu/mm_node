@@ -1,0 +1,10 @@
+{
+	"target": "/test_sql/*",
+	"name": "test_sql",
+	"title": "示例sql事件",
+	"description": "测试sql模板机制",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 100
+}

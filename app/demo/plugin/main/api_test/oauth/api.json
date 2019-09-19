@@ -1,0 +1,42 @@
+[{
+		"path": "/test/oauth",
+		"name": "test_oauth",
+		"title": "测试oauth登录访问",
+		"cache": 0,
+		"func_file": "./oauth.js",
+		"method": "all"
+	},
+	{
+		"path": "/test/user",
+		"name": "test_user",
+		"title": "获取用户信息",
+		"cache": 0,
+		"func_file": "./user.js",
+		"method": "all"
+	},
+	{
+		"path": "/test/power",
+		"name": "test_power",
+		"title": "校验权限",
+		"cache": 0,
+		"func_file": "./power.js",
+		"method": "all",
+		"oauth": {
+			"signIn": true,
+			"vip": 2,
+			"gm": 2,
+			"mc": 2,
+			"user_group": ["1"],
+			"admin_group": ["1"],
+			"func_file": ""
+		}
+	},
+	{
+		"path": "/test/login",
+		"name": "test_login",
+		"title": "登录",
+		"cache": 0,
+		"func_file": "./login.js",
+		"method": "all"
+	}
+]

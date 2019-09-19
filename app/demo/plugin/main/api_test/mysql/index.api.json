@@ -1,0 +1,8 @@
+{
+	"path": "/test/mysql",
+	"name": "test_mysql",
+	"title": "测试mysql的接口",
+	"description": "描述接口使用方法",
+	"func_file": "./index.js",
+	"method": "all"
+}

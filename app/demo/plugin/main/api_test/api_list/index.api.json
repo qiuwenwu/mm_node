@@ -1,0 +1,12 @@
+{
+    "path": "/test/api_list",
+    "name": "test_api_list",
+    "title": "测试获取API接口",
+    "description": "用户获取api接口",
+    "func_file": "./index.js",
+    "func_name": "main",
+    "method": "all",
+    "cache": 0,
+    "client_cache": true,
+    "check_param": true
+}

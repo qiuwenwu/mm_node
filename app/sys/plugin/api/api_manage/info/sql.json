@@ -1,0 +1,33 @@
+{
+    "title": "用户信息模板",
+    "table": "sys_user_info",
+    "name": "sys_user_info2",
+    "key": "user_id",
+    "orderby_default": "`user_id` desc",
+    "field_default": "`user_id`,`name`,`sex`,`age`,`birthday`,`province`,`city_id`,`address`,`job`,`job_scope`,`company_address`,`company_business`,`school`,`major`",
+    "query": {
+        "name": "`name` like '%{0}%'",
+        "sex_min": "`sex` >= {0}",
+        "sex_max": "`sex` <= {0}",
+        "age_min": "`age` >= {0}",
+        "age_max": "`age` <= {0}",
+        "birthday_min": "`birthday` >= '{0}'",
+        "birthday_max": "`birthday` <= '{0}'",
+        "province_min": "`province` >= {0}",
+        "province_max": "`province` <= {0}",
+        "address": "`address` like '%{0}%'",
+        "job": "`job` like '%{0}%'",
+        "job_scope": "`job_scope` like '%{0}%'",
+        "company_address": "`company_address` like '%{0}%'",
+        "company_business": "`company_business` like '%{0}%'",
+        "school": "`school` like '%{0}%'",
+        "major": "`major` like '%{0}%'"
+    },
+    "where": {},
+    "update": {
+        "sex_add": "`sex` = `sex` + {0}",
+        "age_add": "`age` = `age` + {0}",
+        "province_add": "`province` = `province` + {0}"
+    },
+    "field_hide": []
+}

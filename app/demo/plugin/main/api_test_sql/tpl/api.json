@@ -1,0 +1,11 @@
+{
+	"path": "/test_sql/tpl",
+	"name": "test_sql_tpl",
+	"title": "示例接口",
+	"description": "描述接口使用方法",
+	"func_file": "",
+	"method": "all",
+	"cache": 0,
+	"param_path": "./param.json",
+	"sql_path": "./sql.json"
+}

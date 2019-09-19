@@ -1,0 +1,18 @@
+{
+    "path": "/api/article/info",
+    "name": "mm_article_info",
+    "title": "",
+    "description": "",
+    "method": "ALL",
+    "cache": 60,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true,
+    "oauth": {
+        "scope": true,
+        "signIn": true,
+        "user_group": [],
+        "admin_group": []
+    }
+}

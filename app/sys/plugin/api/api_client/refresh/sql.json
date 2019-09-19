@@ -1,0 +1,32 @@
+{
+    "title": "刷新token模板",
+    "table": "sys_oauth_refresh_token",
+    "name": "sys_oauth_refresh_token",
+    "key": "refresh_token_id",
+    "orderby_default": "`refresh_token_id` desc",
+    "field_default": "`refresh_token_id`,`refresh_token`,`update_time`,`create_time`,`appid`,`user_id`",
+    "method": "get",
+    "query": {
+        "refresh_token": "`refresh_token` like '%{0}%'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "appid": "`appid` like '%{0}%'"
+    },
+    "query_default": {
+        "user_id": "`user_id` = {user_id}"
+    },
+    "where": {},
+    "update": {},
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
+    }
+}

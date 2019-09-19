@@ -1,0 +1,10 @@
+[{
+	"target": "/demo*",
+	"name": "demo",
+	"title": "示例事件",
+	"description": "描述事件使用方法",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 100
+}]

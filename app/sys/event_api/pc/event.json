@@ -1,0 +1,10 @@
+{
+	"target": "/*",
+	"name": "pc",
+	"title": "PC事件",
+	"description": "该事件接口主要处理用户相关业务",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 103
+}

@@ -1,0 +1,12 @@
+{
+    "path": "/api/address/city",
+    "name": "sys_address_city",
+    "title": "城市接口",
+    "description": "",
+    "method": "ALL",
+    "cache": 60,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

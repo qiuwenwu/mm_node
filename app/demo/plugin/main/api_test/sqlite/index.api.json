@@ -1,0 +1,8 @@
+{
+	"path": "/test/sqlite",
+	"name": "test_sqlite",
+	"title": "测试sqlite的接口",
+	"description": "描述接口使用方法",
+	"func_file": "./index.js",
+	"method": "all"
+}

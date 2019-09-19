@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* ====== 布局 ====== */
+/* 卡片 */
+.card { border-radius: 0.5rem; overflow-x: hidden; min-height: 12.5rem; background: #fff; }
+.card .mm_head .mm_item { padding: 0.5rem 0.875rem; }
+.card .mm_body { padding: 0.5rem 0.875rem; }
+.card .mm_body .mm_desc, .card .mm_body .mm_icon { margin-bottom: .5rem; }
+
+/* 元素 */
+.unit { font-size: 85%; }
+.mm_main>.time { position: absolute; top: 0.625rem; right: 0.875rem; font-size: 85%; color: #999; }
+
+/* 二维码 */
+.mm_qrcode {
+	text-align: center;
+}
+
+.mm_qrcode .mm_btn, .mm_qrcode [class*=mm_btn_] {
+	font-size: 0.75rem;
+}
+
+/* 上传按钮 */
+.mm_uploader { background-color: #EDEDED; position: relative; overflow: hidden; border-radius: 0.35rem; }
+.mm_uploader .mm_icon { width: 100%; height: 100%; position: absolute; top: 0; left: 0; bottom: 0; right: 0; z-index: 3 }
+
+/* ===  通用组件布局  === */
+/* 列表项 */
+.mm_main { position: relative; z-index: 1; padding-left: 0; margin-left: 0.875rem; overflow: hidden; }
+.mm_item .mm_main { border-bottom: 1px solid rgba(0,0,0,0.1); }
+.mm_item:last-child .mm_main { border-bottom: none; }
+.mm_list .mm_item:active .mm_main{ border-color: rgba(0,0,0,0); }
+.ll .mm_main { padding: 0.25rem 0; border: none; padding: 0.625rem 0.875rem; }
+.navigator-hover .mm_main { border-color: rgba(0,0,0,0); }
+
+/* 项目 */
+.mm_side { position: relative; }
+.ll .mm_side { float: left; padding: 0.625rem 0.875rem; }
+.lr .mm_side { float: left; padding: 0.625rem 0.875rem; }
+.rl .mm_side { float: right; padding: 0.625rem 0.875rem; }
+
+/* 标题 */
+.ll .mm_title { float: left; width: 4.5rem; color: #888; }
+.lr .mm_title { float: left; }
+.rl .mm_title { float: left; margin-right: .5rem; }
+.lr .small .mm_title,.rl .small .mm_title { padding: 0.25rem 0; }
+.ll .small { font-size: 0.75rem; }
+
+/* 左布局 */
+.ll { padding: 0.75rem 0; }
+
+/* 摘要 */
+.ll .mm_desc { float: left; width: calc(100% - 5rem); color: #333; }
+.lr .mm_desc { float: right; }
+.lr .small .mm_desc { padding: .25rem 0; }
+.big .mm_desc { padding-top: 0.2rem; font-size: 85%; color: #999; float: none; clear: left; }
+

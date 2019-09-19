@@ -1,0 +1,19 @@
+{
+    "path": "/apis/user/sns",
+    "name": "sys_user_sns2",
+    "title": "用户社交账户接口",
+    "description": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true,
+    "oauth": {
+        "scope": true,
+        "signIn": true,
+        "gm": 2,
+        "user_group": [],
+        "admin_group": []
+    }
+}

@@ -1,0 +1,36 @@
+[{
+		"path": "/test/web",
+		"name": "test_web",
+		"title": "示例接口",
+		"description": "描述接口使用方法",
+		"func_file": "./index.js",
+		"func_name": "",
+		"method": "all",
+		"cache": 0,
+		"client_cache": true,
+		"param_path": "",
+		"sql_path": "",
+		"check_param": true,
+		"oauth": null
+	},
+	{
+		"path": "/test/web/file",
+		"name": "test_web_file",
+		"title": "示例接口",
+		"description": "描述接口使用方法",
+		"func_file": "./file.js",
+		"method": "all",
+		"oauth": {
+			"signIn": false,
+			"vip": 0,
+			"gm": 0,
+			"mc": 0,
+			"user_group": [
+				"agent"
+			],
+			"admin_group": [
+				"boss"
+			]
+		}
+	}
+]

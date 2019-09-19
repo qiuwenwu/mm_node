@@ -1,0 +1,79 @@
+[{
+		"path": "/api/dev/app",
+		"name": "dev_app",
+		"title": "管理应用的接口",
+		"cache": 0,
+		"func_file": "./app.js",
+		"method": "all"
+	}, {
+		"path": "/api/dev/plugin",
+		"name": "dev_plugin",
+		"title": "管理插件的接口",
+		"cache": 0,
+		"func_file": "./plugin.js",
+		"method": "all"
+	}, {
+		"path": "/api/dev/event",
+		"name": "dev_event",
+		"title": "管理事件的接口",
+		"cache": 0,
+		"func_file": "./event.js",
+		"method": "all"
+	},
+	{
+		"path": "/api/dev/api",
+		"name": "dev_api",
+		"title": "管理API的接口",
+		"cache": 0,
+		"func_file": "./api.js",
+		"method": "all"
+	},
+	{
+		"path": "/api/dev/task",
+		"name": "dev_task",
+		"title": "管理任务的接口",
+		"cache": 0,
+		"func_file": "./task.js",
+		"method": "all"
+	},
+	{
+		"path": "/api/dev/sql",
+		"name": "dev_sql",
+		"title": "管理SQL模板的接口",
+		"cache": 0,
+		"func_file": "./sql.js",
+		"method": "all"
+	},
+	{
+		"path": "/api/dev/db",
+		"name": "dev_db",
+		"title": "管理数据库的接口",
+		"cache": 0,
+		"func_file": "./db.js",
+		"method": "all"
+	},
+	{
+		"path": "/api/dev/source",
+		"name": "dev_source",
+		"title": "管理资源的接口",
+		"cache": 0,
+		"func_file": "./source.js",
+		"method": "all"
+	},
+	{
+		"path": "/api/dev/view",
+		"name": "dev_view",
+		"title": "管理视图的接口",
+		"cache": 0,
+		"func_file": "./view.js",
+		"method": "all"
+	},
+	{
+		"path": "/api/dev/help",
+		"name": "dev_help",
+		"title": "查看帮助的接口",
+		"cache": 0,
+		"func_file": "./help.js",
+		"method": "all"
+	}
+]

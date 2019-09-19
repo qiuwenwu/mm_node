@@ -1,0 +1,36 @@
+{
+    "title": "",
+    "table": "mm_article_info",
+    "name": "mm_article_info2",
+    "key": "article_id",
+    "orderby_default": "`article_id` desc",
+    "field_default": "`article_id`,`title`,`display`,`img`,`url`,`description`,`available`,`keywords`,`content`,`author`,`user_id`,`source`,`create_time`,`update_time`,`hot`,`praise`,`channel_id`,`tag`,`collect_id`,`city_id`",
+    "query": {
+        "title": "`title` like '%{0}%'",
+        "display_min": "`display` >= {0}",
+        "display_max": "`display` <= {0}",
+        "img": "`img` like '%{0}%'",
+        "url": "`url` like '%{0}%'",
+        "description": "`description` like '%{0}%'",
+        "keywords": "`keywords` like '%{0}%'",
+        "content": "`content` like '%{0}%'",
+        "author": "`author` like '%{0}%'",
+        "source": "`source` like '%{0}%'",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'",
+        "hot_min": "`hot` >= {0}",
+        "hot_max": "`hot` <= {0}",
+        "praise_min": "`praise` >= {0}",
+        "praise_max": "`praise` <= {0}",
+        "tag": "`tag` like '%{0}%'"
+    },
+    "where": {},
+    "update": {
+        "display_add": "`display` = `display` + {0}",
+        "hot_add": "`hot` = `hot` + {0}",
+        "praise_add": "`praise` = `praise` + {0}"
+    },
+    "field_hide": []
+}
