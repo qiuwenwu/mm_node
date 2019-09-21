@@ -185,22 +185,34 @@
             "name": "birthday",
             "title": "生日",
             "description": "",
-            "type": "dateTime",
-            "dataType": "date"
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "birthday_min",
             "title": "生日——开始时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "date"
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "birthday_max",
             "title": "生日——结束时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "date"
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "province",

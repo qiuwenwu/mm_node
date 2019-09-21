@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>开发文档</title>
+		<link rel="stylesheet" type="text/css" href="/css/mm_layout.css" />
+		<link rel="stylesheet" type="text/css" href="/css/mm_theme.css" />
+		<script src="/js/jquery-3.4.1.min.js"></script>
+		<script src="/js/vue.js"></script>
+		<script src="/js/mm_sdk.js"></script>
+
+
+		<style>
+			#app {
+				padding: 2rem;
+			}
+
+			#app h4 {
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid #dbdbdb;
+				margin-bottom: 1rem;
+			}
+
+			.mm_warp {
+				max-width: 800px;
+			}
+
+			.scope_list {
+				padding-left: 2rem;
+			}
+
+			.scope_list li {
+				float: left;
+				padding: 0.5rem 1rem;
+			}
+
+			.desc {
+				margin-bottom: 2rem;
+			}
+
+			.mm_btn {
+				line-height: 1.5rem;
+				height: 1.5rem;
+				border: 1px solid #e5e5e5;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="mm_warp">
+				<h4>欢迎使用超级美眉API接口文档</h4>
+				<p>所有的API接口都作用在不同的域下，您可以点击以下域，访问该域下的接口列表</p>
+				<ul class="scope_list">
+					<li v-for="(o, k) in list" :key="k">
+						<a class="font_info" :href="'/dev/doc/api_list.html?scope=' + o">{{ o }}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			var vue = new Vue({
+				el: '#app',
+				data: {
+					url: "/api/dev/api",
+					list: []
+				},
+				methods: {
+					get_list() {
+						var _this = this;
+						$.http.get(this.url, function(json, status) {
+							_this.get_list_after(json);
+						});
+					},
+					get_list_after(json) {
+						if (json.result) {
+							this.list.clear();
+							this.list.addList(json.result.scope);
+						}
+					}
+				},
+				created() {
+					this.get_list();
+				}
+			});
+		</script>
+	</body>
+</html>

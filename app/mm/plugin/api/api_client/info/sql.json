@@ -27,9 +27,6 @@
         "praise_max": "`praise` <= {0}",
         "tag": "`tag` like '%{0}%'"
     },
-    "query_default": {
-        "user_id": "`user_id` = {user_id}"
-    },
     "where": {},
     "update": {
         "display_add": "`display` = `display` + {0}",

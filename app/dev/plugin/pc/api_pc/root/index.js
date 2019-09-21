@@ -5,7 +5,11 @@
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
+	
 	var req = ctx.request;
+	if(req.path.startWith("/dev/doc")){
+		return null;
+	}
 	// 过滤静态文件
 	if (req.path.indexOf('.') === -1) {
 		var model = {

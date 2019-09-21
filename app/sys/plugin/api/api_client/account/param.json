@@ -302,22 +302,34 @@
             "name": "login_time",
             "title": "上次登录时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "timestamp"
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "login_time_min",
             "title": "上次登录时间——开始时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "timestamp"
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "login_time_max",
             "title": "上次登录时间——结束时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "timestamp"
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "salt",
@@ -337,22 +349,34 @@
             "name": "create_time",
             "title": "创建时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "datetime"
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "create_time_min",
             "title": "创建时间——开始时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "datetime"
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "create_time_max",
             "title": "创建时间——结束时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "datetime"
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "user_group",

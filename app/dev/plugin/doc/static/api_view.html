@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>接口明细</title>
+		<link rel="stylesheet" type="text/css" href="/css/mm_layout.css" />
+		<link rel="stylesheet" type="text/css" href="/css/mm_component.css" />
+		<link rel="stylesheet" type="text/css" href="/css/mm_theme.css" />
+		<script src="/js/jquery-3.4.1.min.js"></script>
+		<script src="/js/vue.js"></script>
+		<script src="/js/clipboard.min.js"></script>
+		<script src="/js/mm_sdk.js"></script>
+
+		<style>
+			#app {
+				padding: 2rem;
+			}
+
+			#app h4 {
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid #dbdbdb;
+				margin-bottom: 1rem;
+			}
+
+			#app h5 {
+				font-size: 1.5rem;
+			}
+
+			.mm_warp {
+				max-width: 800px;
+			}
+
+			.scope_list {
+				padding-left: 2rem;
+			}
+
+			.desc {
+				margin-bottom: 2rem;
+			}
+
+			dt {
+				float: left;
+				min-width: 6rem;
+			}
+
+			.mm_collapse {
+				border: 1px solid #26d2ff;
+				margin-bottom: 1rem;
+			}
+
+			.mm_collapse_info {
+				border-color: #26d2ff;
+			}
+
+			.mm_collapse_info .mm_head {
+				color: #fff;
+				background-color: #26d2ff;
+			}
+
+			.mm_collapse_default {
+				border-color: #999;
+			}
+
+			.mm_collapse_default .mm_head {
+				color: #fff;
+				background-color: #999;
+			}
+
+			.mm_collapse_primary {
+				border-color: #38f;
+			}
+
+			.mm_collapse_primary .mm_head {
+				color: #fff;
+				background-color: #38f;
+			}
+
+			.mm_collapse_info .mm_head {
+				color: #fff;
+				background-color: #26d2ff;
+			}
+
+			.mm_collapse .mm_head {
+				padding: 0.25rem 1rem;
+			}
+
+			.mm_collapse .mm_head span {
+				font-size: 75%;
+			}
+
+			.mm_collapse .mm_body {
+				padding: 1.5rem;
+			}
+
+			.mm_tabs {
+				margin-top: 2rem;
+				margin-bottom: 2rem;
+				border: 1px solid #DBDBDB;
+			}
+
+			.mm_tabs a,
+			.mm_tabs span {
+				display: inline-block;
+				padding: 0.25rem 0.5rem;
+				border-right: 1px solid #DBDBDB;
+			}
+
+			.mm_tabs a:hover {
+				color: #26d2ff;
+			}
+
+			.mm_tabs .active {
+				color: #26d2ff;
+			}
+
+			.mm_table td {
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			.mm_table p {
+				color: #999;
+				font-size: 0.875rem;
+			}
+
+			h4 a {
+				font-size: 0.875rem;
+				padding-top: 0.5rem;
+			}
+
+			.mm_head a {
+				float: right;
+				color: #fff;
+				border: 1px solid #fff;
+				padding: 0 0.75rem;
+				border-radius: 0.25rem;
+				font-size: 0.875rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="mm_warp">
+				<h4>欢迎使用 <strong>超级美眉</strong> 接口文档 <a class="fr" :href="'./api_list.html?scope=' + query.scope">回到列表</a></h4>
+				<p class="desc" v-if="error.code === 0">该接口使用明细请看下方：</p>
+				<p class="desc" v-else>{{ error.message }}</p>
+				<div class="mm_view" v-if="config.name">
+					<h5 style="border: none;">{{ config.title ? config.title : config.name }} <span class="mm_badge" v-if="config.oauth.signIn">需要权限</span></h5>
+					<p class="desc" style="border: none;">{{ config.description }}</p>
+					<dl>
+						<dt>调用地址：</dt>
+						<dd><a :href="config.path">{{ config.path }}</a></dd>
+					</dl>
+					<dl>
+						<dt>请求方式：</dt>
+						<dd>{{ toMethod(config.method) }}</dd>
+					</dl>
+					<dl>
+						<dt>返回类型：</dt>
+						<dd>{{ config.contentType ? config.contentType : 'JSON' }}</dd>
+					</dl>
+
+					<div class="mm_tabs">
+						<span class="bg_grey">支持方法</span>
+						<a href="javascript:void(0)" v-for="(o, i) in tabs" :key="i" :class="{'active': i === index}" @click="index = i">
+							{{ o }}
+						</a>
+					</div>
+					<div class="mm_collapse mm_collapse_default" v-if="list_headers.length > 0">
+						<div class="mm_head">
+							协议头参数<span>（Headers）</span>
+						</div>
+						<div class="mm_body">
+							<table class="mm_table mm_table-sm mm_table-hover">
+								<thead>
+									<tr>
+										<th width="150">参数</th>
+										<th width="100">类型</th>
+										<th width="70">必填</th>
+										<th>说明</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="(o, k) in list_headers" :key="k">
+										<td><strong>{{ o.name }}</strong></td>
+										<td>{{ o.type }}</td>
+										<td>{{ o.required }}</td>
+										<td>{{ o.title }}
+											<p>{{ o.description }}</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="mm_collapse mm_collapse_info" v-if="list_query.length > 0">
+						<div class="mm_head">
+							URL请求参数<span>（Query）</span> <a href="javascript:void(0)" @click="copy('query')">复制</a>
+						</div>
+						<div class="mm_body">
+							<table class="mm_table mm_table-sm mm_table-hover">
+								<thead>
+									<tr>
+										<th width="150">参数</th>
+										<th width="100">类型</th>
+										<th width="70">必填</th>
+										<th>说明</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="(o, k) in list_query" :key="k">
+										<td><strong>{{ o.name }}</strong></td>
+										<td>{{ o.type }}</td>
+										<td>{{ o.required }}</td>
+										<td>{{ o.title }}
+											<p>{{ o.description }}</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="mm_collapse mm_collapse_primary" v-if="list_body.length > 0">
+						<div class="mm_head">
+							正文请求参数<span>（Body）</span> <a href="javascript:void(0)" @click="copy('body')">复制</a>
+						</div>
+						<div class="mm_body">
+							<table class="mm_table mm_table-sm mm_table-hover">
+								<thead>
+									<tr>
+										<th width="150">参数</th>
+										<th width="100">类型</th>
+										<th width="70">必填</th>
+										<th>说明</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr v-for="(o, k) in list_body" :key="k">
+										<td><strong>{{ o.name }}</strong></td>
+										<td>{{ o.type }}</td>
+										<td>{{ o.required }}</td>
+										<td>{{ o.title }}
+											<p>{{ o.description }}</p>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="desc center" v-if="list_query.length === 0 && list_body.length === 0">无需传参</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var vue = new Vue({
+				el: '#app',
+				data() {
+					return {
+						url: "/api/dev/api?",
+						query: {
+							scope: "client",
+							name: ""
+						},
+						config: {
+							cache: 0,
+							check_param: true,
+							client_cache: true,
+							description: "用户获取api接口",
+							method: "",
+							name: "",
+							oauth: {
+								signIn: false,
+								gm: 0,
+								mc: 0,
+								vip: 0,
+								user_group: [],
+								admin_group: []
+							},
+							param_path: "",
+							path: "",
+							sql_path: "",
+							title: "测试获取API接口"
+						},
+						param: {
+							add: {
+								body: [],
+								body_required: []
+							},
+							del: {
+								query: [],
+								query_required: []
+							},
+							set: {
+								query: [],
+								query_required: [],
+								body: [],
+								body_required: []
+							},
+							get: {
+								query: [],
+								query_required: []
+							},
+							GET: {
+								query: [],
+								query_required: []
+							},
+							POST: {
+								body: [],
+								body_required: [],
+								query: [],
+								query_required: []
+							},
+							list: []
+						},
+						error: {
+							code: 0,
+							message: ""
+						},
+						tabs: [],
+						index: 0
+					}
+				},
+				methods: {
+					copy(type) {
+						var arr = this['list_' + type];
+						if (arr) {
+							var code = "{";
+							for (var i = 0; i < arr.length; i++) {
+								var o = arr[i];
+								var val = '';
+								var p = o.type;
+								if (p === "number") {
+									val = 0;
+								} else if (p === 'date') {
+									val = '"1970-01-01"'
+								} else if (p === 'datetime') {
+									val = '"1970-01-01 00:00:00"'
+								} else if (p === 'ime') {
+									val = '"00:00:00"'
+								} else {
+									val = '""'
+								}
+								code += '\r\n	// ' + o.title;
+								code += '\r\n	"' + o.name + '":' + val + ","
+							}
+							$.copyText(code.substring(0, code.length - 1) + '\r\n}');
+							alert('复制成功');
+						} else {
+							alert('复制失败');
+						}
+					},
+					toMethod(method) {
+						var m = method.toLocaleUpperCase()
+						if (m === 'ALL') {
+							return 'GET / POST'
+						}
+						return m;
+					},
+					get_obj() {
+						var _this = this;
+						$.http.get(this.url + $.toUrl(this.query), function(json, status) {
+							_this.get_obj_after(json);
+						});
+					},
+					get_obj_after(json) {
+						if (json.result) {
+							$.clear(this.config);
+							$.push(this.config, json.result.config);
+							var cg = {};
+							if (json.result.param) {
+								cg = json.result.param.config;
+								$.clear(this.param);
+								$.push(this.param, cg);
+							}
+
+							var m = "get";
+							var sql = json.result.sql;
+							if (sql) {
+								m = sql.config.method;
+							}
+							if (!m) {
+								m = cg.method ? cg.method : 'get';
+							}
+							this.tabs.clear();
+							this.tabs.addList(m.split(' '));
+
+							for (var i = 0; i < this.tabs.length; i++) {
+								if (this.tabs[i] === 'get') {
+									this.index = i;
+								}
+							}
+						} else if (json.error) {
+							$.push(this.error, json.error);
+						}
+					}
+				},
+				computed: {
+					list_headers() {
+						var list = [];
+						var cg = this.config.oauth;
+						if (cg) {
+							if (cg.signIn) {
+								list.push({
+									name: "x-oauth-token",
+									type: "string",
+									required: "否",
+									title: "临时访问牌"
+								});
+							};
+						}
+						return list;
+					},
+					list_body() {
+						var list = [];
+						var method = this.tabs[this.index];
+						var obj = this.param[method];
+						if (obj) {
+							var arr = obj.body;
+							if (arr) {
+								var params = this.param.list;
+								for (var i = 0; i < obj.body_required.length; i++) {
+									var k = obj.body_required[i];
+									var o = params.getObj({
+										name: k
+									});
+									if (o) {
+										o.required = "是";
+										list.push(o);
+									}
+								}
+								for (var i = 0; i < arr.length; i++) {
+									var k = arr[i];
+									var o = params.getObj({
+										name: k
+									});
+									if (o) {
+										o.required = "否";
+										list.push(o);
+									}
+								}
+
+							};
+						}
+						return list;
+					},
+					list_query() {
+						var list = [];
+						var method = this.tabs[this.index];
+						var obj = this.param[method];
+						if (obj) {
+							var arr = obj.query;
+							if (arr) {
+								var params = this.param.list;
+								for (var i = 0; i < obj.query_required.length; i++) {
+									var k = obj.query_required[i];
+									var o = params.getObj({
+										name: k
+									});
+									if (o) {
+										o.required = "是";
+										list.push(o);
+									}
+								}
+								for (var i = 0; i < arr.length; i++) {
+									var k = arr[i];
+									var o = params.getObj({
+										name: k
+									});
+									if (o) {
+										o.required = "否";
+										list.push(o);
+									}
+								}
+							};
+						}
+						return list;
+					},
+				},
+				created() {
+					var arr = location.search.replace('?', '').split("&");
+					for (var i = 0; i < arr.length; i++) {
+						var ar = arr[i].split("=");
+						if (ar.length > 1) {
+							this.query[ar[0]] = ar[1];
+						}
+					}
+					this.get_obj();
+				}
+			});
+		</script>
+	</body>
+</html>

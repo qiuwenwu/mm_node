@@ -1,5 +1,5 @@
 {
-    "title": "用户社交账号验证模型",
+    "title": "用户社交账户验证模型",
     "name": "sys_user_sns2",
     "add": {
         "body": [],

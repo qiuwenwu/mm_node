@@ -10,17 +10,17 @@ input { color: #333; }
 
 /* ====== 公共样式 ====== */
 /* 背景 */
-.bg_white {background:#fff;color:#333;}
-.bg_black {background:#333;color:#fff;border-color:#333;}
-.bg_light { background:#ccc;color:#fff;border-color:#ccc;}
-.bg_dark {background:#666;color:#fff;border-color:#666;}
-.bg_grey,.bg_default {background:#999;color:#fff;border-color:#999;}
-.bg_red,.bg_warning {background: #FF0036;color:#fff;border-color:#FF0036;}
-.bg_yellow,.bg_danger {background:#fca216;color:#fff;border-color:#fca216;}
-.bg_green,.bg_success {background:#09BB07;color:#fff;border-color:#09BB07;}
-.bg_cyan,.bg_info {background:#00b2d2;color:#fff;border-color:#00b2d2;}
-.bg_blue,.bg_primary {background:#38f;color:#fff;border-color:#38f;}
-.bg_purple {background: #7f39e8; color:#fff;border-color:#7f39e8;}
+.bg_white {background:#fff !important;color:#333;}
+.bg_black {background:#333 !important;color:#fff;border-color:#333;}
+.bg_light { background:#ccc !important;color:#fff;border-color:#ccc;}
+.bg_dark {background:#666 !important;color:#fff;border-color:#666;}
+.bg_grey,.bg_default {background:#999 !important;color:#fff;border-color:#999;}
+.bg_red,.bg_warning {background: #FF0036 !important;color:#fff;border-color:#FF0036;}
+.bg_yellow,.bg_danger {background:#fca216 !important;color:#fff;border-color:#fca216;}
+.bg_green,.bg_success {background:#09BB07 !important;color:#fff;border-color:#09BB07;}
+.bg_cyan,.bg_info {background:#00b2d2 !important;color:#fff;border-color:#00b2d2;}
+.bg_blue,.bg_primary {background:#38f !important;color:#fff;border-color:#38f;}
+.bg_purple {background: #7f39e8 !important; color:#fff;border-color:#7f39e8;}
 .bg_no { background: none !important; }
 
 /* 按钮 */
@@ -45,8 +45,7 @@ input { color: #333; }
 
 /* 默认配置 */
 .mm_mask { background:rgba(0,0,0,0.3); }
-.mm_head { background: #faf5f5; /* background: #F5f6FA; */ color: #767676; }
-.mm_desc { color: #888888; }
+.mm_desc { color: #999; }
 
 .mm_btn_default-x { color:#999; }
 .mm_btn_warning-x { color:#f12f04; }

@@ -1,105 +1,150 @@
 {
-	"title": "地区验证模型",
-	"name": "sys_address_area",
-	"filter": true,
-	"func_file": "",
-	"func_name": "",
-	"post": {
-		"query": ["uid", "name", "username", "phone", "email"],
-		"body": ["age", "headImg", "birthday", "password", "confirm_password", "pay_password"]
-	},
-	"list": [{
-			"name": "uid",
-			"title": "用户ID",
-			"type": "number",
-			"number": {
-				"min": 1
-			},
-			"splitter": "|"
-		}, {
-			"name": "name",
-			"title": "姓名",
-			"type": "string",
-			"string": {
-				"format": "ch",
-				"range": [2, 6]
-			},
-			"splitter": "|"
-		},
-		{
-			"name": "age",
-			"title": "年龄",
-			"type": "number",
-			"number": {
-				"range": [1, 150]
-			}
-		},
-		{
-			"name": "headImg",
-			"title": "头像",
-			"type": "string",
-			"string": {
-				"extension": "png|gif|jpg|jpeg|bmp"
-			}
-		},
-		{
-			"name": "birthday",
-			"title": "生日",
-			"type": "string",
-			"string": {
-				"format": "dateISO"
-			}
-		},
-		{
-			"name": "username",
-			"title": "用户名",
-			"type": "string",
-			"string": {
-				"format": "username"
-			}
-		},
-		{
-			"name": "password",
-			"title": "密码",
-			"type": "string",
-			"string": {
-				"format": "password",
-				"different": "username"
-			}
-		},
-		{
-			"name": "phone",
-			"title": "手机",
-			"type": "string",
-			"string": {
-				"format": "phone"
-			}
-		},
-		{
-			"name": "email",
-			"title": "邮箱",
-			"type": "string",
-			"string": {
-				"format": "email"
-			}
-		},
-		{
-			"name": "pay_password",
-			"title": "支付密码",
-			"type": "string",
-			"string": {
-				"format": "num",
-				"different": "password"
-			}
-		},
-		{
-			"name": "confirm_password",
-			"title": "确认密码",
-			"type": "string",
-			"string": {
-				"format": "password",
-				"identical": "password"
-			}
-		}
-	]
+    "title": "地区验证模型",
+    "name": "sys_address_area",
+    "filter": true,
+    "func_file": "",
+    "func_name": "",
+    "post": {
+        "query": [
+            "uid",
+            "name",
+            "username",
+            "phone",
+            "email"
+        ],
+        "body": [
+            "age",
+            "headImg",
+            "birthday",
+            "password",
+            "confirm_password",
+            "pay_password"
+        ]
+    },
+    "list": [
+        {
+            "name": "area_id",
+            "title": "地区ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "min": 1,
+                "max": 8388607,
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "地区名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 16,
+                "range": [],
+                "format": ""
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所属城市ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "min": 1,
+                "max": 8388607,
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "show",
+            "title": "是否可见",
+            "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "min": 0,
+                "max": 2,
+                "range": []
+            }
+        },
+        {
+            "name": "show_min",
+            "title": "是否可见——最小值",
+            "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "min": 0,
+                "max": 2,
+                "range": []
+            }
+        },
+        {
+            "name": "show_max",
+            "title": "是否可见——最大值",
+            "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "min": 0,
+                "max": 2,
+                "range": []
+            }
+        }
+    ],
+    "add": {
+        "body": [
+            "city_id",
+            "show"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [
+            "city_id",
+            "show"
+        ],
+        "query_required": [
+            "area_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "city_id",
+            "show"
+        ],
+        "query_required": [
+            "area_id"
+        ],
+        "body": [
+            "area_id",
+            "name",
+            "city_id",
+            "show",
+            "show_add"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "name",
+            "city_id",
+            "show",
+            "show_min",
+            "show_max"
+        ],
+        "query_required": []
+    }
 }

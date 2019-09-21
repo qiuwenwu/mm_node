@@ -327,43 +327,67 @@
             "name": "create_time",
             "title": "创建时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "datetime"
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "create_time_min",
             "title": "创建时间——开始时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "datetime"
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "create_time_max",
             "title": "创建时间——结束时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "datetime"
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "update_time",
             "title": "更新时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "timestamp"
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "update_time_min",
             "title": "更新时间——开始时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "timestamp"
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "update_time_max",
             "title": "更新时间——结束时间",
             "description": "",
-            "type": "dateTime",
-            "dataType": "timestamp"
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": false,
+                "format": ""
+            }
         },
         {
             "name": "hot",

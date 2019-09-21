@@ -600,8 +600,14 @@ class Drive extends Item {
 					cm.get.query.push(n);
 					cm.list.push(m);
 					cm.set.body.push(n);
-				} else if (p === 'date' || p === 'time' || p === 'datetime' || p === 'datetime' || p === 'timestamp') {
-					m.type = "dateTime";
+				} else if (p === 'date' || p === 'time' || p === 'datetime' || p === 'timestamp') {
+					m.type = "string";
+					// 字符串相关验证
+					m.string = {
+						// 非空
+						"notEmpty": o.not_null,
+						"format": ""
+					};
 					cm.get.query.push(n);
 					cm.get.query.push(n + "_min");
 					cm.get.query.push(n + "_max");

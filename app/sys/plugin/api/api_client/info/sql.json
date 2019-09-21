@@ -4,7 +4,7 @@
     "name": "sys_user_info",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
-    "field_default": "`name`,`sex`,`age`,`birthday`,`province`,`city_id`,`address`,`job`,`job_scope`,`company_address`,`company_business`,`school`,`major`",
+    "field_default": "`user_id`,`name`,`sex`,`age`,`birthday`,`province`,`city_id`,`address`,`job`,`job_scope`,`company_address`,`company_business`,`school`,`major`",
     "method": "get",
     "query": {
         "name": "`name` like '%{0}%'",

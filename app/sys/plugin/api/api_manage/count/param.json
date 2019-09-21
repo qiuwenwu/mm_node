@@ -1,5 +1,5 @@
 {
-    "title": "用户账户统计验证模型",
+    "title": "用户统计验证模型",
     "name": "sys_user_count2",
     "add": {
         "body": [

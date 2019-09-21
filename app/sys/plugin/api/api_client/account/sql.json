@@ -4,7 +4,7 @@
     "name": "sys_user_account",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
-    "field_default": "`username`,`referee_id`,`vip`,`gm`,`mc`,`phone`,`email`,`login_ip`,`login_time`,`create_time`,`user_group`,`admin_group`,`signature`,`nickname`,`avatar`",
+    "field_default": "`user_id`,`username`,`referee_id`,`vip`,`gm`,`mc`,`phone`,`email`,`login_ip`,`login_time`,`create_time`,`user_group`,`admin_group`,`signature`,`nickname`,`avatar`",
     "method": "get",
     "query": {
         "icon": "`icon` like '%{0}%'",

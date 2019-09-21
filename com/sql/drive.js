@@ -71,8 +71,8 @@ class Drive extends Item {
 			},
 			// 分隔符 用于查询时的多条件处理
 			"separator": "|",
-			// 支持的方法 add增、del删、set改、get查, 只填get表示只支持查询
-			"method": "add del set get import export del_repeat",
+			// 支持的方法 add增、del删、set改、get查, 只填get表示只支持查询 // import export del_repeat",
+			"method": "add del set get",
 			// sql查询语句
 			"query": {},
 			// 默认查询, 当查询条件中不包含该项时，默认添加该项。 例如: { "age": "`age` < 20" } , 当查询参含有age，不调用该项，不存在时，sql会增加该项

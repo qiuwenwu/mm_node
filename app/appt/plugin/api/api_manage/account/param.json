@@ -1,0 +1,24 @@
+{
+    "title": "测试用户表",
+    "name": "appt_user_account2",
+    "add": {
+        "body": [],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": []
+    },
+    "set": {
+        "query": [],
+        "query_required": [],
+        "body": [],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [],
+        "query_required": []
+    },
+    "list": []
+}
