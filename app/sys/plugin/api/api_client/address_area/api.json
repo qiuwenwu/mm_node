@@ -1,0 +1,12 @@
+{
+    "name": "sys_address_area",
+    "title": "",
+    "description": "",
+    "path": "/api/address/area",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

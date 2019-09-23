@@ -88,7 +88,7 @@ dt,th,h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {font-weight:500;}
 .btb {border-top:1px solid #e5e5e5 !important;border-bottom:1px solid #e5e5e5 !important;}
 
 /* 圆角 */
-.b-a {border-radius:0.325rem !important; overflow: hidden;}
+.b-a {border-radius:0.25rem !important; overflow: hidden;}
 .b-b {border-bottom-right-radius:0.25rem !important;border-bottom-left-radius:0.25rem !important; overflow: hidden;}
 .b-c {border-radius:50% !important;overflow: hidden;}
 .b-l {border-bottom-left-radius:0.25rem !important;border-top-left-radius:0.25rem !important;overflow: hidden;}
@@ -265,5 +265,14 @@ small>.mm_title, .font_small>.mm_title { height: 2rem; line-height: 1.75rem; }
 .big .icon{ width: 3rem; height: 3rem; line-height: 3rem; font-size: 1rem; }
 .larger .icon{ width: 4rem; height: 4rem; line-height: 4rem; font-size: 1.5rem; }
 .jumbo .icon{ width: 8rem; height: 8rem; line-height: 8rem; font-size: 3rem; }
+
+/* 表格 */
+.mm_table {width:100%;max-width:100%;margin-bottom:1rem;background-color:transparent}
+.mm_table td,.mm_table th {padding:.75rem;vertical-align:top;border-top:1px solid #dee2e6}
+.mm_table thead th {vertical-align:bottom;border-bottom:2px solid #dee2e6}
+.mm_table tbody+tbody {border-top:2px solid #dee2e6}
+.mm_table .mm_table {background-color:#fff}
+.mm_table-sm td,.mm_table-sm th {padding:.25rem}
+
 
 /* == 适配环境 == */

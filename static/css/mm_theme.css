@@ -85,3 +85,43 @@ input { color: #333; }
 .linear_blue,.linear_info { background-image: linear-gradient(135deg, rgb(94, 252, 232) 10%, rgb(115, 110, 254) 100%);  color: #fff; }
 .linear_purple { background-image: linear-gradient(135deg, #EE9AE5 10%, #5961F9 100%);  color: #fff; }
 
+/* 表格样式 */
+.mm_table-bordered {border:1px solid #dee2e6}
+.mm_table-bordered td,.mm_table-bordered th {border:1px solid #dee2e6}
+.mm_table-bordered thead td,.mm_table-bordered thead th {border-bottom-width:2px}
+.mm_table-striped tbody tr:nth-of-type(odd) {background-color:rgba(0,0,0,.05)}
+.mm_table-hover tbody tr:hover {background-color:rgba(0,0,0,.075)}
+.mm_table-primary,.mm_table-primary>td,.mm_table-primary>th {background-color:#b8daff}
+.mm_table-hover .mm_table-primary:hover {background-color:#9fcdff}
+.mm_table-hover .mm_table-primary:hover>td,.mm_table-hover .mm_table-primary:hover>th {background-color:#9fcdff}
+.mm_table-secondary,.mm_table-secondary>td,.mm_table-secondary>th {background-color:#d6d8db}
+.mm_table-hover .mm_table-secondary:hover {background-color:#c8cbcf}
+.mm_table-hover .mm_table-secondary:hover>td,.mm_table-hover .mm_table-secondary:hover>th {background-color:#c8cbcf}
+.mm_table-success,.mm_table-success>td,.mm_table-success>th {background-color:#c3e6cb}
+.mm_table-hover .mm_table-success:hover {background-color:#b1dfbb}
+.mm_table-hover .mm_table-success:hover>td,.mm_table-hover .mm_table-success:hover>th {background-color:#b1dfbb}
+.mm_table-info,.mm_table-info>td,.mm_table-info>th {background-color:#bee5eb}
+.mm_table-hover .mm_table-info:hover {background-color:#abdde5}
+.mm_table-hover .mm_table-info:hover>td,.mm_table-hover .mm_table-info:hover>th {background-color:#abdde5}
+.mm_table-warning,.mm_table-warning>td,.mm_table-warning>th {background-color:#ffeeba}
+.mm_table-hover .mm_table-warning:hover {background-color:#ffe8a1}
+.mm_table-hover .mm_table-warning:hover>td,.mm_table-hover .mm_table-warning:hover>th {background-color:#ffe8a1}
+.mm_table-danger,.mm_table-danger>td,.mm_table-danger>th {background-color:#f5c6cb}
+.mm_table-hover .mm_table-danger:hover {background-color:#f1b0b7}
+.mm_table-hover .mm_table-danger:hover>td,.mm_table-hover .mm_table-danger:hover>th {background-color:#f1b0b7}
+.mm_table-light,.mm_table-light>td,.mm_table-light>th {background-color:#fdfdfe}
+.mm_table-hover .mm_table-light:hover {background-color:#ececf6}
+.mm_table-hover .mm_table-light:hover>td,.mm_table-hover .mm_table-light:hover>th {background-color:#ececf6}
+.mm_table-dark,.mm_table-dark>td,.mm_table-dark>th {background-color:#c6c8ca}
+.mm_table-hover .mm_table-dark:hover {background-color:#b9bbbe}
+.mm_table-hover .mm_table-dark:hover>td,.mm_table-hover .mm_table-dark:hover>th {background-color:#b9bbbe}
+.mm_table-active,.mm_table-active>td,.mm_table-active>th {background-color:rgba(0,0,0,.075)}
+.mm_table-hover .mm_table-active:hover {background-color:rgba(0,0,0,.075)}
+.mm_table-hover .mm_table-active:hover>td,.mm_table-hover .mm_table-active:hover>th {background-color:rgba(0,0,0,.075)}
+.mm_table .thead-dark th {color:#fff;background-color:#212529;border-color:#32383e}
+.mm_table .thead-light th {color:#495057;background-color:#e9ecef;border-color:#dee2e6}
+.mm_table-dark {color:#fff;background-color:#212529}
+.mm_table-dark td,.mm_table-dark th,.mm_table-dark thead th {border-color:#32383e}
+.mm_table-dark.mm_table-bordered {border:0}
+.mm_table-dark.mm_table-striped tbody tr:nth-of-type(odd) {background-color:rgba(255,255,255,.05)}
+.mm_table-dark.mm_table-hover tbody tr:hover {background-color:rgba(255,255,255,.075)}

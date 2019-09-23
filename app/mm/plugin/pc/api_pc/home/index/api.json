@@ -1,8 +1,9 @@
 {
 	"path": "/home",
+	"type": "web",
 	"name": "home",
 	"title": "门户首页",
 	"description": "描述接口使用方法",
 	"func_file": "./index.js",
-	"method": "all"
+	"method": "ALL"
 }

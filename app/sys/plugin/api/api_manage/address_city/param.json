@@ -1,0 +1,156 @@
+{
+    "name": "sys_address_city2",
+    "title": "",
+    "add": {
+        "body": [
+            "province_id",
+            "show",
+            "display"
+        ],
+        "body_required": [
+            "name"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "city_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "city_id",
+            "name",
+            "province_id",
+            "show",
+            "show_min",
+            "show_max",
+            "display",
+            "display_min",
+            "display_max"
+        ],
+        "query_required": [],
+        "body": [
+            "name",
+            "province_id",
+            "show",
+            "show_add",
+            "display",
+            "display_add"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "city_id",
+            "name",
+            "province_id",
+            "show",
+            "show_min",
+            "show_max",
+            "display",
+            "display_min",
+            "display_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "city_id",
+            "title": "城市ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "城市名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "province_id",
+            "title": "所属省份ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "show",
+            "title": "是否可见",
+            "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 2
+            }
+        },
+        {
+            "name": "show_min",
+            "title": "是否可见——最小值",
+            "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 2
+            }
+        },
+        {
+            "name": "show_max",
+            "title": "是否可见——最大值",
+            "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 2
+            }
+        },
+        {
+            "name": "display",
+            "title": "显示顺序",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_min",
+            "title": "显示顺序——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_max",
+            "title": "显示顺序——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        }
+    ]
+}

@@ -48,7 +48,7 @@ class Mysql {
 		this.conn;
 
 		// 数据库配置参数
-		Mysql.prototype.config = {
+		this.config = {
 			// 服务器地址
 			host: "localhost",
 			// 端口号
@@ -62,44 +62,19 @@ class Mysql {
 			// 是否支持多个sql语句同时操作
 			multipleStatements: true,
 		};
+		
 		// 唯一标识符
 		this.identifier = this.config.host + "/" + this.config.database;
-
-		/**
-		 * 设置配置参数
-		 * @param {Object} cg 配置对象或配置路径
-		 */
-		Mysql.prototype.setConfig = function(cg) {
-			var obj;
-			if (typeof(cg) === "string") {
-				obj = cg.loadJson(this.dir);
-			} else {
-				obj = cg;
-			}
-			$.push(this.config, obj);
-			this.identifier = this.config.host + "/" + this.config.database;
-		};
-
-		/**
-		 * @description 打开数据库, 如果没有则建立数据库连接再打开
-		 */
-		Mysql.prototype.open = function() {
-			if (!pool[this.identifier]) {
-				pool[this.identifier] = createPool(this.config);
-			}
-			this.conn = pool[this.identifier];
-		};
-		/**
-		 * @description 关闭连接
-		 */
-		Mysql.prototype.close = function() {
-			if (pool[this.identifier]) {
-				pool[this.identifier] = null;
-			}
-		};
+		
 		// 定义当前类, 用于数据库实例化访问
 		var $this = this;
-
+		/**
+		 * @description 获取数据库管理器
+		 */
+		Mysql.prototype.db = function() {
+			return new DB($this.config.database, $this.run, $this.exec);
+		};
+		
 		/**
 		 * @description 查询sql
 		 * @param {String} sql 查询参
@@ -147,7 +122,7 @@ class Mysql {
 		Mysql.prototype.exec = function(sql, val) {
 			var _this = this;
 			this.sql = sql;
-
+		
 			// 返回一个 Promise
 			return new Promise((resolve, reject) => {
 				$this.conn.getConnection(function(err, db) {
@@ -203,15 +178,42 @@ class Mysql {
 				});
 			});
 		};
-		
-		/**
-		 * @description 获取数据库管理器
-		 */
-		Mysql.prototype.db = function() {
-			return new DB($this.config.database, $this.run, $this.exec);
-		};
 	}
 }
+
+/**
+ * 设置配置参数
+ * @param {Object} cg 配置对象或配置路径
+ */
+Mysql.prototype.setConfig = function(cg) {
+	var obj;
+	if (typeof(cg) === "string") {
+		obj = cg.loadJson(this.dir);
+	} else {
+		obj = cg;
+	}
+	$.push(this.config, obj);
+	this.identifier = this.config.host + "/" + this.config.database;
+};
+
+/**
+ * @description 打开数据库, 如果没有则建立数据库连接再打开
+ */
+Mysql.prototype.open = function() {
+	if (!pool[this.identifier]) {
+		pool[this.identifier] = createPool(this.config);
+	}
+	this.conn = pool[this.identifier];
+};
+
+/**
+ * @description 关闭连接
+ */
+Mysql.prototype.close = function() {
+	if (pool[this.identifier]) {
+		pool[this.identifier] = null;
+	}
+};
 
 /**
  * @description 导出Mysql帮助类

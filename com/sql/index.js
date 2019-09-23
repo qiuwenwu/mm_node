@@ -17,55 +17,57 @@ class Sql extends Index {
 		this.Drive = Drive;
 		this.type = "sql";
 
-		/// 加载
-		/// path: 加载的路径 (string)
-		Sql.prototype.load = function(path) {
-			if(!path)
-			{
-				path = "/app/";
-			}
-			// 获取所有应用路径
-			var search_dir;
-			var _this = this;
-			if (this.scope && this.scope !== $.val.scope) {
-				search_dir = this.type + '_' + this.scope;
-				var list_scope = $.dir.getAll(path, search_dir);
-				list_scope.map(function(f) {
-					// 获取所有配置文件
-					var list_file = $.file.getAll(f, "*" + _this.type + ".json");
-					_this.load_list(list_file);
-				});
-			} else {
-				// 获取所有配置文件
-				var list_file = $.file.getAll(path, "*" + _this.type + ".json");
-				_this.load_list(list_file);
-			}
-		};
-
-		/**
-		 * @description 排序
-		 */
-		Sql.prototype.sort = function() {
-			this.list.sortBy('asc', 'name');
-		};
-
-		/**
-		 * @description 执行sql
-		 * @param {String} name 名称
-		 * @param {Object} query 查询参数
-		 * @param {Object} body 修改参数
-		 * @param {Object} db 数据库管理器 (object) 只支持可用sql语句的数据库
-		 * @return {Object} 执行结果
-		 */
-		Sql.prototype.run = async function(name, query, body, db) {
-			var obj = this.get(name);
-			if (obj) {
-				return await obj.run(query, body, db);
-			}
-			return null;
-		};
 	}
 }
+
+/**
+ * @description 加载
+ * @param {String} path 加载的路径
+ */
+Sql.prototype.load = function(path) {
+	if (!path) {
+		path = "/app/";
+	}
+	// 获取所有应用路径
+	var search_dir;
+	var _this = this;
+	if (this.scope && this.scope !== $.val.scope) {
+		search_dir = this.type + '_' + this.scope;
+		var list_scope = $.dir.getAll(path, search_dir);
+		list_scope.map(function(f) {
+			// 获取所有配置文件
+			var list_file = $.file.getAll(f, "*" + _this.type + ".json");
+			_this.load_list(list_file);
+		});
+	} else {
+		// 获取所有配置文件
+		var list_file = $.file.getAll(path, "*" + _this.type + ".json");
+		_this.load_list(list_file);
+	}
+};
+
+/**
+ * @description 排序
+ */
+Sql.prototype.sort = function() {
+	this.list.sortBy('asc', 'name');
+};
+
+/**
+ * @description 执行sql
+ * @param {String} name 名称
+ * @param {Object} query 查询参数
+ * @param {Object} body 修改参数
+ * @param {Object} db 数据库管理器 (object) 只支持可用sql语句的数据库
+ * @return {Object} 执行结果
+ */
+Sql.prototype.run = async function(name, query, body, db) {
+	var obj = this.get(name);
+	if (obj) {
+		return await obj.run(query, body, db);
+	}
+	return null;
+};
 
 exports.Sql = Sql;
 

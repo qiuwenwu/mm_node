@@ -1,10 +1,11 @@
 {
 	"path": "/test/check",
+	"type": "api",
 	"name": "test_check",
 	"title": "示例接口",
 	"description": "描述接口使用方法",
 	"func_file": "./index.js",
-	"method": "all",
+	"method": "ALL",
 	"param_path": "./index.param.json",
 	"sql_path": "./index.sql.json"
 }

@@ -316,3 +316,33 @@ test();
 // 	}
 // }
 // newName();
+
+
+// 测试实体模型
+async function test_model() {
+	var sql = new Mysql();
+	sql.open();
+	db = sql.db();
+	db.table = "sys_user_list";
+	db.key = "user_id";
+	var obj = await db.getOne({ username: "admin" }, null, 'username,vip,user_id');
+	console.log(db.sql);
+	console.log(obj);
+	
+	obj.vip = 5;
+	obj.gm = 5;
+	obj.phone = 333;
+	console.log(obj);
+	// obj.gm += 6;
+	
+	var list = await db.getObj({ username: "admin" });
+	if(list.length > 0)
+	{
+		obj = list[0];
+		var o = db.model(obj);
+		o.phone = '15817188815';
+		console.log(o);
+	}
+}
+
+test_model();

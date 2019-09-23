@@ -52,7 +52,7 @@
 			<div class="mm_warp">
 				<h4>欢迎使用 <strong>超级美眉</strong> 接口文档 <a class="fr" href="./">选择域</a></h4>
 				<p class="desc">所有的API接口都作用在不同的域下，您可以点击以下域，访问该域下的接口列表</p>
-				<table class="mm_table mm_table-hover">
+				<table class="mm_table mm_table-hover" v-if="list.length">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -72,6 +72,9 @@
 						</tr>
 					</tbody>
 				</table>
+				<div v-else class="desc center">
+					该域下没有定义API接口
+				</div>
 			</div>
 		</div>
 		<script>

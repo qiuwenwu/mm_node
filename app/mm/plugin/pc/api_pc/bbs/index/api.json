@@ -1,8 +1,9 @@
 {
 	"path": "/bbs",
+	"type": "web",
 	"name": "bbs",
 	"title": "论坛首页",
 	"description": "描述接口使用方法",
 	"func_file": "./index.js",
-	"method": "all"
+	"method": "ALL"
 }

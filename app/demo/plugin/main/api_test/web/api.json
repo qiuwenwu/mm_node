@@ -1,11 +1,12 @@
 [{
 		"path": "/test/web",
+		"type": "web",
 		"name": "test_web",
 		"title": "示例接口",
 		"description": "描述接口使用方法",
 		"func_file": "./index.js",
 		"func_name": "",
-		"method": "all",
+		"method": "ALL",
 		"cache": 0,
 		"client_cache": true,
 		"param_path": "",
@@ -15,11 +16,12 @@
 	},
 	{
 		"path": "/test/web/file",
+		"type": "web",
 		"name": "test_web_file",
 		"title": "示例接口",
 		"description": "描述接口使用方法",
 		"func_file": "./file.js",
-		"method": "all",
+		"method": "ALL",
 		"oauth": {
 			"signIn": false,
 			"vip": 0,

@@ -1,9 +1,10 @@
 {
 	"path": "/dev/*",
-	"name": "root",
-	"title": "示例接口",
+	"type": "web",
+	"name": "dev",
+	"title": "开发者后台",
 	"cache": 0,
 	"description": "描述接口使用方法",
 	"func_file": "./index.js",
-	"method": "all"
+	"method": "ALL"
 }

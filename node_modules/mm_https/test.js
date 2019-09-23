@@ -3,8 +3,9 @@ var Http = require('./index.js').Http;
 /// 测试
 async function test() {
 	var hp = new Http();
-
-	var res = await hp.post("http://api.bitcentre.com.cn//login", {
+	var res = await hp.get("http://www.baidu.com");
+	console.log('百度:' + $.toJson(res));
+	res = await hp.post("http://api.bitcentre.com.cn//login", {
 		'phone': "15817188815",
 		'password': "asd123"
 	}, null, 'form');

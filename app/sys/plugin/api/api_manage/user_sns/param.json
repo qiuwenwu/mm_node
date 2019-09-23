@@ -1,0 +1,131 @@
+{
+    "name": "sys_user_sns2",
+    "title": "",
+    "add": {
+        "body": [
+            "qq",
+            "wechat",
+            "mm",
+            "baidu",
+            "taobao"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "user_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "user_id",
+            "qq",
+            "wechat",
+            "mm",
+            "baidu",
+            "taobao"
+        ],
+        "query_required": [],
+        "body": [
+            "qq",
+            "wechat",
+            "mm",
+            "baidu",
+            "taobao"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "user_id",
+            "qq",
+            "wechat",
+            "mm",
+            "baidu",
+            "taobao"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "user_id",
+            "title": "用户ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "qq",
+            "title": "QQ号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "range": [
+                    5,
+                    12
+                ]
+            }
+        },
+        {
+            "name": "wechat",
+            "title": "微信号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "range": [
+                    5,
+                    16
+                ]
+            }
+        },
+        {
+            "name": "mm",
+            "title": "MM号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "range": [
+                    5,
+                    16
+                ]
+            }
+        },
+        {
+            "name": "baidu",
+            "title": "百度账号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "range": [
+                    5,
+                    14
+                ]
+            }
+        },
+        {
+            "name": "taobao",
+            "title": "淘宝账号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "range": [
+                    5,
+                    10
+                ]
+            }
+        }
+    ]
+}

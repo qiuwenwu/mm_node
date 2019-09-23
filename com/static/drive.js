@@ -19,10 +19,7 @@ class Drive extends Item {
 		super(dir, __dirname);
 		this.default_file = "./static.json";
 
-		/**
-		 * @description 发送文件函数
-		 */
-		Drive.prototype.send = send;
+
 
 		/* 通用项 */
 		// 配置参数
@@ -61,168 +58,7 @@ class Drive extends Item {
 			"convert_amd": false,
 		};
 
-		/**
-		 * @description 加载配置对象
-		 * @param {Object} obj 配置对象
-		 */
-		Drive.prototype.loadObj = function(obj) {
-			if (obj.maxAge) {
-				obj.maxAge *= 1000;
-			}
-			$.push(this.config, obj);
 
-			if (this.config.convert_amd) {
-				this.mode(true);
-			}
-			var f = this.config.func_file;
-			if (f) {
-				var file = f.fullname(this.dir);
-				if (file.hasFile()) {
-					var cs = require(file);
-					if (cs) {
-						var name = this.config.func_name;
-						if (name) {
-							this.main = cs[name];
-						} else {
-							$.push(this, cs);
-						}
-					}
-				} else {
-					var fl = __dirname + "/script.js";
-					fl.copyFile(file);
-				}
-			}
-		};
-
-		/**
-		 * @description 执行前
-		 * @param {Object} ctx http请求上下文
-		 * @param {Object} path 文件路径
-		 */
-		Drive.prototype.before = async function(ctx, path) {};
-
-		/**
-		 * @description 执行
-		 * @param {Object} ctx http请求上下文
-		 * @param {Object} path 文件路径
-		 * @return {Boolean} 成功发送返回true，失败返回false
-		 */
-		Drive.prototype.main = async function(ctx, path) {
-			return send(ctx, path, this.config);
-		};
-
-		/**
-		 * @description 执行后
-		 * @param {Object} ctx http请求上下文
-		 * @param {Object} path 文件路径
-		 */
-		Drive.prototype.after = async function(ctx, path) {};
-
-		/**
-		 * @description 切换模式
-		 * @param {Boolean} convert_amd 是否将ES6转换AMD
-		 */
-		Drive.prototype.mode = async function(convert_amd) {
-			if (convert_amd) {
-				this.main = async function main(ctx, path) {
-					if (path.endsWith('.vue') || path.endsWith('.js')) {
-						var file = this.dir + path;
-						if (file) {
-							var code;
-							var str = file.loadText();
-							try {
-								if (str && str.indexOf('@/') !== -1) {
-									var arr = ctx.request.href.split('/');
-									var word = arr[0] + "//" + arr[2] + "/";
-									str = str.replaceAll('@/', word);
-								}
-								code = $.es6_to_amd(str);
-							} catch (e) {
-								throw e
-							}
-							if (code) {
-								if (path.endsWith('.js')) {
-									ctx.response.type = "application/javascript; charset=utf-8";
-								}
-								ctx.body = code;
-								if (this.config.maxAge) {
-									if (this.config.immutable) {
-										ctx.set('Cache-Control', 'max-age=' + (this.config.maxAge / 1000) + ",immutable");
-									} else {
-										ctx.set('Cache-Control', 'max-age=' + (this.config.maxAge / 1000));
-									}
-								}
-								return file;
-							}
-						}
-					} else {
-						return send(ctx, path, this.config);
-					}
-				}
-			} else {
-				this.main = async function(ctx, path) {
-					return send(ctx, path, this.config);
-				}
-			}
-			return null;
-		};
-
-		/**
-		 * @description 执行静态文件
-		 * @param {Object} ctx Http请求上下文
-		 * @param {Object} path 路由路径
-		 * @param {Object} next 跳过当前函数
-		 * @return {String} 执行成功返回文件路径
-		 */
-		Drive.prototype.run = async function(ctx, path, next) {
-			var done;
-			var ph = this.config.path;
-			var p = path.replace(ph, '');
-			if (path.startWith(ph)) {
-				if (p.indexOf('.') !== -1) {
-					this.before(ctx, p);
-					try {
-						done = await this.main(ctx, p);
-						this.after(ctx, p, done);
-					} catch (err) {
-						if (err.status !== 404) {
-							throw err;
-						}
-					}
-				} else {
-					await next();
-					done = ' ';
-					if (ctx.status === 404) {
-						var file;
-						// 取到物理路径
-						var root = this.config.root.fullname();
-						var dir = (root + p).fullname();
-						if (!p) {
-							file = dir + '/' + this.config.index;
-						} else if (p.endWith('/')) {
-							file = dir + this.config.index;
-						} else {
-							file = dir + '.html';
-						}
-						if (file.hasFile()) {
-							p = file.replace(root, '');
-							this.before(ctx, p);
-							done = await this.main(ctx, p);
-							this.after(ctx, p, done);
-						} else if (this.config.redirect) {
-							var file = root + '/index.html';
-							if (file.hasFile()) {
-								p = '/index.html';
-								this.before(ctx, p);
-								done = await this.main(ctx, p);
-								this.after(ctx, p, done);
-							}
-						}
-					}
-				}
-			}
-			return done;
-		};
 
 		if (config) {
 			$.push(this.config, config);
@@ -241,5 +77,173 @@ class Drive extends Item {
 		}
 	}
 }
+
+/**
+ * @description 发送文件函数
+ */
+Drive.prototype.send = send;
+
+/**
+ * @description 加载配置对象
+ * @param {Object} obj 配置对象
+ */
+Drive.prototype.loadObj = function(obj) {
+	if (obj.maxAge) {
+		obj.maxAge *= 1000;
+	}
+	$.push(this.config, obj);
+
+	if (this.config.convert_amd) {
+		this.mode(true);
+	}
+	var f = this.config.func_file;
+	if (f) {
+		var file = f.fullname(this.dir);
+		if (file.hasFile()) {
+			var cs = require(file);
+			if (cs) {
+				var name = this.config.func_name;
+				if (name) {
+					this.main = cs[name];
+				} else {
+					$.push(this, cs);
+				}
+			}
+		} else {
+			var fl = __dirname + "/script.js";
+			fl.copyFile(file);
+		}
+	}
+};
+
+/**
+ * @description 执行前
+ * @param {Object} ctx http请求上下文
+ * @param {Object} path 文件路径
+ */
+Drive.prototype.before = async function(ctx, path) {};
+
+/**
+ * @description 执行
+ * @param {Object} ctx http请求上下文
+ * @param {Object} path 文件路径
+ * @return {Boolean} 成功发送返回true，失败返回false
+ */
+Drive.prototype.main = async function(ctx, path) {
+	return send(ctx, path, this.config);
+};
+
+/**
+ * @description 执行后
+ * @param {Object} ctx http请求上下文
+ * @param {Object} path 文件路径
+ */
+Drive.prototype.after = async function(ctx, path) {};
+
+/**
+ * @description 切换模式
+ * @param {Boolean} convert_amd 是否将ES6转换AMD
+ */
+Drive.prototype.mode = async function(convert_amd) {
+	if (convert_amd) {
+		this.main = async function main(ctx, path) {
+			if (path.endsWith('.vue') || path.endsWith('.js')) {
+				var file = this.dir + path;
+				if (file) {
+					var code;
+					var str = file.loadText();
+					try {
+						if (str && str.indexOf('@/') !== -1) {
+							var arr = ctx.request.href.split('/');
+							var word = arr[0] + "//" + arr[2] + "/";
+							str = str.replaceAll('@/', word);
+						}
+						code = $.es6_to_amd(str);
+					} catch (e) {
+						throw e
+					}
+					if (code) {
+						if (path.endsWith('.js')) {
+							ctx.response.type = "application/javascript; charset=utf-8";
+						}
+						ctx.body = code;
+						if (this.config.maxAge) {
+							if (this.config.immutable) {
+								ctx.set('Cache-Control', 'max-age=' + (this.config.maxAge / 1000) + ",immutable");
+							} else {
+								ctx.set('Cache-Control', 'max-age=' + (this.config.maxAge / 1000));
+							}
+						}
+						return file;
+					}
+				}
+			} else {
+				return send(ctx, path, this.config);
+			}
+		}
+	} else {
+		this.main = async function(ctx, path) {
+			return send(ctx, path, this.config);
+		}
+	}
+	return null;
+};
+
+/**
+ * @description 执行静态文件
+ * @param {Object} ctx Http请求上下文
+ * @param {Object} path 路由路径
+ * @param {Object} next 跳过当前函数
+ * @return {String} 执行成功返回文件路径
+ */
+Drive.prototype.run = async function(ctx, path, next) {
+	var done;
+	var ph = this.config.path;
+	var p = path.replace(ph, '');
+	if (path.startWith(ph)) {
+		if (p.indexOf('.') !== -1) {
+			this.before(ctx, p);
+			try {
+				done = await this.main(ctx, p);
+				this.after(ctx, p, done);
+			} catch (err) {
+				if (err.status !== 404) {
+					throw err;
+				}
+			}
+		} else {
+			await next();
+			done = ' ';
+			if (ctx.status === 404) {
+				var file;
+				// 取到物理路径
+				var root = this.config.root.fullname();
+				var dir = (root + p).fullname();
+				if (!p) {
+					file = dir + '/' + this.config.index;
+				} else if (p.endWith('/')) {
+					file = dir + this.config.index;
+				} else {
+					file = dir + '.html';
+				}
+				if (file.hasFile()) {
+					p = file.replace(root, '');
+					this.before(ctx, p);
+					done = await this.main(ctx, p);
+					this.after(ctx, p, done);
+				} else if (this.config.redirect) {
+					var file = root + '/index.html';
+					if (file.hasFile()) {
+						p = '/index.html';
+						this.before(ctx, p);
+						done = await this.main(ctx, p);
+						this.after(ctx, p, done);
+					}
+				}
+			}
+		}
+	}
+	return done;
+};
 
 exports.Drive = Drive;

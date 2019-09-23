@@ -1,8 +1,9 @@
 {
 	"path": "/account",
+	"type": "web",
 	"name": "account",
 	"title": "账户中心首页",
 	"description": "用于注册、找回密码、修改账号等",
 	"func_file": "./index.js",
-	"method": "all"
+	"method": "ALL"
 }

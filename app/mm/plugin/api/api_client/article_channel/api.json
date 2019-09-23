@@ -1,0 +1,12 @@
+{
+    "name": "mm_article_channel",
+    "title": "",
+    "description": "",
+    "path": "/api/article/channel",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

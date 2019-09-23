@@ -50,16 +50,6 @@ function statics(root, config, es6_to_amd) {
 	}
 
 	/**
-	 * @description 执行
-	 * @param {Object} ctx http请求上下文
-	 * @param {String} path 文件路径
-	 * @return {Boolean} 成功发送返回true，失败返回false
-	 */
-	statics.prototype.main = async function(ctx, path) {
-		return send(ctx, path, this.config);
-	};
-
-	/**
 	 * 执行静态文件处理 (转换为ES5标准)
 	 * @method run
 	 * @param {Object} ctx http请求上下文

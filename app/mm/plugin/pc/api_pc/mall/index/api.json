@@ -1,8 +1,9 @@
 {
 	"path": "/mall",
+	"type": "web",
 	"name": "mall",
 	"title": "商城首页",
 	"description": "商城首页",
 	"func_file": "./index.js",
-	"method": "all"
+	"method": "ALL"
 }

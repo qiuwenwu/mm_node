@@ -345,7 +345,8 @@ var funcs = {
 	 */
 	dict: {
 		session_id: "mm:uuid",
-		user_id: "user_id"
+		user_id: "user_id",
+		token: "x-auth-token"
 	},
 	/**
 	 * @description 语言包, 用于全局的语言替换

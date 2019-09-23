@@ -23,57 +23,7 @@ class Static extends Index {
 		this.Drive = Drive;
 		this.type = "static";
 
-		/**
-		 * @description 获取静态对象
-		 * @param {Object} dir 目录
-		 * @return {Drive} 静态文件驱动类
-		 */
-		Static.prototype.getObj = function(dir) {
-			var d = join(dir).replace($.runPath, '');
-			var app = d.between(join('app/'), join('/'));
-			var plugin = d.between(join('/plugin/'), join('/'));
-			var path = '/' + app;
-			if (plugin) {
-				path += '/' + plugin;
-			}
-			var obj = {
-				app: app,
-				plugin: plugin,
-				root: d.substring(0, d.length - 1),
-				path: path
-			};
-			return new Drive(dir, obj);
-		};
 
-		/**
-		 * @description 加载接口
-		 * @param {String} path 加载的路径
-		 */
-		Static.prototype.load = function(path) {
-			if (!path) {
-				path = '/app/';
-			}
-			// 获取所有应用路径
-			var search_dir = "static";
-			var list_scope = $.dir.getAll(path, search_dir);
-			// 遍历目录路径
-			var _this = this;
-			list_scope.map(function(o) {
-				var obj = _this.getObj(o);
-				_this.list.push(obj);
-			});
-		};
-
-		/**
-		 * 排序
-		 */
-		Static.prototype.sort = function() {
-			this.list.sort(function(o1, o2) {
-				var p1 = o1.config.path;
-				var p2 = o2.config.path;
-				return p2.length - p1.length;
-			});
-		};
 
 		var $this = this;
 
@@ -113,5 +63,57 @@ class Static extends Index {
 		};
 	}
 }
+
+/**
+ * @description 获取静态对象
+ * @param {Object} dir 目录
+ * @return {Drive} 静态文件驱动类
+ */
+Static.prototype.getObj = function(dir) {
+	var d = join(dir).replace($.runPath, '');
+	var app = d.between(join('app/'), join('/'));
+	var plugin = d.between(join('/plugin/'), join('/'));
+	var path = '/' + app;
+	if (plugin) {
+		path += '/' + plugin;
+	}
+	var obj = {
+		app: app,
+		plugin: plugin,
+		root: d.substring(0, d.length - 1),
+		path: path
+	};
+	return new Drive(dir, obj);
+};
+
+/**
+ * @description 加载接口
+ * @param {String} path 加载的路径
+ */
+Static.prototype.load = function(path) {
+	if (!path) {
+		path = '/app/';
+	}
+	// 获取所有应用路径
+	var search_dir = "static";
+	var list_scope = $.dir.getAll(path, search_dir);
+	// 遍历目录路径
+	var _this = this;
+	list_scope.map(function(o) {
+		var obj = _this.getObj(o);
+		_this.list.push(obj);
+	});
+};
+
+/**
+ * 排序
+ */
+Static.prototype.sort = function() {
+	this.list.sort(function(o1, o2) {
+		var p1 = o1.config.path;
+		var p2 = o2.config.path;
+		return p2.length - p1.length;
+	});
+};
 
 exports.Static = Static;

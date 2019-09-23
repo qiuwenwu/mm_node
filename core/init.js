@@ -1,20 +1,17 @@
 var base = require('./base');
 
-$.val.scope = 'sys';
-$.dict.token = 'x-auth-token';
-
 $.param = $.param_admin();
 $.sql = $.sql_admin();
 $.task = $.task_admin();
 
 // 将Api的缓存改为cache方式
-// $.cache = $.cache_admin();
+$.cache = $.cache_admin();
 
 // 将Api的缓存改为redis方式，如果不用redis可以将以下4行注释掉
-var redis = $.redis_admin($.dict.server);
-redis.setConfig($.config.redis);
-redis.open();
-$.cache = redis;
+// var redis = $.redis_admin($.dict.server);
+// redis.setConfig($.config.redis);
+// redis.open();
+// $.cache = redis;
 
 
 /// 执行初始化服务

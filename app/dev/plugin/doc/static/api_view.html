@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/mm_theme.css" />
 		<script src="/js/jquery-3.4.1.min.js"></script>
 		<script src="/js/vue.js"></script>
-		<script src="/js/clipboard.min.js"></script>
+		<script src="/js/clipboard.min.js" async></script>
 		<script src="/js/mm_sdk.js"></script>
 
 		<style>
@@ -109,6 +109,10 @@
 				color: #26d2ff;
 			}
 
+			.mm_tabs .fr {
+				color: #999;
+			}
+
 			.mm_tabs .active {
 				color: #26d2ff;
 			}
@@ -145,7 +149,7 @@
 				<p class="desc" v-if="error.code === 0">该接口使用明细请看下方：</p>
 				<p class="desc" v-else>{{ error.message }}</p>
 				<div class="mm_view" v-if="config.name">
-					<h5 style="border: none;">{{ config.title ? config.title : config.name }} <span class="mm_badge" v-if="config.oauth.signIn">需要权限</span></h5>
+					<h5 style="border: none;">{{ config.title ? config.title : config.name }} <span class="mm_badge" v-if="oauth">{{ oauth }}</span></h5>
 					<p class="desc" style="border: none;">{{ config.description }}</p>
 					<dl>
 						<dt>调用地址：</dt>
@@ -157,14 +161,15 @@
 					</dl>
 					<dl>
 						<dt>返回类型：</dt>
-						<dd>{{ config.contentType ? config.contentType : 'JSON' }}</dd>
+						<dd>{{ contentType }}</dd>
 					</dl>
 
-					<div class="mm_tabs">
+					<div class="mm_tabs" v-if="config.type !== 'web'">
 						<span class="bg_grey">支持方法</span>
 						<a href="javascript:void(0)" v-for="(o, i) in tabs" :key="i" :class="{'active': i === index}" @click="index = i">
 							{{ o }}
 						</a>
+						<a href="javascript:void(0)" class="fr" @click="copyModel()">复制验证模型</a>
 					</div>
 					<div class="mm_collapse mm_collapse_default" v-if="list_headers.length > 0">
 						<div class="mm_head">
@@ -184,7 +189,7 @@
 									<tr v-for="(o, k) in list_headers" :key="k">
 										<td><strong>{{ o.name }}</strong></td>
 										<td>{{ o.type }}</td>
-										<td>{{ o.required }}</td>
+										<td>{{ o.required ? '是' : '否' }}</td>
 										<td>{{ o.title }}
 											<p>{{ o.description }}</p>
 										</td>
@@ -212,7 +217,7 @@
 									<tr v-for="(o, k) in list_query" :key="k">
 										<td><strong>{{ o.name }}</strong></td>
 										<td>{{ o.type }}</td>
-										<td>{{ o.required }}</td>
+										<td>{{ o.required ? '是' : '否' }}</td>
 										<td>{{ o.title }}
 											<p>{{ o.description }}</p>
 										</td>
@@ -240,7 +245,7 @@
 									<tr v-for="(o, k) in list_body" :key="k">
 										<td><strong>{{ o.name }}</strong></td>
 										<td>{{ o.type }}</td>
-										<td>{{ o.required }}</td>
+										<td>{{ o.required ? '是' : '否' }}</td>
 										<td>{{ o.title }}
 											<p>{{ o.description }}</p>
 										</td>
@@ -250,7 +255,7 @@
 						</div>
 					</div>
 
-					<div class="desc center" v-if="list_query.length === 0 && list_body.length === 0">无需传参</div>
+					<div class="desc center" v-if="list_query.length === 0 && list_body.length === 0 && config.type !== 'web'">无需传参</div>
 				</div>
 			</div>
 		</div>
@@ -281,6 +286,7 @@
 							},
 							param_path: "",
 							path: "",
+							type: "",
 							sql_path: "",
 							title: "测试获取API接口"
 						},
@@ -303,15 +309,11 @@
 								query: [],
 								query_required: []
 							},
-							GET: {
+							post: {
 								query: [],
-								query_required: []
-							},
-							POST: {
+								query_required: [],
 								body: [],
-								body_required: [],
-								query: [],
-								query_required: []
+								body_required: []
 							},
 							list: []
 						},
@@ -324,6 +326,44 @@
 					}
 				},
 				methods: {
+					copyModel() {
+						// this.param.list;
+						var lt = [];
+						if (this.list_body.length > 0) {
+							lt = this.list_body;
+						} else {
+							lt = this.list_query;
+						}
+
+						var list = [];
+						for (var i = 0; i < lt.length; i++) {
+							var o = $.copy(lt[i]);
+							delete o.description;
+							delete o.dataType;
+							if (o.type === 'number') {
+								delete o.string;
+								for (var k in o.number) {
+									if (!o.number[k]) {
+										delete o.number[k]
+									}
+								}
+							} else if (o.type === 'string') {
+								delete o.number;
+								for (var k in o.string) {
+									if (!o.string[k]) {
+										delete o.string[k]
+									}
+								}
+							} else {
+								delete o.string;
+								delete o.number;
+							}
+							list.push(o);
+						}
+						var code = JSON.stringify(list, null, 4);
+						$.copyText(code);
+						alert('复制成功');
+					},
 					copy(type) {
 						var arr = this['list_' + type];
 						if (arr) {
@@ -376,13 +416,16 @@
 								$.push(this.param, cg);
 							}
 
-							var m = "get";
+							var m = "";
 							var sql = json.result.sql;
 							if (sql) {
 								m = sql.config.method;
 							}
 							if (!m) {
-								m = cg.method ? cg.method : 'get';
+								m = this.config.method ? this.config.method.toLowerCase() : 'get';
+								if (m === 'all') {
+									m = "get post"
+								}
 							}
 							this.tabs.clear();
 							this.tabs.addList(m.split(' '));
@@ -395,9 +438,48 @@
 						} else if (json.error) {
 							$.push(this.error, json.error);
 						}
+					},
+					set_list(list, arr, required) {
+						if (arr) {
+							var params = this.param.list;
+							for (var i = 0; i < arr.length; i++) {
+								var k = arr[i];
+								var o = params.getObj({
+									name: k
+								});
+								if (o) {
+									o.required = required;
+									list.push(o);
+								}
+							}
+						};
 					}
 				},
 				computed: {
+					contentType() {
+						var type = "";
+						var cg = this.config;
+						if (cg.contentType) {
+							type = cg.contentType;
+						} else if (cg.type == "web") {
+							type = "HTML"
+						} else {
+							type = 'JSON';
+						}
+						return type
+					},
+					oauth() {
+						var badge = '';
+						var o = this.config.oauth;
+						if (o.signIn) {
+							if (o.vip || o.gm || o.mc || o.user_group.length || o.admin_group.length) {
+								badge = "需要权限"
+							} else {
+								badge = "需要登录"
+							}
+						}
+						return badge;
+					},
 					list_headers() {
 						var list = [];
 						var cg = this.config.oauth;
@@ -406,7 +488,7 @@
 								list.push({
 									name: "x-oauth-token",
 									type: "string",
-									required: "否",
+									required: false,
 									title: "临时访问牌"
 								});
 							};
@@ -418,30 +500,11 @@
 						var method = this.tabs[this.index];
 						var obj = this.param[method];
 						if (obj) {
-							var arr = obj.body;
-							if (arr) {
-								var params = this.param.list;
-								for (var i = 0; i < obj.body_required.length; i++) {
-									var k = obj.body_required[i];
-									var o = params.getObj({
-										name: k
-									});
-									if (o) {
-										o.required = "是";
-										list.push(o);
-									}
-								}
-								for (var i = 0; i < arr.length; i++) {
-									var k = arr[i];
-									var o = params.getObj({
-										name: k
-									});
-									if (o) {
-										o.required = "否";
-										list.push(o);
-									}
-								}
-
+							if (obj.body_required) {
+								this.set_list(list, obj.body_required, true)
+							};
+							if (obj.body) {
+								this.set_list(list, obj.body)
 							};
 						}
 						return list;
@@ -451,29 +514,11 @@
 						var method = this.tabs[this.index];
 						var obj = this.param[method];
 						if (obj) {
-							var arr = obj.query;
-							if (arr) {
-								var params = this.param.list;
-								for (var i = 0; i < obj.query_required.length; i++) {
-									var k = obj.query_required[i];
-									var o = params.getObj({
-										name: k
-									});
-									if (o) {
-										o.required = "是";
-										list.push(o);
-									}
-								}
-								for (var i = 0; i < arr.length; i++) {
-									var k = arr[i];
-									var o = params.getObj({
-										name: k
-									});
-									if (o) {
-										o.required = "否";
-										list.push(o);
-									}
-								}
+							if (obj.query_required) {
+								this.set_list(list, obj.query_required, true)
+							};
+							if (obj.query) {
+								this.set_list(list, obj.query)
 							};
 						}
 						return list;

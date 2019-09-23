@@ -15,16 +15,17 @@ class Web extends Index {
 		super(scope, __dirname);
 		this.Drive = Drive;
 		this.type = "web";
-		
-		/// 执行Task
-		Web.prototype.run = async function() {
-			var lt = this.list;
-			for (var i = 0; i < lt.length; i++) {
-				var o = lt[i];
-				o.run();
-			}
-		};
 	}
 }
 
+/**
+ * @description 执行web
+ */
+Web.prototype.run = async function() {
+	var lt = this.list;
+	for (var i = 0; i < lt.length; i++) {
+		var o = lt[i];
+		o.run();
+	}
+};
 exports.Web = Web;

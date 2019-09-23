@@ -1,281 +1,172 @@
 @charset "utf-8";
+
 /* ====== 布局 ====== */
 /* 卡片 */
-.card { border-radius: 0.5rem; overflow-x: hidden; min-height: 12.5rem; background: #fff; }
-.card .mm_head .mm_item { padding: 0.5rem 0.875rem; }
-.card .mm_body { padding: 0.5rem 0.875rem; }
-.card .mm_body .mm_desc, .card .mm_body .mm_icon { margin-bottom: .5rem; }
+.card {
+	border-radius: 0.5rem;
+	overflow-x: hidden;
+	min-height: 12.5rem;
+	background: #fff;
+}
+
+.card .mm_head .mm_item {
+	padding: 0.5rem 0.875rem;
+}
+
+.card .mm_body {
+	padding: 0.5rem 0.875rem;
+}
+
+.card .mm_body .mm_desc,
+.card .mm_body .mm_icon {
+	margin-bottom: .5rem;
+}
 
 /* 元素 */
-.unit { font-size: 85%; }
-.mm_main>.time { position: absolute; top: 0.625rem; right: 0.875rem; font-size: 85%; color: #999; }
+.unit {
+	font-size: 85%;
+}
+
+.mm_main>.time {
+	position: absolute;
+	top: 0.625rem;
+	right: 0.875rem;
+	font-size: 85%;
+	color: #999;
+}
 
 /* 二维码 */
 .mm_qrcode {
 	text-align: center;
 }
 
-.mm_qrcode .mm_btn, .mm_qrcode [class*=mm_btn_] {
+.mm_qrcode .mm_btn,
+.mm_qrcode [class*=mm_btn_] {
 	font-size: 0.75rem;
 }
 
 /* 上传按钮 */
-.mm_uploader { background-color: #EDEDED; position: relative; overflow: hidden; border-radius: 0.35rem; }
-.mm_uploader .mm_icon { width: 100%; height: 100%; position: absolute; top: 0; left: 0; bottom: 0; right: 0; z-index: 3 }
+.mm_uploader {
+	background-color: #EDEDED;
+	position: relative;
+	overflow: hidden;
+	border-radius: 0.35rem;
+}
+
+.mm_uploader .mm_icon {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 3
+}
 
 /* ===  通用组件布局  === */
 /* 列表项 */
-.mm_main { position: relative; z-index: 1; padding-left: 0; margin-left: 0.875rem; overflow: hidden; }
-.mm_item .mm_main { border-bottom: 1px solid rgba(0,0,0,0.1); }
-.mm_item:last-child .mm_main { border-bottom: none; }
-.mm_list .mm_item:active .mm_main{ border-color: rgba(0,0,0,0); }
-.ll .mm_main { padding: 0.25rem 0; border: none; padding: 0.625rem 0.875rem; }
-.navigator-hover .mm_main { border-color: rgba(0,0,0,0); }
+.mm_main {
+	position: relative;
+	z-index: 1;
+	padding-left: 0;
+	margin-left: 0.875rem;
+	overflow: hidden;
+}
+
+.mm_item .mm_main {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.mm_item:last-child .mm_main {
+	border-bottom: none;
+}
+
+.mm_list .mm_item:active .mm_main {
+	border-color: rgba(0, 0, 0, 0);
+}
+
+.ll .mm_main {
+	padding: 0.25rem 0;
+	border: none;
+	padding: 0.625rem 0.875rem;
+}
+
+.navigator-hover .mm_main {
+	border-color: rgba(0, 0, 0, 0);
+}
 
 /* 项目 */
-.mm_side { position: relative; }
-.ll .mm_side { float: left; padding: 0.625rem 0.875rem; }
-.lr .mm_side { float: left; padding: 0.625rem 0.875rem; }
-.rl .mm_side { float: right; padding: 0.625rem 0.875rem; }
+.mm_side {
+	position: relative;
+}
+
+.ll .mm_side {
+	float: left;
+	padding: 0.625rem 0.875rem;
+}
+
+.lr .mm_side {
+	float: left;
+	padding: 0.625rem 0.875rem;
+}
+
+.rl .mm_side {
+	float: right;
+	padding: 0.625rem 0.875rem;
+}
 
 /* 标题 */
-.ll .mm_title { float: left; width: 4.5rem; color: #888; }
-.lr .mm_title { float: left; }
-.rl .mm_title { float: left; margin-right: .5rem; }
-.lr .small .mm_title,.rl .small .mm_title { padding: 0.25rem 0; }
-.ll .small { font-size: 0.75rem; }
+.ll .mm_title {
+	float: left;
+	width: 4.5rem;
+	color: #888;
+}
+
+.lr .mm_title {
+	float: left;
+}
+
+.rl .mm_title {
+	float: left;
+	margin-right: .5rem;
+}
+
+.lr .small .mm_title,
+.rl .small .mm_title {
+	padding: 0.25rem 0;
+}
+
+.ll .small {
+	font-size: 0.75rem;
+}
 
 /* 左布局 */
-.ll { padding: 0.75rem 0; }
+.ll {
+	padding: 0.75rem 0;
+}
 
 /* 摘要 */
-.ll .mm_desc { float: left; width: calc(100% - 5rem); color: #333; }
-.lr .mm_desc { float: right; }
-.lr .small .mm_desc { padding: .25rem 0; }
-.big .mm_desc { padding-top: 0.2rem; font-size: 85%; color: #999; float: none; clear: left; }
-
-
-/* 表格 */
-.mm_table {
-	width: 100%;
-	max-width: 100%;
-	margin-bottom: 1rem;
-	background-color: transparent
+.ll .mm_desc {
+	float: left;
+	width: calc(100% - 5rem);
+	color: #333;
 }
 
-.mm_table td,
-.mm_table th {
-	padding: .75rem;
-	vertical-align: top;
-	border-top: 1px solid #dee2e6
+.lr .mm_desc {
+	float: right;
 }
 
-.mm_table thead th {
-	vertical-align: bottom;
-	border-bottom: 2px solid #dee2e6
+.lr .small .mm_desc {
+	padding: .25rem 0;
 }
 
-.mm_table tbody+tbody {
-	border-top: 2px solid #dee2e6
+.big .mm_desc {
+	padding-top: 0.2rem;
+	font-size: 85%;
+	color: #999;
+	float: none;
+	clear: left;
 }
 
-.mm_table .mm_table {
-	background-color: #fff
-}
 
-.mm_table-sm td,
-.mm_table-sm th {
-	padding: .3rem
-}
-
-.mm_table-bordered {
-	border: 1px solid #dee2e6
-}
-
-.mm_table-bordered td,
-.mm_table-bordered th {
-	border: 1px solid #dee2e6
-}
-
-.mm_table-bordered thead td,
-.mm_table-bordered thead th {
-	border-bottom-width: 2px
-}
-
-.mm_table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(0, 0, 0, .05)
-}
-
-.mm_table-hover tbody tr:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.mm_table-primary,
-.mm_table-primary>td,
-.mm_table-primary>th {
-	background-color: #b8daff
-}
-
-.mm_table-hover .mm_table-primary:hover {
-	background-color: #9fcdff
-}
-
-.mm_table-hover .mm_table-primary:hover>td,
-.mm_table-hover .mm_table-primary:hover>th {
-	background-color: #9fcdff
-}
-
-.mm_table-secondary,
-.mm_table-secondary>td,
-.mm_table-secondary>th {
-	background-color: #d6d8db
-}
-
-.mm_table-hover .mm_table-secondary:hover {
-	background-color: #c8cbcf
-}
-
-.mm_table-hover .mm_table-secondary:hover>td,
-.mm_table-hover .mm_table-secondary:hover>th {
-	background-color: #c8cbcf
-}
-
-.mm_table-success,
-.mm_table-success>td,
-.mm_table-success>th {
-	background-color: #c3e6cb
-}
-
-.mm_table-hover .mm_table-success:hover {
-	background-color: #b1dfbb
-}
-
-.mm_table-hover .mm_table-success:hover>td,
-.mm_table-hover .mm_table-success:hover>th {
-	background-color: #b1dfbb
-}
-
-.mm_table-info,
-.mm_table-info>td,
-.mm_table-info>th {
-	background-color: #bee5eb
-}
-
-.mm_table-hover .mm_table-info:hover {
-	background-color: #abdde5
-}
-
-.mm_table-hover .mm_table-info:hover>td,
-.mm_table-hover .mm_table-info:hover>th {
-	background-color: #abdde5
-}
-
-.mm_table-warning,
-.mm_table-warning>td,
-.mm_table-warning>th {
-	background-color: #ffeeba
-}
-
-.mm_table-hover .mm_table-warning:hover {
-	background-color: #ffe8a1
-}
-
-.mm_table-hover .mm_table-warning:hover>td,
-.mm_table-hover .mm_table-warning:hover>th {
-	background-color: #ffe8a1
-}
-
-.mm_table-danger,
-.mm_table-danger>td,
-.mm_table-danger>th {
-	background-color: #f5c6cb
-}
-
-.mm_table-hover .mm_table-danger:hover {
-	background-color: #f1b0b7
-}
-
-.mm_table-hover .mm_table-danger:hover>td,
-.mm_table-hover .mm_table-danger:hover>th {
-	background-color: #f1b0b7
-}
-
-.mm_table-light,
-.mm_table-light>td,
-.mm_table-light>th {
-	background-color: #fdfdfe
-}
-
-.mm_table-hover .mm_table-light:hover {
-	background-color: #ececf6
-}
-
-.mm_table-hover .mm_table-light:hover>td,
-.mm_table-hover .mm_table-light:hover>th {
-	background-color: #ececf6
-}
-
-.mm_table-dark,
-.mm_table-dark>td,
-.mm_table-dark>th {
-	background-color: #c6c8ca
-}
-
-.mm_table-hover .mm_table-dark:hover {
-	background-color: #b9bbbe
-}
-
-.mm_table-hover .mm_table-dark:hover>td,
-.mm_table-hover .mm_table-dark:hover>th {
-	background-color: #b9bbbe
-}
-
-.mm_table-active,
-.mm_table-active>td,
-.mm_table-active>th {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.mm_table-hover .mm_table-active:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.mm_table-hover .mm_table-active:hover>td,
-.mm_table-hover .mm_table-active:hover>th {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.mm_table .thead-dark th {
-	color: #fff;
-	background-color: #212529;
-	border-color: #32383e
-}
-
-.mm_table .thead-light th {
-	color: #495057;
-	background-color: #e9ecef;
-	border-color: #dee2e6
-}
-
-.mm_table-dark {
-	color: #fff;
-	background-color: #212529
-}
-
-.mm_table-dark td,
-.mm_table-dark th,
-.mm_table-dark thead th {
-	border-color: #32383e
-}
-
-.mm_table-dark.mm_table-bordered {
-	border: 0
-}
-
-.mm_table-dark.mm_table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(255, 255, 255, .05)
-}
-
-.mm_table-dark.mm_table-hover tbody tr:hover {
-	background-color: rgba(255, 255, 255, .075)
-}

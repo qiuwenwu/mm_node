@@ -1,0 +1,481 @@
+{
+    "name": "sys_app_list2",
+    "title": "",
+    "add": {
+        "body": [
+            "icon",
+            "user_id",
+            "token",
+            "url",
+            "encoding_aes_key",
+            "update_time",
+            "bind_ip",
+            "times_count",
+            "times_allow",
+            "times_today",
+            "scope",
+            "scope_not",
+            "max_age",
+            "available",
+            "encrypt",
+            "users"
+        ],
+        "body_required": [
+            "name",
+            "appid",
+            "appsecret"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "app_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "app_id",
+            "icon",
+            "name",
+            "user_id",
+            "appid",
+            "appsecret",
+            "token",
+            "url",
+            "encoding_aes_key",
+            "bind_ip",
+            "times_count",
+            "times_count_min",
+            "times_count_max",
+            "times_allow",
+            "times_allow_min",
+            "times_allow_max",
+            "times_today",
+            "times_today_min",
+            "times_today_max",
+            "scope",
+            "scope_not",
+            "max_age",
+            "max_age_min",
+            "max_age_max",
+            "available",
+            "available_min",
+            "available_max",
+            "encrypt",
+            "encrypt_min",
+            "encrypt_max",
+            "users"
+        ],
+        "query_required": [],
+        "body": [
+            "icon",
+            "name",
+            "user_id",
+            "appid",
+            "appsecret",
+            "token",
+            "url",
+            "encoding_aes_key",
+            "update_time",
+            "bind_ip",
+            "times_count",
+            "times_count_add",
+            "times_allow",
+            "times_allow_add",
+            "times_today",
+            "times_today_add",
+            "scope",
+            "scope_not",
+            "max_age",
+            "max_age_add",
+            "available",
+            "available_add",
+            "encrypt",
+            "encrypt_add",
+            "users"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "app_id",
+            "icon",
+            "name",
+            "user_id",
+            "appid",
+            "appsecret",
+            "token",
+            "url",
+            "encoding_aes_key",
+            "update_time",
+            "update_time_min",
+            "update_time_max",
+            "bind_ip",
+            "times_count",
+            "times_count_min",
+            "times_count_max",
+            "times_allow",
+            "times_allow_min",
+            "times_allow_max",
+            "times_today",
+            "times_today_min",
+            "times_today_max",
+            "scope",
+            "scope_not",
+            "max_age",
+            "max_age_min",
+            "max_age_max",
+            "available",
+            "available_min",
+            "available_max",
+            "encrypt",
+            "encrypt_min",
+            "encrypt_max",
+            "users"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "app_id",
+            "title": "应用ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "icon",
+            "title": "应用图标",
+            "description": "用于用户登录时显示",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "name",
+            "title": "应用名称",
+            "description": "用于用户登陆时显示授权应用",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "持有者ID",
+            "description": "该客户端所有人的ID",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "appid",
+            "title": "应用ID",
+            "description": "用于应用授权访问时的账号",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "appsecret",
+            "title": "应用密钥",
+            "description": "用于应用授权访问时的密码",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "token",
+            "title": "消息访问令牌",
+            "description": "用于访问应用时验证身份",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "url",
+            "title": "消息访问地址",
+            "description": "当接收到用户所发消息后回访该地址",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "format": "url"
+            }
+        },
+        {
+            "name": "encoding_aes_key",
+            "title": "消息加密钥匙",
+            "description": "用于给应用发送消息时的加密钥匙",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "range": [
+                    16,
+                    32
+                ]
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "上次使用时间",
+            "description": "用于记录上次授权时间，防止频繁操作",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "上次使用时间——开始时间",
+            "description": "用于记录上次授权时间，防止频繁操作",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "上次使用时间——结束时间",
+            "description": "用于记录上次授权时间，防止频繁操作",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "bind_ip",
+            "title": "访问绑定IP",
+            "description": "网站授权时确认重定向网址为已授权IP",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "times_count",
+            "title": "请求总次数",
+            "description": "用于记录授权总次数",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_count_min",
+            "title": "请求总次数——最小值",
+            "description": "用于记录授权总次数",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_count_max",
+            "title": "请求总次数——最大值",
+            "description": "用于记录授权总次数",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_allow",
+            "title": "每日允许请求次数",
+            "description": "用于限制应用每日可授权次数",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "times_allow_min",
+            "title": "每日允许请求次数——最小值",
+            "description": "用于限制应用每日可授权次数",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "times_allow_max",
+            "title": "每日允许请求次数——最大值",
+            "description": "用于限制应用每日可授权次数",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "times_today",
+            "title": "今日请求次数",
+            "description": "用于记录今日请求授权次数，判断授权次数是否超限",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "times_today_min",
+            "title": "今日请求次数——最小值",
+            "description": "用于记录今日请求授权次数，判断授权次数是否超限",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "times_today_max",
+            "title": "今日请求次数——最大值",
+            "description": "用于记录今日请求授权次数，判断授权次数是否超限",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "scope",
+            "title": "允许使用的接口",
+            "description": "多个接口用”，“分隔",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "scope_not",
+            "title": "不允许使用的接口",
+            "description": "“多个接口用”，“分隔",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "max_age",
+            "title": "有效期时长",
+            "description": "授权应用可以使用的时长，超时需重新申请（单位：天）",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "max_age_min",
+            "title": "有效期时长——最小值",
+            "description": "授权应用可以使用的时长，超时需重新申请（单位：天）",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "max_age_max",
+            "title": "有效期时长——最大值",
+            "description": "授权应用可以使用的时长，超时需重新申请（单位：天）",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 32767
+            }
+        },
+        {
+            "name": "available",
+            "title": "是否可用",
+            "description": "在未审核状态下， 该应用授权为不可用",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "available_min",
+            "title": "是否可用——最小值",
+            "description": "在未审核状态下， 该应用授权为不可用",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "available_max",
+            "title": "是否可用——最大值",
+            "description": "在未审核状态下， 该应用授权为不可用",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "encrypt",
+            "title": "加解密方式",
+            "description": "0明文模式，1兼容模式，2安全模式",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "encrypt_min",
+            "title": "加解密方式——最小值",
+            "description": "0明文模式，1兼容模式，2安全模式",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "encrypt_max",
+            "title": "加解密方式——最大值",
+            "description": "0明文模式，1兼容模式，2安全模式",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "users",
+            "title": "授权的用户",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        }
+    ]
+}

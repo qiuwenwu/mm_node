@@ -16,42 +16,49 @@ class Api extends Index {
 		super(scope, __dirname);
 		this.Drive = Drive;
 		this.type = "api";
-		
-		/// 接口排序
-		Api.prototype.sort = function() {
-			this.list.sort(function(o1, o2) {
-				var p1 = o1.config.path;
-				var p2 = o2.config.path;
-				return p2.length - p1.length;
-			});
-		};
-		
-		/// 执行Api
-		/// ctx: 请求上下文 (object)
-		/// db: 数据管理器 (object)
-		/// 返回: 执行结果 (object|string)
-		Api.prototype.run = async function(ctx, db) {
-			if (!db) {
-				db = {
-					ret: null
-				};
-			}
-			const path = ctx.request.path;
-			var lt = this.list;
-			for (var i = 0; i < lt.length; i++) {
-				var o = lt[i];
-				if (path.has(o.config.path)) {
-					var ret = await o.run(ctx, db);
-					if (ret) {
-						db.ret = ret;
-						break;
-					}
-				}
-			}
-			return db.ret;
-		};
+
+
 	}
 }
+
+/**
+ * @description 接口排序
+ */
+Api.prototype.sort = function() {
+	this.list.sort(function(o1, o2) {
+		var p1 = o1.config.path;
+		var p2 = o2.config.path;
+		return p2.length - p1.length;
+	});
+};
+
+/**
+ * 执行Api
+ * @param {Object} ctx 请求上下文
+ * @param {Object} db 数据管理器
+ * @return {Object|String}
+ */
+Api.prototype.run = async function(ctx, db) {
+	if (!db) {
+		db = {
+			ret: null
+		};
+	}
+	const path = ctx.request.path;
+	var lt = this.list;
+	for (var i = 0; i < lt.length; i++) {
+		var o = lt[i];
+		if (path.has(o.config.path)) {
+			var ret = await o.run(ctx, db);
+			if (ret) {
+				db.ret = ret;
+				break;
+			}
+		}
+	}
+	return db.ret;
+};
+
 /**
  * @module 导出API类
  */

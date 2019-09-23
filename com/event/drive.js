@@ -14,7 +14,7 @@ class Drive extends Item {
 	constructor(dir) {
 		super(dir, __dirname);
 		this.default_file = "./event.json";
-		
+
 		/* 通用项 */
 		// 配置参数
 		this.config = {
@@ -39,22 +39,29 @@ class Drive extends Item {
 			// 中断循环
 			"end": true
 		};
-		/// 执行事件
-		/// ctx: 请求上下文 (object)
-		/// db: 数据管理器 (object)
-		/// 返回: 执行结果 (object|string)
-		Drive.prototype.run = async function(ctx, db) {
-			var ret = await this.main(ctx, db);
-			return ret;
-		};
-		/// 脚本主函数
-		/// ctx: 请求上下文 (object)
-		/// db: 数据管理器 (object)
-		/// 返回: 执行结果 (object|string)
-		Drive.prototype.main = async function(ctx, db) {
-			return null;
-		};
+
 	}
 }
+
+/**
+ * @description 执行事件
+ * @param {Object} ctx 请求上下文
+ * @param {Object} db 数据管理器
+ * @return {Object} 执行结果
+ */
+Drive.prototype.run = async function(ctx, db) {
+	var ret = await this.main(ctx, db);
+	return ret;
+};
+
+/**
+ * @description 脚本主函数
+ * @param {Object} ctx 请求上下文
+ * @param {Object} db 数据管理器
+ * @return {Object} 执行结果
+ */
+Drive.prototype.main = async function(ctx, db) {
+	return null;
+};
 
 exports.Drive = Drive;

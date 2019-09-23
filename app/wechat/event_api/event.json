@@ -1,0 +1,10 @@
+{
+	"target": "/api/wechat/*",
+	"name": "api_wechat",
+	"title": "微信公众号事件",
+	"description": "用于管理微信公众号接口",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 101
+}

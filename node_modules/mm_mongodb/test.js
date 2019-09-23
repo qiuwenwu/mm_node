@@ -8,7 +8,7 @@ async function test() {
 	
 	await mb.open();
 	// 创建数据表
-	await mg.addTable('bs_table');
+	await mb.addTable('bs_table');
 	mb.table = "mm_table";
 	
 	var ret = await mb.get({
@@ -21,17 +21,17 @@ async function test() {
 	console.log(ret);
 	
 	 // 选择要操作的表
-	mg.table = 'mm_table';
+	mb.table = 'mm_table';
 	
 	 // 添加一条数据
-	ret = await mg.addObj({
+	ret = await mb.addObj({
 		name: "张三",
 		age: 21,
 		sex: true
 	});
 	
 	 // 添加多条数据
-	ret = await mg.addList([{
+	ret = await mb.addList([{
 		name: "李四",
 		age: 18,
 		sex: false
