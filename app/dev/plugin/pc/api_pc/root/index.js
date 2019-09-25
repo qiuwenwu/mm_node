@@ -5,7 +5,6 @@
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	
 	var req = ctx.request;
 	if(req.path.startWith("/dev/doc")){
 		return null;
@@ -18,8 +17,9 @@ async function main(ctx, db) {
 			keywords: "超级美眉 mm_koa 高并发 异步 服务端 分布式 框架 商城 游戏 saas async",
 			content: ""
 		};
-		var file = __dirname + '/index.html';
-		return db.tpl.view(file, model);
+		var file = './../../static/index.html'.fullname(__dirname);
+		var o = db.tpl.view(file, model);
+		return o;
 	}
 	return null;
 }

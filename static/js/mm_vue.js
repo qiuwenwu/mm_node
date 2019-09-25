@@ -1,6 +1,18 @@
 define(["Vue"], function(Vue) {
 	"use strict";
 
+	var getHost = function() {
+		var tag = $.html.tag('script', 'src', '*require.js');
+
+		if (tag) {
+			var server = tag.dataset.server;
+			if (server) {
+				return server;
+			}
+		}
+		return "/";
+	}
+
 	var mm = {
 		/**
 		 * @description 安装
@@ -8,27 +20,30 @@ define(["Vue"], function(Vue) {
 		 * @param {Object} options 配置参数
 		 */
 		install: function install(Vue, options) {
-			// 服务端地址
-			var host = "http://api.elins.cn/";
-			
+			var host;
+
 			if (options) {
 				if (options.host) {
 					host = options.host;
+				} else {
+					host = getHost();
 				}
+			} else {
+				host = getHost();
 			}
-			
+
 			/**
 			 * @description 设置mm_sdk为全局变量
 			 */
 			Vue.prototype.$ = $;
-			
+
 			/**
 			 * @description 路由跳转
 			 */
 			Vue.prototype.$back = function() {
 				this.$router.back();
 			};
-			
+
 			/**
 			 * @description 取host地址
 			 * @param {String} pathAndQuery 路径和参数 例如：'/app/test?name=123'
@@ -36,7 +51,7 @@ define(["Vue"], function(Vue) {
 			Vue.prototype.$host = function(pathAndQuery) {
 				return host + pathAndQuery;
 			};
-			
+
 			/**
 			 * @description 跳转连接
 			 * @param {String} url 路径
@@ -44,14 +59,14 @@ define(["Vue"], function(Vue) {
 			Vue.prototype.$url = function(url) {
 				return window.location.protocol + "//" + window.location.host + url;
 			};
-			
+
 			/**
 			 * @description 复制
 			 */
 			Vue.prototype.$copy = function() {
 				$.toast("复制成功");
 			};
-			
+
 			/**
 			 * @description 提示框
 			 * @param {String} text 提示内容
@@ -218,7 +233,7 @@ define(["Vue"], function(Vue) {
 			$lang: function $lang(index) {
 				return this.$store.state.lang.dict[index];
 			},
-			
+
 			/**
 			 * @description 数字货币转法币
 			 * @param {Object} coin 货币数值
@@ -227,7 +242,7 @@ define(["Vue"], function(Vue) {
 			$money: function $money(coin) {
 				return parseFloat(coin * this.$store.state.web.rate).toFloor(2);
 			},
-			
+
 			/**
 			 * @description 法币转数字货币
 			 * @param {Object} money 法币数值

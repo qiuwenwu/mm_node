@@ -4,6 +4,7 @@ const https = require('https');
 const Koa = require('koa');
 const statics = require('mm_statics');
 const bodyParser = require("koa-bodyparser");
+const xmlParser = require("mm_xml");
 const session = require('mm_session');
 const compress = require('koa-compress');
 
@@ -41,7 +42,10 @@ app.use(statics(
 		brotli: true
 	}));
 
-// 解析 application/json、application/x-www-form-urlencoded、text/xml、text/plain
+// 解析 text/xml
+app.use(xmlParser());
+
+// 解析 application/json、application/x-www-form-urlencoded、text/plain
 app.use(bodyParser({
 	enableTypes: ['json', 'form', 'text']
 }));

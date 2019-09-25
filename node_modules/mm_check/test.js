@@ -16,6 +16,8 @@ async function test() {
 	var ck = new Check(config);
 	var msg = ck.run('1970-01-01 00:61:61');
 	console.log(msg);
+	var msg = ck.run('1970-01-01 00:59:59');
+	console.log(msg);
 }
 
 test();

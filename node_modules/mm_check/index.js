@@ -37,8 +37,16 @@ var lang = {
 	password: "不能包含特殊字符"
 };
 
-/// 参数验证函数
+/**
+ * @description 参数验证函数
+ * @class
+ */
 class Check {
+	/**
+	 * @description 构造函数
+	 * @param {Object} config
+	 * @constructor
+	 */
 	constructor(config) {
 		// 分隔符号, 用于查询时判断多个传参
 		this.splitter = "|";
@@ -77,218 +85,223 @@ class Check {
 		if (config) {
 			$.push(this, config, true);
 		}
-		/// 获取或设置错误提示
-		/// obj: 设置的提示 (object) 可以为空,为空表示获取
-		/// 返回: 错误提示集合 (object)
-		Check.prototype.lang = function(obj) {
-			if (obj) {
-				$.push(lang, obj);
-			} else {
-				return lang;
+	}
+}
+
+/**
+ * @description 获取或设置错误提示
+ * @param {Object} obj 设置的提示,可以为空,为空表示获取
+ * @return {Object} 错误提示集合
+ */
+Check.prototype.lang = function(obj) {
+	if (obj) {
+		$.push(lang, obj, true);
+	} else {
+		return lang;
+	}
+};
+
+/**
+ * @description 取错误提示
+ * @param {String} key 语言包键
+ * @param {String} v1 替换的词1
+ * @param {String} v2 替换的词2
+ * @return {String} 错误语句
+ */
+Check.prototype.msg = function(key, v1, v2) {
+	var str = lang[key];
+	if (str) {
+		if (v2) {
+			return str.replace('{0}', v1).replace('{1}', v2);
+		} else {
+			return str.replace('{0}', v1);
+		}
+	} else {
+		return "参数不正确!";
+	}
+};
+
+/**
+ * @description 验证数值
+ * @param {Numbr} value 被验证的值
+ * @return {String} 没通过返回信息, 否则返回空
+ */
+Check.prototype.check_number = function(value) {
+	var n = this.number;
+	if (n.range.length === 2) {
+		if (n.range[0] > value || n.range[1] < value) {
+			return this.msg('range', n.range[0], n.range[1]);
+		}
+	} else {
+		if (n.min !== 0 && n.min > value) {
+			return this.msg('min', n.min);
+		}
+		if (n.max !== 0 && n.max < value) {
+			return this.msg('max', n.max);
+		}
+	}
+	return null;
+};
+
+/**
+ * @description 验证字符串范围
+ * @param {String} value 被验证的值
+ * @return {String} 没通过返回信息,否则返回空
+ */
+Check.prototype.check_string_range = function(value) {
+	var n = this.string;
+	var len = value.length;
+	if (n.range.length === 2) {
+		if (n.range[0] > len || n.range[1] < len) {
+			return this.msg('rangeLength', n.range[0], n.range[1]);
+		}
+	} else {
+		if (n.min !== 0 && n.min > len) {
+			return this.msg('minLength', n.min);
+		}
+		if (n.max !== 0 && n.max < len) {
+			return this.msg('maxLength', n.max);
+		}
+	}
+	return null;
+};
+
+/**
+ * @description 验证拓展名
+ * @param {String} value 被验证的值
+ * @return {String} 没通过返回信息,否则返回空
+ */
+Check.prototype.check_extension = function(value) {
+	var n = this.string;
+	if (n.extension) {
+		var arr = n.extension.split('|');
+		var bl = false;
+		var val = value.toLowerCase();
+		for (var i = 0; i < arr.length; i++) {
+			if (val.endWith(arr[i])) {
+				bl = true;
+				break;
 			}
-		};
-		/**
-		 * @description 取错误提示
-		 * @param {String} key 语言包键
-		 * @param {String} v1 替换的词1
-		 * @param {String} v2 替换的词2
-		 * @return {String} 错误语句
-		 */
-		Check.prototype.msg = function(key, v1, v2) {
-			var str = lang[key];
-			if (str) {
-				if (v2) {
-					return str.replace('{0}', v1).replace('{1}', v2);
-				} else {
-					return str.replace('{0}', v1);
-				}
-			} else {
-				return "参数不正确!";
-			}
-		};
-		/**
-		 * @description 验证数值
-		 * @param {Numbr} value 被验证的值
-		 * @return {String} 没通过返回信息, 否则返回空
-		 */
-		Check.prototype.check_number = function(value) {
-			var n = this.number;
-			if (n.range.length === 2) {
-				if (n.range[0] > value || n.range[1] < value) {
-					return this.msg('range', n.range[0], n.range[1]);
-				}
-			} else {
-				if (n.min !== 0 && n.min > value) {
-					return this.msg('min', n.min);
-				}
-				if (n.max !== 0 && n.max < value) {
-					return this.msg('max', n.max);
-				}
-			}
-			return null;
-		};
-		
-		/**
-		 * @description 验证字符串范围
-		 * @param {String} value 被验证的值
-		 * @return {String} 没通过返回信息,否则返回空
-		 */
-		Check.prototype.check_string_range = function(value) {
-			var n = this.string;
-			var len = value.length;
-			if (n.range.length === 2) {
-				if (n.range[0] > len || n.range[1] < len) {
-					return this.msg('rangeLength', n.range[0], n.range[1]);
-				}
-			} else {
-				if (n.min !== 0 && n.min > len) {
-					return this.msg('minLength', n.min);
-				}
-				if (n.max !== 0 && n.max < len) {
-					return this.msg('maxLength', n.max);
-				}
-			}
-			return null;
-		};
-		
-		/**
-		 * @description 验证拓展名
-		 * @param {String} value 被验证的值
-		 * @return {String} 没通过返回信息,否则返回空
-		 */
-		Check.prototype.check_extension = function(value) {
-			var n = this.string;
-			if (n.extension) {
-				var arr = n.extension.split('|');
-				var bl = false;
-				var val = value.toLowerCase();
-				for (var i = 0; i < arr.length; i++) {
-					if (val.endWith(arr[i])) {
-						bl = true;
-						break;
-					}
-				}
-				if (!bl) {
-					return this.msg('extension', n.extension);
-				}
-			}
-			return null;
-		};
-		
-		/**
-		 * @description 正则验证字符串
-		 * @param {String} value 被验证的值
-		 * @return {String} 没通过返回信息,否则返回空
-		 */
-		Check.prototype.check_string_regex = function(value) {
-			var rx = this.string.regex;
-			if (rx && !value.regex(rx)) {
-				return this.msg('regex');
-			}
-			return null;
-		};
-		
-		/**
-		 * @description 验证字符串格式
-		 * @param {String} value 被验证的值
-		 * @return {String} 没通过返回信息,否则返回空
-		 */
-		Check.prototype.check_string_format = function(value) {
-			var fmt = this.string.format;
-			if (fmt) {
-				var bl = value.checkFormat(fmt);
-				if (!bl) {
-					return this.msg(fmt);
-				}
-			}
-			return null;
-		};
-		
-		/**
-		 * @description 验证字符串
-		 * @param {String} value 被验证的值
-		 * @return {String} 没通过返回信息,否则返回空
-		 */
-		Check.prototype.check_string = function(value) {
-			if (value === '' && this.string.notEmpty) {
-				return this.msg('notEmpty');
-			} else {
-				var msg = this.check_string_range(value);
-				if (!msg) {
-					msg = this.check_string_format(value);
-				}
-				if (!msg) {
-					msg = this.check_extension(value);
-				}
-				if (!msg) {
-					msg = this.check_string_regex(value);
-				}
-				return msg;
-			}
-		};
-		
-		/**
-		 * @description 验证值是否正确
-		 * @param {Object} value
-		 * @return {String} 没通过返回信息,否则返回空
-		 */
-		Check.prototype.run = function(value) {
-			var msg = null;
-			if (value) {
-				var type = this.type;
-				var p = typeof(value);
-				if (type !== p) {
-					if (type === 'number') {
-						if (p === 'string') {
-							if (this.splitter) {
-								var arr = value.split(this.splitter);
-								for (var i = 0; i < arr.length; i++) {
-									var val = arr[i];
-									if (isNaN(val)) {
-										msg = this.msg('number');
-									} else {
-										msg = this.check_number(Number(val));
-									}
-									if (msg) {
-										break;
-									}
-								}
-							} else {
-								if (isNaN(value)) {
-									msg = this.msg('number');
-								} else {
-									msg = this.check_number(Number(value));
-								}
-							}
-						} else {
-							msg = this.check_number(value);
-						}
-					} else if (type === 'bool') {
-						if (value !== 'true' && value !== 'false' && value !== '1' && value !== '0') {
-							msg = this.msg('type');
-						}
-					} else {
-						msg = this.msg('type');
-					}
-				} else if (type === 'string') {
+		}
+		if (!bl) {
+			return this.msg('extension', n.extension);
+		}
+	}
+	return null;
+};
+
+/**
+ * @description 正则验证字符串
+ * @param {String} value 被验证的值
+ * @return {String} 没通过返回信息,否则返回空
+ */
+Check.prototype.check_string_regex = function(value) {
+	var rx = this.string.regex;
+	if (rx && !value.regex(rx)) {
+		return this.msg('regex');
+	}
+	return null;
+};
+
+/**
+ * @description 验证字符串格式
+ * @param {String} value 被验证的值
+ * @return {String} 没通过返回信息,否则返回空
+ */
+Check.prototype.check_string_format = function(value) {
+	var fmt = this.string.format;
+	if (fmt) {
+		var bl = value.checkFormat(fmt);
+		if (!bl) {
+			return this.msg(fmt);
+		}
+	}
+	return null;
+};
+
+/**
+ * @description 验证字符串
+ * @param {String} value 被验证的值
+ * @return {String} 没通过返回信息,否则返回空
+ */
+Check.prototype.check_string = function(value) {
+	if (value === '' && this.string.notEmpty) {
+		return this.msg('notEmpty');
+	} else {
+		var msg = this.check_string_range(value);
+		if (!msg) {
+			msg = this.check_string_format(value);
+		}
+		if (!msg) {
+			msg = this.check_extension(value);
+		}
+		if (!msg) {
+			msg = this.check_string_regex(value);
+		}
+		return msg;
+	}
+};
+
+/**
+ * @description 验证值是否正确
+ * @param {Object} value
+ * @return {String} 没通过返回信息,否则返回空
+ */
+Check.prototype.run = function(value) {
+	var msg = null;
+	if (value) {
+		var type = this.type;
+		var p = typeof(value);
+		if (type !== p) {
+			if (type === 'number') {
+				if (p === 'string') {
 					if (this.splitter) {
 						var arr = value.split(this.splitter);
 						for (var i = 0; i < arr.length; i++) {
-							msg = this.check_string(arr[i]);
+							var val = arr[i];
+							if (isNaN(val)) {
+								msg = this.msg('number');
+							} else {
+								msg = this.check_number(Number(val));
+							}
 							if (msg) {
 								break;
 							}
 						}
 					} else {
-						msg = this.check_string(value);
+						if (isNaN(value)) {
+							msg = this.msg('number');
+						} else {
+							msg = this.check_number(Number(value));
+						}
 					}
-				} else if (type === 'number') {
+				} else {
 					msg = this.check_number(value);
 				}
+			} else if (type === 'bool') {
+				if (value !== 'true' && value !== 'false' && value !== '1' && value !== '0') {
+					msg = this.msg('type');
+				}
+			} else {
+				msg = this.msg('type');
 			}
-			return msg;
-		};
+		} else if (type === 'string') {
+			if (this.splitter) {
+				var arr = value.split(this.splitter);
+				for (var i = 0; i < arr.length; i++) {
+					msg = this.check_string(arr[i]);
+					if (msg) {
+						break;
+					}
+				}
+			} else {
+				msg = this.check_string(value);
+			}
+		} else if (type === 'number') {
+			msg = this.check_number(value);
+		}
 	}
-}
+	return msg;
+};
 
 exports.Check = Check;

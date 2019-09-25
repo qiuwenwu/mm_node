@@ -1,5 +1,5 @@
 <template>
-	<div class="app">
+	<div class="mm_page app">
 		<dev_header v-show="user.token">页头</dev_header>
 		<div class="dev_bodyer">
 			<router-view></router-view>

@@ -128,12 +128,9 @@ dt,th,h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {font-weight:500;}
 
 /* === 布局 === */
 /* 容器 */
-.mm_header { position: fixed; z-index: 10; left:0; right:0; top: 0; width: 100%; }
+.mm_page>.mm_head { position: fixed; z-index: 10; left:0; right:0; top: 0; width: 100%; }
 .mm_page {display:block;}
-.mm_footer { position: fixed; z-index: 10; left:0; right:0; bottom: 0; width: 100%; }
-.mm_header:before,.mm_header:after {display:block;content:"";clear:both;float:none;}
-.mm_bodyer:before,.mm_bodyer:after {display:block;content:"";clear:both;float:none;}
-.mm_footer:before,.mm_footer:after {display:block;content:"";clear:both;float:none;}
+.mm_page>.mm_foot { position: fixed; z-index: 10; left:0; right:0; bottom: 0; width: 100%; }
 .mm_warp:before,.mm_warp:after {display:block;content:"";clear:both;float:none;}
 .mm_warp { display:block;width:100%;max-width:77rem;margin:0 auto;position:relative; }
 .html { padding: 0.875rem; }

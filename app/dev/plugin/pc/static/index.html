@@ -9,15 +9,15 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="description" content="超级美眉mm_koa版服务端框架是一个高并发、分布式服务端框架, 适用于开发中小型商城、游戏、saas平台">
-		<meta name="keywords" content="超级美眉 mm_koa 高并发 异步 服务端 分布式 框架 商城 游戏 saas async">
+		<meta name="description" content="${model.description}">
+		<meta name="keywords" content="${model.keywords}">
 		<meta name="author" content="邱文武">
-		
+
 		<!-- 加载JS -->
 		<!--if lt IE 9]><script src="/js/html5.min.js"></script><![endif]-->
-		<script data-main="./src/main" src="/js/require.js" charset="utf-8" async></script>
-		<title>超级美眉——开发者</title>
-		
+		<script data-main="./src/main" data-server="/api/" src="/js/require.js" charset="utf-8" async></script>
+		<title>${model.title}</title>
+
 		<!-- 加载CSS -->
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="/css/swiper.min.css" />
@@ -28,7 +28,7 @@
 	</head>
 	<body>
 		<div id="app">
-			
+			${model.content}
 		</div>
 	</body>
 </html>

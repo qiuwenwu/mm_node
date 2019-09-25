@@ -244,19 +244,12 @@ Drive.prototype.run = async function(ctx, db) {
 	var body = await this.getCache(ctx);
 	if (!body) {
 		var req = ctx.request;
-		var t = req.type;
-		var type;
-		/// 设置响应头
-		if (!t || t.indexOf('json') !== -1 || t.indexOf('form') !== -1) {
-			type = "application/json";
-		} else {
-			type = "text/plain";
-		}
-		var ret;
+
 		var md = this.config["method"].toLocaleUpperCase();
 		if (md !== req.method && md !== "ALL") {
 			return null;
 		}
+		var ret;
 		var error = await this.check(ctx);
 		if (error) {
 			ret = $.ret.body(null, error);
@@ -264,8 +257,8 @@ Drive.prototype.run = async function(ctx, db) {
 			ret = await this.main(ctx, db);
 		}
 		var res = ctx.response;
-		body = this.body(ret, res, type);
-		this.setCache(ctx, body, type);
+		body = this.body(ret, res, req.type);
+		this.setCache(ctx, body, res.type);
 	}
 	return body;
 };
@@ -333,22 +326,34 @@ Drive.prototype.setCache = async function(ctx, body) {
  * @description 调用函数
  * @param {Object} ret 设置响应结果
  * @param {Object} res 响应器
- * @param {Object} type 响应内容类型
+ * @param {String} t 请求类型
  * @return {String} 处理后的响应结果
  */
-Drive.prototype.body = function(ret, res, type) {
+Drive.prototype.body = function(ret, res, t) {
+	var type;
+	if (res.type) {
+		type = res.type;
+	}
 	if (ret) {
 		var tp = typeof(ret);
 		if (tp === "object") {
 			if (!type) {
-				type = res.type;
+				/// 设置响应头
+				if (t.indexOf('xml') !== -1) {
+					type = t;
+				} else {
+					type = "application/json; charset=utf-8";
+				}
+				res.type = type;
 			} else {
 				if (type.indexOf('json') !== -1) {
-					type = "application/json";
+					type = "application/json; charset=utf-8";
 				} else if (type.indexOf('html') !== -1) {
 					type = "text/html";
+				} else if (type.indexOf('xml') !== -1) {
+					type = "text/xml; charset=utf-8";
 				} else {
-					type = "text/plain";
+					type = "text/plain; charset=utf-8";
 				}
 				res.type = type;
 			}
@@ -359,14 +364,16 @@ Drive.prototype.body = function(ret, res, type) {
 			}
 		} else if (tp === "string") {
 			ret = ret.trim();
-			if (ret.startWith('{') && ret.endWith('}')) {
-				res.type = "application/json";
-			} else if (ret.startWith('[') && ret.endWith(']')) {
-				res.type = "application/json";
-			} else if (ret.endWith("</html>")) {
-				res.type = "text/html";
-			} else {
-				res.type = "text/plain";
+			if (!type) {
+				if (ret.startWith('{') && ret.endWith('}')) {
+					res.type = "application/json; charset=utf-8";
+				} else if (ret.startWith('[') && ret.endWith(']')) {
+					res.type = "application/json; charset=utf-8";
+				} else if (ret.endWith("</html>")) {
+					res.type = "text/html";
+				} else {
+					res.type = "text/plain; charset=utf-8";
+				}
 			}
 		}
 	}

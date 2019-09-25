@@ -1,5 +1,5 @@
 <template>
-	<div class="mm_footer" id="dev_footer">
+	<div class="mm_foot" id="dev_footer">
 		<dev_diy class="diy_left" :list="diy_left"></dev_diy>
 		<dev_diy class="diy_right" :list="diy_right"></dev_diy>
 		<div class="account">

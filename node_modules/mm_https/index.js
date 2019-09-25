@@ -186,10 +186,19 @@ class Http {
 	 * @constructor
 	 */
 	constructor() {
-		// 存储上次请求
+		/**
+		 * 存储上次请求
+		 */
 		this.referer = "";
-		// 设置存储
+		/**
+		 * 设置cookie存储
+		 */
 		this.cookie = new Cookie();
+
+		/**
+		 * 获取的编码方式
+		 */
+		this.encoding = 'utf-8';
 	}
 }
 
@@ -282,7 +291,7 @@ Http.prototype.req = function(options, param) {
 				var encoding = res.headers['content-encoding'];
 				// 非gzip/deflate要转成utf-8格式
 				if (encoding === 'undefined') {
-					res.setEncoding('utf-8');
+					res.setEncoding(this.encoding);
 				}
 				res.on('data', function(chunk) {
 					chunks.push(chunk);
@@ -297,6 +306,7 @@ Http.prototype.req = function(options, param) {
 								var body = decoded.toString();
 								resolve({
 									headers: res.headers,
+									binary: buffer,
 									body: body
 								});
 							}
@@ -309,6 +319,7 @@ Http.prototype.req = function(options, param) {
 								var body = decoded.toString();
 								resolve({
 									headers: res.headers,
+									binary: buffer,
 									body: body
 								});
 							}
@@ -317,6 +328,7 @@ Http.prototype.req = function(options, param) {
 						var body = buffer.toString();
 						resolve({
 							headers: res.headers,
+							binary: buffer,
 							body: body
 						});
 					}

@@ -30,14 +30,18 @@ apps.update('/app/');
 var dbs = $.db_admin('sys');
 dbs.update();
 
-/// 处理静态文件请求
-/// ctx: 请求上下文 (object)
-/// next: 跳过当前, 然后继续执行函数 (function)
+/**
+ * @description 处理静态文件请求
+ * @param {Object} ctx 请求上下文
+ * @param {Function} next 跳过当前, 然后继续执行函数
+ */
 module.exports.static = $.static.run;
 
-/// 处理接口请求
-/// ctx: 请求上下文 (object)
-/// next: 跳过当前, 然后继续执行函数 (function)
+/**
+ * @description 处理接口请求
+ * @param {Object} ctx 请求上下文
+ * @param {Function} next 跳过当前, 然后继续执行函数
+ */
 module.exports.api = async function(ctx, next) {
 	var db = {
 		next: next,
@@ -50,3 +54,43 @@ module.exports.api = async function(ctx, next) {
 		ctx.response.body = ret;
 	}
 };
+
+/**
+ * @description 跨域spa应用
+ * @param {String} host SPA应用地址
+ * @param {String} server 服务器地址
+ * @param {Object} ctx 请求上下文
+ * @param {Object} db 数据取管理器
+ * @return {type}
+ */
+$.core_spa = async function(host, server, ctx, db){
+	var http = new $.Http();
+	var path = ctx.path;
+	var url = host + path;
+	
+	var body;
+	if (path.endWith('.js')) {
+		ctx.type = "application/javascript; charset=utf-8";
+		var res = await http.get(url);
+		body = res.body;
+	} else if (path.endWith('.css')) {
+		ctx.type = "text/css";
+		var res = await http.get(url);
+		body = res.body;
+	} else if (path.endWith('.vue')) {
+		var res = await http.get(url);
+		body = res.body;
+	} else if (path.has('*.*')) {
+		ctx.type = "image/" + path.right('.');
+		http.encoding = "binary";
+		var res = await http.get(url);
+		ctx.body = res.binary;
+	} else {
+		ctx.type = "text/html";
+		var res = await http.get(url);
+		if (res.body) {
+			body = res.body.replace(/data-server=\"\/[a-z0-9A-Z_]+\/\"/, 'data-server="' + server + '"');
+		}
+	}
+	return body;
+}

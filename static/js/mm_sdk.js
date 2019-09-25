@@ -2144,4 +2144,20 @@ if (typeof($) === "undefined") {
 		}
 	};
 
+	$.html = {
+		tag: function(tag, prop, value) {
+			var obj;
+			var list = document.getElementsByTagName(tag);
+			for (var i = 0; i < list.length; i++) {
+				var o = list[i];
+				if (o && o.getAttribute(prop) && o.getAttribute(prop).has(value)) {
+					obj = o;
+					break;
+				}
+			}
+			return obj;
+		}
+	};
+	
 })();
+

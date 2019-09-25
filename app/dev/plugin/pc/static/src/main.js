@@ -9,7 +9,7 @@ require({
 		css: '/js/css.min',
 		text: '/js/text.min',
 		vue: '/js/mm-requirejs-vue',
-		
+
 		// 生产版||调试版
 		Vue: '/js/vue',
 		vuex: '/js/vuex.min',
@@ -20,7 +20,6 @@ require({
 		mm_sdk: '/js/mm_sdk',
 		mm_vue: '/js/mm_vue',
 		ui: './ui',
-		effect: './effect',
 		store: './store',
 		router: './router',
 		echarts: '/js/echarts',
@@ -57,7 +56,8 @@ require({
 			'templateVar': '__template__'
 		}
 	}
-}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'vue!./App.vue'], function(Vue, mm_sdk, mm_vue, store, router, ui, app) {
+}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'vue!./App.vue'], function(Vue, mm_sdk, mm_vue, store, router,
+	ui, app) {
 	// 开启调试模式
 	Vue.config.debug = true;
 	// 使用UI组件
@@ -65,6 +65,7 @@ require({
 	
 	Vue.use(mm_vue);
 	Vue.use(ui);
+	
 	/**
 	 * @description 初始化整个Vue应用程序
 	 * 由于组件预先注册的标记名而自动放置的组件头将在应用程序模板中找到

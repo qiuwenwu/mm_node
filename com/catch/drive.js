@@ -24,12 +24,18 @@ class Drive extends Item {
 			"description": "描述事件使用方法",
 			// 名称, 由中英文和下“_”组成, 用于卸载事件
 			"name": "demo",
-			// 应用域
-			"app": "mm",
 			// 文件路径, 当调用函数不存在时，会先从文件中加载
 			"func_file": "",
 			// 回调函数名 用于决定调用脚本的哪个函数
-			"func_name": ""
+			"func_name": "",
+			// 抓取数据的接口地址
+			"url": "http://www.baidu.com/",
+			// 接口类型 web类型 或 api类型
+			"type": "web",
+			// 保存的数据类型，json、text、xml
+			"dataType": "",
+			// 模板文件
+			"tpl_path": ""
 		};
 	}
 }

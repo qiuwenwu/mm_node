@@ -1,5 +1,5 @@
 <template>
-	<div class="mm_header" id="dev_header">
+	<div class="mm_head" id="dev_header">
 		<div class="logo">
 			<router-link to="/"><img src="./img/logo_gray.png" /></router-link>
 		</div>

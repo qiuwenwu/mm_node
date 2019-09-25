@@ -1,4 +1,5 @@
 var Http = require('./index.js').Http;
+var fs = require("fs");
 
 /// 测试
 async function test() {
@@ -24,5 +25,16 @@ async function test() {
 // 	var res = await hp.get_fast('http://www.hao123.com');
 // 	console.log(res.body);
 // }
-// test ();
+
+// async function test() {
+// 	var hp = new Http();
+// 	hp.encoding = "binary";
+// 	var res = await hp.get('http://localhost:8080/dev/img/logo_gray.png');
+// 	fs.writeFile("./logonew.png", res.binary, "binary", function(err) {
+// 		if (err) {
+// 			console.log("下载失败");
+// 		}
+// 		console.log("下载成功");
+// 	});
+// }
 test();

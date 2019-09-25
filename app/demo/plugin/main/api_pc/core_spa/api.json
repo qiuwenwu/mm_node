@@ -1,0 +1,16 @@
+{
+	"path": "/dev123/*",
+	"type": "web",
+	"name": "core_spa",
+	"title": "跨域大型单页应用(spa)",
+	"description": "这是调用站外SPA的示例",
+	"func_file": "./index.js",
+	"func_name": "",
+	"method": "ALL",
+	"cache": 0,
+	"client_cache": true,
+	"param_path": "",
+	"sql_path": "",
+	"check_param": true,
+	"oauth": null
+}

@@ -10,8 +10,7 @@
 	export default {
 		template: __template__,
 		data: function() {
-			return {
-			}
+			return {}
 		}
 	};
 </script>
