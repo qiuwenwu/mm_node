@@ -1,0 +1,211 @@
+{
+    "name": "pay_seller_list2",
+    "title": "",
+    "add": {
+        "body": [
+            "province_id",
+            "city_id",
+            "address",
+            "institution",
+            "institution_code",
+            "institution_img",
+            "institution_state",
+            "business",
+            "user_id"
+        ],
+        "body_required": [
+            "name"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "seller_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "seller_id",
+            "name",
+            "province_id",
+            "city_id",
+            "address",
+            "institution",
+            "institution_code",
+            "institution_img",
+            "institution_state",
+            "institution_state_min",
+            "institution_state_max",
+            "business",
+            "user_id"
+        ],
+        "query_required": [],
+        "body": [
+            "name",
+            "province_id",
+            "city_id",
+            "address",
+            "institution",
+            "institution_code",
+            "institution_img",
+            "institution_state",
+            "institution_state_add",
+            "business",
+            "user_id"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "seller_id",
+            "name",
+            "province_id",
+            "city_id",
+            "address",
+            "institution",
+            "institution_code",
+            "institution_img",
+            "institution_state",
+            "institution_state_min",
+            "institution_state_max",
+            "business",
+            "user_id"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "seller_id",
+            "title": "商户ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "商户名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "province_id",
+            "title": "省份ID",
+            "description": "用户所在地的省份",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所在城市ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "address",
+            "title": "详细地址",
+            "description": "商户办公地的详细地址",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "institution",
+            "title": "注册企业名",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "institution_code",
+            "title": "组织机构码",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "institution_img",
+            "title": "营业执照图片",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "institution_state",
+            "title": "认证状态",
+            "description": "1为未认证，2为认证中，3为已认证，4为认证失败",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "institution_state_min",
+            "title": "认证状态——最小值",
+            "description": "1为未认证，2为认证中，3为已认证，4为认证失败",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "institution_state_max",
+            "title": "认证状态——最大值",
+            "description": "1为未认证，2为认证中，3为已认证，4为认证失败",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "business",
+            "title": "经营范围",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "user_id",
+            "title": "商户持有人",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        }
+    ]
+}

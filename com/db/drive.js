@@ -40,8 +40,6 @@ class Drive extends Item {
 				/* */
 			]
 		};
-
-
 	}
 }
 
@@ -184,7 +182,7 @@ Drive.prototype.model = function(fields) {
 		"min": min,
 		// 最大值
 		"max": max,
-		// 进制值
+		// 小数位
 		"decimal": decimal,
 		// 默认值
 		"default": dflt_value,
@@ -234,39 +232,142 @@ Drive.prototype.update_config = async function(db, cover) {
 /**
  * @description 通过配置更新数据库
  * @param {Object} db 数据库管理器
+ * @return {String} 更新成功返回空，否则返回错误提示
  */
-Drive.prototype.update_table = async function(db) {
+Drive.prototype.update_db = async function(db) {
 	var cg = this.config;
 	db.table = cg.table + "";
-	var fields = db.fields();
+	var fields = await db.fields();
 	var list = cg.fields;
 
-	// 删除配置中没有的字段
-	for (var i = 0; i < fields.length; i++) {
-		var o = fields[i];
-		var obj = list.get({
-			name: o.name
-		});
-
-		if (!obj) {
-			db.field_del(o.name)
+	if (fields.length === 0) {
+		var k = cg.key;
+		for (var i = 0; i < list.length; i++) {
+			var o = list[i];
+			if (k === o.name) {
+				await db.addTable(cg.table, o.name, o.type, o.auto);
+				fields.push({
+					name: o.name
+				});
+				break;
+			}
 		}
 	}
+	if (fields.length > 0) {
+		// 删除配置中没有的字段
+		for (var i = 0; i < fields.length; i++) {
+			var o = fields[i];
+			var obj = list.get({
+				name: o.name
+			});
 
-	// 添加或修改配置
-	for (var i = 0; i < list.length; i++) {
-		var o = list[i];
-		var obj = fields.get({
-			name: o.name
-		});
-
-		if (!obj) {
-			// 如果本身没有该字段则添加
-			db.field_add(o.name, o.type, o.default, o.auto, o.key);
-		} else {
-			// 如果有则修改
-			db.field_set(o.name, o.type, o.default, o.auto, o.key);
+			if (!obj) {
+				await db.field_del(o.name)
+			}
 		}
+
+		// 添加或修改配置
+		for (var i = 0; i < list.length; i++) {
+			var o = list[i];
+			var arr = fields.get({
+				name: o.name
+			});
+
+			var notnull = "";
+			var type = '';
+			var value = "";
+			switch (o.type) {
+				case "varchar":
+				case "text":
+					if (o.decimal) {
+						type = o.type + '(' + o.max_length + ',' + o.decimal + ')';
+					} else {
+						type = o.type + '(' + o.max_length + ')';
+					}
+					if(o.not_null)
+					{
+						notnull = "NOT NULL";
+					}
+					if (o.default) {
+						value = "DEFAULT '" + o.default + "'";
+					} else if (o.default === null) {
+						value = "DEFAULT NULL";
+					} else {
+						value = "DEFAULT ''";
+					}
+					break;
+				case "date":
+				case "time":
+				case "datetime":
+				case "timestamp":
+					type = o.type;
+					notnull = "NOT NULL";
+					if (o.default) {
+						if(o.default.indexOf('CURR') !== -1){
+							value = "DEFAULT " + o.default;
+						}
+						else {
+							value = "DEFAULT '" + o.default + "'";
+						}
+					}
+					if (o.auto) {
+						notnull += '';
+						value = "DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP";
+					}
+					break;
+				default:
+					// 数字类型
+					if (o.decimal) {
+						type = o.type + '(' + o.max_length + ',' + o.decimal + ')';
+					} else {
+						type = o.type + '(' + o.max_length + ')';
+					}
+					if (!o.symbol) {
+						type += " UNSIGNED";
+					}
+					notnull = "NOT NULL";
+					if (o.default) {
+						value = "DEFAULT " + o.default;
+					} else {
+						value = "DEFAULT 0";
+					}
+					if (o.auto) {
+						notnull += ' AUTO_INCREMENT';
+						value = "";
+					}
+					break;
+			}
+			
+			var note = o.title + "：";
+			if (o.type === 'varchar' || o.type === 'text') {
+				if (o.max_length) {
+					note += "[" + o.min_length + "," + o.max_length + "]"
+				} else if (o.min_length) {
+					note += "[" + o.min_length + "]"
+				}
+			} else {
+				if (o.max) {
+					note += "[" + o.min + "," + o.max + "]"
+				} else if (o.min) {
+					note += "[" + o.min + "]"
+				}
+			}
+			note += o.description;
+
+			var sql = "`{1}` {2} {3} {4} COMMENT '{5}'";
+			sql = sql.replace('{1}', o.name).replace('{2}', type).replace('{3}', notnull).replace('{4}', value).replace('{5}',
+				note);
+
+			if (arr.length === 0) {
+				// 如果没有则添加
+				await db.exec("alter table `{0}` add ".replace('{0}', cg.table) + sql);
+			} else {
+				// 如果有则修改
+				await db.exec("alter table `{0}` change `{1}` ".replace('{0}', cg.table).replace('{1}', o.name) + sql);
+			}
+		}
+	} else {
+		return "数据表更新失败！";
 	}
 };
 
@@ -683,8 +784,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 				cm.get.query.push(n);
 				cm.set.body.push(n);
 				cm.list.push(m);
-
-				if (!n.endWith('id')) {
+				if (!n.endWith('id') && m.dataType !== "tinyint") {
 					cm.get.query.push(n + "_min");
 					cm.get.query.push(n + "_max");
 					cm.set.query.push(n + "_min");

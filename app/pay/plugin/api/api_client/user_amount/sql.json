@@ -1,0 +1,33 @@
+{
+    "name": "pay_user_amount",
+    "title": "",
+    "table": "pay_user_amount",
+    "key": "seller_id",
+    "orderby_default": "`seller_id` desc",
+    "field_default": "`seller_id`,`usd`,`btc`,`eth`,`eos`,`cny`,`mm`",
+    "method": "get",
+    "query": {
+        "usd_min": "`usd` >= {0}",
+        "usd_max": "`usd` <= {0}",
+        "btc_min": "`btc` >= {0}",
+        "btc_max": "`btc` <= {0}",
+        "eth_min": "`eth` >= {0}",
+        "eth_max": "`eth` <= {0}",
+        "eos_min": "`eos` >= {0}",
+        "eos_max": "`eos` <= {0}",
+        "cny_min": "`cny` >= {0}",
+        "cny_max": "`cny` <= {0}",
+        "mm_min": "`mm` >= {0}",
+        "mm_max": "`mm` <= {0}"
+    },
+    "query_default": {},
+    "where": {},
+    "update": {
+        "usd_add": "`usd` = `usd` + {0}",
+        "btc_add": "`btc` = `btc` + {0}",
+        "eth_add": "`eth` = `eth` + {0}",
+        "eos_add": "`eos` = `eos` + {0}",
+        "cny_add": "`cny` = `cny` + {0}",
+        "mm_add": "`mm` = `mm` + {0}"
+    }
+}

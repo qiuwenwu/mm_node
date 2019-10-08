@@ -48,7 +48,7 @@ Plugin.prototype.run = function(param1, param2) {
  * @param {String} msg_type 消息类型, event事件型、message消息型。默认消息型
  * @return {String} 回复内容
  */
-Drive.prototype.chat = function(from_user, to_user, group, content, type, msg_type) {
+Plugin.prototype.chat = function(from_user, to_user, group, content, type, msg_type) {
 	var ret = "";
 	var lt = this.list;
 	for (var i = 0; i < lt.length; i++) {

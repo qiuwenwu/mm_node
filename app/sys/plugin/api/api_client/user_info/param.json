@@ -7,7 +7,7 @@
             "sex",
             "age",
             "birthday",
-            "province",
+            "province_id",
             "city_id",
             "address",
             "job",
@@ -15,7 +15,10 @@
             "company_address",
             "company_business",
             "school",
-            "major"
+            "major",
+            "idcard",
+            "idcard_state",
+            "idcard_img"
         ],
         "body_required": []
     },
@@ -35,9 +38,7 @@
             "age",
             "age_min",
             "age_max",
-            "province",
-            "province_min",
-            "province_max",
+            "province_id",
             "city_id",
             "address",
             "job",
@@ -45,7 +46,12 @@
             "company_address",
             "company_business",
             "school",
-            "major"
+            "major",
+            "idcard",
+            "idcard_state",
+            "idcard_state_min",
+            "idcard_state_max",
+            "idcard_img"
         ],
         "query_required": [],
         "body": [
@@ -55,8 +61,7 @@
             "age",
             "age_add",
             "birthday",
-            "province",
-            "province_add",
+            "province_id",
             "city_id",
             "address",
             "job",
@@ -64,7 +69,11 @@
             "company_address",
             "company_business",
             "school",
-            "major"
+            "major",
+            "idcard",
+            "idcard_state",
+            "idcard_state_add",
+            "idcard_img"
         ],
         "body_required": [],
         "body_not": []
@@ -82,9 +91,7 @@
             "birthday",
             "birthday_min",
             "birthday_max",
-            "province",
-            "province_min",
-            "province_max",
+            "province_id",
             "city_id",
             "address",
             "job",
@@ -92,7 +99,12 @@
             "company_address",
             "company_business",
             "school",
-            "major"
+            "major",
+            "idcard",
+            "idcard_state",
+            "idcard_state_min",
+            "idcard_state_max",
+            "idcard_img"
         ],
         "query_required": []
     },
@@ -116,7 +128,12 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "range": [
+                    2,
+                    16
+                ]
+            }
         },
         {
             "name": "sex",
@@ -212,33 +229,16 @@
             }
         },
         {
-            "name": "province",
+            "name": "province_id",
             "title": "省份ID",
             "description": "用户所在地的省份",
             "type": "number",
             "dataType": "int",
             "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "province_min",
-            "title": "省份ID——最小值",
-            "description": "用户所在地的省份",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "province_max",
-            "title": "省份ID——最大值",
-            "description": "用户所在地的省份",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
+                "range": [
+                    1,
+                    2147483647
+                ]
             }
         },
         {
@@ -308,6 +308,52 @@
             "description": "",
             "type": "string",
             "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "idcard",
+            "title": "身份证号",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "idcard_state",
+            "title": "身份实名认证",
+            "description": "1为未认证，2为认证中，3为认证通过",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "idcard_state_min",
+            "title": "身份实名认证——最小值",
+            "description": "1为未认证，2为认证中，3为认证通过",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "idcard_state_max",
+            "title": "身份实名认证——最大值",
+            "description": "1为未认证，2为认证中，3为认证通过",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "idcard_img",
+            "title": "身份证图片",
+            "description": "保存json格式",
+            "type": "string",
+            "dataType": "text",
             "string": {}
         }
     ]

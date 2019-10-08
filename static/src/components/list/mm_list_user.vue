@@ -13,7 +13,7 @@
 </template>
 
 <script>
-	import mixin from '@/mixins/list'
+	import mixin from '/src/mixins/list'
 
 	export default {
 		mixins: [mixin],

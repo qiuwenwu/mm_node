@@ -4,7 +4,7 @@
     "table": "sys_user_list",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
-    "field_default": "`user_id`,`username`,`referee_id`,`vip`,`gm`,`mc`,`phone`,`email`,`login_ip`,`login_time`,`create_time`,`user_group`,`admin_group`,`signature`,`nickname`,`avatar`,`invite_code`",
+    "field_default": "`user_id`,`username`,`referee_id`,`vip`,`gm`,`mc`,`phone`,`phone_state`,`email`,`email_state`,`login_ip`,`login_time`,`create_time`,`user_group`,`admin_group`,`signature`,`nickname`,`avatar`,`invite_code`,`friends`,`state`",
     "method": "get",
     "query": {
         "username": "`username` like '%{0}%'",
@@ -28,18 +28,20 @@
         "signature": "`signature` like '%{0}%'",
         "nickname": "`nickname` like '%{0}%'",
         "avatar": "`avatar` like '%{0}%'",
-        "invite_code": "`invite_code` like '%{0}%'"
+        "invite_code": "`invite_code` like '%{0}%'",
+        "friends": "`friends` like '%{0}%'",
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}"
     },
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
-    "where": {
-        "username": "`username` like '%{0}%'"
-    },
+    "where": {},
     "update": {
         "vip_add": "`vip` = `vip` + {0}",
         "gm_add": "`gm` = `gm` + {0}",
-        "mc_add": "`mc` = `mc` + {0}"
+        "mc_add": "`mc` = `mc` + {0}",
+        "state_add": "`state` = `state` + {0}"
     },
     "filter": {
         "table": "table",

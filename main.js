@@ -37,7 +37,8 @@ app.use(session({
 // 处理静态文件
 app.use(statics(
 	path.join(__dirname, './static'), {
-		maxAge: 60 * 60 * 24 * 7,
+		// maxAge: 60 * 60 * 24 * 7,
+		maxage: 0,
 		gzip: true,
 		brotli: true
 	}));

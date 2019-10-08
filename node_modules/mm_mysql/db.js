@@ -61,10 +61,11 @@ DB.prototype.fields = async function(table, field_name) {
  * @description 设置类型
  * @param {String} type 类型名，常用类型 mediumint, int, varchar, datetime
  * @param {Boolean} auto 自动
- * @param {String} filed 字段名
+ * @param {String} field 字段名
+ * @param {Boolean} not_null 是否非空字段 true为非空，false为可空
  * @return {String} 返回最终类型
  */
-DB.prototype.setType = function(type, auto, filed) {
+DB.prototype.setType = function(type, auto, field, not_null) {
 	if (!type) {
 		type = 'int';
 	}
@@ -73,6 +74,9 @@ DB.prototype.setType = function(type, auto, filed) {
 		case "varchar":
 		case "string":
 			type = "varchar(255)";
+			if (not_null) {
+				type += " NOT NULL";
+			}
 			break;
 		case "number":
 			type = "int(11) UNSIGNED NOT NULL";
@@ -89,7 +93,7 @@ DB.prototype.setType = function(type, auto, filed) {
 			break;
 		case "timestamp":
 			if (auto) {
-				if (filed.indexOf('update') !== -1 || filed.indexOf('last') !== -1) {
+				if (field.indexOf('update') !== -1 || field.indexOf('last') !== -1) {
 					type += " DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP";
 				} else {
 					type += " DEFAULT CURRENT_TIMESTAMP";
@@ -107,10 +111,15 @@ DB.prototype.setType = function(type, auto, filed) {
 		case "text":
 			break;
 		default:
-			if (type.indexOf('int') === -1) {
-				type += " NOT NULL";
+			if (type.indexOf('var') !== -1) {
+				if (not_null) {
+					type += " NOT NULL";
+				}
 			} else {
-				type += " UNSIGNED NOT NULL";
+				if (type.indexOf('int') !== -1) {
+					type += " UNSIGNED";
+				}
+				type += " NOT NULL";
 				if (auto) {
 					type += " AUTO_INCREMENT";
 				}
@@ -142,18 +151,19 @@ DB.prototype.addTable = async function(table, field, type, auto) {
  * @param {String} field 字段名
  * @param {String} type 类型名，常用类型 mediumint, int, float, double, varchar, tinyint, text, date, datetime, time, timestamp
  * @param {String|Number} value 默认值
+ * @param {Boolean} not_null 是否非空字段 true为非空，false为可空
  * @param {Boolean} auto 是否自动（如果为数字类型则自增增段，如果为时间类型则默认事件）
  * @param {Boolean} isKey 是否主键
  * @return {Promise|Number} 添加成功返回1，失败返回0
  */
-DB.prototype.field_add = async function(field, type, value, auto, isKey) {
+DB.prototype.field_add = async function(field, type, value, not_null, auto, isKey) {
 	var sql =
 		"SELECT COUNT(*) as `count` FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='{0}' AND table_name='{1}' AND COLUMN_NAME='{2}'";
 	sql = sql.replace('{0}', this.database).replace('{1}', this.table).replace('{2}', field);
 	var arr = await this.run(sql);
 	if (arr && arr.length > 0) {
 		if (arr[0].count == 0) {
-			var type = this.setType(type, auto, field);
+			var type = this.setType(type, auto, field, not_null);
 			if (value !== undefined) {
 				if (type.indexOf('CURRENT_') === -1) {
 					if (typeof(value) == 'string' && !value.startWith('CURRENT_')) {
@@ -162,7 +172,7 @@ DB.prototype.field_add = async function(field, type, value, auto, isKey) {
 						type += " DEFAULT " + value;
 					}
 				}
-			} else if (type.has('varchar') || type.has('text')) {
+			} else if (type.has('text')) {
 				type = type.replace('NOT NULL', '');
 			} else if (type.indexOf('DEFAULT') === -1 && type.indexOf('AUTO') === -1) {
 				type += " DEFAULT 0";

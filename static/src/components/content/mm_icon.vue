@@ -1,7 +1,7 @@
 <template>
 	<!-- 图标 -->
 	<div class="mm_icon" v-if="src.indexOf('<') !== -1" v-html="src"></div>
-	<img class="mm_icon" v-else-if="src" :src="src" mode="mode" />
+	<div class="mm_icon" v-else-if="src"><img :src="src" mode="mode" /></div>
 	<div class="mm_icon" v-else></div>
 </template>
 

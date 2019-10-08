@@ -1,0 +1,296 @@
+{
+    "name": "pay_user_account2",
+    "title": "",
+    "add": {
+        "body": [
+            "state",
+            "bank",
+            "bank_name",
+            "bank_state",
+            "wechat",
+            "wechat_state",
+            "alipay",
+            "alipay_state",
+            "user_id",
+            "btc",
+            "btc_state",
+            "eth",
+            "eth_state",
+            "eos",
+            "eos_state",
+            "mm",
+            "mm_state"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "seller_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "seller_id",
+            "state",
+            "state_min",
+            "state_max",
+            "bank",
+            "bank_name",
+            "bank_state",
+            "wechat",
+            "wechat_state",
+            "alipay",
+            "alipay_state",
+            "user_id",
+            "btc",
+            "btc_state",
+            "eth",
+            "eth_state",
+            "eos",
+            "eos_state",
+            "mm",
+            "mm_state"
+        ],
+        "query_required": [],
+        "body": [
+            "state",
+            "state_add",
+            "bank",
+            "bank_name",
+            "bank_state",
+            "wechat",
+            "wechat_state",
+            "alipay",
+            "alipay_state",
+            "user_id",
+            "btc",
+            "btc_state",
+            "eth",
+            "eth_state",
+            "eos",
+            "eos_state",
+            "mm",
+            "mm_state"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "seller_id",
+            "state",
+            "state_min",
+            "state_max",
+            "bank",
+            "bank_name",
+            "bank_state",
+            "wechat",
+            "wechat_state",
+            "alipay",
+            "alipay_state",
+            "user_id",
+            "btc",
+            "btc_state",
+            "eth",
+            "eth_state",
+            "eos",
+            "eos_state",
+            "mm",
+            "mm_state"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "seller_id",
+            "title": "商户ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "state",
+            "title": "状态",
+            "description": "1为正常，2为异常，3为冻结，4为注销",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "state_min",
+            "title": "状态——最小值",
+            "description": "1为正常，2为异常，3为冻结，4为注销",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "state_max",
+            "title": "状态——最大值",
+            "description": "1为正常，2为异常，3为冻结，4为注销",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "bank",
+            "title": "网银账户",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "bank_name",
+            "title": "网银名称",
+            "description": "含支行",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "bank_state",
+            "title": "微信认证",
+            "description": "0未认证，1已认证",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "wechat",
+            "title": "收款微信账户",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "wechat_state",
+            "title": "微信认证",
+            "description": "0未认证，1已认证",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "alipay",
+            "title": "收款支付宝账户",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "alipay_state",
+            "title": "微信认证",
+            "description": "0未认证，1已认证",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "商户对应用户ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "btc",
+            "title": "比特币地址",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "btc_state",
+            "title": "比特币地址认证",
+            "description": "0未认证，1已认证",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "eth",
+            "title": "以太币地址",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "eth_state",
+            "title": "以太币地址认证",
+            "description": "0未认证，1已认证",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "eos",
+            "title": "柚子币地址",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "eos_state",
+            "title": "柚子币地址认证",
+            "description": "0未认证，1已认证",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "mm",
+            "title": "美眉币地址",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "mm_state",
+            "title": "美眉币地址认证",
+            "description": "0未认证，1已认证",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        }
+    ]
+}

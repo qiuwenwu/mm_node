@@ -1,4 +1,6 @@
-const gm = require('./com.js');
+const dev = require('./com.js').dev;
+
+var dev_class = new dev('plugin');
 
 /**
  * @description 接口主函数
@@ -6,4 +8,6 @@ const gm = require('./com.js');
  * @param {Object} db 数据管理器,如: { next: async function{}, ret: {} }
  * @return {Object} 执行结果
  */
-exports.main = gm('plugin');
+exports.main = async function(ctx, db){
+	return await dev_class.main(ctx, db);
+};

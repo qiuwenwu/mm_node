@@ -17,7 +17,7 @@
 		"count": "count",
 		"method": "method"
 	},
-	"method": "add del set get import export",
+	"method": "add del set get",
 	"query": {
 		"name": "`name` like '%{0}%'",
 		"password": "`password` like '%{0}%'",

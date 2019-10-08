@@ -1,0 +1,23 @@
+{
+    "name": "cms_article_comment2",
+    "title": "",
+    "table": "cms_article_comment",
+    "key": "comment_id",
+    "orderby_default": "`comment_id` desc",
+    "field_default": "`comment_id`,`article_id`,`display`,`available`,`content`,`user_id`,`tag`,`name`,`score`",
+    "query": {
+        "display_min": "`display` >= {0}",
+        "display_max": "`display` <= {0}",
+        "content": "`content` like '%{0}%'",
+        "tag": "`tag` like '%{0}%'",
+        "name": "`name` like '%{0}%'",
+        "score_min": "`score` >= {0}",
+        "score_max": "`score` <= {0}"
+    },
+    "where": {},
+    "update": {
+        "display_add": "`display` = `display` + {0}",
+        "score_add": "`score` = `score` + {0}"
+    },
+    "field_hide": []
+}

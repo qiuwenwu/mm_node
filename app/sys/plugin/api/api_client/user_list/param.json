@@ -8,7 +8,9 @@
             "gm",
             "mc",
             "phone",
+            "phone_state",
             "email",
+            "email_state",
             "login_ip",
             "login_time",
             "create_time",
@@ -16,7 +18,9 @@
             "admin_group",
             "signature",
             "nickname",
-            "avatar"
+            "avatar",
+            "friends",
+            "state"
         ],
         "body_required": [
             "username",
@@ -47,7 +51,9 @@
             "mc_min",
             "mc_max",
             "phone",
+            "phone_state",
             "email",
+            "email_state",
             "login_ip",
             "salt",
             "user_group",
@@ -55,7 +61,11 @@
             "signature",
             "nickname",
             "avatar",
-            "invite_code"
+            "invite_code",
+            "friends",
+            "state",
+            "state_min",
+            "state_max"
         ],
         "query_required": [],
         "body": [
@@ -69,7 +79,9 @@
             "mc",
             "mc_add",
             "phone",
+            "phone_state",
             "email",
+            "email_state",
             "login_ip",
             "login_time",
             "salt",
@@ -79,7 +91,10 @@
             "signature",
             "nickname",
             "avatar",
-            "invite_code"
+            "invite_code",
+            "friends",
+            "state",
+            "state_add"
         ],
         "body_required": [],
         "body_not": []
@@ -100,7 +115,9 @@
             "mc_min",
             "mc_max",
             "phone",
+            "phone_state",
             "email",
+            "email_state",
             "login_ip",
             "login_time",
             "login_time_min",
@@ -114,7 +131,11 @@
             "signature",
             "nickname",
             "avatar",
-            "invite_code"
+            "invite_code",
+            "friends",
+            "state",
+            "state_min",
+            "state_max"
         ],
         "query_required": []
     },
@@ -266,6 +287,16 @@
             }
         },
         {
+            "name": "phone_state",
+            "title": "手机号码认证",
+            "description": "0为未认证，1为认证通过",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
             "name": "email",
             "title": "邮箱",
             "description": "用户的邮箱，用于找回密码时或登录时",
@@ -273,6 +304,16 @@
             "dataType": "varchar",
             "string": {
                 "format": "email"
+            }
+        },
+        {
+            "name": "email_state",
+            "title": "邮箱认证",
+            "description": "0为未认证，1为认证通过",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
             }
         },
         {
@@ -407,6 +448,44 @@
             "dataType": "varchar",
             "string": {
                 "notEmpty": 1
+            }
+        },
+        {
+            "name": "friends",
+            "title": "好友",
+            "description": "多个好友ID用“,”分隔",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "state",
+            "title": "账户状态",
+            "description": "1为可用，2为异常，3为已冻结，4为已注销",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "state_min",
+            "title": "账户状态——最小值",
+            "description": "1为可用，2为异常，3为已冻结，4为已注销",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "state_max",
+            "title": "账户状态——最大值",
+            "description": "1为可用，2为异常，3为已冻结，4为已注销",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
             }
         }
     ]

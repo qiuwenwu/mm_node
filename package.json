@@ -33,10 +33,11 @@
 		"koa-xml-body": "^2.1.0",
 		"mm_cache": "^1.2.8",
 		"mm_check": "^1.2.5",
+		"mm_crypto": "^1.0.0",
 		"mm_https": "^1.2.5",
-		"mm_machine": "^1.3.0",
+		"mm_machine": "^1.3.1",
 		"mm_mongodb": "^1.2.6",
-		"mm_mysql": "^1.3.0",
+		"mm_mysql": "^1.3.1",
 		"mm_process": "^1.2.6",
 		"mm_redis": "^1.2.6",
 		"mm_ret": "^1.2.5",
@@ -44,7 +45,7 @@
 		"mm_statics": "^1.2.8",
 		"mm_timer": "^1.2.5",
 		"mm_tpl": "^1.2.4",
-		"mm_xml": "^1.0.0",
+		"mm_xml": "^1.0.1",
 		"nodemon": "^1.19.2"
 	},
 	"repository": {

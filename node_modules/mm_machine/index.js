@@ -66,8 +66,11 @@ class Item {
 			 */
 			"switch": true
 		};
-
-
+		
+		/**
+		 * 模块目录
+		 */
+		this.dir_base = dir_base;
 	}
 }
 
@@ -83,7 +86,7 @@ Item.prototype.load_after = function() {
  * @param {String} file
  */
 Item.prototype.new_script = function(file) {
-	var fl = dir_base + "/script.js";
+	var fl = this.dir_base + "/script.js";
 	if (fl.hasFile()) {
 		fl.copyFile(file);
 	}
@@ -131,7 +134,7 @@ Item.prototype.loadObj = function(obj) {
  * @param {String} file
  */
 Item.prototype.new_config = function(file) {
-	var fl = dir_base + "/config.tpl.json";
+	var fl = this.dir_base + "/config.tpl.json";
 	fl.copyFile(file);
 };
 
@@ -280,10 +283,6 @@ class Index {
 		// Index接口列表
 		this.list = [];
 
-		/// 清除接口缓存
-		Index.prototype.clear = function() {
-			this.list = [];
-		};
 		/**
 		 * 机制类型
 		 */
@@ -293,10 +292,19 @@ class Index {
 		 * 排序项
 		 */
 		this.sort_key = "sort";
-
-
+		
+		/**
+		 * 模块目录
+		 */
+		this.dir_base = dir_base;
 	}
 }
+
+
+/// 清除接口缓存
+Index.prototype.clear = function() {
+	this.list = [];
+};
 
 /**
  * @description 默认驱动
@@ -337,7 +345,7 @@ Index.prototype.load_list = function(list) {
 				_this.load_item(dir, obj, file);
 			}
 		} else {
-			var fl = dir_base + "/config.tpl.json";
+			var fl = this.dir_base + "/config.tpl.json";
 			if (fl.hasFile()) {
 				fl.copyFile(file);
 			}

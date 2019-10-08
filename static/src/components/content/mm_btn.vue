@@ -3,7 +3,7 @@
 	<button :class="'mm_btn' + te" v-if="!url" @click="click_down()">
 		<slot></slot>
 	</button>
-	<button type="button" :class="'mm_btn' + te" @click="openBrowser()" v-else-if="url.indexOf('//') !== -1">
+	<button type="button" :class="'mm_btn' + te" @click="openBrowser()" v-else-if="url.indexOf('http:') === 0 || url.indexOf('https:') === 0">
 		<slot></slot>
 	</button>
 	<router-link :class="'mm_btn' + te" :to="url" v-else>

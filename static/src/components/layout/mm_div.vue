@@ -3,12 +3,12 @@
 	<div class="mm_div" v-if="!url">
 		<slot></slot>
 	</div>
-	<div class="mm_div" @click="openBrowser()" v-else-if="url.indexOf('//') !== -1">
+	<div class="mm_div" @click="openBrowser()" v-else-if="url.indexOf('http:') === 0 || url.indexOf('https:') === 0">
 		<slot></slot>
 	</div>
-	<route-link class="mm_div" :to="url" v-else>
+	<router-link class="mm_div" :to="url" v-else>
 		<slot></slot>
-	</route-link>
+	</router-link>
 </template>
 
 <script>

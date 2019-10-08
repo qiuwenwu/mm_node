@@ -244,7 +244,7 @@
             "fill_zero": false,
             "not_null": 1,
             "min_length": 0,
-            "max_length": 17,
+            "max_length": 16,
             "min": 0,
             "max": 0,
             "decimal": 8,
@@ -305,7 +305,7 @@
             "min": 80,
             "max": 200,
             "decimal": 0,
-            "default": "0",
+            "default": "80",
             "join_in": [],
             "join_out": []
         }

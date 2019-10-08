@@ -13,16 +13,13 @@
 				default: ""
 			}
 		},
-		data() {
-			return {
-				cl: this.col
-			}
-		},
-		created() {
-			if (this.cl) {
-				if (this.cl.indexOf("_") == -1) {
-					this.cl = "_" + this.cl;
+		computed: {
+			cl() {
+				var cl = this.col;
+				if (cl && cl.indexOf("_") == -1) {
+					cl = "_" + cl;
 				}
+				return cl
 			}
 		}
 	}

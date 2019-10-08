@@ -10,7 +10,7 @@
             "next_group_id",
             "icon",
             "description",
-            "type",
+            "app",
             "display"
         ],
         "body_required": [
@@ -42,7 +42,7 @@
             "next_group_id",
             "icon",
             "description",
-            "type",
+            "app",
             "display",
             "display_min",
             "display_max"
@@ -61,7 +61,7 @@
             "next_group_id",
             "icon",
             "description",
-            "type",
+            "app",
             "display",
             "display_add"
         ],
@@ -87,7 +87,7 @@
             "next_group_id",
             "icon",
             "description",
-            "type",
+            "app",
             "display",
             "display_min",
             "display_max"
@@ -256,9 +256,9 @@
             "string": {}
         },
         {
-            "name": "type",
-            "title": "分类",
-            "description": "用于区分用户组使用范围",
+            "name": "app",
+            "title": "应用",
+            "description": "用于区分用户组使用范围，cms内容管理系统、bbs社区、mall商城",
             "type": "string",
             "dataType": "varchar",
             "string": {}

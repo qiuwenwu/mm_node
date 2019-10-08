@@ -4,7 +4,7 @@
     "table": "sys_user_sns",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
-    "field_default": "`user_id`,`qq`,`wechat`,`mm`,`baidu`,`taobao`",
+    "field_default": "`user_id`,`qq`,`qq_state`,`wechat`,`wechat_state`,`mm`,`mm_state`,`baidu`,`baidu_state`,`taobao`,`taobao_state`",
     "method": "get",
     "query": {
         "qq": "`qq` like '%{0}%'",

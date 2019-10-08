@@ -1,0 +1,12 @@
+{
+    "name": "pay_trade_list",
+    "title": "",
+    "description": "",
+    "path": "/api/trade/list",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

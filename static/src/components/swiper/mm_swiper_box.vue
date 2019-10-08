@@ -6,7 +6,7 @@
 </template>
 
 <script>
-	import mixin from '@/mixins/list';
+	import mixin from '/src/mixins/list';
 	import Swiper from "swiper";
 	export default {
 		mixins: [

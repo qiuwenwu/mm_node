@@ -1,136 +1,103 @@
 {
-    "name": "sys_user_admin2",
-    "title": "",
-    "add": {
-        "body": [
-            "icon",
-            "description",
-            "type",
-            "display"
-        ],
-        "body_required": [
-            "name"
-        ]
-    },
-    "del": {
-        "query": [],
-        "query_required": [
-            "admin_id"
-        ]
-    },
-    "set": {
-        "query": [
-            "admin_id",
-            "name",
-            "icon",
-            "description",
-            "type",
-            "display",
-            "display_min",
-            "display_max"
-        ],
-        "query_required": [],
-        "body": [
-            "name",
-            "icon",
-            "description",
-            "type",
-            "display",
-            "display_add"
-        ],
-        "body_required": [],
-        "body_not": []
-    },
-    "get": {
-        "query": [
-            "admin_id",
-            "name",
-            "icon",
-            "description",
-            "type",
-            "display",
-            "display_min",
-            "display_max"
-        ],
-        "query_required": []
-    },
-    "list": [
-        {
-            "name": "admin_id",
-            "title": "",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "range": [
-                    1,
-                    1000
-                ]
-            }
-        },
-        {
-            "name": "name",
-            "title": "",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "icon",
-            "title": "图标",
-            "description": "用于标识用户组",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "description",
-            "title": "描述",
-            "description": "描述该用户组的特点或权限范围",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "type",
-            "title": "分类",
-            "description": "用于区分用户组使用范围",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "display",
-            "title": "显示顺序",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "display_min",
-            "title": "显示顺序——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "display_max",
-            "title": "显示顺序——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        }
-    ]
+	"filter": true,
+	"func_file": "",
+	"func_name": "",
+	"post": {
+		"query": ["uid", "name", "username", "phone", "email"],
+		"body": ["age", "headImg", "birthday", "password", "confirm_password", "pay_password"]
+	},
+	"list": [{
+			"name": "uid",
+			"title": "用户ID",
+			"type": "number",
+			"number": {
+				"min": 1
+			},
+			"splitter": "|"
+		}, {
+			"name": "name",
+			"title": "姓名",
+			"type": "string",
+			"string": {
+				"format": "ch",
+				"range": [2, 6]
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "age",
+			"title": "年龄",
+			"type": "number",
+			"number": {
+				"range": [1, 150]
+			}
+		},
+		{
+			"name": "headImg",
+			"title": "头像",
+			"type": "string",
+			"string": {
+				"extension": "png|gif|jpg|jpeg|bmp"
+			}
+		},
+		{
+			"name": "birthday",
+			"title": "生日",
+			"type": "string",
+			"string": {
+				"format": "dateISO"
+			}
+		},
+		{
+			"name": "username",
+			"title": "用户名",
+			"type": "string",
+			"string": {
+				"format": "username"
+			}
+		},
+		{
+			"name": "password",
+			"title": "密码",
+			"type": "string",
+			"string": {
+				"format": "password",
+				"different": "username"
+			}
+		},
+		{
+			"name": "phone",
+			"title": "手机",
+			"type": "string",
+			"string": {
+				"format": "phone"
+			}
+		},
+		{
+			"name": "email",
+			"title": "邮箱",
+			"type": "string",
+			"string": {
+				"format": "email"
+			}
+		},
+		{
+			"name": "pay_password",
+			"title": "支付密码",
+			"type": "string",
+			"string": {
+				"format": "num",
+				"different": "password"
+			}
+		},
+		{
+			"name": "confirm_password",
+			"title": "确认密码",
+			"type": "string",
+			"string": {
+				"format": "password",
+				"identical": "password"
+			}
+		}
+	]
 }

@@ -6,8 +6,8 @@
 </template>
 
 <script>
-	import hljs from '../highlight/highlight.pack.js';
-	import hybrid from '../highlight/styles/hybrid.css';
+	import hljs from '/highlight/highlight.pack.js';
+	import hybrid from '/highlight/styles/hybrid.css';
 
 	export default {
 		mounted() {

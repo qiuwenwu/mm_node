@@ -70,13 +70,42 @@ DB.prototype.update_config = async function(db, name, table) {
 				drive.config.table = te;
 				drive.update_config(db, true);
 				this.list.push(drive);
-				// var arr = n.split('_');
-				// var dir = "./app/" + arr[0] + "/plugin/api/";
 			}
 		}
 	}
-
 	return null;
+};
+
+
+/**
+ * @description 通过配置修改数据库
+ * @param {Object} db 数据库管理器
+ * @param {String} name 要更新的配置名
+ * @param {String} table 表名关键词, 支持*table后缀匹配、table*前缀匹配、*table*包含匹配
+ * @return {String} 更新成功返回null, 失败返回错误提示
+ */
+DB.prototype.update_db = async function(db, name, table) {
+	var ret;
+	if (name) {
+		var o = this.get(name);
+		if (o) {
+			ret = await o.update_db(db);
+		} else {
+			ret = "该配置不存在";
+		}
+	} else {
+		var list = this.list;
+		if (list.length > 0) {
+			for (var i = 0; i < list.length; i++) {
+				var o = list[i];
+				if (o.config.table === table) {
+					ret = await o.update_db(db);
+					break;
+				}
+			}
+		}
+	}
+	return ret;
 };
 
 exports.DB = DB;

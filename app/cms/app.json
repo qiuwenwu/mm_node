@@ -1,0 +1,11 @@
+{
+	"name": "cms",
+	"title": "内容管理系统",
+	"description": "该应用带网站常见功能模块（文章、商城、论坛）",
+	"version": "1.0",
+	"identifier": "cms",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "cms",
+	"sort": 10
+}

@@ -14,7 +14,7 @@ class Drive extends Item {
 	constructor(dir) {
 		super(dir, __dirname);
 		this.default_file = "./catch.json";
-		
+
 		/* 通用项 */
 		// 配置参数
 		this.config = {
@@ -28,16 +28,42 @@ class Drive extends Item {
 			"func_file": "",
 			// 回调函数名 用于决定调用脚本的哪个函数
 			"func_name": "",
-			// 抓取数据的接口地址
-			"url": "http://www.baidu.com/",
-			// 接口类型 web类型 或 api类型
-			"type": "web",
-			// 保存的数据类型，json、text、xml
-			"dataType": "",
-			// 模板文件
-			"tpl_path": ""
+			"req": {
+				"method": "get",
+				// 抓取数据的接口地址
+				"url": "http://www.baidu.com/",
+				// 请求数据类型 json、xml、form类型
+				"type": "json",
+				// 请求的url参数
+				"query": {
+
+				},
+				// 请求的正文参数
+				"body": {
+
+				}
+			},
+			"res": {
+				// 抓取数据的接口地址
+				"url": "http://www.baidu.com/",
+				// 请求数据类型 json、xml、form类型
+				"type": "json",
+				// 响应的结果正文
+				"body": {}
+			}
 		};
 	}
 }
+
+/**
+ * @description 调用函数
+ * @param {Object} ctx  请求上下文
+ * @param {Object} db 数据管理器
+ * @return {Object} 执行结果
+ */
+Drive.prototype.run = function(ctx, db) {
+	
+};
+
 
 exports.Drive = Drive;

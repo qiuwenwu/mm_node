@@ -7,6 +7,7 @@ $.Http = require("mm_https").Http;
 $.Process = require("mm_process");
 $.Timer = require("mm_timer").Timer;
 $.es6_to_amd = require('mm_es6_to_amd');
+require('mm_crypto');
 
 const init = require("./core/init.js");
 const api = require("./core/api.js");

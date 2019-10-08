@@ -59,8 +59,6 @@
             "max_age_min",
             "max_age_max",
             "available",
-            "available_min",
-            "available_max",
             "encrypt",
             "encrypt_min",
             "encrypt_max",
@@ -89,7 +87,6 @@
             "max_age",
             "max_age_add",
             "available",
-            "available_add",
             "encrypt",
             "encrypt_add",
             "users"
@@ -127,8 +124,6 @@
             "max_age_min",
             "max_age_max",
             "available",
-            "available_min",
-            "available_max",
             "encrypt",
             "encrypt_min",
             "encrypt_max",
@@ -139,7 +134,7 @@
     "list": [
         {
             "name": "app_id",
-            "title": "应用ID",
+            "title": "应用序号",
             "description": "",
             "type": "number",
             "dataType": "mediumint",
@@ -228,7 +223,7 @@
             "string": {
                 "range": [
                     16,
-                    32
+                    43
                 ]
             }
         },
@@ -412,26 +407,6 @@
         {
             "name": "available",
             "title": "是否可用",
-            "description": "在未审核状态下， 该应用授权为不可用",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
-            }
-        },
-        {
-            "name": "available_min",
-            "title": "是否可用——最小值",
-            "description": "在未审核状态下， 该应用授权为不可用",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
-            }
-        },
-        {
-            "name": "available_max",
-            "title": "是否可用——最大值",
             "description": "在未审核状态下， 该应用授权为不可用",
             "type": "number",
             "dataType": "tinyint",

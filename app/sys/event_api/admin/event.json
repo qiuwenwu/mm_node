@@ -1,6 +1,6 @@
 {
 	"target": "/admin*",
-	"name": "网站根",
+	"name": "admin",
 	"title": "示例事件(行动)",
 	"description": "行动，处理请求并响应",
 	"stage": "action",

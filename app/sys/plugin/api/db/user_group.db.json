@@ -177,9 +177,9 @@
             "join_out": []
         },
         {
-            "name": "type",
-            "title": "分类",
-            "description": "用于区分用户组使用范围",
+            "name": "app",
+            "title": "应用",
+            "description": "用于区分用户组使用范围，cms内容管理系统、bbs社区、mall商城",
             "type": "varchar",
             "key": false,
             "auto": "",

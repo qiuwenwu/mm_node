@@ -4,10 +4,30 @@ export default {
 		event: 'input'
 	},
 	props: {
+		// 宽度
+		width: {
+			type: String,
+			default: ''
+		},
+		height: {
+			type: String,
+			default: ''
+		},
+		// 类型
+		type: {
+			type: String,
+			default: 'text'
+		},
+		// 选项
+		options: {
+			type: Array,
+			default: function() {
+				return []
+			}
+		},
 		// 标题
 		value: {
-			type: String,
-			default: ""
+			type: [String, Number]
 		},
 		// 回调函数
 		func: {
@@ -36,6 +56,11 @@ export default {
 			type: String,
 			default: ''
 		},
+		// 单位
+		unit: {
+			type: String,
+			default: ''
+		},
 		// 描述
 		desc: {
 			type: String,
@@ -54,17 +79,22 @@ export default {
 		// 最大值
 		max: {
 			type: Number,
+			default: 0
+		},
+		// 最小长度
+		min_length: {
+			type: Number,
+			default: 0
+		},
+		// 最大长度
+		max_length: {
+			type: Number,
 			default: 65535
 		},
 		// 主键
 		field: {
 			type: String,
-			default: "id"
-		},
-		// 主键序号
-		id: {
-			type: Number,
-			default: 0
+			default: "value"
 		},
 		// 标签
 		type: {
@@ -74,7 +104,7 @@ export default {
 		// 数量
 		num: {
 			type: Number,
-			default: 0
+			default: 1
 		},
 		// 文本
 		text: {
@@ -113,13 +143,6 @@ export default {
 		gm: {
 			type: Number,
 			default: 0
-		},
-		// 允许访问的角色
-		roles: {
-			type: Array,
-			default: function() {
-				return []
-			}
 		},
 		// 身份验证
 		oauth: {
