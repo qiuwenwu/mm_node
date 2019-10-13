@@ -8,7 +8,6 @@
 <script>
 	import hljs from '/highlight/highlight.pack.js';
 	import hybrid from '/highlight/styles/hybrid.css';
-
 	export default {
 		mounted() {
 			hljs.initHighlightingOnLoad();
@@ -17,7 +16,4 @@
 </script>
 
 <style>
-	pre {
-		position: relative;
-	}
 </style>

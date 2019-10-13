@@ -216,7 +216,7 @@ Drive.prototype.cancel = function(contract, db) {
 	o.state = 4;
 	o = cancel_before(o);
 	if (o) {
-		db.table = "pay_trade_list";
+		db.table = "pay_trade_log";
 		db.setObj({
 			trade_id: o.trade_id
 		}, o);

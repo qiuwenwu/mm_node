@@ -18,8 +18,7 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/form.js'
-
+	import mixin from '/src/mixins/form.js';
 	export default {
 		mixins: [mixin],
 		props: {
@@ -41,7 +40,4 @@
 </script>
 
 <style>
-	.mm_code .mm_group {
-		border-bottom: none;
-	}
 </style>

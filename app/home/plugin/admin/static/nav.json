@@ -1,0 +1,196 @@
+{
+    "name": "admin",
+    "sort": 1,
+    "route": [
+        {
+            "name": "home",
+            "path": "/home",
+            "redirect": "/home/article"
+        },
+        {
+            "name": "home_article",
+            "path": "/home/article",
+            "component": "/home/admin/src/pages/article.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        },
+        {
+            "name": "home_article_form",
+            "path": "/home/article_form",
+            "component": "/home/admin/src/pages/article_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        },
+        {
+            "name": "home_article_channel",
+            "path": "/home/article_channel",
+            "component": "/home/admin/src/pages/article_channel.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        },
+        {
+            "name": "home_article_channel_form",
+            "path": "/home/article_channel_form",
+            "component": "/home/admin/src/pages/article_channel_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        },
+        {
+            "name": "home_article_comment",
+            "path": "/home/article_comment",
+            "component": "/home/admin/src/pages/article_comment.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        },
+        {
+            "name": "home_article_comment_form",
+            "path": "/home/article_comment_form",
+            "component": "/home/admin/src/pages/article_comment_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        },
+        {
+            "name": "home_article_type",
+            "path": "/home/article_type",
+            "component": "/home/admin/src/pages/article_type.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        },
+        {
+            "name": "home_article_type_form",
+            "path": "/home/article_type_form",
+            "component": "/home/admin/src/pages/article_type_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        },
+        {
+            "name": "home_config",
+            "path": "/home/config",
+            "component": "/home/admin/src/pages/config.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        },
+        {
+            "name": "home_config_form",
+            "path": "/home/config_form",
+            "component": "/home/admin/src/pages/config_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "admin_group": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "门户",
+            "url": "/home",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_article",
+                    "url": "/home/article"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_article_form",
+                    "url": "/home/article_form"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_article_channel",
+                    "url": "/home/article_channel"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_article_channel_form",
+                    "url": "/home/article_channel_form"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_article_comment",
+                    "url": "/home/article_comment"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_article_comment_form",
+                    "url": "/home/article_comment_form"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_article_type",
+                    "url": "/home/article_type"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_article_type_form",
+                    "url": "/home/article_type_form"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_config",
+                    "url": "/home/config"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "home_config_form",
+                    "url": "/home/config_form"
+                }
+            ]
+        }
+    ]
+}

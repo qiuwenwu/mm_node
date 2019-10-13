@@ -1,3 +1,83 @@
 body {
 	background: #fff !important;
 }
+
+/* 页头 */
+#dev_header {
+	min-height: 2rem;
+	background: #24292e;
+	color: #fff;
+}
+
+#dev_header a {
+	color: #fff;
+	font-size: 0.875rem;
+}
+
+/* logo */
+#dev_header .logo {
+	width: 3rem;
+	height: 2rem;
+	float: left;
+	text-align: center;
+}
+
+#dev_header .logo img {
+	margin-top: 0.35rem;
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+/* 导航 */
+#dev_header .nav_top {
+	line-height: 2rem;
+}
+
+#dev_header .nav_top li {
+	float: left;
+	padding: 0 0.75rem;
+}
+
+#dev_header .nav_top li:hover {
+	background: #2f363d;
+}
+
+#dev_header {
+	min-width: 50rem;
+	border-color: #000000;
+}
+
+.dev_head {
+	height: 4rem;
+	background: #24292e;
+	color: #fff;
+	border-top: 1px solid #000000;
+	overflow: hidden;
+}
+
+.dev_head a {
+	color: #fff;
+}
+
+.dev_head>div {
+	float: left;
+	min-width: 14rem;
+	height: calc(4rem - 1px);
+	border-right: 1px solid #000000;
+}
+
+.dev_head>div:hover {
+	background: #2f363d;
+}
+
+.dev_foot {
+	border-top: 1px solid #e1e4e8;
+}
+
+.dev_main {
+	overflow: hidden;
+}
+
+.dev_side .dev_head>div {
+	width: 100%;
+}

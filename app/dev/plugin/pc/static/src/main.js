@@ -19,7 +19,7 @@ require({
 		clipboard: '/js/clipboard.min',
 		mm_sdk: '/js/mm_sdk',
 		mm_vue: '/js/mm_vue',
-		ui: './ui',
+		ui: '/src/ui.min',
 		store: './store',
 		router: './router',
 		echarts: '/js/echarts',

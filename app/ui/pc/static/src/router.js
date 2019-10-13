@@ -145,13 +145,6 @@ var routes = [{
 		}
 	},
 	{
-		// 滑块
-		path: "/form/slider",
-		component: function(resolve) {
-			return require(['vue!./pages/form/slider.vue'], resolve);
-		}
-	},
-	{
 		// 按钮
 		path: "/form/switch",
 		component: function(resolve) {

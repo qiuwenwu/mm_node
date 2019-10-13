@@ -6,7 +6,8 @@
 		"cache": 0,
 		"func_file": "./app.js",
 		"method": "ALL"
-	}, {
+	},
+	{
 		"path": "/api/dev/plugin",
 		"type": "api",
 		"name": "dev_plugin",
@@ -14,7 +15,8 @@
 		"cache": 0,
 		"func_file": "./plugin.js",
 		"method": "ALL"
-	}, {
+	},
+	{
 		"path": "/api/dev/event",
 		"type": "api",
 		"name": "dev_event",
@@ -84,6 +86,15 @@
 		"title": "查看帮助的接口",
 		"cache": 0,
 		"func_file": "./help.js",
+		"method": "ALL"
+	},
+	{
+		"path": "/api/dev/ui",
+		"type": "api",
+		"name": "dev_ui",
+		"title": "压缩UI组件的接口",
+		"cache": 0,
+		"func_file": "./ui.js",
 		"method": "ALL"
 	}
 ]

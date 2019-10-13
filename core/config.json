@@ -1,4 +1,7 @@
 {
+	"web": {
+		"name": "超级美眉"
+	},
 	"mysql": {
 		"host": "localhost",
 		"port": 3306,

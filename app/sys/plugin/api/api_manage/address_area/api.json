@@ -13,7 +13,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_group": [],
         "admin_group": []
     }
 }

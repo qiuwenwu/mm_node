@@ -118,11 +118,6 @@
 						url: "/form/select"
 					},
 					{
-						title: "滑块",
-						name: "mm_slider",
-						url: "/form/slider"
-					},
-					{
 						title: "开关",
 						name: "mm_switch",
 						url: "/form/switch"

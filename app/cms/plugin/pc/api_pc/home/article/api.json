@@ -1,9 +1,0 @@
-{
-	"path": "/home/article",
-	"type": "web",
-	"name": "home_article",
-	"title": "门户文章首页",
-	"description": "描述接口使用方法",
-	"func_file": "./index.js",
-	"method": "ALL"
-}

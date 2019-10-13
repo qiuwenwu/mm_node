@@ -35,6 +35,9 @@ label~label {margin-left:1rem;}
 .mobile .mm_input .title~.value {width:calc(100% - 5.5rem);overflow:hidden;display:flex;}
 .mobile .mm_input .unit {line-height:2rem;height:2rem;}
 
+/* 发送验证码输入框 */
+.mm_code .mm_group { border-bottom: none }
+
 /* 计数器 */
 .mm_number {display:inline-block;}
 .mm_number .value {display:flex;}

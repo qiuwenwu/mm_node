@@ -23,7 +23,7 @@ async function main(ctx, db) {
 		var method = params["method"];
 		if (!method) {
 			// 如果登录方式默认，则用常规登录方式
-			db.table = "sys_user_list";
+			db.table = "sys_user";
 
 			var username = params["username"];
 			if (username) {

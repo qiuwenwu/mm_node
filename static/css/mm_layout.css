@@ -236,6 +236,34 @@ dt,th,h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {font-weight:500;}
 .mm_table tbody+tbody,[class*=mm_table_] tbody+tbody {border-top:2px solid #dee2e6}
 .table-sm td,.table-sm th {padding:.25rem}
 
+/* 侧边栏 */
+.mm_side {
+	position: relative;
+	width: 15rem;
+	height: calc(100vh - 3.75rem);
+	overflow: hidden;
+	float: left;
+	z-index: 2;
+}
+
+.mm_side .line {
+	position: absolute;
+	top: 4rem;
+	right: 0;
+	width: 3px;
+	background: #f6f8fa;
+	border-right: 1px solid #e1e4e8;
+	height: 100%;
+}
+
+.mm_side .line:hover {
+	cursor: w-resize;
+}
+	
+.pre {
+	position: relative;
+}
+
 /* == 适配环境 == */
 @media (max-width: 576px) {
 	.mm_grid-sm>.mm_col,

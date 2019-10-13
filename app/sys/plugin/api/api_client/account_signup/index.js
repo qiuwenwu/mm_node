@@ -27,7 +27,7 @@ async function getCode(db, username, password) {
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	db.table = "sys_user_list";
+	db.table = "sys_user";
 
 	var by = ctx.request.body;
 	var username = by["username"];

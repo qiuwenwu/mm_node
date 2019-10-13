@@ -6,7 +6,6 @@
 </template>
 
 <script>
-	
 </script>
 
 <style>

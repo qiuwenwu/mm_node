@@ -16,7 +16,6 @@ class Sql extends Index {
 		super(scope, __dirname);
 		this.Drive = Drive;
 		this.type = "sql";
-
 	}
 }
 

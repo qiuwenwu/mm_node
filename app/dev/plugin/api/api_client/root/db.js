@@ -37,7 +37,7 @@ dev_class.update_db = async function(req, db) {
 		scope = "sys";
 	}
 	var pool = $.pool.db[scope];
-	var msg = await pool.update_db(db, q["name"], q["table"]);
+	var msg = await pool.update_db(db, q["name"], q["table"], q["all"]);
 	if (msg) {
 		return $.ret.bl(false, msg);
 	} else {

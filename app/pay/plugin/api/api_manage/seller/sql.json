@@ -1,0 +1,23 @@
+{
+    "name": "pay_seller2",
+    "title": "",
+    "table": "pay_seller",
+    "key": "seller_id",
+    "orderby_default": "`seller_id` desc",
+    "field_default": "`seller_id`,`name`,`province_id`,`city_id`,`address`,`institution`,`institution_code`,`institution_img`,`institution_state`,`business`,`user_id`",
+    "query": {
+        "name": "`name` like '%{0}%'",
+        "address": "`address` like '%{0}%'",
+        "institution": "`institution` like '%{0}%'",
+        "institution_code": "`institution_code` like '%{0}%'",
+        "institution_img": "`institution_img` like '%{0}%'",
+        "institution_state_min": "`institution_state` >= {0}",
+        "institution_state_max": "`institution_state` <= {0}",
+        "business": "`business` like '%{0}%'"
+    },
+    "where": {},
+    "update": {
+        "institution_state_add": "`institution_state` = `institution_state` + {0}"
+    },
+    "field_hide": []
+}

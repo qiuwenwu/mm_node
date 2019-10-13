@@ -1,0 +1,146 @@
+{
+	"name": "admin",
+	"sort": 1,
+	"route": [{
+			"name": "mall",
+			"path": "/mall",
+			"redirect": "/mall/channel"
+		},
+		{
+			"name": "mall_channel",
+			"path": "/mall/channel",
+			"component": "",
+			"level": 1,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "mall_channel_form",
+			"path": "/mall/channel_form",
+			"component": "",
+			"level": 2,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "mall_goods",
+			"path": "/mall/goods",
+			"component": "",
+			"level": 1,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "mall_goods_form",
+			"path": "/mall/goods_form",
+			"component": "",
+			"level": 2,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "mall_type",
+			"path": "/mall/type",
+			"component": "",
+			"level": 1,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "mall_type_form",
+			"path": "/mall/type_form",
+			"component": "",
+			"level": 2,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "mall_shop",
+			"path": "/mall/shop",
+			"component": "",
+			"level": 1,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "mall_shop_form",
+			"path": "/mall/shop_form",
+			"component": "",
+			"level": 2,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "mall_ad",
+			"path": "/mall/ad",
+			"component": "",
+			"level": 1,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "mall_ad_form",
+			"path": "/mall/ad_form",
+			"component": "",
+			"level": 2,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		}
+	],
+	"main": [{
+		"title": "商城",
+		"url": "/mall",
+		"display": 2,
+		"sub": [{
+				"title": "卖场管理",
+				"url": "/mall/channel"
+			},
+			{
+				"title": "商品管理",
+				"url": "/mall/goods"
+			},
+			{
+				"title": "商品分类",
+				"url": "/mall/type"
+			},
+			{
+				"title": "店铺管理",
+				"url": "/mall/shop"
+			},
+			{
+				"title": "广告管理",
+				"url": "/mall/ad"
+			}
+		]
+	}]
+}

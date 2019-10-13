@@ -3591,10 +3591,10 @@ INSERT INTO `sys_address_province` VALUES (810000, '香港特别行政区', 0, 0
 INSERT INTO `sys_address_province` VALUES (820000, '澳门特别行政区', 0, 0);
 
 -- ----------------------------
--- Table structure for sys_app_list
+-- Table structure for sys_app
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_app_list`;
-CREATE TABLE `sys_app_list`  (
+DROP TABLE IF EXISTS `sys_app`;
+CREATE TABLE `sys_app`  (
   `app_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '应用序号',
   `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '应用图标：用于用户登录时显示',
   `name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '应用名称：用于用户登陆时显示授权应用',
@@ -3709,7 +3709,7 @@ CREATE TABLE `sys_user_group`  (
   `next_group_id` mediumint(8) UNSIGNED NOT NULL COMMENT '下级用户组ID：决定用户升级后所属用户组',
   `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '图标：用于标识用户组',
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '描述：描述该用户组的特点或权限范围',
-  `app` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '应用：用于区分用户组使用范围，cms内容管理系统、bbs社区、mall商城',
+  `app` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '应用：用于区分用户组使用范围，home门户、bbs社区、mall商城',
   `display` smallint(3) UNSIGNED NOT NULL COMMENT '显示顺序',
   PRIMARY KEY (`group_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
@@ -3729,10 +3729,10 @@ INSERT INTO `sys_user_group` VALUES (9, '导师', 4, 160, 0.95, 2.00, 10, NULL, 
 INSERT INTO `sys_user_group` VALUES (10, '贤者', 5, 180, 0.90, 3.00, 0, NULL, '通过IQ值评估，激励用户评论和发表', 'bbs', 0);
 
 -- ----------------------------
--- Table structure for sys_user_info
+-- Table structure for sys_user
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_user_info`;
-CREATE TABLE `sys_user_info`  (
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user`  (
   `user_id` mediumint(8) UNSIGNED NOT NULL COMMENT '用户ID',
   `name` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '姓名',
   `sex` smallint(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '性别：[0,2]0未设置、1男、2女',
@@ -3754,10 +3754,10 @@ CREATE TABLE `sys_user_info`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Table structure for sys_user_list
+-- Table structure for sys_user
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_user_list`;
-CREATE TABLE `sys_user_list`  (
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user`  (
   `user_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '用户ID：用户获取其他与用户相关的数据',
   `username` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '用户名：用户登录时所用的账户名称',
   `password` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码：用户登录所需的密码，由6-16位数字或英文组成',
@@ -3785,10 +3785,10 @@ CREATE TABLE `sys_user_list`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of sys_user_list
+-- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user_list` VALUES (1, 'admin', 'd1d3ca239d5fb1703e8cdb39b4df91d1', 0, 5, 5, 5, '333', 0, '', 0, '::1', '2019-09-23 19:45:07', 'mm2019', '1970-01-01 00:00:00', '1', '1', NULL, '', NULL, '', NULL, 0);
-INSERT INTO `sys_user_list` VALUES (2, '15817188815', 'ae46867bcb52961d05c74ee38f0e1e56', 0, 0, 0, 0, NULL, 0, '', 0, NULL, '2019-09-17 10:28:07', 'bfd592', '1970-01-01 00:00:00', NULL, NULL, NULL, '', NULL, '', NULL, 0);
+INSERT INTO `sys_user` VALUES (1, 'admin', 'd1d3ca239d5fb1703e8cdb39b4df91d1', 0, 5, 5, 5, '333', 0, '', 0, '::1', '2019-09-23 19:45:07', 'mm2019', '1970-01-01 00:00:00', '1', '1', NULL, '', NULL, '', NULL, 0);
+INSERT INTO `sys_user` VALUES (2, '15817188815', 'ae46867bcb52961d05c74ee38f0e1e56', 0, 0, 0, 0, NULL, 0, '', 0, NULL, '2019-09-17 10:28:07', 'bfd592', '1970-01-01 00:00:00', NULL, NULL, NULL, '', NULL, '', NULL, 0);
 
 -- ----------------------------
 -- Table structure for sys_user_sns

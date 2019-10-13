@@ -1,0 +1,50 @@
+{
+	"name": "admin",
+	"sort": 1,
+	"route": [{
+			"name": "pay",
+			"path": "/pay",
+			"redirect": "/pay/account"
+		},
+		{
+			"name": "pay_account_amount",
+			"path": "/pay/account_amount",
+			"component": "",
+			"level": 1,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		},
+		{
+			"name": "pay_seller",
+			"path": "/pay/seller",
+			"component": "",
+			"level": 1,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
+		}
+	],
+	"main": [{
+		"title": "门户",
+		"path": "/pay",
+		"display": 1,
+		"sub": [{
+				"title": "栏目管理",
+				"url": "/pay/article_channel"
+			},
+			{
+				"title": "文章管理",
+				"url": "/pay/article"
+			},
+			{
+				"title": "广告管理",
+				"url": "/pay/ad"
+			}
+		]
+	}]
+}

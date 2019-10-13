@@ -82,9 +82,10 @@ DB.prototype.update_config = async function(db, name, table) {
  * @param {Object} db 数据库管理器
  * @param {String} name 要更新的配置名
  * @param {String} table 表名关键词, 支持*table后缀匹配、table*前缀匹配、*table*包含匹配
+ * @param {Boolean} all 是否更新全部表，true为是，false为否
  * @return {String} 更新成功返回null, 失败返回错误提示
  */
-DB.prototype.update_db = async function(db, name, table) {
+DB.prototype.update_db = async function(db, name, table, all) {
 	var ret;
 	if (name) {
 		var o = this.get(name);
@@ -96,11 +97,18 @@ DB.prototype.update_db = async function(db, name, table) {
 	} else {
 		var list = this.list;
 		if (list.length > 0) {
-			for (var i = 0; i < list.length; i++) {
-				var o = list[i];
-				if (o.config.table === table) {
-					ret = await o.update_db(db);
-					break;
+			if (table) {
+				for (var i = 0; i < list.length; i++) {
+					var o = list[i];
+					if (o.config.table === table) {
+						ret = await o.update_db(db);
+						break;
+					}
+				}
+			} else if (all) {
+				for (var i = 0; i < list.length; i++) {
+					var o = list[i];
+					await o.update_db(db);
 				}
 			}
 		}

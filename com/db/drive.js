@@ -824,7 +824,7 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 	var arr = cg.table.split('_');
 	var p = "/api/";
 	if (arr.length > 1) {
-		p += cg.table.right('_').replaceAll('_', '/');
+		p += cg.table.right('_').replace('_', '/');
 	} else {
 		p += arr[0];
 	}
@@ -859,8 +859,8 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 			o.oauth = {
 				"scope": true,
 				"signIn": true,
-				"user_group": [],
-				"admin_group": []
+				"vip": 0,
+				"user_group": []
 			};
 		}
 		o.method = "GET";
@@ -872,7 +872,6 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 			"scope": true,
 			"signIn": true,
 			"gm": 2,
-			"user_group": [],
 			"admin_group": []
 		};
 		o.path = o.path.replace("/api/", "/apis/");

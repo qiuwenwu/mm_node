@@ -1,36 +1,39 @@
 // 内容容器
-import mm_btn from '/src/components/content/mm_btn.vue'
-import mm_icon from '/src/components/content/mm_icon.vue'
-import mm_loading from '/src/components/content/mm_loading.vue'
-import mm_pre from '/src/components/content/mm_pre.vue'
+import mm_btn from '/src/components/content/mm_btn.vue';
+import mm_icon from '/src/components/content/mm_icon.vue';
+import mm_loading from '/src/components/content/mm_loading.vue';
+import mm_pre from '/src/components/content/mm_pre.vue';
 
 // 布局容器
-import mm_body from '/src/components/layout/mm_body.vue'
-import mm_col from '/src/components/layout/mm_col.vue'
-import mm_foot from '/src/components/layout/mm_foot.vue'
-import mm_grid from '/src/components/layout/mm_grid.vue'
-import mm_group from '/src/components/layout/mm_group.vue'
-import mm_head from '/src/components/layout/mm_head.vue'
-import mm_item from '/src/components/layout/mm_item.vue'
-import mm_list from '/src/components/layout/mm_list.vue'
-import mm_modal from '/src/components/layout/mm_modal.vue'
-import mm_movable from '/src/components/layout/mm_movable.vue'
-import mm_page from '/src/components/layout/mm_page.vue'
-import mm_div from '/src/components/layout/mm_div.vue'
-import mm_table from '/src/components/layout/mm_table.vue'
-import mm_warp from '/src/components/layout/mm_warp.vue'
+import mm_body from '/src/components/layout/mm_body.vue';
+import mm_col from '/src/components/layout/mm_col.vue';
+import mm_foot from '/src/components/layout/mm_foot.vue';
+import mm_grid from '/src/components/layout/mm_grid.vue';
+import mm_group from '/src/components/layout/mm_group.vue';
+import mm_head from '/src/components/layout/mm_head.vue';
+import mm_item from '/src/components/layout/mm_item.vue';
+import mm_list from '/src/components/layout/mm_list.vue';
+import mm_modal from '/src/components/layout/mm_modal.vue';
+import mm_movable from '/src/components/layout/mm_movable.vue';
+import mm_page from '/src/components/layout/mm_page.vue';
+import mm_div from '/src/components/layout/mm_div.vue';
+import mm_side from '/src/components/layout/mm_side.vue';
+import mm_table from '/src/components/layout/mm_table.vue';
+import mm_warp from '/src/components/layout/mm_warp.vue';
 
 // 表单组件
-import mm_checkbox from '/src/components/form/mm_checkbox.vue'
-import mm_code from '/src/components/form/mm_code.vue'
-import mm_input from '/src/components/form/mm_input.vue'
-import mm_number from '/src/components/form/mm_number.vue'
-import mm_pager from '/src/components/form/mm_pager.vue'
-import mm_radio from '/src/components/form/mm_radio.vue'
-import mm_reverse from '/src/components/form/mm_reverse.vue'
-import mm_select from '/src/components/form/mm_select.vue'
-import mm_slider from '/src/components/form/mm_slider.vue'
-import mm_switch from '/src/components/form/mm_switch.vue'
+import mm_checkbox from '/src/components/form/mm_checkbox.vue';
+import mm_code from '/src/components/form/mm_code.vue';
+import mm_input from '/src/components/form/mm_input.vue';
+import mm_number from '/src/components/form/mm_number.vue';
+import mm_pager from '/src/components/form/mm_pager.vue';
+import mm_radio from '/src/components/form/mm_radio.vue';
+import mm_reverse from '/src/components/form/mm_reverse.vue';
+import mm_select from '/src/components/form/mm_select.vue';
+import mm_switch from '/src/components/form/mm_switch.vue';
+
+// 拓展组件
+import mm_nav from '/src/components/expand/mm_nav.vue';
 
 export default {
 	/**
@@ -58,6 +61,7 @@ export default {
 		Vue.component('mm_movable', mm_movable);
 		Vue.component('mm_page', mm_page);
 		Vue.component('mm_div', mm_div);
+		Vue.component('mm_side', mm_side);
 		Vue.component('mm_table', mm_table);
 		Vue.component('mm_warp', mm_warp);
 
@@ -70,7 +74,9 @@ export default {
 		Vue.component('mm_radio', mm_radio);
 		Vue.component('mm_reverse', mm_reverse);
 		Vue.component('mm_select', mm_select);
-		Vue.component('mm_slider', mm_slider);
 		Vue.component('mm_switch', mm_switch);
+		
+		// 拓展组件
+		Vue.component('mm_nav', mm_nav);
 	}
 };

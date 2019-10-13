@@ -1,7 +1,10 @@
-var base = require('./base');
+const base = require('./base');
 
-$.param = $.param_admin();
-$.sql = $.sql_admin();
+/* 集合路由、导航，不开发前端的情况下可以将以下3行注释掉 */
+const Nav = require('../com/nav').Nav;
+$.nav = new Nav();
+$.nav.update();
+
 $.task = $.task_admin();
 
 // 将Api的缓存改为cache方式
