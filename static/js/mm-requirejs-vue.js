@@ -32,7 +32,7 @@ define(['module'], function(module) {
 			xhr.open('GET', url, true);
 			xhr.onreadystatechange = function() {
 				if (xhr.readyState === 4 && this.status < 400)
-					callback(xhr.responseText);
+					callback(xhr.responseText, url);
 			};
 			xhr.send();
 		};
@@ -142,10 +142,11 @@ define(['module'], function(module) {
 	};
 
 	/**
-	 * Processing css style
-	 * @param style
+	 * 处理CSS样式
+	 * @param {String} style 样式内容
+	 * @param {String} id 样式的ID
 	 */
-	var processStyles = function(style) {
+	var processStyles = function(style, id) {
 		if (!style || !style.trim().length)
 			return;
 		if (masterConfig.isBuild || typeof document === 'undefined')
@@ -155,6 +156,10 @@ define(['module'], function(module) {
 		if (cssStrategy === 'inject') {
 			// inject to DOM as script
 			var e = document.createElement('style');
+			if (id) {
+				e.setAttribute('id', id);
+			}
+
 			e.type = 'text/css';
 			e.appendChild(document.createTextNode(style));
 			var head = document.getElementsByTagName("head")[0];
@@ -174,8 +179,10 @@ define(['module'], function(module) {
 	 * @param text raw file content
 	 * @returns {string} executable js
 	 */
-	var parse = function(text) {
+	var parse = function(text, url) {
 		var tpl = module.config().templateVar;
+
+		// 补充样式引用
 		if (text.indexOf(tpl) === -1 && text.indexOf('<template>') !== -1) {
 			var txt = 'props: {';
 			var idx = text.indexOf(txt);
@@ -186,12 +193,49 @@ define(['module'], function(module) {
 				idx = text.indexOf(txt);
 				if (idx !== -1) {
 					text = text.replace(txt, '	template: ' + tpl + ',\r\n' + txt);
+				} else {
+					txt = 'mixins: [';
+					idx = text.indexOf(txt);
+					if (idx !== -1) {
+						text = text.replace(txt, '	template: ' + tpl + ',\r\n' + txt);
+					}
 				}
 			}
 		}
-		text = extractor.cleanup(text);
 
-		processStyles(extractor.style(text));
+		text = extractor.cleanup(text);
+		var style = extractor.style(text);
+		if (style) {
+			var id = "";
+			var arr = text.match(/<style scoped="(.*)">/gi);
+			if (arr && arr.length > 0) {
+				var str = arr[0];
+				var i = str.indexOf('"');
+				if (i !== -1) {
+					id = str.substring(i).replace(/["< >]/g, "");
+				}
+				var data_style = "";
+			}
+			if (!id) {
+				var i = url.indexOf('//');
+				if (i == -1) {
+					i = 0;
+				}
+				var u = url.replace('.vue', '').substring(i);
+				var arr = u.split('/');
+				if (arr.length > 1) {
+					id = arr[arr.length - 2] + '_' + arr[arr.length - 1];
+				} else if (arr.length > 0) {
+					id = arr[arr.length - 1];
+				} else {
+					id = u;
+				}
+			}
+			var tag_id = document.getElementById(id);
+			if (!tag_id) {
+				processStyles(style, id);
+			}
+		}
 
 		return '(function(' + (tpl || 'template') + '){' +
 			extractor.script(text) +
@@ -210,8 +254,8 @@ define(['module'], function(module) {
 			var fullName = name + (/\.(vue|html)$/.test(name) ? '' : '.vue');
 			var path = require.toUrl(fullName);
 
-			fetchContent(path, function(text) {
-				var data = parse(text);
+			fetchContent(path, function(text, url) {
+				var data = parse(text, url);
 				buildMap[name] = data;
 				try {
 					load.fromText(data);

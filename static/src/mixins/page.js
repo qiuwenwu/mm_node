@@ -21,8 +21,6 @@ export default {
 			url_submit: "",
 			// 上传提交地址
 			url_upload: "",
-			// 默认访问链接, 当单独链接没有时，访问默认链接
-			url: "",
 			/* === 缓存 === */
 			// 显示方式
 			display: "",
@@ -88,7 +86,9 @@ export default {
 			// 上传进度
 			uploading: 0,
 			// 获取中
-			getting: 0
+			getting: 0,
+			// 执行结果
+			bl: false
 		}
 	},
 	methods: {
@@ -246,7 +246,7 @@ export default {
 		/// url: 请求地址
 		/// 返回: url字符串
 		toUrl(obj, url) {
-			return $.obj.toUrl(obj, url);
+			return $.toUrl(obj, url);
 		},
 		/// 登录验证
 		check_oauth() {
@@ -254,8 +254,6 @@ export default {
 				var _this = this;
 				this.$get_user(function() {
 					var token = $.db.get("token");
-					// var expires = $.db.get("expires");
-					// var t = Date.parse(new Date(expires)) - Date.parse(new Date());
 					if (token) {
 						_this.$store.commit('web/set_redirect_url', _this.$route.path + location.search);
 						_this.search();
@@ -341,7 +339,13 @@ export default {
 		/// status: 服务器状态码
 		/// 返回: 转换后的结果
 		submit_after(json, status) {
-			this.alert(json.msg);
+			if (json.result) {
+				this.alert(json.result.message);
+			} else if (json.error) {
+				this.alert(json.error.message);
+			} else {
+				this.alert('服务器连接失败！');
+			}
 		},
 		/// 请求对象事件
 		/// req: 请求参数
@@ -354,11 +358,13 @@ export default {
 		/// status: 服务器状态码
 		/// 返回: 转换后的结果
 		get_obj_after(json, status) {
-			if (json.code) {
-				this.alert(json.msg);
-			} else if (json.data) {
+			if (json.result) {
 				$.clear(this.obj);
-				$.push(this.obj, json.data);
+				$.push(this, json.result);
+			} else if (json.error) {
+				this.alert(json.error.message);
+			} else {
+				this.alert('服务器连接失败！');
 			}
 			if (this.url_get_list || this.url) {
 				this.get_list();
@@ -375,17 +381,24 @@ export default {
 		/// status: 服务器状态码
 		/// 返回: 转换后的结果
 		get_list_after(json, status) {
-			if (json) {
-				if (json.error) {
-					this.alert(json.msg);
-				} else if (json.data) {
-					this.list.eachPush(json.data);
+			if (json.result) {
+				this.list.addList(json.result.list);
+				if (json.result.count !== undefined) {
+					this.count = json.result.count;
 				}
+			} else if (json.error) {
+				this.alert(json.error.message);
+			} else {
+				this.alert('服务器连接失败！');
 			}
 		},
 		upload_after(json, status) {
-			if (json) {
-				this.alert(json.msg);
+			if (json.result) {
+				this.alert(json.result.message);
+			} else if (json.error) {
+				this.alert(json.error.message);
+			} else {
+				this.alert('服务器连接失败！');
 			}
 		},
 		upload_before(form) {

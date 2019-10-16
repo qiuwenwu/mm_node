@@ -38,9 +38,9 @@
 			var width = e.clientX - x;
 			if (width >= width_init) {
 				$(target).width(width + 'px');
-			}
-			if(func){
-				func(width);
+				if(func){
+					func(width);
+				}
 			}
 		}
 		//停止事件 
@@ -65,15 +65,13 @@
 			},
 			func: {
 				type: Function,
-				default: function(width){
-					
-				}
+				default: function(width) {}
 			}
 		},
 		data() {
 			var id = this.id;
 			if (!id) {
-				id = "mm_side" + parseInt(Math.random() * minNum + 1, 10);
+				id = "mm_side" + parseInt(Math.random() * 1000 + 1, 10);
 			}
 			return {
 				side_id: id

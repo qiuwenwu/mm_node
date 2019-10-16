@@ -33,11 +33,6 @@ define(["Vue"], function(Vue) {
 			}
 
 			/**
-			 * @description 设置mm_sdk为全局变量
-			 */
-			Vue.prototype.$ = $;
-
-			/**
 			 * @description 路由跳转
 			 */
 			Vue.prototype.$back = function() {
