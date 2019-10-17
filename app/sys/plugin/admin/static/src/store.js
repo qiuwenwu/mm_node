@@ -2,7 +2,6 @@ import Vue from 'Vue';
 import vuex from 'vuex';
 
 import user from './store/user'
-import lang from './store/lang'
 import web from './store/web'
 
 // 引用vuex插件
@@ -23,7 +22,6 @@ var store = {
 	 */
 	modules: {
 		user: user,
-		lang: lang,
 		web: web
 	},
 	strict: true

@@ -1,11 +1,11 @@
 {
 	"name": "demo",
-	"title": "示例插件",
-	"description": "描述该插件是做什么用的",
+	"title": "应用示例",
+	"description": "演示一个应用的构成",
 	"version": "1.0",
-	"identifier": "",
+	"identifier": "demo",
 	"lang_path": "./lang/",
 	"icon": "/img/logo.png",
-	"cmd": "",
+	"cmd": "demo",
 	"sort": 10
 }

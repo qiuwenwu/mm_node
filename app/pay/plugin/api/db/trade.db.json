@@ -134,7 +134,7 @@
             "min": 0,
             "max": 0,
             "decimal": 0,
-            "default": "CURRENT_TIMESTAMP",
+            "default": "0000-00-00 00:00:00",
             "join_in": [],
             "join_out": []
         },
@@ -419,7 +419,7 @@
             "min": 0,
             "max": 0,
             "decimal": 8,
-            "default": "0.00000000",
+            "default": "00000000.00000000",
             "join_in": [],
             "join_out": []
         },
@@ -438,7 +438,7 @@
             "min": 0,
             "max": 0,
             "decimal": 8,
-            "default": "0.00000000",
+            "default": "00000000.00000000",
             "join_in": [],
             "join_out": []
         },
@@ -457,7 +457,7 @@
             "min": 0,
             "max": 0,
             "decimal": 8,
-            "default": "0.00000000",
+            "default": "00000000.00000000",
             "join_in": [],
             "join_out": []
         }

@@ -1,0 +1,10 @@
+{
+	"path": "/api/dev/view",
+	"type": "api",
+	"name": "dev_view",
+	"title": "管理视图的接口",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "ALL",
+	"param_path": "./param.json"
+}

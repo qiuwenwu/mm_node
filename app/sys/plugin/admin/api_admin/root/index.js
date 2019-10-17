@@ -7,7 +7,8 @@
 async function main(ctx, db) {
 	// 过滤静态文件
 	if (ctx.path.indexOf('.') === -1) {
-		var name = $.config.web.name ? $.config.web.name : "MM";
+		var w = $.config.web;
+		var name = w.name ? w.name : "MM";
 		var model = {
 			title: name + "后台管理系统",
 			description: name + "是一个集合门户、商城、论坛、微信公众号为一体的系统",

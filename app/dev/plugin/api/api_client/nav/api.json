@@ -1,0 +1,9 @@
+{
+	"path": "/api/nav*",
+	"type": "api",
+	"name": "nav",
+	"title": "导航",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "GET"
+}

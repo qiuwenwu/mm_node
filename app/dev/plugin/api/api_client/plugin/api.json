@@ -1,0 +1,10 @@
+{
+	"path": "/api/dev/plugin",
+	"type": "api",
+	"name": "dev_plugin",
+	"title": "管理插件的接口",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "ALL",
+	"param_path": "./param.json"
+}

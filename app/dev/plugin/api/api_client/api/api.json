@@ -1,0 +1,10 @@
+{
+	"path": "/api/dev/api",
+	"type": "api",
+	"name": "dev_api",
+	"title": "管理API的接口",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "ALL",
+	"param_path": "./param.json"
+}

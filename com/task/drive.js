@@ -47,8 +47,6 @@ class Drive extends Item {
 		};
 		// 当前状态 
 		this.state = "end";
-
-
 	}
 }
 

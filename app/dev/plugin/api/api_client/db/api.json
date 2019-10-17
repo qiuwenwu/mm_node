@@ -1,0 +1,10 @@
+{
+	"path": "/api/dev/db",
+	"type": "api",
+	"name": "dev_db",
+	"title": "管理数据库的接口",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "ALL",
+	"param_path": "./param.json"
+}

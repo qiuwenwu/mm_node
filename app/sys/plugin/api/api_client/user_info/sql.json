@@ -1,0 +1,48 @@
+{
+    "name": "sys_user_info",
+    "title": "",
+    "table": "sys_user_info",
+    "key": "user_id",
+    "orderby_default": "`user_id` desc",
+    "field_default": "`user_id`,`name`,`sex`,`age`,`birthday`,`province_id`,`city_id`,`address`,`job`,`job_scope`,`company_address`,`company_business`,`school`,`major`,`idcard`,`idcard_state`,`idcard_img`",
+    "method": "get",
+    "query": {
+        "name": "`name` like '%{0}%'",
+        "sex_min": "`sex` >= {0}",
+        "sex_max": "`sex` <= {0}",
+        "age_min": "`age` >= {0}",
+        "age_max": "`age` <= {0}",
+        "birthday_min": "`birthday` >= '{0}'",
+        "birthday_max": "`birthday` <= '{0}'",
+        "address": "`address` like '%{0}%'",
+        "job": "`job` like '%{0}%'",
+        "job_scope": "`job_scope` like '%{0}%'",
+        "company_address": "`company_address` like '%{0}%'",
+        "company_business": "`company_business` like '%{0}%'",
+        "school": "`school` like '%{0}%'",
+        "major": "`major` like '%{0}%'",
+        "idcard": "`idcard` like '%{0}%'",
+        "idcard_state_min": "`idcard_state` >= {0}",
+        "idcard_state_max": "`idcard_state` <= {0}",
+        "idcard_img": "`idcard_img` like '%{0}%'"
+    },
+    "query_default": {
+        "user_id": "`user_id` = {user_id}"
+    },
+    "where": {},
+    "update": {
+        "sex_add": "`sex` = `sex` + {0}",
+        "age_add": "`age` = `age` + {0}",
+        "idcard_state_add": "`idcard_state` = `idcard_state` + {0}"
+    },
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
+    }
+}

@@ -1,7 +1,7 @@
 "use strict";
 
 require({
-	baseUrl: './src/',
+	baseUrl: '/dev/src/',
 	// 是否保留注释
 	preserveLicenseComments: true,
 	waitSeconds: 0,
@@ -33,12 +33,6 @@ require({
 			exports: 'Kindeditor',
 			deps: ['jquery']
 		},
-		vuex: {
-			deps: ['Vue']
-		},
-		VueRouter: {
-			deps: ['Vue']
-		},
 		swiper: {
 			deps: ['jquery']
 		},
@@ -47,6 +41,12 @@ require({
 		},
 		mm_vue: {
 			deps: ['mm_sdk']
+		},
+		vuex: {
+			deps: ['Vue']
+		},
+		VueRouter: {
+			deps: ['Vue']
 		}
 	},
 	config: {

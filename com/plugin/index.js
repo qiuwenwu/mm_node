@@ -128,7 +128,7 @@ Plugin.prototype.init = function(option) {
  */
 Plugin.prototype.load = function(path) {
 	if (!path) {
-		path = '/app/' + this.scope + "/plugin";
+		path = '/app/' + this.scope + "/plugin/";
 	}
 	if (path.endsWith('/app/')) {
 		var list_scope = $.dir.get(path);
@@ -146,20 +146,24 @@ Plugin.prototype.load = function(path) {
 			}
 		});
 	} else {
-		var list_scope = $.dir.get(path);
-
-		// 遍历目录路径
-		var _this = this;
-		list_scope.map(function(o) {
-			var file = './plugin.json'.fullname(o);
-			if (file.hasFile()) {
-				var obj = new Drive(o);
-				obj.load(file);
-				if (obj.config.name) {
-					_this.list.push(obj);
+		var dir_plugin = path + "/plugin/";
+		if(dir_plugin.hasDir())
+		{
+			var list_scope = $.dir.get(dir_plugin);
+			
+			// 遍历目录路径
+			var _this = this;
+			list_scope.map(function(o) {
+				var file = './plugin.json'.fullname(o);
+				if (file.hasFile()) {
+					var obj = new Drive(o);
+					obj.load(file);
+					if (obj.config.name) {
+						_this.list.push(obj);
+					}
 				}
-			}
-		});
+			});
+		}
 	}
 };
 

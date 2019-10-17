@@ -1,23 +1,31 @@
-export default {
+import nav from 'nav';
+
+var web = {
 	state: function() {
+		var n = Object.assign({}, nav);
+		delete n.routes;
 		return {
 			config: [],
-			bottom: [],
-			desktop: [],
-			left: [],
-			main: [],
-			quick: [],
-			right: []
+			nav: n
+			// nav: {
+			// 	top: [],
+			// 	right: [],
+			// 	bottom: [],
+			// 	left: [],
+			// 	desktop: [],
+			// 	quick: [],
+			// 	main: []
+			// }
 		}
 	},
 	mutations: {
 		set(state, data) {
 			$.push(state, data);
-		},
-		req(state, data) {
-
 		}
 	},
 	actions: {},
 	getters: {}
-};
+}
+
+export default web;
+

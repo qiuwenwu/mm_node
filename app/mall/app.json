@@ -1,0 +1,11 @@
+{
+	"name": "mall",
+	"title": "商城",
+	"description": "该应用用于用户网购商品",
+	"version": "1.0",
+	"identifier": "mall",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "mall",
+	"sort": 10
+}

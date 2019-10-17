@@ -2,6 +2,7 @@ import Vue from 'Vue';
 import VueRouter from 'VueRouter';
 import index from './pages/index.vue';
 import mm_sdk from 'mm_sdk';
+import nav from 'nav';
 
 // 定义返回上一页方法
 VueRouter.prototype.goBack = function() {
@@ -20,7 +21,7 @@ var filePath = "/admin";
 // 添加路由
 var routes = [{
 	// 首页
-	path: "/*",
+	path: "/",
 	component: function(resolve) {
 		return require(['vue!./pages/index.vue'], resolve);
 	}
@@ -35,6 +36,20 @@ var routes = [{
 	path: "*",
 	redirect: "/404"
 }];
+
+var lt = nav.routes;
+for (var i = 0; i < lt.length; i++) {
+	var o = lt[i];
+	var com = o.component;
+	if (com) {
+		o.component = function(resolve) {
+			return require(['vue!' + com], resolve);
+		};
+		routes.push(o);
+	} else if (o.redirect) {
+		routes.push(o);
+	}
+}
 
 // 生成路由器
 var router = new VueRouter({

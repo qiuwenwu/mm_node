@@ -26,12 +26,20 @@ class Nav extends Index {
  * @return {Object|String}
  */
 Nav.prototype.run = async function(name, type) {
-	var o = this.get(name);
-	if (o) {
+	var obj = new this.Drive();
+	for(var i = 1; i < this.list.length; i++){
+		var o = this.list[i].config;
+		if(o.name == name) {
+			obj.merge(o);
+		}
+	}
+	var cg = obj.config;
+	if(cg.name)
+	{
 		if (type) {
-			return o.config[type];
+			return cg[type];
 		} else {
-			return o.config;
+			return cg;
 		}
 	}
 	return null;
@@ -80,9 +88,8 @@ Index.prototype.load_list = function(list) {
 		var dir = file.dirname();
 		// 载入文件
 		var obj = file.loadJson(dir);
-		
 		var drive = new _this.Drive(dir);
-		drive.loadFile(file);
+		drive.load(file);
 		_this.list.push(drive);
 	});
 };

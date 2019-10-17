@@ -4,14 +4,10 @@
  * @version 1.0
  */
 
-// 创建应用
-var plugins = $.plugin_admin('{0}');
-plugins.update(__dirname);
-
 /**
  * @description 插件对象
  */
-var plugin = {
+module.exports = {
 	/**
 	 * @description 初始化
 	 * @param {Object} option 配置参数
@@ -145,5 +141,3 @@ var plugin = {
 		return ret;
 	}
 };
-
-module.exports = plugin;

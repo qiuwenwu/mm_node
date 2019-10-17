@@ -1,17 +1,17 @@
 /**
- * @fileOverview demo
+ * @fileOverview wechat
  * @author <a href="作者主页地址">插件作者</a>
  * @version 1.0
  */
 
 // 创建应用
-var plugins = $.plugin_admin('app');
+var plugins = $.plugin_admin('wechat');
 plugins.update(__dirname);
 
 /**
  * @description 插件对象
  */
-var plugin = {
+module.exports = {
 	/**
 	 * @description 初始化
 	 * @param {Object} option 配置参数
@@ -145,5 +145,3 @@ var plugin = {
 		return ret;
 	}
 };
-
-module.exports = plugin;

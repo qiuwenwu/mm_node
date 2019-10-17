@@ -222,11 +222,20 @@ define(["Vue"], function(Vue) {
 		methods: {
 			/**
 			 * @description 读取语言库
-			 * @param {Object} index 索引
+			 * @param {String} name 名称
 			 * @return {String} 返回语言值
 			 */
-			$lang: function $lang(index) {
-				return this.$store.state.lang.dict[index];
+			$lang: function $lang(name) {
+				var lang = this.$store.state.lang;
+				var title = "";
+				for(var i = 0; i < lang.length; i++){
+					if(name = o.name)
+					{
+						title = o.title;
+						break;
+					};
+				}
+				return title;
 			},
 
 			/**

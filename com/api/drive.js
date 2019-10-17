@@ -29,7 +29,10 @@ class Drive extends Item {
 	constructor(dir) {
 		super(dir, __dirname);
 		this.default_file = "./api.json";
-
+		
+		// 开关，开启可使用接口
+		this.onOff = true;
+		
 		// oauth身份验证配置 + 函数
 		this.oauth;
 		// param参数配置 + 函数

@@ -166,6 +166,9 @@ Drive.prototype.mode = async function(convert_amd) {
 						if (path.endsWith('.js')) {
 							ctx.response.type = "application/javascript; charset=utf-8";
 						}
+						else {
+							ctx.response.type = "text/html; charset=utf-8";
+						}
 						ctx.body = code;
 						if (this.config.maxAge) {
 							if (this.config.immutable) {

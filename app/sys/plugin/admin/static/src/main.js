@@ -1,7 +1,8 @@
 "use strict";
 
 require({
-	baseUrl: './src/',
+	// 基础路径, 会将 ./ 替换成该路径
+	baseUrl: '/admin/src/',
 	// 是否保留注释
 	preserveLicenseComments: true,
 	waitSeconds: 0,
@@ -20,6 +21,7 @@ require({
 		mm_sdk: '/js/mm_sdk',
 		mm_vue: '/js/mm_vue',
 		ui: '/src/ui.min',
+		nav: '/api/nav.js?name=admin',
 		store: './store',
 		router: './router',
 		echarts: '/js/echarts',
@@ -65,15 +67,7 @@ require({
 	
 	Vue.use(mm_vue);
 	Vue.use(ui);
-	
-	$.get('/api/nav?app=admin', function(json, status){
-		if(json){
-			if(json.result) {
-				console.log(json.result);
-			}
-		}
-	});
-	
+
 	/**
 	 * @description 初始化整个Vue应用程序
 	 * 由于组件预先注册的标记名而自动放置的组件头将在应用程序模板中找到

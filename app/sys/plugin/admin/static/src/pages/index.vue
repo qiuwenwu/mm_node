@@ -16,7 +16,6 @@
 	import Vue from 'Vue';
 
 	export default {
-		template: __template__,
 		data: function() {
 			return {
 				web: this.$store.state.web
@@ -24,7 +23,7 @@
 		},
 		computed: {
 			nav_main() {
-				var list = this.web.main;
+				var list = this.web.nav.main;
 				list.sortBy('asc', 'display')
 				return list;
 			}

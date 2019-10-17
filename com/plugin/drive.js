@@ -331,4 +331,20 @@ Drive.prototype.run_chat = function(from_user, to_user, content, group, type, ms
 	return ret;
 };
 
+/**
+ * @description 执行程序
+ * @param {Object} param1 参数1
+ * @param {Object} param2 参数2
+ * @return {Object} 返回执行结果
+ */
+Drive.prototype.exec = function(func_name, option) {
+	var msg = "";
+	if (this[func_name]) {
+		msg = this[func_name](option);
+	} else {
+		msg = "错误的操作";
+	}
+	return msg;
+};
+
 exports.Drive = Drive;

@@ -22,7 +22,7 @@ class Drive extends Item {
 			// 加载顺序，数字越大越后面加载
 			"sort": 1,
 			// 路由
-			"route": [
+			"routes": [
 				/*
 				{
 					// 名称
@@ -100,7 +100,7 @@ class Drive extends Item {
  */
 Drive.prototype.run = function(type) {
 	var cg = {
-		route: this.config.route
+		routes: this.config.routes
 	}
 	cg[type] = this.config[type];
 	return cg
@@ -117,13 +117,13 @@ Drive.prototype.merge_sub = function(arr, lt) {
 	if (lt) {
 		for (var i = 0; i < lt.length; i++) {
 			var o = lt[i];
-			var item = arr.get({
-				name: o.name
-			}, true);
-			if (item) {
-				$.push(item, o, true);
-			} else {
-				arr.push(o);
+			if (o.name) {
+				var item = arr.getMatch(o.name, 'name');
+				if (item) {
+					$.push(item, o, true);
+				} else {
+					arr.push(o);
+				}
 			}
 		}
 	}
@@ -155,7 +155,7 @@ Drive.prototype.merge = function(o) {
 	if (o.sort < cg.sort) {
 		return;
 	} else {
-		this.merge_sub(cg.route, o.route);
+		this.merge_sub(cg.routes, o.routes);
 		this.merge_sub(cg.top, o.top);
 		this.merge_sub(cg.left, o.left);
 		this.merge_sub(cg.bottom, o.bottom);
@@ -191,7 +191,7 @@ Drive.prototype.new_nav = function(title, name, url) {
  * @param {String} gm 是否管理员
  * @param {Object} oauth 身份验证
  */
-Drive.prototype.new_route = function(app, plugin, name, group, oauth) {
+Drive.prototype.new_routes = function(app, plugin, name, group, oauth) {
 	var pn = plugin === 'pc' ? '' : plugin;
 	var n = name.replace(app + "_", '');
 	var obj = {
@@ -240,7 +240,7 @@ Drive.prototype.new_config = function(file) {
 
 	var app = (file + '').right('app' + $.slash).left($.slash, true);
 	var nav = [];
-	
+
 	if (plugin.indexOf('admin') !== -1) {
 		var d = dir + 'api_manage';
 		if (d.hasDir()) {
@@ -252,14 +252,14 @@ Drive.prototype.new_config = function(file) {
 					delete o.oauth.scope;
 					var name = o.name.trim('2');
 					// 添加一个列表页
-					var obj = _this.new_route(app, plugin, name, 1, o.oauth);
+					var obj = _this.new_routes(app, plugin, name, 1, o.oauth);
 
 					//添加一个详情页
-					var obj2 = _this.new_route(app, plugin, name + '_form', 1, o.oauth);
+					var obj2 = _this.new_routes(app, plugin, name + '_form', 1, o.oauth);
 					obj2.level += 1;
 
-					cg.route.push(obj);
-					cg.route.push(obj2);
+					cg.routes.push(obj);
+					cg.routes.push(obj2);
 
 					nav.push(_this.new_nav(o.title, name, obj.path));
 					nav.push(_this.new_nav(o.title, name + '_form', obj2.path));
@@ -278,18 +278,18 @@ Drive.prototype.new_config = function(file) {
 
 					var name = o.name;
 					// 添加一个列表页
-					var obj = _this.new_route(app, plugin, name, 0, o.oauth);
+					var obj = _this.new_routes(app, plugin, name, 0, o.oauth);
 
 					//添加一个详情页
-					var obj2 = _this.new_route(app, plugin, name + '_view', 0, o.oauth);
+					var obj2 = _this.new_routes(app, plugin, name + '_view', 0, o.oauth);
 					obj2.level += 1;
 
 					if (name.indexOf('_') === -1) {
 						obj.level += 1;
 						obj2.level += 1;
 					}
-					cg.route.push(obj);
-					cg.route.push(obj2);
+					cg.routes.push(obj);
+					cg.routes.push(obj2);
 
 					nav.push(_this.new_nav(o.title, name, obj.path));
 					nav.push(_this.new_nav(o.title, name + '_view', obj2.path));
@@ -300,17 +300,21 @@ Drive.prototype.new_config = function(file) {
 	cg.name = plugin;
 	var title = "未命名";
 	var app_config = (file + '').left('plugin') + 'app.json';
-	if(app_config.hasFile()) {
+	if (app_config.hasFile()) {
 		var oj = app_config.loadJson();
 		title = oj.title;
 	}
-	if(cg.route.length > 0)
-	{
-		cg.route.splice(0, 0, { name: app, path : "/" + app, redirect: cg.route[0].path });
+	if (cg.routes.length > 0) {
+		cg.routes.splice(0, 0, {
+			name: app,
+			path: "/" + app,
+			redirect: cg.routes[0].path
+		});
 	}
-	
+
 	cg.main = [{
 		"title": title,
+		"name": app,
 		"url": "/" + app,
 		"display": 0,
 		"sub": nav

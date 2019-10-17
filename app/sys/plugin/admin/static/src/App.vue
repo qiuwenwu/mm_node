@@ -8,8 +8,6 @@
 	import Vue from 'Vue';
 
 	export default {
-		template: __template__,
-		components: {},
 		data: function() {
 			return {
 				user: this.$store.state.user

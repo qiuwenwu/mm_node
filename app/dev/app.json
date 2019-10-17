@@ -3,9 +3,9 @@
 	"title": "开发者",
 	"description": "该应用便于开发和管理超级美眉服务端，可管理“应用、插件、事件、接口、任务、数据库”等",
 	"version": "1.0",
-	"identifier": "",
+	"identifier": "dev",
 	"lang_path": "./lang/",
 	"icon": "/img/logo.png",
-	"cmd": "",
+	"cmd": "dev",
 	"sort": 10
 }

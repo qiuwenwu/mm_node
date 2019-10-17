@@ -1,0 +1,10 @@
+{
+	"path": "/api/dev/help",
+	"type": "api",
+	"name": "dev_help",
+	"title": "查看帮助的接口",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "ALL",
+	"param_path": "./param.json"
+}

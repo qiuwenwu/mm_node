@@ -46,7 +46,7 @@ Api.prototype.run = async function(ctx, db) {
 	var lt = this.list;
 	for (var i = 0; i < lt.length; i++) {
 		var o = lt[i];
-		if (path.has(o.config.path)) {
+		if (o.onOff && path.has(o.config.path)) {
 			var ret = await o.run(ctx, db);
 			if (ret) {
 				db.ret = ret;

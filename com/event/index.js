@@ -164,7 +164,7 @@ Event.prototype.sort = function(situation) {
 Event.prototype.exec_sub = async function(list, target, ctx, db) {
 	for (var i = 0; i < list.length; i++) {
 		var o = list[i];
-		if (target.has(o.config.target)) {
+		if (o.onOff && target.has(o.config.target)) {
 			var ret = await o.run(ctx, db);
 			if (ret) {
 				db.ret = ret;

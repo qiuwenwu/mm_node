@@ -15,6 +15,6 @@
 	};
 </script>
 
-<style>
+<style scoped="root_index">
 	#root_index { background: url('./img/bg.png') no-repeat center center #f6f8fa; }
 </style>

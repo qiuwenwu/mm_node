@@ -1,7 +1,7 @@
 {
 	"name": "admin",
 	"sort": 1,
-	"route": [{
+	"routes": [{
 			"name": "mall",
 			"path": "/mall",
 			"redirect": "/mall/channel"

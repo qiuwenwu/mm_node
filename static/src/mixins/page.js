@@ -13,10 +13,6 @@ export default {
 			url_get_obj: "",
 			// 查询列表地址
 			url_get_list: "",
-			// 导出地址
-			url_export: "",
-			// 导入地址
-			url_import: "",
 			// 表单提交地址
 			url_submit: "",
 			// 上传提交地址
@@ -71,16 +67,6 @@ export default {
 			roles: [],
 			// 身份验证
 			oauth: false,
-			// 上传文件组 数组格式[{ name: "test", uri: "/stiatc.jpg" }]
-			files: {
-				name: "",
-				uri: []
-			},
-			// 上传单个文件 { name: "test", uri: "/stiatc.jpg" }
-			file: {
-				name: "",
-				uri: ""
-			},
 			// 显示中
 			showing: 0,
 			// 上传进度
@@ -135,6 +121,13 @@ export default {
 					if (obj) {
 						$.clear(_this.obj);
 						$.push(_this.obj, obj);
+					} else if (json.result) {
+						$.clear(this.obj);
+						$.push(this, json.result);
+					} else if (json.error) {
+						_this.alert(json.error.message);
+					} else {
+						_this.alert('服务器连接失败！');
 					}
 				});
 			}
@@ -148,27 +141,25 @@ export default {
 				}
 				var _this = this;
 				this.$get(this.toUrl(this.events('get_list_before', this.query), url), function(json, status) {
-					var list = _this.events('get_list_after', json, status);
+					var list = _this.events('get_list_after', json, fun);
 					if (list) {
-						_this.list.eachPush(list);
-					}
-					if (fun) {
-						fun();
+						_this.list.addList(list);
+					} else if (json.result) {
+						list = json.result.list;
+						if (list) {
+							_this.list.addList(list);
+							if (json.result.count !== undefined) {
+								_this.count = json.result.count;
+							}
+						}
+					} else if (json.error) {
+						_this.alert(json.error.message);
+					} else {
+						_this.alert('服务器连接失败！');
 					}
 				});
 			}
 		},
-
-		/// 导入
-		import(file) {
-
-		},
-
-		/// 导出
-		export (file, query) {
-
-		},
-
 		/// 回调函数
 		/// name: 函数名
 		/// param1: 参数1
@@ -358,14 +349,6 @@ export default {
 		/// status: 服务器状态码
 		/// 返回: 转换后的结果
 		get_obj_after(json, status) {
-			if (json.result) {
-				$.clear(this.obj);
-				$.push(this, json.result);
-			} else if (json.error) {
-				this.alert(json.error.message);
-			} else {
-				this.alert('服务器连接失败！');
-			}
 			if (this.url_get_list || this.url) {
 				this.get_list();
 			}
@@ -379,17 +362,11 @@ export default {
 		/// 获取到列表事件
 		/// json: 响应结果
 		/// status: 服务器状态码
+		/// fun: 回调函数
 		/// 返回: 转换后的结果
-		get_list_after(json, status) {
-			if (json.result) {
-				this.list.addList(json.result.list);
-				if (json.result.count !== undefined) {
-					this.count = json.result.count;
-				}
-			} else if (json.error) {
-				this.alert(json.error.message);
-			} else {
-				this.alert('服务器连接失败！');
+		get_list_after(json, status, fun) {
+			if (fun) {
+				fun();
 			}
 		},
 		upload_after(json, status) {

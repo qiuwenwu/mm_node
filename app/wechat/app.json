@@ -3,9 +3,9 @@
 	"title": "微信应用",
 	"description": "微信调用的应用",
 	"version": "1.0",
-	"identifier": "",
+	"identifier": "wechat",
 	"lang_path": "./lang/",
 	"icon": "/img/logo.png",
-	"cmd": "",
+	"cmd": "wechat",
 	"sort": 10
 }

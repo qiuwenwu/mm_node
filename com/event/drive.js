@@ -14,7 +14,10 @@ class Drive extends Item {
 	constructor(dir) {
 		super(dir, __dirname);
 		this.default_file = "./event.json";
-
+		
+		// 开关，开启可使用使用
+		this.onOff = true;
+		
 		/* 通用项 */
 		// 配置参数
 		this.config = {
@@ -39,7 +42,6 @@ class Drive extends Item {
 			// 中断循环
 			"end": true
 		};
-
 	}
 }
 

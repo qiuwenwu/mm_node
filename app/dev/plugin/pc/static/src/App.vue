@@ -5,7 +5,7 @@
 			<div class="logo">
 				<router-link to="/"><img src="./img/logo_gray.png" /></router-link>
 			</div>
-			<mm_nav class="dev_nav nav_top" :list="nav.top"></mm_nav>
+			<mm_nav class="dev_nav nav_top" :list="nav.top" :value="$route.path"></mm_nav>
 			<dev_diy class="diy_left" :list="diy.top_left"></dev_diy>
 			<dev_diy class="diy_right" :list="diy.top_right"></dev_diy>
 		</div>
@@ -41,8 +41,6 @@
 
 
 	export default {
-		template: __template__,
-		components: {},
 		data: function() {
 			return {
 				show: {

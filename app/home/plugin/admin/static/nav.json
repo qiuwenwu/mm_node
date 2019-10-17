@@ -1,7 +1,7 @@
 {
     "name": "admin",
     "sort": 1,
-    "route": [
+    "routes": [
         {
             "name": "home",
             "path": "/home",
@@ -127,6 +127,7 @@
     "main": [
         {
             "title": "门户",
+            "name": "home",
             "url": "/home",
             "display": 0,
             "sub": [

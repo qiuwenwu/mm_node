@@ -395,11 +395,11 @@
             "title": "频道ID",
             "description": "该文章所属频道，仅该频道列表可以看到该文章",
             "type": "number",
-            "dataType": "smallint",
+            "dataType": "int",
             "number": {
                 "range": [
                     1,
-                    32767
+                    2147483647
                 ]
             }
         },

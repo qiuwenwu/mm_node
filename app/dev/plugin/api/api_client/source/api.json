@@ -1,0 +1,10 @@
+{
+	"path": "/api/dev/source",
+	"type": "api",
+	"name": "dev_source",
+	"title": "管理资源的接口",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "ALL",
+	"param_path": "./param.json"
+}
