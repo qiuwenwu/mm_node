@@ -89,6 +89,8 @@
 	#admin_side #line:hover {
 		cursor: w-resize;
 	}
-	
-	#admin_side .dev_head>div { width: 100%; }
+
+	#admin_side .dev_head>div {
+		width: 100%;
+	}
 </style>

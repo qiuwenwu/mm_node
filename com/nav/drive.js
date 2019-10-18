@@ -152,18 +152,19 @@ Drive.prototype.sort = async function() {
  */
 Drive.prototype.merge = function(o) {
 	var cg = this.config;
-	if (o.sort < cg.sort) {
-		return;
-	} else {
-		this.merge_sub(cg.routes, o.routes);
-		this.merge_sub(cg.top, o.top);
-		this.merge_sub(cg.left, o.left);
-		this.merge_sub(cg.bottom, o.bottom);
-		this.merge_sub(cg.right, o.right);
-		this.merge_sub(cg.desktop, o.desktop);
-		this.merge_sub(cg.quick, o.quick);
-		this.merge_sub(cg.main, o.main);
-	}
+	this.merge_sub(cg.routes, o.routes);
+	this.merge_sub(cg.top, o.top);
+	this.merge_sub(cg.left, o.left);
+	this.merge_sub(cg.bottom, o.bottom);
+	this.merge_sub(cg.right, o.right);
+	this.merge_sub(cg.desktop, o.desktop);
+	this.merge_sub(cg.quick, o.quick);
+	this.merge_sub(cg.main, o.main);
+	// if (o.sort < cg.sort) {
+	// 	return;
+	// } else {
+
+	// }
 };
 
 /**
@@ -198,7 +199,7 @@ Drive.prototype.new_routes = function(app, plugin, name, group, oauth) {
 		"name": name,
 		"path": "/" + app + "/" + n,
 		"component": "/" + app + "/" + pn + "/src/pages/" + n + ".vue",
-		"level": n.replace("_form", '').replace("_view", '').indexOf('_') === -1 ? 3 : 2,
+		"level": n.replace("_edit", '').replace("_view", '').indexOf('_') === -1 ? 3 : 2,
 		"oauth": oauth
 	};
 	if (!oauth) {
@@ -255,14 +256,14 @@ Drive.prototype.new_config = function(file) {
 					var obj = _this.new_routes(app, plugin, name, 1, o.oauth);
 
 					//添加一个详情页
-					var obj2 = _this.new_routes(app, plugin, name + '_form', 1, o.oauth);
+					var obj2 = _this.new_routes(app, plugin, name + '_edit', 1, o.oauth);
 					obj2.level += 1;
 
 					cg.routes.push(obj);
 					cg.routes.push(obj2);
 
 					nav.push(_this.new_nav(o.title, name, obj.path));
-					nav.push(_this.new_nav(o.title, name + '_form', obj2.path));
+					nav.push(_this.new_nav(o.title, name + '_edit', obj2.path));
 				}
 			});
 		}

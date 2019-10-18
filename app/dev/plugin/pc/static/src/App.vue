@@ -121,4 +121,6 @@
 		margin-right: 0.5rem;
 		margin-top: 0.35rem;
 	}
+	
+	.mm_side .line { top: 4rem; }
 </style>

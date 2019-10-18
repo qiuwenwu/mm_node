@@ -6,7 +6,9 @@ var web = {
 		delete n.routes;
 		return {
 			config: [],
-			nav: n
+			nav: n,
+			lang_now: "",
+			lang: []
 			// nav: {
 			// 	top: [],
 			// 	right: [],

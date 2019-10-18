@@ -40,7 +40,7 @@ async function load(file, domain) {
 		script = "export default {\r\n" + p.trim(',') + "\r\n}";
 	}
 	else {
-		script = script.replace("export default {", "export default {\r\n" + p);
+		script = script.replace(/export default[ ]?{/gi, "export default {\r\n" + p);
 	}
 	return script;
 }

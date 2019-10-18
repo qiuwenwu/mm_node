@@ -2,120 +2,53 @@
 	"name": "admin",
 	"sort": 1,
 	"routes": [{
-		"name": "bbs",
-		"path": "/bbs",
-		"redirect": "/bbs/channel"
-	},
-	{
-		"name": "bbs_channel",
-		"path": "/bbs/channel",
-		"component": "",
-		"level": 1,
-		"oauth": {
-			"signIn": true,
-			"gm": 2,
-			"admin_group": []
-		}
-	},
-	{
-		"name": "bbs_channel_form",
-		"path": "/bbs/channel_form",
-		"component": "",
-		"level": 2,
-		"oauth": {
-			"signIn": true,
-			"gm": 2,
-			"admin_group": []
-		}
-	},
-	{
-		"name": "bbs_thread",
-		"path": "/bbs/thread",
-		"component": "",
-		"level": 1,
-		"oauth": {
-			"signIn": true,
-			"gm": 2,
-			"admin_group": []
-		}
-	},
-	{
-		"name": "bbs_thread_form",
-		"path": "/bbs/thread_form",
-		"component": "",
-		"level": 2,
-		"oauth": {
-			"signIn": true,
-			"gm": 2,
-			"admin_group": []
-		}
-	},
-	{
-		"name": "bbs_type",
-		"path": "/bbs/type",
-		"component": "",
-		"level": 1,
-		"oauth": {
-			"signIn": true,
-			"gm": 2,
-			"admin_group": []
-		}
-	},
-	{
-		"name": "bbs_type_form",
-		"path": "/bbs/type_form",
-		"component": "",
-		"level": 2,
-		"oauth": {
-			"signIn": true,
-			"gm": 2,
-			"admin_group": []
-		}
-	},
-	{
-		"name": "bbs_ad",
-		"path": "/bbs/ad",
-		"component": "",
-		"level": 1,
-		"oauth": {
-			"signIn": true,
-			"gm": 2,
-			"admin_group": []
-		}
-	},
-	{
-		"name": "bbs_ad_form",
-		"path": "/bbs/ad_form",
-		"component": "",
-		"level": 2,
-		"oauth": {
-			"signIn": true,
-			"gm": 2,
-			"admin_group": []
-		}
-	}],
-	"main": [
+			"name": "bbs",
+			"path": "/bbs",
+			"redirect": "/bbs/channel"
+		},
 		{
-			"title": "论坛",
-			"url": "/bbs",
-			"display": 3,
-			"sub": [{
-					"title": "板块管理",
-					"url": "/bbs/channel"
-				},
-				{
-					"title": "帖子管理",
-					"url": "/bbs/thread"
-				},
-				{
-					"title": "分类信息",
-					"url": "/bbs/type"
-				},
-				{
-					"title": "广告管理",
-					"url": "/bbs/ad"
-				}
-			]
+			"name": "bbs_channel",
+			"path": "/bbs/channel",
+			"component": "/bbs/admin/src/pages/channel.vue",
+			"level": 3,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"admin_group": []
+			}
 		}
-	]
+	],
+	"top": [],
+	"left": [],
+	"bottom": [],
+	"right": [],
+	"desktop": [],
+	"quick": [],
+	"main": [{
+		"title": "论坛",
+		"name": "bbs",
+		"url": "/bbs",
+		"display": 3,
+		"sub": [{
+				"title": "板块管理",
+				"name": "bbs_channel",
+				"url": "/bbs/channel"
+			},
+			{
+				"title": "帖子管理",
+				"name": "bbs_thread",
+				"url": "/bbs/thread"
+			},
+			{
+				"title": "分类信息",
+				"name": "bbs_type",
+				"url": "/bbs/type"
+			},
+			{
+				"title": "广告管理",
+				"name": "bbs_ad",
+				"url": "/bbs/ad"
+			}
+		]
+	}]
 }

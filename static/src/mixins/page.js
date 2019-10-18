@@ -36,8 +36,8 @@ export default {
 			obj: {},
 			// 列表
 			list: [],
-			// 验证模型
-			check_model: {},
+			// 验证、视图模型
+			vm: {},
 			// 重定向
 			redirect: "/account/signin",
 			// 主键字段
@@ -46,8 +46,6 @@ export default {
 			query: {},
 			// 配置
 			config: {
-				// 唯一主键
-				id: 0,
 				// 页面
 				page: 1,
 				// 大小
@@ -73,34 +71,50 @@ export default {
 			uploading: 0,
 			// 获取中
 			getting: 0,
+			// 消息
+			message: "",
 			// 执行结果
 			bl: false
 		}
 	},
 	methods: {
-		// 提示
-		alert(text, icon) {
+		/**
+		 * @description 提示框
+		 * @param {String} text 提示内容
+		 * @param {String} icon 提示图标
+		 */
+		toast(text, icon) {
 			if (!icon) {
 				icon = "none";
 			}
-			this.$alert(text, icon);
+			this.$toast(text, icon);
 		},
-		/// 添加
-		add(val) {
+		/**
+		 * @description 添加数据
+		 * @param {Object} value 要添加的数据
+		 */
+		add(value) {
 
 		},
-
-		/// 删
+		/**
+		 * @description 删除数据
+		 * @param {Object} query 查询条件
+		 */
 		del(query) {
 
 		},
-
-		/// 修改
-		set(query, val) {
+		/**
+		 * @description 修改数据
+		 * @param {Object} query 查询条件
+		 * @param {Object} value 要修改的数据
+		 */
+		set(query, value) {
 
 		},
-
-		/// 查
+		/**
+		 * @description 查询数据
+		 * @param {Object} query 查询条件
+		 */
 		get(query) {
 			if (this.url_get_obj) {
 				this.get_obj(query);
@@ -108,7 +122,10 @@ export default {
 				this.get_list(query);
 			}
 		},
-		/// 查一条
+		/**
+		 * @description 查询一条数据
+		 * @param {Object} query 查询条件
+		 */
 		get_obj(query) {
 			var url = this.url_get_obj;
 			if (url) {
@@ -124,15 +141,25 @@ export default {
 					} else if (json.result) {
 						$.clear(this.obj);
 						$.push(this, json.result);
+						if (!json.result.obj) {
+							var list = json.default.list;
+							if (list.length > 0) {
+								$.push(this.obj, list[0]);
+							}
+						}
 					} else if (json.error) {
-						_this.alert(json.error.message);
+						_this.toast(json.error.message);
 					} else {
-						_this.alert('服务器连接失败！');
+						_this.toast('服务器连接失败！');
 					}
 				});
 			}
 		},
-		/// 查列表
+		/**
+		 * @description 查询多条数据
+		 * @param {Object} query 查询条件
+		 * @param {fun} fun 回调函数
+		 */
 		get_list(query, fun) {
 			var url = this.url_get_list ? this.url_get_list : this.url;
 			if (url) {
@@ -153,38 +180,27 @@ export default {
 							}
 						}
 					} else if (json.error) {
-						_this.alert(json.error.message);
+						_this.toast(json.error.message);
 					} else {
-						_this.alert('服务器连接失败！');
+						_this.toast('服务器连接失败！');
 					}
 				});
 			}
 		},
-		/// 回调函数
-		/// name: 函数名
-		/// param1: 参数1
-		/// param2: 参数2
-		/// param3: 参数3
-		/// 返回: 任意类型
-		func(name, param1, param2, param3) {
-			var fun = this[name];
-			if (fun) {
-				return fun(param1, param2);
-			} else {
-				return null;
-			}
-		},
-
-		/// 重置
+		/**
+		 * 重置
+		 */
 		reset() {
 			// 重置查询条件
 			$.clear(this.query);
 			$.push(this.query, this.config);
 		},
 
-		/// 搜索
-		/// query: 查询条件
-		/// bl: 是否重置再搜索
+		/**
+		 * 搜索
+		 * @param {Object} query 查询条件
+		 * @param {Boolean} bl 是否重置再搜索
+		 */
 		search(query, bl) {
 			if (bl) {
 				this.reset();
@@ -192,36 +208,45 @@ export default {
 			if (query) {
 				$.push(this.query, query);
 			}
-			// var url = this.$route.path + "?" + this.query.toUrl();
 			this.list.clear();
 			this.get();
 		},
 
-		/// 提交
+		/**
+		 * 提交表单
+		 */
 		submit() {
 			var url = this.url_submit;
 			if (url) {
-				var pass = this.events('submit_check', this.form);
-				if (pass) {
+				var form = this.submit_before(this.form);
+				var tip = this.submit_check(form);
+				if (tip) {
+					this.toast(tip);
+				} else {
 					var _this = this;
-					this.$post(url, this.events('submit_before', this.form), function(json, status) {
+					this.$post(url, this.events('submit_before', form), function(json, status) {
 						var msg = _this.events('submit_after', json, status);
 						if (msg) {
-							_this.alert(msg);
+							_this.toast(msg);
 						}
 					});
 				}
 			}
 		},
-
-		/// 上下翻页
-		/// n: 加减数
+		/**
+		 * 上下翻页
+		 * @param {Number} n 加减页码
+		 */
 		go(n) {
 			this.goTo(this.page + n);
 		},
 
-		/// 上下翻页
+		/// 
 		/// page: 加减数
+		/**
+		 * 跳转到第N页
+		 * @param {Number} page 页码
+		 */
 		goTo(page) {
 			if (page < 1) {
 				page = 1;
@@ -232,14 +257,18 @@ export default {
 			this.get_list();
 		},
 
-		/// 转查询参数
-		/// obj: 被转换的对象
-		/// url: 请求地址
-		/// 返回: url字符串
+		/**
+		 * @description 转查询参数
+		 * @param {Object} obj 被转换的对象
+		 * @param {String} url 请求地址
+		 * @return {String} url字符串
+		 */
 		toUrl(obj, url) {
 			return $.toUrl(obj, url);
 		},
-		/// 登录验证
+		/**
+		 * 登录验证
+		 */
 		check_oauth() {
 			if (this.oauth) {
 				var _this = this;
@@ -256,21 +285,28 @@ export default {
 				this.search();
 			}
 		},
-		/// 初始化
+		/**
+		 * 初始化
+		 */
 		init() {
 			$.push(this.query, this.$route.query);
 			this.check_oauth();
 		},
-		/// 验证参数
-		/// 返回: 验证通过空, 否则返回错误提示
+		/**
+		 * @param {Object} param 验证参数
+		 * @param {Object} dict
+		 * @return {Boolean} 验证通过空, 否则返回错误提示
+		 */
 		check(param, dict) {
-			return true;
+			return null;
 		},
-		/// 事件管理, 用于管理函数
-		/// name: 事件名
-		/// param1: 参数1
-		/// param2: 参数2
-		/// 返回: 特定值
+		/**
+		 * @description 事件管理, 用于管理函数
+		 * @param {String} name 事件名
+		 * @param {Object} param1 参数1
+		 * @param {Object} param2 参数2
+		 * @return {Object} 返回事件特定值
+		 */
 		events(name, param1, param2) {
 			var func = this[name];
 			if (func) {
@@ -279,13 +315,14 @@ export default {
 				return null;
 			}
 		},
-
-		/// 回调函数管理器
-		/// fun: 函数名
-		/// param1: 参数1
-		/// param2: 参数2
-		/// param3: 参数3
-		/// 返回: 回调参数
+		/**
+		 * 回调函数(中控)
+		 * @param {String} name 函数名
+		 * @param {Object} param1
+		 * @param {Object} param2
+		 * @param {Object} param3
+		 * @return {Object} 任意值
+		 */
 		func(fun, param1, param2, param3) {
 			var funObj = this[fun];
 			if (funObj) {
@@ -302,10 +339,11 @@ export default {
 				return null;
 			}
 		},
-
-		/// 加载进度设置函数
-		/// progress: 加载进度, 小于100表示加载中，大于100表示加载完成
-		/// title: 标题
+		
+		/**
+		 * @description 加载进度设置函数
+		 * @param {Number} progress 加载进度, 小于100表示加载中，大于100表示加载完成
+		 */
 		load(progress) {
 			if (progress) {
 				this.loading = progress;
@@ -313,17 +351,19 @@ export default {
 				this.loading = 0;
 			}
 		},
-		/// 提交前验证事件
-		/// form: 请求参数
-		/// 返回: 转换后的结果
-		submit_check(form) {
-			return this.check(form, this.check_model);
+		/**
+		 * 提交前验证事件
+		 * @param {Object} 请求参数
+		 * @return {String} 验证成功返回null, 失败返回错误提示
+		 */
+		submit_check(param) {
+			return this.check(param, this.vm);
 		},
 		/// 提交前验证事件
-		/// req: 请求参数
+		/// param: 请求参数
 		/// 返回: 转换后的结果
-		submit_before(req) {
-			return req;
+		submit_before(param) {
+			return param;
 		},
 		/// 获取到对象后事件
 		/// json: 响应结果
@@ -331,18 +371,18 @@ export default {
 		/// 返回: 转换后的结果
 		submit_after(json, status) {
 			if (json.result) {
-				this.alert(json.result.message);
+				this.toast(json.result.message);
 			} else if (json.error) {
-				this.alert(json.error.message);
+				this.toast(json.error.message);
 			} else {
-				this.alert('服务器连接失败！');
+				this.toast('服务器连接失败！');
 			}
 		},
 		/// 请求对象事件
-		/// req: 请求参数
+		/// param: 请求参数
 		/// 返回: 转换后的结果
-		get_obj_before(req) {
-			return req;
+		get_obj_before(param) {
+			return param;
 		},
 		/// 获取到对象后事件
 		/// json: 响应结果
@@ -354,10 +394,10 @@ export default {
 			}
 		},
 		/// 请求列表前事件
-		/// req: 请求参数
+		/// param: 请求参数
 		/// 返回: 转换后的结果
-		get_list_before(req) {
-			return req;
+		get_list_before(param) {
+			return param;
 		},
 		/// 获取到列表事件
 		/// json: 响应结果
@@ -371,32 +411,37 @@ export default {
 		},
 		upload_after(json, status) {
 			if (json.result) {
-				this.alert(json.result.message);
+				this.toast(json.result.message);
 			} else if (json.error) {
-				this.alert(json.error.message);
+				this.toast(json.error.message);
 			} else {
-				this.alert('服务器连接失败！');
+				this.toast('服务器连接失败！');
 			}
 		},
-		upload_before(form) {
-			return form;
+		/// 请求列表前事件
+		/// param: 请求参数
+		/// 返回: 转换后的结果
+		upload_before(param) {
+			return param;
 		},
-		upload_check() {
-			return true;
+		upload_check(param) {
+			return null;
 		},
 		upload() {
 			var form = this.upload_before(this.form);
-			if (!this.upload_check()) {
-				return;
+			var tip = this.upload_check(form);
+			if (tip) {
+				this.toast(tip);
+			} else {
+				this.uploading = 0;
+				var file;
+				if (this.file.name) {
+					file = this.file;
+				} else if (this.files.name) {
+					file = this.files;
+				}
+				this.$upload(this.url_upload, form, file, this.upload_after);
 			}
-			this.uploading = 0;
-			var file;
-			if (this.file.name) {
-				file = this.file;
-			} else if (this.files.name) {
-				file = this.files;
-			}
-			this.$upload(this.url_upload, form, file, this.upload_after);
 		}
 	},
 	computed: {

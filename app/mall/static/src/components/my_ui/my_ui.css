@@ -1,0 +1,971 @@
+.my_page {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	overflow-y: auto;
+}
+
+.my_head {
+	width: 100%;
+	height: 3.0625rem;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: #fff;
+	z-index: 1000;
+}
+
+.my_foot {
+	width: 100%;
+	height: 3.0625rem;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	background-color: #fff;
+	z-index: 1000;
+}
+
+.my_body {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+}
+
+.my_head~.my_body {
+	padding-top: 3.125rem;
+}
+
+.my_foot~.my_body {
+	padding-bottom: 3.125rem;
+}
+
+.my_header {
+	background-color: pink;
+	padding: 0 1.875rem;
+	min-height: 6.25rem !important;
+}
+
+.my_news {
+	height: auto;
+	background-color: #ff5a6a;
+	color: #333;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+}
+
+.my_news ul {
+	padding-left: 0.625rem;
+	animation: myMove 3s linear infinite;
+	animation-fill-mode: forwards;
+}
+
+.my_footer {
+	height: 3.0625rem;
+	border-top: 0.03125rem solid #e7e7e7;
+}
+
+.my_footer ul li {
+	width: 33.333333%;
+	height: 3.0625rem;
+	text-align: center;
+	color: #333;
+}
+.my_footer ul li.data-active img{
+	width: 3.0625rem;
+	height: 3.0625rem;
+	margin: 0 auto;
+	margin-top: -0.625rem;
+}
+.my_footer ul li a{
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+.my_footer ul li img {
+	width: 1.4375rem;
+	height: 1.4375rem;
+	margin: 0.8125rem auto;
+}
+
+.my_footer ul li p {
+	font-size: 0.5rem;
+	margin-top: 0.625rem;
+}
+
+/* list 列表 */
+.my_list {
+	padding: 0 0.9375rem;
+	background-color: skyblue;
+}
+
+.my_list .my_icon {
+	font-size: 0.9375rem;
+	border-radius: 50%;
+}
+
+.my_list .icon {
+	font-size: 0.625rem;
+	color: #666;
+}
+
+/* nav 导航 */
+.my_nav {
+	height: 5rem;
+	background-color: #fff;
+	padding: 0 0.9375rem;
+}
+
+.my_nav ul {
+	height: 100%;
+}
+
+.my_nav ul li {
+	width: auto;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.my_nav ul li .my_icon {
+	font-size: 0.625rem;
+}
+
+.my_nav ul li .title {
+	margin-left: 0.625rem;
+	margin-right: 0.625rem;
+}
+
+.my_nav ul li .number {
+	font-size: 0.625rem;
+	color: #ff5a6a;
+	font-weight: 700;
+}
+
+/* button 按钮 */
+.my_button {
+	border-radius: 0.375rem;
+	text-align: center;
+	min-height: 2.5rem;
+	line-height: 2.5rem;
+	outline: none;
+}
+
+/* toast 弹出框 alert confim prompt */
+.model {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 998;
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.my_toast {
+	text-align: center;
+	line-height: 2.5rem;
+	border-radius: 0.375rem;
+	border: 1px solid #f8f8f8;
+	background-color: #fff;
+}
+
+.my_toast>div {
+	text-align: center;
+	line-height: 2.5rem;
+	border-radius: 0.375rem;
+	border: 1px solid #f8f8f8;
+}
+
+.my_toast .shadowAlert {
+	width: 18.75rem;
+	line-height: 1.875rem;
+	height: auto;
+	border-radius: 0.625rem;
+	background-color: #fff;
+	color: #333;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+}
+
+.shadowAlert .shadow_title {
+	font-weight: 700;
+	font-size: 0.625rem;
+	height: 3.125rem;
+	line-height: 3.125rem;
+}
+
+.my_toast .shadow_btn button {
+	border: none;
+	outline: none;
+	background: transparent;
+	color: #007aff;
+	height: 3.125rem;
+	line-height: 3.125rem;
+}
+
+.my_toast .shadow_con {
+	padding: 0 1.875rem;
+	text-align: left;
+}
+
+.shadowConfim .shadow_btn {
+	border-top: 0.03125rem solid #e4e4e4;
+	margin-top: 0.625rem;
+}
+
+.shadowConfim .shadow_btn button {
+	width: 50%;
+}
+
+.shadowConfim .shadow_btn .enterAlert {
+	border-right: 0.03125rem solid #e4e4e4;
+}
+
+.shadowPrompt .shadow_prompt input {
+	width: 88%;
+	font-size: 0.5rem;
+	color: #333;
+	padding: 0.625rem;
+}
+
+.shadowPrompt .shadow_prompt input::-webkit-input-placeholder {
+	font-size: 0.5rem;
+	color: #666;
+}
+
+/* loading 加载 */
+.my_loading {
+	width: auto;
+	height: auto;
+	padding: 0.8rem 1.6rem;
+	text-align: center;
+	border-radius: 0.375rem;
+	outline: none;
+	background-color: rgba(17, 17, 17, 0.7);
+	color: #fff;
+}
+
+.my_loading i {
+	font-size: 1.5rem;
+	margin-bottom: 0.625rem;
+}
+
+.my_loading p {
+	font-size: 0.4375rem;
+}
+
+/* input type=text/password/button */
+.my_input {
+	position: relative;
+}
+
+.my_input input {
+	height: 3.125rem;
+	line-height: 3.125rem;
+	padding: 0 0.625rem;
+	border-radius: 0.1875rem;
+}
+
+.my_input input::-webkit-input-placeholder {
+	font-size: 1rem;
+	color: #999;
+}
+
+/* select 下拉框 */
+.my_select select {
+	border-radius: 0.1875rem;
+	padding: 0 0.3125rem;
+	height: 3.125rem;
+	line-height: 3.125rem;
+}
+
+/*textarea 文本框*/
+.my_textarea {
+	position: relative;
+}
+
+.my_textarea textarea {
+	width: 100%;
+	border-radius: 0.375rem;
+	padding: 0.9375rem;
+	line-height: 1.625rem;
+}
+
+.my_textarea span {
+	position: absolute;
+	bottom: 0.625rem;
+	right: 0.625rem;
+}
+
+/* checkbox 单选框多选框 */
+.my_checkbox label {
+	display: flex;
+	align-items: center;
+}
+
+.my_checkbox label input {
+	appearance: none;
+	-webkit-appearance: none;
+	background-color: #fff;
+	border: 1px solid #d8d8d8;
+	position: relative;
+}
+
+.my_checkbox label input[type="checkbox"] {
+	border-radius: 0.375rem;
+}
+
+.my_checkbox label input[type="radio"] {
+	border-radius: 50%;
+}
+
+.my_checkbox label input[type="checkbox"]:checked,
+.my_checkbox label input[type="radio"]:checked {
+	background-color: #ff5a6a;
+	color: #fff;
+}
+
+.my_checkbox label input[type="checkbox"]:checked::after,
+.my_checkbox label input[type="radio"]:checked::after {
+	content: "";
+	width: 70%;
+	height: 35%;
+	border-width: 0.125rem 0.125rem 0 0;
+	border-style: solid;
+	border-color: #fff;
+	border-radius: 0.125rem;
+	position: absolute;
+	top: 22%;
+	left: 15%;
+	transform: rotate(132deg);
+}
+
+.my_checkbox label span {
+	margin-left: 0.625rem;
+}
+
+/* switch 开关 */
+.my_switch .checkbox_switch {
+	appearance: none;
+	-webkit-appearance: none;
+	border: 1px solid #d8d8d8;
+	border-radius: 0.9375rem;
+	position: relative;
+	cursor: pointer;
+	background-color: #fdfdfd;
+	box-shadow: #dfdfdf 0 0 0 0 inset;
+	transition: background-color ease .4s;
+}
+
+.my_switch .checkbox_switch::before {
+	content: "";
+	width: 1.875rem;
+	height: 1.875rem;
+	background-color: #fff;
+	border-radius: 50%;
+	box-shadow: 0 0.03125rem 0.1875rem rgba(0, 0, 0, .4);
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: left .3s;
+	z-index: 100;
+}
+
+.my_switch .checkbox_switch::after {
+	content: "ON";
+	height: 1.875rem;
+	line-height: 1.875rem;
+	font-size: 0.4375rem;
+	position: absolute;
+	top: 0;
+	right: 6%;
+	color: #ff5a6a;
+}
+
+.my_switch .checkbox_switch:checked {
+	background-color: #ff5a6a;
+	color: #fff;
+	box-shadow: #ff5a6a 0 0 0 1rem inset;
+	border-color: #ff5a6a;
+	transition: border-color .4s, background-color ease .4s;
+}
+
+.my_switch .checkbox_switch:checked:before {
+	left: 51%;
+	transition: left .3s;
+}
+
+.my_switch .checkbox_switch:checked:after {
+	content: "OFF";
+	height: 1.875rem;
+	line-height: 1.875rem;
+	font-size: 0.4375rem;
+	position: absolute;
+	top: 0;
+	left: 6%;
+	color: #fff;
+}
+
+/* code 验证码 */
+.my_code label {
+	width: 100%;
+	padding: 0 0.9375rem;
+}
+
+.my_code label input {
+	flex: 1;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	padding: 0 0.5rem;
+	font-size: 0.5rem;
+	color: #333;
+	border-radius: 0.1875rem;
+}
+
+.my_code label input::-webkit-input-placeholder {
+	font-size: 0.4375rem;
+	color: #666;
+}
+
+.my_code label button {
+	width: auto;
+	padding: 0 0.625rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	text-align: center;
+	border-radius: 0.375rem;
+	border: 1px solid #FDFDFD;
+	font-size: 0.4375rem;
+	color: #fff;
+	background-color: #ff5a6a;
+	cursor: pointer;
+	margin-left: 0.9375rem;
+}
+
+.my_code label button:after {
+	content: "";
+}
+
+.my_code label .active {
+	background-color: #e0e0e0;
+	color: #ccc;
+}
+
+/* slide progress 滑块/进度条 */
+.my_slide .progress {
+	border-radius: 1.875rem;
+}
+
+.my_slide .progress .leftRess {
+	border-radius: 1.875rem;
+}
+
+.my_slide .range {
+	margin-left: 0.9375rem;
+}
+
+/* search 搜索框 */
+.my_search label {
+	width: 100%;
+	height: 2.5rem;
+	padding: 1.25rem;
+}
+
+.my_search label .inputBox {
+	flex: 1;
+	height: 2.5rem;
+	position: relative;
+}
+
+.my_search label .inputBox .fa-search {
+	font-size: 0.5rem;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0.9375rem;
+}
+
+.my_search label .inputBox .fa-close {
+	font-size: 0.5rem;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0.9375rem;
+	cursor: pointer;
+}
+
+.my_search label .inputBox input {
+	width: 100%;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	text-indent: 3.125rem;
+	border-radius: 0.375rem;
+}
+
+.my_search label .cancle {
+	font-size: 0.5rem;
+	color: #333;
+	margin-left: 1.25rem;
+}
+
+/* tab_list tab列表项 */
+.my_tab_list .list {
+	width: 100%;
+	padding: 0.625rem 0.875rem;
+}
+
+.my_tab_list .list .textBox {
+	width: calc(100% - 5.875rem);
+	height: 5rem;
+}
+
+.my_tab_list .list .textBox .title {
+	font-size: 0.5rem;
+	height: 3rem;
+	line-height: 1.5rem;
+	overflow-y: hidden;
+}
+
+.my_tab_list .list .textBox .info {
+	font-size: 0.4375rem;
+	color: #888;
+	font-weight: 700;
+	margin-top: 0.375rem;
+}
+
+.my_tab_list .list .textBox .info .recommend {
+	font-size: 0.375rem;
+	color: #ff5a6a;
+	border: 1px solid #ff5a6a;
+	border-radius: 0.25rem;
+	text-align: center;
+	padding: 0.125rem 0.4375rem;
+	font-weight: 400;
+}
+
+.my_tab_list .list .imgBox {
+	width: 5rem;
+	height: 5rem;
+	margin-left: 0.875rem;
+}
+
+.my_tab_list .list .imgBox div {
+	width: 100%;
+	height: 100%;
+	background-color: pink;
+	border-radius: 0.375rem;
+}
+
+/* grade 评分*/
+.my_grade .huixing {
+	width: 100%;
+}
+
+.my_grade_item {
+	margin-left: 0.625rem;
+}
+
+.my_grade_item i {
+	cursor: pointer;
+	margin-left: 0.625rem;
+}
+
+[data-component-active="true"] {
+	box-shadow: none !important;
+}
+
+/* stepper 步进器 数量加减 */
+.my_stepper ul {
+	background-color: #fff;
+}
+
+.my_stepper ul li {
+	width: 1.875rem;
+	height: 1.875rem;
+	line-height: 1.875rem;
+	text-align: center;
+	border-radius: 50%;
+	float: left;
+	border: 1px solid #dfdfdf;
+	-webkit-tap-highlight-color: transparent;
+	cursor: pointer;
+}
+
+/* .my_stepper ul li:nth-child(1){
+     cursor: not-allowed;
+}
+ */
+.my_stepper ul li span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	font-size: 0.625rem;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.my_stepper ul li:nth-child(2) {
+	width: auto;
+	border: none;
+	border-radius: 0;
+}
+
+.my_stepper ul li:nth-child(2) input {
+	width: 2.5rem;
+	height: 1.5625rem;
+	text-align: center;
+	font-size: 0.5rem;
+}
+
+/* upload 上传图片 */
+.my_upload .upload {
+	border: 1px dashed #e5e5e5;
+	background-color: pink;
+	position: relative;
+}
+
+.my_upload .upload img {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.my_upload .upload i {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.my_upload .upload input[type='file'] {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	opacity: 0;
+}
+
+/* detail 我的资产明细 */
+.my_detail {
+	background-color: #f7f7f7;
+}
+
+.my_detail .single {
+	width: 100%;
+	padding: 0.9375rem;
+	background-color: #fff;
+	margin-bottom: 1.25rem;
+	position: relative;
+}
+
+.my_detail .single .message {
+	width: 2.25rem;
+	height: 2.25rem;
+	line-height: 2.25rem;
+	background-color: #ff5a6a;
+	color: #fff;
+	text-align: center;
+	margin-right: 0.9375rem;
+	border-radius: 50%;
+}
+
+.my_detail .single .declareBox {
+	flex: 1;
+}
+
+.my_detail .single .declareBox .declare {
+	color: #333;
+	font-size: 0.4375rem;
+}
+
+.my_detail .single .declareBox .time {
+	color: #ccc;
+	font-size: 0.375rem;
+	margin-top: 0.5rem;
+}
+
+.my_detail .single .money {
+	width: auto;
+	position: absolute;
+	right: 0.9375rem;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #00dd9a;
+	font-weight: 700;
+}
+
+/* modal 模态框 */
+.my_modal {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 30;
+}
+
+.my_mask {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 31;
+}
+
+/* grid 栅格 */
+.col_1 {
+	width: 8.33%;
+}
+
+.col_2 {
+	width: 16.66%;
+}
+
+.col_3 {
+	width: 25%;
+}
+
+.col_4 {
+	width: 33.33%;
+}
+
+.col_5 {
+	width: 41.66%;
+}
+
+.col_6 {
+	width: 50%;
+}
+
+.col_7 {
+	width: 58.33%;
+}
+
+.col_8 {
+	width: 66.66%;
+}
+
+.col_9 {
+	width: 75%;
+}
+
+.col_10 {
+	width: 83.33%;
+}
+
+.col_11 {
+	width: 91.66%;
+}
+
+.col_12 {
+	width: 100%;
+}
+
+.col_13 {
+	width: 100%;
+}
+
+.my_address {
+	z-index: 1000;
+}
+
+/* 轮播图 */
+.swiper-container {
+	width: 100%;
+}
+
+.swiper-wrapper {
+	width: 100%;
+	height: 100%;
+	border-radius: 0.3125rem;
+}
+
+.swiper-slide {
+	width: 100%;
+	border-radius: 0.3125rem;
+}
+
+.swiper-slide a {
+	display: block;
+	width: 100%;
+	border-radius: 0.3125rem;
+}
+
+.swiper-slide a img {
+	max-width: 100%;
+	border-radius: 0.3125rem;
+}
+
+/* pager 分页器 */
+.my_pager .pager_box {
+	width: 100%;
+	background-color: #fff;
+	font-size: 0.4375rem;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.my_pager .pager_box .left,
+.my_pager .pager_box .right {
+	width: auto;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	padding: 0 0.625rem;
+	border: 1px solid rgba(152, 152, 152, 0.54);
+	border-radius: 0.25rem;
+	cursor: pointer;
+	float: left;
+}
+
+.my_pager .pager_box .disabled {
+	cursor: not-allowed;
+	background-color: #DFDFDF;
+	color: #9e9e9e;
+	border: none;
+}
+
+.my_pager .pager_box .left {
+	margin-right: 0.35rem;
+}
+
+.my_pager .pager_box .right {
+	margin-left: 0.35rem;
+}
+
+.my_pager .pager_box .prev,
+.my_pager .pager_box .next {
+	width: 2rem;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+}
+
+.my_pager .pager_box .left i,
+.my_pager .pager_box .right i {
+	font-size: 0.625rem;
+}
+
+.my_pager .pager_box .center {
+	height: 2rem;
+	line-height: 2rem;
+	overflow-x: auto;
+	overflow-y: hidden;
+	float: left;
+}
+
+.my_pager .pager_box .center .number {
+	width: 2rem;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	border: 1px solid rgba(152, 152, 152, 0.54);
+	border-radius: 0.25rem;
+	margin-right: 0.35rem;
+	cursor: pointer;
+	float: left;
+}
+
+.my_pager .pager_box .center .active {
+	background-color: #ff5a6a;
+	color: #fff;
+	border: none;
+}
+
+.my_pager .pager_box .center .number:last-child {
+	margin-right: 0;
+}
+
+/* transfer 穿梭框 */
+.my_transfer {
+	display: flex;
+	justify-content: space-between;
+}
+
+.my_transfer .option {
+	width: auto;
+	height: auto;
+	border: 1px solid #DFDFDF;
+	border-radius: 0.25rem;
+}
+
+.my_transfer .option .title {
+	width: 100%;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	font-size: 0.5rem;
+	border-bottom: 0.03125rem solid #DFDFDF;
+	padding: 0 0.625rem;
+}
+
+.my_transfer .option .title .number {
+	color: #666;
+}
+
+.my_transfer .option .title .number span {
+	color: #ff5a6a;
+}
+
+.my_transfer .marked_btn {
+	width: auto;
+	border-radius: 0.25rem;
+}
+
+.my_transfer .marked_btn .my_icon {
+	width: 2rem;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	background-color: #DFDFDF;
+	color: #fff;
+	border-radius: 0.375rem;
+	cursor: pointer;
+}
+
+.my_transfer .marked_btn .active {
+	background-color: #ff5a6a;
+	color: #fff;
+	cursor: pointer;
+}
+
+.my_transfer .marked_btn .my_icon i {
+	color: #fff;
+}
+
+.my_transfer .option .info {
+	width: 100%;
+	text-align: center;
+	padding: 0.625rem;
+}
+
+.my_transfer .option .info .my_transfer_item .my_checkbox {
+	margin-bottom: 1rem;
+}
+
+.my_transfer .option .info .my_transfer_item .my_checkbox:last-child {
+	margin-bottom: 0;
+}
+
+.my_transfer .empty {
+	background-color: #fff;
+}
+
+/* .compon ents-list>li {
+     min-height: 3.125rem !important;
+     background-color: #fff !important;
+}
+ */

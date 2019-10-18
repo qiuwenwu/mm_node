@@ -27,7 +27,7 @@ class Nav extends Index {
  */
 Nav.prototype.run = async function(name, type) {
 	var obj = new this.Drive();
-	for(var i = 1; i < this.list.length; i++){
+	for(var i = 0; i < this.list.length; i++){
 		var o = this.list[i].config;
 		if(o.name == name) {
 			obj.merge(o);

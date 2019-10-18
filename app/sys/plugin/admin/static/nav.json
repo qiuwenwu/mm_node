@@ -40,8 +40,8 @@
 			}
 		},
 		{
-			"name": "sys_user_form",
-			"path": "/sys/user_form",
+			"name": "sys_user_edit",
+			"path": "/sys/user_edit",
 			"component": "",
 			"level": 1,
 			"oauth": {
@@ -62,8 +62,8 @@
 			}
 		},
 		{
-			"name": "app_form",
-			"path": "/sys/app_form",
+			"name": "app_edit",
+			"path": "/sys/app_edit",
 			"component": "",
 			"level": 1,
 			"oauth": {
@@ -81,19 +81,22 @@
 	"desktop": [],
 	"main": [{
 		"title": "系统",
+		"name": "sys",
 		"url": "/sys",
-		"display": 3,
-		"sub": [
-			{
+		"display": 10,
+		"sub": [{
 				"title": "网站设置",
+				"name": "sys_web",
 				"url": "/sys/web"
 			},
 			{
 				"title": "用户管理",
+				"name": "sys_user",
 				"url": "/sys/user"
 			},
 			{
 				"title": "应用管理",
+				"name": "sys_app",
 				"url": "/sys/app"
 			}
 		]

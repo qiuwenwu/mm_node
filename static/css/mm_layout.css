@@ -1,5 +1,6 @@
 @charset "utf-8";
 /* ====== 初始化 ====== */
+@font-face{font-family:'Helvetica Neue';src:url('../font/HelveticaNeue.eot');src:url('../font/HelveticaNeue.eot') format('embedded-opentype'),url('../font/HelveticaNeue.woff2') format('woff2'),url('../font/HelveticaNeue.woff') format('woff'),url('../font/HelveticaNeue.ttf') format('truetype'),url('../font/HelveticaNeue.svg') format('svg');font-weight:normal;font-style:normal}
 html {font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;box-sizing:border-box;-ms-overflow-style:scrollbar;line-height: 1.5;}
 *,*::before,*::after {box-sizing:inherit;}
 * {padding:0;margin:0;}
@@ -248,7 +249,7 @@ dt,th,h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {font-weight:500;}
 
 .mm_side .line {
 	position: absolute;
-	top: 4rem;
+	top: 0;
 	right: 0;
 	width: 3px;
 	background: #f6f8fa;

@@ -73,9 +73,9 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {-webkit-appea
 .mm_select .value {font-size:.875rem;}
 .mm_select select {padding:.25rem 2rem .25rem .5rem;border-radius:.25rem;border:1px solid #DBDBDB;height:2rem;background-position-x:calc(100% - .25rem);}
 .mm_select .selected {padding:0 2rem 0 .5rem;border-radius:.25rem;height:2rem;line-height:2rem;border:1px solid #DBDBDB;background:url("/img/down.png") no-repeat scroll right center transparent;background-position-x:calc(100% - .25rem);}
-.mm_select .mm_box {top:2.05rem;bottom:initial;overflow:hidden;background:#fff;border:1px solid #DBDBDB;border-radius:.25rem;}
+.mm_select .mm_box {top:2.05rem;bottom:initial;overflow:hidden;background:#fff;border:1px solid #DBDBDB;border-radius:.25rem;-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);box-shadow: 0 1px 3px rgba(0, 0, 0, .2);}
 .mm_select li {padding:0 .5rem;line-height:2rem;}
-.mm_select li:hover {background:#f9f9f9;}
+.mm_select li:hover {background:#f9f9f9;color: #000000;}
 .hover:hover .selected,.focus:focus .selected,.current .selected {border-color:#26d2ff;}
 .click {display:inline-block;}
 .click .mm_box {right:initial;min-width:5.25rem;}

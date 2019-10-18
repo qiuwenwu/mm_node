@@ -38,8 +38,8 @@ define([], function() {
 				"admin_group": []
 			}
 		}, {
-			"name": "sys_user_form",
-			"path": "/sys/user_form",
+			"name": "sys_user_edit",
+			"path": "/sys/user_edit",
 			"component": "",
 			"level": 1,
 			"oauth": {
@@ -58,8 +58,8 @@ define([], function() {
 				"admin_group": []
 			}
 		}, {
-			"name": "app_form",
-			"path": "/sys/app_form",
+			"name": "app_edit",
+			"path": "/sys/app_edit",
 			"component": "",
 			"level": 1,
 			"oauth": {

@@ -7,22 +7,29 @@
 				<option v-for="(o, idx) in options" :key="idx" :value="o[field]">{{ o.name }}</option>
 			</select>
 			<a href="javascript:void(0)" class="click" v-else-if="type === 'click'" v-bind:class="{ 'current': sw }">
-				<div class="selected" @click="sw = !sw">{{ val_name }}</div>
+				<div :class="{'selected': !$slots.default}" @click="sw = !sw">
+					<slot>
+						{{ val_name }}
+					</slot>
+				</div>
 				<div class="mm_box">
 					<ul>
-						<li v-for="(o, idx) in options" :key="idx" @click="$emit('input', o[field]);sw = false" :class="{ 'active': value === o[field] }">{{ o.name }}</li>
+						<li v-for="(o, idx) in options" :key="idx" @click="click_fun(o[field]);sw = false" :class="{ 'active': value === o[field] }">{{ o.name }}</li>
 					</ul>
 				</div>
 			</a>
 			<a href="javascript:void(0)" v-bind:class="type" v-else>
-				<div class="selected">{{ val_name }}</div>
+				<div class="selected">
+					<slot>
+						{{ val_name }}
+					</slot>
+				</div>
 				<div class="mm_box">
 					<ul>
-						<li v-for="(o, idx) in options" :key="idx" @click="$emit('input', o[field])" :class="{ 'active': value === o[field] }">{{ o.name }}</li>
+						<li v-for="(o, idx) in options" :key="idx" @click="click_fun(o[field])" :class="{ 'active': value === o[field] }">{{ o.name }}</li>
 					</ul>
 				</div>
 			</a>
-			<slot><span class="unit" v-if="unit">{{ unit }}</span></slot>
 		</div>
 		<div class="tip" v-if="tip">{{ tip }}</div>
 	</div>
@@ -36,6 +43,10 @@
 		methods: {
 			set(e) {
 				this.$emit('input', e.target.value);
+			},
+			click_fun(value) {
+				this.$emit('input', value);
+				this.func(value);
 			}
 		},
 		computed: {

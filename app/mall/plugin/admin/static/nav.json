@@ -18,8 +18,8 @@
 			}
 		},
 		{
-			"name": "mall_channel_form",
-			"path": "/mall/channel_form",
+			"name": "mall_channel_edit",
+			"path": "/mall/channel_edit",
 			"component": "",
 			"level": 2,
 			"oauth": {
@@ -40,8 +40,8 @@
 			}
 		},
 		{
-			"name": "mall_goods_form",
-			"path": "/mall/goods_form",
+			"name": "mall_goods_edit",
+			"path": "/mall/goods_edit",
 			"component": "",
 			"level": 2,
 			"oauth": {
@@ -62,8 +62,8 @@
 			}
 		},
 		{
-			"name": "mall_type_form",
-			"path": "/mall/type_form",
+			"name": "mall_type_edit",
+			"path": "/mall/type_edit",
 			"component": "",
 			"level": 2,
 			"oauth": {
@@ -84,8 +84,8 @@
 			}
 		},
 		{
-			"name": "mall_shop_form",
-			"path": "/mall/shop_form",
+			"name": "mall_shop_edit",
+			"path": "/mall/shop_edit",
 			"component": "",
 			"level": 2,
 			"oauth": {
@@ -106,8 +106,8 @@
 			}
 		},
 		{
-			"name": "mall_ad_form",
-			"path": "/mall/ad_form",
+			"name": "mall_ad_edit",
+			"path": "/mall/ad_edit",
 			"component": "",
 			"level": 2,
 			"oauth": {
@@ -119,26 +119,32 @@
 	],
 	"main": [{
 		"title": "商城",
+		"name": "mall",
 		"url": "/mall",
 		"display": 2,
 		"sub": [{
-				"title": "卖场管理",
+				"title": "专区管理",
+				"name": "mall_channel",
 				"url": "/mall/channel"
 			},
 			{
 				"title": "商品管理",
+				"name": "mall_goods",
 				"url": "/mall/goods"
 			},
 			{
 				"title": "商品分类",
+				"name": "mall_type",
 				"url": "/mall/type"
 			},
 			{
 				"title": "店铺管理",
+				"name": "mall_shop",
 				"url": "/mall/shop"
 			},
 			{
 				"title": "广告管理",
+				"name": "mall_ad",
 				"url": "/mall/ad"
 			}
 		]

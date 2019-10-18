@@ -226,7 +226,7 @@ define(["Vue"], function(Vue) {
 			 * @return {String} 返回语言值
 			 */
 			$lang: function $lang(name) {
-				var lang = this.$store.state.lang;
+				var lang = this.$store.state.web.lang;
 				var title = "";
 				for(var i = 0; i < lang.length; i++){
 					if(name = o.name)

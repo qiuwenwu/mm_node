@@ -37,15 +37,21 @@ var routes = [{
 	redirect: "/404"
 }];
 
+function new_route(o, com) {
+	var obj = Object.assign({}, o);
+	obj.component = function(resolve) {
+		return require(['vue!' + com], resolve);
+	};
+	return obj;
+}
+
 var lt = nav.routes;
 for (var i = 0; i < lt.length; i++) {
 	var o = lt[i];
 	var com = o.component;
 	if (com) {
-		o.component = function(resolve) {
-			return require(['vue!' + com], resolve);
-		};
-		routes.push(o);
+		var obj = new_route(o, com);
+		routes.push(obj);
 	} else if (o.redirect) {
 		routes.push(o);
 	}

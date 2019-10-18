@@ -135,9 +135,13 @@ define(['module'], function(module) {
 		 * Styles extractor
 		 */
 		script: function(text) {
-			return this._wrapped_content(text, 'script', {
+			var script = this._wrapped_content(text, 'script', {
 				whitespaces: true
-			});
+			}).trim();
+			if(!script){
+				script = "define([], function () { return { template: __template__, data: function data() { return {}; } }; });"
+			}
+			return script
 		}
 	};
 
