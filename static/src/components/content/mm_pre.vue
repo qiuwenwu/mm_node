@@ -9,6 +9,13 @@
 	import hljs from '/highlight/highlight.pack.js';
 	import hybrid from '/highlight/styles/hybrid.css';
 	export default {
+		template: __template__,
+		props: {
+			lang: {
+				type: String,
+				default: "JavaScript"
+			}
+		},
 		mounted() {
 			hljs.initHighlightingOnLoad();
 		}

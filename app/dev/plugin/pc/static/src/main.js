@@ -56,8 +56,8 @@ require({
 			'templateVar': '__template__'
 		}
 	}
-}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'vue!./App.vue'], function(Vue, mm_sdk, mm_vue, store, router,
-	ui, app) {
+}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'clipboard', 'vue!./App.vue'], function(Vue, mm_sdk, mm_vue, store, router,
+	ui, clipboard, app) {
 	// 开启调试模式
 	Vue.config.debug = true;
 	// 使用UI组件

@@ -32,6 +32,7 @@ class Drive extends Item {
 			// 描述, 用于描述该事件有什么用的
 			"description": "",
 			// 名称, 由中英文和下“_”组成, 用于卸载事件
+			// 同时也是版本唯一标识，当商城有两个插件名称相同时，可以通过版本号查询和下载
 			"name": "",
 			// 应用域
 			"app": "",
@@ -41,8 +42,6 @@ class Drive extends Item {
 			"func_name": "",
 			// 版本号
 			"version": "1.0",
-			// 版本唯一标识，当商城有两个插件名称相同时，可以通过版本号查询和下载
-			"identifier": "",
 			// 语言包路径
 			"lang_path": "./lang/",
 			// 插件图标

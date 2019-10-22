@@ -58,7 +58,8 @@ define(["Vue"], function(Vue) {
 			/**
 			 * @description 复制
 			 */
-			Vue.prototype.$copy = function() {
+			Vue.prototype.$copy = function(text) {
+				$.copyText(text);
 				$.toast("复制成功");
 			};
 

@@ -140,7 +140,7 @@ export default {
 			}
 		},
 		// 允许访问的管理组
-		admin_group: {
+		user_admin: {
 			type: Array,
 			default: function() {
 				return []

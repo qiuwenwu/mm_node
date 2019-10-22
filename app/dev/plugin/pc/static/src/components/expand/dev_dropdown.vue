@@ -6,7 +6,7 @@
 			<div class="desc" v-html="obj.desc"></div>
 			<i class="btn fa-sort-desc" v-if="display === '1'"></i>
 		</div>
-		<div class="modal" v-show="show">
+		<div class="dropdown-modal" v-show="show">
 			<div class="warp" :style="'width:' + width">
 				<slot></slot>
 			</div>

@@ -56,7 +56,7 @@ export default {
 			// 允许访问的用户组
 			user_group: [],
 			// 允许访问的管理组
-			admin_group: [],
+			user_admin: [],
 			// 允许访问的用户级别需多少以上
 			vip: 0,
 			// 允许访问的管理级别需多少以上
