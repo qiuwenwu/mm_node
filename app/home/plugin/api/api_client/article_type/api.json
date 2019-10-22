@@ -2,7 +2,7 @@
     "name": "home_article_type",
     "title": "",
     "description": "",
-    "path": "/api/article/type",
+    "path": "/api/home/article_type",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

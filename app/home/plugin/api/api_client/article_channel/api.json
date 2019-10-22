@@ -2,7 +2,7 @@
     "name": "home_article_channel",
     "title": "",
     "description": "",
-    "path": "/api/article/channel",
+    "path": "/api/home/article_channel",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

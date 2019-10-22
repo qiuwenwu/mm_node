@@ -2,7 +2,7 @@
     "name": "pay_trade",
     "title": "",
     "description": "",
-    "path": "/api/trade",
+    "path": "/api/pay/trade",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

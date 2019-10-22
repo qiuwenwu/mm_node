@@ -136,7 +136,7 @@ Drive.prototype.model = function(fields) {
 				break;
 		}
 		if (max_length) {
-			var num = Math.pow(10, max_length);
+			var num = Math.pow(10, max_length) - 1;
 			if (max > num) {
 				max = num;
 			}
@@ -824,7 +824,7 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 	var arr = cg.table.split('_');
 	var p = "/api/";
 	if (arr.length > 1) {
-		p += cg.table.right('_').replace('_', '/');
+		p += cg.table.replace('_', '/');
 	} else {
 		p += arr[0];
 	}
@@ -872,7 +872,7 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 			"scope": true,
 			"signIn": true,
 			"gm": 2,
-			"admin_group": []
+			"user_admin": []
 		};
 		o.path = o.path.replace("/api/", "/apis/");
 		o.name += 2;

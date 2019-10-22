@@ -3,13 +3,13 @@
     "title": "",
     "add": {
         "body": [
-            "update_time",
+            "user_id",
             "create_time",
-            "user_id"
+            "update_time"
         ],
         "body_required": [
-            "refresh_token",
-            "appid"
+            "appid",
+            "refresh_token"
         ]
     },
     "del": {
@@ -21,17 +21,17 @@
     "set": {
         "query": [
             "refresh_id",
-            "refresh_token",
+            "user_id",
             "appid",
-            "user_id"
+            "refresh_token"
         ],
         "query_required": [],
         "body": [
-            "refresh_token",
-            "update_time",
+            "user_id",
             "create_time",
+            "update_time",
             "appid",
-            "user_id"
+            "refresh_token"
         ],
         "body_required": [],
         "body_not": []
@@ -39,15 +39,15 @@
     "get": {
         "query": [
             "refresh_id",
-            "refresh_token",
-            "update_time",
-            "update_time_min",
-            "update_time_max",
+            "user_id",
             "create_time",
             "create_time_min",
             "create_time_max",
+            "update_time",
+            "update_time_min",
+            "update_time_max",
             "appid",
-            "user_id"
+            "refresh_token"
         ],
         "query_required": []
     },
@@ -66,46 +66,16 @@
             }
         },
         {
-            "name": "refresh_token",
-            "title": "刷新令牌",
-            "description": "用来刷新访问牌，保留30天",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "update_time",
-            "title": "更新时间",
-            "description": "用来判断是否频繁刷新访问牌",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "update_time_min",
-            "title": "更新时间——开始时间",
-            "description": "用来判断是否频繁刷新访问牌",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "update_time_max",
-            "title": "更新时间——结束时间",
-            "description": "用来判断是否频繁刷新访问牌",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
+            "name": "user_id",
+            "title": "用户ID",
+            "description": "表示当前Token绑定的用户uid",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
             }
         },
         {
@@ -142,6 +112,39 @@
             }
         },
         {
+            "name": "update_time",
+            "title": "更新时间",
+            "description": "用来判断是否频繁刷新访问牌",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "更新时间——开始时间",
+            "description": "用来判断是否频繁刷新访问牌",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "更新时间——结束时间",
+            "description": "用来判断是否频繁刷新访问牌",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
             "name": "appid",
             "title": "应用ID",
             "description": "",
@@ -152,16 +155,13 @@
             }
         },
         {
-            "name": "user_id",
-            "title": "用户ID",
-            "description": "表示当前Token绑定的用户uid",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+            "name": "refresh_token",
+            "title": "刷新令牌",
+            "description": "用来刷新访问牌，保留30天",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
             }
         }
     ]

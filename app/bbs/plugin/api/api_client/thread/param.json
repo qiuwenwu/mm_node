@@ -1,0 +1,484 @@
+{
+    "name": "bbs_thread",
+    "title": "",
+    "add": {
+        "body": [
+            "available",
+            "state",
+            "type_id",
+            "channel_id",
+            "display",
+            "city_id",
+            "user_id",
+            "hot",
+            "praise",
+            "collect_id",
+            "create_time",
+            "update_time",
+            "title",
+            "keywords",
+            "description",
+            "img",
+            "url",
+            "tag",
+            "content",
+            "collecter"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "thread_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "thread_id",
+            "available",
+            "state",
+            "state_min",
+            "state_max",
+            "type_id",
+            "channel_id",
+            "display",
+            "display_min",
+            "display_max",
+            "city_id",
+            "user_id",
+            "hot",
+            "hot_min",
+            "hot_max",
+            "praise",
+            "praise_min",
+            "praise_max",
+            "collect_id",
+            "title",
+            "keywords",
+            "description",
+            "img",
+            "url",
+            "tag",
+            "content",
+            "collecter"
+        ],
+        "query_required": [],
+        "body": [
+            "available",
+            "state",
+            "state_add",
+            "type_id",
+            "channel_id",
+            "display",
+            "display_add",
+            "city_id",
+            "user_id",
+            "hot",
+            "hot_add",
+            "praise",
+            "praise_add",
+            "collect_id",
+            "create_time",
+            "update_time",
+            "title",
+            "keywords",
+            "description",
+            "img",
+            "url",
+            "tag",
+            "content",
+            "collecter"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "thread_id",
+            "available",
+            "state",
+            "state_min",
+            "state_max",
+            "type_id",
+            "channel_id",
+            "display",
+            "display_min",
+            "display_max",
+            "city_id",
+            "user_id",
+            "hot",
+            "hot_min",
+            "hot_max",
+            "praise",
+            "praise_min",
+            "praise_max",
+            "collect_id",
+            "create_time",
+            "create_time_min",
+            "create_time_max",
+            "update_time",
+            "update_time_min",
+            "update_time_max",
+            "title",
+            "keywords",
+            "description",
+            "img",
+            "url",
+            "tag",
+            "content",
+            "collecter"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "thread_id",
+            "title": "主题id",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "available",
+            "title": "是否启用",
+            "description": "启用后前台才会显示该主题",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "state",
+            "title": "状态",
+            "description": "1正常，2推荐，3认证，4官方，5违规",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    5
+                ]
+            }
+        },
+        {
+            "name": "state_min",
+            "title": "状态——最小值",
+            "description": "1正常，2推荐，3认证，4官方，5违规",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    5
+                ]
+            }
+        },
+        {
+            "name": "state_max",
+            "title": "状态——最大值",
+            "description": "1正常，2推荐，3认证，4官方，5违规",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    5
+                ]
+            }
+        },
+        {
+            "name": "type_id",
+            "title": "主题分类ID",
+            "description": "用来搜索指定类型的主题",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    1000
+                ]
+            }
+        },
+        {
+            "name": "channel_id",
+            "title": "频道ID",
+            "description": "该主题所属频道，仅该频道列表可以看到该主题",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    10000
+                ]
+            }
+        },
+        {
+            "name": "display",
+            "title": "排序",
+            "description": "决定主题显示的顺序",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
+        },
+        {
+            "name": "display_min",
+            "title": "排序——最小值",
+            "description": "决定主题显示的顺序",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
+        },
+        {
+            "name": "display_max",
+            "title": "排序——最大值",
+            "description": "决定主题显示的顺序",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所属城市ID",
+            "description": "对于一些地方主题，可以通过该ID筛看",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "用户ID",
+            "description": "编辑这篇主题到本站的用户ID",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "hot",
+            "title": "热度",
+            "description": "访问这篇主题的人次",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
+        },
+        {
+            "name": "hot_min",
+            "title": "热度——最小值",
+            "description": "访问这篇主题的人次",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
+        },
+        {
+            "name": "hot_max",
+            "title": "热度——最大值",
+            "description": "访问这篇主题的人次",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
+        },
+        {
+            "name": "praise",
+            "title": "点赞次数",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
+        },
+        {
+            "name": "praise_min",
+            "title": "点赞次数——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
+        },
+        {
+            "name": "praise_max",
+            "title": "点赞次数——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
+        },
+        {
+            "name": "collect_id",
+            "title": "采集规则ID",
+            "description": "如果主题是通过采集的方式获得，那么具有采集ID",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    1000000000
+                ]
+            }
+        },
+        {
+            "name": "create_time",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "title",
+            "title": "标题",
+            "description": "用于主题和html的<title>标签中",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keywords",
+            "title": "关键词",
+            "description": "用于搜索引擎收录",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "description",
+            "title": "描述",
+            "description": "用于主题提纲和搜索引擎收录",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "img",
+            "title": "封面图",
+            "description": "用于显示于主题列表页，多个封面图用换行分隔",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "url",
+            "title": "来源地址",
+            "description": "用于跳转到发布该主题的网站",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "format": "url"
+            }
+        },
+        {
+            "name": "tag",
+            "title": "标签",
+            "description": "用于标注主题所属相关内容，多个标签用空格隔开",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "content",
+            "title": "正文",
+            "description": "主题的主体内容",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "collecter",
+            "title": "收藏者",
+            "description": "多个收藏者用”,“分隔",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        }
+    ]
+}

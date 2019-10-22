@@ -2,7 +2,7 @@
     "name": "sys_user_info",
     "title": "",
     "description": "",
-    "path": "/api/user/info",
+    "path": "/api/sys/user_info",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

@@ -3,15 +3,15 @@
     "title": "",
     "add": {
         "body": [
+            "display",
             "level",
+            "next_group_id",
             "exp",
             "discount",
             "bonus",
-            "next_group_id",
-            "icon",
-            "description",
             "app",
-            "display"
+            "description",
+            "icon"
         ],
         "body_required": [
             "name"
@@ -26,10 +26,13 @@
     "set": {
         "query": [
             "group_id",
-            "name",
+            "display",
+            "display_min",
+            "display_max",
             "level",
             "level_min",
             "level_max",
+            "next_group_id",
             "exp",
             "exp_min",
             "exp_max",
@@ -39,31 +42,28 @@
             "bonus",
             "bonus_min",
             "bonus_max",
-            "next_group_id",
-            "icon",
-            "description",
             "app",
-            "display",
-            "display_min",
-            "display_max"
+            "name",
+            "description",
+            "icon"
         ],
         "query_required": [],
         "body": [
-            "name",
+            "display",
+            "display_add",
             "level",
             "level_add",
+            "next_group_id",
             "exp",
             "exp_add",
             "discount",
             "discount_add",
             "bonus",
             "bonus_add",
-            "next_group_id",
-            "icon",
-            "description",
             "app",
-            "display",
-            "display_add"
+            "name",
+            "description",
+            "icon"
         ],
         "body_required": [],
         "body_not": []
@@ -71,10 +71,13 @@
     "get": {
         "query": [
             "group_id",
-            "name",
+            "display",
+            "display_min",
+            "display_max",
             "level",
             "level_min",
             "level_max",
+            "next_group_id",
             "exp",
             "exp_min",
             "exp_max",
@@ -84,13 +87,10 @@
             "bonus",
             "bonus_min",
             "bonus_max",
-            "next_group_id",
-            "icon",
-            "description",
             "app",
-            "display",
-            "display_min",
-            "display_max"
+            "name",
+            "description",
+            "icon"
         ],
         "query_required": []
     },
@@ -109,13 +109,33 @@
             }
         },
         {
-            "name": "name",
-            "title": "名称",
+            "name": "display",
+            "title": "显示顺序",
             "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_min",
+            "title": "显示顺序——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_max",
+            "title": "显示顺序——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
             }
         },
         {
@@ -146,6 +166,19 @@
             "dataType": "smallint",
             "number": {
                 "max": 1000
+            }
+        },
+        {
+            "name": "next_group_id",
+            "title": "下级用户组ID",
+            "description": "决定用户升级后所属用户组",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
             }
         },
         {
@@ -227,25 +260,22 @@
             "number": {}
         },
         {
-            "name": "next_group_id",
-            "title": "下级用户组ID",
-            "description": "决定用户升级后所属用户组",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
-            }
-        },
-        {
-            "name": "icon",
-            "title": "图标",
-            "description": "用于标识用户组",
+            "name": "app",
+            "title": "应用",
+            "description": "用于区分用户组使用范围，cms内容管理系统、bbs社区、mall商城",
             "type": "string",
             "dataType": "varchar",
             "string": {}
+        },
+        {
+            "name": "name",
+            "title": "用户名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
         },
         {
             "name": "description",
@@ -256,42 +286,12 @@
             "string": {}
         },
         {
-            "name": "app",
-            "title": "应用",
-            "description": "用于区分用户组使用范围，cms内容管理系统、bbs社区、mall商城",
+            "name": "icon",
+            "title": "图标",
+            "description": "用于标识用户组",
             "type": "string",
             "dataType": "varchar",
             "string": {}
-        },
-        {
-            "name": "display",
-            "title": "显示顺序",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "display_min",
-            "title": "显示顺序——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "display_max",
-            "title": "显示顺序——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
         }
     ]
 }

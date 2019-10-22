@@ -1,0 +1,490 @@
+{
+    "name": "sys_ad",
+    "title": "",
+    "add": {
+        "body": [
+            "display",
+            "city_id",
+            "area_id",
+            "user_id",
+            "times_user",
+            "times_max",
+            "times_show",
+            "times_click",
+            "fee",
+            "fee_max",
+            "name",
+            "type",
+            "location",
+            "fee_way",
+            "app",
+            "trade",
+            "title",
+            "description",
+            "img",
+            "url",
+            "keywords"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "ad_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "ad_id",
+            "display",
+            "display_min",
+            "display_max",
+            "city_id",
+            "area_id",
+            "user_id",
+            "times_user",
+            "times_user_min",
+            "times_user_max",
+            "times_max",
+            "times_max_min",
+            "times_max_max",
+            "times_show",
+            "times_show_min",
+            "times_show_max",
+            "times_click",
+            "times_click_min",
+            "times_click_max",
+            "fee",
+            "fee_min",
+            "fee_max",
+            "fee_max_min",
+            "fee_max_max",
+            "name",
+            "type",
+            "location",
+            "fee_way",
+            "app",
+            "trade",
+            "title",
+            "description",
+            "img",
+            "url",
+            "keywords"
+        ],
+        "query_required": [],
+        "body": [
+            "display",
+            "display_add",
+            "city_id",
+            "area_id",
+            "user_id",
+            "times_user",
+            "times_user_add",
+            "times_max",
+            "times_max_add",
+            "times_show",
+            "times_show_add",
+            "times_click",
+            "times_click_add",
+            "fee",
+            "fee_add",
+            "fee_max",
+            "fee_max_add",
+            "name",
+            "type",
+            "location",
+            "fee_way",
+            "app",
+            "trade",
+            "title",
+            "description",
+            "img",
+            "url",
+            "keywords"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "ad_id",
+            "display",
+            "display_min",
+            "display_max",
+            "city_id",
+            "area_id",
+            "user_id",
+            "times_user",
+            "times_user_min",
+            "times_user_max",
+            "times_max",
+            "times_max_min",
+            "times_max_max",
+            "times_show",
+            "times_show_min",
+            "times_show_max",
+            "times_click",
+            "times_click_min",
+            "times_click_max",
+            "fee",
+            "fee_min",
+            "fee_max",
+            "fee_max_min",
+            "fee_max_max",
+            "name",
+            "type",
+            "location",
+            "fee_way",
+            "app",
+            "trade",
+            "title",
+            "description",
+            "img",
+            "url",
+            "keywords"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "ad_id",
+            "title": "广告ID",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    32767
+                ]
+            }
+        },
+        {
+            "name": "display",
+            "title": "显示顺序",
+            "description": "数值越小，越优先显示",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
+        },
+        {
+            "name": "display_min",
+            "title": "显示顺序——最小值",
+            "description": "数值越小，越优先显示",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
+        },
+        {
+            "name": "display_max",
+            "title": "显示顺序——最大值",
+            "description": "数值越小，越优先显示",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "投放城市ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "area_id",
+            "title": "投放地区",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "广告主ID",
+            "description": "表示是谁打的广告",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "times_user",
+            "title": "访客数",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_user_min",
+            "title": "访客数——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_user_max",
+            "title": "访客数——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_max",
+            "title": "次数上限",
+            "description": "表示点击或展现达多少次后不再打该广告",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_max_min",
+            "title": "次数上限——最小值",
+            "description": "表示点击或展现达多少次后不再打该广告",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_max_max",
+            "title": "次数上限——最大值",
+            "description": "表示点击或展现达多少次后不再打该广告",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_show",
+            "title": "展现量",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_show_min",
+            "title": "展现量——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_show_max",
+            "title": "展现量——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_click",
+            "title": "点击量",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_click_min",
+            "title": "点击量——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "times_click_max",
+            "title": "点击量——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "fee",
+            "title": "费用",
+            "description": "每次点击或展现、增加访客所需的费用",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "fee_min",
+            "title": "费用——最小值",
+            "description": "每次点击或展现、增加访客所需的费用",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "fee_max",
+            "title": "费用——最大值",
+            "description": "每次点击或展现、增加访客所需的费用",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "fee_max",
+            "title": "费用上限",
+            "description": "表示打广告消费到多少钱后不再打广告",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "fee_max_min",
+            "title": "费用上限——最小值",
+            "description": "表示打广告消费到多少钱后不再打广告",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "fee_max_max",
+            "title": "费用上限——最大值",
+            "description": "表示打广告消费到多少钱后不再打广告",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "name",
+            "title": "广告名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "type",
+            "title": "广告类型",
+            "description": "text文字、img图片、video视频、flash交互动画",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "location",
+            "title": "投放位置",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "fee_way",
+            "title": "付费方式",
+            "description": "click点击付费、show展现付费、user访客付费",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "app",
+            "title": "展现应用",
+            "description": "将在指定的应用下才展现广告",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "trade",
+            "title": "所属行业",
+            "description": "可以根据不同的行业定制不同的投放",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "title",
+            "title": "广告标题",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "description",
+            "title": "广告描述",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "img",
+            "title": "广告图",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "url",
+            "title": "跳转链接",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "format": "url"
+            }
+        },
+        {
+            "name": "keywords",
+            "title": "关键词",
+            "description": "在出现于关键词相关的情况下才打广告，多个关键词用空格分隔",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}

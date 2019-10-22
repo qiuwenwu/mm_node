@@ -46,7 +46,7 @@ class Drive extends Item {
 						// 要求用户组
 						"user_group": [],
 						// 要求管理组
-						"admin_group": []
+						"user_admin": []
 					}
 				}
 				*/
@@ -213,7 +213,7 @@ Drive.prototype.new_routes = function(app, plugin, name, group, oauth) {
 			obj.oauth = {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			};
 		} else {
 			// 验证身份为商户
@@ -263,7 +263,6 @@ Drive.prototype.new_config = function(file) {
 					cg.routes.push(obj2);
 
 					nav.push(_this.new_nav(o.title, name, obj.path));
-					nav.push(_this.new_nav(o.title, name + '_edit', obj2.path));
 				}
 			});
 		}

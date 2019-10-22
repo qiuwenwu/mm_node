@@ -2,7 +2,7 @@
     "name": "sys_app_refresh",
     "title": "",
     "description": "",
-    "path": "/api/app/refresh",
+    "path": "/api/sys/app_refresh",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

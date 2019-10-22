@@ -125,6 +125,7 @@
 		height: calc(100vh - 2.5rem - 1px);
 		background: #24292e;
 		width: 12rem;
+		color: #fff;
 	}
 
 	#app>.mm_body>.mm_side .line {
@@ -234,5 +235,17 @@
 
 	.user_box a {
 		color: #666;
+	}
+	
+	.mm_side .btn {
+		line-height: 2.5rem;
+		padding: 0 1rem;
+		color: #999;
+	}
+	.mm_side a {
+		display: block;
+		color: inherit;
+		line-height: 2rem;
+		padding: 0 2rem;
 	}
 </style>

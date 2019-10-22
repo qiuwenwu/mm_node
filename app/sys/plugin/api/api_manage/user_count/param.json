@@ -3,6 +3,11 @@
     "title": "",
     "add": {
         "body": [
+            "level",
+            "iq",
+            "credit",
+            "credit_points",
+            "exp",
             "extcredits1",
             "extcredits2",
             "extcredits3",
@@ -11,13 +16,8 @@
             "extcredits6",
             "extcredits7",
             "extcredits8",
-            "exp",
-            "level",
             "money",
-            "coin",
-            "credit",
-            "credit_points",
-            "iq"
+            "coin"
         ],
         "body_required": []
     },
@@ -30,6 +30,21 @@
     "set": {
         "query": [
             "user_id",
+            "level",
+            "level_min",
+            "level_max",
+            "iq",
+            "iq_min",
+            "iq_max",
+            "credit",
+            "credit_min",
+            "credit_max",
+            "credit_points",
+            "credit_points_min",
+            "credit_points_max",
+            "exp",
+            "exp_min",
+            "exp_max",
             "extcredits1",
             "extcredits1_min",
             "extcredits1_max",
@@ -54,30 +69,25 @@
             "extcredits8",
             "extcredits8_min",
             "extcredits8_max",
-            "exp",
-            "exp_min",
-            "exp_max",
-            "level",
-            "level_min",
-            "level_max",
             "money",
             "money_min",
             "money_max",
             "coin",
             "coin_min",
-            "coin_max",
-            "credit",
-            "credit_min",
-            "credit_max",
-            "credit_points",
-            "credit_points_min",
-            "credit_points_max",
-            "iq",
-            "iq_min",
-            "iq_max"
+            "coin_max"
         ],
         "query_required": [],
         "body": [
+            "level",
+            "level_add",
+            "iq",
+            "iq_add",
+            "credit",
+            "credit_add",
+            "credit_points",
+            "credit_points_add",
+            "exp",
+            "exp_add",
             "extcredits1",
             "extcredits1_add",
             "extcredits2",
@@ -94,20 +104,10 @@
             "extcredits7_add",
             "extcredits8",
             "extcredits8_add",
-            "exp",
-            "exp_add",
-            "level",
-            "level_add",
             "money",
             "money_add",
             "coin",
-            "coin_add",
-            "credit",
-            "credit_add",
-            "credit_points",
-            "credit_points_add",
-            "iq",
-            "iq_add"
+            "coin_add"
         ],
         "body_required": [],
         "body_not": []
@@ -115,6 +115,21 @@
     "get": {
         "query": [
             "user_id",
+            "level",
+            "level_min",
+            "level_max",
+            "iq",
+            "iq_min",
+            "iq_max",
+            "credit",
+            "credit_min",
+            "credit_max",
+            "credit_points",
+            "credit_points_min",
+            "credit_points_max",
+            "exp",
+            "exp_min",
+            "exp_max",
             "extcredits1",
             "extcredits1_min",
             "extcredits1_max",
@@ -139,27 +154,12 @@
             "extcredits8",
             "extcredits8_min",
             "extcredits8_max",
-            "exp",
-            "exp_min",
-            "exp_max",
-            "level",
-            "level_min",
-            "level_max",
             "money",
             "money_min",
             "money_max",
             "coin",
             "coin_min",
-            "coin_max",
-            "credit",
-            "credit_min",
-            "credit_max",
-            "credit_points",
-            "credit_points_min",
-            "credit_points_max",
-            "iq",
-            "iq_min",
-            "iq_max"
+            "coin_max"
         ],
         "query_required": []
     },
@@ -175,6 +175,165 @@
                     1,
                     8388607
                 ]
+            }
+        },
+        {
+            "name": "level",
+            "title": "等级",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "level_min",
+            "title": "等级——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "level_max",
+            "title": "等级——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "iq",
+            "title": "IQ智商",
+            "description": "用于激励用户评论和发帖",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    80,
+                    200
+                ]
+            }
+        },
+        {
+            "name": "iq_min",
+            "title": "IQ智商——最小值",
+            "description": "用于激励用户评论和发帖",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    80,
+                    200
+                ]
+            }
+        },
+        {
+            "name": "iq_max",
+            "title": "IQ智商——最大值",
+            "description": "用于激励用户评论和发帖",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    80,
+                    200
+                ]
+            }
+        },
+        {
+            "name": "credit",
+            "title": "信用度",
+            "description": "用于评估用户信誉",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_min",
+            "title": "信用度——最小值",
+            "description": "用于评估用户信誉",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_max",
+            "title": "信用度——最大值",
+            "description": "用于评估用户信誉",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_points",
+            "title": "积分",
+            "description": "用于代金消费或兑换商品",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_points_min",
+            "title": "积分——最小值",
+            "description": "用于代金消费或兑换商品",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_points_max",
+            "title": "积分——最大值",
+            "description": "用于代金消费或兑换商品",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "exp",
+            "title": "经验值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "exp_min",
+            "title": "经验值——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "exp_max",
+            "title": "经验值——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
             }
         },
         {
@@ -418,66 +577,6 @@
             }
         },
         {
-            "name": "exp",
-            "title": "经验值",
-            "description": "",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "exp_min",
-            "title": "经验值——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "exp_max",
-            "title": "经验值——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "level",
-            "title": "等级",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "level_min",
-            "title": "等级——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "level_max",
-            "title": "等级——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
             "name": "money",
             "title": "钱",
             "description": "用于现金业务",
@@ -524,105 +623,6 @@
             "type": "number",
             "dataType": "decimal",
             "number": {}
-        },
-        {
-            "name": "credit",
-            "title": "信用度",
-            "description": "用于评估用户信誉",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "credit_min",
-            "title": "信用度——最小值",
-            "description": "用于评估用户信誉",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "credit_max",
-            "title": "信用度——最大值",
-            "description": "用于评估用户信誉",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "credit_points",
-            "title": "积分",
-            "description": "用于代金消费或兑换商品",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "credit_points_min",
-            "title": "积分——最小值",
-            "description": "用于代金消费或兑换商品",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "credit_points_max",
-            "title": "积分——最大值",
-            "description": "用于代金消费或兑换商品",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "iq",
-            "title": "IQ智商",
-            "description": "用于激励用户评论和发帖",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "range": [
-                    80,
-                    200
-                ]
-            }
-        },
-        {
-            "name": "iq_min",
-            "title": "IQ智商——最小值",
-            "description": "用于激励用户评论和发帖",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "range": [
-                    80,
-                    200
-                ]
-            }
-        },
-        {
-            "name": "iq_max",
-            "title": "IQ智商——最大值",
-            "description": "用于激励用户评论和发帖",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "range": [
-                    80,
-                    200
-                ]
-            }
         }
     ]
 }

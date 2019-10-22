@@ -1,5 +1,5 @@
 {
-	"path": "/test_sql/tpl",
+	"path": "/test/sql_tpl",
 	"type": "api",
 	"name": "test_sql_tpl",
 	"title": "示例接口",

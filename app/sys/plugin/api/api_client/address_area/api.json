@@ -2,7 +2,7 @@
     "name": "sys_address_area",
     "title": "",
     "description": "",
-    "path": "/api/address/area",
+    "path": "/api/sys/address_area",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

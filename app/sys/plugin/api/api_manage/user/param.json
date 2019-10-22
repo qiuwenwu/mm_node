@@ -3,30 +3,31 @@
     "title": "",
     "add": {
         "body": [
-            "referee_id",
+            "state",
             "vip",
             "gm",
             "mc",
+            "referee_id",
+            "create_time",
+            "login_time",
             "phone",
             "phone_state",
+            "nickname",
             "email",
             "email_state",
-            "login_ip",
-            "login_time",
-            "create_time",
             "user_group",
-            "admin_group",
+            "user_admin",
+            "login_ip",
             "signature",
-            "nickname",
             "avatar",
             "friends",
-            "state"
+            "admin_group"
         ],
         "body_required": [
-            "username",
-            "password",
             "salt",
-            "invite_code"
+            "invite_code",
+            "username",
+            "password"
         ]
     },
     "del": {
@@ -38,9 +39,9 @@
     "set": {
         "query": [
             "user_id",
-            "username",
-            "password",
-            "referee_id",
+            "state",
+            "state_min",
+            "state_max",
             "vip",
             "vip_min",
             "vip_max",
@@ -50,51 +51,53 @@
             "mc",
             "mc_min",
             "mc_max",
+            "referee_id",
+            "salt",
+            "invite_code",
             "phone",
             "phone_state",
+            "username",
+            "nickname",
+            "password",
             "email",
             "email_state",
-            "login_ip",
-            "salt",
             "user_group",
-            "admin_group",
+            "user_admin",
+            "login_ip",
             "signature",
-            "nickname",
             "avatar",
-            "invite_code",
             "friends",
-            "state",
-            "state_min",
-            "state_max"
+            "admin_group"
         ],
         "query_required": [],
         "body": [
-            "username",
-            "password",
-            "referee_id",
+            "state",
+            "state_add",
             "vip",
             "vip_add",
             "gm",
             "gm_add",
             "mc",
             "mc_add",
-            "phone",
-            "phone_state",
-            "email",
-            "email_state",
-            "login_ip",
+            "referee_id",
+            "create_time",
             "login_time",
             "salt",
-            "create_time",
-            "user_group",
-            "admin_group",
-            "signature",
-            "nickname",
-            "avatar",
             "invite_code",
+            "phone",
+            "phone_state",
+            "username",
+            "nickname",
+            "password",
+            "email",
+            "email_state",
+            "user_group",
+            "user_admin",
+            "login_ip",
+            "signature",
+            "avatar",
             "friends",
-            "state",
-            "state_add"
+            "admin_group"
         ],
         "body_required": [],
         "body_not": []
@@ -102,9 +105,9 @@
     "get": {
         "query": [
             "user_id",
-            "username",
-            "password",
-            "referee_id",
+            "state",
+            "state_min",
+            "state_max",
             "vip",
             "vip_min",
             "vip_max",
@@ -114,28 +117,29 @@
             "mc",
             "mc_min",
             "mc_max",
-            "phone",
-            "phone_state",
-            "email",
-            "email_state",
-            "login_ip",
+            "referee_id",
+            "create_time",
+            "create_time_min",
+            "create_time_max",
             "login_time",
             "login_time_min",
             "login_time_max",
             "salt",
-            "create_time",
-            "create_time_min",
-            "create_time_max",
-            "user_group",
-            "admin_group",
-            "signature",
-            "nickname",
-            "avatar",
             "invite_code",
+            "phone",
+            "phone_state",
+            "username",
+            "nickname",
+            "password",
+            "email",
+            "email_state",
+            "user_group",
+            "user_admin",
+            "login_ip",
+            "signature",
+            "avatar",
             "friends",
-            "state",
-            "state_min",
-            "state_max"
+            "admin_group"
         ],
         "query_required": []
     },
@@ -154,36 +158,33 @@
             }
         },
         {
-            "name": "username",
-            "title": "用户名",
-            "description": "用户登录时所用的账户名称",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "password",
-            "title": "密码",
-            "description": "用户登录所需的密码，由6-16位数字或英文组成",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "referee_id",
-            "title": "推荐人ID",
-            "description": "用于推荐注册时积分奖级",
+            "name": "state",
+            "title": "账户状态",
+            "description": "1为可用，2为异常，3为已冻结，4为已注销",
             "type": "number",
-            "dataType": "mediumint",
+            "dataType": "smallint",
             "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 10
+            }
+        },
+        {
+            "name": "state_min",
+            "title": "账户状态——最小值",
+            "description": "1为可用，2为异常，3为已冻结，4为已注销",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "state_max",
+            "title": "账户状态——最大值",
+            "description": "1为可用，2为异常，3为已冻结，4为已注销",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
             }
         },
         {
@@ -277,52 +278,50 @@
             }
         },
         {
-            "name": "phone",
-            "title": "手机号码",
-            "description": "用户的手机号码，用于找回密码时或登录时",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "format": "phone"
-            }
-        },
-        {
-            "name": "phone_state",
-            "title": "手机号码认证",
-            "description": "0为未认证，1为认证通过",
+            "name": "referee_id",
+            "title": "推荐人ID",
+            "description": "用于推荐注册时积分奖级",
             "type": "number",
-            "dataType": "tinyint",
+            "dataType": "mediumint",
             "number": {
-                "max": 1
+                "range": [
+                    1,
+                    8388607
+                ]
             }
         },
         {
-            "name": "email",
-            "title": "邮箱",
-            "description": "用户的邮箱，用于找回密码时或登录时",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "format": "email"
-            }
-        },
-        {
-            "name": "email_state",
-            "title": "邮箱认证",
-            "description": "0为未认证，1为认证通过",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
-            }
-        },
-        {
-            "name": "login_ip",
-            "title": "上次登录时的IP地址",
+            "name": "create_time",
+            "title": "创建时间",
             "description": "",
             "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
         },
         {
             "name": "login_time",
@@ -368,36 +367,81 @@
             }
         },
         {
-            "name": "create_time",
-            "title": "创建时间",
-            "description": "",
+            "name": "invite_code",
+            "title": "邀请注册码",
+            "description": "随着用户注册而生成",
             "type": "string",
-            "dataType": "datetime",
+            "dataType": "varchar",
             "string": {
-                "notEmpty": true,
-                "format": "datetime"
+                "notEmpty": 1
             }
         },
         {
-            "name": "create_time_min",
-            "title": "创建时间——开始时间",
-            "description": "",
+            "name": "phone",
+            "title": "手机号码",
+            "description": "用户的手机号码，用于找回密码时或登录时",
             "type": "string",
-            "dataType": "datetime",
+            "dataType": "varchar",
             "string": {
-                "notEmpty": true,
-                "format": "datetime"
+                "format": "phone"
             }
         },
         {
-            "name": "create_time_max",
-            "title": "创建时间——结束时间",
+            "name": "phone_state",
+            "title": "手机号码认证",
+            "description": "0为未认证，1为认证通过",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "username",
+            "title": "用户名",
+            "description": "用户登录时所用的账户名称",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "nickname",
+            "title": "昵称",
             "description": "",
             "type": "string",
-            "dataType": "datetime",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "password",
+            "title": "密码",
+            "description": "用户登录所需的密码，由6-16位数字或英文组成",
+            "type": "string",
+            "dataType": "varchar",
             "string": {
-                "notEmpty": true,
-                "format": "datetime"
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "email",
+            "title": "邮箱",
+            "description": "用户的邮箱，用于找回密码时或登录时",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "format": "email"
+            }
+        },
+        {
+            "name": "email_state",
+            "title": "邮箱认证",
+            "description": "0为未认证，1为认证通过",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
             }
         },
         {
@@ -409,7 +453,7 @@
             "string": {}
         },
         {
-            "name": "admin_group",
+            "name": "user_admin",
             "title": "所在管理组",
             "description": "多个管理组用“,“分隔",
             "type": "string",
@@ -417,16 +461,16 @@
             "string": {}
         },
         {
-            "name": "signature",
-            "title": "个性签名",
+            "name": "login_ip",
+            "title": "上次登录时的IP地址",
             "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "nickname",
-            "title": "昵称",
+            "name": "signature",
+            "title": "个性签名",
             "description": "",
             "type": "string",
             "dataType": "varchar",
@@ -441,16 +485,6 @@
             "string": {}
         },
         {
-            "name": "invite_code",
-            "title": "邀请注册码",
-            "description": "随着用户注册而生成",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
             "name": "friends",
             "title": "好友",
             "description": "多个好友ID用“,”分隔",
@@ -459,34 +493,12 @@
             "string": {}
         },
         {
-            "name": "state",
-            "title": "账户状态",
-            "description": "1为可用，2为异常，3为已冻结，4为已注销",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "state_min",
-            "title": "账户状态——最小值",
-            "description": "1为可用，2为异常，3为已冻结，4为已注销",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "state_max",
-            "title": "账户状态——最大值",
-            "description": "1为可用，2为异常，3为已冻结，4为已注销",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
+            "name": "admin_group",
+            "title": "所在管理组",
+            "description": "多个管理组用“,“分隔",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

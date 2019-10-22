@@ -2,7 +2,7 @@
     "name": "sys_user_group",
     "title": "",
     "description": "",
-    "path": "/api/user/group",
+    "path": "/api/sys/user_group",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

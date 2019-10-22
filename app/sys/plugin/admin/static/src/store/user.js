@@ -28,7 +28,7 @@ export default {
 			// 所在用户组
 			"user_group": "",
 			// 所在管理组
-			"admin_group": "",
+			"user_admin": "",
 			// 个性签名
 			"signature": "",
 			// 昵称

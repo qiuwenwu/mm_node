@@ -3,10 +3,10 @@
     "title": "",
     "add": {
         "body": [
-            "icon",
-            "description",
+            "display",
             "type",
-            "display"
+            "description",
+            "icon"
         ],
         "body_required": [
             "name"
@@ -21,22 +21,22 @@
     "set": {
         "query": [
             "admin_id",
-            "name",
-            "icon",
-            "description",
-            "type",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "type",
+            "name",
+            "description",
+            "icon"
         ],
         "query_required": [],
         "body": [
-            "name",
-            "icon",
-            "description",
-            "type",
             "display",
-            "display_add"
+            "display_add",
+            "type",
+            "name",
+            "description",
+            "icon"
         ],
         "body_required": [],
         "body_not": []
@@ -44,20 +44,20 @@
     "get": {
         "query": [
             "admin_id",
-            "name",
-            "icon",
-            "description",
-            "type",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "type",
+            "name",
+            "description",
+            "icon"
         ],
         "query_required": []
     },
     "list": [
         {
             "name": "admin_id",
-            "title": "",
+            "title": "管理组ID",
             "description": "",
             "type": "number",
             "dataType": "smallint",
@@ -67,40 +67,6 @@
                     1000
                 ]
             }
-        },
-        {
-            "name": "name",
-            "title": "",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "icon",
-            "title": "图标",
-            "description": "用于标识用户组",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "description",
-            "title": "描述",
-            "description": "描述该用户组的特点或权限范围",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "type",
-            "title": "分类",
-            "description": "用于区分用户组使用范围",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
         },
         {
             "name": "display",
@@ -131,6 +97,40 @@
             "number": {
                 "max": 1000
             }
+        },
+        {
+            "name": "type",
+            "title": "分类",
+            "description": "用于区分用户组使用范围",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "name",
+            "title": "管理组名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "description",
+            "title": "描述",
+            "description": "描述该用户组的特点或权限范围",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "icon",
+            "title": "图标",
+            "description": "用于标识用户组",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

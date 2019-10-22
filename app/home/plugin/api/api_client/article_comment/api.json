@@ -2,7 +2,7 @@
     "name": "home_article_comment",
     "title": "",
     "description": "",
-    "path": "/api/article/comment",
+    "path": "/api/home/article_comment",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

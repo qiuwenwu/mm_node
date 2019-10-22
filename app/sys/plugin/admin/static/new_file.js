@@ -11,7 +11,7 @@ define([], function() {
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		}, {
 			"name": "sys",
@@ -25,7 +25,7 @@ define([], function() {
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		}, {
 			"name": "sys_user",
@@ -35,7 +35,7 @@ define([], function() {
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		}, {
 			"name": "sys_user_edit",
@@ -45,7 +45,7 @@ define([], function() {
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		}, {
 			"name": "app",
@@ -55,7 +55,7 @@ define([], function() {
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		}, {
 			"name": "app_edit",
@@ -65,7 +65,7 @@ define([], function() {
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		}],
 		"top": [],

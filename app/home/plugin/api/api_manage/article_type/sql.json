@@ -4,13 +4,13 @@
     "table": "home_article_type",
     "key": "type_id",
     "orderby_default": "`type_id` desc",
-    "field_default": "`type_id`,`name`,`father_id`,`icon`,`description`,`display`",
+    "field_default": "`type_id`,`display`,`channel_id`,`father_id`,`name`,`description`,`icon`",
     "query": {
-        "name": "`name` like '%{0}%'",
-        "icon": "`icon` like '%{0}%'",
-        "description": "`description` like '%{0}%'",
         "display_min": "`display` >= {0}",
-        "display_max": "`display` <= {0}"
+        "display_max": "`display` <= {0}",
+        "name": "`name` like '%{0}%'",
+        "description": "`description` like '%{0}%'",
+        "icon": "`icon` like '%{0}%'"
     },
     "where": {},
     "update": {

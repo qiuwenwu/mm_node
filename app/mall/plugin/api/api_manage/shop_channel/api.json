@@ -1,0 +1,19 @@
+{
+    "name": "mall_shop_channel2",
+    "title": "",
+    "description": "",
+    "path": "/apis/mall/shop_channel",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true,
+    "oauth": {
+        "scope": true,
+        "signIn": true,
+        "gm": 2,
+        "user_admin": [],
+        "admin_group": []
+    }
+}

@@ -3,15 +3,15 @@
     "title": "",
     "add": {
         "body": [
+            "institution_state",
+            "user_id",
             "province_id",
             "city_id",
-            "address",
             "institution",
             "institution_code",
-            "institution_img",
-            "institution_state",
+            "address",
             "business",
-            "user_id"
+            "institution_img"
         ],
         "body_required": [
             "name"
@@ -26,32 +26,32 @@
     "set": {
         "query": [
             "seller_id",
-            "name",
-            "province_id",
-            "city_id",
-            "address",
-            "institution",
-            "institution_code",
-            "institution_img",
             "institution_state",
             "institution_state_min",
             "institution_state_max",
+            "user_id",
+            "province_id",
+            "city_id",
+            "name",
+            "institution",
+            "institution_code",
+            "address",
             "business",
-            "user_id"
+            "institution_img"
         ],
         "query_required": [],
         "body": [
-            "name",
-            "province_id",
-            "city_id",
-            "address",
-            "institution",
-            "institution_code",
-            "institution_img",
             "institution_state",
             "institution_state_add",
+            "user_id",
+            "province_id",
+            "city_id",
+            "name",
+            "institution",
+            "institution_code",
+            "address",
             "business",
-            "user_id"
+            "institution_img"
         ],
         "body_required": [],
         "body_not": []
@@ -59,18 +59,18 @@
     "get": {
         "query": [
             "seller_id",
-            "name",
-            "province_id",
-            "city_id",
-            "address",
-            "institution",
-            "institution_code",
-            "institution_img",
             "institution_state",
             "institution_state_min",
             "institution_state_max",
+            "user_id",
+            "province_id",
+            "city_id",
+            "name",
+            "institution",
+            "institution_code",
+            "address",
             "business",
-            "user_id"
+            "institution_img"
         ],
         "query_required": []
     },
@@ -87,74 +87,6 @@
                     8388607
                 ]
             }
-        },
-        {
-            "name": "name",
-            "title": "商户名称",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "province_id",
-            "title": "省份ID",
-            "description": "用户所在地的省份",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "range": [
-                    1,
-                    2147483647
-                ]
-            }
-        },
-        {
-            "name": "city_id",
-            "title": "所在城市ID",
-            "description": "",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "range": [
-                    1,
-                    2147483647
-                ]
-            }
-        },
-        {
-            "name": "address",
-            "title": "详细地址",
-            "description": "商户办公地的详细地址",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "institution",
-            "title": "注册企业名",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "institution_code",
-            "title": "组织机构码",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "institution_img",
-            "title": "营业执照图片",
-            "description": "",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
         },
         {
             "name": "institution_state",
@@ -187,14 +119,6 @@
             }
         },
         {
-            "name": "business",
-            "title": "经营范围",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
             "name": "user_id",
             "title": "商户持有人",
             "description": "",
@@ -206,6 +130,82 @@
                     8388607
                 ]
             }
+        },
+        {
+            "name": "province_id",
+            "title": "省份ID",
+            "description": "用户所在地的省份",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所在城市ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "商户名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "institution",
+            "title": "注册企业名",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "institution_code",
+            "title": "组织机构码",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "address",
+            "title": "详细地址",
+            "description": "商户办公地的详细地址",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "business",
+            "title": "经营范围",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "institution_img",
+            "title": "营业执照图片",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
         }
     ]
 }

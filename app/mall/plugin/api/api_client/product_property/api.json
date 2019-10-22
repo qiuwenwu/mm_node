@@ -1,0 +1,12 @@
+{
+    "name": "mall_product_property",
+    "title": "",
+    "description": "",
+    "path": "/api/mall/product_property",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

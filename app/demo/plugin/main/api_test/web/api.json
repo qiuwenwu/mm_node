@@ -30,7 +30,7 @@
 			"user_group": [
 				"agent"
 			],
-			"admin_group": [
+			"user_admin": [
 				"boss"
 			]
 		}

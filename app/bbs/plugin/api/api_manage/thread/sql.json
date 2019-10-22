@@ -1,0 +1,38 @@
+{
+    "name": "bbs_thread2",
+    "title": "",
+    "table": "bbs_thread",
+    "key": "thread_id",
+    "orderby_default": "`thread_id` desc",
+    "field_default": "`thread_id`,`available`,`state`,`type_id`,`channel_id`,`display`,`city_id`,`user_id`,`hot`,`praise`,`collect_id`,`create_time`,`update_time`,`title`,`keywords`,`description`,`img`,`url`,`tag`,`content`,`collecter`",
+    "query": {
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "display_min": "`display` >= {0}",
+        "display_max": "`display` <= {0}",
+        "hot_min": "`hot` >= {0}",
+        "hot_max": "`hot` <= {0}",
+        "praise_min": "`praise` >= {0}",
+        "praise_max": "`praise` <= {0}",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'",
+        "title": "`title` like '%{0}%'",
+        "keywords": "`keywords` like '%{0}%'",
+        "description": "`description` like '%{0}%'",
+        "img": "`img` like '%{0}%'",
+        "url": "`url` like '%{0}%'",
+        "tag": "`tag` like '%{0}%'",
+        "content": "`content` like '%{0}%'",
+        "collecter": "`collecter` like '%{0}%'"
+    },
+    "where": {},
+    "update": {
+        "state_add": "`state` = `state` + {0}",
+        "display_add": "`display` = `display` + {0}",
+        "hot_add": "`hot` = `hot` + {0}",
+        "praise_add": "`praise` = `praise` + {0}"
+    },
+    "field_hide": []
+}

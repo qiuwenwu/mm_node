@@ -14,7 +14,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		},
 		{
@@ -25,7 +25,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		},
 		{
@@ -36,7 +36,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		},
 		{
@@ -47,7 +47,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		},
 		{
@@ -58,7 +58,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		},
 		{
@@ -69,7 +69,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		},
 		{
@@ -80,7 +80,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		},
 		{
@@ -91,7 +91,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		},
 		{
@@ -102,7 +102,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		},
 		{
@@ -113,7 +113,7 @@
 			"oauth": {
 				"signIn": true,
 				"gm": 2,
-				"admin_group": []
+				"user_admin": []
 			}
 		}
 	],

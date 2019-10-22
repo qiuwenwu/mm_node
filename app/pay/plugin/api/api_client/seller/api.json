@@ -2,7 +2,7 @@
     "name": "pay_seller",
     "title": "",
     "description": "",
-    "path": "/api/seller",
+    "path": "/api/pay/seller",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

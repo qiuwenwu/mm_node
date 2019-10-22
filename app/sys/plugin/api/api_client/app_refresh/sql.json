@@ -4,15 +4,15 @@
     "table": "sys_app_refresh",
     "key": "refresh_id",
     "orderby_default": "`refresh_id` desc",
-    "field_default": "`refresh_id`,`refresh_token`,`update_time`,`create_time`,`appid`,`user_id`",
+    "field_default": "`refresh_id`,`user_id`,`create_time`,`update_time`,`appid`,`refresh_token`",
     "method": "get",
     "query": {
-        "refresh_token": "`refresh_token` like '%{0}%'",
-        "update_time_min": "`update_time` >= '{0}'",
-        "update_time_max": "`update_time` <= '{0}'",
         "create_time_min": "`create_time` >= '{0}'",
         "create_time_max": "`create_time` <= '{0}'",
-        "appid": "`appid` like '%{0}%'"
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'",
+        "appid": "`appid` like '%{0}%'",
+        "refresh_token": "`refresh_token` like '%{0}%'"
     },
     "query_default": {
         "user_id": "`user_id` = {user_id}"

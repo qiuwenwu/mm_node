@@ -283,7 +283,7 @@
 								mc: 0,
 								vip: 0,
 								user_group: [],
-								admin_group: []
+								user_admin: []
 							},
 							param_path: "",
 							path: "",
@@ -473,7 +473,7 @@
 						var badge = '';
 						var o = this.config.oauth;
 						if (o.signIn) {
-							if (o.vip || o.gm || o.mc || o.user_group.length || o.admin_group.length) {
+							if (o.vip || o.gm || o.mc || o.user_group.length || o.user_admin.length) {
 								badge = "需要权限"
 							} else {
 								badge = "需要登录"

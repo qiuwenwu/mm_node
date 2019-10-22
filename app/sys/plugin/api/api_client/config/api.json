@@ -2,7 +2,7 @@
     "name": "sys_config",
     "title": "",
     "description": "",
-    "path": "/api/config",
+    "path": "/api/sys/config",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

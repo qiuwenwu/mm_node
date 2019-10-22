@@ -2,7 +2,7 @@
     "name": "sys_address_city2",
     "title": "",
     "description": "",
-    "path": "/apis/address/city",
+    "path": "/apis/sys/address_city",
     "method": "ALL",
     "cache": 0,
     "client_cache": true,
@@ -13,6 +13,7 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
+        "user_admin": [],
         "admin_group": []
     }
 }

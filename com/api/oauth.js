@@ -27,7 +27,7 @@ class Oauth {
 			// 要求用户组
 			"user_group": [],
 			// 要求管理组
-			"admin_group": [],
+			"user_admin": [],
 			// 文件路径, 当调用函数不存在时，会先从文件中加载
 			"func_file": ""
 		};
@@ -124,10 +124,10 @@ Oauth.prototype.check = async function(ctx) {
 		}
 
 		// 判断管理组
-		if (cg.admin_group.length > 0) {
+		if (cg.user_admin.length > 0) {
 			// 利用filter获取数组交集
-			var arr2 = user.admin_group.split(',');
-			var arr = cg.admin_group.filter(function(v) {
+			var arr2 = user.user_admin.split(',');
+			var arr = cg.user_admin.filter(function(v) {
 				return arr2.indexOf(v) !== -1
 			});
 			if (arr.length === 0) {

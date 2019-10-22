@@ -3,11 +3,12 @@
     "title": "",
     "add": {
         "body": [
-            "name",
+            "display",
+            "channel_id",
             "father_id",
-            "icon",
+            "name",
             "description",
-            "display"
+            "icon"
         ],
         "body_required": []
     },
@@ -20,22 +21,24 @@
     "set": {
         "query": [
             "type_id",
-            "name",
-            "father_id",
-            "icon",
-            "description",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "channel_id",
+            "father_id",
+            "name",
+            "description",
+            "icon"
         ],
         "query_required": [],
         "body": [
-            "name",
-            "father_id",
-            "icon",
-            "description",
             "display",
-            "display_add"
+            "display_add",
+            "channel_id",
+            "father_id",
+            "name",
+            "description",
+            "icon"
         ],
         "body_required": [],
         "body_not": []
@@ -43,13 +46,14 @@
     "get": {
         "query": [
             "type_id",
-            "name",
-            "father_id",
-            "icon",
-            "description",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "channel_id",
+            "father_id",
+            "name",
+            "description",
+            "icon"
         ],
         "query_required": []
     },
@@ -63,46 +67,9 @@
             "number": {
                 "range": [
                     1,
-                    32767
+                    30000
                 ]
             }
-        },
-        {
-            "name": "name",
-            "title": "分类名称",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "father_id",
-            "title": "上级分类ID",
-            "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "range": [
-                    1,
-                    32767
-                ]
-            }
-        },
-        {
-            "name": "icon",
-            "title": "分类图标",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "description",
-            "title": "分类描述",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
         },
         {
             "name": "display",
@@ -133,6 +100,56 @@
             "number": {
                 "max": 1000
             }
+        },
+        {
+            "name": "channel_id",
+            "title": "频道ID",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    10000
+                ]
+            }
+        },
+        {
+            "name": "father_id",
+            "title": "上级分类ID",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    32767
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "分类名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "description",
+            "title": "分类描述",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "icon",
+            "title": "分类图标",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

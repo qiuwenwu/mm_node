@@ -2,7 +2,7 @@
     "name": "sys_address_province",
     "title": "",
     "description": "",
-    "path": "/api/address/province",
+    "path": "/api/sys/address_province",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

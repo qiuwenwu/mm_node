@@ -2,7 +2,7 @@
     "name": "pay_account_discount",
     "title": "",
     "description": "",
-    "path": "/api/account/discount",
+    "path": "/api/pay/account_discount",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

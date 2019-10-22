@@ -2,7 +2,7 @@
     "name": "sys_user_count",
     "title": "",
     "description": "",
-    "path": "/api/user/count",
+    "path": "/api/sys/user_count",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

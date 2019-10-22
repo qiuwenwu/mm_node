@@ -3,9 +3,9 @@
     "title": "",
     "add": {
         "body": [
-            "province_id",
             "show",
-            "display"
+            "display",
+            "province_id"
         ],
         "body_required": [
             "name"
@@ -20,23 +20,23 @@
     "set": {
         "query": [
             "city_id",
-            "name",
-            "province_id",
             "show",
             "show_min",
             "show_max",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "province_id",
+            "name"
         ],
         "query_required": [],
         "body": [
-            "name",
-            "province_id",
             "show",
             "show_add",
             "display",
-            "display_add"
+            "display_add",
+            "province_id",
+            "name"
         ],
         "body_required": [],
         "body_not": []
@@ -44,14 +44,14 @@
     "get": {
         "query": [
             "city_id",
-            "name",
-            "province_id",
             "show",
             "show_min",
             "show_max",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "province_id",
+            "name"
         ],
         "query_required": []
     },
@@ -59,29 +59,6 @@
         {
             "name": "city_id",
             "title": "城市ID",
-            "description": "",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
-            }
-        },
-        {
-            "name": "name",
-            "title": "城市名称",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "province_id",
-            "title": "所属省份ID",
             "description": "",
             "type": "number",
             "dataType": "mediumint",
@@ -150,6 +127,29 @@
             "dataType": "smallint",
             "number": {
                 "max": 1000
+            }
+        },
+        {
+            "name": "province_id",
+            "title": "所属省份ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "城市名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
             }
         }
     ]

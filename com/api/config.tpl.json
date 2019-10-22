@@ -16,6 +16,6 @@
 		"gm": 0,
 		"mc": 0,
 		"user_group": ["vip1"],
-		"admin_group": ["master"]
+		"user_admin": ["master"]
 	}
 }

@@ -3,9 +3,9 @@
     "title": "",
     "add": {
         "body": [
-            "city_id",
             "show",
-            "display"
+            "display",
+            "city_id"
         ],
         "body_required": [
             "name"
@@ -20,23 +20,23 @@
     "set": {
         "query": [
             "area_id",
-            "name",
-            "city_id",
             "show",
             "show_min",
             "show_max",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "city_id",
+            "name"
         ],
         "query_required": [],
         "body": [
-            "name",
-            "city_id",
             "show",
             "show_add",
             "display",
-            "display_add"
+            "display_add",
+            "city_id",
+            "name"
         ],
         "body_required": [],
         "body_not": []
@@ -44,14 +44,14 @@
     "get": {
         "query": [
             "area_id",
-            "name",
-            "city_id",
             "show",
             "show_min",
             "show_max",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "city_id",
+            "name"
         ],
         "query_required": []
     },
@@ -59,29 +59,6 @@
         {
             "name": "area_id",
             "title": "地区ID",
-            "description": "",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
-            }
-        },
-        {
-            "name": "name",
-            "title": "地区名称",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "city_id",
-            "title": "所属城市ID",
             "description": "",
             "type": "number",
             "dataType": "mediumint",
@@ -150,6 +127,29 @@
             "dataType": "smallint",
             "number": {
                 "max": 1000
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所属城市ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "地区名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
             }
         }
     ]

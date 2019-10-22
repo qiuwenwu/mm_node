@@ -4,11 +4,11 @@
     "add": {
         "body": [
             "usd",
+            "cny",
+            "mm",
             "btc",
             "eth",
-            "eos",
-            "cny",
-            "mm"
+            "eos"
         ],
         "body_required": []
     },
@@ -24,6 +24,12 @@
             "usd",
             "usd_min",
             "usd_max",
+            "cny",
+            "cny_min",
+            "cny_max",
+            "mm",
+            "mm_min",
+            "mm_max",
             "btc",
             "btc_min",
             "btc_max",
@@ -32,28 +38,22 @@
             "eth_max",
             "eos",
             "eos_min",
-            "eos_max",
-            "cny",
-            "cny_min",
-            "cny_max",
-            "mm",
-            "mm_min",
-            "mm_max"
+            "eos_max"
         ],
         "query_required": [],
         "body": [
             "usd",
             "usd_add",
+            "cny",
+            "cny_add",
+            "mm",
+            "mm_add",
             "btc",
             "btc_add",
             "eth",
             "eth_add",
             "eos",
-            "eos_add",
-            "cny",
-            "cny_add",
-            "mm",
-            "mm_add"
+            "eos_add"
         ],
         "body_required": [],
         "body_not": []
@@ -64,6 +64,12 @@
             "usd",
             "usd_min",
             "usd_max",
+            "cny",
+            "cny_min",
+            "cny_max",
+            "mm",
+            "mm_min",
+            "mm_max",
             "btc",
             "btc_min",
             "btc_max",
@@ -72,13 +78,7 @@
             "eth_max",
             "eos",
             "eos_min",
-            "eos_max",
-            "cny",
-            "cny_min",
-            "cny_max",
-            "mm",
-            "mm_min",
-            "mm_max"
+            "eos_max"
         ],
         "query_required": []
     },
@@ -115,6 +115,54 @@
         {
             "name": "usd_max",
             "title": "美元余额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "cny",
+            "title": "人民币余额",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "cny_min",
+            "title": "人民币余额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "cny_max",
+            "title": "人民币余额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "mm",
+            "title": "美眉币余额",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "mm_min",
+            "title": "美眉币余额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "mm_max",
+            "title": "美眉币余额——最大值",
             "description": "",
             "type": "number",
             "dataType": "decimal",
@@ -187,54 +235,6 @@
         {
             "name": "eos_max",
             "title": "柚子币余额——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "cny",
-            "title": "人民币余额",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "cny_min",
-            "title": "人民币余额——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "cny_max",
-            "title": "人民币余额——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "mm",
-            "title": "美眉币余额",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "mm_min",
-            "title": "美眉币余额——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "mm_max",
-            "title": "美眉币余额——最大值",
             "description": "",
             "type": "number",
             "dataType": "decimal",

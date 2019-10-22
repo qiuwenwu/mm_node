@@ -30,7 +30,7 @@
 			"gm": 2,
 			"mc": 2,
 			"user_group": ["1"],
-			"admin_group": ["1"],
+			"user_admin": ["1"],
 			"func_file": ""
 		}
 	},

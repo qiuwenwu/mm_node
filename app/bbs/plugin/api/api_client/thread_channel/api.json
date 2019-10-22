@@ -1,0 +1,12 @@
+{
+    "name": "bbs_thread_channel",
+    "title": "",
+    "description": "",
+    "path": "/api/bbs/thread_channel",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

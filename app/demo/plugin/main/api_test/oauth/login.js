@@ -24,7 +24,7 @@ async function main(ctx, db) {
 				// 用户组
 				"user_group": [],
 				// 管理组
-				"admin_group": ["master"]
+				"user_admin": ["master"]
 			};
 			// 自动生成的uuid是通过IP和浏览器信息加密而成，如果需要解密确认其身份，可再加上user_id加密，自行生成uuid
 			return $.ret.obj(ctx.session.uuid);

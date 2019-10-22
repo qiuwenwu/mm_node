@@ -4,13 +4,13 @@
     "add": {
         "body": [
             "title",
-            "description",
             "value",
+            "description",
             "model"
         ],
         "body_required": [
-            "name",
-            "type"
+            "type",
+            "name"
         ]
     },
     "del": {
@@ -22,20 +22,20 @@
     "set": {
         "query": [
             "config_id",
-            "title",
-            "description",
-            "name",
-            "value",
             "type",
+            "name",
+            "title",
+            "value",
+            "description",
             "model"
         ],
         "query_required": [],
         "body": [
-            "title",
-            "description",
-            "name",
-            "value",
             "type",
+            "name",
+            "title",
+            "value",
+            "description",
             "model"
         ],
         "body_required": [],
@@ -44,11 +44,11 @@
     "get": {
         "query": [
             "config_id",
-            "title",
-            "description",
-            "name",
-            "value",
             "type",
+            "name",
+            "title",
+            "value",
+            "description",
             "model"
         ],
         "query_required": []
@@ -68,20 +68,14 @@
             }
         },
         {
-            "name": "title",
-            "title": "变量标题",
-            "description": "可以用中文名",
+            "name": "type",
+            "title": "数据类型",
+            "description": "string文本型、number数字型、boolean布尔型",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "description",
-            "title": "变量描述",
-            "description": "描述该变量的作用",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "string": {
+                "notEmpty": 1
+            }
         },
         {
             "name": "name",
@@ -94,6 +88,14 @@
             }
         },
         {
+            "name": "title",
+            "title": "变量标题",
+            "description": "可以用中文名",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
             "name": "value",
             "title": "变量值",
             "description": "",
@@ -102,14 +104,12 @@
             "string": {}
         },
         {
-            "name": "type",
-            "title": "数据类型",
-            "description": "string文本型、number数字型、boolean布尔型",
+            "name": "description",
+            "title": "变量描述",
+            "description": "描述该变量的作用",
             "type": "string",
             "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
+            "string": {}
         },
         {
             "name": "model",

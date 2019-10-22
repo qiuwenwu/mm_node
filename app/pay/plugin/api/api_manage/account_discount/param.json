@@ -4,23 +4,23 @@
     "add": {
         "body": [
             "state",
+            "to_user_id",
+            "seller_id",
+            "user_id",
+            "amount",
+            "fee",
             "create_time",
             "pay_time",
             "end_time",
             "update_time",
-            "ip",
             "platform",
             "way",
             "institution",
+            "ip",
             "from_user",
             "to_user",
-            "to_user_id",
-            "seller_id",
             "cause",
-            "note",
-            "amount",
-            "user_id",
-            "fee"
+            "note"
         ],
         "body_required": []
     },
@@ -36,47 +36,47 @@
             "state",
             "state_min",
             "state_max",
-            "ip",
-            "platform",
-            "way",
-            "institution",
-            "from_user",
-            "to_user",
             "to_user_id",
             "seller_id",
-            "cause",
-            "note",
+            "user_id",
             "amount",
             "amount_min",
             "amount_max",
-            "user_id",
             "fee",
             "fee_min",
-            "fee_max"
+            "fee_max",
+            "platform",
+            "way",
+            "institution",
+            "ip",
+            "from_user",
+            "to_user",
+            "cause",
+            "note"
         ],
         "query_required": [],
         "body": [
             "state",
             "state_add",
+            "to_user_id",
+            "seller_id",
+            "user_id",
+            "amount",
+            "amount_add",
+            "fee",
+            "fee_add",
             "create_time",
             "pay_time",
             "end_time",
             "update_time",
-            "ip",
             "platform",
             "way",
             "institution",
+            "ip",
             "from_user",
             "to_user",
-            "to_user_id",
-            "seller_id",
             "cause",
-            "note",
-            "amount",
-            "amount_add",
-            "user_id",
-            "fee",
-            "fee_add"
+            "note"
         ],
         "body_required": [],
         "body_not": []
@@ -87,6 +87,15 @@
             "state",
             "state_min",
             "state_max",
+            "to_user_id",
+            "seller_id",
+            "user_id",
+            "amount",
+            "amount_min",
+            "amount_max",
+            "fee",
+            "fee_min",
+            "fee_max",
             "create_time",
             "create_time_min",
             "create_time_max",
@@ -99,23 +108,14 @@
             "update_time",
             "update_time_min",
             "update_time_max",
-            "ip",
             "platform",
             "way",
             "institution",
+            "ip",
             "from_user",
             "to_user",
-            "to_user_id",
-            "seller_id",
             "cause",
-            "note",
-            "amount",
-            "amount_min",
-            "amount_max",
-            "user_id",
-            "fee",
-            "fee_min",
-            "fee_max"
+            "note"
         ],
         "query_required": []
     },
@@ -162,6 +162,93 @@
             "number": {
                 "max": 10
             }
+        },
+        {
+            "name": "to_user_id",
+            "title": "收款人",
+            "description": "如果是商户收款，可选填",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "seller_id",
+            "title": "商户ID",
+            "description": "商户收款的ID",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "审批人",
+            "description": "转账申请处理负责人，即由谁放款的",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "amount",
+            "title": "提现金额",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "amount_min",
+            "title": "提现金额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "amount_max",
+            "title": "提现金额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "fee",
+            "title": "手续费",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "fee_min",
+            "title": "手续费——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "fee_max",
+            "title": "手续费——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
         },
         {
             "name": "create_time",
@@ -296,14 +383,6 @@
             }
         },
         {
-            "name": "ip",
-            "title": "发起提现时的IP",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
             "name": "platform",
             "title": "应用平台",
             "description": "pc电脑版网站、moblie移动版网站、wechat微信公众号、app手机应用",
@@ -328,6 +407,14 @@
             "string": {}
         },
         {
+            "name": "ip",
+            "title": "发起提现时的IP",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
             "name": "from_user",
             "title": "付款账户",
             "description": "",
@@ -344,32 +431,6 @@
             "string": {}
         },
         {
-            "name": "to_user_id",
-            "title": "收款人",
-            "description": "如果是商户收款，可选填",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
-            }
-        },
-        {
-            "name": "seller_id",
-            "title": "商户ID",
-            "description": "商户收款的ID",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
-            }
-        },
-        {
             "name": "cause",
             "title": "拒绝原因",
             "description": "告知商户为什么拒绝本次提现",
@@ -384,67 +445,6 @@
             "type": "string",
             "dataType": "varchar",
             "string": {}
-        },
-        {
-            "name": "amount",
-            "title": "提现金额",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "amount_min",
-            "title": "提现金额——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "amount_max",
-            "title": "提现金额——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "user_id",
-            "title": "审批人",
-            "description": "转账申请处理负责人，即由谁放款的",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
-            }
-        },
-        {
-            "name": "fee",
-            "title": "手续费",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "fee_min",
-            "title": "手续费——最小值",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
-        },
-        {
-            "name": "fee_max",
-            "title": "手续费——最大值",
-            "description": "",
-            "type": "number",
-            "dataType": "decimal",
-            "number": {}
         }
     ]
 }

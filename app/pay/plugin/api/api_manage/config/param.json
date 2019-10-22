@@ -9,8 +9,8 @@
             "model"
         ],
         "body_required": [
-            "name",
-            "type"
+            "type",
+            "name"
         ]
     },
     "del": {
@@ -22,20 +22,20 @@
     "set": {
         "query": [
             "config_id",
+            "type",
+            "name",
             "title",
             "description",
-            "name",
             "value",
-            "type",
             "model"
         ],
         "query_required": [],
         "body": [
+            "type",
+            "name",
             "title",
             "description",
-            "name",
             "value",
-            "type",
             "model"
         ],
         "body_required": [],
@@ -44,11 +44,11 @@
     "get": {
         "query": [
             "config_id",
+            "type",
+            "name",
             "title",
             "description",
-            "name",
             "value",
-            "type",
             "model"
         ],
         "query_required": []
@@ -68,6 +68,26 @@
             }
         },
         {
+            "name": "type",
+            "title": "数据类型",
+            "description": "string文本型、number数字型、boolean布尔型",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "name",
+            "title": "变量名",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
             "name": "title",
             "title": "变量标题",
             "description": "可以用中文名",
@@ -84,32 +104,12 @@
             "string": {}
         },
         {
-            "name": "name",
-            "title": "变量名",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
             "name": "value",
             "title": "变量值",
             "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
-        },
-        {
-            "name": "type",
-            "title": "数据类型",
-            "description": "string文本型、number数字型、boolean布尔型",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
         },
         {
             "name": "model",

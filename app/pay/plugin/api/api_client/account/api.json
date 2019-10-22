@@ -2,7 +2,7 @@
     "name": "pay_account",
     "title": "",
     "description": "",
-    "path": "/api/account",
+    "path": "/api/pay/account",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

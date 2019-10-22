@@ -19,21 +19,21 @@
     "set": {
         "query": [
             "province_id",
-            "name",
             "show",
             "show_min",
             "show_max",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "name"
         ],
         "query_required": [],
         "body": [
-            "name",
             "show",
             "show_add",
             "display",
-            "display_add"
+            "display_add",
+            "name"
         ],
         "body_required": [],
         "body_not": []
@@ -41,13 +41,13 @@
     "get": {
         "query": [
             "province_id",
-            "name",
             "show",
             "show_min",
             "show_max",
             "display",
             "display_min",
-            "display_max"
+            "display_max",
+            "name"
         ],
         "query_required": []
     },
@@ -63,16 +63,6 @@
                     1,
                     8388607
                 ]
-            }
-        },
-        {
-            "name": "name",
-            "title": "省份名称",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
             }
         },
         {
@@ -133,6 +123,16 @@
             "dataType": "smallint",
             "number": {
                 "max": 1000
+            }
+        },
+        {
+            "name": "name",
+            "title": "省份名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
             }
         }
     ]

@@ -2,7 +2,7 @@
     "name": "sys_address_city",
     "title": "",
     "description": "",
-    "path": "/api/address/city",
+    "path": "/api/sys/address_city",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

@@ -3,21 +3,21 @@
     "title": "",
     "add": {
         "body": [
-            "name",
             "sex",
+            "idcard_state",
             "age",
-            "birthday",
             "province_id",
             "city_id",
-            "address",
+            "birthday",
+            "name",
             "job",
-            "job_scope",
-            "company_address",
-            "company_business",
             "school",
             "major",
             "idcard",
-            "idcard_state",
+            "company_address",
+            "address",
+            "job_scope",
+            "company_business",
             "idcard_img"
         ],
         "body_required": []
@@ -31,48 +31,48 @@
     "set": {
         "query": [
             "user_id",
-            "name",
             "sex",
             "sex_min",
             "sex_max",
+            "idcard_state",
+            "idcard_state_min",
+            "idcard_state_max",
             "age",
             "age_min",
             "age_max",
             "province_id",
             "city_id",
-            "address",
+            "name",
             "job",
-            "job_scope",
-            "company_address",
-            "company_business",
             "school",
             "major",
             "idcard",
-            "idcard_state",
-            "idcard_state_min",
-            "idcard_state_max",
+            "company_address",
+            "address",
+            "job_scope",
+            "company_business",
             "idcard_img"
         ],
         "query_required": [],
         "body": [
-            "name",
             "sex",
             "sex_add",
+            "idcard_state",
+            "idcard_state_add",
             "age",
             "age_add",
-            "birthday",
             "province_id",
             "city_id",
-            "address",
+            "birthday",
+            "name",
             "job",
-            "job_scope",
-            "company_address",
-            "company_business",
             "school",
             "major",
             "idcard",
-            "idcard_state",
-            "idcard_state_add",
+            "company_address",
+            "address",
+            "job_scope",
+            "company_business",
             "idcard_img"
         ],
         "body_required": [],
@@ -81,29 +81,29 @@
     "get": {
         "query": [
             "user_id",
-            "name",
             "sex",
             "sex_min",
             "sex_max",
-            "age",
-            "age_min",
-            "age_max",
-            "birthday",
-            "birthday_min",
-            "birthday_max",
-            "province_id",
-            "city_id",
-            "address",
-            "job",
-            "job_scope",
-            "company_address",
-            "company_business",
-            "school",
-            "major",
-            "idcard",
             "idcard_state",
             "idcard_state_min",
             "idcard_state_max",
+            "age",
+            "age_min",
+            "age_max",
+            "province_id",
+            "city_id",
+            "birthday",
+            "birthday_min",
+            "birthday_max",
+            "name",
+            "job",
+            "school",
+            "major",
+            "idcard",
+            "company_address",
+            "address",
+            "job_scope",
+            "company_business",
             "idcard_img"
         ],
         "query_required": []
@@ -119,19 +119,6 @@
                 "range": [
                     1,
                     8388607
-                ]
-            }
-        },
-        {
-            "name": "name",
-            "title": "姓名",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "range": [
-                    2,
-                    16
                 ]
             }
         },
@@ -166,6 +153,36 @@
             }
         },
         {
+            "name": "idcard_state",
+            "title": "身份实名认证",
+            "description": "1为未认证，2为认证中，3为认证通过",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "idcard_state_min",
+            "title": "身份实名认证——最小值",
+            "description": "1为未认证，2为认证中，3为认证通过",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "idcard_state_max",
+            "title": "身份实名认证——最大值",
+            "description": "1为未认证，2为认证中，3为认证通过",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
             "name": "age",
             "title": "年龄",
             "description": "",
@@ -193,6 +210,32 @@
             "dataType": "smallint",
             "number": {
                 "max": 150
+            }
+        },
+        {
+            "name": "province_id",
+            "title": "省份ID",
+            "description": "用户所在地的省份",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所在城市ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
             }
         },
         {
@@ -229,66 +272,21 @@
             }
         },
         {
-            "name": "province_id",
-            "title": "省份ID",
-            "description": "用户所在地的省份",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "range": [
-                    1,
-                    2147483647
-                ]
-            }
-        },
-        {
-            "name": "city_id",
-            "title": "所在城市ID",
+            "name": "name",
+            "title": "姓名",
             "description": "",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "range": [
-                    1,
-                    2147483647
-                ]
-            }
-        },
-        {
-            "name": "address",
-            "title": "详细地址",
-            "description": "用户居住地的详细地址",
             "type": "string",
             "dataType": "varchar",
-            "string": {}
+            "string": {
+                "range": [
+                    2,
+                    16
+                ]
+            }
         },
         {
             "name": "job",
             "title": "职业",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "job_scope",
-            "title": "工作范围",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "company_address",
-            "title": "公司地址",
-            "description": "用户当前就职的公司地址",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "company_business",
-            "title": "公司经营范围",
             "description": "",
             "type": "string",
             "dataType": "varchar",
@@ -319,34 +317,36 @@
             "string": {}
         },
         {
-            "name": "idcard_state",
-            "title": "身份实名认证",
-            "description": "1为未认证，2为认证中，3为认证通过",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
+            "name": "company_address",
+            "title": "公司地址",
+            "description": "用户当前就职的公司地址",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "name": "idcard_state_min",
-            "title": "身份实名认证——最小值",
-            "description": "1为未认证，2为认证中，3为认证通过",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
+            "name": "address",
+            "title": "详细地址",
+            "description": "用户居住地的详细地址",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "name": "idcard_state_max",
-            "title": "身份实名认证——最大值",
-            "description": "1为未认证，2为认证中，3为认证通过",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
+            "name": "job_scope",
+            "title": "工作范围",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "company_business",
+            "title": "公司经营范围",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
             "name": "idcard_img",

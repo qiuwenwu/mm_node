@@ -2,7 +2,7 @@
     "name": "sys_user_sns",
     "title": "",
     "description": "",
-    "path": "/api/user/sns",
+    "path": "/api/sys/user_sns",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

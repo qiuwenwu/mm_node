@@ -2,7 +2,7 @@
     "name": "sys_user_admin",
     "title": "",
     "description": "",
-    "path": "/api/user/admin",
+    "path": "/api/sys/user_admin",
     "method": "GET",
     "cache": 0,
     "client_cache": true,
