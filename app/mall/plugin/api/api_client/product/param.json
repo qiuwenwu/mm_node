@@ -1,6 +1,6 @@
 {
     "name": "mall_product",
-    "title": "",
+    "title": "商品信息",
     "add": {
         "body": [
             "available",

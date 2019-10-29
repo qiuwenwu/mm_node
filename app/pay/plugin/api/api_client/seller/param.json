@@ -1,6 +1,6 @@
 {
     "name": "pay_seller",
-    "title": "",
+    "title": "商户信息",
     "add": {
         "body": [
             "institution_state",

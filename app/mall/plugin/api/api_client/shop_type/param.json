@@ -1,6 +1,6 @@
 {
     "name": "mall_shop_type",
-    "title": "",
+    "title": "店铺分类",
     "add": {
         "body": [
             "display",

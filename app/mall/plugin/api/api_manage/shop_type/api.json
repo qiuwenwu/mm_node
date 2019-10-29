@@ -1,6 +1,6 @@
 {
     "name": "mall_shop_type2",
-    "title": "",
+    "title": "店铺分类",
     "description": "",
     "path": "/apis/mall/shop_type",
     "method": "ALL",
@@ -13,7 +13,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_admin": [],
-        "admin_group": []
+        "user_admin": []
     }
 }

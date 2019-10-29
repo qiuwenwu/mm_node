@@ -1,6 +1,6 @@
 {
     "name": "mall_config",
-    "title": "",
+    "title": "商城配置",
     "add": {
         "body": [
             "title",

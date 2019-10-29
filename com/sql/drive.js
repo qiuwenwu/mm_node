@@ -20,8 +20,6 @@ class Drive extends Item {
 		this.config = {
 			// 名称
 			"name": "",
-			// 标题, 介绍事件作用
-			"title": "",
 			// 表名 {0} 代表可前端传参自定义查询的表
 			"table": "{0}",
 			// 主键 用于水平连表查询时 例如：id

@@ -2,15 +2,15 @@
 	<div class="page_app" id="app_index">
 		<mm_side class="dev_side" id="app_dev_side" :func="set_width">
 			<mm_head class="dev_head">
-				<dev_dropdown v-model="show" :obj="obj" v-if="obj" id="app_dropdown">
+				<dev_dropdown v-model="show" :obj="item" v-if="obj" id="app_dropdown">
 					<div class="app_list">
 						<div class="state">
-							<mm_icon :src="obj.icon"></mm_icon>
-							<div class="title" v-html="obj.title"></div>
-							<div class="desc" v-html="obj.desc"></div>
+							<mm_icon :src="item.icon"></mm_icon>
+							<div class="title">Current app</div>
+							<div class="desc" v-html="item.desc"></div>
 							<i class="btn fa-sort-desc"></i>
 						</div>
-						<div class="state" v-for="(o, idx) in list" :key="idx" @click="selete_app(o.name)">
+						<div class="state" v-for="(o, idx) in app_list" :key="idx" @click="set_app(o.name)">
 							<mm_icon :src="o.icon ? o.icon : '<i class=\'fa-codepen\'></i>'"></mm_icon>
 							<div class="title" v-html="o.title"></div>
 							<div class="desc" v-html="o.name"></div>
@@ -21,10 +21,10 @@
 				<div v-else></div>
 			</mm_head>
 			<mm_body class="dev_body">
-				<div v-if="plugin_list.length > 0">
-					<div class="plugin_count">共<span>{{ plugin_list.length }}</span>个插件</div>
-					<mm_list class="plugin_list" col="1">
-						<mm_item v-for="(o, idx) in plugin_list" :key="idx" :class="{'active': query.plugin === o.name }" @click.native="selete_plugin(o.name)">{{ o.title }}</mm_item>
+				<div v-if="list.length > 0">
+					<div class="plugin_count">共<span>{{ list.length }}</span>个插件</div>
+					<mm_list class="list" col="1">
+						<mm_item v-for="(o, idx) in list" :key="idx" :class="{'active': query.plugin === o.name }" @click.native="set_plugin(o.name)">{{ o.title }}</mm_item>
 					</mm_list>
 				</div>
 				<div class="plugin_tip" v-else>该应用下没有插件</div>
@@ -35,29 +35,55 @@
 				<div></div>
 				<div></div>
 			</mm_head>
-			<mm_body class="dev_body">
+			<mm_body class="dev_body" v-show="obj.config.name && !query.plugin">
 				<mm_list class="plugin_tabs">
 					<mm_item :class="{ 'active': 'info' === query.tab }" @click.native="set_tab('info')">简介</mm_item>
+					<mm_item :class="{ 'active': 'plugin' === query.tab }" @click.native="set_tab('plugin')">插件</mm_item>
 					<mm_item :class="{ 'active': 'cmd' === query.tab }" @click.native="set_tab('cmd')">控制台</mm_item>
-					<mm_item :class="{ 'active': 'set' === query.tab }" @click.native="set_tab('set')">设置</mm_item>
 					<mm_item></mm_item>
 				</mm_list>
-				<div class="plugin_tabs_body">
+				<div class="tabs_body">
 					<div :class="{ 'show': 'info' === query.tab }">
 						<div class="h3">
-							<mm_switch class="onOff" v-model="plugin_state.onOff"></mm_switch>
-							<span>{{ plugin.title }}</span>
+							<span>{{ obj.config.title }}</span>
 						</div>
 						<div class="desc">
-							{{ plugin.description }}
+							{{ obj.config.description }}
 						</div>
 						<div class="content">
 							<mm_list class="plugin_info" col="1">
-								<mm_item><span class="h5">插件名称:</span><span>{{ plugin.name }}</span></mm_item>
-								<mm_item><span class="h5">当前版本:</span><span>{{ plugin.version }}</span>
-									<mm_btn type="warning" class="btn-sm" v-if="plugin_state.version_new !== plugin.version">更新</mm_btn>
+								<mm_item><span class="h5">应用名称:</span><span>{{ obj.config.name }}</span></mm_item>
+								<mm_item><span class="h5">当前版本:</span><span>{{ obj.config.version }}</span>
+									<mm_btn type="warning" class="btn-sm" v-if="obj.version_new !== obj.config.version">更新</mm_btn>
 								</mm_item>
 							</mm_list>
+						</div>
+					</div>
+					<div :class="{ 'show': 'plugin' === query.tab }">
+						<mm_table class="table-hover table-striped" v-if="list.length">
+							<thead class="table-sm">
+								<tr>
+									<th width="50">#</th>
+									<th width="200">插件名称</th>
+									<th>描述</th>
+									<th width="240">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr v-for="(o, k) in list" :key="k">
+									<th>{{ k + 1 }}</th>
+									<td><a href="javascript:void(0);" @click="set_plugin(o.name);">{{ o.title }}</a></td>
+									<td>{{ o.description }}</td>
+									<td>
+										<mm_btn type="success btn-sm">安装</mm_btn>
+										<mm_btn type="warning btn-sm">卸载</mm_btn>
+										<mm_btn type="default btn-sm">删除</mm_btn>
+									</td>
+								</tr>
+							</tbody>
+						</mm_table>
+						<div v-else>
+							该应用下没有插件
 						</div>
 					</div>
 					<div :class="{ 'show': 'cmd' === query.tab }">
@@ -65,8 +91,8 @@
 							<mm_col>
 								<div class="log">
 									<div class="h5"><i class="fa-sticky-note"></i>命令提示符</div>
-									<mm_pre id="cmd_code" @keyup.enter.native="keyup">欢迎使用 {{ plugin.name }}
-										<div> > </div>
+									<mm_pre id="cmd_code" @keyup.enter.native="keyup">欢迎使用 {{ obj.name }}
+										<div></div> >
 									</mm_pre>
 								</div>
 							</mm_col>
@@ -75,9 +101,35 @@
 							</mm_col>
 						</mm_grid>
 					</div>
-					<div :class="{ 'show': 'admin' === query.tab }">
+				</div>
+			</mm_body>
+			<mm_body class="dev_body" v-show="query.plugin">
+				<mm_list class="plugin_tabs">
+					<mm_item :class="{ 'active': 'info' === query.tab }" @click.native="set_tab('info')">简介</mm_item>
+					<mm_item :class="{ 'active': 'set' === query.tab }" @click.native="set_tab('set')">设置</mm_item>
+					<mm_item></mm_item>
+				</mm_list>
+				<div class="tabs_body">
+					<div :class="{ 'show': 'info' === query.tab }">
+						<div class="h3">
+							<mm_switch class="onOff" v-model="plugin.onOff"></mm_switch>
+							<span>{{ plugin.config.title }}</span>
+						</div>
+						<div class="desc">
+							{{ plugin.config.description }}
+						</div>
+						<div class="content">
+							<mm_list class="plugin_info" col="1">
+								<mm_item><span class="h5">插件名称:</span><span>{{ plugin.config.name }}</span></mm_item>
+								<mm_item><span class="h5">当前版本:</span><span>{{ plugin.config.version }}</span>
+									<mm_btn type="warning" class="btn-sm" v-if="plugin.version_new !== plugin.config.version">更新</mm_btn>
+								</mm_item>
+							</mm_list>
+						</div>
+					</div>
+					<div :class="{ 'show': 'set' === query.tab }">
 						<iframe :src="plugin.url" v-if="plugin.url"></iframe>
-						<div v-else>没有管理页</div>
+						<div v-else>没有设置项</div>
 					</div>
 				</div>
 			</mm_body>
@@ -87,7 +139,7 @@
 
 <script>
 	import mm_pre from '/src/components/content/mm_pre.vue';
-	import mixin from '/src/mixins/page.js';
+	import mixin from 'page';
 
 	export default {
 		mixins: [mixin],
@@ -96,48 +148,83 @@
 		},
 		data: function() {
 			return {
-				url_get_obj: "",
-				url_get_list: "/api/dev/app?scope=sys",
+				url_get_obj: "/api/dev/app?scope=sys",
+				url_get_list: "/api/dev/plugin",
 				query: {
-					// 名称
-					"app": "",
+					// 应用名称
+					"app": "dev",
+					// 插件名称
 					"plugin": "",
+					// 标签
 					"tab": "info"
 				},
-				plugin_list: [],
+				app_list: [],
 				width: 0,
 				obj: {
-					title: "Current app",
-					desc: "",
-					icon: ""
+					config: {
+						"title": "",
+						"description": "",
+						"name": "",
+						"app": "",
+						"func_file": "",
+						"func_name": "",
+						"version": "1.0",
+						"lang_path": "",
+						"icon": "",
+						"cmd": "",
+						"end": true,
+						"sort": 10
+					}
 				},
 				plugin: {
-					"title": "门户PC版",
-					"description": "该应用带文章、新闻资讯、企业动态等信息",
-					"name": "home_pc",
-					"app": "",
-					"func_file": "./index.js",
-					"func_name": "",
-					"version": "1.0",
-					"lang_path": "./lang/",
-					"icon": "/img/logo.png",
-					"cmd": "home_pc",
-					"end": true,
-					"sort": 10
-				},
-				plugin_state: {
+					config: {
+						"title": "",
+						"description": "",
+						"name": "",
+						"app": "",
+						"func_file": "",
+						"func_name": "",
+						"version": "1.0",
+						"lang_path": "",
+						"icon": "",
+						"cmd": "",
+						"end": true,
+						"sort": 10,
+					},
 					"onOff": 1,
-					"version_new": "1.1"
+					"version_new": "1.0"
 				}
 			}
 		},
 		methods: {
+			/**
+			 * 初始化之后
+			 */
+			init_after(func) {
+				this.get_app(func);
+			},
+			/**
+			 * 获取应用详情前
+			 * @param {Object} param
+			 */
+			get_obj_before(param) {
+				return {
+					name: param.app
+				}
+			},
+			/**
+			 * 获取插件列表前
+			 * @param {Object} param
+			 */
+			get_list_before(param) {
+				return {
+					scope: param.app
+				}
+			},
 			send(cmd) {
-				var str = cmd.replace(' >', this.plugin.cmd);
-				console.log(str);
+				var str = cmd.replace(' >', this.obj.cmd);
 			},
 			keyup(e) {
-				// console.log(e);
 				var arr = $('#cmd_code').children("div");
 				var cmd = arr.eq(arr.length - 2).text();
 				var tag = arr.eq(arr.length - 1);
@@ -145,82 +232,76 @@
 				$('#cmd_code').blur();
 				this.send(cmd);
 			},
-			// get_obj(param){
-			// 	// var pm = Object.assign({}, param);
-			// 	// delete pm = ;
-			// },
-			get_list_before(param) {
-				return {};
+			get_app(func) {
+				var _this = this;
+				this.$get(this.url_get_obj, function(json, status) {
+					_this.events('get_app_after', json.result, func);
+				});
 			},
-			get_list_after(json) {
-				if (json.result) {
-					this.list.addList(json.result.list);
+			get_app_after(res, func) {
+				if (res && res.list) {
+					this.app_list.addList(res.list);
 					var app = this.query.app;
 					if (this.list.length > 0) {
 						if (!app) {
 							app = this.list[0].name;
+							this.set_app(app);
 						}
-						this.selete_app(app);
 					}
 				}
+				if (func) {
+					func();
+				}
 			},
-			get_plugin(app) {
-				var url = "/api/dev/plugin?scope=" + app;
-				var _this = this;
-				this.plugin_list.clear();
-				this.$get(url, function(json, status) {
-					if (json.result) {
-						_this.plugin_list.addList(json.result.list);
-
-						// 如果有插件并传入了插件参数，则选中插件
-						if (_this.plugin_list.length > 0 && _this.query.plugin) {
-							_this.selete_plugin(_this.query.plugin);
-						}
-					}
-				});
-			},
-			selete_plugin(name) {
+			set_plugin(name) {
 				this.query.plugin = name;
-				var o = this.plugin_list.getObj({
+				var o = this.list.getObj({
 					name: name
 				});
 				if (o) {
-					$.push(this.plugin, o);
 					var url = "/api/dev/plugin?scope=" + this.query.app + "&name=" + name;
 
 					var _this = this;
 					this.$get(url, function(json, status) {
 						var res = json.result;
 						if (res) {
-							$.push(_this.plugin, res.config);
-							_this.plugin_state.onOff = res.onOff ? 1 : 0;
+							$.push(_this.plugin, res);
+							_this.plugin.onOff = res.onOff ? 1 : 0;
 						}
 					});
+				} else {
+					this.query.plugin = "";
 				}
+				if (this.query.tab === 'cmd' || this.query.tab === 'plugin') {
+					this.query.tab = 'info'
+				}
+				$.route.push('?' + this.toUrl(this.query));
 			},
-			selete_app(name) {
+			set_app(name) {
 				this.show = false;
-				var o = this.list.getObj({
-					name: name
-				});
-				if (o) {
-					this.obj.desc = o.name;
-					if (o.icon) {
-						this.obj.icon = o.icon;
-					} else {
-						this.obj.icon = "<i class='fa-codepen'></i>";
-					}
-					this.get_plugin(o.name);
-				}
+				this.query.app = name;
+				this.query.plugin = "";
+				$.route.push('?' + $.toUrl(this.query))
+				this.get_obj();
 			},
 			set_width(width) {
 				$('#app_dev_side .app_list').width(width);
 			},
 			set_tab(tab) {
 				this.query.tab = tab;
+				$.route.push('?' + this.toUrl(this.query));
+			}
+		},
+		computed: {
+			item() {
+				return {
+					title: "Current app",
+					desc: this.query.app,
+					icon: "<i class='fa-codepen'></i>"
+				}
 			}
 		}
-	};
+	}
 </script>
 
 <style>
@@ -309,7 +390,7 @@
 		color: #999;
 	}
 
-	.plugin_list .mm_item {
+	.list .mm_item {
 		padding: 0.5rem 1rem;
 		border-top: 1px solid #DBDBDB;
 		border-bottom: 1px solid #DBDBDB;
@@ -317,7 +398,12 @@
 		font-size: 0.875rem;
 	}
 
-	.plugin_list .mm_item:active {
+	.list .mm_item:hover {
+		color: #000;
+		background: rgb(248, 248, 250);
+	}
+
+	.list .mm_item:active {
 		background: #FEFEFE;
 	}
 
@@ -333,12 +419,12 @@
 		margin: 0 .25rem;
 	}
 
-	.plugin_list .active {
+	.list .active {
 		position: relative;
 		color: #38f;
 	}
 
-	.plugin_list .active:before {
+	.list .active:before {
 		position: absolute;
 		right: 1rem;
 		top: calc(50% - 3px);
@@ -377,27 +463,27 @@
 		color: #38f;
 	}
 
-	.plugin_tabs_body {
+	#app_index .tabs_body {
 		padding: 1rem;
 	}
 
-	.plugin_tabs_body>div {
+	#app_index .tabs_body>div {
 		display: none;
 	}
 
-	.plugin_tabs_body .h3 {
+	#app_index .tabs_body .h3 {
 		padding-bottom: .5rem;
 		border-bottom: 1px solid #DBDBDB;
 	}
 
-	.plugin_tabs_body .desc {
+	#app_index .tabs_body .desc {
 		margin: 1rem 0;
 		padding: 0.125rem 0;
 		padding-left: 1rem;
 		border-left: 3px solid #DBDBDB;
 	}
 
-	.plugin_tabs_body .onOff {
+	#app_index .tabs_body .onOff {
 		float: right;
 	}
 
@@ -440,5 +526,9 @@
 		width: 100%;
 		max-width: 50rem;
 		min-height: 8rem;
+	}
+
+	#app_index .tabs_body a {
+		color: #38f;
 	}
 </style>

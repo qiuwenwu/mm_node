@@ -1,6 +1,6 @@
 {
     "name": "sys_user_admin2",
-    "title": "",
+    "title": "管理组",
     "add": {
         "body": [
             "display",

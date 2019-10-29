@@ -1,6 +1,6 @@
 {
     "name": "pay_config",
-    "title": "",
+    "title": "支付配置",
     "description": "",
     "path": "/api/pay/config",
     "method": "GET",

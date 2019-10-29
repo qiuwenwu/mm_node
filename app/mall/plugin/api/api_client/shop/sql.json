@@ -1,6 +1,6 @@
 {
     "name": "mall_shop",
-    "title": "",
+    "title": "店铺信息",
     "table": "mall_shop",
     "key": "shop_id",
     "orderby_default": "`display` asc",

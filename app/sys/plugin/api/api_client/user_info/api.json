@@ -1,6 +1,6 @@
 {
     "name": "sys_user_info",
-    "title": "",
+    "title": "用户资料",
     "description": "",
     "path": "/api/sys/user_info",
     "method": "GET",

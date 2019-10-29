@@ -1,6 +1,6 @@
 {
     "name": "pay_trade",
-    "title": "",
+    "title": "交易信息",
     "add": {
         "body": [
             "state",

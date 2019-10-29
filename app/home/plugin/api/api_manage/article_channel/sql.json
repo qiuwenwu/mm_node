@@ -1,6 +1,6 @@
 {
     "name": "home_article_channel2",
-    "title": "",
+    "title": "文章栏目",
     "table": "home_article_channel",
     "key": "channel_id",
     "orderby_default": "`channel_id` desc",

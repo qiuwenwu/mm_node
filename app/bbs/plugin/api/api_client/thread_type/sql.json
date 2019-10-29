@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread_type",
-    "title": "",
+    "title": "主题分类",
     "table": "bbs_thread_type",
     "key": "type_id",
     "orderby_default": "`display` asc",

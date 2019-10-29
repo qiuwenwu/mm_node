@@ -1,6 +1,6 @@
 {
     "name": "sys_user_sns2",
-    "title": "",
+    "title": "用户社交账号",
     "description": "",
     "path": "/apis/sys/user_sns",
     "method": "ALL",
@@ -13,7 +13,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_admin": [],
-        "admin_group": []
+        "user_admin": []
     }
 }

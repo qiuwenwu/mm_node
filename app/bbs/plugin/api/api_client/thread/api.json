@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread",
-    "title": "",
+    "title": "论坛主题",
     "description": "",
     "path": "/api/bbs/thread",
     "method": "GET",

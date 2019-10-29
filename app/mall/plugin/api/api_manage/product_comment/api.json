@@ -1,8 +1,12 @@
 {
     "name": "mall_product_comment2",
-    "title": "",
+    "title": "商品评论",
     "description": "",
     "path": "/apis/mall/product_comment",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "",
+    "func_name": "",
     "method": "ALL",
     "cache": 0,
     "client_cache": true,
@@ -13,7 +17,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_admin": [],
-        "admin_group": []
+        "user_admin": []
     }
 }

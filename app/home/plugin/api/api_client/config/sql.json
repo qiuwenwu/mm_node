@@ -1,6 +1,6 @@
 {
     "name": "home_config",
-    "title": "",
+    "title": "门户配置",
     "table": "home_config",
     "key": "config_id",
     "orderby_default": "`config_id` desc",

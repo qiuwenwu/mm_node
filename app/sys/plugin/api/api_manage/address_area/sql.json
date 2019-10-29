@@ -1,6 +1,6 @@
 {
     "name": "sys_address_area2",
-    "title": "",
+    "title": "地区",
     "table": "sys_address_area",
     "key": "area_id",
     "orderby_default": "`area_id` desc",

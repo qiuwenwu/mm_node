@@ -4,7 +4,7 @@
 		<div class="title" v-if="title" v-html="title"></div>
 		<div class="value" v-bind:class="{'disabled': disabled }">
 			<input :type="type" :value="value" :min="min" :max="max" :minlength="min_length" :maxlength="max_length"
-			 :placeholder="desc" @input="set" :disabled="disabled"/>
+			 :placeholder="desc" @input="set" :disabled="disabled" @blur="$emit('blur')"/>
 			<slot><span class="unit" v-if="unit">{{ unit }}</span></slot>
 		</div>
 		<div class="tip" v-if="tip">{{ tip }}</div>

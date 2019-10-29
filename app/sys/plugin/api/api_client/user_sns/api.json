@@ -1,6 +1,6 @@
 {
     "name": "sys_user_sns",
-    "title": "",
+    "title": "用户社交账号",
     "description": "",
     "path": "/api/sys/user_sns",
     "method": "GET",

@@ -1,6 +1,6 @@
 {
     "name": "pay_account2",
-    "title": "",
+    "title": "支付账户",
     "add": {
         "body": [
             "state",

@@ -16,8 +16,6 @@ class Param extends Index {
 		super(scope, __dirname);
 		this.Drive = Drive;
 		this.type = "param";
-
-
 	}
 }
 

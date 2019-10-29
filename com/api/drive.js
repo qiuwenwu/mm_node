@@ -52,6 +52,8 @@ class Drive extends Item {
 			"path": "",
 			// 接口类型，api表示服务端数据类型，web表示网页类型，app表示第三方应用类型
 			"type": "api",
+			// 返回的数据类型
+			"contentType": "json",
 			// 文件路径, 当调用函数不存在时，会先从文件中加载
 			"func_file": "",
 			// 回调函数名 用于决定调用脚本的哪个函数

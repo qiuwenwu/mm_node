@@ -17,11 +17,10 @@ export default {
 			url_submit: "",
 			// 上传提交地址
 			url_upload: "",
+
 			/* === 缓存 === */
 			// 显示方式
 			display: "",
-			// 加载进度, 小于100表示加载中，大于100表示加载完成
-			loading: 0,
 			// 当前索引
 			index: 0,
 			// 列数
@@ -34,8 +33,12 @@ export default {
 			form: {},
 			// 对象
 			obj: {},
+			// 上一组列表
+			list_prev: [],
 			// 列表
 			list: [],
+			// 下一组列表
+			list_next: [],
 			// 验证、视图模型
 			vm: {},
 			// 重定向
@@ -65,29 +68,32 @@ export default {
 			roles: [],
 			// 身份验证
 			oauth: false,
-			// 显示中
+			// 加载进度, 小于100表示加载中，大于100表示加载完成
+			loading: 0,
+			// 页面加载进度, 小于100表示加载中，大于100表示加载完成
 			showing: 0,
-			// 上传进度
+			// 上传进度, 小于100表示加载中，大于100表示上传完成
 			uploading: 0,
-			// 获取中
-			getting: 0,
+			// 数据提交进度, 小于100表示加载中，大于100表示提交完成
+			posting: 0,
 			// 消息
 			message: "",
 			// 执行结果
-			bl: false
+			bl: false,
+			// 执行结果提示
+			tip: "",
+			// 模式 list列表模式、obj对象模式
+			mode: "obj"
 		}
 	},
 	methods: {
 		/**
 		 * @description 提示框
 		 * @param {String} text 提示内容
-		 * @param {String} icon 提示图标
+		 * @param {Number} longTime 显示时长
 		 */
-		toast(text, icon) {
-			if (!icon) {
-				icon = "none";
-			}
-			this.$toast(text, icon);
+		toast(text, longTime) {
+			this.$.toast(text, longTime ? longTime : 2000);
 		},
 		/**
 		 * @description 添加数据
@@ -105,85 +111,248 @@ export default {
 		},
 		/**
 		 * @description 修改数据
-		 * @param {Object} query 查询条件
 		 * @param {Object} value 要修改的数据
+		 * @param {Object} query 查询条件
 		 */
-		set(query, value) {
-
+		set(value, query) {
+			var url = this.url_set;
+			if (url) {
+				var param = this.events('set_before', value);
+				if (!param) {
+					param = value;
+				}
+				if (!query) {
+					if (this.field) {
+						query = {};
+						query[this.field] = param[this.field];
+					} else {
+						return;
+					}
+				}
+				var _this = this;
+				this.$post(this.toUrl(query, url), param, function(json, status) {
+					_this.events('set_after', json, status);
+				});
+			}
 		},
 		/**
 		 * @description 查询数据
-		 * @param {Object} query 查询条件
+		 * @func {Function} 回调函数
 		 */
-		get(query) {
+		get(func) {
 			if (this.url_get_obj) {
-				this.get_obj(query);
+				var _this = this;
+				this.get_obj(this.query, function() {
+					_this.get_list_first(_this.query, func);
+				});
 			} else {
-				this.get_list(query);
+				this.get_list_first(this.query, func);
 			}
 		},
 		/**
 		 * @description 查询一条数据
 		 * @param {Object} query 查询条件
+		 * @func {Function} 回调函数
 		 */
-		get_obj(query) {
+		get_obj(query, func) {
+			console.log('获取对象');
 			var url = this.url_get_obj;
 			if (url) {
-				if (query) {
-					$.push(this.query, query);
+				if (!query) {
+					query = this.query;
 				}
-				var _this = this;
-				this.$get(this.toUrl(this.events('get_obj_before', this.query), url), function(json, status) {
-					var obj = _this.events('get_obj_after', json, status);
-					if (obj) {
-						$.clear(_this.obj);
-						$.push(_this.obj, obj);
-					} else if (json.result) {
-						$.clear(this.obj);
-						$.push(this, json.result);
-						if (!json.result.obj) {
-							var list = json.default.list;
-							if (list.length > 0) {
-								$.push(this.obj, list[0]);
+				var param = this.events('get_obj_before', query);
+				if (!param) {
+					param = query;
+				}
+				var msg = this.events('get_obj_check', param);
+				if (msg) {
+					if (func) {
+						func();
+					};
+					return;
+				} else {
+					var _this = this;
+					this.$get(this.toUrl(param, url), function(json, status) {
+						var res = json.result;
+						var obj = _this.events('get_obj_after', res, func);
+						if (!obj && res) {
+							$.push(_this, res);
+							if (res.obj) {
+								obj = res.obj;
+							} else {
+								var list = res.list;
+								if (list && list.length > 0) {
+									obj = list[0]
+								} else {
+									$.push(_this.obj, res);
+								}
 							}
 						}
-					} else if (json.error) {
-						_this.toast(json.error.message);
-					} else {
-						_this.toast('服务器连接失败！');
-					}
-				});
+						if (obj) {
+							$.push(_this.obj, obj);
+						} else if (json.error) {
+							console.log(json.error.message);
+						} else if (!res) {
+							_this.toast('服务器连接失败！');
+						}
+					});
+				}
+			}
+		},
+		/**
+		 * @description 获取到对象后事件
+		 * @param {Object} res 响应结果
+		 * @param {Function} func 回调函数
+		 */
+		get_obj_after(res, func) {
+			console.log('获取对象后');
+			if (func) {
+				func();
 			}
 		},
 		/**
 		 * @description 查询多条数据
 		 * @param {Object} query 查询条件
-		 * @param {fun} fun 回调函数
+		 * @param {Function} func 回调函数
 		 */
-		get_list(query, fun) {
-			var url = this.url_get_list ? this.url_get_list : this.url;
+		get_list(query, func) {
+			var url = this.url_get_list;
 			if (url) {
-				if (query) {
-					$.push(this.query, query);
+				if (!query) {
+					query = this.query;
 				}
-				var _this = this;
-				this.$get(this.toUrl(this.events('get_list_before', this.query), url), function(json, status) {
-					var list = _this.events('get_list_after', json, fun);
-					if (list) {
-						_this.list.addList(list);
-					} else if (json.result) {
-						list = json.result.list;
+				var param = this.events('get_list_before', query);
+				if (!param) {
+					param = query;
+				}
+				var msg = this.events('get_list_check', param);
+				if (!msg) {
+					var _this = this;
+					this.$get(this.toUrl(param, url), function(json, status) {
+						// 结束数据加载中动画
+						_this.loading = 100;
+						var res = json.result;
+						var list = _this.events('get_list_after', res, func);
+						if (!list && res) {
+							list = res.list;
+						}
 						if (list) {
 							_this.list.addList(list);
-							if (json.result.count !== undefined) {
-								_this.count = json.result.count;
+							if (res.count !== undefined) {
+								_this.count = res.count;
 							}
+						} else if (json.error) {
+							console.log(json.error.message);
+						} else if (!res) {
+							_this.toast('服务器连接失败！');
 						}
-					} else if (json.error) {
-						_this.toast(json.error.message);
-					} else {
-						_this.toast('服务器连接失败！');
+					});
+				}
+			}
+		},
+		/**
+		 * @description 获取到列表事件
+		 * @param {Object} res 响应结果
+		 * @param {Function} func 回调函数
+		 */
+		get_list_after(res, func) {
+			if (func) {
+				func();
+			}
+		},
+		/**
+		 * @description 查询多条数据 (首次)
+		 * @param {Object} query 查询条件
+		 * @param {Function} func 回调函数
+		 */
+		get_list_first(query, func) {
+			console.log('首次获取列表');
+			// 显示数据加载中动画
+			this.loading = 0;
+			// 清空查询结果
+			this.list.clear();
+			this.list_next.clear();
+			this.list_prev.clear();
+
+			if (!query) {
+				query = this.query;
+			}
+			// 首次首次查询参数
+			if (this.mode === 'list') {
+				var q = Object.assign({
+					count: true
+				}, query);
+				var _this = this;
+				//  查询列表
+				this.get_list(q, function() {
+					// 结束数据加载中动画
+					_this.loading = 100;
+					if (_this.list.length > 0) {
+						if (query.page === 1) {
+							_this.get_list_next(func);
+						} else {
+							_this.get_list_next(function() {
+								_this.get_list_prev(func);
+							});
+						}
+					} else if (func) {
+						func();
 					}
+				});
+			} else {
+				var _this = this;
+				//  查询列表
+				this.get_list(query, function() {
+					// 结束数据加载中动画
+					_this.loading = 100;
+					if (func) {
+						func();
+					}
+				})
+			}
+		},
+		/**
+		 * @description 查询下一页数据
+		 * @param {Function} func 回调函数
+		 */
+		get_list_next(func) {
+			console.log('查询下一页数据');
+			$.push(this.list, this.list_next);
+			this.list_next.clear();
+			var q = Object.assign({}, this.query);
+			if (q < this.page_count) {
+				q.page += 1;
+				this.get_list(q, function(res, f) {
+					if (res.list) {
+						this.list_next.addList(res.list)
+					}
+					if (func) {
+						func();
+					}
+					return [];
+				});
+			}
+		},
+		/**
+		 * @description 查询上一页数据
+		 * @param {Function} func 回调函数
+		 */
+		get_list_prev(func) {
+			console.log('查询上一页数据');
+			$.push(this.list, this.list_prev);
+			this.list_prev.clear();
+			var q = Object.assign({}, this.query);
+			if (q > 1) {
+				q.page -= 1;
+				this.get_list(q, function(res, f) {
+					if (res.list) {
+						this.list_prev.addList(res.list)
+					}
+					if (func) {
+						func();
+					}
+					return [];
 				});
 			}
 		},
@@ -195,23 +364,26 @@ export default {
 			$.clear(this.query);
 			$.push(this.query, this.config);
 		},
-
 		/**
 		 * 搜索
 		 * @param {Object} query 查询条件
 		 * @param {Boolean} bl 是否重置再搜索
 		 */
 		search(query, bl) {
+			console.log('搜索');
 			if (bl) {
 				this.reset();
 			}
 			if (query) {
+				// 设置查询条件
 				$.push(this.query, query);
 			}
-			this.list.clear();
-			this.get();
-		},
+			this.query.page = 1;
+			$.route.push('?' + this.toUrl(this.query));
 
+			// 执行首次获取列表函数
+			this.get_list_first();
+		},
 		/**
 		 * 提交表单
 		 */
@@ -219,6 +391,9 @@ export default {
 			var url = this.url_submit;
 			if (url) {
 				var form = this.submit_before(this.form);
+				if (!form) {
+					form = this.form;
+				}
 				var tip = this.submit_check(form);
 				if (tip) {
 					this.toast(tip);
@@ -234,17 +409,38 @@ export default {
 			}
 		},
 		/**
+		 * 提交前验证事件
+		 * @param {Object} 请求参数
+		 * @return {String} 验证成功返回null, 失败返回错误提示
+		 */
+		submit_check(param) {
+			return this.check(param, this.vm);
+		},
+		/**
+		 * @description 获取到对象后事件
+		 * @param {Object} json 响应结果
+		 * @param {Number} status 服务器状态码
+		 */
+		submit_after(json, status) {
+			if (json.result) {
+				this.toast(json.result.message);
+			} else if (json.error) {
+				this.toast(json.error.message);
+			} else {
+				this.toast('服务器连接失败！');
+			}
+		},
+		/**
 		 * 上下翻页
 		 * @param {Number} n 加减页码
 		 */
 		go(n) {
-			this.goTo(this.page + n);
+			var page = this.query.page + n;
+			// 跳转指定页
+			this.goTo(page);
 		},
-
-		/// 
-		/// page: 加减数
 		/**
-		 * 跳转到第N页
+		 * 跳转指定页
 		 * @param {Number} page 页码
 		 */
 		goTo(page) {
@@ -253,10 +449,20 @@ export default {
 			} else if (page > this.page_count) {
 				page = this.page_count;
 			}
-			this.page = page;
-			this.get_list();
+			var p = this.query.page;
+			this.query.page = page;
+			$.route.push('?' + this.toUrl(this.query));
+			if (p + 1 == page) {
+				// 搜索
+				this.get_list_next();
+			} else if (p - 1 == page) {
+				// 搜索
+				this.get_list_prev();
+			} else {
+				// 搜索
+				this.get_list_first();
+			}
 		},
-
 		/**
 		 * @description 转查询参数
 		 * @param {Object} obj 被转换的对象
@@ -267,30 +473,47 @@ export default {
 			return $.toUrl(obj, url);
 		},
 		/**
-		 * 登录验证
+		 * 初始化后函数
 		 */
-		check_oauth() {
-			if (this.oauth) {
-				var _this = this;
-				this.$get_user(function() {
-					var token = $.db.get("token");
-					if (token) {
-						_this.$store.commit('web/set_redirect_url', _this.$route.path + location.search);
-						_this.search();
-					} else {
-						_this.$nav(_this.redirect);
-					}
-				});
-			} else {
-				this.search();
+		init_after(func) {
+			// 结束页面加载动画
+			this.showing = 100;
+			if (func) {
+				func();
 			}
 		},
 		/**
 		 * 初始化
 		 */
 		init() {
-			$.push(this.query, this.$route.query);
-			this.check_oauth();
+			// 显示页面加载动画
+			this.showing = 0;
+			var q = this.$route.query;
+			// 执行初始化前事件函数
+			var query = this.events('init_before', q);
+			if (!query) {
+				query = q;
+			}
+
+			// 设置查询参数
+			$.push(this.query, query);
+
+			var _this = this;
+			// 判断是否直接加载页面，历史记录大于1表示切换页面
+			if ($.route.history.length > 1) {
+				// 重置查询参数
+				// this.reset();
+
+				// 执行初始化后事件函数
+				_this.init_after(_this.get);
+			} else {
+
+				// 获取用户信息
+				_this.$get_user(function() {
+					// 执行初始化后事件函数
+					_this.init_after(_this.get);
+				});
+			}
 		},
 		/**
 		 * @param {Object} param 验证参数
@@ -298,6 +521,7 @@ export default {
 		 * @return {Boolean} 验证通过空, 否则返回错误提示
 		 */
 		check(param, dict) {
+			if (dict) {}
 			return null;
 		},
 		/**
@@ -339,7 +563,6 @@ export default {
 				return null;
 			}
 		},
-		
 		/**
 		 * @description 加载进度设置函数
 		 * @param {Number} progress 加载进度, 小于100表示加载中，大于100表示加载完成
@@ -352,109 +575,51 @@ export default {
 			}
 		},
 		/**
-		 * 提交前验证事件
-		 * @param {Object} 请求参数
-		 * @return {String} 验证成功返回null, 失败返回错误提示
+		 * @description 上传文件
+		 * @param {Function} func 回调函数
 		 */
-		submit_check(param) {
-			return this.check(param, this.vm);
-		},
-		/// 提交前验证事件
-		/// param: 请求参数
-		/// 返回: 转换后的结果
-		submit_before(param) {
-			return param;
-		},
-		/// 获取到对象后事件
-		/// json: 响应结果
-		/// status: 服务器状态码
-		/// 返回: 转换后的结果
-		submit_after(json, status) {
-			if (json.result) {
-				this.toast(json.result.message);
-			} else if (json.error) {
-				this.toast(json.error.message);
-			} else {
-				this.toast('服务器连接失败！');
+		upload(func) {
+			var param = this.events('upload_before', this.form);
+			if (!param) {
+				param = this.form;
 			}
-		},
-		/// 请求对象事件
-		/// param: 请求参数
-		/// 返回: 转换后的结果
-		get_obj_before(param) {
-			return param;
-		},
-		/// 获取到对象后事件
-		/// json: 响应结果
-		/// status: 服务器状态码
-		/// 返回: 转换后的结果
-		get_obj_after(json, status) {
-			if (this.url_get_list || this.url) {
-				this.get_list();
-			}
-		},
-		/// 请求列表前事件
-		/// param: 请求参数
-		/// 返回: 转换后的结果
-		get_list_before(param) {
-			return param;
-		},
-		/// 获取到列表事件
-		/// json: 响应结果
-		/// status: 服务器状态码
-		/// fun: 回调函数
-		/// 返回: 转换后的结果
-		get_list_after(json, status, fun) {
-			if (fun) {
-				fun();
-			}
-		},
-		upload_after(json, status) {
-			if (json.result) {
-				this.toast(json.result.message);
-			} else if (json.error) {
-				this.toast(json.error.message);
-			} else {
-				this.toast('服务器连接失败！');
-			}
-		},
-		/// 请求列表前事件
-		/// param: 请求参数
-		/// 返回: 转换后的结果
-		upload_before(param) {
-			return param;
-		},
-		upload_check(param) {
-			return null;
-		},
-		upload() {
-			var form = this.upload_before(this.form);
-			var tip = this.upload_check(form);
-			if (tip) {
-				this.toast(tip);
+			var msg = this.upload_check(param);
+			if (msg) {
+				this.toast(msg);
 			} else {
 				this.uploading = 0;
-				var file;
-				if (this.file.name) {
-					file = this.file;
-				} else if (this.files.name) {
-					file = this.files;
-				}
-				this.$upload(this.url_upload, form, file, this.upload_after);
+				var _this = this;
+				this.$upload(this.url_upload, param, function(json, status) {
+					_this.uploading = 100;
+					// 执行上传成功后事件函数
+					_this.events('upload_after', json, func);
+				});
+			}
+		},
+		/**
+		 * @description 上传完成时
+		 * @param {Object} json 响应结果
+		 * @param {Function} func
+		 */
+		upload_after(json, func) {
+			if (json.result) {
+				this.toast(json.result.tip);
+			} else if (json.error) {
+				this.toast(json.error.message);
+			} else {
+				this.toast('服务器连接失败！');
+			}
+			if (func) {
+				func();
 			}
 		}
 	},
 	computed: {
-		/// 分页数
+		/**
+		 * 分页数量
+		 */
 		page_count() {
 			return parseInt(this.count / this.size);
-		},
-		// 加载时展示，true为加载中
-		loading_show() {
-			if (this.loading === 100 || this.loading == 0) {
-				return false;
-			}
-			return true;
 		}
 	},
 	created() {

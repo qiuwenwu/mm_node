@@ -1,6 +1,6 @@
 {
     "name": "sys_user_group2",
-    "title": "",
+    "title": "用户组",
     "table": "sys_user_group",
     "key": "group_id",
     "orderby_default": "`group_id` desc",

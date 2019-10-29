@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread",
-    "title": "",
+    "title": "论坛主题",
     "table": "bbs_thread",
     "key": "thread_id",
     "orderby_default": "`display` asc",

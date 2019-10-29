@@ -1,6 +1,6 @@
 {
 	"name": "dev_plugin",
-	"title": "",
+	
 	"get": {
 		"query": [
 			"method",

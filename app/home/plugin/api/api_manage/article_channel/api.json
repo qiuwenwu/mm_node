@@ -1,8 +1,11 @@
 {
     "name": "home_article_channel2",
-    "title": "",
+    "title": "文章栏目",
     "description": "",
     "path": "/apis/home/article_channel",
+    "type": "api",
+    "func_file": "",
+    "func_name": "",
     "method": "ALL",
     "cache": 0,
     "client_cache": true,
@@ -13,7 +16,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_admin": [],
-        "admin_group": []
+        "user_admin": []
     }
 }

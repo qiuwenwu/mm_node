@@ -1,0 +1,16 @@
+{
+    "name": "wechat_send",
+    "title": "微信主动发消息接口",
+    "description": "用于发送客服消息",
+    "path": "/api/wechat_send/*",
+    "type": "api",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": false,
+    "oauth": null
+}

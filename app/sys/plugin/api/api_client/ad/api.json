@@ -1,6 +1,6 @@
 {
     "name": "sys_ad",
-    "title": "",
+    "title": "广告信息",
     "description": "",
     "path": "/api/sys/ad",
     "method": "GET",

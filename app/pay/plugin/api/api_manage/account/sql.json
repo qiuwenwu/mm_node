@@ -1,6 +1,6 @@
 {
     "name": "pay_account2",
-    "title": "",
+    "title": "支付账户",
     "table": "pay_account",
     "key": "user_id",
     "orderby_default": "`user_id` desc",

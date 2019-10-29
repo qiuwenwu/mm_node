@@ -1,8 +1,11 @@
 {
     "name": "home_article_comment",
-    "title": "",
-    "description": "",
+    "title": "文章评论",
+    "description": "用户的该文章的看法",
     "path": "/api/home/article_comment",
+    "type": "api",
+    "func_file": "",
+    "func_name": "",
     "method": "GET",
     "cache": 0,
     "client_cache": true,

@@ -1,6 +1,6 @@
 {
     "name": "pay_config2",
-    "title": "",
+    "title": "支付配置",
     "table": "pay_config",
     "key": "config_id",
     "orderby_default": "`config_id` desc",

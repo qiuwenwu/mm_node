@@ -1,6 +1,6 @@
 {
     "name": "sys_app_refresh",
-    "title": "",
+    "title": "应用刷新",
     "table": "sys_app_refresh",
     "key": "refresh_id",
     "orderby_default": "`refresh_id` desc",

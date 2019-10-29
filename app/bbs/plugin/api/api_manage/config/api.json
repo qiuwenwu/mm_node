@@ -1,6 +1,6 @@
 {
     "name": "bbs_config2",
-    "title": "",
+    "title": "论坛配置",
     "description": "",
     "path": "/apis/bbs/config",
     "method": "ALL",
@@ -13,7 +13,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_admin": [],
-        "admin_group": []
+        "user_admin": []
     }
 }

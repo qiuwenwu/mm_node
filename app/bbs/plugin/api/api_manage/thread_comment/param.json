@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread_comment2",
-    "title": "",
+    "title": "主题评论",
     "add": {
         "body": [
             "available",

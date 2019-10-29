@@ -1,6 +1,6 @@
 {
     "name": "pay_seller",
-    "title": "",
+    "title": "商户信息",
     "description": "",
     "path": "/api/pay/seller",
     "method": "GET",

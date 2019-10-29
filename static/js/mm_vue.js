@@ -33,6 +33,11 @@ define(["Vue"], function(Vue) {
 			}
 
 			/**
+			 * @description 
+			 */
+			Vue.prototype.$ = $;
+
+			/**
 			 * @description 路由跳转
 			 */
 			Vue.prototype.$back = function() {
@@ -64,26 +69,21 @@ define(["Vue"], function(Vue) {
 			};
 
 			/**
-			 * @description 提示框
-			 * @param {String} text 提示内容
-			 * @param {String} icon 图标代码
-			 */
-			Vue.prototype.$alert = function(text, icon) {
-				$.toast(text, icon);
-			};
-
-			/**
 			 * @description 引入get请求函数
 			 * @param {String} url 请求地址
-			 * @param {Function} fun 回调函数
+			 * @param {Function} func 回调函数
 			 */
-			Vue.prototype.$get = function(url, fun) {
+			Vue.prototype.$get = function(url, func) {
 				var token = $.db.get("token");
 				$.http.get(url.replace("~/", host), function(json, status) {
-					if (json.msg && json.msg === "没有登录") {
-						$.db.set("token", "");
+					// if (json.error) {
+					// 	if (json.error.message.indexOf('未登录')) {
+					// 		$.db.set("token", "");
+					// 	}
+					// }
+					if (func) {
+						func(json, status);
 					}
-					fun(json, status);
 				}, {
 					"x-auth-token": token
 				});
@@ -93,13 +93,14 @@ define(["Vue"], function(Vue) {
 			 * @description 引入post请求
 			 * @param {String} url 请求地址
 			 * @param {Object} param 请求参数
-			 * @param {Function} fun 回调函数
+			 * @param {Function} func 回调函数
+			 * @param {String} type 发送的数据类型 xml类型、json类型、form类型
 			 */
-			Vue.prototype.$post = function(url, param, fun) {
+			Vue.prototype.$post = function(url, param, func, type) {
 				var token = $.db.get("token");
-				$.http.postForm(url.replace("~/", host), param, fun, {
+				$.http.post(url.replace("~/", host), param, func, {
 					"x-auth-token": token
-				});
+				}, type);
 			};
 
 			/**
@@ -229,9 +230,8 @@ define(["Vue"], function(Vue) {
 			$lang: function $lang(name) {
 				var lang = this.$store.state.web.lang;
 				var title = "";
-				for(var i = 0; i < lang.length; i++){
-					if(name = o.name)
-					{
+				for (var i = 0; i < lang.length; i++) {
+					if (name = o.name) {
 						title = o.title;
 						break;
 					};
@@ -255,6 +255,29 @@ define(["Vue"], function(Vue) {
 			 */
 			$coin: function $coin(money) {
 				return parseFloat(money / this.$store.state.web.rate).toFloor(8);
+			},
+			/**
+			 * @description 获取用户信息
+			 * @param {Function} func
+			 */
+			$get_user: function $get_user(func) {
+				var _this = this;
+				this.$get('~/user/info', function(json, status) {
+					if (json.result) {
+						_this.$sotre.commit('set_user', json.result);
+					} else if (json.error) {
+						// 非法访问或未登录
+						// $.toast(json.error.message);
+						$.db.set("token", "");
+						// _this.$router.push('/signin')
+					} else {
+						$.toast('服务器连接失败！');
+						return;
+					}
+					if (func) {
+						func();
+					}
+				});
 			}
 		}
 	});

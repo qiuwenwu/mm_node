@@ -1,6 +1,6 @@
 {
     "name": "sys_user_admin",
-    "title": "",
+    "title": "管理组",
     "table": "sys_user_admin",
     "key": "admin_id",
     "orderby_default": "`display` asc",

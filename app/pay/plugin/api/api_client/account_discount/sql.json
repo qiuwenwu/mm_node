@@ -1,6 +1,6 @@
 {
     "name": "pay_account_discount",
-    "title": "",
+    "title": "账户提现",
     "table": "pay_account_discount",
     "key": "discount_id",
     "orderby_default": "`discount_id` desc",

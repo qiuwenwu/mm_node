@@ -1104,7 +1104,11 @@ if (typeof($) === "undefined") {
 	 */
 	Array.prototype.getVal = function(key, query) {
 		var obj = this.getObj(query);
-		return obj[key];
+		if (obj) {
+			return obj[key];
+		} else {
+			return null;
+		}
 	};
 	/**
 	 * @description 获取符合条件的数组对象
@@ -1856,112 +1860,25 @@ if (typeof($) === "undefined") {
 			return json;
 		},
 		/**
-		 * @description GET请求——text
-		 * @param {String} url 请求地址
-		 * @param {Function} fun 回调函数
-		 * @param {Object} headers 协议头
-		 * @return {Object} 同步请求返回请求结果，否则返回undefined
-		 */
-		getText: function getText(url, fun, headers) {
-			var text;
-			var hp = {
-				type: 'GET',
-				url: url,
-				async: fun !== null,
-				xhrFields: {
-					withCredentials: true
-				},
-				crossDomain: true,
-				success: function success(data, status) {
-					if (fun) {
-						fun(data, status);
-					} else {
-						json = {
-							data: data,
-							status: status
-						};
-					}
-				},
-				error: function error(data, status) {
-					if (fun) {
-						fun(data, status);
-					} else {
-						json = {
-							data: data,
-							status: status
-						};
-					}
-				},
-				complete: function complete(XHR, TS) {
-					XHR = null;
-				}
-			};
-			if (headers) {
-				hp.headers = headers;
-			}
-			$.ajax(hp);
-			return json;
-		},
-		/**
 		 * @description POST请求
 		 * @param {String} url 请求地址
 		 * @param {Object} param 请求参数
 		 * @param {Function} fun 回调函数
 		 * @param {Object} headers 协议头
+		 * @param {String} type 协议头
 		 * @return {Object} 同步请求返回请求结果，否则返回undefined
 		 */
-		post: function post(url, param, fun, headers) {
-			var json;
-			var hp = {
-				type: 'POST',
-				url: url,
-				async: fun !== null,
-				xhrFields: {
-					withCredentials: true
-				},
-				crossDomain: true,
-				data: param,
-				dataType: "json",
-				contentType: "application/json; charset=utf-8;",
-				success: function success(data, status) {
-					if (fun) {
-						fun(data, status);
-					} else {
-						json = {
-							data: data,
-							status: status
-						};
-					}
-				},
-				error: function error(data, status) {
-					if (fun) {
-						fun(data, status);
-					} else {
-						json = {
-							data: data,
-							status: status
-						};
-					}
-				},
-				complete: function complete(XHR, TS) {
-					XHR = null;
-				}
-			};
-			if (headers) {
-				hp.headers = headers;
+		post: function post(url, param, fun, headers, type) {
+			var contentType;
+			var pm;
+			if (type === 'xml') {
+				contentType = "text/xml; charset=utf-8";
+			} else if (type === 'form') {
+				contentType = "application/x-www-form-urlencoded; charset=utf-8";
+			} else {
+				contentType = "application/json; charset=utf-8";
+				pm = JSON.stringify(param);
 			}
-			$.ajax(hp);
-			return json;
-		},
-		/**
-		 * @description POST请求——form格式
-		 * @param {String} url 请求地址
-		 * @param {Object} param 请求参数
-		 * @param {Function} fun 回调函数
-		 * @param {Object} headers 协议头
-		 * @return {Object} 同步请求返回请求结果，否则返回undefined
-		 */
-		postForm: function postForm(url, param, fun, headers) {
 			var json;
 			var hp = {
 				type: 'POST',
@@ -1971,9 +1888,9 @@ if (typeof($) === "undefined") {
 					withCredentials: true
 				},
 				crossDomain: true,
-				data: param,
+				data: pm,
 				dataType: "json",
-				contentType: "application/x-www-form-urlencoded; charset=utf-8;",
+				contentType: contentType,
 				success: function success(data, status) {
 					if (fun) {
 						fun(data, status);
@@ -2147,29 +2064,68 @@ if (typeof($) === "undefined") {
 			return obj;
 		}
 	};
-	
+
 	$.db = {
-		/// 设置值
-		/// key: 键
-		/// value: 值
+		/**
+		 * 设置值
+		 * @param {String} key 键
+		 * @param {Object} value 值
+		 */
 		set: function(key, value) {
 			window.localStorage.setItem(key, value);
 		},
-		/// 获取值
-		/// key: 键
-		/// value: 值
+		/**
+		 * 获取值
+		 * @param {String} key 键
+		 * @return {Object} 值
+		 */
 		get: function(key) {
 			return window.localStorage.getItem(key);
 		},
-		/// 删除值
-		/// key: 键
-		/// value: 值
+		/**
+		 * 删除值
+		 * @param {Object} key 键
+		 */
 		del: function(key) {
 			window.localStorage.removeItem(key);
 		}
 	};
-	
-	
+	/**
+	 * 路由
+	 */
+	$.route = {
+		/**
+		 * 路由历史记录
+		 */
+		history: {
+			list: [],
+			push(url) {
+				if (this.list.length > 0) {
+					var end_url = this.list[this.list.length - 1];
+					if (end_url !== url) {
+						this.list.push(url);
+					}
+				} else {
+					this.list.push(url);
+				}
+			}
+		},
+
+		/**
+		 * 添加路由
+		 * @param {String} url
+		 * @param {String} title
+		 */
+		push: function(url, title) {
+			history.pushState({
+				status: 0
+			}, title, url);
+		}
+	};
+
+	/**
+	 * 浏览器
+	 */
 	$.browser = {
 		versions: function() {
 			var u = navigator.userAgent,

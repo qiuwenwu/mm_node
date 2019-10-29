@@ -1,6 +1,6 @@
 {
 	"name": "dev_db",
-	"title": "",
+	
 	"get": {
 		"query": [
 			"method",

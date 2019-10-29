@@ -1,6 +1,6 @@
 {
     "name": "mall_product_comment2",
-    "title": "",
+    "title": "商品评论",
     "add": {
         "body": [
             "available",

@@ -1,12 +1,17 @@
 {
     "name": "mall_product_type",
-    "title": "",
+    "title": "商品分类",
     "description": "",
     "path": "/api/mall/product_type",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "",
+    "func_name": "",
     "method": "GET",
     "cache": 0,
     "client_cache": true,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true
+    "check_param": true,
+    "oauth": null
 }

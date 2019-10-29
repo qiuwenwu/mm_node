@@ -46,6 +46,24 @@ DB.prototype.load = function(path) {
 	}
 };
 
+
+/**
+ * @description 获取驱动项
+ * @param {String} table 表
+ */
+DB.prototype.getObj = function(table) {
+	var obj;
+	var list = this.list;
+	for (var i = 0; i < list.length; i++) {
+		var o = list[i];
+		if (o.config.table === table) {
+			obj = o;
+			break;
+		}
+	}
+	return obj;
+};
+
 /**
  * @description 通过数据库更新配置
  * @param {Object} db 数据库管理器
@@ -64,18 +82,23 @@ DB.prototype.update_config = async function(db, name, table) {
 	} else {
 		var list = await db.tables(table);
 		if (list.length > 0) {
+			var lt = [];
 			for (var i = 0; i < list.length; i++) {
 				var te = list[i];
-				var drive = new Drive();
-				drive.config.table = te;
-				drive.update_config(db, true);
-				this.list.push(drive);
+				var obj = this.getObj(te);
+				if (obj) {
+					obj.update_config(db, true);
+				} else {
+					var drive = new Drive();
+					drive.config.table = te;
+					drive.update_config(db, true);
+					this.list.push(drive);
+				}
 			}
 		}
 	}
 	return null;
 };
-
 
 /**
  * @description 通过配置修改数据库

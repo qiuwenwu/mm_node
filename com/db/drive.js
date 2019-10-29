@@ -553,6 +553,7 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 			}
 		}
 	}
+	
 	// 创建模型
 	var m = {
 		name: cg.table,
@@ -749,7 +750,6 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 
 			cm.add.body.push(n);
 			cm.set.body.push(n);
-			cm.get.query.push(n);
 			cm.get.query.push(n + "_min");
 			cm.get.query.push(n + "_max");
 		} else {

@@ -1,6 +1,6 @@
 {
     "name": "home_article2",
-    "title": "",
+    "title": "文章信息",
     "table": "home_article",
     "key": "article_id",
     "orderby_default": "`article_id` desc",

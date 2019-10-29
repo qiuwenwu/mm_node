@@ -1,9 +1,16 @@
 {
-	"path": "/api/nav*",
-	"type": "api",
-	"name": "nav",
-	"title": "导航",
-	"cache": 0,
-	"func_file": "./index.js",
-	"method": "GET"
+    "name": "nav",
+    "title": "导航",
+    "description": "暂无描述",
+    "path": "/api/nav*",
+    "type": "api",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": true,
+    "oauth": null
 }

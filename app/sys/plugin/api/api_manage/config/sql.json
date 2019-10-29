@@ -1,6 +1,6 @@
 {
     "name": "sys_config2",
-    "title": "",
+    "title": "系统配置",
     "table": "sys_config",
     "key": "config_id",
     "orderby_default": "`config_id` desc",

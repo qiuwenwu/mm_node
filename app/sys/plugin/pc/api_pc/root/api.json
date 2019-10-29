@@ -1,10 +1,16 @@
 {
-	"path": "/",
-	"type": "web",
-	"name": "root",
-	"title": "网站首页",
-	"cache": 0,
-	"description": "描述接口使用方法",
-	"func_file": "./index.js",
-	"method": "ALL"
+    "name": "root",
+    "title": "网站首页",
+    "description": "描述接口使用方法",
+    "path": "/",
+    "type": "web",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": true,
+    "oauth": null
 }

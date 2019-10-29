@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread_type2",
-    "title": "",
+    "title": "主题分类",
     "description": "",
     "path": "/apis/bbs/thread_type",
     "method": "ALL",
@@ -13,7 +13,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_admin": [],
-        "admin_group": []
+        "user_admin": []
     }
 }

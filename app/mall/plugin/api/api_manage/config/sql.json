@@ -1,6 +1,6 @@
 {
     "name": "mall_config2",
-    "title": "",
+    "title": "商城配置",
     "table": "mall_config",
     "key": "config_id",
     "orderby_default": "`config_id` desc",

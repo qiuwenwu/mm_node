@@ -42,7 +42,11 @@
 		mixins: [mixin],
 		methods: {
 			set(e) {
-				this.$emit('input', e.target.value);
+				var val = e.target.value;
+				this.$emit("input", val);
+				if (this.value !== val) {
+					this.$emit("change");
+				}
 			},
 			click_fun(value) {
 				this.$emit('input', value);

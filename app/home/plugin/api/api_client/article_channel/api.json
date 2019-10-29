@@ -1,12 +1,17 @@
 {
     "name": "home_article_channel",
-    "title": "",
-    "description": "",
+    "title": "文章栏目",
+    "description": "用户文章分频道浏览",
     "path": "/api/home/article_channel",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "",
+    "func_name": "",
     "method": "GET",
     "cache": 0,
     "client_cache": true,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true
+    "check_param": true,
+    "oauth": null
 }

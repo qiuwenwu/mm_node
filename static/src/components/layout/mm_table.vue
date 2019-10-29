@@ -12,17 +12,15 @@
 				default: ""
 			}
 		},
-		data() {
-			return {
-				te: ""
-			}
-		},
-		created() {
-			var t = this.type;
-			if (t) {
-				if (t.indexOf("_") == -1) {
-					this.te = "_" + t;
+		computed: {
+			te(){
+				var t = this.type;
+				if (t) {
+					if (t.indexOf("_") == -1) {
+						t = "_" + t;
+					}
 				}
+				return t;
 			}
 		}
 	}

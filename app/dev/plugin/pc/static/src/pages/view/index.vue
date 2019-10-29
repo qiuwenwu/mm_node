@@ -5,7 +5,7 @@
 </template>
 
 <script>
-	import mixin from '@/src/mixins/page.js';
+	import mixin from 'page';
 
 	export default {
 		template: __template__,

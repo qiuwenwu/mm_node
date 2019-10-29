@@ -35,7 +35,7 @@
 	// 全局组件
 	import dev_dropdown from './components/expand/dev_dropdown.vue';
 	import dev_diy from './components/expand/dev_diy.vue';
-	
+
 	Vue.component('dev_diy', dev_diy);
 	Vue.component('dev_dropdown', dev_dropdown);
 
@@ -68,7 +68,7 @@
 	.diy_right>div {
 		float: right;
 	}
-	
+
 	/* #c9def2 蓝  #e1e4e8 灰  #24292e 黑 #2f363d 经过黑  #000 描边 */
 	#dev_footer {
 		min-height: 1.75rem;
@@ -77,38 +77,38 @@
 		font-size: 0.875rem;
 		color: #666;
 	}
-	
+
 	#dev_footer a {
 		color: #26d2ff;
 	}
-	
+
 	/* 导航 */
 	#dev_footer .nav_bottom {
 		line-height: 1.75rem;
 	}
-	
+
 	#dev_footer .nav_bottom li {
 		float: left;
 		padding: 0 0.75rem;
 	}
-	
+
 	#dev_footer .nav_bottom li:hover {
 		background: #f6f8fa;
 	}
-	
+
 	#dev_footer .account {
 		white-space: nowrap;
 		float: left;
 		padding: 0 1rem;
 	}
-	
+
 	#dev_footer .user {
 		height: 1.75rem;
 		line-height: 1.75rem;
 		color: #666;
 		display: block;
 	}
-	
+
 	#dev_footer .avatar {
 		float: left;
 		width: 1rem;
@@ -121,6 +121,13 @@
 		margin-right: 0.5rem;
 		margin-top: 0.35rem;
 	}
-	
-	.mm_side .line { top: 4rem; }
+
+	.mm_side .line {
+		top: 4rem;
+	}
+
+	.table-sm th {
+		padding-left: .75rem;
+		padding-right: .75rem;
+	}
 </style>

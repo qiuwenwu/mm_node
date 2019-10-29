@@ -1,6 +1,6 @@
 {
     "name": "sys_ad",
-    "title": "",
+    "title": "广告信息",
     "table": "sys_ad",
     "key": "ad_id",
     "orderby_default": "`display` asc",

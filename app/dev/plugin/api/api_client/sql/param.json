@@ -1,6 +1,6 @@
 {
 	"name": "dev_sql",
-	"title": "",
+	
 	"get": {
 		"query": [
 			"method",

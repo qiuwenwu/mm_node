@@ -1,8 +1,12 @@
 {
     "name": "home_config2",
-    "title": "",
+    "title": "门户配置",
     "description": "",
     "path": "/apis/home/config",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "",
+    "func_name": "",
     "method": "ALL",
     "cache": 0,
     "client_cache": true,
@@ -13,7 +17,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_admin": [],
-        "admin_group": []
+        "user_admin": []
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "sys_address_area",
-    "title": "",
+    "title": "地区",
     "add": {
         "body": [
             "show",

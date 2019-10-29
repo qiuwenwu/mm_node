@@ -1,6 +1,6 @@
 {
     "name": "sys_address_province2",
-    "title": "",
+    "title": "省份",
     "description": "",
     "path": "/apis/sys/address_province",
     "method": "ALL",
@@ -13,7 +13,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_admin": [],
-        "admin_group": []
+        "user_admin": []
     }
 }

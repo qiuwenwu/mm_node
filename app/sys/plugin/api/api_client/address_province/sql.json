@@ -1,6 +1,6 @@
 {
     "name": "sys_address_province",
-    "title": "",
+    "title": "省份",
     "table": "sys_address_province",
     "key": "province_id",
     "orderby_default": "`display` asc",

@@ -14,5 +14,12 @@
 		"port": 6379,
 		"password": "asd123",
 		"database": 0
+	},
+	"mongodb": {
+		"host": "localhost",
+		"port": 27017,
+		"user": "admin",
+		"password": "",
+		"database": "mm"
 	}
 }

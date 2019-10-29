@@ -16,6 +16,11 @@ class Drive extends Item {
 		this.default_file = "./plugin.json";
 
 		/**
+		 * 开关，开启可使用插件
+		 */
+		this.onOff = true;
+		
+		/**
 		 * 当前语言
 		 */
 		this.lang_now = "zh_CN";

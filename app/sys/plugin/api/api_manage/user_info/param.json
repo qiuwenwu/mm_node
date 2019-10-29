@@ -1,6 +1,6 @@
 {
     "name": "sys_user_info2",
-    "title": "",
+    "title": "用户资料",
     "add": {
         "body": [
             "sex",

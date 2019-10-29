@@ -1,6 +1,6 @@
 {
     "name": "sys_user_info2",
-    "title": "",
+    "title": "用户资料",
     "table": "sys_user_info",
     "key": "user_id",
     "orderby_default": "`user_id` desc",

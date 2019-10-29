@@ -1,6 +1,6 @@
 {
     "name": "pay_account_amount",
-    "title": "",
+    "title": "支付账户余额",
     "table": "pay_account_amount",
     "key": "seller_id",
     "orderby_default": "`seller_id` desc",

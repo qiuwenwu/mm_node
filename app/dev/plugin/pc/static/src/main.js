@@ -23,7 +23,8 @@ require({
 		store: './store',
 		router: './router',
 		echarts: '/js/echarts',
-		kindeditor: '/kindeditor/kindeditor-all-min'
+		kindeditor: '/kindeditor/kindeditor-all-min',
+		page: '/src/mixins/page'
 	},
 	shim: {
 		clipboard: {

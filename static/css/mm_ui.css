@@ -252,7 +252,8 @@ dt,th,h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {font-weight:500;}
 /********** 组件类 ************/
 /* ====== 表单 ====== */
 /* 输入框 */
-.mm_input,.mm_checkbox,.mm_radio,.mm_select,.mm_number,.mm_slider,.mm_switch {position:relative;}
+.mm_input,.mm_checkbox,.mm_radio,.mm_select,.mm_number,.mm_slider,.mm_switch {position:relative; }
+.inline .mm_input,.inline .mm_checkbox,.inline .mm_radio,.inline .mm_select,.inline .mm_number,.inline .mm_slider,.inline .mm_switch { display: inline-block;}
 .mm_input .title,.mm_checkbox .title,.mm_radio .title,.mm_select .title,.mm_number .title,.mm_slider .title,.mm_switch .title,.mm_reverse .title {float:left;padding-left:1rem;padding-right:.5rem;min-width:5.5rem;line-height:2rem;}
 .mm_input .value,.mm_checkbox .value,.mm_radio .value,.mm_number .value,.mm_slider .value,.mm_switch .value,.mm_reverse .value {overflow:hidden;}
 label~label {margin-left:1rem;}
@@ -318,6 +319,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {-webkit-appea
 .mobile .mm_switch .onoff {float:right;margin-right:1rem;}
 
 /* 选择框 */
+.pc .mm_select {padding-top:.5rem;padding-bottom:.5rem;}
 .mm_select a {color:inherit;}
 .mm_select .hover,.mm_select .active,.mm_select .focus {display:inline-block;}
 .mm_select .value {font-size:.875rem;}

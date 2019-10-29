@@ -1,6 +1,6 @@
 {
     "name": "sys_address_city",
-    "title": "",
+    "title": "城市",
     "table": "sys_address_city",
     "key": "city_id",
     "orderby_default": "`display` asc",

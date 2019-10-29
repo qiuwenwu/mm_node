@@ -1,9 +1,16 @@
 {
-	"path": "/test/mysql",
-	"type": "api",
-	"name": "test_mysql",
-	"title": "测试mysql的接口",
-	"description": "描述接口使用方法",
-	"func_file": "./index.js",
-	"method": "ALL"
+    "name": "test_mysql",
+    "title": "测试mysql的接口",
+    "description": "使用内置mysql函数操作数据库",
+    "path": "/test/mysql",
+    "type": "api",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": true,
+    "oauth": null
 }

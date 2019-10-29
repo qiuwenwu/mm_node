@@ -1,6 +1,6 @@
 {
     "name": "bbs_config",
-    "title": "",
+    "title": "论坛配置",
     "add": {
         "body": [
             "title",

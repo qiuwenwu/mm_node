@@ -1,6 +1,6 @@
 {
     "name": "mall_product_property",
-    "title": "",
+    "title": "商品属性",
     "add": {
         "body": [
             "display",

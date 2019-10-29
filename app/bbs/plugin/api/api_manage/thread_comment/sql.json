@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread_comment2",
-    "title": "",
+    "title": "主题评论",
     "table": "bbs_thread_comment",
     "key": "comment_id",
     "orderby_default": "`comment_id` desc",

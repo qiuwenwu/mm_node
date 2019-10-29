@@ -1,6 +1,6 @@
 {
     "name": "pay_seller",
-    "title": "",
+    "title": "商户信息",
     "table": "pay_seller",
     "key": "seller_id",
     "orderby_default": "`seller_id` desc",

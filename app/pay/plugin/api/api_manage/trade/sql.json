@@ -1,6 +1,6 @@
 {
     "name": "pay_trade2",
-    "title": "",
+    "title": "交易信息",
     "table": "pay_trade",
     "key": "trade_id",
     "orderby_default": "`trade_id` desc",

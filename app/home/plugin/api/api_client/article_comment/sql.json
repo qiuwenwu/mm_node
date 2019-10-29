@@ -1,6 +1,6 @@
 {
     "name": "home_article_comment",
-    "title": "",
+    "title": "文章评论",
     "table": "home_article_comment",
     "key": "comment_id",
     "orderby_default": "`display` asc",

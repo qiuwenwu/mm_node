@@ -1,6 +1,6 @@
 {
     "name": "mall_shop_comment",
-    "title": "",
+    "title": "店铺评论",
     "description": "",
     "path": "/api/mall/shop_comment",
     "method": "GET",

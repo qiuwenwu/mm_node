@@ -1,6 +1,6 @@
 {
     "name": "sys_app",
-    "title": "",
+    "title": "应用信息",
     "table": "sys_app",
     "key": "app_id",
     "orderby_default": "`app_id` desc",

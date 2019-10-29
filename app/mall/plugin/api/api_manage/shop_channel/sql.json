@@ -1,6 +1,6 @@
 {
     "name": "mall_shop_channel2",
-    "title": "",
+    "title": "店铺专区",
     "table": "mall_shop_channel",
     "key": "channel_id",
     "orderby_default": "`channel_id` desc",

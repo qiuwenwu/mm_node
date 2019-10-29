@@ -1,6 +1,6 @@
 {
     "name": "sys_config2",
-    "title": "",
+    "title": "系统配置",
     "add": {
         "body": [
             "title",

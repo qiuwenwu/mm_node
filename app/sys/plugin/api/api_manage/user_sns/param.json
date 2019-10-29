@@ -1,6 +1,6 @@
 {
     "name": "sys_user_sns2",
-    "title": "",
+    "title": "用户社交账号",
     "add": {
         "body": [
             "qq",

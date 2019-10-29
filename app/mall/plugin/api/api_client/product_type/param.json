@@ -1,6 +1,6 @@
 {
     "name": "mall_product_type",
-    "title": "",
+    "title": "商品分类",
     "add": {
         "body": [
             "display",

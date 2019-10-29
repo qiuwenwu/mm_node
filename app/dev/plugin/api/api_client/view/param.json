@@ -1,6 +1,6 @@
 {
 	"name": "dev_view",
-	"title": "",
+	
 	"get": {
 		"query": [
 			"method",

@@ -2,14 +2,7 @@ export default {
 	state: function() {
 		return {
 			lang_now: "zh",
-			lang: [
-				/*
-				{
-					"name": ""
-					"title": ""
-				}
-				*/
-			],
+			lang: [],
 			nav: {
 				top: [{
 						title: "应用",
@@ -30,33 +23,21 @@ export default {
 						message: 0
 					},
 					{
-						title: "任务",
-						name: "task",
-						url: "/task",
-						message: 0
-					},
-					{
 						title: "素材",
 						name: "source",
 						url: "/source",
 						message: 0
 					},
 					{
-						title: "SQL",
-						name: "sql",
-						url: "/sql",
+						title: "视图",
+						name: "view",
+						url: "/view",
 						message: 0
 					},
 					{
 						title: "数据库",
 						name: "db",
 						url: "/db",
-						message: 0
-					},
-					{
-						title: "视图",
-						name: "view",
-						url: "/view",
 						message: 0
 					},
 					{
@@ -83,11 +64,30 @@ export default {
 		}
 	},
 	mutations: {
-		set(state, data) {
-			$.push(state, data);
+		/**
+		 * @description 设置语言
+		 * @param {Object} state 缓存态
+		 * @param {Object} obj
+		 */
+		set_config(state, obj) {
+			$.push(state, obj);
 		},
-		req(state, data) {
-
+		/**
+		 * @description 设置语言
+		 * @param {Object} state 缓存态
+		 * @param {Array} arr 
+		 */
+		set_lang(state, arr) {
+			state.lang.clear();
+			$.push(state.lang, arr);
+		},
+		/**
+		 * @description 设置导航
+		 * @param {Object} state 缓存态
+		 * @param {Object} obj 导航
+		 */
+		set_nav(state, obj) {
+			$.push(state.nav, obj);
 		}
 	},
 	actions: {},

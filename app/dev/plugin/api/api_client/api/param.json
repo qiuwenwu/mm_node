@@ -1,6 +1,6 @@
 {
 	"name": "dev_api",
-	"title": "",
+	
 	"get": {
 		"query": [
 			"method",

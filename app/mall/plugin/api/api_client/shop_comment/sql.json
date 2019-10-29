@@ -1,6 +1,6 @@
 {
     "name": "mall_shop_comment",
-    "title": "",
+    "title": "店铺评论",
     "table": "mall_shop_comment",
     "key": "comment_id",
     "orderby_default": "`display` asc",

@@ -1,8 +1,11 @@
 {
     "name": "mall_product_property2",
-    "title": "",
-    "description": "",
+    "title": "商品属性",
+    "description": "含商品的规格、参数等，通过JSON格式保存到字段中",
     "path": "/apis/mall/product_property",
+    "type": "api",
+    "func_file": "",
+    "func_name": "",
     "method": "ALL",
     "cache": 0,
     "client_cache": true,
@@ -13,7 +16,6 @@
         "scope": true,
         "signIn": true,
         "gm": 2,
-        "user_admin": [],
-        "admin_group": []
+        "user_admin": []
     }
 }

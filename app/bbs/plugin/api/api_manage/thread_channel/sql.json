@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread_channel2",
-    "title": "",
+    "title": "主题板块",
     "table": "bbs_thread_channel",
     "key": "channel_id",
     "orderby_default": "`channel_id` desc",

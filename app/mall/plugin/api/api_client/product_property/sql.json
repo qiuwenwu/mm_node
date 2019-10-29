@@ -1,6 +1,6 @@
 {
     "name": "mall_product_property",
-    "title": "",
+    "title": "商品属性",
     "table": "mall_product_property",
     "key": "property_id",
     "orderby_default": "`display` asc",
