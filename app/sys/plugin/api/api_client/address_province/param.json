@@ -1,6 +1,7 @@
 {
     "name": "sys_address_province",
-    "title": "省份",
+    "filter": true,
+    "method": "get",
     "add": {
         "body": [
             "show",
@@ -42,98 +43,215 @@
         "query": [
             "province_id",
             "show",
-            "show_min",
-            "show_max",
-            "display",
-            "display_min",
-            "display_max",
             "name"
         ],
         "query_required": []
     },
+    "post": {
+        "query": [],
+        "query_required": [],
+        "body": [],
+        "body_required": [],
+        "body_not": []
+    },
     "list": [
         {
-            "name": "province_id",
-            "title": "省份ID",
-            "description": "",
+            "splitter": "|",
             "type": "number",
-            "dataType": "mediumint",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
             "number": {
+                "min": 0,
+                "max": 0,
                 "range": [
                     1,
                     8388607
                 ]
-            }
+            },
+            "name": "province_id",
+            "title": "省份ID",
+            "description": "",
+            "dataType": "mediumint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 2,
+                "range": []
+            },
             "name": "show",
             "title": "是否可见",
             "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 2
-            }
+            "dataType": "smallint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 2,
+                "range": []
+            },
             "name": "show_min",
             "title": "是否可见——最小值",
             "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 2
-            }
+            "dataType": "smallint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 2,
+                "range": []
+            },
             "name": "show_max",
             "title": "是否可见——最大值",
             "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 2
-            }
+            "dataType": "smallint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 1000,
+                "range": []
+            },
             "name": "display",
             "title": "显示顺序",
             "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
+            "dataType": "smallint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 1000,
+                "range": []
+            },
             "name": "display_min",
             "title": "显示顺序——最小值",
             "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
+            "dataType": "smallint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 1000,
+                "range": []
+            },
             "name": "display_max",
             "title": "显示顺序——最大值",
             "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
+            "dataType": "smallint"
         },
         {
+            "splitter": "|",
+            "type": "string",
+            "string": {
+                "notEmpty": true,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            },
             "name": "name",
             "title": "省份名称",
             "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
+            "dataType": "varchar"
         }
-    ]
+    ],
+    "func_file": "",
+    "func_name": "",
+    "title": "省份"
 }

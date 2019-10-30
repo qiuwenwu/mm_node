@@ -1,6 +1,7 @@
 {
     "name": "home_article_channel",
-    "title": "文章栏目",
+    "filter": true,
+    "method": "get",
     "add": {
         "body": [
             "available",
@@ -66,179 +67,395 @@
         "query": [
             "channel_id",
             "available",
-            "hide",
-            "can_comment",
-            "display",
-            "display_min",
-            "display_max",
             "father_id",
             "city_id",
-            "type",
             "name",
-            "template",
-            "description",
-            "icon",
-            "url"
+            "description"
         ],
         "query_required": []
     },
+    "post": {
+        "query": [],
+        "query_required": [],
+        "body": [],
+        "body_required": [],
+        "body_not": []
+    },
     "list": [
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": [
+                    1,
+                    10000
+                ]
+            },
             "name": "channel_id",
             "title": "频道ID",
             "description": "",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "range": [
-                    1,
-                    10000
-                ]
-            }
+            "dataType": "smallint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 1,
+                "range": []
+            },
             "name": "available",
             "title": "是否启用",
             "description": "启用后才可以看到该频道",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
-            }
+            "dataType": "tinyint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 1,
+                "range": []
+            },
             "name": "hide",
             "title": "是否隐藏",
             "description": "隐藏非管理员该频道无法查看. 0为不隐藏，1为隐藏",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
-            }
+            "dataType": "tinyint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 1,
+                "range": []
+            },
             "name": "can_comment",
             "title": "是否可评论",
             "description": "不可评论则用户只能看，无法点评。0为不可评论，1为可评论",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
-            }
+            "dataType": "tinyint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 1000,
+                "range": []
+            },
             "name": "display",
             "title": "显示顺序",
             "description": "决定频道显示的先后顺序",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
+            "dataType": "smallint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 1000,
+                "range": []
+            },
             "name": "display_min",
             "title": "显示顺序——最小值",
             "description": "决定频道显示的先后顺序",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
+            "dataType": "smallint"
         },
         {
+            "splitter": "|",
+            "type": "number",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 1000,
+                "range": []
+            },
             "name": "display_max",
             "title": "显示顺序——最大值",
             "description": "决定频道显示的先后顺序",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
+            "dataType": "smallint"
         },
         {
-            "name": "father_id",
-            "title": "上级ID",
-            "description": "在频道列表操作时，当上级频道展开时，才显示该频道",
+            "splitter": "|",
             "type": "number",
-            "dataType": "smallint",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
             "number": {
+                "min": 0,
+                "max": 0,
                 "range": [
                     1,
                     10000
                 ]
-            }
+            },
+            "name": "father_id",
+            "title": "上级ID",
+            "description": "在频道列表操作时，当上级频道展开时，才显示该频道",
+            "dataType": "smallint"
         },
         {
-            "name": "city_id",
-            "title": "所属城市",
-            "description": "一些地方频道，可以通过该条判断是否可查看",
+            "splitter": "|",
             "type": "number",
-            "dataType": "mediumint",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
             "number": {
+                "min": 0,
+                "max": 0,
                 "range": [
                     1,
                     8388607
                 ]
-            }
+            },
+            "name": "city_id",
+            "title": "所属城市",
+            "description": "一些地方频道，可以通过该条判断是否可查看",
+            "dataType": "mediumint"
         },
         {
+            "splitter": "|",
+            "type": "string",
+            "string": {
+                "notEmpty": true,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            },
             "name": "type",
             "title": "频道类型",
             "description": "question问答、info资讯、news新闻、article文章、activity活动",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
+            "dataType": "varchar"
         },
         {
-            "name": "name",
-            "title": "频道名称",
-            "description": "",
+            "splitter": "|",
             "type": "string",
-            "dataType": "varchar",
             "string": {
+                "notEmpty": true,
+                "min": 0,
+                "max": 0,
                 "range": [
                     2,
                     16
                 ],
-                "notEmpty": 1
-            }
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            },
+            "name": "name",
+            "title": "频道名称",
+            "description": "",
+            "dataType": "varchar"
         },
         {
+            "splitter": "|",
+            "type": "string",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            },
             "name": "template",
             "title": "风格模板",
             "description": "频道和文章都使用的样式",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "varchar"
         },
         {
+            "splitter": "|",
+            "type": "string",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            },
             "name": "description",
             "title": "描述",
             "description": "描述该频道的作用",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "varchar"
         },
         {
+            "splitter": "|",
+            "type": "string",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            },
             "name": "icon",
             "title": "频道图标",
             "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "varchar"
         },
         {
+            "splitter": "|",
+            "type": "string",
+            "string": {
+                "notEmpty": false,
+                "min": 0,
+                "max": 0,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": "url"
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            },
             "name": "url",
             "title": "外链地址",
             "description": "如果该频道是跳转到其他网站的情况下，就在该URL上设置",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "format": "url"
-            }
+            "dataType": "varchar"
         }
-    ]
+    ],
+    "func_file": "",
+    "func_name": "",
+    "title": "文章栏目"
 }

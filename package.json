@@ -1,5 +1,5 @@
 {
-	"name": "mm_node",
+	"name": "mm_koa",
 	"version": "1.0.0",
 	"description": "这是超级美眉基于nodeJS和Koa开发的服务端框架，可用于中小型商城和游戏、CMS。",
 	"main": "main.js",
@@ -50,10 +50,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/qiuwenwu/mm_node.git"
+		"url": "git+https://github.com/qiuwenwu/mm_koa.git"
 	},
 	"bugs": {
-		"url": "https://github.com/qiuwenwu/mm_node/issues"
+		"url": "https://github.com/qiuwenwu/mm_koa/issues"
 	},
-	"homepage": "https://github.com/qiuwenwu/mm_node#readme"
+	"homepage": "https://github.com/qiuwenwu/mm_koa#readme"
 }

@@ -4,6 +4,7 @@
     "description": "用户的该文章的看法",
     "path": "/api/home/article_comment",
     "type": "api",
+    "contentType": "json",
     "func_file": "",
     "func_name": "",
     "method": "GET",

@@ -69,8 +69,7 @@
             "available",
             "father_id",
             "city_id",
-            "name",
-            "description"
+            "name"
         ],
         "query_required": []
     },

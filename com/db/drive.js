@@ -21,6 +21,9 @@ class Drive extends Item {
 		super(dir, __dirname);
 		this.default_file = "./db.json";
 
+		this.query_string = ["name", "title", "keywords", "tag", "description", "content"];
+		this.query_number = ["state"];
+
 		/**
 		 * 配置参数
 		 */
@@ -716,10 +719,12 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			} else {
 				cm.add.body.push(n);
 			}
-			cm.get.query.push(n);
-			cm.set.query.push(n);
+			if (this.isSet(n, this.query_string)) {
+				cm.get.query.push(n);
+				cm.set.query.push(n);
+			}
 			cm.set.body.push(n);
-			
+
 			// 添加验证模型
 			cm.list.push(m);
 		} else if (p === 'date' || p === 'time' || p === 'datetime' || p === 'timestamp') {
@@ -782,23 +787,30 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 				cm.set.body.push(n);
 				cm.list.push(m);
 				if (m.dataType !== "tinyint") {
+					var ne = n;
+					if (!ne.endWith('id')) {
+						cm.get.query.push(n + "_min");
+						cm.get.query.push(n + "_max");
+						cm.set.query.push(n + "_min");
+						cm.set.query.push(n + "_max");
+						cm.set.body.push(n + "_add");
+						var m_min = Object.assign({}, m);
+						m_min.name = n + "_min";
+						m_min.title += "——最小值";
+						cm.list.push(m_min);
+						var m_max = Object.assign({}, m);
+						m_max.name = n + "_max";
+						m_max.title += "——最大值";
+						cm.list.push(m_max);
+					} else {
+						if (this.isSet(n, this.query_number)) {
+							cm.set.query.push(n);
+							cm.get.query.push(n);
+						}
+					}
+				} else {
 					cm.set.query.push(n);
 					cm.get.query.push(n);
-				}
-				if (!n.endWith('id') && m.dataType !== "tinyint") {
-					cm.get.query.push(n + "_min");
-					cm.get.query.push(n + "_max");
-					cm.set.query.push(n + "_min");
-					cm.set.query.push(n + "_max");
-					cm.set.body.push(n + "_add");
-					var m_min = Object.assign({}, m);
-					m_min.name = n + "_min";
-					m_min.title += "——最小值";
-					cm.list.push(m_min);
-					var m_max = Object.assign({}, m);
-					m_max.name = n + "_max";
-					m_max.title += "——最大值";
-					cm.list.push(m_max);
 				}
 			}
 		}
@@ -812,6 +824,22 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 		cm.name += 2;
 		this.save_file(manage + '/param.json', cm, cover);
 	}
+};
+
+/**
+ * 是否设置
+ * @param {String} name 名称
+ * @param {Array} arr 匹配的对象
+ */
+Drive.prototype.isSet = function(name, arr) {
+	var bl = false;
+	for (var i = 0; i < arr.length; i++) {
+		if (name.indexOf(arr[i]) !== -1) {
+			bl = true;
+			break;
+		}
+	}
+	return bl;
 };
 
 /**
