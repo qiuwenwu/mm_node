@@ -29,10 +29,6 @@
     "set": {
         "query": [
             "channel_id",
-            "available",
-            "can_comment",
-            "father_id",
-            "city_id",
             "name"
         ],
         "query_required": [],

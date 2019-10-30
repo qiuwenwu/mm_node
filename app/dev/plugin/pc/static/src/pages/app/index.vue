@@ -212,6 +212,9 @@
 					name: param.app
 				}
 			},
+			get_obj_after(json){
+				this.get_list_first();
+			},
 			/**
 			 * 获取插件列表前
 			 * @param {Object} param

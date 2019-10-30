@@ -284,12 +284,11 @@ Drive.prototype.update_db = async function(db) {
 					} else {
 						type = o.type + '(' + o.max_length + ')';
 					}
-					if(o.not_null)
-					{
+					if (o.not_null) {
 						notnull = "NOT NULL";
 					}
 					if (o.default) {
-						value = "DEFAULT '" + o.default + "'";
+						value = "DEFAULT '" + o.default+"'";
 					} else if (o.default === null) {
 						value = "DEFAULT NULL";
 					} else {
@@ -303,11 +302,10 @@ Drive.prototype.update_db = async function(db) {
 					type = o.type;
 					notnull = "NOT NULL";
 					if (o.default) {
-						if(o.default.indexOf('CURR') !== -1){
+						if (o.default.indexOf('CURR') !== -1) {
 							value = "DEFAULT " + o.default;
-						}
-						else {
-							value = "DEFAULT '" + o.default + "'";
+						} else {
+							value = "DEFAULT '" + o.default+"'";
 						}
 					}
 					if (o.auto) {
@@ -337,7 +335,7 @@ Drive.prototype.update_db = async function(db) {
 					}
 					break;
 			}
-			
+
 			var note = o.title + "：";
 			if (o.type === 'varchar' || o.type === 'text') {
 				if (o.max_length) {
@@ -553,7 +551,7 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 			}
 		}
 	}
-	
+
 	// 创建模型
 	var m = {
 		name: cg.table,
@@ -718,9 +716,10 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			} else {
 				cm.add.body.push(n);
 			}
+			cm.get.query.push(n);
 			cm.set.query.push(n);
 			cm.set.body.push(n);
-			cm.get.query.push(n);
+			
 			// 添加验证模型
 			cm.list.push(m);
 		} else if (p === 'date' || p === 'time' || p === 'datetime' || p === 'timestamp') {
@@ -780,10 +779,12 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 				cm.list.push(m);
 			} else {
 				cm.add.body.push(n);
-				cm.set.query.push(n);
-				cm.get.query.push(n);
 				cm.set.body.push(n);
 				cm.list.push(m);
+				if (m.dataType !== "tinyint") {
+					cm.set.query.push(n);
+					cm.get.query.push(n);
+				}
 				if (!n.endWith('id') && m.dataType !== "tinyint") {
 					cm.get.query.push(n + "_min");
 					cm.get.query.push(n + "_max");

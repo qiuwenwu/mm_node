@@ -20,7 +20,7 @@ class Drive extends Item {
 			// 名称, 由中英文和下“_”组成, 用于卸载接口 例如: demo
 			"name": "",
 			// 参数过滤
-			"filter": false,
+			"filter": true,
 			// 默认监听方法, 当查询参数中出现监听的关键词时,选择以该键值作为请求方式，否则默认为get
 			"method": "get",
 			// 增

@@ -4,6 +4,7 @@
     "description": "描述接口使用方法",
     "path": "/",
     "type": "web",
+    "contentType": "html",
     "func_file": "./index.js",
     "func_name": "",
     "method": "ALL",

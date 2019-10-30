@@ -20,12 +20,7 @@
     "set": {
         "query": [
             "property_id",
-            "display",
-            "display_min",
-            "display_max",
-            "name",
-            "icon",
-            "description"
+            "name"
         ],
         "query_required": [],
         "body": [

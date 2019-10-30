@@ -4,6 +4,7 @@
     "description": "用于接收微信公众号消息的接口",
     "path": "/api/wechat/*",
     "type": "api",
+    "contentType": "text",
     "func_file": "./index.js",
     "func_name": "",
     "method": "ALL",

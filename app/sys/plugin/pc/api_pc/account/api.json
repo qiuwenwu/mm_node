@@ -1,9 +1,17 @@
 {
-	"path": "/account",
-	"type": "web",
-	"name": "account",
-	"title": "账户中心首页",
-	"description": "用于注册、找回密码、修改账号等",
-	"func_file": "./index.js",
-	"method": "ALL"
+    "name": "account",
+    "title": "账户中心首页",
+    "description": "用于注册、找回密码、修改账号等",
+    "path": "/account",
+    "type": "web",
+    "contentType": "html",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": true,
+    "oauth": null
 }
