@@ -1,8 +1,0 @@
-{
-	"title": "测试用的插件",
-	"name": "Test",
-	"description": "这是测试用的插件描述",
-	"copyright": "版权归 超级美眉 所有",
-	"version": "1.0.0",
-	"switch": false
-}

@@ -33,12 +33,14 @@ Nav.prototype.run = async function(name, type) {
 			obj.merge(o);
 		}
 	}
+	obj.sort();
 	var cg = obj.config;
 	if(cg.name)
 	{
 		if (type) {
 			return cg[type];
 		} else {
+			
 			return cg;
 		}
 	}

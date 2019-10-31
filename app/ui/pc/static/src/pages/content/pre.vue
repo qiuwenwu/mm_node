@@ -8,6 +8,17 @@
 				
 				<div class="h5">按钮颜色——带背景</div>
 				<mm_div class="">
+					<mm_pre>
+						<code class="javascript">
+							var date = new Date();\n
+							export default {
+								template: __template__,
+								components: {
+									mm_pre
+								}
+							}
+						</code>
+					</mm_pre>
 				</mm_div>
 			</mm_warp>
 		</mm_body>
@@ -15,6 +26,16 @@
 </template>
 
 <script>
+	// import vs from '/highlight/styles/vs.css';
+
+	import mm_pre from '/src/components/content/mm_pre.vue';
+	
+	export default {
+		template: __template__,
+		components: {
+			mm_pre
+		}
+	}
 </script>
 
 <style>

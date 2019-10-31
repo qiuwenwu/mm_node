@@ -160,11 +160,6 @@ Drive.prototype.merge = function(o) {
 	this.merge_sub(cg.desktop, o.desktop);
 	this.merge_sub(cg.quick, o.quick);
 	this.merge_sub(cg.main, o.main);
-	// if (o.sort < cg.sort) {
-	// 	return;
-	// } else {
-
-	// }
 };
 
 /**

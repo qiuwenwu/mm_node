@@ -1,24 +1,16 @@
 <template>
 	<!-- 代码 -->
-	<pre class="mm_code" contenteditable="true">
+	<pre class="mm_code" v-highlightjs>
 		<slot></slot>
 	</pre>
 </template>
 
 <script>
-	import hljs from '/highlight/highlight.pack.js';
-	import hybrid from '/highlight/styles/hybrid.css';
+	import hljs from '/highlight/vue-highlight.js';
+	import hybrid from '/highlight/styles/vscode.css';
+
 	export default {
-		template: __template__,
-		props: {
-			lang: {
-				type: String,
-				default: "JavaScript"
-			}
-		},
-		mounted() {
-			hljs.initHighlightingOnLoad();
-		}
+		template: __template__
 	}
 </script>
 

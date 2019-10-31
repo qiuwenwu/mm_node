@@ -3,6 +3,8 @@
 /* 重置样式 */
 body  { color: #333; }
 input { color: #333; }
+a { color: inherit; }
+table a { color: #38f; }
 
 /* 元素样式 */
 .desc, .tip, .unit { color:#666; }
@@ -59,11 +61,11 @@ input { color: #333; }
 .mm_btn_info-x { color:#26d2ff; border-color:#26d2ff; }
 
 .mm_btn_default-x:active { color:#333; background-color:rgba(51, 51, 51, 0.1); }
-.mm_btn_warning-x:active { color:#C60A0A; background-color:rgba(198, 10, 10, 0.1); }
-.mm_btn_success-x:active { color:#2F9833; background-color:rgba(47, 152, 51, 0.1); }
-.mm_btn_primary-x:active { color:#317EF3; background-color:rgba(51, 136, 255, 0.1); }
+.mm_btn_warning-x:active { color:#f52d00; background-color:rgba(198, 10, 10, 0.1); }
+.mm_btn_success-x:active { color:#00c707; background-color:rgba(47, 152, 51, 0.1); }
+.mm_btn_primary-x:active { color:#247bff; background-color:rgba(51, 136, 255, 0.1); }
 .mm_btn_danger-x:active { color:#ff5000; background-color:rgba(255, 80, 0, 0.1); }
-.mm_btn_info-x:active { color:#15baf8; background-color:rgba(21, 186, 248, 0.1); }
+.mm_btn_info-x:active { color:#0fbfff; background-color:rgba(21, 186, 248, 0.1); }
 
 .mm_btn_default {background-color:#666; color: #fff}
 .mm_btn_warning {background-color:#f12f04; color: #fff}
@@ -73,7 +75,7 @@ input { color: #333; }
 .mm_btn_info {background-color:#26d2ff; color: #fff}
 
 .mm_btn_default:active { background-color:#333; color: #fff}
-.mm_btn_warning:active {background-color:#C60A0A; color: #fff}
+.mm_btn_warning:active {background-color:#d10000; color: #fff}
 .mm_btn_success:active {background-color:#2F9833; color: #fff}
 .mm_btn_primary:active {background-color:#317EF3; color: #fff}
 .mm_btn_danger:active {background-color:#ff5000; color: #fff}
