@@ -10,7 +10,7 @@
 				<mm_div class="">
 					<mm_pre>
 						<code class="javascript">
-							var date = new Date();\n
+							var date = new Date(); <br>
 							export default {
 								template: __template__,
 								components: {

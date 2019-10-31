@@ -1,2 +1,2 @@
-# mm_mongdb
- 这是超级美眉mongdb帮助函数模块，用于便捷操作mongdb，使用await方式，可以避免嵌套函数
+# mm_mongodb
+ 这是超级美眉mongodb帮助函数模块，用于便捷操作mongodb，使用await方式，可以避免嵌套函数

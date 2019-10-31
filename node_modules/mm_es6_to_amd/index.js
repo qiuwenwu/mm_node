@@ -5,7 +5,7 @@
  */
 
 require('mm_expand');
-const Module = require('./module')
+const Module = require('./module');
 const babel = require('babel-core').transform;
 
 /**
