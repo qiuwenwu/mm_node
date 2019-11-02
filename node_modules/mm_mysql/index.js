@@ -68,20 +68,14 @@ class Mysql {
 		
 		// 定义当前类, 用于数据库实例化访问
 		var $this = this;
-		/**
-		 * @description 获取数据库管理器
-		 */
-		Mysql.prototype.db = function() {
-			return new DB($this.config.database, $this.run, $this.exec);
-		};
-		
+				
 		/**
 		 * @description 查询sql
 		 * @param {String} sql 查询参
 		 * @param {Array} val 替换值
 		 * @return {Promise|Array} 异步构造器, 当await时返回执行结果
 		 */
-		Mysql.prototype.run = function(sql, val) {
+		this.run = function(sql, val) {
 			var _this = this;
 			this.sql = sql;
 			// 返回一个 Promise
@@ -119,7 +113,7 @@ class Mysql {
 		 * @param {Array} val 替换值
 		 * @return {Promise|Array} 异步构造器, 当await时返回执行结果
 		 */
-		Mysql.prototype.exec = function(sql, val) {
+		this.exec = function(sql, val) {
 			var _this = this;
 			this.sql = sql;
 		
@@ -177,6 +171,13 @@ class Mysql {
 					}
 				});
 			});
+		};
+	
+		/**
+		 * @description 获取数据库管理器
+		 */
+		this.db = function() {
+			return new DB($this.config.database, $this.run, $this.exec);
 		};
 	}
 }
