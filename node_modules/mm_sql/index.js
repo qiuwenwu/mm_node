@@ -180,7 +180,7 @@ Sql.prototype.toQuery = function(where, sort, view) {
  * @param {String} val 用作增加的值集合
  * @return {Promise|Object} 执行结果
  */
-Sql.prototype.add = function(key, val) {
+Sql.prototype.addSql = function(key, val) {
 	var sql = "INSERT INTO `{0}` ({1}) VALUES ({2});";
 	sql = sql.replace("{0}", this.table).replace("{1}", key).replace("{2}", val);
 	return this.exec(sql);
@@ -190,7 +190,7 @@ Sql.prototype.add = function(key, val) {
  * @param {String} where  删除条件
  * @return {Promise|Object} 执行结果
  */
-Sql.prototype.del = function(where) {
+Sql.prototype.delSql = function(where) {
 	var sql = "DELETE FROM `{0}` WHERE {1};";
 	sql = sql.replace("{0}", this.table).replace("{1}", where);
 	return this.exec(sql);
@@ -201,7 +201,7 @@ Sql.prototype.del = function(where) {
  * @param {String} set 修改的键值
  * @return {Promise|Object} 执行结果
  */
-Sql.prototype.set = function(where, set) {
+Sql.prototype.setSql = function(where, set) {
 	var sql = "UPDATE `{0}` SET {1} WHERE {2};";
 	sql = sql.replace("{0}", this.table).replace("{1}", set).replace("{2}", where);
 	return this.exec(sql);
@@ -213,7 +213,7 @@ Sql.prototype.set = function(where, set) {
  * @param {String} view 显示的字段
  * @return {Promise|Array} 查询结果数组
  */
-Sql.prototype.get = function(where, sort, view) {
+Sql.prototype.getSql = function(where, sort, view) {
 	var sql = this.toQuery(where, sort, view);
 	return this.run(sql);
 };
@@ -224,11 +224,11 @@ Sql.prototype.get = function(where, sort, view) {
  * @param {String} set 修改的键值
  * @return {Promise|Object} 执行结果
  */
-Sql.prototype.addOrSet = async function(where, set) {
+Sql.prototype.addOrSetSql = async function(where, set) {
 	if (!where || !set) {
 		return -1;
 	}
-	var count = await this.count(where);
+	var count = await this.countSql(where);
 	if (count === 0) {
 		var arr = set.split(',');
 		var key = "";
@@ -240,9 +240,9 @@ Sql.prototype.addOrSet = async function(where, set) {
 				value += "," + ar[1];
 			}
 		});
-		return await this.add(key.replace(',', ''), value.replace(',', ''));
+		return await this.addSql(key.replace(',', ''), value.replace(',', ''));
 	}
-	return await this.set(where, set);
+	return await this.setSql(where, set);
 };
 
 /**
@@ -250,7 +250,7 @@ Sql.prototype.addOrSet = async function(where, set) {
  * @param {String} where 查询条件
  * @return {Promise|Number} 返回结果总数
  */
-Sql.prototype.count = async function(where) {
+Sql.prototype.countSql = async function(where) {
 	var sql = "SELECT count(*) count FROM `" + this.table + "`";
 	if (where) {
 		sql += ' WHERE ' + where;
@@ -269,11 +269,11 @@ Sql.prototype.count = async function(where) {
  * @param {String} view 返回的字段
  * @return {Promise|Object} 查询到的内容列表和符合条件总数
  */
-Sql.prototype.getCount = async function(where, sort, view) {
+Sql.prototype.getCountSql = async function(where, sort, view) {
 	var list = [];
-	var count = await this.count(where);
+	var count = await this.countSql(where);
 	if (count > 0) {
-		list = await this.get(where, sort, view);
+		list = await this.getSql(where, sort, view);
 	}
 	var ret = {
 		list: list,
@@ -313,7 +313,7 @@ Sql.prototype.toSet = function(obj) {
  * @param {Object} item 用作添加的键值
  * @return {String} sql语句
  */
-Sql.prototype.addSql = function(item) {
+Sql.prototype.toAddSql = function(item) {
 	var key = "";
 	var val = "";
 	for (var k in item) {
@@ -329,7 +329,7 @@ Sql.prototype.addSql = function(item) {
  * @param {Object} query 查询键值
  * @return {String} sql语句
  */
-Sql.prototype.delSql = function(query) {
+Sql.prototype.toDelSql = function(query) {
 	var where = this.toWhere(query);
 	var sql = "DELETE FROM `{0}` WHERE {1};";
 	return sql.replace("{0}", this.table).replace("{1}", where);
@@ -341,7 +341,7 @@ Sql.prototype.delSql = function(query) {
  * @param {Object} item 修改的键值集合
  * @return {String} sql语句
  */
-Sql.prototype.setSql = function(query, item) {
+Sql.prototype.toSetSql = function(query, item) {
 	var where = this.toWhere(query);
 	var set = this.toSet(item);
 	var sql = "UPDATE `{0}` SET {1} WHERE {2};";
@@ -355,7 +355,7 @@ Sql.prototype.setSql = function(query, item) {
  * @param {String} view 显示的字段
  * @return {String} sql语句
  */
-Sql.prototype.getSql = function(query, sort, view) {
+Sql.prototype.toGetSql = function(query, sort, view) {
 	var where = this.toWhere(query);
 	var sql = this.toQuery(where, sort, view);
 	return sql;
@@ -366,8 +366,8 @@ Sql.prototype.getSql = function(query, sort, view) {
  * @param {Object} item 添加的对象
  * @return {Promise|Object} 执行结果
  */
-Sql.prototype.addObj = function(item) {
-	var sql = this.addSql(item);
+Sql.prototype.add = function(item) {
+	var sql = this.toAddSql(item);
 	return this.exec(sql);
 };
 /**
@@ -375,8 +375,8 @@ Sql.prototype.addObj = function(item) {
  * @param {Object} query 查询条件集合
  * @return {Promise|Object} 执行结果
  */
-Sql.prototype.delObj = function(query) {
-	var sql = this.delSql(query);
+Sql.prototype.del = function(query) {
+	var sql = this.toDelSql(query);
 	return this.exec(sql);
 };
 
@@ -386,8 +386,8 @@ Sql.prototype.delObj = function(query) {
  * @param {Object} item 修改的键值集合
  * @return {Promise|Object} 执行结果
  */
-Sql.prototype.setObj = function(query, item) {
-	var sql = this.setSql(query, item);
+Sql.prototype.set = function(query, item) {
+	var sql = this.toSetSql(query, item);
 	return this.exec(sql);
 };
 
@@ -398,8 +398,8 @@ Sql.prototype.setObj = function(query, item) {
  * @param {String} view 返回的字段
  * @return {Promise|Array} 查询结果
  */
-Sql.prototype.getObj = function(query, sort, view) {
-	var sql = this.getSql(query, sort, view);
+Sql.prototype.get = function(query, sort, view) {
+	var sql = this.toGetSql(query, sort, view);
 	return this.run(sql);
 };
 
@@ -409,8 +409,8 @@ Sql.prototype.getObj = function(query, sort, view) {
  * @param {Object} set 修改的键值
  * @return {Promise|Object} 执行结果
  */
-Sql.prototype.addOrSetObj = async function(where, set) {
-	return await this.addOrSet(this.toWhere(where), this.toSet(set));
+Sql.prototype.addOrSet = async function(where, set) {
+	return await this.addOrSetSql(this.toWhere(where), this.toSet(set));
 };
 
 /**
@@ -418,8 +418,8 @@ Sql.prototype.addOrSetObj = async function(where, set) {
  * @param {Object} query 查询条件集合
  * @return {Promise|Number} 查询结果
  */
-Sql.prototype.countObj = function(query) {
-	return this.count(this.toWhere(query));
+Sql.prototype.count = function(query) {
+	return this.countSql(this.toWhere(query));
 };
 
 /**
@@ -429,8 +429,8 @@ Sql.prototype.countObj = function(query) {
  * @param {String} view 返回的字段
  * @return {Promise|Object} 查询到的内容列表和符合条件总数
  */
-Sql.prototype.getCountObj = async function(query, sort, view) {
-	return this.getCount(this.toWhere(query), sort, view);
+Sql.prototype.getCount = async function(query, sort, view) {
+	return this.getCountSql(this.toWhere(query), sort, view);
 };
 
 /* ===  传入数组操作  === */
@@ -442,7 +442,7 @@ Sql.prototype.getCountObj = async function(query, sort, view) {
 Sql.prototype.addList = function(list) {
 	var sql = "START TRANSACTION;\n";
 	for (var i = 0; i < list.length; i++) {
-		sql += this.addSql(list[i]);
+		sql += this.toAddSql(list[i]);
 	}
 	return this.exec(sql);
 };
@@ -454,7 +454,7 @@ Sql.prototype.addList = function(list) {
 Sql.prototype.delList = function(list) {
 	var sql = "";
 	for (var i = 0; i < list.length; i++) {
-		sql += this.delSql(list[i].query);
+		sql += this.toDelSql(list[i].query);
 	}
 	return this.exec(sql);
 };
@@ -466,7 +466,7 @@ Sql.prototype.delList = function(list) {
 Sql.prototype.setList = function(list) {
 	var sql = "";
 	for (var i = 0; i < list.length; i++) {
-		sql += this.setSql(list[i].query, list[i].item);
+		sql += this.toSetSql(list[i].query, list[i].item);
 	}
 	return this.exec(sql);
 };
@@ -530,7 +530,50 @@ Sql.prototype.filter_param = function(paramDt, sqlDt) {
  */
 Sql.prototype.tpl_query = function(paramDt, sqlDt) {
 	var sql = "";
-	if (!sqlDt || sqlDt.length === 0) {
+	if(sqlDt){
+		var l = this.config.separator;
+		if (l) {
+			for (var key in paramDt) {
+				var value = paramDt[key] + '';
+				var arr = value.split(l);
+				var tpl = sqlDt[key];
+				if (tpl) {
+					if (arr.length > 1) {
+						// 如果数量大于0，则增加多条件
+						var sl = "(";
+						for (var i = 0; i < arr.length; i++) {
+							sl += " || " + tpl.replaceAll("{0}", arr[i]);
+						}
+						sl = sl.replace(" || ", "") + ")";
+						sql += " && " + sl;
+					} else {
+						sql += " && " + tpl.replaceAll("{0}", value);
+					}
+				} else {
+					if (arr.length > 1) {
+						// 如果数量大于0，则增加多条件
+						var sl = "(";
+						for (var i = 0; i < arr.length; i++) {
+							sl += " || `" + key + "` = '" + arr[i] + "'";
+						}
+						sl = sl.replace(" || ", "") + ")";
+						sql += " && " + sl;
+					} else {
+						sql += " && `" + key + "` = '" + value + "'";
+					}
+				}
+			}
+		} else {
+			for (var key in paramDt) {
+				if (sqlDt[key]) {
+					sql += " && " + sqlDt[key].replaceAll("{0}", paramDt[key]);
+				} else {
+					sql += " && `" + key + "` = '" + paramDt[key] + "'";
+				}
+			}
+		}
+	}
+	else {
 		// 如果没有模板，则直接拼接参数
 		var l = this.config.separator;
 		if (l) {
@@ -553,48 +596,6 @@ Sql.prototype.tpl_query = function(paramDt, sqlDt) {
 			// 直接拼接
 			for (var key in paramDt) {
 				sql += " && `" + key + "` = '" + paramDt[key] + "'";
-			}
-		}
-	} else {
-		var l = this.config.separator;
-		if (l) {
-			for (var key in paramDt) {
-				var field = paramDt[key] + '';
-				var arr = field.split(l);
-				var tpl = sqlDt[key];
-				if (tpl) {
-					if (arr.length > 1) {
-						// 如果数量大于0，则增加多条件
-						var sl = "(";
-						for (var i = 0; i < arr.length; i++) {
-							sl += " || " + tpl.replaceAll("{0}", arr[i]);
-						}
-						sl = sl.replace(" || ", "") + ")";
-						sql += " && " + sl;
-					} else {
-						sql += " && " + tpl.replaceAll("{0}", field);
-					}
-				} else {
-					if (arr.length > 1) {
-						// 如果数量大于0，则增加多条件
-						var sl = "(";
-						for (var i = 0; i < arr.length; i++) {
-							sl += " || `" + key + "` = '" + arr[i] + "'";
-						}
-						sl = sl.replace(" || ", "") + ")";
-						sql += " && " + sl;
-					} else {
-						sql += " && `" + key + "` = '" + field + "'";
-					}
-				}
-			}
-		} else {
-			for (var key in paramDt) {
-				if (sqlDt[key]) {
-					sql += " && " + sqlDt[key].replaceAll("{0}", paramDt[key]);
-				} else {
-					sql += " && `" + key + "` = '" + paramDt[key] + "'";
-				}
 			}
 		}
 	}
@@ -638,18 +639,18 @@ Sql.prototype.model = function(model) {
 				var n = obj[prop];
 				var cha = value - n;
 				if (cha > 0) {
-					_this.set("`" + _this.key + "`=" + obj[_this.key] + "", "`" + prop + "`=`" + prop + "` + " + cha);
+					_this.setSql("`" + _this.key + "`=" + obj[_this.key] + "", "`" + prop + "`=`" + prop + "` + " + cha);
 				} else if (cha < 0) {
-					_this.set("`" + _this.key + "`=" + obj[_this.key] + "", "`" + prop + "`=`" + prop + "` - " + (-cha));
+					_this.setSql("`" + _this.key + "`=" + obj[_this.key] + "", "`" + prop + "`=`" + prop + "` - " + (-cha));
 				} else {
-					_this.set("`" + _this.key + "`=" + obj[_this.key] + "", "`" + prop + "`=" + value);
+					_this.setSql("`" + _this.key + "`=" + obj[_this.key] + "", "`" + prop + "`=" + value);
 				}
 			} else {
 				var query = {};
 				query[_this.key] = obj[_this.key];
 				var set = {};
 				set[prop] = value;
-				_this.setObj(query, set);
+				_this.set(query, set);
 			}
 			obj[prop] = value;
 			return obj;
@@ -664,7 +665,7 @@ Sql.prototype.model = function(model) {
  * @param {String} view 返回的字段
  * @return {Promise|Array} 查询结果
  */
-Sql.prototype.getOne = async function(query, sort, view) {
+Sql.prototype.getObj = async function(query, sort, view) {
 	this.page = 1;
 	this.size = 1;
 	if (this.key) {
@@ -672,7 +673,7 @@ Sql.prototype.getOne = async function(query, sort, view) {
 			view += ",`" + this.key + "`";
 		}
 	}
-	var sql = this.getSql(query, sort, view);
+	var sql = this.toGetSql(query, sort, view);
 	var list = await this.run(sql);
 	if (list.length > 0) {
 		var obj = list[0];

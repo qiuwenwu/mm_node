@@ -21,13 +21,9 @@
     "set": {
         "query": [
             "type_id",
-            "display",
             "display_min",
             "display_max",
-            "father_id",
-            "channel_id",
             "name",
-            "icon",
             "description"
         ],
         "query_required": [],
@@ -46,13 +42,9 @@
     "get": {
         "query": [
             "type_id",
-            "display",
             "display_min",
             "display_max",
-            "father_id",
-            "channel_id",
             "name",
-            "icon",
             "description"
         ],
         "query_required": []

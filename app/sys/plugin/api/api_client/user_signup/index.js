@@ -47,7 +47,7 @@ async function main(ctx, db) {
 
 	var invite_code = await getCode(db, username, password);
 
-	var index = await db.addObj({
+	var index = await db.add({
 		username,
 		salt,
 		password,

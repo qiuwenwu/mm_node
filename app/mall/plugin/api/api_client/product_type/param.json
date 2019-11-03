@@ -22,13 +22,9 @@
     "set": {
         "query": [
             "type_id",
-            "display",
             "display_min",
             "display_max",
-            "channel_id",
-            "father_id",
             "name",
-            "icon",
             "description"
         ],
         "query_required": [],
@@ -47,9 +43,10 @@
     "get": {
         "query": [
             "type_id",
-            "channel_id",
-            "father_id",
-            "name"
+            "display_min",
+            "display_max",
+            "name",
+            "description"
         ],
         "query_required": []
     },
@@ -62,229 +59,97 @@
     },
     "list": [
         {
-            "splitter": "|",
+            "name": "type_id",
+            "title": "产品分类ID",
+            "description": "123123",
             "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
+            "dataType": "smallint",
             "number": {
-                "min": 0,
-                "max": 0,
                 "range": [
                     1,
                     30000
                 ]
-            },
-            "name": "type_id",
-            "title": "产品分类ID",
-            "description": "",
-            "dataType": "smallint"
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000,
-                "range": []
-            },
             "name": "display",
             "title": "显示顺序",
             "description": "",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000,
-                "range": []
-            },
             "name": "display_min",
             "title": "显示顺序——最小值",
             "description": "",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000,
-                "range": []
-            },
             "name": "display_max",
             "title": "显示顺序——最大值",
             "description": "",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
         },
         {
-            "splitter": "|",
+            "name": "channel_id",
+            "title": "频道ID",
+            "description": "",
             "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
+            "dataType": "smallint",
             "number": {
-                "min": 0,
-                "max": 0,
                 "range": [
                     1,
                     10000
                 ]
-            },
-            "name": "channel_id",
-            "title": "频道ID",
-            "description": "",
-            "dataType": "smallint"
+            }
         },
         {
-            "splitter": "|",
+            "name": "father_id",
+            "title": "上级分类ID",
+            "description": "",
             "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
+            "dataType": "smallint",
             "number": {
-                "min": 0,
-                "max": 0,
                 "range": [
                     1,
                     32767
                 ]
-            },
-            "name": "father_id",
-            "title": "上级分类ID",
-            "description": "",
-            "dataType": "smallint"
+            }
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "name",
             "title": "分类名称",
             "description": "",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "icon",
             "title": "分类图标",
             "description": "",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "description",
             "title": "分类描述",
             "description": "",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ],
     "func_file": "",

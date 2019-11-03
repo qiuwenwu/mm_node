@@ -19,10 +19,8 @@
     "set": {
         "query": [
             "province_id",
-            "show",
             "show_min",
             "show_max",
-            "display",
             "display_min",
             "display_max",
             "name"
@@ -41,10 +39,8 @@
     "get": {
         "query": [
             "province_id",
-            "show",
             "show_min",
             "show_max",
-            "display",
             "display_min",
             "display_max",
             "name"

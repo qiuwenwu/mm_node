@@ -23,11 +23,8 @@
         "query": [
             "config_id",
             "name",
-            "type",
             "title",
-            "value",
-            "description",
-            "model"
+            "description"
         ],
         "query_required": [],
         "body": [
@@ -45,11 +42,8 @@
         "query": [
             "config_id",
             "name",
-            "type",
             "title",
-            "value",
-            "description",
-            "model"
+            "description"
         ],
         "query_required": []
     },

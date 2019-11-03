@@ -24,16 +24,11 @@
         "query": [
             "comment_id",
             "available",
-            "score",
             "score_min",
             "score_max",
-            "display",
             "display_min",
             "display_max",
-            "thread_id",
-            "user_id",
             "tag",
-            "reply",
             "content"
         ],
         "query_required": [],
@@ -56,16 +51,11 @@
         "query": [
             "comment_id",
             "available",
-            "score",
             "score_min",
             "score_max",
-            "display",
             "display_min",
             "display_max",
-            "thread_id",
-            "user_id",
             "tag",
-            "reply",
             "content"
         ],
         "query_required": []

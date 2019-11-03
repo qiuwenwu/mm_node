@@ -21,13 +21,9 @@
     "set": {
         "query": [
             "type_id",
-            "display",
             "display_min",
             "display_max",
-            "channel_id",
-            "father_id",
             "name",
-            "icon",
             "description"
         ],
         "query_required": [],
@@ -46,13 +42,9 @@
     "get": {
         "query": [
             "type_id",
-            "display",
             "display_min",
             "display_max",
-            "channel_id",
-            "father_id",
             "name",
-            "icon",
             "description"
         ],
         "query_required": []
@@ -61,7 +53,7 @@
         {
             "name": "type_id",
             "title": "产品分类ID",
-            "description": "",
+            "description": "123123",
             "type": "number",
             "dataType": "smallint",
             "number": {

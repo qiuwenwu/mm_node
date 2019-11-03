@@ -25,18 +25,13 @@
         "query": [
             "comment_id",
             "available",
-            "score",
             "score_min",
             "score_max",
-            "display",
             "display_min",
             "display_max",
-            "product_id",
-            "user_id",
             "name",
             "tag",
-            "content",
-            "reply"
+            "content"
         ],
         "query_required": [],
         "body": [
@@ -59,18 +54,13 @@
         "query": [
             "comment_id",
             "available",
-            "score",
             "score_min",
             "score_max",
-            "display",
             "display_min",
             "display_max",
-            "product_id",
-            "user_id",
             "name",
             "tag",
-            "content",
-            "reply"
+            "content"
         ],
         "query_required": []
     },

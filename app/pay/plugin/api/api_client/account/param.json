@@ -31,23 +31,15 @@
     "set": {
         "query": [
             "user_id",
-            "state",
             "state_min",
             "state_max",
-            "bank",
             "bank_name",
             "bank_state",
-            "wechat",
             "wechat_state",
-            "alipay",
             "alipay_state",
-            "btc",
             "btc_state",
-            "eth",
             "eth_state",
-            "eos",
             "eos_state",
-            "mm",
             "mm_state"
         ],
         "query_required": [],
@@ -76,23 +68,15 @@
     "get": {
         "query": [
             "user_id",
-            "state",
             "state_min",
             "state_max",
-            "bank",
             "bank_name",
             "bank_state",
-            "wechat",
             "wechat_state",
-            "alipay",
             "alipay_state",
-            "btc",
             "btc_state",
-            "eth",
             "eth_state",
-            "eos",
             "eos_state",
-            "mm",
             "mm_state"
         ],
         "query_required": []

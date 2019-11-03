@@ -26,15 +26,15 @@ async function main(ctx, db) {
 	db2.filter(q);
 
 	// 查询表
-	// var list = await sql.getObj(q);
-	// var count = await sql.countObj(q);
+	// var list = await db2.get(q);
+	// var count = await db2.count(q);
 
-	// ret = await sql.get("`name` like '%asd3%'");
+	// ret = await db2.getSql("`name` like '%asd3%'");
 	// return $.toJson('{ "test": 123 }');
 	// console.log(ret);
 	// var ret = $.list(list, count);
 	// ret.id = id;
-	var obj = await db2.getObj(q);
+	var obj = await db2.get(q);
 	return $.ret.obj(obj, id);
 };
 

@@ -7,7 +7,7 @@
     "contentType": "json",
     "func_file": "",
     "func_name": "",
-    "method": "ALL",
+    "method": "GET",
     "cache": 0,
     "client_cache": true,
     "param_path": "./param.json",

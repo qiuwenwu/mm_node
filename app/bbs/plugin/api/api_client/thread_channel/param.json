@@ -31,17 +31,10 @@
             "available",
             "hide",
             "can_comment",
-            "display",
             "display_min",
             "display_max",
-            "father_id",
-            "city_id",
-            "type",
             "name",
-            "template",
-            "description",
-            "icon",
-            "url"
+            "description"
         ],
         "query_required": [],
         "body": [
@@ -68,17 +61,10 @@
             "available",
             "hide",
             "can_comment",
-            "display",
             "display_min",
             "display_max",
-            "father_id",
-            "city_id",
-            "type",
             "name",
-            "template",
-            "description",
-            "icon",
-            "url"
+            "description"
         ],
         "query_required": []
     },

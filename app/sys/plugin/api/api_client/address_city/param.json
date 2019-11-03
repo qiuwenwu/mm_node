@@ -20,13 +20,10 @@
     "set": {
         "query": [
             "city_id",
-            "show",
             "show_min",
             "show_max",
-            "display",
             "display_min",
             "display_max",
-            "province_id",
             "name"
         ],
         "query_required": [],
@@ -44,13 +41,10 @@
     "get": {
         "query": [
             "city_id",
-            "show",
             "show_min",
             "show_max",
-            "display",
             "display_min",
             "display_max",
-            "province_id",
             "name"
         ],
         "query_required": []

@@ -26,18 +26,9 @@
     "set": {
         "query": [
             "seller_id",
-            "institution_state",
             "institution_state_min",
             "institution_state_max",
-            "user_id",
-            "province_id",
-            "city_id",
-            "name",
-            "institution",
-            "institution_code",
-            "address",
-            "business",
-            "institution_img"
+            "name"
         ],
         "query_required": [],
         "body": [
@@ -59,18 +50,9 @@
     "get": {
         "query": [
             "seller_id",
-            "institution_state",
             "institution_state_min",
             "institution_state_max",
-            "user_id",
-            "province_id",
-            "city_id",
-            "name",
-            "institution",
-            "institution_code",
-            "address",
-            "business",
-            "institution_img"
+            "name"
         ],
         "query_required": []
     },

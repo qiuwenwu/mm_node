@@ -39,36 +39,23 @@
         "query": [
             "product_id",
             "available",
-            "state",
             "state_min",
             "state_max",
-            "type_id",
-            "display",
             "display_min",
             "display_max",
-            "channel_id",
-            "shop_id",
-            "city_id",
-            "hot",
             "hot_min",
             "hot_max",
-            "praise",
             "praise_min",
             "praise_max",
-            "price",
             "price_min",
             "price_max",
-            "price_old",
             "price_old_min",
             "price_old_max",
             "title",
             "keywords",
             "description",
-            "img",
             "tag",
-            "property",
-            "content",
-            "collecter"
+            "content"
         ],
         "query_required": [],
         "body": [
@@ -107,11 +94,10 @@
         "query": [
             "product_id",
             "available",
-            "state",
-            "type_id",
-            "channel_id",
-            "shop_id",
-            "city_id",
+            "state_min",
+            "state_max",
+            "display_min",
+            "display_max",
             "hot_min",
             "hot_max",
             "praise_min",
@@ -127,11 +113,8 @@
             "title",
             "keywords",
             "description",
-            "img",
             "tag",
-            "property",
-            "content",
-            "collecter"
+            "content"
         ],
         "query_required": []
     },
@@ -144,931 +127,391 @@
     },
     "list": [
         {
-            "splitter": "|",
+            "name": "product_id",
+            "title": "产品id",
+            "description": "",
             "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
+            "dataType": "mediumint",
             "number": {
-                "min": 0,
-                "max": 0,
                 "range": [
                     1,
                     8388607
                 ]
-            },
-            "name": "product_id",
-            "title": "产品id",
-            "description": "",
-            "dataType": "mediumint"
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1,
-                "range": []
-            },
             "name": "available",
             "title": "是否启用",
             "description": "启用后前台才会显示该产品",
-            "dataType": "tinyint"
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 5,
-                "range": []
-            },
             "name": "state",
             "title": "状态",
             "description": "1出售中，2预售中，3已下架，4已删除，5已违规",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 5
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 5,
-                "range": []
-            },
             "name": "state_min",
             "title": "状态——最小值",
             "description": "1出售中，2预售中，3已下架，4已删除，5已违规",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 5
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 5,
-                "range": []
-            },
             "name": "state_max",
             "title": "状态——最大值",
             "description": "1出售中，2预售中，3已下架，4已删除，5已违规",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 5
+            }
         },
         {
-            "splitter": "|",
+            "name": "type_id",
+            "title": "产品分类ID",
+            "description": "用来搜索指定类型的产品",
             "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
+            "dataType": "smallint",
             "number": {
-                "min": 0,
-                "max": 0,
                 "range": [
                     1,
                     1000
                 ]
-            },
-            "name": "type_id",
-            "title": "产品分类ID",
-            "description": "用来搜索指定类型的产品",
-            "dataType": "smallint"
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 10000,
-                "range": []
-            },
             "name": "display",
             "title": "排序",
             "description": "决定产品显示的顺序",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 10000,
-                "range": []
-            },
             "name": "display_min",
             "title": "排序——最小值",
             "description": "决定产品显示的顺序",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 10000,
-                "range": []
-            },
             "name": "display_max",
             "title": "排序——最大值",
             "description": "决定产品显示的顺序",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10000
+            }
         },
         {
-            "splitter": "|",
+            "name": "channel_id",
+            "title": "频道ID",
+            "description": "该产品所属频道，仅该频道列表可以看到该产品",
             "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
+            "dataType": "smallint",
             "number": {
-                "min": 0,
-                "max": 0,
                 "range": [
                     1,
                     10000
                 ]
-            },
-            "name": "channel_id",
-            "title": "频道ID",
-            "description": "该产品所属频道，仅该频道列表可以看到该产品",
-            "dataType": "smallint"
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": [
-                    1,
-                    8388607
-                ]
-            },
             "name": "shop_id",
             "title": "店铺ID",
             "description": "该商品所属的店铺",
-            "dataType": "mediumint"
-        },
-        {
-            "splitter": "|",
             "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
+            "dataType": "mediumint",
             "number": {
-                "min": 0,
-                "max": 0,
                 "range": [
                     1,
                     8388607
                 ]
-            },
+            }
+        },
+        {
             "name": "city_id",
             "title": "所属城市ID",
             "description": "对于一些地方产品，可以通过该ID筛看",
-            "dataType": "mediumint"
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000000000,
-                "range": []
-            },
             "name": "hot",
             "title": "热度",
             "description": "访问这篇产品的人次",
-            "dataType": "int"
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000000000,
-                "range": []
-            },
             "name": "hot_min",
             "title": "热度——最小值",
             "description": "访问这篇产品的人次",
-            "dataType": "int"
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000000000,
-                "range": []
-            },
             "name": "hot_max",
             "title": "热度——最大值",
             "description": "访问这篇产品的人次",
-            "dataType": "int"
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000000000,
-                "range": []
-            },
             "name": "praise",
             "title": "点赞次数",
             "description": "",
-            "dataType": "int"
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000000000,
-                "range": []
-            },
             "name": "praise_min",
             "title": "点赞次数——最小值",
             "description": "",
-            "dataType": "int"
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000000000,
-                "range": []
-            },
             "name": "praise_max",
             "title": "点赞次数——最大值",
             "description": "",
-            "dataType": "int"
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 1000000000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 1,
-                "max": 0,
-                "range": []
-            },
             "name": "price",
             "title": "卖价",
             "description": "",
-            "dataType": "double"
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 1
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 1,
-                "max": 0,
-                "range": []
-            },
             "name": "price_min",
             "title": "卖价——最小值",
             "description": "",
-            "dataType": "double"
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 1
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 1,
-                "max": 0,
-                "range": []
-            },
             "name": "price_max",
             "title": "卖价——最大值",
             "description": "",
-            "dataType": "double"
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 1
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 1,
-                "max": 0,
-                "range": []
-            },
             "name": "price_old",
             "title": "原价",
             "description": "",
-            "dataType": "double"
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 1
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 1,
-                "max": 0,
-                "range": []
-            },
             "name": "price_old_min",
             "title": "原价——最小值",
             "description": "",
-            "dataType": "double"
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 1
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 1,
-                "max": 0,
-                "range": []
-            },
             "name": "price_old_max",
             "title": "原价——最大值",
             "description": "",
-            "dataType": "double"
+            "type": "number",
+            "dataType": "double",
+            "number": {
+                "min": 1
+            }
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": true,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": "datetime"
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "create_time",
             "title": "创建时间",
             "description": "",
-            "dataType": "datetime"
-        },
-        {
-            "splitter": "|",
             "type": "string",
+            "dataType": "datetime",
             "string": {
                 "notEmpty": true,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
                 "format": "datetime"
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
+            }
+        },
+        {
             "name": "create_time_min",
             "title": "创建时间——开始时间",
             "description": "",
-            "dataType": "datetime"
-        },
-        {
-            "splitter": "|",
             "type": "string",
+            "dataType": "datetime",
             "string": {
                 "notEmpty": true,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
                 "format": "datetime"
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
+            }
+        },
+        {
             "name": "create_time_max",
             "title": "创建时间——结束时间",
             "description": "",
-            "dataType": "datetime"
-        },
-        {
-            "splitter": "|",
             "type": "string",
+            "dataType": "datetime",
             "string": {
                 "notEmpty": true,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
                 "format": "datetime"
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
+            }
+        },
+        {
             "name": "update_time",
             "title": "更新时间",
             "description": "",
-            "dataType": "timestamp"
-        },
-        {
-            "splitter": "|",
             "type": "string",
+            "dataType": "timestamp",
             "string": {
                 "notEmpty": true,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
                 "format": "datetime"
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
+            }
+        },
+        {
             "name": "update_time_min",
             "title": "更新时间——开始时间",
             "description": "",
-            "dataType": "timestamp"
-        },
-        {
-            "splitter": "|",
             "type": "string",
+            "dataType": "timestamp",
             "string": {
                 "notEmpty": true,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
                 "format": "datetime"
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
+            }
+        },
+        {
             "name": "update_time_max",
             "title": "更新时间——结束时间",
             "description": "",
-            "dataType": "timestamp"
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "title",
             "title": "标题",
             "description": "用于产品和html的<title>标签中",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "keywords",
             "title": "关键词",
             "description": "用于搜索引擎收录",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "description",
             "title": "描述",
             "description": "用于产品提纲和搜索引擎收录",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "img",
             "title": "封面图",
             "description": "用于显示于产品列表页，多个封面图用换行分隔",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "tag",
             "title": "标签",
             "description": "用于标注产品所属相关内容，多个标签用空格隔开",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": true,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "property",
             "title": "产品属性",
             "description": "包含产品的规格、参数等信息，用JSON格式保存",
-            "dataType": "text"
+            "type": "string",
+            "dataType": "text",
+            "string": {
+                "notEmpty": 1
+            }
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "content",
             "title": "正文",
             "description": "产品的主体内容",
-            "dataType": "text"
+            "type": "string",
+            "dataType": "text",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "collecter",
             "title": "收藏者",
             "description": "多个收藏者用”,“分隔",
-            "dataType": "text"
+            "type": "string",
+            "dataType": "text",
+            "string": {}
         }
     ],
     "func_file": "",

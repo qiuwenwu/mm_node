@@ -215,19 +215,6 @@ Drive.prototype.main = async function(params, db) {
 		}
 	}
 	switch (db.method) {
-		case "add":
-			// 添加
-			if (Object.keys(body).length > 0) {
-				ret = $.ret.bl(await db.addObj(body));
-			} else {
-				ret = $.ret.error(70000, '参数不能为空');
-			}
-			break;
-		case "del":
-			// 删除
-			var query_str = db.tpl_query(qy, cg.where);
-			ret = $.ret.bl(await db.del(query_str));
-			break;
 		case "get":
 			db.config.separator = cg.separator;
 			if (!query.size && cg.page_size) {
@@ -289,20 +276,36 @@ Drive.prototype.main = async function(params, db) {
 
 			// 查询
 			if (db.count_ret === "true") {
-				ret = $.ret.body(await db.getCount(query_str, db.orderby, db.field));
+				ret = $.ret.body(await db.getCountSql(query_str, db.orderby, db.field));
 			} else {
-				ret = $.ret.list(await db.get(query_str, db.orderby, db.field));
+				ret = $.ret.list(await db.getSql(query_str, db.orderby, db.field));
 			}
 			break;
 		case "set":
 			// 修改
 			var query_str = db.tpl_query(qy, cg.where);
 			var set_str = db.tpl_body(body, cg.update);
-			ret = $.ret.bl(await db.set(query_str, set_str));
+			ret = $.ret.bl(await db.setSql(query_str, set_str));
+			if (ret.result.bl < 1) {
+				ret.result.tip = '没有改变任何数据'
+			}
+			break;
+		case "add":
+			// 添加
+			if (Object.keys(body).length > 0) {
+				ret = $.ret.bl(await db.add(body));
+			} else {
+				ret = $.ret.error(70000, '参数不能为空');
+			}
+			break;
+		case "del":
+			// 删除
+			var query_str = db.tpl_query(qy, cg.where);
+			ret = $.ret.bl(await db.delSql(query_str));
 			break;
 		case "addOrSet":
 			if (Object.keys(body).length > 0 && Object.keys(qy).length > 0) {
-				ret = $.ret.bl(await db.addOrSetObj(qy, body));
+				ret = $.ret.bl(await db.addOrSet(qy, body));
 			} else {
 				ret = $.ret.error(70000, '参数不能为空');
 			}

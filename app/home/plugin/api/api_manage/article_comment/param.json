@@ -25,7 +25,14 @@
     "set": {
         "query": [
             "comment_id",
-            "name"
+            "available",
+            "score_min",
+            "score_max",
+            "display_min",
+            "display_max",
+            "name",
+            "tag",
+            "content"
         ],
         "query_required": [],
         "body": [
@@ -48,15 +55,13 @@
         "query": [
             "comment_id",
             "available",
-            "score",
             "score_min",
             "score_max",
-            "article_id",
-            "user_id",
+            "display_min",
+            "display_max",
             "name",
             "tag",
-            "content",
-            "reply"
+            "content"
         ],
         "query_required": []
     },
@@ -69,352 +74,150 @@
     },
     "list": [
         {
-            "splitter": "|",
+            "name": "comment_id",
+            "title": "评论id",
+            "description": "",
             "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
+            "dataType": "int",
             "number": {
-                "min": 0,
-                "max": 0,
                 "range": [
                     1,
                     2147483647
                 ]
-            },
-            "name": "comment_id",
-            "title": "评论id",
-            "description": "",
-            "dataType": "int"
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1,
-                "range": []
-            },
             "name": "available",
             "title": "是否启用",
             "description": "启用则显示该评论",
-            "dataType": "tinyint"
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 5,
-                "range": []
-            },
             "name": "score",
             "title": "评分",
             "description": "最低1分、最多5分",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 5
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 5,
-                "range": []
-            },
             "name": "score_min",
             "title": "评分——最小值",
             "description": "最低1分、最多5分",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 5
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 5,
-                "range": []
-            },
             "name": "score_max",
             "title": "评分——最大值",
             "description": "最低1分、最多5分",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 5
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000,
-                "range": []
-            },
             "name": "display",
             "title": "显示排序",
             "description": "决定显示的顺序",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000,
-                "range": []
-            },
             "name": "display_min",
             "title": "显示排序——最小值",
             "description": "决定显示的顺序",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 1000,
-                "range": []
-            },
             "name": "display_max",
             "title": "显示排序——最大值",
             "description": "决定显示的顺序",
-            "dataType": "smallint"
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
         },
         {
-            "splitter": "|",
-            "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": [
-                    1,
-                    8388607
-                ]
-            },
             "name": "article_id",
             "title": "所属文章id",
             "description": "",
-            "dataType": "mediumint"
-        },
-        {
-            "splitter": "|",
             "type": "number",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
+            "dataType": "mediumint",
             "number": {
-                "min": 0,
-                "max": 0,
                 "range": [
                     1,
                     8388607
                 ]
-            },
+            }
+        },
+        {
             "name": "user_id",
             "title": "用户ID",
             "description": "编辑评论的用户ID",
-            "dataType": "mediumint"
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [
-                    2,
-                    16
-                ],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "name",
             "title": "留言者姓名",
             "description": "用于实名回复",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "range": [
+                    2,
+                    16
+                ]
+            }
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "tag",
             "title": "标签",
             "description": "评论人给的标签，多个标签用空格隔开",
-            "dataType": "varchar"
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "content",
             "title": "正文",
             "description": "评论内容",
-            "dataType": "text"
+            "type": "string",
+            "dataType": "text",
+            "string": {}
         },
         {
-            "splitter": "|",
-            "type": "string",
-            "string": {
-                "notEmpty": false,
-                "min": 0,
-                "max": 0,
-                "range": [],
-                "regex": "",
-                "identical": "",
-                "different": "",
-                "extension": "",
-                "format": ""
-            },
-            "number": {
-                "min": 0,
-                "max": 0,
-                "range": []
-            },
             "name": "reply",
             "title": "评论回复",
             "description": "对评论人的评论做出的回复。通过form-url格式保存，多个人的回复用换行分隔",
-            "dataType": "text"
+            "type": "string",
+            "dataType": "text",
+            "string": {}
         }
     ],
     "func_file": "",

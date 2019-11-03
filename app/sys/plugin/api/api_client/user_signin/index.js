@@ -28,21 +28,21 @@ async function main(ctx, db) {
 			var username = params["username"];
 			if (username) {
 				// 使用用户名登录
-				list = await db.getObj({
+				list = await db.get({
 					username
 				});
 			} else {
 				var email = params["email"];
 				if (email) {
 					// 使用邮箱登录
-					list = await db.getObj({
+					list = await db.get({
 						email
 					});
 				} else {
 					var phone = params["phone"];
 					if (phone) {
 						// 使用手机号码登录
-						list = await db.getObj({
+						list = await db.get({
 							phone
 						});
 					} else {
@@ -57,35 +57,35 @@ async function main(ctx, db) {
 			var arr = [];
 			if (mm) {
 				// 使用超级美眉账号登录
-				arr = await db.getObj({
+				arr = await db.get({
 					mm
 				});
 			} else {
 				var qq = params["qq"];
 				if (qq) {
 					// 使用QQ账号登录
-					arr = await db.getObj({
+					arr = await db.get({
 						qq
 					});
 				} else {
 					var baidu = params["baidu"];
 					if (baidu) {
 						// 使用百度账号登录
-						arr = await db.getObj({
+						arr = await db.get({
 							baidu
 						});
 					} else {
 						var taotao = params["taotao"];
 						if (taotao) {
 							// 使用淘宝账号登录
-							arr = await db.getObj({
+							arr = await db.get({
 								taotao
 							});
 						} else {
 							var wechat = params["wechat"];
 							if (wechat) {
 								// 使用微信账号登录
-								arr = await db.getObj({
+								arr = await db.get({
 									wechat
 								});
 							} else {
@@ -98,7 +98,7 @@ async function main(ctx, db) {
 			if (arr.length > 0) {
 				var o = arr[0];
 				db.table = "sys_user_user";
-				list = await db.getObj({
+				list = await db.get({
 					user_id: o.user_id
 				});
 			}
@@ -116,7 +116,7 @@ async function main(ctx, db) {
 			} else {
 				var ip = ctx.ip.replace('::ffff:', '');
 				// 记录当前登录所用的IP地址
-				db.setObj({
+				db.set({
 					user_id: u.user_id
 				}, {
 					login_ip: ip
