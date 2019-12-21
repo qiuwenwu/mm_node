@@ -105,4 +105,8 @@ Tpl.prototype.get = function(key) {
 	return this.viewBag[key];
 };
 
-exports.Tpl = Tpl;
+if (global.$) {
+	$.Tpl = Tpl;
+}
+
+module.exports = Tpl;

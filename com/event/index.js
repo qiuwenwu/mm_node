@@ -1,5 +1,5 @@
 const Index = require('mm_machine').Index;
-const Drive = require('./drive').Drive;
+const Drive = require('./drive');
 
 /**
  * @description Event事件类
@@ -38,7 +38,6 @@ class Event extends Index {
 		this.render_main = [];
 		// 渲染后
 		this.render_after = [];
-
 	}
 }
 
@@ -85,6 +84,7 @@ Event.prototype.load = function(path) {
 		search_dir = "event";
 	}
 	var list_scope = $.dir.getAll(path, search_dir);
+	
 	// 遍历目录路径
 	var _this = this;
 	list_scope.map(function(f) {
@@ -162,8 +162,7 @@ Event.prototype.sort = function(situation) {
  * @return {Object} 执行结果
  */
 Event.prototype.exec_sub = async function(list, target, ctx, db) {
-	for (var i = 0; i < list.length; i++) {
-		var o = list[i];
+	for (let i = 0, o; o = list[i++];) {
 		if (o.onOff && target.has(o.config.target)) {
 			var ret = await o.run(ctx, db);
 			if (ret) {

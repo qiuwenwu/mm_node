@@ -21,17 +21,19 @@
 		},
 		methods: {
 			next() {
-				var id = this.query.id;
+				var query = this.query;
+				var id = query.id;
 				if (id > 2) {
-					this.query.id -= 1;
-					this.$router.push(this.toUrl(this.query, this.url_get_obj));
+					query.id -= 1;
+					this.$router.push(this.toUrl(query, this.url_get_obj));
 					window.scrollTo(0, 0);
 				}
 			},
 			last() {
-				var id = this.query.id;
-				this.query.id += 1;
-				$.push(this.toUrl(this.query, this.url_get_obj));
+				var query = this.query;
+				var id = query.id;
+				query.id += 1;
+				$.push(this.toUrl(query, this.url_get_obj));
 				window.scrollTo(0, 0);
 			},
 			get_obj_after(json, status) {

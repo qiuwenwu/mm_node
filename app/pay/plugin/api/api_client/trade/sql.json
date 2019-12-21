@@ -37,7 +37,7 @@
         "content": "`content` like '%{0}%'"
     },
     "query_default": {},
-    "where": {},
+    
     "update": {
         "state_add": "`state` = `state` + {0}",
         "total_add": "`total` = `total` + {0}",

@@ -1,59 +1,62 @@
 {
-	"name": "mm_node",
-	"version": "1.2.0",
-	"description": "这是超级美眉基于nodeJS和Koa开发的服务端框架，可用于中小型商城和游戏、CMS。",
-	"main": "main.js",
-	"scripts": {
-		"start": "node main.js",
-		"dev": "nodemon"
-	},
-	"keywords": [
-		"mm",
-		"nodejs",
-		"koa",
-		"task",
-		"event",
-		"api",
-		"web",
-		"cms",
-		"mall",
-		"mysql",
-		"sqlite",
-		"redis",
-		"mongoDB"
-	],
-	"author": "邱文武",
-	"license": "ISC",
-	"devDependencies": {},
-	"dependencies": {
-		"babel-preset-es2015": "^6.24.1",
-		"koa": "^2.8.1",
-		"koa-bodyparser": "^4.2.1",
-		"koa-compress": "^3.0.0",
-		"koa-xml-body": "^2.1.0",
-		"mm_cache": "^1.2.9",
-		"mm_check": "^1.2.6",
-		"mm_crypto": "^1.0.1",
-		"mm_https": "^1.2.6",
-		"mm_machine": "^1.3.1",
-		"mm_mongodb": "^1.2.7",
-		"mm_mysql": "^1.3.5",
-		"mm_process": "^1.2.7",
-		"mm_redis": "^1.2.7",
-		"mm_ret": "^1.2.6",
-		"mm_session": "^1.2.9",
-		"mm_statics": "^1.2.9",
-		"mm_timer": "^1.2.6",
-		"mm_tpl": "^1.2.5",
-		"mm_xml": "^1.0.2",
-		"nodemon": "^1.19.2"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/qiuwenwu/mm_node.git"
-	},
-	"bugs": {
-		"url": "https://github.com/qiuwenwu/mm_node/issues"
-	},
-	"homepage": "https://github.com/qiuwenwu/mm_node#readme"
+  "name": "mm_node",
+  "version": "1.3.0",
+  "description": "这是超级美眉基于nodeJS和Koa开发的服务端框架，可用于中小型商城和游戏、CMS。",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon"
+  },
+  "keywords": [
+    "mm",
+    "nodejs",
+    "koa",
+    "task",
+    "event",
+    "api",
+    "web",
+    "cms",
+    "mall",
+    "mysql",
+    "sqlite",
+    "redis",
+    "mongoDB"
+  ],
+  "author": "邱文武",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "koa": "^2.8.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compress": "^3.0.0",
+    "koa-websocket": "^6.0.0",
+    "koa-xml-body": "^2.1.0",
+    "mm_cache": "^1.3.1",
+    "mm_check": "^1.2.8",
+    "mm_crypto": "^1.0.3",
+    "mm_https": "^1.3.2",
+    "mm_machine": "^1.3.3",
+    "mm_matchs": "^1.0.2",
+    "mm_mongodb": "^1.2.9",
+    "mm_mysql": "^1.3.7",
+    "mm_process": "^1.2.9",
+    "mm_redis": "^1.2.9",
+    "mm_ret": "^1.2.9",
+    "mm_session": "^1.3.1",
+    "mm_statics": "^1.3.2",
+    "mm_timer": "^1.2.8",
+    "mm_tpl": "^1.2.7",
+    "mm_xml": "^1.0.6",
+    "njwt": "^1.0.0",
+    "nodemon": "^1.19.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiuwenwu/mm_node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/qiuwenwu/mm_node/issues"
+  },
+  "homepage": "https://github.com/qiuwenwu/mm_node#readme"
 }

@@ -1036,7 +1036,8 @@ if (typeof($) === "undefined") {
 	Array.prototype.toArr = function(key) {
 		var arr = [];
 		var lt = this;
-		for (var i = 0; i < lt.length; i++) {
+		var len = lt.length;
+		for (var i = 0; i < len; i++) {
 			var o = lt[i];
 			arr.push(o[key]);
 		}
@@ -1221,11 +1222,30 @@ if (typeof($) === "undefined") {
 	 * @return {Array} 对象数组
 	 */
 	Array.prototype.addList = function(list, query) {
-		for (var i = 0; i < list.length; i++) {
+		var len = list.length;
+		for (var i = 0; i < len; i++) {
 			this.addObj(list[i], query);
 		}
 		return this;
 	};
+	
+	/**
+	 * @description 给数组添加一个对象或列表
+	 * @param {Object|Array} objOrList 对象或数组
+	 * @param {Object} query 查询条件
+	 * @return {Array} 对象数组
+	 */
+	Array.prototype.add = function(objOrList, query) {
+		if(Array.isArray(objOrList))
+		{
+			this.addList(objOrList, query);
+		}
+		else {
+			this.addObj(objOrList, query);
+		}
+		return this;
+	};
+	
 	/**
 	 * @description 删除数组中对象的属性
 	 * @param {String} key 对象属性键
@@ -1307,7 +1327,8 @@ if (typeof($) === "undefined") {
 	 * @return {Array} 对象数组
 	 */
 	Array.prototype.delList = function(list, end) {
-		for (var i = 0; i < list.length; i++) {
+		var len = list.length;
+		for (var i = 0; i < len; i++) {
 			this.del(list[i], end);
 		}
 		return this;
@@ -1529,8 +1550,9 @@ if (typeof($) === "undefined") {
 		/**
 		 * @description 执行
 		 */
-		Timer.prototype.run = async function() {
-			for (var i = 0; i < list.length; i++) {
+		Timer.prototype.run = function() {
+			var len = list.length;
+			for (var i = 0; i < len; i++) {
 				var run = list[i].run;
 				if (run) {
 					run();
@@ -1873,8 +1895,10 @@ if (typeof($) === "undefined") {
 			var pm;
 			if (type === 'xml') {
 				contentType = "text/xml; charset=utf-8";
+				pm = param;
 			} else if (type === 'form') {
 				contentType = "application/x-www-form-urlencoded; charset=utf-8";
+				pm = param;
 			} else {
 				contentType = "application/json; charset=utf-8";
 				pm = JSON.stringify(param);
@@ -2049,12 +2073,14 @@ if (typeof($) === "undefined") {
 	};
 })();
 
+/* 通讯 */
 (function() {
 	$.html = {
 		tag: function(tag, prop, value) {
 			var obj;
 			var list = document.getElementsByTagName(tag);
-			for (var i = 0; i < list.length; i++) {
+			var len = list.length;
+			for (var i = 0; i < len; i++) {
 				var o = list[i];
 				if (o && o.getAttribute(prop) && o.getAttribute(prop).has(value)) {
 					obj = o;
@@ -2065,6 +2091,44 @@ if (typeof($) === "undefined") {
 		}
 	};
 
+	/**
+	 * 本地临时缓存,关闭浏览器后小时
+	 */
+	$.cache = {
+		/**
+		 * 设置值
+		 * @param {String} key 键
+		 * @param {Object} value 值
+		 */
+		set: function(key, value) {
+			window.sessionStorage.setItem(key, value);
+		},
+		/**
+		 * 获取值
+		 * @param {String} key 键
+		 * @return {Object} 值
+		 */
+		get: function(key) {
+			return window.sessionStorage.getItem(key);
+		},
+		/**
+		 * 删除值
+		 * @param {Object} key 键
+		 */
+		del: function(key) {
+			window.sessionStorage.removeItem(key);
+		},
+		/**
+		 * 清除所有缓存
+		 */
+		clear: function() {
+			window.sessionStorage.clear();
+		}
+	};
+
+	/**
+	 * 本地数据库存储
+	 */
 	$.db = {
 		/**
 		 * 设置值
@@ -2090,6 +2154,258 @@ if (typeof($) === "undefined") {
 			window.localStorage.removeItem(key);
 		}
 	};
+
+	/**
+	 * web socket通讯组
+	 */
+	$.ws = {};
+
+	/* 封装 WebSocket 实例化的方法  */
+	var CreateWebSocket = (function(url) {
+		return function(url) {
+			var ws;
+			try {
+				if (window.WebSocket) {
+					ws = new WebSocket(url)
+				} else if (window.MozWebSocket) {
+					ws = new MozWebSocket(url)
+				};
+			} catch (e) {
+				//TODO handle the exception
+			}
+			return ws;
+		}
+	})();
+
+	/**
+	 * 等待连接成功, 然后发送消息
+	 */
+	function connect(_this) {
+		if(_this.try_connect)
+		{
+			return;
+		}
+		_this.try_connect = true;
+		var ws = CreateWebSocket(_this.url);
+		ws.onmessage = function(event){
+			_this.message(event);
+		};
+		ws.onclose = function() {
+			reconnect(_this);
+		};
+		ws.onerror = function(event) {
+			_this.noticy("error", event);
+		};
+		ws.onopen = function() {
+			_this.try_connect = false;
+			var arr = _this.arr_message;
+			var len = arr.length;
+			for (var i = 0; i < len; i++) {
+				if(ws.readyState === 1) {
+					_this.ws.send(arr[i]);
+				}
+			}
+			// 发送成功, 清空消息组
+			_this.arr_message.clear();
+			// 重置重新连接次数
+			_this.try_times = 0;
+		}
+		_this.ws = ws;
+	};
+
+	/**
+	 * 重新连接
+	 * @param {Object} _this ws对象
+	 */
+	function reconnect(_this) {
+		_this.try_times++;
+		if (_this.try_times <= _this.try_max_times) {
+			_this.try_connect = false;
+			// 没连接上会一直重连，设置延迟避免请求过多
+			setTimeout(function() {
+				connect(_this)
+			}, _this.seconds);
+			_this.noticy('reconnect', _this.try_times);
+		} else {
+			_this.noticy('error', '服务器连接失败!');
+		}
+	};
+	
+	/**
+	 * 构造通讯函数
+	 * @param {String} url
+	 * @param {Function} noticy 通知函数
+	 * @param {Function} receive 响应回调函数
+	 * @param {Function} noticy 信息捕捉函数
+	 * @param {String} name 名称
+	 * @param {Number} seconds 重新连接次数
+	 * @return {Object} 返回发信服务
+	 */
+	function WS(url, receive, noticy, name, seconds) {
+		if (noticy) {
+			this.noticy = noticy;
+		} else {
+			/**
+			 * 通知函数
+			 * @param {String} type 通知类型
+			 */
+			this.noticy = function(type, content) {
+				console.log(type, content);
+			};
+		}
+
+		if (!window.WebSocket) {
+			console.error('错误: 浏览器不支持websocket');
+			this.noticy('error', '浏览器不支持websocket');
+			return;
+		}
+
+		var u;
+		if (url.indexOf('//') !== -1) {
+			u = url.replace("https", "ws").replace("http", "ws");
+		} else {
+			u = "ws://" + url;
+		}
+		// 连接地址
+		this.url = u;
+		
+		if(name) {
+			this.name = name
+		}
+		else {
+			this.name = u;
+		}
+		
+		this.receive = receive;
+
+		// 消息数组, 在等待连接的过程中, 如果有多条消息, 则保存至此, 等待连接成功后发送
+		this.arr_message = [];
+
+		if (seconds) {
+			this.seconds = seconds;
+		} else {
+			this.seconds = 6000;
+		}
+		
+		/**
+		 * 尝试重连次数
+		 */
+		this.try_times = 0;
+
+		/**
+		 * 最大尝试次数, 如果每次重试间隔1分钟, 那么10分钟后就不再重连
+		 */
+		this.try_max_times = 10;
+		
+		/**
+		 * 是否正在尝试连接
+		 */
+		this.try_connect = false;
+		
+		// 连接 socket服务
+		connect(this);
+	}
+	
+	
+	/**
+	 * 打开服务
+	 */
+	WS.prototype.open = function(){
+		connect(this);
+	};
+	
+	/**
+	 * 关闭服务
+	 */
+	WS.prototype.close = function(){
+		this.ws.onclose = function(event){};
+		this.ws.close()
+	};
+	
+	
+	/**
+	 * 释放
+	 */
+	WS.prototype.clear = function(){
+		this.close();
+		delete $.ws[key];
+	};
+	
+	/**
+	 * 收到消息
+	 */
+	WS.prototype.message = function(event){
+		var data = event.data;
+		if(data && this.receive){
+			this.receive(data);
+		}
+	};
+
+
+	/**
+	 * 发送数据
+	 * @param {String} bodyStr 消息主体字符串
+	 */
+	WS.prototype.send = function(bodyStr) {
+		var ws = this.ws;
+		switch (ws.readyState) {
+			case 0:
+				// CONNECTING 正在连接
+				// 先将消息加入队列等待连接成功再发送
+				this.arr_message.push(bodyStr);
+				break;
+			case 1:
+				// OPEN 连接成功，可以通信了
+				ws.send(bodyStr);
+				break;
+			case 2:
+				// CLOSING 连接正在关闭
+				// 先将消息加入队列, 等待关闭 > 重新连接 > 连接成功 再发送消息
+				this.arr_message.push(bodyStr);
+				break;
+			default:
+				if(this.try_times > 9){
+					this.try_times = 0;
+					this.try_connect = false;
+				}
+				// CLOSED 连接已经关闭，或者打开连接失败
+				// 先将消息加入队列, 重新连接 > 连接成功 再发送消息
+				this.arr_message.push(bodyStr);
+				connect(this);
+				break;
+		}
+	};
+
+	/**
+	 * 主动关闭连接
+	 */
+	WS.prototype.close = function() {
+		this.ws.close();
+	};
+	
+	/**
+	 * 创建web socket通讯服务
+	 * @param {String} url URL地址
+	 * @param {Function} receive 响应回调函数
+	 * @param {Function} noticy 信息捕捉函数
+	 * @param {String} name 名称
+	 * @param {String} seconds 秒
+	 * @return {Object} 返回发信服务
+	 */
+	$.socket = function(url, receive, noticy, name, seconds) {
+		// 使用键方式去查询多个通讯
+		// 需要多通讯的原因是: 像交易所可能需要即时通讯的同时还需要试试变化交易信息
+		if (!name) {
+			name = url;
+		}
+		if (!$.ws[name]) {
+			$.ws[name] = new WS(url, receive, noticy, name, seconds);
+		} else {
+			$.ws[name].try_times = 0;
+		}
+		return $.ws[name];
+	};
+
 	/**
 	 * 路由
 	 */
@@ -2099,7 +2415,7 @@ if (typeof($) === "undefined") {
 		 */
 		history: {
 			list: [],
-			push(url) {
+			push: function(url) {
 				if (this.list.length > 0) {
 					var end_url = this.list[this.list.length - 1];
 					if (end_url !== url) {
@@ -2126,52 +2442,231 @@ if (typeof($) === "undefined") {
 	/**
 	 * 浏览器
 	 */
-	$.browser = {
-		versions: function() {
-			var u = navigator.userAgent,
-				app = navigator.appVersion;
-			return { //移动终端浏览器版本信息
-				trident: u.indexOf('Trident') > -1, //IE内核
-				presto: u.indexOf('Presto') > -1, //opera内核
-				webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-				gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-				mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-				ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-				android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
-				iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
-				iPad: u.indexOf('iPad') > -1, //是否iPad
-				webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
-			};
-		}(),
-		language: (navigator.browserLanguage || navigator.language).toLowerCase(),
-		get: function() {
-			var v = $.browser.versions;
-			if (v.mobile) { //判断是否是移动设备打开。browser代码在下面
-				var ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
-				if (ua.match(/MicroMessenger/i) == "micromessenger") {
-					//在微信中打开
-					return "wechat";
-				}
-				if (ua.match(/WeiBo/i) == "weibo") {
-					//在新浪微博客户端打开
-					return "weibo";
-				}
-				if (ua.match(/QQ/i) == "qq") {
-					//在QQ空间打开
-					return "qq";
-				}
-				if (v.ios) {
-					//是否在IOS浏览器打开
-					return "ios";
-				}
-				if (v.android) {
-					//是否在安卓浏览器打开
-					return "android";
-				}
-			} else {
-				return "pc";
-				//否则就是PC浏览器打开
+	$.os = function() {
+		var u = navigator.userAgent;
+		return {
+			version: navigator.appVersion,
+			isApp: u.indexOf("Html5Plus") !== -1,
+			device: {
+				// 是否为移动终端
+				mobile: /AppleWebKit.*Mobile.*/.test(u),
+				// ios终端
+				ios: /\(i[^;]+;( U;)? CPU.+Mac OS X/.test(u),
+				// android终端或Linux浏览器
+				android: u.indexOf('Android') !== -1 || u.indexOf('Linux') !== -1,
+				// 是否为iPhone或者QQHD浏览器
+				iPhone: u.indexOf('iPhone') !== -1,
+				// 是否iPad
+				iPad: u.indexOf('iPad') !== -1,
+				// 是否电脑
+				pc: u.indexOf('Window') !== -1,
+			},
+			app: {
+				// 微信
+				wechat: /MicroMessenger/i.test(u),
+				// 微博
+				weibo: /WeiBo/i.test(u),
+				// QQ
+				qq: /QQ/i.test(u)
+			},
+			browser: {
+				// 浏览器版本信息
+				// IE内核
+				trident: u.indexOf('Trident') > -1,
+				// opera内核
+				presto: u.indexOf('Presto') > -1,
+				// 苹果、谷歌内核
+				webKit: u.indexOf('AppleWebKit') > -1,
+				// 火狐内核
+				gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,
+				// 苹果默认浏览器
+				safari: u.indexOf('Safari') === -1
 			}
 		}
+	}();
+})();
+
+(function() {
+	/**
+	 * @description 添加对象属性
+	 * @param {Object} obj 对象
+	 * @param {Object} query 查询条件
+	 * @param {Object} value 添加值
+	 * @return {Object} 返回添加的局部对象
+	 */
+	function add(obj, query, value) {
+		if (query) {
+			var oj = get(obj, query);
+			if (oj) {
+				$.push(oj, value, true);
+			}
+			return oj;
+		} else {
+			$.push(obj, value, true);
+			return obj;
+		}
 	};
+	$.add = add;
+
+	/**
+	 * @description 删除对象属性
+	 * @param {Object} obj 对象
+	 * @param {Object} query 查询条件
+	 * @param {Object} item 查询条件
+	 * @return {Object} 返回删除结果
+	 */
+	function del(obj, query, item) {
+		var o = {};
+		if (query) {
+			o = get(obj, query);
+		} else {
+			o = obj;
+		}
+		if (!item) {
+			item = Object.assign(o);
+		}
+		if (Array.isArray(o)) {
+			o.clear();
+		} else if (Array.isArray(item)) {
+			for (var i = 0; i < item.length; i++) {
+				var val = item[i];
+				if (typeof(val) === "object") {
+					del(o, null, val);
+				} else {
+					delete o[val];
+				}
+			}
+		} else if (typeof(item) === "object") {
+			for (var k in item) {
+				if (Array.isArray(o[k])) {
+					delete o[k];
+				} else if (typeof(o[k]) === "object") {
+					var type = typeof(item[k]);
+					if (type === "object") {
+						del(o[k], null, item[k]);
+					} else if (type === "string" || type === "number") {
+						delete o[k][item[k]];
+					} else {
+						delete o[k];
+					}
+				} else {
+					delete o[k];
+				}
+			}
+		} else {
+			delete o[item];
+		}
+		for (var k in o) {
+			if (Object.keys(o[k]).length === 0) {
+				delete o[k]
+			}
+		}
+		return o;
+	};
+	$.del = del;
+
+	/**
+	 * @description 修改对象属性
+	 * @param {Object} obj 对象
+	 * @param {Object} query 查询条件
+	 * @param {Object} value 返回修改的局部对象
+	 */
+	function set(obj, query, value) {
+		if (query) {
+			var oj = get(obj, query);
+			if (oj) {
+				$.push(oj, value);
+			}
+			return oj;
+		} else {
+			$.push(obj, value);
+			return obj;
+		}
+	};
+	$.set = set;
+
+	function arrToObj(arr) {
+		var obj = {};
+		var ret = obj;
+		var len = arr.length;
+		for (var i = 0; i < len; i++) {
+			var k = arr[i];
+			if (typeof(k) == "object") {
+				if (Array.isArray(k)) {
+					$.push(obj, arrToObj(k), true);
+				} else {
+					$.push(obj, k, true);
+				}
+			} else if (!obj[k]) {
+				if (len - i > 1) {
+					obj[k] = {};
+				} else {
+					obj[k] = true;
+				}
+				obj = obj[k];
+			}
+		}
+		return ret;
+	}
+
+	/**
+	 * @description 查询对象属性
+	 * @param {Object} obj 对象
+	 * @param {Object} query
+	 * @return {Object} 返回查询结果
+	 */
+	function get(obj, query) {
+		var ret;
+		if (typeof(obj) === 'object' && !Array.isArray(obj)) {
+			// 只有非数组的对象才进行操作
+			if (Array.isArray(query)) {
+				var ret = obj;
+				// 如果是数字则循环数组
+				for (var i = 0; i < query.length; i++) {
+					var o = query[i];
+					if (Array.isArray(o)) {
+						ret = get(ret, o);
+					} else if (typeof(o) === 'object') {
+						var oj = {};
+						for (var k in o) {
+							if (o[k]) {
+								oj[k] = get(ret[k], o[k]);
+							} else {
+								oj[k] = ret[k];
+							}
+						}
+						ret = oj;
+					} else {
+						ret = ret[o];
+						if (typeof(ret) !== 'object') {
+							break;
+						}
+					}
+				}
+
+			} else if (typeof(query) === 'object') {
+				var ret = {};
+				// 如果是对象则遍历对象
+				for (var k in query) {
+					ret[k] = get(obj[k], query[k]);
+				}
+				ret = ret;
+			} else if (query) {
+				if (typeof(query) == "string" || typeof(query) == "number") {
+					ret = {};
+					ret[query] = obj[query];
+				} else {
+					ret = obj;
+				}
+			} else {
+				// 如果query为空则返回整个对象
+				ret = null;
+			}
+		} else {
+			// 否则直接返回值
+			ret = obj;
+		}
+		return ret;
+	};
+	$.get = get;
 })();

@@ -372,6 +372,14 @@ const math = {
         input: [1]
       }
     ]
+  },
+  mean: {
+    examples:
+    [
+      {
+        input: [[1, 2, 3, 4]]
+      }
+    ]
   }
 }
 

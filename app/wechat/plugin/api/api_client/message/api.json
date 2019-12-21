@@ -1,0 +1,12 @@
+{
+    "name": "wechat_message",
+    "title": "微信消息",
+    "description": "用于查询和保存聊天记录",
+    "path": "/api/wechat/message",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

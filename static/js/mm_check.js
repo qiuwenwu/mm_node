@@ -293,8 +293,8 @@
 		return msg;
 	};
 	
-	const Item = require('mm_machine').Item;
-	const Check = require('mm_check').Check;
+	var Item = require('mm_machine').Item;
+	var Check = require('mm_check');
 	
 	/**
 	 * @description Param参数驱动类
@@ -412,17 +412,18 @@
 		if (method !== 'GET') {
 			method = method.toLowerCase();
 		}
-		var m = this.config[method];
+		var cg = this.config;
+		var m = cg[method];
 		if (!m) {
-			var m_key = this.config.method;
+			var m_key = cg.method;
 			if (m_key) {
 				var md = query[m_key];
 				if (md) {
-					m = this.config[md];
+					m = cg[md];
 				}
 			}
 			if (!m) {
-				m = this.config["get"];
+				m = cg["get"];
 			}
 		}
 		var arr = m["query"];

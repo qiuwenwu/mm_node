@@ -17,7 +17,7 @@
         "eos": "`eos` like '%{0}%'",
         "mm": "`mm` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {
         "state_add": "`state` = `state` + {0}"
     },

@@ -27,7 +27,7 @@ const cache_admin = require('./index.js').cache_admin;
 // 
 // 	// msg = await cache.setrange("a", 4, "asd");
 // 	// console.log(msg);
-// 	var len = await cache.addStr("a", "丰");
+// 	const len = await cache.addStr("a", "丰");
 // 	// console.log("追加文本" + len);
 // 	// var bl = await cache.has("a");
 // 	// console.log("是否存在" + bl);

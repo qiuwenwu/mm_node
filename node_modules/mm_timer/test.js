@@ -1,4 +1,4 @@
-const Timer = require('./index.js').Timer;
+const Timer = require('./index.js');
 
 async function test() {
 	var timer = new Timer();

@@ -30,8 +30,7 @@
         "client_cache": true,
         "param_path": "",
         "sql_path": "",
-        "check_param": true,
-        "oauth": null
+        "check_param": true
     },
     {
         "path": "/api/user/state",

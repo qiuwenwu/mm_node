@@ -1,25 +1,12 @@
-import Vue from 'Vue';
-import vuex from 'vuex';
+define(["Vue", "vuex"], function (Vue, vuex) {
+  "use strict";
 
-// 引用vuex插件
-Vue.use(vuex);
-
-var store = {
-	/**
-	 * 储存的状态
-	 */
-	state: {
-		host: "/"
-	},
-	getters: {},
-	mutations: {},
-	actions: {},
-	/**
-	 * 载入模块
-	 */
-	modules: {},
-	strict: true
-};
-
-// 生成并返回缓存器
-export default new vuex.Store(store);
+  Vue.use(vuex);
+  var store = {
+    state: {
+      host: "/"
+    },
+    strict: true
+  };
+  return new vuex.Store(store);
+});

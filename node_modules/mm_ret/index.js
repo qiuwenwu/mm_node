@@ -14,7 +14,48 @@ class Error {
 	 * @constructor
 	 */
 	constructor() {
-		this.type = [{
+		this.type = [
+			{
+				code: -32700,
+				message: "not well formed"
+			},
+			{
+				code: -32701,
+				message: "unsupported encoding"
+			},
+			{
+				code: -32702,
+				message: "invalid character for encoding"
+			},
+			{
+				code: -32600,
+				message: "invalid json-rpc. not conforming to spec"
+			},
+			{
+				code: -32601,
+				message: "requested method not found"
+			},
+			{
+				code: -32602,
+				message: "invalid method parameters"
+			},
+			{
+				code: -32603,
+				message: "internal json-rpc error"
+			},
+			{
+				code: -32500,
+				message: "application error"
+			},
+			{
+				code: -32400,
+				message: "system error"
+			},
+			{
+				code: -32300,
+				message: "transport error"
+			},
+			{
 				code: 10000,
 				message: "业务逻辑脚本错误"
 			},
@@ -87,6 +128,9 @@ class Ret {
  */
 Ret.prototype.body = function(result, error, id) {
 	var ret = {};
+	if (id) {
+		ret.id = id;
+	}
 	if (result) {
 		ret.result = result;
 	} else {
@@ -104,9 +148,6 @@ Ret.prototype.body = function(result, error, id) {
 			}
 		}
 		ret.error = error;
-	}
-	if (id) {
-		ret.id = id;
 	}
 	return ret;
 };
@@ -176,5 +217,52 @@ Ret.prototype.bl = function(bl, tip, id) {
 
 $.ret = new Ret();
 
+/**
+ * @description json-rpc2.0请求函数
+ * @class 
+ */
+class Req {
+	/**
+	 * 构造函数
+	 * @constructor
+	 * @param {String} scope 作用域
+	 */
+	constructor(scope) {
+		// 作用域
+		this.scope = scope ? scope : "sys";
+		
+		// 模板集合
+		this.tpl = {};
+		
+		// 方法集合
+		this.methods = {};
+	}
+}
+
+/**
+ * 发送请求
+ * @param {String} method 方法
+ * @param {Object} params 参数
+ * @return {Object} 发送的json格式
+ */
+Req.prototype.send = function(method, params) {
+	var tpl = this.tpl[method];
+	var pm;
+	if(tpl){
+		pm = Object.assign({}, tpl, params);
+	}
+	else {
+		pm = params
+	}
+	return {
+		id: this.scope + new Date().stamp(),
+		method: method,
+		params: pm
+	};
+};
+
+$.req = new Req();
+
 exports.Error = Error;
 exports.Ret = Ret;
+exports.Req = Req;

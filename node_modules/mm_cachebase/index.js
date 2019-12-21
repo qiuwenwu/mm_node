@@ -511,4 +511,4 @@ CacheBase.prototype.notity = function(obj) {
 };
 
 // 导出CacheBase函数
-exports.CacheBase = CacheBase;
+module.exports = CacheBase;

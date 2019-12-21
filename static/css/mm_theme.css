@@ -90,6 +90,17 @@ table a { color: #38f; }
 .linear_blue,.linear_info { background-image: linear-gradient(135deg, rgb(94, 252, 232) 10%, rgb(115, 110, 254) 100%);  color: #fff; }
 .linear_purple { background-image: linear-gradient(135deg, #EE9AE5 10%, #5961F9 100%);  color: #fff; }
 
+.linear_red_1 { background-image: linear-gradient(135deg, #fffddc 0%, #ff4c4c 20%, #fa2aa4 100%); color: #fff; }
+.linear_red_2 { background-image: linear-gradient(135deg, #ffe7dc 0%, #ff7a4c 20%, #fa2a7d 100%); color: #fff; }
+.linear_yellow_1 { background-image: linear-gradient(135deg, #ffe4dc 0%, #faa02a 20%, #ff4c5d 100%); color: #fff; }
+.linear_yellow_2 { background-image: linear-gradient(135deg, #fffadc 0%, #faf32a 20%, #ff7f4c 100%); color: #fff; }
+.linear_green_1 { background-image: linear-gradient(135deg, #dcf9ff 0%, #e8ff4c 20%, #2afac2 100%); color: #fff; }
+.linear_green_2 { background-image: linear-gradient(135deg, #fff7dc 0%, #4cff6e 20%, #46c4fe 100%); color: #fff; }
+.linear_blue_1 { background-image: linear-gradient(135deg, #dcfff9 0%, #2afadf 20%, #4c83ff 100%); color: #fff; }
+.linear_blue_2 { background-image: linear-gradient(135deg, #dcffe0 0%, #2accfa 20%, #b14cff 100%); color: #fff; }
+.linear_purple_1 { background-image: linear-gradient(135deg, #ffe8dc 0%, #ff4cb5 20%, #cc2afa 100%); color: #fff; }
+.linear_purple_2 { background-image: linear-gradient(135deg, #ffe8dc 0%, #ec4cff 20%, #652afa 100%); color: #fff; }
+
 /* 表格样式 */
 .table-bordered {border:1px solid #dee2e6}
 .table-bordered td,.table-bordered th {border:1px solid #dee2e6}
@@ -139,3 +150,61 @@ table a { color: #38f; }
 
 /* 反相（反转颜色） 可用于表格或按钮等 */
 .inverted { filter: invert(100%); }
+
+
+@keyframes wave_animation {
+	0% {
+		top: calc((100% - 0.25rem)/2);
+		left: calc((100% - 0.25rem)/2);
+		width: .25rem;
+		height: .25rem;
+		opacity: 0.25;
+	}
+
+	50% {
+		top: calc((100% - 2rem)/2);
+		left: calc((100% - 2rem)/2);
+		width: 2rem;
+		height: 2rem;
+		opacity: 1;
+	}
+
+	100% {
+		top: calc((100% - 6rem)/2);
+		left: calc((100% - 6rem)/2);
+		width: 6rem;
+		height: 6rem;
+		opacity: 0;
+	}
+}
+
+.wave {
+	position: relative;
+	overflow: hidden;
+}
+
+.wave:active {
+	-webkit-filter: saturate(1.5);
+	filter: saturate(1.5);
+}
+.wave:focus:before {
+	border-radius: 50%;
+	background: rgba(0, 0, 0, .1);
+	position: absolute;
+	content: "";
+	display: block;
+	background-attachment: fixed;
+	background-position: center center;
+	z-index: 2;
+	animation: wave_animation 1s forwards;
+}
+
+.wave:focus:after {
+	border-radius: 50%;
+	background: rgba(0, 0, 0, .1);
+	position: absolute;
+	content: "";
+	display: block;
+	z-index: 2;
+	animation: wave_animation 1.5s forwards;
+}

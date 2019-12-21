@@ -95,7 +95,7 @@ class Drive extends Item {
 
 /**
  * @description 调用函数
- * @param {Object} type 
+ * @param {Object} type
  * @return {Object} 执行结果
  */
 Drive.prototype.run = function(type) {
@@ -115,8 +115,7 @@ Drive.prototype.run = function(type) {
  */
 Drive.prototype.merge_sub = function(arr, lt) {
 	if (lt) {
-		for (var i = 0; i < lt.length; i++) {
-			var o = lt[i];
+		for (let i = 0, o; o = lt[i++];) {
 			if (o.name) {
 				var item = arr.getMatch(o.name, 'name');
 				if (item) {
@@ -191,7 +190,7 @@ Drive.prototype.new_routes = function(app, plugin, name, group, oauth) {
 	var pn = plugin === 'pc' ? '' : plugin;
 	var n = name.replace(app + "_", '');
 	var obj = {
-		"name": name,
+		"name": plugin,
 		"path": "/" + app + "/" + n,
 		"component": "/" + app + "/" + pn + "/src/pages/" + n + ".vue",
 		"level": n.replace("_edit", '').replace("_view", '').indexOf('_') === -1 ? 3 : 2,
@@ -334,4 +333,4 @@ Drive.prototype.load = function(cg) {
 	this.loadObj(obj);
 };
 
-exports.Drive = Drive;
+module.exports = Drive;

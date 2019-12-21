@@ -485,7 +485,8 @@ Redis.prototype.list_has = function(key, value) {
 		}
 		var arr = await _this.list_get(key);
 		var has = false;
-		for (var i = 0; i < arr.length; i++) {
+		const len = arr.length;
+		for (var i = 0; i < len; i++) {
 			if (value == arr[i]) {
 				has = true;
 				break;

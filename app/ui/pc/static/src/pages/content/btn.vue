@@ -46,14 +46,14 @@
 
 				<div class="h5">全屏宽按钮圆角</div>
 				<mm_div class="btn_3">
-					<mm_group class="b-a">
+					<mm_group class="b-a mtb">
 						<mm_btn type="default">默认</mm_btn>
 					</mm_group>
-					<mm_group class="b-a">
+					<mm_group class="b-a mtb">
 						<mm_btn type="warning">错误</mm_btn>
 						<mm_btn type="success">成功</mm_btn>
 					</mm_group>
-					<mm_group class="b-a">
+					<mm_group class="b-a mtb">
 						<mm_btn type="primary">主要</mm_btn>
 						<mm_btn type="info">信息</mm_btn>
 						<mm_btn type="danger">警告</mm_btn>

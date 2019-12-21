@@ -435,6 +435,14 @@ const string = {
         input: ['foo   ']
       }
     ]
+  },
+  bytes: {
+    examples:
+    [
+      {
+        input: ['400KB']
+      }
+    ]
   }
 }
 module.exports = string

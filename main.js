@@ -7,6 +7,7 @@ const bodyParser = require("koa-bodyparser");
 const xmlParser = require("mm_xml");
 const session = require('mm_session');
 const compress = require('koa-compress');
+const websocket = require('koa-websocket');
 
 // debug模块
 var debug = require('debug')('my-application');
@@ -14,7 +15,8 @@ var debug = require('debug')('my-application');
 const startup = require('./startup');
 
 // 实例化Koa函数
-var app = new Koa();
+var app = websocket(new Koa());
+// var app = new Koa();
 
 app.use(
 	compress({
@@ -51,18 +53,16 @@ app.use(bodyParser({
 	enableTypes: ['json', 'form', 'text']
 }));
 
-app.use(startup.run);
-
 // 初始化服务
-startup.init(app);
+startup(app);
 
 // 配置端口
 const port_http = process.env.PORT || 8000;
 // const port_https = 44300;
 
 // 创建服务器
-http.createServer(app.callback()).listen(port_http);
+// http.createServer(app.callback()).listen(port_http);
 // https.createServer(app.callback()).listen(port_https);
-
+app.listen(port_http);
 console.log("服务端访问地址为 http://localhost:%s", port_http);
 

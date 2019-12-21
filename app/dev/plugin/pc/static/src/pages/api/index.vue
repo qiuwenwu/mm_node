@@ -38,10 +38,10 @@
 						<tr v-for="(o, k) in list_api" :key="k" :class="{'active': select_index == k }" @click="select_index = k">
 							<th>{{ k + 1 }}</th>
 							<td><a href="javascript:void(0);" @click="set_name(o.name);">{{ o.name }}</a></td>
-							<td><input v-model="o.title" @blur="set(o)"></input></td>
-							<td><input v-model="o.description" @blur="set(o)"></input></td>
+							<td><input v-model="o.title" @blur="set({title: o.title, name: o.name})"></input></td>
+							<td><input v-model="o.description" @blur="set({description: o.description, name: o.name})"></input></td>
 							<td>
-								<mm_btn type="info-x btn-sm" @click="set_name(o.name);">查看</mm_btn>
+								<mm_btn type="info-x btn-sm" @click.native="set_show(o.name)">查看</mm_btn>
 							</td>
 						</tr>
 						<tr v-show="list_api.length === 0">
@@ -58,12 +58,46 @@
 				</div>
 			</mm_body>
 			<mm_body class="dev_body" v-if="query.name">
-				<div class="head"><strong>{{ api_title }}</strong> <span class="desc">接口明细</span><mm_btn type="info" class="fr" @click.native="query.name = '';set_name('')"><i
-						 class="fa-chevron-left"></i> 返回</mm_btn>
+				<div class="head"><strong>{{ api_title }}</strong> <span class="desc">接口明细</span>
+					<mm_btn type="info" class="fr" @click.native="query.name = '';set_name('')"><i class="fa-chevron-left"></i> 返回</mm_btn>
 				</div>
 				<page_param :query="query"></page_param>
 			</mm_body>
 		</div>
+		<mm_modal v-model="show" mask="true">
+			<mm_head>
+				<span class="h4">{{ obj.title }}</span>
+			</mm_head>
+			<mm_body class="pc">
+				<mm_grid>
+					<mm_col width="20">
+						<span>路由</span>
+					</mm_col>
+					<mm_col width="80">
+						<mm_input title="请求路径" v-model="obj.path"></mm_input>
+						<mm_select title="请求方式" v-model="obj.method" :options="options_method"></mm_select>
+						<mm_select title="返回类型" v-model="obj.contentType" :options="options_type"></mm_select>
+						<mm_number title="缓存时长" v-model.number="obj.cache" :min="0"></mm_number>
+						<mm_select title="缓存方式" v-model="obj.client_cache" :options="options_cache"></mm_select>
+					</mm_col>
+				</mm_grid>
+				<mm_grid>
+					<mm_col width="20">
+						<span>权限</span>
+					</mm_col>
+					<mm_col width="80">
+						<mm_switch title="开放域" v-model="obj.oauth.scope" type="bool"></mm_switch>
+						<mm_switch title="需要登录" v-model="obj.oauth.signIn" type="bool"></mm_switch>
+						<mm_number title="会员权限" v-model.number="obj.oauth.vip" :min="0" :max="5"></mm_number>
+						<mm_number title="管理权限" v-model.number="obj.oauth.gm" :min="0" :max="5"></mm_number>
+						<mm_number title="商户权限" v-model.number="obj.oauth.mc" :min="0" :max="5"></mm_number>
+						<mm_input title="用户组" v-model="user_group"></mm_input>
+						<mm_input title="管理组" v-model="user_admin"></mm_input>
+					</mm_col>
+				</mm_grid>
+				<mm_btn class="btn-save" type="primary" @click.native="set_sub()">保存</mm_btn>
+			</mm_body>
+		</mm_modal>
 	</div>
 </template>
 
@@ -88,39 +122,144 @@
 					name: ""
 				},
 				tab: "list",
-				field: "name",
 				keyword: "",
-				select_index: -1
+				select_index: -1,
+				field: "name",
+				obj: {
+					"name": "",
+					"title": "",
+					"description": "",
+					"path": "",
+					"type": "",
+					"contentType": "",
+					"func_file": "",
+					"func_name": "",
+					"method": "GET",
+					"cache": 0,
+					"client_cache": true,
+					"param_path": "",
+					"sql_path": "",
+					"check_param": true,
+					"oauth": {
+						"scope": true,
+						"signIn": false,
+						"vip": 0,
+						"gm": 0,
+						"mc": 0,
+						"user_admin": [],
+						"user_group": []
+					},
+					"onOff": true,
+					"filename": ""
+				},
+				options_method: [{
+						name: "GET / POST",
+						value: "ALL"
+					},
+					{
+						name: "GET",
+						value: "GET"
+					},
+					{
+						name: "POST",
+						value: "POST"
+					}
+				],
+				options_type: [{
+						name: "json",
+						value: "json"
+					},
+					{
+						name: "xml",
+						value: "xml"
+					},
+					{
+						name: "text",
+						value: "text"
+					},
+					{
+						name: "html",
+						value: "html"
+					}
+				],
+				user_group: "",
+				user_admin: "",
+				options_cache: [{
+						"name": "客户端缓存",
+						"value": true
+					},
+					{
+						"name": "服务端缓存",
+						"value": false
+					}
+				]
 			}
 		},
 		methods: {
-			/**
-			 * @description 设置前
-			 * @param {Object} param 参数
-			 */
-			set_before(param) {
-				var url = this.url_set;
-				var index = url.indexOf('scope=');
-				if (index === -1) {
-					this.url_set += '&scope=' + this.query.scope;
-				} else {
-					this.url_set = this.url_set.substring(0, index) + 'scope=' + this.query.scope;
+			set_sub() {
+				var o = {
+					"name": "",
+					"path": "",
+					"contentType": "",
+					"method": "GET",
+					"cache": 0,
+					"client_cache": true,
+					"oauth": {
+						"scope": true,
+						"signIn": false,
+						"vip": 0,
+						"gm": 0,
+						"mc": 0,
+						"user_admin": [],
+						"user_group": []
+					}
 				};
+				$.push(o, this.obj);
+				var _this = this;
+				this.set(o, null, function(msg) {
+					$.toast(msg);
+					if (msg.indexOf('成功') !== -1) {
+						_this.show = false;
+					}
+				});
+			},
+			set_before(param) {
+				this.query_set = {
+					scope: this.query.scope,
+					name: param.name
+				};
+				// var pm = Object.assign({
+				// 	name: this.obj.name
+				// }, o);
 				return param;
+			},
+			set_show(name) {
+				var _this = this;
+				$.clear(_this.obj);
+				this.$get("~/dev/api?scope=" + this.query.scope + "&name=" + name, null, function(json) {
+					if (json.result) {
+						_this.show = true;
+						$.push(_this.obj, json.result.config);
+						_this.obj.onOff = json.result.onOff
+					} else if (json.error) {
+						$.toast(json.error.msg);
+					}
+				});
 			},
 			set_width(width) {
 				$('#app_dev_side .app_list').width(width);
 			},
 			set_scope(scope) {
 				this.list.clear();
+				var query = this.query;
 				if (this.scope_list.indexOf(scope) !== -1) {
-					this.query.scope = scope;
-					this.query.name = "";
+					query.scope = scope;
+					query.name = "";
 					this.get_list();
 				} else {
-					this.query.scope = "";
+					query.scope = "";
 				}
-				$.route.push('?' + this.toUrl(this.query));
+				$.route.push('?' + this.toUrl(query));
 			},
 			set_name(name) {
 				this.query.name = name;
@@ -135,13 +274,13 @@
 			},
 			get_list_before(param) {
 				return {
-					scope: param.scope
+					scope: this.query.scope
 				};
 			},
 			init_after(func) {
 				// 获取接口域
 				var _this = this;
-				this.$get(this.url_get_list, function(json, status) {
+				this.$get(this.url_get_list, null, function(json, status) {
 					if (json.result) {
 						_this.scope_list = json.result.scope;
 					}
@@ -152,7 +291,7 @@
 			},
 			update() {
 				var _this = this;
-				this.$get(this.url_get_list + 'scope=' + this.query.scope + '&method=update&dir=/', function(json) {
+				this.$get(this.url_get_list + 'scope=' + this.query.scope + '&method=update&dir=/', null, function(json) {
 					if (json.result) {
 						_this.toast(json.result.tip);
 						_this.list.clear();
@@ -172,7 +311,8 @@
 					var list = [];
 					var lt = this.list;
 					kw = '*' + kw + '*';
-					for (var i = 0; i < lt.length; i++) {
+					var len = lt.length;
+					for (var i = 0; i < len; i++) {
 						var o = lt[i];
 						if (o.name.has(kw) || o.title.has(kw)) {
 							list.push(o);
@@ -184,13 +324,14 @@
 				}
 			},
 			api_title() {
+				var query = this.query;
 				var title = this.list.getVal('title', {
-					name: this.query.name
+					name: query.name
 				});
 				if (title) {
 					return title;
 				} else {
-					return this.query.name;
+					return query.name;
 				}
 			}
 		}
@@ -198,6 +339,45 @@
 </script>
 
 <style>
+	#api_index .mm_switch {
+		padding: 0.5rem 0;
+	}
+
+	#api_index .from_default {
+		padding: 1.5rem 1rem;
+		border-radius: 0.25rem;
+	}
+
+	#api_index .from_default .mm_body {
+		padding: 1rem 0;
+	}
+
+	#api_index .from_default .mm_grid {
+		padding: 1rem 0;
+	}
+
+	#api_index .from_default .btn-save {
+		width: calc(100% - 10rem);
+		margin: 1rem auto;
+		display: block;
+
+	}
+
+	#api_index .from_default .mm_col_20 {
+		border-right: 2px solid #dbdbdb;
+	}
+
+	#api_index .from_default .mm_col_20 span {
+		text-align: center;
+		top: 40%;
+		left: 25%;
+		transform: translate(-50%, -50%);
+	}
+
+	#api_index .from_default .mm_head {
+		padding-bottom: 1rem;
+	}
+
 	#api_index .none {
 		padding: 1rem;
 	}
@@ -270,7 +450,7 @@
 		overflow: hidden;
 		font-size: 1.25rem;
 	}
-	
+
 	#api_index tr.active {
 		background-color: rgba(51, 136, 255, 0.1);
 	}

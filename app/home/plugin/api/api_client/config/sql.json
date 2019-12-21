@@ -1,6 +1,6 @@
 {
     "name": "home_config",
-    "title": "门户配置",
+    "title": "",
     "table": "home_config",
     "key": "config_id",
     "orderby_default": "`config_id` desc",
@@ -15,6 +15,5 @@
         "model": "`model` like '%{0}%'"
     },
     "query_default": {},
-    "where": {},
     "update": {}
 }

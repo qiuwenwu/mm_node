@@ -66,4 +66,4 @@ Drive.prototype.run = function(ctx, db) {
 };
 
 
-exports.Drive = Drive;
+module.exports = Drive;

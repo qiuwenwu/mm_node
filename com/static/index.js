@@ -1,6 +1,6 @@
 const Index = require('mm_machine').Index;
 
-var Drive = require('./drive').Drive;
+const Drive = require('./drive');
 const {
 	resolve,
 	join
@@ -35,8 +35,10 @@ class Static extends Index {
 		Static.prototype.run = async function(ctx, next) {
 			if (ctx.method === 'HEAD' || ctx.method === 'GET') {
 				var path = ctx.request.path;
-				for (var i = 0; i < $this.list.length; i++) {
-					var o = $this.list[i];
+				var list = $this.list;
+				const len = list.length;
+				for (let i = 0; i < len; i++) {
+					var o = list[i];
 					var p = o.config.path;
 					if (path === p) {
 						await next();

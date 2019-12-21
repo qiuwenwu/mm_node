@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const CacheBase = require('mm_cachebase').CacheBase;
+const CacheBase = require('mm_cachebase');
 
 
 if (!$.cache) {

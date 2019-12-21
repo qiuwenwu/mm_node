@@ -1,6 +1,6 @@
 {
     "name": "home_article_type",
-    "title": "文章分类",
+    "title": "",
     "add": {
         "body": [
             "display",

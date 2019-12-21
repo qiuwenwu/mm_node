@@ -1,8 +1,12 @@
 {
     "name": "pay_account_amount2",
-    "title": "支付账户余额",
+    "title": "账户余额",
     "description": "",
     "path": "/apis/pay/account_amount",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "",
+    "func_name": "",
     "method": "ALL",
     "cache": 0,
     "client_cache": true,
@@ -12,7 +16,10 @@
     "oauth": {
         "scope": true,
         "signIn": true,
+        "vip": 0,
         "gm": 2,
-        "user_admin": []
+        "mc": 0,
+        "user_admin": [],
+        "user_group": []
     }
 }

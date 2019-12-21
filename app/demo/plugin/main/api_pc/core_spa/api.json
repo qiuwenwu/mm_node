@@ -1,7 +1,7 @@
 {
     "name": "core_spa",
     "title": "跨域大型单页应用(spa)",
-    "description": "这是调用站外SPA的示例",
+    "description": "这是调用1站外SPA的示例",
     "path": "/dev123/*",
     "type": "web",
     "contentType": "html",
@@ -13,5 +13,13 @@
     "param_path": "",
     "sql_path": "",
     "check_param": true,
-    "oauth": null
+    "oauth": {
+        "scope": true,
+        "signIn": false,
+        "vip": 0,
+        "gm": 0,
+        "mc": 0,
+        "user_admin": [],
+        "user_group": []
+    }
 }

@@ -21,7 +21,7 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
-    "where": {},
+    
     "update": {
         "state_add": "`state` = `state` + {0}"
     },

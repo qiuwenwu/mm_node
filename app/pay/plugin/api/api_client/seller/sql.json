@@ -19,7 +19,7 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
-    "where": {},
+    
     "update": {
         "institution_state_add": "`institution_state` = `institution_state` + {0}"
     },

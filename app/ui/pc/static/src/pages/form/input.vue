@@ -14,7 +14,7 @@
 					<mm_input title="余额" type="number" v-model="money" unit="元"></mm_input>
 				</mm_div>
 
-				<div class="h5">样式一(mobile)</div>
+				<div class="h5">样式二(mobile)</div>
 				<mm_div class="mobile">
 					<mm_input title="姓名" type="text" :min_length="min_length" :max_length="max_length" v-model="str" desc="请输入真实姓名"></mm_input>
 					<mm_input title="年龄" type="number" :min="min" :max="max" :max_length="max_length" v-model="num"></mm_input>

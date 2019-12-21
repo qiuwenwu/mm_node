@@ -1,3 +1,5 @@
+const file = './../../static/index.html'.fullname(__dirname);
+
 /**
  * @description 接口主函数
  * @param {Object} ctx HTTP上下文
@@ -15,7 +17,7 @@ async function main(ctx, db) {
 			keywords: name + " mm_node 高并发 异步 服务端 分布式 框架 商城 游戏 saas async",
 			content: ""
 		};
-		var file = './../../static/index.html'.fullname(__dirname);
+		
 		return db.tpl.view(file, model);
 	}
 	return null;

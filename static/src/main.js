@@ -1,7 +1,7 @@
 "use strict";
 
 require({
-	baseUrl: './src/',
+	baseUrl: '/dev/src/',
 	// 是否保留注释
 	preserveLicenseComments: true,
 	waitSeconds: 0,
@@ -19,19 +19,14 @@ require({
 		clipboard: '/js/clipboard.min',
 		mm_sdk: '/js/mm_sdk',
 		mm_vue: '/js/mm_vue',
-		ui: './ui',
+		ui: '/js/mm_vue_ui',
 		store: './store',
 		router: './router',
 		echarts: '/js/echarts',
-		kindeditor: '/kindeditor/kindeditor-all-min',
-		page: '/src/mixins/page.js'
+		page: '/src/mixins/page'
 	},
 	shim: {
 		clipboard: {
-			deps: ['jquery']
-		},
-		kindeditor: {
-			exports: 'Kindeditor',
 			deps: ['jquery']
 		},
 		swiper: {
@@ -40,9 +35,12 @@ require({
 		mm_sdk: {
 			deps: ['jquery']
 		},
+		ui: {
+			deps: ['jquery']
+		},
 		mm_vue: {
 			deps: ['mm_sdk']
-		}.
+		},
 		vuex: {
 			deps: ['Vue']
 		},
@@ -57,16 +55,17 @@ require({
 			'templateVar': '__template__'
 		}
 	}
-}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'vue!./App.vue'], function(Vue, mm_sdk, mm_vue, store, router,
-	ui, app) {
+}, ['Vue', 'mm_sdk', 'ui', 'clipboard', 'mm_vue', 'store', 'router', 'vue!./App.vue'], function(Vue, mm_sdk, ui,
+	clipboard, mm_vue, store, router,
+	app) {
 	// 开启调试模式
 	Vue.config.debug = true;
 	// 使用UI组件
 	Vue.config.devtools = true;
-	
+
 	Vue.use(mm_vue);
 	Vue.use(ui);
-	
+
 	/**
 	 * @description 初始化整个Vue应用程序
 	 * 由于组件预先注册的标记名而自动放置的组件头将在应用程序模板中找到

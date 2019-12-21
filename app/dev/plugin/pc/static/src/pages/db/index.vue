@@ -81,38 +81,33 @@
 				},
 				tab: "",
 				obj: {},
-				field: "name",
 				keyword: ""
 			}
 		},
 		methods: {
-			set_before(param) {
-				var url = this.url_set;
-				var index = url.indexOf('scope=');
-				if (index === -1) {
-					this.url_set += '&scope=' + this.query.scope;
-				} else {
-					this.url_set = this.url_set.substring(0, index) + 'scope=' + this.query.scope;
-				};
-				return param;
-			},
-			set_width(width) {
-				$('#app_dev_side .app_list').width(width);
-			},
 			set_scope(scope) {
 				this.list.clear();
+				var query = this.query;
 				if (this.scope_list.indexOf(scope) !== -1) {
-					this.query.scope = scope;
+					query.scope = scope;
+					query.name = "";
 					this.get_list();
 				} else {
-					this.query.scope = "";
+					query.scope = "";
 				}
-				$.route.push('?' + this.toUrl(this.query));
+				$.route.push('?' + this.toUrl(query));
 			},
-			set_name(name) {
-				this.query.name = name;
-				$.route.push('?' + this.toUrl(this.query));
-				this.get_obj();
+			init_after(func) {
+				// 获取接口域
+				var _this = this;
+				this.$get(this.url_get_list, null, function(json, status) {
+					if (json.result) {
+						_this.scope_list = json.result.scope;
+					}
+					if (func) {
+						func();
+					}
+				});
 			},
 			get_obj_check(param) {
 				if (!param.name) {
@@ -121,24 +116,12 @@
 					return null;
 				}
 			},
-			get_list_before(param) {
-				var pm = Object.assign({}, param);
-				delete pm.name;
-				return pm;
-			},
-			init() {
-				$.push(this.query, this.$route.query);
-				var _this = this;
-				this.$get(this.url_get_list, function(json, status) {
-					if (json.result) {
-						_this.scope_list = json.result.scope;
-					}
-					_this.get();
-				});
+			set_width(width) {
+				$('#app_dev_side .app_list').width(width);
 			},
 			update_config() {
 				var _this = this;
-				this.$get(this.url_get_list + 'method=update_config&table=*', function(json) {
+				this.$get(this.url_get_list + 'method=update_config&table=*', null, function(json) {
 					if (json.result) {
 						_this.toast(json.result.tip);
 					} else if (json.error) {
@@ -150,7 +133,7 @@
 			},
 			update_db() {
 				var _this = this;
-				this.$get(this.url_get_list + 'scope=' + this.query.scope + '&method=update_db&all=true', function(json) {
+				this.$get(this.url_get_list + 'scope=' + this.query.scope + '&method=update_db&all=true', null, function(json) {
 					if (json.result) {
 						_this.toast(json.result.tip);
 					} else if (json.error) {
@@ -168,7 +151,8 @@
 					var list = [];
 					var lt = this.list;
 					kw = '*' + kw + '*';
-					for (var i = 0; i < lt.length; i++) {
+					var len = lt.length;
+					for (let i = 0; i < len; i++) {
 						var o = lt[i];
 						if (o.name.has(kw) || o.title.has(kw)) {
 							list.push(o);

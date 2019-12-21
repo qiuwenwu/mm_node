@@ -30,7 +30,7 @@
         "scope_not": "`scope_not` like '%{0}%'",
         "users": "`users` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {
         "encrypt_add": "`encrypt` = `encrypt` + {0}",
         "times_allow_add": "`times_allow` = `times_allow` + {0}",

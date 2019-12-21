@@ -68,5 +68,18 @@ module.exports = {
         input: [{ 'errors.404.title': 'Page not found' }]
       }
     ]
+  },
+  occurences: {
+    examples:
+    [
+      {
+        input: [['foo', 'foo', 'bar'], 'foo'],
+        code: 'occurences(["foo", "foo", "bar"], "foo")'
+      },
+      {
+        input: ['foo foo bar', 'foo'],
+        code: 'occurences("foo foo bar", "foo")'
+      }
+    ]
   }
 }

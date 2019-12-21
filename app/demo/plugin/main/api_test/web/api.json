@@ -12,8 +12,7 @@
         "client_cache": true,
         "param_path": "",
         "sql_path": "",
-        "check_param": true,
-        "oauth": null
+        "check_param": true
     },
     {
         "name": "test_web_file",

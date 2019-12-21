@@ -1,0 +1,15 @@
+{
+	"name": "music",
+	"title": "听音乐",
+	"description": "用于公众号点播歌曲",
+	"sort": 1000,
+	"group": "default",
+	"type": "query",
+	"match": ["*听音乐*", "音乐*", "点歌*", "点歌*", "*放歌*"],
+	"not": [],
+	"remove": ["听音乐", "音乐", "点歌", "点歌", "放歌"],
+	"extract": [],
+	"stage1": {
+		"param": []
+	}
+}

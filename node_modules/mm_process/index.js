@@ -90,4 +90,8 @@ Process.prototype.run = async function(file, params) {
 	this.child.stdout.on("data", this.func);
 };
 
-exports.Process = Process;
+if (global.$) {
+	$.Process = Process;
+}
+
+module.exports = Process;

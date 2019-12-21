@@ -1,6 +1,6 @@
 {
     "name": "home_article",
-    "title": "文章信息",
+    "title": "",
     "table": "home_article",
     "key": "article_id",
     "orderby_default": "`display` asc",
@@ -33,7 +33,6 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
-    "where": {},
     "update": {
         "state_add": "`state` = `state` + {0}",
         "display_add": "`display` = `display` + {0}",

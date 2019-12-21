@@ -247,4 +247,8 @@ Timer.prototype.dispose = function() {
 	this.timeout = undefined;
 };
 
-exports.Timer = Timer;
+if (global.$) {
+	$.Timer = Timer;
+}
+
+module.exports = Timer;

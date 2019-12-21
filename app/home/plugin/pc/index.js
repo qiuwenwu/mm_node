@@ -86,7 +86,7 @@ module.exports = {
 	help(item) {
 		var tip = "";
 		switch (item) {
-			case "":
+			case "run":
 				break;
 			default:
 				break;
@@ -132,11 +132,12 @@ module.exports = {
 	 * @param {String} to_user 接收消息人
 	 * @param {String} content 内容
 	 * @param {String} group 群组 如果是个人，群组为空
-	 * @param {Number} type 群类型, 1永久群、2临时群
+	 * @param {Number} type 群类型, 1永久会话/群、2临时会话/群
 	 * @param {String} msg_type 消息类型, event事件型、message消息型。默认消息型
+	 * @param {Object} 数据管理器
 	 * @return {String} 回复内容
 	 */
-	chat(from_user, to_user, group, content, type, msg_type) {
+	async chat(from_user, to_user, group, content, type, msg_type, db) {
 		var ret = "";
 		return ret;
 	}

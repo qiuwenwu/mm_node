@@ -78,6 +78,7 @@ Drive.prototype.new_script = function(file) {
 					var app = file.between('app' + l, l);
 					text = text.replaceAll('{1}', app);
 				}
+				text = text.replaceAll('{0}', name);
 			} else if (file.indexOf('app' + l) !== -1) {
 				name = file.between('app' + l, l);
 				text = text.replaceAll('{0}', name)
@@ -104,6 +105,7 @@ Drive.prototype.new_config = function(file) {
 					var app = file.between('app' + l, l);
 					text = text.replaceAll('{1}', app);
 				}
+				text = text.replaceAll('{0}', name);
 			} else if (file.indexOf('app' + l) !== -1) {
 				name = file.between('app' + l, l);
 				text = text.replaceAll('{0}', name).replaceAll('\r\n	"app": "{1}",', '');
@@ -283,11 +285,12 @@ Drive.prototype.cmd = function(content) {
  * @param {String} to_user 接收消息人
  * @param {String} content 内容
  * @param {String} group 群组 如果是个人，群组为空
- * @param {Number} type 群类型, 1永久群、2临时群
+ * @param {Number} type 群类型, 1永久会话/群、2临时会话/群
  * @param {String} msg_type 消息类型, event事件型、message消息型。默认消息型
+ * @param {Object} 数据管理器
  * @return {String} 回复内容
  */
-Drive.prototype.chat = function(from_user, to_user, group, content, type, msg_type) {
+Drive.prototype.chat = async function(from_user, to_user, group, content, type, msg_type, db) {
 	var body = "";
 	return body;
 };
@@ -297,7 +300,7 @@ Drive.prototype.chat = function(from_user, to_user, group, content, type, msg_ty
  * @param {String} content 指令内容
  * @return {String} 执行结果
  */
-Drive.prototype.run_cmd = function(content) {
+Drive.prototype.run_cmd = async function(content) {
 	if (!content) {
 		content = "";
 	}
@@ -314,11 +317,11 @@ Drive.prototype.run_cmd = function(content) {
  * @param {String} to_user 接收消息人
  * @param {String} content 内容
  * @param {String} group 群组 如果是个人，群组为空
- * @param {Number} type 群类型, 1永久群、2临时群
+ * @param {Number} type 群类型, 1永久会话/群、2临时会话/群
  * @param {String} msg_type 消息类型, event事件型、message消息型。默认消息型
  * @return {String} 回复内容
  */
-Drive.prototype.run_chat = function(from_user, to_user, content, group, type, msg_type) {
+Drive.prototype.run_chat = async function(from_user, to_user, content, group, type, msg_type, db) {
 	if (!content) {
 		content = "";
 	}
@@ -328,7 +331,7 @@ Drive.prototype.run_chat = function(from_user, to_user, content, group, type, ms
 	if (!group) {
 		group = "";
 	}
-	var ret = this.chat(from_user, to_user, group, content, type, msg_type);
+	var ret = this.chat(from_user, to_user, group, content, type, msg_type, db);
 	if (!ret) {
 		ret = "";
 	}
@@ -351,4 +354,4 @@ Drive.prototype.exec = function(func_name, option) {
 	return msg;
 };
 
-exports.Drive = Drive;
+module.exports = Drive;

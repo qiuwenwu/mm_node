@@ -34,4 +34,4 @@ class Drive extends Item {
 	}
 }
 
-exports.Drive = Drive;
+module.exports = Drive;

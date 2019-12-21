@@ -12,6 +12,5 @@
     "client_cache": true,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true,
-    "oauth": null
+    "check_param": true
 }

@@ -15,6 +15,6 @@
         "model": "`model` like '%{0}%'"
     },
     "query_default": {},
-    "where": {},
+    
     "update": {}
 }

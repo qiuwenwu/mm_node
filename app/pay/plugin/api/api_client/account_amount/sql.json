@@ -21,7 +21,7 @@
         "eos_max": "`eos` <= {0}"
     },
     "query_default": {},
-    "where": {},
+    
     "update": {
         "usd_add": "`usd` = `usd` + {0}",
         "cny_add": "`cny` = `cny` + {0}",

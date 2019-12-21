@@ -75,8 +75,6 @@ class Drive extends Item {
 			"query": {},
 			// 默认查询, 当查询条件中不包含该项时，默认添加该项。 例如: { "age": "`age` < 20" } , 当查询参含有age，不调用该项，不存在时，sql会增加该项
 			"query_default": {},
-			// 增删改条件语句
-			"where": {},
 			// sql更改语句
 			"update": {},
 			// 文件路径, 当调用函数不存在时，会先从文件中加载
@@ -283,7 +281,7 @@ Drive.prototype.main = async function(params, db) {
 			break;
 		case "set":
 			// 修改
-			var query_str = db.tpl_query(qy, cg.where);
+			var query_str = db.tpl_query(qy, cg.query);
 			var set_str = db.tpl_body(body, cg.update);
 			ret = $.ret.bl(await db.setSql(query_str, set_str));
 			if (ret.result.bl < 1) {
@@ -300,7 +298,7 @@ Drive.prototype.main = async function(params, db) {
 			break;
 		case "del":
 			// 删除
-			var query_str = db.tpl_query(qy, cg.where);
+			var query_str = db.tpl_query(qy, cg.query);
 			ret = $.ret.bl(await db.delSql(query_str));
 			break;
 		case "addOrSet":
@@ -393,7 +391,7 @@ Drive.prototype.main = async function(params, db) {
 	// 				case "delrepeat": //删除重复
 	// 					if (cg.DelRepeat != null) {
 	// 						var str = DelRepeat(cg.DelRepeat, table);
-	// 						if (str == "[]") {
+	// 						if (str === "[]") {
 	// 							if (string.IsNullOrEmpty(Ex)) {
 	// 								ret = ToRetBl("没有找到重复项", false);
 	// 							} else {
@@ -414,4 +412,4 @@ Drive.prototype.main = async function(params, db) {
 	return ret;
 };
 
-exports.Drive = Drive;
+module.exports = Drive;

@@ -35,7 +35,7 @@
         "note": "`note` like '%{0}%'",
         "content": "`content` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {
         "state_add": "`state` = `state` + {0}",
         "total_add": "`total` = `total` + {0}",

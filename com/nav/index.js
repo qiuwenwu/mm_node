@@ -1,5 +1,5 @@
 const Index = require('mm_machine').Index;
-const Drive = require('./drive').Drive;
+const Drive = require('./drive');
 
 /**
  * @description Nav导航类
@@ -27,20 +27,21 @@ class Nav extends Index {
  */
 Nav.prototype.run = async function(name, type) {
 	var obj = new this.Drive();
-	for(var i = 0; i < this.list.length; i++){
-		var o = this.list[i].config;
-		if(o.name == name) {
+	var list = this.list;
+	const len = list.length;
+	for (let i = 0; i < len; i++) {
+		var o = list[i].config;
+		if (o.name == name) {
 			obj.merge(o);
 		}
 	}
 	obj.sort();
 	var cg = obj.config;
-	if(cg.name)
-	{
+	if (cg.name) {
 		if (type) {
 			return cg[type];
 		} else {
-			
+
 			return cg;
 		}
 	}
@@ -55,8 +56,7 @@ Nav.prototype.run = async function(name, type) {
  */
 Nav.prototype.sort = async function() {
 	var lt = this.list;
-	for (var i = 0; i < lt.length; i++) {
-		var o = lt[i];
+	for (let i = 0, o; o = lt[i++];) {
 		o.sort();
 	}
 	lt.sort(function(o1, o2) {

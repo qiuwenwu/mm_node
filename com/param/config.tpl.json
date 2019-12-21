@@ -1,7 +1,6 @@
 {
 	"filter": true,
 	"func_file": "",
-	"func_name": "",
 	"post": {
 		"query": ["uid", "name", "username", "phone", "email"],
 		"body": ["age", "headImg", "birthday", "password", "confirm_password", "pay_password"]

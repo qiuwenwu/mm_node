@@ -1,11 +1,8 @@
 {
     "name": "home_article_channel2",
-    "title": "文章栏目",
+    "title": "",
     "description": "",
     "path": "/apis/home/article_channel",
-    "type": "api",
-    "func_file": "",
-    "func_name": "",
     "method": "ALL",
     "cache": 0,
     "client_cache": true,

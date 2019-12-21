@@ -1,6 +1,6 @@
 const Item = require('mm_machine').Item;
 
-var fs = require("fs");
+const fs = require("fs");
 
 if (!$.dict.user_id) {
 	$.dict.user_id = "user_id";
@@ -154,8 +154,9 @@ Drive.prototype.model = function(fields) {
 			dflt_value = "0";
 		}
 	}
-	if (pk && !this.config.key) {
-		this.config.key = name;
+	var config = this.config;
+	if (pk && !config.key) {
+		config.key = name;
 	}
 
 	return {
@@ -221,13 +222,13 @@ Drive.prototype.update_config = async function(db, cover) {
 
 	// 获取所有字段
 	var fields = await db.fields();
-	for (var i = 0; i < fields.length; i++) {
+	for (let i = 0; i < fields.length; i++) {
 		var field = this.model(fields[i]);
 		list.push(field);
 	}
-	this.config.fields = list;
-	if (!this.config.name) {
-		this.config.name = cg.table;
+	cg.fields = list;
+	if (!cg.name) {
+		cg.name = cg.table;
 	}
 	await this.update_app(cover);
 };
@@ -245,7 +246,8 @@ Drive.prototype.update_db = async function(db) {
 
 	if (fields.length === 0) {
 		var k = cg.key;
-		for (var i = 0; i < list.length; i++) {
+		const len = list.length;
+		for (let i = 0; i < len; i++) {
 			var o = list[i];
 			if (k === o.name) {
 				await db.addTable(cg.table, o.name, o.type, o.auto);
@@ -258,9 +260,9 @@ Drive.prototype.update_db = async function(db) {
 	}
 	if (fields.length > 0) {
 		// 删除配置中没有的字段
-		for (var i = 0; i < fields.length; i++) {
+		for (let i = 0; i < fields.length; i++) {
 			var o = fields[i];
-			var obj = list.get({
+			var obj = list.getObj({
 				name: o.name
 			});
 
@@ -270,7 +272,8 @@ Drive.prototype.update_db = async function(db) {
 		}
 
 		// 添加或修改配置
-		for (var i = 0; i < list.length; i++) {
+		const len = list.length;
+		for (let i = 0; i < len; i++) {
 			var o = list[i];
 			var arr = fields.get({
 				name: o.name
@@ -517,15 +520,13 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 
 	var lt = cg.fields;
 	var query = {};
-	var where = {};
 	var update = {};
 	var field = "";
 	var query_default = {};
 	var orderby = "";
 	var id = $.dict.user_id;
 	// 设置sql模板
-	for (var i = 0; i < lt.length; i++) {
-		var o = lt[i];
+	for (let i = 0, o; o = lt[i++];) {
 		var p = o.type;
 		var n = o.name;
 		if (n.indexOf('password') === -1 && n.indexOf('salt') === -1) {
@@ -534,9 +535,6 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 
 		if (p === 'varchar' || p === 'text') {
 			query[n] = "`" + n + "` like '%{0}%'";
-			if (o.key) {
-				where[n] = "`" + n + "` like '%{0}%'";
-			}
 		} else if (p === 'date' || p === 'time' || p === 'datetime' || p === 'datetime' || p === 'timestamp') {
 			query[n + "_min"] = "`" + n + "` >= '{0}'";
 			query[n + "_max"] = "`" + n + "` <= '{0}'";
@@ -566,7 +564,6 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 		method: 'get',
 		query: query,
 		query_default: query_default,
-		where: where,
 		update: update
 	};
 	if (client) {
@@ -654,9 +651,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 		},
 		list: []
 	};
-
-	for (var i = 0; i < lt.length; i++) {
-		var o = lt[i];
+	for (let i = 0, o; o = lt[i++];) {
 		var p = o.type;
 		var n = o.name;
 
@@ -706,7 +701,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 				m.string.format = "url"
 			} else if (n.has("date")) {
 				m.string.format = "date"
-			} else if (n === "num" || n === "number" || n == "count") {
+			} else if (n === "num" || n === "number" || n === "count") {
 				m.string.format = "digits"
 			} else if (n === "money" || n === "coin") {
 				m.string.format = "number"
@@ -833,7 +828,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
  */
 Drive.prototype.isSet = function(name, arr) {
 	var bl = false;
-	for (var i = 0; i < arr.length; i++) {
+	for (let i = 0; i < arr.length; i++) {
 		if (name.indexOf(arr[i]) !== -1) {
 			bl = true;
 			break;
@@ -877,9 +872,9 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 		var lt = cg.fields;
 		// 判断该表是否含用户ID，如果含有则需要验证才能访问
 		var has = false;
-		for (var i = 0; i < lt.length; i++) {
-			var name = lt[i].name;
-			if (name == $.dict.user_id || name == 'uid' || name == 'user_id' || name == 'userid') {
+		for (let i = 0, item; item = lt[i++];) {
+			var name = item.name;
+			if (name == $.dict.user_id || name === 'uid' || name === 'user_id' || name === 'userid') {
 				has = true;
 				break;
 			}
@@ -909,4 +904,4 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 	}
 };
 
-exports.Drive = Drive;
+module.exports = Drive;

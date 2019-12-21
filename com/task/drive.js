@@ -1,5 +1,10 @@
 const Item = require('mm_machine').Item;
 
+function span(t1, t2) {
+	console.log(t1, t2, t1 - t2);
+	return t1 - t2
+}
+
 /**
  * @description Task任务驱动类
  * @extends {Item}
@@ -29,7 +34,7 @@ class Drive extends Item {
 			// 文件路径, 当调用函数不存在时，会先从文件中加载
 			"func_file": "./index.js",
 			// 回调函数名 用于决定调用脚本的哪个函数
-			"func_name": "main",
+			"func_name": "",
 			// 执行次数
 			"num": 10,
 			// 时间间隔（毫秒ms）
@@ -47,16 +52,22 @@ class Drive extends Item {
 		};
 		// 当前状态 
 		this.state = "end";
+		
+		// 当前执行次数
+		this.num = 0;
+		
+		// 任务管理器
+		this.task_manager = {};
 	}
 }
 
 /**
  * @description 设置时期执行
+ * @param {Object} _this 当前类
  * @param {Function} func 回调函数
  */
-Drive.prototype.setPeriod = function(func) {
-	var _this = this;
-	var cg = this.config;
+Drive.prototype.setPeriod = function(_this, func) {
+	var cg = _this.config;
 	var fn;
 	if (cg.time) {
 		if (cg.time.indexOf(' ') !== -1) {
@@ -75,13 +86,13 @@ Drive.prototype.setPeriod = function(func) {
 			}
 		}
 		var arr = cg.time.split(':');
-		if (arr.length == 3) {
+		if (arr.length === 3) {
 			fn = function() {
 				if (new Date().toStr('hh:mm:ss') == cg.time) {
 					func();
 				}
 			};
-		} else if (arr.length == 2) {
+		} else if (arr.length === 2) {
 			fn = function() {
 				if (new Date().toStr('hh:mm') == cg.time) {
 					func();
@@ -97,11 +108,12 @@ Drive.prototype.setPeriod = function(func) {
 	} else {
 		fn = func;
 	}
+	
 	if (cg.date_start) {
 		var start = toTime(cg.date_start);
 		if (cg.date_end) {
 			var end = toTime(cg.date_end);
-			return function() {
+			return async function() {
 				var now = new Date();
 				if (span(now, end) >= 0) {
 					if (span(now, start) <= 0) {
@@ -109,11 +121,11 @@ Drive.prototype.setPeriod = function(func) {
 					}
 				} else {
 					_this.clear();
-					_this.notify(_this.config.name, 'time end');
+					_this.notify(cg.name, 'time end');
 				}
 			};
 		} else {
-			return function() {
+			return async function() {
 				var now = new Date();
 				if (span(now, start) <= 0) {
 					fn();
@@ -122,106 +134,109 @@ Drive.prototype.setPeriod = function(func) {
 		}
 	} else if (cg.date_end) {
 		var end = toTime(cg.date_end);
-		return function() {
+		return async function() {
 			var now = new Date();
 			if (span(now, end) >= 0) {
 				fn();
 			} else {
 				_this.clear();
-				_this.notify(_this.config.name, 'time end');
+				_this.notify(cg.name, 'end time');
 			}
 		};
 	} else {
-		return fn;
+		return async function() { fn() };
 	}
 };
 
 /**
  * @description 设置按次数执行
- * @param {Function} func 回调函数
+ * @param {Object} _this 当前类
  */
-Drive.prototype.setNum = function(func) {
-	var _this = this;
+Drive.prototype.setNum = function(_this) {
+	var cg = _this.config;
 	return function() {
-		if (_this.config.num < 1) {
-			func();
-		} else if (_this.num < _this.config.num) {
-			_this.num += 1;
-			func();
+		if (cg.num < 1) {
+			_this.main();
+		} else if (_this.num < cg.num) {
+			_this.num++;
+			_this.main();
 		} else {
 			_this.clear();
-			_this.notify(_this.config.name, 'complete');
+			_this.notify(cg.name, 'completed');
 		}
 	};
 };
 
 /**
- * @description 加载配置对象
- * @param {Object} obj 配置对象
+ * 删除任务
+ * @param {String} name
  */
-Drive.prototype.loadObj = function(obj) {
-	$.push(this.config, obj);
-	var f = this.config.func_file;
-	if (f) {
-		var file = f.fullname(this.dir);
-		if (file.hasFile()) {
-			var cs = require(file);
-			if (cs) {
-				var name = this.config.func_name;
-				if (name) {
-					this.main = cs[name];
-				} else {
-					$.push(this, cs);
-				}
-			}
-		} else {
-			var fl = __dirname + "/script.js";
-			fl.copyFile(file);
-		}
-	}
+Drive.prototype.del = async function(name) {
+	this.task_manager.del(name);
 };
 
 /**
- * @description 加载配置文件
- * @param {String} file 文件路径
- * @return {Object} 配置对象
+ * 执行结果通知
+ * @param {String} name 任务名称
+ * @param {String} message 提示内容
  */
-Drive.prototype.loadFile = function(file) {
-	var obj;
-	var f = file.fullname(this.dir);
-	var text = f.loadText();
-	if (text) {
-		obj = text.toJson();
-	} else {
-		var fl = __dirname + "/config.tpl.json";
-		fl.copyFile(f);
+Drive.prototype.notify = async function(name, message) {
+	switch (message) {
+		case "start":
+			console.log(name + '任务已开启');
+			break;
+		case "stop":
+			console.log(name + '已暂停');
+			break;
+		case "end":
+			// 主动中断
+			console.log(name + '已结束');
+			break;
+		case "end time":
+			console.log(name + '时间到');
+			// 删除任务
+			this.del(name)
+			break;
+		case "completed":
+			console.log(name + '已完成');
+			// 删除任务
+			this.del(name)
+			break;
+		default:
+			break;
 	}
-	this.filename = f;
-	return obj;
+};
+
+
+/**
+ * 清理函数, 用于删除当前任务
+ */
+Drive.prototype.clear = async function() {
+	this.destroy();
 };
 
 /**
- * @description 载入配置
- * @param {Object|String} cg 配置对象或配置路径
+ * 配置对象或配置路径
  */
-Drive.prototype.load = function(cg) {
-	var obj;
-	if (!cg) {
-		cg = "./task.json";
-	}
-	if (typeof(cg) === "string") {
-		obj = this.loadFile(cg);
-	} else {
-		obj = cg;
-	}
-	this.loadObj(obj);
+Drive.prototype.run = async function() {
+	
 };
 
-/// 配置对象或配置路径
-Drive.prototype.run = function() {
-	if (this.state === 'start') {
-		this.setPeriod(this.setNum(this.main));
-	}
+/**
+ * 创建执行函数
+ */
+Drive.prototype.create = function(){
+	var _this = this;
+	setTimeout(function(){
+		_this.run = _this.setPeriod(_this, _this.setNum(_this));
+	}, this.config.wait * 1000);
+};
+
+/**
+ * 销毁执行函数
+ */
+Drive.prototype.destroy = function() {
+	this.run = async function() {};
 };
 
 /**
@@ -230,22 +245,41 @@ Drive.prototype.run = function() {
  */
 Drive.prototype.set_state = function(state) {
 	if (state) {
+		this.state = state;
 		if (state === 'end') {
 			this.num = 0;
+			this.destroy();
+		} else if (this.state === 'stop') {
+			this.destroy();
 		}
-		this.state = state;
-	} else if (this.state === 'stop') {
-		this.state = 'start';
+		else {
+			this.create();
+		}
 	} else if (this.state === 'start') {
 		this.state = 'stop';
+		this.destroy();
+	} else if (this.state === 'stop' || this.state === 'end') {
+		this.state = 'start';
+		this.create();
 	}
+	
+	this.notify(this.config.name, this.state);
 };
 
 /**
  * @description 定时执行函数
  */
-Drive.prototype.main = function() {
-	console.log('空的定时任务')
+Drive.prototype.main = async function() {
+	console.log('定时任务, 执行中...')
 };
 
-exports.Drive = Drive;
+
+
+/**
+ * 加载完成时, 设置为开始执行
+ */
+Drive.prototype.load_after = function() {
+	this.set_state();
+}
+
+module.exports = Drive;

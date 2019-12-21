@@ -33,9 +33,9 @@ Pay.prototype.run = function(process, contract, db) {
 	}
 	var ret;
 	var lt = this.list;
-	
-	for (var i = 0; i < lt.length; i++) {
-		var o = this.lt[i];
+	const len = lt.length;
+	for (let i = 0; i < len; i++) {
+		var o = lt[i];
 		if(o.config.app === app)
 		{
 			ret = o.run(process, contract, db);
@@ -53,7 +53,8 @@ Pay.prototype.run = function(process, contract, db) {
 Pay.prototype.init = function(option) {
 	var ret = "";
 	var lt = this.list;
-	for (var i = 0; i < lt.length; i++) {
+	var len = lt.length;
+	for (let i = 0; i < len; i++) {
 		ret = this.lt[i].init(option);
 	}
 	return ret;
@@ -68,18 +69,18 @@ Pay.prototype.load = function(path) {
 	if (!path) {
 		path = '/app/';
 	}
+	var list = this.list;
 	if (path.endsWith('/app/')) {
 		var list_scope = $.dir.get(path);
 
 		// 遍历目录路径
-		var _this = this;
 		list_scope.map(function(o) {
 			var file = './app.json'.fullname(o);
 			if (file.hasFile()) {
 				var obj = new Drive(o);
 				obj.load(file);
 				if (obj.config.name) {
-					_this.list.push(obj);
+					list.push(obj);
 				}
 			}
 		});
@@ -94,7 +95,7 @@ Pay.prototype.load = function(path) {
 				var obj = new Drive(o);
 				obj.load(file);
 				if (obj.config.name) {
-					_this.list.push(obj);
+					list.push(obj);
 				}
 			}
 		});

@@ -1,12 +1,8 @@
 {
     "name": "home_article_comment2",
-    "title": "文章评论",
+    "title": "",
     "description": "",
     "path": "/apis/home/article_comment",
-    "type": "api",
-    "contentType": "json",
-    "func_file": "",
-    "func_name": "",
     "method": "ALL",
     "cache": 0,
     "client_cache": true,

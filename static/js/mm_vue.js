@@ -71,16 +71,19 @@ define(["Vue"], function(Vue) {
 			/**
 			 * @description 引入get请求函数
 			 * @param {String} url 请求地址
+			 * @param {Object} query 请求参数
 			 * @param {Function} func 回调函数
 			 */
-			Vue.prototype.$get = function(url, func) {
+			Vue.prototype.$get = function(url, query, func) {
 				var token = $.db.get("token");
-				$.http.get(url.replace("~/", host), function(json, status) {
-					// if (json.error) {
-					// 	if (json.error.message.indexOf('未登录')) {
-					// 		$.db.set("token", "");
-					// 	}
-					// }
+
+				var queryStr = query ? $.toUrl(query) : "";
+				$.http.get(url.replace("~/", host) + queryStr, function(json, status) {
+					if (json.error) {
+						if (json.error.message.indexOf('未登录') !== -1) {
+							$.db.set("token", "");
+						}
+					}
 					if (func) {
 						func(json, status);
 					}
@@ -109,7 +112,7 @@ define(["Vue"], function(Vue) {
 			 * @param {Boolean} bl 是否返回到标签页
 			 */
 			Vue.prototype.$nav = function(url, bl) {
-				if (url.indexOf("http") == 0) {
+				if (url.indexOf("http") === 0) {
 					location.href = url;
 				} else {
 					this.$router.push(url);
@@ -262,7 +265,7 @@ define(["Vue"], function(Vue) {
 			 */
 			$get_user: function $get_user(func) {
 				var _this = this;
-				this.$get('~/user/info', function(json, status) {
+				this.$get('~/user/info', null, function(json, status) {
 					if (json.result) {
 						_this.$sotre.commit('set_user', json.result);
 					} else if (json.error) {

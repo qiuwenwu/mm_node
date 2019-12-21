@@ -29,7 +29,7 @@
         "cause": "`cause` like '%{0}%'",
         "note": "`note` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {
         "state_add": "`state` = `state` + {0}",
         "amount_add": "`amount` = `amount` + {0}",

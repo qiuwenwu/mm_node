@@ -56,8 +56,7 @@ async function change_file(file, txt, domain) {
 	var arr = txt.split('\r\n');
 	
 	var obj = {};
-	for(var i = 0; i < arr.length; i++){
-		var o = arr[i];
+	for(let i = 0, o; o = arr[i++];){
 		if (o.indexOf('import') === 0 && o.indexOf('from') !== -1) {
 			var key = (o + '').between('import', 'from').trim();
 			var value = (o + '').right('from ').left(';', true).trim("'");
@@ -84,7 +83,8 @@ async function change_file(file, txt, domain) {
 	}
 	var m = {};
 	var ar = text.split('\r\n');
-	for(var i = 0; i < ar.length; i++){
+	const len = ar.length;
+	for(let i = 0; i < len; i++){
 		var o = ar[i];
 		if (o.indexOf('import') === 0 && o.indexOf('from') !== -1) {
 			var key = (o + '').between('import', 'from').trim();

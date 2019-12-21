@@ -1,6 +1,6 @@
 {
     "name": "home_article2",
-    "title": "文章信息",
+    "title": "",
     "description": "",
     "path": "/apis/home/article",
     "method": "ALL",
@@ -11,7 +11,7 @@
     "check_param": true,
     "oauth": {
         "scope": true,
-        "signIn": false,
+        "signIn": true,
         "gm": 2,
         "user_admin": []
     }

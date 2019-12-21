@@ -33,7 +33,7 @@
         "friends": "`friends` like '%{0}%'",
         "admin_group": "`admin_group` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {
         "state_add": "`state` = `state` + {0}",
         "vip_add": "`vip` = `vip` + {0}",

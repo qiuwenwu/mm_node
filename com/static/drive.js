@@ -19,8 +19,6 @@ class Drive extends Item {
 		super(dir, __dirname);
 		this.default_file = "./static.json";
 
-
-
 		/* 通用项 */
 		// 配置参数
 		this.config = {
@@ -58,8 +56,6 @@ class Drive extends Item {
 			"convert_amd": false,
 		};
 
-
-
 		if (config) {
 			$.push(this.config, config);
 			this.dir = config.root.fullname();
@@ -92,17 +88,17 @@ Drive.prototype.loadObj = function(obj) {
 		obj.maxAge *= 1000;
 	}
 	$.push(this.config, obj);
-
-	if (this.config.convert_amd) {
+	var cg = this.config;
+	if (cg.convert_amd) {
 		this.mode(true);
 	}
-	var f = this.config.func_file;
+	var f = cg.func_file;
 	if (f) {
 		var file = f.fullname(this.dir);
 		if (file.hasFile()) {
 			var cs = require(file);
 			if (cs) {
-				var name = this.config.func_name;
+				var name = cg.func_name;
 				if (name) {
 					this.main = cs[name];
 				} else {
@@ -145,6 +141,7 @@ Drive.prototype.after = async function(ctx, path) {};
  * @param {Boolean} convert_amd 是否将ES6转换AMD
  */
 Drive.prototype.mode = async function(convert_amd) {
+	var cg = this.config;
 	if (convert_amd) {
 		this.main = async function main(ctx, path) {
 			if (path.endsWith('.vue') || path.endsWith('.js')) {
@@ -170,23 +167,24 @@ Drive.prototype.mode = async function(convert_amd) {
 							ctx.response.type = "text/html; charset=utf-8";
 						}
 						ctx.body = code;
-						if (this.config.maxAge) {
-							if (this.config.immutable) {
-								ctx.set('Cache-Control', 'max-age=' + (this.config.maxAge / 1000) + ",immutable");
+						var age = cg.maxAge;
+						if (age) {
+							if (cg.immutable) {
+								ctx.set('Cache-Control', 'max-age=' + (age / 1000) + ",immutable");
 							} else {
-								ctx.set('Cache-Control', 'max-age=' + (this.config.maxAge / 1000));
+								ctx.set('Cache-Control', 'max-age=' + (age / 1000));
 							}
 						}
 						return file;
 					}
 				}
 			} else {
-				return send(ctx, path, this.config);
+				return send(ctx, path, cg);
 			}
 		}
 	} else {
 		this.main = async function(ctx, path) {
-			return send(ctx, path, this.config);
+			return send(ctx, path, cg);
 		}
 	}
 	return null;
@@ -201,7 +199,8 @@ Drive.prototype.mode = async function(convert_amd) {
  */
 Drive.prototype.run = async function(ctx, path, next) {
 	var done;
-	var ph = this.config.path;
+	var cg = this.config;
+	var ph = cg.path;
 	var p = path.replace(ph, '');
 	if (path.startWith(ph)) {
 		if (p.indexOf('.') !== -1) {
@@ -219,13 +218,14 @@ Drive.prototype.run = async function(ctx, path, next) {
 			done = ' ';
 			if (ctx.status === 404) {
 				var file;
+				
 				// 取到物理路径
-				var root = this.config.root.fullname();
+				var root = cg.root.fullname();
 				var dir = (root + p).fullname();
 				if (!p) {
-					file = dir + '/' + this.config.index;
+					file = dir + '/' + cg.index;
 				} else if (p.endWith('/')) {
-					file = dir + this.config.index;
+					file = dir + cg.index;
 				} else {
 					file = dir + '.html';
 				}
@@ -234,7 +234,7 @@ Drive.prototype.run = async function(ctx, path, next) {
 					this.before(ctx, p);
 					done = await this.main(ctx, p);
 					this.after(ctx, p, done);
-				} else if (this.config.redirect) {
+				} else if (cg.redirect) {
 					var file = root + '/index.html';
 					if (file.hasFile()) {
 						p = '/index.html';
@@ -249,4 +249,4 @@ Drive.prototype.run = async function(ctx, path, next) {
 	return done;
 };
 
-exports.Drive = Drive;
+module.exports = Drive;

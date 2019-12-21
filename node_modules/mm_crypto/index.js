@@ -214,7 +214,6 @@ Encrypt.prototype.genSign = function(timestamp, nonce, encrypt) {
 	return signature
 };
 
-
 /**
  * 生成签名
  * @param {Object} query 请请求参数
@@ -231,7 +230,6 @@ Encrypt.prototype.sign = function(query) {
 	var sign = this.genSign(timestamp, nonce, '');
 	return signature === signature
 };
-
 
 if (global.$) {
 	$.Encrypt = Encrypt;

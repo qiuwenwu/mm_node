@@ -1,0 +1,10 @@
+{
+    "name": "websocket",
+    "title": "测试即时通讯",
+    "description": "这是描述",
+    "path": "/websocket",
+    "type": "web",
+    "contentType": "html",
+    "func_file": "./index.js",
+    "method": "ALL"
+}

@@ -1,5 +1,5 @@
 <template>
-	<div class="dev_diy">
+	<div>
 		<div v-for="(o, index) in list" :key="index" :class="o.class_name" v-html="o.html"></div>
 	</div>
 </template>

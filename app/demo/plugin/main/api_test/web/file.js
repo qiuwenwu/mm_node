@@ -1,3 +1,5 @@
+const file = __dirname + '/file.html';
+
 /**
  * @description 接口主函数
  * @param {Object} ctx HTTP上下文
@@ -6,7 +8,6 @@
  */
 async function main(ctx, db) {
 	var model = { name: "楚留香", age: 23, sex: true };
-	var file = __dirname + '/file.html';
 	return db.tpl.view(file, model);
 }
 

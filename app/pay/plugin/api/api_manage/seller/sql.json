@@ -15,7 +15,7 @@
         "business": "`business` like '%{0}%'",
         "institution_img": "`institution_img` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {
         "institution_state_add": "`institution_state` = `institution_state` + {0}"
     },

@@ -1,6 +1,6 @@
 {
 	"name": "admin",
-	"sort": 1,
+	"sort": 6,
 	"routes": [{
 			"name": "root",
 			"path": "/",

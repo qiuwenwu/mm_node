@@ -45,7 +45,7 @@ define(['module'], function(module) {
 		fetchContent = function(url, callback) {
 			try {
 				var file = fs.readFileSync(url, 'utf8');
-				// remove BOM 馃槣
+				// remove BOM 𑠍
 				if (file[0] === '\uFEFF') {
 					file = file.substring(1);
 				}
@@ -138,17 +138,18 @@ define(['module'], function(module) {
 			var script = this._wrapped_content(text, 'script', {
 				whitespaces: true
 			}).trim();
-			if(!script){
-				script = "define([], function () { return { template: __template__, data: function data() { return {}; } }; });"
+			if (!script) {
+				script =
+					"define([], function () { return { template: __template__, data: function data() { return {}; } }; });"
 			}
 			return script
 		}
 	};
 
 	/**
-	 * 处理CSS样式
-	 * @param {String} style 样式内容
-	 * @param {String} id 样式的ID
+	 * ����CSS��ʽ
+	 * @param {String} style ��ʽ����
+	 * @param {String} id ��ʽ��ID
 	 */
 	var processStyles = function(style, id) {
 		if (!style || !style.trim().length)
@@ -186,7 +187,7 @@ define(['module'], function(module) {
 	var parse = function(text, url) {
 		var tpl = module.config().templateVar;
 
-		// 补充样式引用
+		// ������ʽ����
 		if (text.indexOf(tpl) === -1 && text.indexOf('<template>') !== -1) {
 			var txt = 'props: {';
 			var idx = text.indexOf(txt);

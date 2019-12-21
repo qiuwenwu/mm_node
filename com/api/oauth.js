@@ -141,4 +141,4 @@ Oauth.prototype.check = async function(ctx) {
 	return null;
 };
 
-exports.Oauth = Oauth;
+module.exports = Oauth;

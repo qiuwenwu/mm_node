@@ -31,7 +31,7 @@ console.log(flatten({ hello: { world: '1234' } })) // { 'hello.world': '1234' }
 
 ## Maintainers
 
-[@emilos](https://github.com/emilos), [@pkonieczniak](https://github.com/pkonieczniak).
+[@emilos](https://github.com/emilos)
 
 ## Contibuting
 

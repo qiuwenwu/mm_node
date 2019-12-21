@@ -22,7 +22,7 @@ async function test() {
 	// console.log(num);
 	// 
 	// msg = await rs.setrange("a", 0, "asd");
-	// var len = await rs.addStr("a", "丰");
+	// const len = await rs.addStr("a", "丰");
 	// console.log("追加文本" + len);
 	// 
 	// var bl = await rs.has("a");

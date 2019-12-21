@@ -1,5 +1,5 @@
 const Index = require('mm_machine').Index;
-const Drive = require('./drive').Drive;
+const Drive = require('./drive');
 
 if ($.timer) {
 	$.timer.add({
@@ -11,8 +11,9 @@ if ($.timer) {
 		 * 执行函数
 		 */
 		async run() {
-			for (var k in $.pool.task) {
-				$.pool.task[k].run();
+			var dt = $.pool.task;
+			for (var k in dt) {
+				dt[k].run();
 			}
 		}
 	});
@@ -34,8 +35,6 @@ class Task extends Index {
 		super(scope, __dirname);
 		this.Drive = Drive;
 		this.type = "task";
-
-
 	}
 }
 
@@ -44,14 +43,55 @@ class Task extends Index {
  */
 Task.prototype.run = async function() {
 	var lt = this.list;
-	for (var i = 0; i < lt.length; i++) {
-		var o = lt[i];
+	for (let i = 0, o; o = lt[i++];) {
 		o.run();
 	}
 };
 
-exports.Task = Task;
+/**
+ * @description 加载项
+ * @param {String} dir 文件路径
+ * @param {Object} cg 配置参数
+ * @param {String} file 配置文件
+ */
+Task.prototype.load_item = function(dir, cg, file) {
+	var drive = new this.Drive(dir);
+	drive.loadObj(cg);
+	drive.filename = file;
+	drive.task_manager = this;
+	this.list.push(drive);
+};
 
+/**
+ * @description 加载列表
+ * @param {Array} list 文件列表
+ */
+Task.prototype.load_list = function(list) {
+	var _this = this;
+	// 遍历文件路径
+	list.map(function(file) {
+		var dir = file.dirname();
+		// 载入文件
+		var obj = file.loadJson(dir);
+		if (obj) {
+			if (obj.constructor == Array) {
+				obj.map(function(o) {
+					// 实例化一个驱动
+					_this.load_item(dir, o, file);
+				});
+			} else {
+				_this.load_item(dir, obj, file);
+			}
+		} else {
+			var fl = _this.dir_base + "/config.tpl.json";
+			if (fl.hasFile()) {
+				fl.copyFile(file);
+			}
+		}
+	});
+};
+
+exports.Task = Task;
 
 /**
  * @description Task模板池
@@ -76,6 +116,7 @@ function task_admin(scope) {
 	}
 	return obj;
 }
+
 /**
  * @module 导出Task管理器
  */

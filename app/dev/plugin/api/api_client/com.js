@@ -151,12 +151,13 @@ dev.prototype.get = async function(req, db) {
 			} else {
 				var lt = cs.list;
 				var list = [];
-				for (var i = 0; i < lt.length; i++) {
-					var o = lt[i].config;
+				const len = lt.length;
+				for (let i = 0; i < len; i++) {
+					var cg = lt[i].config;
 					list.push({
-						name: o.name,
-						title: o.title,
-						description: o.description
+						name: cg.name,
+						title: cg.title,
+						description: cg.description
 					});
 				}
 				body = $.ret.body({

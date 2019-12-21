@@ -1,7 +1,6 @@
 {
     "name": "home_article_comment2",
-    "filter": false,
-    "method": "get",
+    "title": "",
     "add": {
         "body": [
             "available",
@@ -64,13 +63,6 @@
             "content"
         ],
         "query_required": []
-    },
-    "post": {
-        "query": [],
-        "query_required": [],
-        "body": [],
-        "body_required": [],
-        "body_not": []
     },
     "list": [
         {
@@ -219,8 +211,5 @@
             "dataType": "text",
             "string": {}
         }
-    ],
-    "func_file": "",
-    "func_name": "",
-    "title": "文章评论"
+    ]
 }

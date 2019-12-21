@@ -1,5 +1,5 @@
 const Index = require('mm_machine').Index;
-const Drive = require('./drive').Drive;
+const Drive = require('./drive');
 
 /**
  * @description Catch抓包类

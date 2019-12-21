@@ -66,4 +66,4 @@ Drive.prototype.main = async function(ctx, db) {
 	return null;
 };
 
-exports.Drive = Drive;
+module.exports = Drive;

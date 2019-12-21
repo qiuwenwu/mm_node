@@ -1,163 +1,167 @@
 {
-	"name": "admin",
-	"sort": 1,
-	"routes": [{
-			"name": "home",
-			"path": "/home",
-			"redirect": "/home/article"
-		},
-		{
-			"name": "home_article",
-			"path": "/home/article",
-			"component": "/home/admin/src/pages/article.vue",
-			"level": 3,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		},
-		{
-			"name": "home_article_edit",
-			"path": "/home/article_edit",
-			"component": "/home/admin/src/pages/article_edit.vue",
-			"level": 4,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		},
-		{
-			"name": "home_article_channel",
-			"path": "/home/article_channel",
-			"component": "/home/admin/src/pages/article_channel.vue",
-			"level": 2,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		},
-		{
-			"name": "home_article_channel_edit",
-			"path": "/home/article_channel_edit",
-			"component": "/home/admin/src/pages/article_channel_edit.vue",
-			"level": 3,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		},
-		{
-			"name": "home_article_comment",
-			"path": "/home/article_comment",
-			"component": "/home/admin/src/pages/article_comment.vue",
-			"level": 2,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		},
-		{
-			"name": "home_article_comment_edit",
-			"path": "/home/article_comment_edit",
-			"component": "/home/admin/src/pages/article_comment_edit.vue",
-			"level": 3,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		},
-		{
-			"name": "home_article_type",
-			"path": "/home/article_type",
-			"component": "/home/admin/src/pages/article_type.vue",
-			"level": 2,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		},
-		{
-			"name": "home_article_type_edit",
-			"path": "/home/article_type_edit",
-			"component": "/home/admin/src/pages/article_type_edit.vue",
-			"level": 3,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		},
-		{
-			"name": "home_config",
-			"path": "/home/config",
-			"component": "/home/admin/src/pages/config.vue",
-			"level": 3,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		},
-		{
-			"name": "home_config_edit",
-			"path": "/home/config_edit",
-			"component": "/home/admin/src/pages/config_edit.vue",
-			"level": 4,
-			"oauth": {
-				"signIn": true,
-				"gm": 2,
-				"user_admin": []
-			}
-		}
-	],
-	"top": [],
-	"left": [],
-	"bottom": [],
-	"right": [],
-	"desktop": [],
-	"quick": [],
-	"main": [{
-		"title": "门户",
-		"name": "home",
-		"url": "/home",
-		"display": 1,
-		"sub": [{
-				"title": "文章资讯",
-				"show": false,
-				"name": "home_article",
-				"url": "/home/article"
-			},
-			{
-				"title": "栏目板块",
-				"show": false,
-				"name": "home_article_channel",
-				"url": "/home/article_channel"
-			},
-			{
-				"title": "评论回复",
-				"show": false,
-				"name": "home_article_comment",
-				"url": "/home/article_comment"
-			},
-			{
-				"title": "分类信息",
-				"show": false,
-				"name": "home_article_type",
-				"url": "/home/article_type"
-			},
-			{
-				"title": "配置参数",
-				"show": false,
-				"name": "home_config",
-				"url": "/home/config"
-			}
-		]
-	}]
+    "name": "admin",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "home",
+            "path": "/home",
+            "redirect": "/home/article"
+        },
+        {
+            "name": "home_article",
+            "path": "/home/article",
+            "component": "/home/admin/src/pages/article.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "home_article_edit",
+            "path": "/home/article_edit",
+            "component": "/home/admin/src/pages/article_edit.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": false,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "home_article_channel",
+            "path": "/home/article_channel",
+            "component": "/home/admin/src/pages/article_channel.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "home_article_channel_edit",
+            "path": "/home/article_channel_edit",
+            "component": "/home/admin/src/pages/article_channel_edit.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "home_article_comment",
+            "path": "/home/article_comment",
+            "component": "/home/admin/src/pages/article_comment.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "home_article_comment_edit",
+            "path": "/home/article_comment_edit",
+            "component": "/home/admin/src/pages/article_comment_edit.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "home_article_type",
+            "path": "/home/article_type",
+            "component": "/home/admin/src/pages/article_type.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "home_article_type_edit",
+            "path": "/home/article_type_edit",
+            "component": "/home/admin/src/pages/article_type_edit.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "home_config",
+            "path": "/home/config",
+            "component": "/home/admin/src/pages/config.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "home_config_edit",
+            "path": "/home/config_edit",
+            "component": "/home/admin/src/pages/config_edit.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "门户",
+            "name": "home",
+            "url": "/home",
+            "display": 1,
+            "sub": [
+                {
+                    "title": "文章信息",
+                    "show": false,
+                    "name": "home_article",
+                    "url": "/home/article"
+                },
+                {
+                    "title": "文章栏目",
+                    "show": false,
+                    "name": "home_article_channel",
+                    "url": "/home/article_channel"
+                },
+                {
+                    "title": "文章评论",
+                    "show": false,
+                    "name": "home_article_comment",
+                    "url": "/home/article_comment"
+                },
+                {
+                    "title": "文章分类",
+                    "show": false,
+                    "name": "home_article_type",
+                    "url": "/home/article_type"
+                },
+                {
+                    "title": "门户配置",
+                    "show": false,
+                    "name": "home_config",
+                    "url": "/home/config"
+                }
+            ]
+        }
+    ]
 }

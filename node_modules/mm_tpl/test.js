@@ -1,4 +1,4 @@
-const Tpl = require('./index.js').Tpl;
+const Tpl = require('./index.js');
 
 async function test() {
 	var tpl = new Tpl();

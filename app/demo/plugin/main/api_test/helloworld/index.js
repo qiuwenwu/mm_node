@@ -8,6 +8,8 @@ async function main(ctx, db) {
 	var req = ctx.request;
 	// 获取请求参数
 	var q = req.query;
+	// console.log(req.headers);
+	// console.log(req.body);
 	return "hello world" + JSON.stringify(q);
 };
 

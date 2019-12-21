@@ -15,7 +15,7 @@
         "url": "`url` like '%{0}%'",
         "description": "`description` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {
         "display_add": "`display` = `display` + {0}"
     },

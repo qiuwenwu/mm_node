@@ -14,16 +14,18 @@ async function main(ctx, db) {
 		var token = ctx.headers[$.dict.token];
 		if (token) {
 			var u = await $.cache.get($.dict.session_id + '_' + token);
-			var type = typeof(u);
-			if (type === "string") {
-				var o = u.toJson();
-				delete o.user.user_id;
-				return $.ret.body(o.user);
-			} else if (type === "object") {
-				if (Object.keys(u).length > 0) {
-					var o = Object.assign({}, u);
+			if (u) {
+				var type = typeof(u);
+				if (type === "string") {
+					var o = u.toJson();
 					delete o.user.user_id;
 					return $.ret.body(o.user);
+				} else if (type === "object") {
+					if (Object.keys(u).length > 0) {
+						var o = Object.assign({}, u);
+						delete o.user.user_id;
+						return $.ret.body(o.user);
+					}
 				}
 			}
 			return $.ret.error(50000, '非法访问');

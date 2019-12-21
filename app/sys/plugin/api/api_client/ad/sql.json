@@ -36,7 +36,7 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
-    "where": {},
+    
     "update": {
         "display_add": "`display` = `display` + {0}",
         "times_user_add": "`times_user` = `times_user` + {0}",

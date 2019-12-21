@@ -18,7 +18,7 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
-    "where": {},
+    
     "update": {
         "score_add": "`score` = `score` + {0}",
         "display_add": "`display` = `display` + {0}"

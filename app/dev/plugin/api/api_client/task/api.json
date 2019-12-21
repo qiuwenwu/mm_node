@@ -1,10 +1,16 @@
 {
-	"path": "/api/dev/task",
-	"type": "api",
-	"name": "dev_task",
-	"title": "管理任务的接口",
-	"cache": 0,
-	"func_file": "./index.js",
-	"method": "ALL",
-	"param_path": "./param.json"
+    "name": "dev_task",
+    "title": "管理任务的接口",
+    "description": "暂无描述",
+    "path": "/api/dev/task",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": true,
+    "param_path": "./param.json",
+    "sql_path": "",
+    "check_param": true
 }

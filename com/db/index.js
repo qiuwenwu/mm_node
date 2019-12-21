@@ -1,5 +1,5 @@
 const Index = require('mm_machine').Index;
-const Drive = require('./drive').Drive;
+const Drive = require('./drive');
 
 /**
  * @description 数据库帮助类
@@ -54,7 +54,8 @@ DB.prototype.load = function(path) {
 DB.prototype.getObj = function(table) {
 	var obj;
 	var list = this.list;
-	for (var i = 0; i < list.length; i++) {
+	const len = list.length;
+	for (let i = 0; i < len; i++) {
 		var o = list[i];
 		if (o.config.table === table) {
 			obj = o;
@@ -81,9 +82,11 @@ DB.prototype.update_config = async function(db, name, table) {
 		}
 	} else {
 		var list = await db.tables(table);
-		if (list.length > 0) {
+		const len = list.length;
+		if (len > 0) {
 			var lt = [];
-			for (var i = 0; i < list.length; i++) {
+			const len = list.length;
+			for (let i = 0; i < len; i++) {
 				var te = list[i];
 				var obj = this.getObj(te);
 				if (obj) {
@@ -119,9 +122,10 @@ DB.prototype.update_db = async function(db, name, table, all) {
 		}
 	} else {
 		var list = this.list;
-		if (list.length > 0) {
+		const len = list.length;
+		if (len > 0) {
 			if (table) {
-				for (var i = 0; i < list.length; i++) {
+				for (let i = 0; i < len; i++) {
 					var o = list[i];
 					if (o.config.table === table) {
 						ret = await o.update_db(db);
@@ -129,7 +133,7 @@ DB.prototype.update_db = async function(db, name, table, all) {
 					}
 				}
 			} else if (all) {
-				for (var i = 0; i < list.length; i++) {
+				for (let i = 0; i < len; i++) {
 					var o = list[i];
 					await o.update_db(db);
 				}

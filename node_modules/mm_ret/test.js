@@ -1,4 +1,4 @@
-require('./index.js').MongoDB;
+require('./index.js');
 
 /* 调用示例 */
 async function test() {
@@ -20,3 +20,17 @@ async function test() {
 }
 
 test();
+
+async function test2() {
+	var body = $.req.send('test', "你好吗");
+	console.log(body);
+	
+	$.req.tpl.message = {
+		"to_user": "",
+		"from_user": "",
+		"content": ""
+	};
+	body = $.req.send('message', { content: "你好吗?", "media": { "title": "牛" } });
+	console.log(body);
+}
+test2();

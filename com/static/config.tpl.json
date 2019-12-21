@@ -7,6 +7,5 @@
 	"gzip": true,
 	"extensions": null,
 	"convert_amd": false,
-	"func_file": "./static.js",
-	"func_name": ""
+	"func_file": "./static.js"
 }

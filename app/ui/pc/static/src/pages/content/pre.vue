@@ -5,18 +5,19 @@
 				<mm_div url="/">
 					<div class="h3">源代码<span>&lt; 返回</span></div>
 				</mm_div>
-				
-				<div class="h5">按钮颜色——带背景</div>
+
+				<div class="h5">带复制</div>
+				<mm_div class="">
+					<mm_pre :code="code">
+						<code class="javascript"></code>
+					</mm_pre>
+				</mm_div>
+
+				<div class="h5">不带复制</div>
 				<mm_div class="">
 					<mm_pre>
-						<code class="javascript">
-							var date = new Date(); <br>
-							export default {
-								template: __template__,
-								components: {
-									mm_pre
-								}
-							}
+						<code class="typescript">
+							{{ code }}
 						</code>
 					</mm_pre>
 				</mm_div>
@@ -29,11 +30,23 @@
 	// import vs from '/highlight/styles/vs.css';
 
 	import mm_pre from '/src/components/content/mm_pre.vue';
-	
+
 	export default {
 		template: __template__,
 		components: {
 			mm_pre
+		},
+		data() {
+			return {
+				code: `
+var date = new Date();
+export default {
+template: __template__,
+	components: {
+		mm_pre
+	}
+}`
+			}
 		}
 	}
 </script>

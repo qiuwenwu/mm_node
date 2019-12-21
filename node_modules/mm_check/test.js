@@ -1,4 +1,4 @@
-const Check = require('./index.js').Check;
+const Check = require('./index.js');
 
 async function test() {
 	var config = {

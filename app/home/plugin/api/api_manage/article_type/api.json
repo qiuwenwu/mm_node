@@ -1,6 +1,6 @@
 {
     "name": "home_article_type2",
-    "title": "文章分类",
+    "title": "",
     "description": "",
     "path": "/apis/home/article_type",
     "method": "ALL",

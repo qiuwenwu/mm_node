@@ -1,5 +1,5 @@
 const Index = require('mm_machine').Index;
-const Drive = require('./drive').Drive;
+const Drive = require('./drive');
 
 /**
  * @description  Api接口类
@@ -44,8 +44,7 @@ Api.prototype.run = async function(ctx, db) {
 	}
 	const path = ctx.request.path;
 	var lt = this.list;
-	for (var i = 0; i < lt.length; i++) {
-		var o = lt[i];
+	for (let i = 0, o; o = lt[i++];) {
 		if (o.onOff && path.has(o.config.path)) {
 			var ret = await o.run(ctx, db);
 			if (ret) {

@@ -1,12 +1,25 @@
 {
     "name": "pay_account_amount",
-    "title": "支付账户余额",
+    "title": "账户余额",
     "description": "",
     "path": "/api/pay/account_amount",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "",
+    "func_name": "",
     "method": "GET",
     "cache": 0,
     "client_cache": true,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true
+    "check_param": true,
+    "oauth": {
+        "scope": true,
+        "signIn": false,
+        "vip": 0,
+        "gm": 0,
+        "mc": 0,
+        "user_admin": [],
+        "user_group": []
+    }
 }

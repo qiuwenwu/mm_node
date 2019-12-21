@@ -25,7 +25,7 @@
         "tag": "`tag` like '%{0}%'",
         "collecter": "`collecter` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {
         "state_add": "`state` = `state` + {0}",
         "display_add": "`display` = `display` + {0}",

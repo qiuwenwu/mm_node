@@ -14,7 +14,7 @@
         "reply": "`reply` like '%{0}%'",
         "content": "`content` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {
         "score_add": "`score` = `score` + {0}",
         "display_add": "`display` = `display` + {0}"

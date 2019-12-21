@@ -16,6 +16,7 @@
             "price_old",
             "create_time",
             "update_time",
+            "brand",
             "title",
             "keywords",
             "description",
@@ -77,6 +78,7 @@
             "price_old_add",
             "create_time",
             "update_time",
+            "brand",
             "title",
             "keywords",
             "description",
@@ -438,6 +440,14 @@
                 "notEmpty": true,
                 "format": "datetime"
             }
+        },
+        {
+            "name": "brand",
+            "title": "品牌",
+            "description": "商品的品牌",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
             "name": "title",

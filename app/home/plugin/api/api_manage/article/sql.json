@@ -1,6 +1,6 @@
 {
     "name": "home_article2",
-    "title": "文章信息",
+    "title": "",
     "table": "home_article",
     "key": "article_id",
     "orderby_default": "`article_id` desc",
@@ -29,7 +29,6 @@
         "content": "`content` like '%{0}%'",
         "collecter": "`collecter` like '%{0}%'"
     },
-    "where": {},
     "update": {
         "state_add": "`state` = `state` + {0}",
         "display_add": "`display` = `display` + {0}",

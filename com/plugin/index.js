@@ -1,5 +1,5 @@
 const Index = require('mm_machine').Index;
-const Drive = require('./drive').Drive;
+const Drive = require('./drive');
 
 /**
  * @description Plugin插件类
@@ -28,11 +28,12 @@ class Plugin extends Index {
 Plugin.prototype.run = function(param1, param2) {
 	var ret;
 	var lt = this.list;
-	for (var i = 0; i < lt.length; i++) {
-		var o = this.lt[i];
-		ret = o.run(param1, param2);
-		if (ret && o.end) {
-			break;
+	for (let i = 0, o; o = lt[i++];) {
+		if (o.onOff) {
+			ret = o.run(param1, param2);
+			if (ret && o.end) {
+				break;
+			}
 		}
 	}
 	return ret;
@@ -44,18 +45,20 @@ Plugin.prototype.run = function(param1, param2) {
  * @param {String} to_user 接收消息人
  * @param {String} content 内容
  * @param {String} group 群组 如果是个人，群组为空
- * @param {Number} type 群类型, 1永久群、2临时群
+ * @param {Number} type 群类型, 1永久会话/群、2临时会话/群
  * @param {String} msg_type 消息类型, event事件型、message消息型。默认消息型
+ * @param {Object} 数据管理器
  * @return {String} 回复内容
  */
-Plugin.prototype.chat = function(from_user, to_user, group, content, type, msg_type) {
+Plugin.prototype.chat = async function(from_user, to_user, group, content, type, msg_type, db) {
 	var ret = "";
 	var lt = this.list;
-	for (var i = 0; i < lt.length; i++) {
-		var o = this.lt[i];
-		ret = o.chat(from_user, to_user, group, content, type, msg_type);
-		if (ret) {
-			break;
+	for (let i = 0, o; o = lt[i++];) {
+		if (o.onOff) {
+			ret = await o.chat(from_user, to_user, group, content, type, msg_type, db);
+			if (ret) {
+				break;
+			}
 		}
 	}
 	return ret;
@@ -66,16 +69,17 @@ Plugin.prototype.chat = function(from_user, to_user, group, content, type, msg_t
  * @param {String} content 指令内容
  * @return {String} 执行结果
  */
-Plugin.prototype.cmd = function(content) {
+Plugin.prototype.cmd = async function(content) {
 	var ret = "";
 	var lt = this.list;
-	for (var i = 0; i < lt.length; i++) {
-		var o = this.lt[i];
-		var cmd = o.config.cmd;
-		if (cmd && content.startsWith(cmd)) {
-			ret = o.cmd(content.replace(cmd, ''));
-			if (ret) {
-				break;
+	for (let i = 0, o; o = lt[i++];) {
+		if (o.onOff) {
+			var cmd = o.config.cmd;
+			if (cmd && content.startsWith(cmd)) {
+				ret = await o.cmd(content.replace(cmd, ''));
+				if (ret) {
+					break;
+				}
 			}
 		}
 	}
@@ -93,10 +97,9 @@ Plugin.prototype.cmd = function(content) {
 Plugin.prototype.exec = function(name, method, option) {
 	var ret = "";
 	var lt = this.list;
-	for (var i = 0; i < lt.length; i++) {
-		var o = this.lt[i];
+	for (let i = 0, o; o = lt[i++];) {
 		var name = o.config.name;
-		if (name === name) {
+		if (o.onOff && name === name) {
 			var func = o[method];
 			if (func) {
 				ret = func(option);
@@ -115,10 +118,14 @@ Plugin.prototype.exec = function(name, method, option) {
 Plugin.prototype.init = function(option) {
 	var ret = "";
 	var lt = this.list;
-	for (var i = 0; i < lt.length; i++) {
-		ret = this.lt[i].init(option);
+	for (let i = 0, o; o = lt[i++];) {
+		ret = o.init(option);
 	}
 	return ret;
+};
+
+Plugin.prototype.sort = function() {
+	this.list.sortBy('sort');
 };
 
 /**
@@ -130,36 +137,35 @@ Plugin.prototype.load = function(path) {
 	if (!path) {
 		path = '/app/' + this.scope + "/plugin/";
 	}
+	var list = this.list;
 	if (path.endsWith('/app/')) {
 		var list_scope = $.dir.get(path);
 
 		// 遍历目录路径
-		var _this = this;
+
 		list_scope.map(function(o) {
 			var file = './app.json'.fullname(o);
 			if (file.hasFile()) {
 				var obj = new Drive(o);
 				obj.load(file);
 				if (obj.config.name) {
-					_this.list.push(obj);
+					list.push(obj);
 				}
 			}
 		});
 	} else {
 		var dir_plugin = path + "/plugin/";
-		if(dir_plugin.hasDir())
-		{
+		if (dir_plugin.hasDir()) {
 			var list_scope = $.dir.get(dir_plugin);
-			
+
 			// 遍历目录路径
-			var _this = this;
 			list_scope.map(function(o) {
 				var file = './plugin.json'.fullname(o);
 				if (file.hasFile()) {
 					var obj = new Drive(o);
 					obj.load(file);
 					if (obj.config.name) {
-						_this.list.push(obj);
+						list.push(obj);
 					}
 				}
 			});

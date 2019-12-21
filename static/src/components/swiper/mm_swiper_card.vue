@@ -13,7 +13,7 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/list';
+	import mixin from '/src/mixins/item.js';
 	import Swiper from "swiper";
 
 	export default {

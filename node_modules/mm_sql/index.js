@@ -441,7 +441,8 @@ Sql.prototype.getCount = async function(query, sort, view) {
  */
 Sql.prototype.addList = function(list) {
 	var sql = "START TRANSACTION;\n";
-	for (var i = 0; i < list.length; i++) {
+	const len = list.length;
+	for (var i = 0; i < len; i++) {
 		sql += this.toAddSql(list[i]);
 	}
 	return this.exec(sql);
@@ -453,7 +454,8 @@ Sql.prototype.addList = function(list) {
  */
 Sql.prototype.delList = function(list) {
 	var sql = "";
-	for (var i = 0; i < list.length; i++) {
+	const len = list.length;
+	for (var i = 0; i < len; i++) {
 		sql += this.toDelSql(list[i].query);
 	}
 	return this.exec(sql);
@@ -465,7 +467,8 @@ Sql.prototype.delList = function(list) {
  */
 Sql.prototype.setList = function(list) {
 	var sql = "";
-	for (var i = 0; i < list.length; i++) {
+	const len = list.length;
+	for (var i = 0; i < len; i++) {
 		sql += this.toSetSql(list[i].query, list[i].item);
 	}
 	return this.exec(sql);
@@ -541,7 +544,8 @@ Sql.prototype.tpl_query = function(paramDt, sqlDt) {
 					if (arr.length > 1) {
 						// 如果数量大于0，则增加多条件
 						var sl = "(";
-						for (var i = 0; i < arr.length; i++) {
+						const len = arr.length;
+						for (var i = 0; i < len; i++) {
 							sl += " || " + tpl.replaceAll("{0}", arr[i]);
 						}
 						sl = sl.replace(" || ", "") + ")";
@@ -553,7 +557,8 @@ Sql.prototype.tpl_query = function(paramDt, sqlDt) {
 					if (arr.length > 1) {
 						// 如果数量大于0，则增加多条件
 						var sl = "(";
-						for (var i = 0; i < arr.length; i++) {
+						const len = arr.length;
+						for (var i = 0; i < len; i++) {
 							sl += " || `" + key + "` = '" + arr[i] + "'";
 						}
 						sl = sl.replace(" || ", "") + ")";
@@ -583,7 +588,8 @@ Sql.prototype.tpl_query = function(paramDt, sqlDt) {
 				if (arr.length > 1) {
 					// 如果数量大于0，则增加多条件
 					var sl = "(";
-					for (var i = 0; i < arr.length; i++) {
+					const len = arr.length;
+					for (var i = 0; i < len; i++) {
 						sl += " || `" + key + "` = '" + arr[i] + "'";
 					}
 					sl = sl.replace(" || ", "") + ")";

@@ -1,31 +1,14 @@
-import Vue from 'Vue';
-import vuex from 'vuex';
+define(["Vue", "vuex", "./store/user", "./store/web"], function(Vue, vuex, user, web) {
+	"use strict";
 
-import user from './store/user'
-import web from './store/web'
-
-// 引用vuex插件
-Vue.use(vuex);
-
-var store = {
-	/**
-	 * 储存的状态
-	 */
-	state: {
-		host: "/"
-	},
-	getters: {},
-	mutations: {},
-	actions: {},
-	/**
-	 * 载入模块
-	 */
-	modules: {
-		user: user,
-		web: web
-	},
-	strict: true
-};
-
-// 生成并返回缓存器
-export default new vuex.Store(store);
+	Vue.use(vuex);
+	var store = {
+		modules: {
+			user: user,
+			web: web
+		},
+		// 严格模式，生产时改为false，避免性能损失
+		strict: true
+	};
+	return new vuex.Store(store);
+});

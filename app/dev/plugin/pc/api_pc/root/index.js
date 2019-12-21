@@ -1,3 +1,5 @@
+const file = './../../static/index.html'.fullname(__dirname);
+
 /**
  * @description 接口主函数
  * @param {Object} ctx HTTP上下文
@@ -17,7 +19,7 @@ async function main(ctx, db) {
 			keywords: "超级美眉 mm_koa 高并发 异步 服务端 分布式 框架 商城 游戏 saas async",
 			content: ""
 		};
-		var file = './../../static/index.html'.fullname(__dirname);
+
 		var o = db.tpl.view(file, model);
 		return o;
 	}

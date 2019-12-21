@@ -9,7 +9,7 @@ async function getCode(db, username, password) {
 	var str = (date.toISOString() + username + password).md5();
 	
 	var code = "";
-	for (var i = 0; i < 20; i++) {
+	for (let i = 0; i < 20; i++) {
 		var c = str.substring(0, 8);
 		var count = await db.count('`invite_code`=' + c);
 		if(count === 0){

@@ -20,7 +20,7 @@ require({
 		clipboard: '/js/clipboard.min',
 		mm_sdk: '/js/mm_sdk',
 		mm_vue: '/js/mm_vue',
-		ui: '/src/ui.min',
+		ui: '/js/mm_vue_ui',
 		nav: '/api/nav.js?name=admin',
 		store: './store',
 		router: './router',

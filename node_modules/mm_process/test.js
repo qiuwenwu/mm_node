@@ -1,4 +1,4 @@
-const Process = require('./index.js').Process;
+const Process = require('./index.js');
 
 async function test () {
 	var p = new Process(__dirname);

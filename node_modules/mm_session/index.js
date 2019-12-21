@@ -90,5 +90,3 @@ module.exports = (opts = {}) => {
 		if (!uuid || uuid !== sid || need_refresh) ctx.cookies.set(key, sid, cg);
 	}
 }
-
-module.exports.Store = Store;

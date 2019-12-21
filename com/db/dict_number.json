@@ -1,0 +1,73 @@
+[{
+	"name": "user_id",
+	"title": "用户ID",
+	"description": "",
+	"group": "通用",
+	"abridge": "uid",
+	"type": "number",
+	"dataType": "mediumint",
+	"key": true,
+	"auto": "auto_increment",
+	"symbol": false,
+	"fill_zero": false,
+	"not_null": 1,
+	"decimal": 0,
+	"default": "0",
+	"string": {
+		"min": 0,
+		"max": 6,
+		"range": [],
+		"regex": "",
+		"identical": "",
+		"different": "",
+		"extension": "",
+		"format": ""
+	},
+	"number": {
+		"min": 1,
+		"max": 32767,
+		"range": []
+	},
+	"date": {
+		"min": "1970-01-01 00:00:00",
+		"max": "now"
+	},
+	"sql": {
+		"query": {
+			"uid_min": "`uid` >= {0}",
+			"uid_max": "`uid` <= {0}"
+		},
+		"query_default": "",
+		"field_default": true,
+		"orderby_default": "desc",
+		"filter": false
+	},
+	"param": {
+		"add": {
+			"body": false,
+			"body_required": false
+		},
+		"del": {
+			"query": true,
+			"query_required": false
+		},
+		"set": {
+			"query": true,
+			"query_required": false,
+			"body": true,
+			"body_required": false,
+			"body_not": false
+		},
+		"get": {
+			"query": true,
+			"query_required": false
+		},
+		"post": {
+			"query": true,
+			"query_required": false,
+			"body": true,
+			"body_required": false,
+			"body_not": false
+		}
+	}
+}]

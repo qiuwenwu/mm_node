@@ -1,7 +1,6 @@
 {
     "name": "mall_product",
-    "filter": true,
-    "method": "get",
+    "title": "商品信息",
     "add": {
         "body": [
             "available",
@@ -17,6 +16,7 @@
             "price_old",
             "create_time",
             "update_time",
+            "brand",
             "title",
             "keywords",
             "description",
@@ -78,6 +78,7 @@
             "price_old_add",
             "create_time",
             "update_time",
+            "brand",
             "title",
             "keywords",
             "description",
@@ -117,13 +118,6 @@
             "content"
         ],
         "query_required": []
-    },
-    "post": {
-        "query": [],
-        "query_required": [],
-        "body": [],
-        "body_required": [],
-        "body_not": []
     },
     "list": [
         {
@@ -448,6 +442,14 @@
             }
         },
         {
+            "name": "brand",
+            "title": "品牌",
+            "description": "商品的品牌",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
             "name": "title",
             "title": "标题",
             "description": "用于产品和html的<title>标签中",
@@ -513,8 +515,5 @@
             "dataType": "text",
             "string": {}
         }
-    ],
-    "func_file": "",
-    "func_name": "",
-    "title": "商品信息"
+    ]
 }

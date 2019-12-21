@@ -4,7 +4,7 @@
     "table": "mall_product",
     "key": "product_id",
     "orderby_default": "`display` asc",
-    "field_default": "`product_id`,`available`,`state`,`type_id`,`display`,`channel_id`,`shop_id`,`city_id`,`hot`,`praise`,`price`,`price_old`,`create_time`,`update_time`,`title`,`keywords`,`description`,`img`,`tag`,`property`,`content`,`collecter`",
+    "field_default": "`product_id`,`available`,`state`,`type_id`,`display`,`channel_id`,`shop_id`,`city_id`,`hot`,`praise`,`price`,`price_old`,`create_time`,`update_time`,`brand`,`title`,`keywords`,`description`,`img`,`tag`,`property`,`content`,`collecter`",
     "method": "get",
     "query": {
         "state_min": "`state` >= {0}",
@@ -23,6 +23,7 @@
         "create_time_max": "`create_time` <= '{0}'",
         "update_time_min": "`update_time` >= '{0}'",
         "update_time_max": "`update_time` <= '{0}'",
+        "brand": "`brand` like '%{0}%'",
         "title": "`title` like '%{0}%'",
         "keywords": "`keywords` like '%{0}%'",
         "description": "`description` like '%{0}%'",
@@ -33,7 +34,6 @@
         "collecter": "`collecter` like '%{0}%'"
     },
     "query_default": {},
-    "where": {},
     "update": {
         "state_add": "`state` = `state` + {0}",
         "display_add": "`display` = `display` + {0}",

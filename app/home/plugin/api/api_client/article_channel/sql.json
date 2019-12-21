@@ -1,6 +1,6 @@
 {
     "name": "home_article_channel",
-    "title": "文章栏目",
+    "title": "",
     "table": "home_article_channel",
     "key": "channel_id",
     "orderby_default": "`display` asc",
@@ -17,7 +17,6 @@
         "url": "`url` like '%{0}%'"
     },
     "query_default": {},
-    "where": {},
     "update": {
         "display_add": "`display` = `display` + {0}"
     }

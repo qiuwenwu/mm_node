@@ -13,5 +13,13 @@
     "param_path": "./param.json",
     "sql_path": "./sql.json",
     "check_param": true,
-    "oauth": null
+    "oauth": {
+        "scope": true,
+        "signIn": false,
+        "vip": 0,
+        "gm": 0,
+        "mc": 0,
+        "user_admin": [],
+        "user_group": []
+    }
 }

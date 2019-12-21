@@ -100,7 +100,6 @@ var Pay_contract = {
 		return true;
 	};
 	
-	
 	/**
 	 * @description 到账完成前, 一般用来判断支付信息是否正确，例如是否支持该支付方式
 	 * @param {Object} contract 合约参数
@@ -142,4 +141,4 @@ var Pay_contract = {
 	};
 };
 
-module.exports = Pay_contract合约;
+module.exports = Pay_contract;

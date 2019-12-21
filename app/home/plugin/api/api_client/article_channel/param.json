@@ -1,7 +1,6 @@
 {
     "name": "home_article_channel",
-    "filter": true,
-    "method": "get",
+    "title": "",
     "add": {
         "body": [
             "available",
@@ -68,13 +67,6 @@
             "description"
         ],
         "query_required": []
-    },
-    "post": {
-        "query": [],
-        "query_required": [],
-        "body": [],
-        "body_required": [],
-        "body_not": []
     },
     "list": [
         {
@@ -234,8 +226,5 @@
                 "format": "url"
             }
         }
-    ],
-    "func_file": "",
-    "func_name": "",
-    "title": "文章栏目"
+    ]
 }

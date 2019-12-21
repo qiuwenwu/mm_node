@@ -1,7 +1,7 @@
 const Item = require('mm_machine').Item;
-const Param = require('../param/drive').Drive; // 是MM自带的参数机制，可以不使用
-const Sql = require('../sql/drive').Drive; // 是MM自带的参数机制，可以不使用
-const Oauth = require('./oauth').Oauth; // 是MM自带的身份验证机制，基于Oauth2.0，可以不使用
+const Param = require('../param/drive'); // 是MM自带的参数机制，可以不使用
+const Sql = require('../sql/drive'); // 是MM自带的参数机制，可以不使用
+const Oauth = require('./oauth'); // 是MM自带的身份验证机制，基于Oauth2.0，可以不使用
 const Ret = require('mm_ret').Ret;
 const CacheBase = require('mm_cachebase').CacheBase;
 
@@ -29,10 +29,10 @@ class Drive extends Item {
 	constructor(dir) {
 		super(dir, __dirname);
 		this.default_file = "./api.json";
-		
+
 		// 开关，开启可使用接口
 		this.onOff = true;
-		
+
 		// oauth身份验证配置 + 函数
 		this.oauth;
 		// param参数配置 + 函数
@@ -71,7 +71,15 @@ class Drive extends Item {
 			// 是否验证参数
 			"check_param": true,
 			// oauth身份验证模型, 参考oauth文件
-			"oauth": null
+			"oauth": {
+				"scope": true,
+				"signIn": false,
+				"vip": 0,
+				"gm": 0,
+				"mc": 0,
+				"user_admin": [],
+				"user_group": []
+			}
 		};
 	}
 }
@@ -80,8 +88,9 @@ class Drive extends Item {
  * @description 加载完成后执行
  */
 Drive.prototype.load_after = function() {
-	this.loadParam(this.config.param_path);
-	this.loadSql(this.config.sql_path);
+	var cg = this.config;
+	this.loadParam(cg.param_path);
+	this.loadSql(cg.sql_path);
 	this.loadOauth();
 };
 
@@ -94,8 +103,7 @@ Drive.prototype.setParam = function(param) {
 		var lt = $.param.list;
 		if (lt) {
 			var has = false;
-			for (var i = 0; i < lt.length; i++) {
-				var o = lt[i];
+			for (let i = 0, o; o = lt[i++];) {
 				if (param.filename === o.filename) {
 					$.param.list[i] = param;
 					has = true;
@@ -153,8 +161,7 @@ Drive.prototype.setSql = function(sql) {
 		var lt = $.sql.list;
 		if (lt) {
 			var has = false;
-			for (var i = 0; i < lt.length; i++) {
-				var o = lt[i];
+			for (let i = 0, o; o = lt[i++];) {
 				if (sql.filename === o.filename) {
 					$.sql.list[i] = sql;
 					has = true;
@@ -307,10 +314,11 @@ Drive.prototype.getCache = async function(ctx) {
  * @param {Object} body 正文参数
  */
 Drive.prototype.setCache = async function(ctx, body) {
-	if (this.config.cache && ctx.method === 'GET') {
-		ctx.set('Cache-Control', 'max-age=' + this.config.cache);
-		if (this.config.client_cache) {
-			ctx.etag = Date.parse(new Date()) / 1000 + this.config.cache;
+	var cg = this.config;
+	if (cg.cache && ctx.method === 'GET') {
+		ctx.set('Cache-Control', 'max-age=' + cg.cache);
+		if (cg.client_cache) {
+			ctx.etag = Date.parse(new Date()) / 1000 + cg.cache;
 			return " ";
 		} else {
 			var req = ctx.request;
@@ -322,7 +330,7 @@ Drive.prototype.setCache = async function(ctx, body) {
 			if (id) {
 				userID = id;
 			}
-			$.cache.set("api_" + userID + ":" + req.url, JSON.stringify(o), this.config.cache);
+			$.cache.set("api_" + userID + ":" + req.url, JSON.stringify(o), cg.cache);
 		}
 	}
 };
@@ -425,11 +433,12 @@ Drive.prototype.check = async function(ctx) {
  * @return {Object} 验证结果
  */
 Drive.prototype.checkOauth = async function(ctx) {
-	if (this.oauth) {
-		return await this.oauth.check(ctx);
+	var aouth = this.oauth;
+	if (aouth) {
+		return await aouth.check(ctx);
 	} else {
 		return null;
 	}
 };
 
-exports.Drive = Drive;
+module.exports = Drive;

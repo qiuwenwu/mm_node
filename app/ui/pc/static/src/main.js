@@ -15,24 +15,38 @@ require({
 		vuex: '/js/vuex.min',
 		VueRouter: '/js/vue-router.min',
 		jquery: '/js/jquery-3.4.1.min',
+		clipboard: '/js/clipboard.min',
 		mm_sdk: '/js/mm_sdk',
 		mm_vue: '/js/mm_vue',
-		ui: '/src/ui',
+		ui: '/js/mm_vue_ui',
+		mm_component: '/src/mm_component',
+		mm_ui_expand: '/js/mm_ui_expand',
+		swiper: '/js/swiper.min',
+		
 		store: './store',
 		router: './router'
 	},
 	shim: {
+		clipboard: {
+			deps: ['jquery']
+		},
+		mm_sdk: {
+			deps: ['jquery']
+		},
+		ui: {
+			deps: ['jquery']
+		},
+		mm_ui_expand: {
+			deps: ['jquery']
+		},
+		mm_vue: {
+			deps: ['mm_sdk']
+		},
 		vuex: {
 			deps: ['Vue']
 		},
 		VueRouter: {
 			deps: ['Vue']
-		},
-		mm_sdk: {
-			deps: ['jquery']
-		},
-		mm_vue: {
-			deps: ['mm_sdk']
 		}
 	},
 	config: {
@@ -42,15 +56,20 @@ require({
 			'templateVar': '__template__'
 		}
 	}
-}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'vue!./App.vue'], function(Vue, mm_sdk, mm_vue, store, router,
-	ui, app) {
+}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'mm_ui_expand', 'clipboard', 'vue!./App.vue', 'mm_component'], function(Vue,
+	mm_sdk,
+	mm_vue, store, router,
+	ui, mm_ui_expand, clipboard, app, mm_component) {
 	// 开启调试模式
 	Vue.config.debug = true;
 	// 使用UI组件
 	Vue.config.devtools = true;
-	
+
 	Vue.use(mm_vue);
 	Vue.use(ui);
+	setTimeout(function(){
+		Vue.use(mm_component);
+	}, 2000);
 	
 	/**
 	 * @description 初始化整个Vue应用程序

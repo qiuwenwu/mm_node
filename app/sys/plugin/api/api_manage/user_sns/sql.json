@@ -12,7 +12,7 @@
         "baidu": "`baidu` like '%{0}%'",
         "taobao": "`taobao` like '%{0}%'"
     },
-    "where": {},
+    
     "update": {},
     "field_hide": []
 }

@@ -1,5 +1,5 @@
 const Item = require('mm_machine').Item;
-const Check = require('mm_check').Check;
+const Check = require('mm_check');
 
 /**
  * @description Param参数驱动类
@@ -85,10 +85,11 @@ class Drive extends Item {
  */
 Drive.prototype.updateCheck = function() {
 	var lt = this.config.list;
-	for (var i = 0; i < lt.length; i++) {
+	var len = lt.length;
+	for (let i = 0; i < len; i++) {
 		var o = lt[i];
 		if (!o.check) {
-			this.config.list[i] = new Check(o);
+			lt[i] = new Check(o);
 		}
 	}
 };
@@ -117,7 +118,7 @@ Drive.prototype.model = function() {
 		"key": false,
 		// 参数类型 string字符串、number数字、bool布尔、dateTime时间、object对象类型、array数组类型
 		"type": "string",
-		// 数据存储类型
+		// 数据存储类型 tinyint布尔型(0,1),smallint短整数型,mediumint中整数型,int长整数型,float浮点数型,double双精度型,timestamp时间戳型,date日期型,time时间型,varchar字符串型,text长文本型
 		"dataType": "",
 		// 字符串相关验证
 		"string": {
@@ -185,8 +186,7 @@ Drive.prototype.check_item = function(model, value, method) {
 Drive.prototype.getModel = function(name) {
 	var model;
 	var lt = this.config.list;
-	for (var i = 0; i < lt.length; i++) {
-		var o = lt[i];
+	for (let i = 0, o; o = lt[i++];) {
 		if (o['name'] === name) {
 			model = o;
 			break;
@@ -204,7 +204,7 @@ Drive.prototype.getModel = function(name) {
  */
 Drive.prototype.check_sub = function(params, arr, required) {
 	var msg;
-	for (var i = 0; i < arr.length; i++) {
+	for (let i = 0; i < arr.length; i++) {
 		var k = arr[i];
 		var o = this.getModel(k);
 		if (o) {
@@ -284,7 +284,7 @@ Drive.prototype.check = function(query, body, method) {
 	if (!msg) {
 		var ar = m['body_not'];
 		if (ar && body && ar.length > 0) {
-			for (var i = 0; i < ar.length; i++) {
+			for (let i = 0; i < ar.length; i++) {
 				var k = ar[i];
 				delete body[k];
 			}
@@ -329,4 +329,4 @@ Drive.prototype.main = function(model, value) {
 	return null;
 };
 
-exports.Drive = Drive;
+module.exports = Drive;

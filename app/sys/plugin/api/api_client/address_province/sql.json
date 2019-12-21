@@ -14,7 +14,7 @@
         "name": "`name` like '%{0}%'"
     },
     "query_default": {},
-    "where": {},
+    
     "update": {
         "show_add": "`show` = `show` + {0}",
         "display_add": "`display` = `display` + {0}"

@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>接口明细</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 		<link rel="stylesheet" type="text/css" href="/css/mm_ui.css" />
 		<link rel="stylesheet" type="text/css" href="/css/mm_theme.css" />
 		<script src="/js/jquery-3.4.1.min.js"></script>
@@ -329,25 +330,28 @@
 					copyModel() {
 						// this.param.list;
 						var lt = [];
-						if (this.list_body.length > 0) {
-							lt = this.list_body;
+						var arr = this.list_body;
+						if (arr.length > 0) {
+							lt = this.arr;
 						} else {
 							lt = this.list_query;
 						}
 
 						var list = [];
-						for (var i = 0; i < lt.length; i++) {
+						var len = lt.length;
+						for (let i = 0; i < len; i++) {
 							var o = $.copy(lt[i]);
 							delete o.description;
 							delete o.dataType;
-							if (o.type === 'number') {
+							const p = o.type;
+							if (p === 'number') {
 								delete o.string;
 								for (var k in o.number) {
 									if (!o.number[k]) {
 										delete o.number[k]
 									}
 								}
-							} else if (o.type === 'string') {
+							} else if (p === 'string') {
 								delete o.number;
 								for (var k in o.string) {
 									if (!o.string[k]) {
@@ -368,7 +372,7 @@
 						var arr = this['list_' + type];
 						if (arr) {
 							var code = "{";
-							for (var i = 0; i < arr.length; i++) {
+							for (let i = 0; i < arr.length; i++) {
 								var o = arr[i];
 								var val = '';
 								var p = o.type;
@@ -422,16 +426,18 @@
 								m = sql.config.method;
 							}
 							if (!m) {
-								m = this.config.method ? this.config.method.toLowerCase() : 'get';
+								var config = this.config;
+								m = config.method ? config.method.toLowerCase() : 'get';
 								if (m === 'all') {
 									m = "get post"
 								}
 							}
-							this.tabs.clear();
-							this.tabs.addList(m.split(' '));
-
-							for (var i = 0; i < this.tabs.length; i++) {
-								if (this.tabs[i] === 'get') {
+							var list = this.tabs;
+							list.clear();
+							list.addList(m.split(' '));
+							var len = list.length;
+							for (let i = 0; i < len; i++) {
+								if (list[i] === 'get') {
 									this.index = i;
 									break;
 								}
@@ -443,7 +449,8 @@
 					set_list(list, arr, required) {
 						if (arr) {
 							var params = this.param.list;
-							for (var i = 0; i < arr.length; i++) {
+							var len = arr.length;
+							for (let i = 0; i < len; i++) {
 								var k = arr[i];
 								var o = params.getObj({
 									name: k
@@ -462,7 +469,7 @@
 						var cg = this.config;
 						if (cg.contentType) {
 							type = cg.contentType;
-						} else if (cg.type == "web") {
+						} else if (cg.type === "web") {
 							type = "HTML"
 						} else {
 							type = 'JSON';
@@ -527,7 +534,7 @@
 				},
 				created() {
 					var arr = location.search.replace('?', '').split("&");
-					for (var i = 0; i < arr.length; i++) {
+					for (let i = 0; i < arr.length; i++) {
 						var ar = arr[i].split("=");
 						if (ar.length > 1) {
 							this.query[ar[0]] = ar[1];
