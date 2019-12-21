@@ -1,5 +1,13 @@
 # 欢迎使用 《超级美眉》
 
+![](https://img.shields.io/badge/npm-2.6-red)
+![](https://img.shields.io/badge/node-12.0-brightgreen)
+![](https://img.shields.io/github/issues/qiuwenwu/mm_node)
+![](https://img.shields.io/github/stars/qiuwenwu/mm_node)
+![](https://img.shields.io/github/license/qiuwenwu/mm_node)
+![](https://img.shields.io/github/forks/qiuwenwu/mm_node)
+![](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fqiuwenwu%2Fmm_node)
+
 **一个很好玩的服务端！ 从今天开始，会设计数据库就会开发服务端。**
 
 ![](https://github.com/qiuwenwu/mm_node/blob/master/static/img/logo.png?raw=true)
