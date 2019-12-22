@@ -98,7 +98,7 @@ Cmd.prototype.run = async function(msg, db, table) {
 		if (!ret) {
 			var content = msg.content;
 			var lt = this.list;
-			for (let i = 0, o; o = lt[i++];) {
+			for (var i = 0, o; o = lt[i++];) {
 				if (o.onOff) {
 					var ret = await o.run_first(msg, db);
 					if (ret) {

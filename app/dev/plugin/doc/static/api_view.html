@@ -339,7 +339,7 @@
 
 						var list = [];
 						var len = lt.length;
-						for (let i = 0; i < len; i++) {
+						for (var i = 0; i < len; i++) {
 							var o = $.copy(lt[i]);
 							delete o.description;
 							delete o.dataType;
@@ -372,7 +372,8 @@
 						var arr = this['list_' + type];
 						if (arr) {
 							var code = "{";
-							for (let i = 0; i < arr.length; i++) {
+							var len = arr.length;
+							for (var i = 0; i < len; i++) {
 								var o = arr[i];
 								var val = '';
 								var p = o.type;
@@ -436,7 +437,7 @@
 							list.clear();
 							list.addList(m.split(' '));
 							var len = list.length;
-							for (let i = 0; i < len; i++) {
+							for (var i = 0; i < len; i++) {
 								if (list[i] === 'get') {
 									this.index = i;
 									break;
@@ -450,7 +451,7 @@
 						if (arr) {
 							var params = this.param.list;
 							var len = arr.length;
-							for (let i = 0; i < len; i++) {
+							for (var i = 0; i < len; i++) {
 								var k = arr[i];
 								var o = params.getObj({
 									name: k
@@ -534,7 +535,8 @@
 				},
 				created() {
 					var arr = location.search.replace('?', '').split("&");
-					for (let i = 0; i < arr.length; i++) {
+					var len = arr.length;
+					for (var i = 0; i < len; i++) {
 						var ar = arr[i].split("=");
 						if (ar.length > 1) {
 							this.query[ar[0]] = ar[1];

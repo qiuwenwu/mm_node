@@ -1,7 +1,6 @@
 const Item = require('mm_machine').Item;
 
 function span(t1, t2) {
-	console.log(t1, t2, t1 - t2);
 	return t1 - t2
 }
 

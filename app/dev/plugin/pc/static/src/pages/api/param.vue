@@ -174,7 +174,7 @@
 						"func_name": "",
 						"method": "",
 						"cache": 0,
-						"client_cache": true,
+						"client_cache": false,
 						"param_path": "",
 						"sql_path": "",
 						"check_param": true,

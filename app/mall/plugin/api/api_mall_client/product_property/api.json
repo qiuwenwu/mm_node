@@ -1,0 +1,25 @@
+{
+    "name": "mall_product_property",
+    "title": "商品属性",
+    "description": "包含商品规格、参数等，用JSON格式保存",
+    "path": "/api/mall/product_property",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "",
+    "func_name": "",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true,
+    "oauth": {
+        "scope": true,
+        "signIn": false,
+        "vip": 0,
+        "gm": 0,
+        "mc": 0,
+        "user_admin": [],
+        "user_group": []
+    }
+}

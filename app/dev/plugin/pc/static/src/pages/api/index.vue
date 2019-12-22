@@ -136,7 +136,7 @@
 					"func_name": "",
 					"method": "GET",
 					"cache": 0,
-					"client_cache": true,
+					"client_cache": false,
 					"param_path": "",
 					"sql_path": "",
 					"check_param": true,
@@ -203,7 +203,7 @@
 					"contentType": "",
 					"method": "GET",
 					"cache": 0,
-					"client_cache": true,
+					"client_cache": false,
 					"oauth": {
 						"scope": true,
 						"signIn": false,

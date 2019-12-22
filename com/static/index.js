@@ -33,19 +33,21 @@ class Static extends Index {
 		 * @param {Object} next 跳过函数
 		 */
 		Static.prototype.run = async function(ctx, next) {
-			if (ctx.method === 'HEAD' || ctx.method === 'GET') {
+			const md = ctx.method;
+			if (md === 'HEAD' || md === 'GET') {
 				var path = ctx.request.path;
+				var q = ctx.request.querystring;
 				var list = $this.list;
-				const len = list.length;
-				for (let i = 0; i < len; i++) {
+				var len = list.length;
+				for (var i = 0; i < len; i++) {
 					var o = list[i];
 					var p = o.config.path;
 					if (path === p) {
 						await next();
 						done = ' ';
 						if (ctx.status === 404) {
-							if (ctx.request.querystring) {
-								ctx.redirect(p + '/?' + ctx.request.querystring);
+							if (q) {
+								ctx.redirect(p + '/?' + q);
 							} else {
 								ctx.redirect(p + '/');
 							}

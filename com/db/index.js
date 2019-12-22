@@ -53,10 +53,7 @@ DB.prototype.load = function(path) {
  */
 DB.prototype.getObj = function(table) {
 	var obj;
-	var list = this.list;
-	const len = list.length;
-	for (let i = 0; i < len; i++) {
-		var o = list[i];
+	for (var i = 0, o; o = list[i++];) {
 		if (o.config.table === table) {
 			obj = o;
 			break;
@@ -86,7 +83,7 @@ DB.prototype.update_config = async function(db, name, table) {
 		if (len > 0) {
 			var lt = [];
 			const len = list.length;
-			for (let i = 0; i < len; i++) {
+			for (var i = 0; i < len; i++) {
 				var te = list[i];
 				var obj = this.getObj(te);
 				if (obj) {
@@ -125,16 +122,14 @@ DB.prototype.update_db = async function(db, name, table, all) {
 		const len = list.length;
 		if (len > 0) {
 			if (table) {
-				for (let i = 0; i < len; i++) {
-					var o = list[i];
+				for (var i = 0, o; o = list[i++];) {
 					if (o.config.table === table) {
 						ret = await o.update_db(db);
 						break;
 					}
 				}
 			} else if (all) {
-				for (let i = 0; i < len; i++) {
-					var o = list[i];
+				for (var i = 0, o; o = list[i++];) {
 					await o.update_db(db);
 				}
 			}

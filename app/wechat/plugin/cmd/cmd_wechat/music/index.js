@@ -41,7 +41,7 @@ async function get_music(music_name) {
 					"cv": 0
 				}
 			};
-			var data_str = encodeURIComponent($.toJson(data));
+			var data_str = encodeURIComponent(JSON.stringify(data));
 			res = await http.get("https://u.y.qq.com/cgi-bin/musicu.fcg?format=json&data=" + data_str);
 			if (res.body) {
 				var music = res.body.toJson().req_0.data;

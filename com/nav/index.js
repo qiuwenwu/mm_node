@@ -28,9 +28,7 @@ class Nav extends Index {
 Nav.prototype.run = async function(name, type) {
 	var obj = new this.Drive();
 	var list = this.list;
-	const len = list.length;
-	for (let i = 0; i < len; i++) {
-		var o = list[i].config;
+	for (var i = 0, o; o = list[i++];) {
 		if (o.name == name) {
 			obj.merge(o);
 		}
@@ -56,7 +54,7 @@ Nav.prototype.run = async function(name, type) {
  */
 Nav.prototype.sort = async function() {
 	var lt = this.list;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		o.sort();
 	}
 	lt.sort(function(o1, o2) {

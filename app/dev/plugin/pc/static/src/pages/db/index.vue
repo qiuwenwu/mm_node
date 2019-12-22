@@ -152,7 +152,7 @@
 					var lt = this.list;
 					kw = '*' + kw + '*';
 					var len = lt.length;
-					for (let i = 0; i < len; i++) {
+					for (var i = 0; i < len; i++) {
 						var o = lt[i];
 						if (o.name.has(kw) || o.title.has(kw)) {
 							list.push(o);

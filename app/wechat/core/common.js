@@ -50,7 +50,7 @@ async function get_config(AppId, db) {
 	var cg = null;
 	if (config && config.public) {
 		var arr = config.public;
-		for (let i = 0; i < arr.length; i++) {
+		for (var i = 0; i < arr.length; i++) {
 			var o = arr[i];
 			if (AppId === o.AppId) {
 				cg = o;
@@ -72,7 +72,7 @@ async function get_talk_config(AppId, db) {
 	var cg = null;
 	if (config && config.talk) {
 		var arr = config.talk;
-		for (let i = 0; i < arr.length; i++) {
+		for (var i = 0; i < arr.length; i++) {
 			var o = arr[i];
 			if (AppId === o.AppId) {
 				cg = o;

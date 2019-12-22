@@ -115,7 +115,9 @@ Drive.prototype.run = function(type) {
  */
 Drive.prototype.merge_sub = function(arr, lt) {
 	if (lt) {
-		for (let i = 0, o; o = lt[i++];) {
+		const len = lt.length;
+		for (var i = 0; i < len; i++) {
+			var o = lt[i];
 			if (o.name) {
 				var item = arr.getMatch(o.name, 'name');
 				if (item) {
@@ -313,7 +315,7 @@ Drive.prototype.new_config = function(file) {
 		"display": 0,
 		"sub": nav
 	}];
-	file.saveText($.toJson(cg, true));
+	file.saveText(JSON.stringify(cg, true));
 };
 
 /**

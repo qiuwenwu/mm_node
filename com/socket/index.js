@@ -29,7 +29,7 @@ Socket.prototype.run = async function(ctx, next) {
 	await next(ctx);
 	var list = this.list;
 	const path = ctx.path;
-	for (let i = 0, o; o = list[i++];) {
+	for (var i = 0, o; o = list[i++];) {
 		if (path === o.config.path) {
 			o.add(ctx);
 			break;
@@ -48,7 +48,7 @@ Socket.prototype.load = function(path) {
 	}
 	// 获取所有应用路径
 	var list_scope = $.dir.getAll(path, "socket");
-	
+
 	// 遍历目录路径
 	var _this = this;
 	list_scope.map(async function(f) {

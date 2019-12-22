@@ -62,12 +62,10 @@ module.exports = {
 		};
 		db.size = 10;
 		var list = await db.get();
-		
+
 		if (list.length > 0) {
 			var obj;
-			const len = list.length;
-			for (let i = 0; i < len; i++) {
-				var o = list[i];
+			for (var i = 0, o; o = list[i++];) {
 				if (o.form) {
 					if (o.stage === 2 || o.stage === 3) {
 						obj = o;

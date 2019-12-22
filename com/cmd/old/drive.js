@@ -142,7 +142,9 @@ Drive.prototype.how = async function(param, db) {
 	var cg = this.config;
 	var lt = cg.condition.how;
 	var content = param.content;
-	for (let i = 0, o; o = lt[i++];) {
+	const len = lt.length;
+	for (var i = 0; i < len; i++) {
+		var o = lt[i];
 		var str = o.not_match;
 		if (str) {
 			if (str.startWith('/')) {
@@ -221,7 +223,7 @@ Drive.prototype.supply = async function(content, db) {
 		arr.addList(post.body);
 		arr.addList(post.body_required);
 		var list = cg.list;
-		for (let i = 0; i < arr.length; i++) {
+		for (var i = 0; i < arr.length; i++) {
 			var k = arr[i];
 			var o = list[k];
 			if (o.string) {
@@ -258,7 +260,7 @@ Drive.prototype.supply = async function(content, db) {
  */
 Drive.prototype.check = async function(form, db, first) {
 	var func = new Param();
-	db.msg_log.form = $.toJson(form);
+	db.msg_log.form = JSON.stringify(form);
 };
 
 /**
@@ -328,7 +330,7 @@ Drive.prototype.match = function(content, db) {
 	var cg = this.config;
 	var lt = cg.match;
 	var bl = false;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		if (content.matchs(o)) {
 			bl = true;
 			break;
@@ -347,7 +349,7 @@ Drive.prototype.not_match = function(content, db) {
 	var cg = this.config;
 	var lt = cg.not_match;
 	var bl = true;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		if (content.matchs(o)) {
 			bl = false;
 			break;
@@ -366,7 +368,7 @@ Drive.prototype.filter = async function(content, db) {
 	var cg = this.config;
 	var lt = cg.filter;
 	var bl = false;
-	for (let i = 0, str; str = lt[i++];) {
+	for (var i = 0, str; str = lt[i++];) {
 		if (str.startWith('/')) {
 			try {
 				var rx = eval(str);
@@ -391,7 +393,7 @@ Drive.prototype.extract = async function(content, db) {
 	var cg = this.config;
 	var lt = cg.extract;
 	var bl = false;
-	for (let i = 0, str; str = lt[i++];) {
+	for (var i = 0, str; str = lt[i++];) {
 		if (str.startWith('/')) {
 			try {
 				var rx = eval(str);

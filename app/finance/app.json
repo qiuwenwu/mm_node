@@ -1,0 +1,10 @@
+{
+	"name": "finance",
+	"title": "金融分析器",
+	"description": "该应用用于分析股票、数字货币走势",
+	"version": "1.0",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "",
+	"sort": 10
+}

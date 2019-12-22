@@ -23,7 +23,7 @@ class Web extends Index {
  */
 Web.prototype.run = async function() {
 	var lt = this.list;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		o.run();
 	}
 };

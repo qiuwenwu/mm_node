@@ -28,16 +28,13 @@ class Pay extends Index {
  */
 Pay.prototype.run = function(process, contract, db) {
 	var app = contract.app;
-	if(!app){
+	if (!app) {
 		return $.ret.error(30000, "应用名称(app)参数不能为空");
 	}
 	var ret;
 	var lt = this.list;
-	const len = lt.length;
-	for (let i = 0; i < len; i++) {
-		var o = lt[i];
-		if(o.config.app === app)
-		{
+	for (var i = 0, o; o = lt[i++];) {
+		if (o.config.app === app) {
 			ret = o.run(process, contract, db);
 			break;
 		}
@@ -54,7 +51,7 @@ Pay.prototype.init = function(option) {
 	var ret = "";
 	var lt = this.list;
 	var len = lt.length;
-	for (let i = 0; i < len; i++) {
+	for (var i = 0; i < len; i++) {
 		ret = this.lt[i].init(option);
 	}
 	return ret;

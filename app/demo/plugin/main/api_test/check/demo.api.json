@@ -8,7 +8,7 @@
     "func_name": "",
     "method": "ALL",
     "cache": 0,
-    "client_cache": true,
+    "client_cache": false,
     "param_path": "./index.param.json",
     "sql_path": "./index.sql.json",
     "check_param": true

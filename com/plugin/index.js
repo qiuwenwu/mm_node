@@ -28,7 +28,7 @@ class Plugin extends Index {
 Plugin.prototype.run = function(param1, param2) {
 	var ret;
 	var lt = this.list;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		if (o.onOff) {
 			ret = o.run(param1, param2);
 			if (ret && o.end) {
@@ -53,7 +53,7 @@ Plugin.prototype.run = function(param1, param2) {
 Plugin.prototype.chat = async function(from_user, to_user, group, content, type, msg_type, db) {
 	var ret = "";
 	var lt = this.list;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		if (o.onOff) {
 			ret = await o.chat(from_user, to_user, group, content, type, msg_type, db);
 			if (ret) {
@@ -72,7 +72,7 @@ Plugin.prototype.chat = async function(from_user, to_user, group, content, type,
 Plugin.prototype.cmd = async function(content) {
 	var ret = "";
 	var lt = this.list;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		if (o.onOff) {
 			var cmd = o.config.cmd;
 			if (cmd && content.startsWith(cmd)) {
@@ -97,7 +97,7 @@ Plugin.prototype.cmd = async function(content) {
 Plugin.prototype.exec = function(name, method, option) {
 	var ret = "";
 	var lt = this.list;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		var name = o.config.name;
 		if (o.onOff && name === name) {
 			var func = o[method];
@@ -118,7 +118,7 @@ Plugin.prototype.exec = function(name, method, option) {
 Plugin.prototype.init = function(option) {
 	var ret = "";
 	var lt = this.list;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		ret = o.init(option);
 	}
 	return ret;

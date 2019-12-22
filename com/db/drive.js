@@ -222,7 +222,7 @@ Drive.prototype.update_config = async function(db, cover) {
 
 	// 获取所有字段
 	var fields = await db.fields();
-	for (let i = 0; i < fields.length; i++) {
+	for (var i = 0; i < fields.length; i++) {
 		var field = this.model(fields[i]);
 		list.push(field);
 	}
@@ -247,7 +247,7 @@ Drive.prototype.update_db = async function(db) {
 	if (fields.length === 0) {
 		var k = cg.key;
 		const len = list.length;
-		for (let i = 0; i < len; i++) {
+		for (var i = 0; i < len; i++) {
 			var o = list[i];
 			if (k === o.name) {
 				await db.addTable(cg.table, o.name, o.type, o.auto);
@@ -260,7 +260,7 @@ Drive.prototype.update_db = async function(db) {
 	}
 	if (fields.length > 0) {
 		// 删除配置中没有的字段
-		for (let i = 0; i < fields.length; i++) {
+		for (var i = 0; i < fields.length; i++) {
 			var o = fields[i];
 			var obj = list.getObj({
 				name: o.name
@@ -273,7 +273,7 @@ Drive.prototype.update_db = async function(db) {
 
 		// 添加或修改配置
 		const len = list.length;
-		for (let i = 0; i < len; i++) {
+		for (var i = 0; i < len; i++) {
 			var o = list[i];
 			var arr = fields.get({
 				name: o.name
@@ -526,7 +526,9 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 	var orderby = "";
 	var id = $.dict.user_id;
 	// 设置sql模板
-	for (let i = 0, o; o = lt[i++];) {
+	const len = lt.length;
+	for (var i = 0; i < len; i++) {
+		var o = lt[i];
 		var p = o.type;
 		var n = o.name;
 		if (n.indexOf('password') === -1 && n.indexOf('salt') === -1) {
@@ -651,7 +653,9 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 		},
 		list: []
 	};
-	for (let i = 0, o; o = lt[i++];) {
+	const len = lt.length;
+	for (var i = 0; i < len; i++) {
+		var o = lt[i];
 		var p = o.type;
 		var n = o.name;
 
@@ -828,7 +832,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
  */
 Drive.prototype.isSet = function(name, arr) {
 	var bl = false;
-	for (let i = 0; i < arr.length; i++) {
+	for (var i = 0; i < arr.length; i++) {
 		if (name.indexOf(arr[i]) !== -1) {
 			bl = true;
 			break;
@@ -859,7 +863,7 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 		"path": p,
 		"method": "ALL",
 		"cache": 0,
-		"client_cache": true,
+		"client_cache": false,
 		"param_path": "./param.json",
 		"sql_path": "./sql.json",
 		"check_param": true
@@ -872,7 +876,7 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 		var lt = cg.fields;
 		// 判断该表是否含用户ID，如果含有则需要验证才能访问
 		var has = false;
-		for (let i = 0, item; item = lt[i++];) {
+		for (var i = 0, item; item = lt[i++];) {
 			var name = item.name;
 			if (name == $.dict.user_id || name === 'uid' || name === 'user_id' || name === 'userid') {
 				has = true;

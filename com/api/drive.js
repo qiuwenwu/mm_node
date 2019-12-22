@@ -63,7 +63,7 @@ class Drive extends Item {
 			// 缓存时长 (单位：秒) 默认：60秒，建议600秒
 			"cache": 0,
 			// 是否用客户端缓存，即 http 304 状态
-			"client_cache": true,
+			"client_cache": false,
 			// param参数验证路径 例如: ./param.json
 			"param_path": "",
 			// sql模板路径 例如: ./sql.json
@@ -103,7 +103,9 @@ Drive.prototype.setParam = function(param) {
 		var lt = $.param.list;
 		if (lt) {
 			var has = false;
-			for (let i = 0, o; o = lt[i++];) {
+			const len = lt.length;
+			for (var i = 0; i < len; i++) {
+				var o = lt[i];
 				if (param.filename === o.filename) {
 					$.param.list[i] = param;
 					has = true;
@@ -161,7 +163,9 @@ Drive.prototype.setSql = function(sql) {
 		var lt = $.sql.list;
 		if (lt) {
 			var has = false;
-			for (let i = 0, o; o = lt[i++];) {
+			const len = lt.length;
+			for (var i = 0; i < len; i++) {
+				var o = lt[i];
 				if (sql.filename === o.filename) {
 					$.sql.list[i] = sql;
 					has = true;
@@ -371,7 +375,7 @@ Drive.prototype.body = function(ret, res, t) {
 				res.type = type;
 			}
 			if (type.indexOf('/json') !== -1 || type.indexOf('form') !== -1) {
-				return $.toJson(ret);
+				return JSON.stringify(ret);
 			} else {
 				return $.toXml(ret);
 			}

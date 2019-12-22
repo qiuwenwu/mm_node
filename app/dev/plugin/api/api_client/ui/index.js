@@ -7,39 +7,33 @@
 async function load(file, domain) {
 	var vue = "";
 	var f = ('/static' + file).fullname();
-	if(f.hasFile()){
+	if (f.hasFile()) {
 		vue = f.loadText();
-	}
-	else {
+	} else {
 		var http = new $.Http();
 		var f = "";
-		if(file.indexOf('./') === 0){
+		if (file.indexOf('./') === 0) {
 			f = file.replace('./', domain + '/')
 			console.log(f);
-		}
-		else {
+		} else {
 			f = domain + file
 		}
 		var res = await http.get(f);
-		if(res.body)
-		{
+		if (res.body) {
 			vue = res.body;
 		}
 	}
-	if(!vue){
+	if (!vue) {
 		return null;
 	}
 	var tpl = vue.between("<template>", "</template>").trim();
 	var script = vue.between("<script>", "</script>").trim();
 	var p = "template: `" + tpl + "`,";
-	if(script.indexOf('template') !== -1)
-	{
+	if (script.indexOf('template') !== -1) {
 		script = script.replace(/template:.*,\r\n/gi, p + '\r\n');
-	}
-	else if(!script){
+	} else if (!script) {
 		script = "export default {\r\n" + p.trim(',') + "\r\n}";
-	}
-	else {
+	} else {
 		script = script.replace(/export default[ ]?{/gi, "export default {\r\n" + p);
 	}
 	return script;
@@ -52,11 +46,13 @@ async function load(file, domain) {
  * @param {String} domain 域名
  * @return {String} 修改失败返回错误信息，成功返回空
  */
-async function change_file(file, txt, domain) { 
+async function change_file(file, txt, domain) {
 	var arr = txt.split('\r\n');
-	
+
 	var obj = {};
-	for(let i = 0, o; o = arr[i++];){
+	const len = arr.length;
+	for (var i = 0; i < len; i++) {
+		var o = arr[i];
 		if (o.indexOf('import') === 0 && o.indexOf('from') !== -1) {
 			var key = (o + '').between('import', 'from').trim();
 			var value = (o + '').right('from ').left(';', true).trim("'");
@@ -70,12 +66,10 @@ async function change_file(file, txt, domain) {
 	}
 	var f = file.replace('.js', '.min.js');
 	var text = txt + '';
-	for(var k in obj){
+	for (var k in obj) {
 		var o = obj[k];
-		if(o)
-		{
-			if(o.content)
-			{
+		if (o) {
+			if (o.content) {
 				var t = o.content.replace('export default ', '\r\nvar ' + k + " = ");
 				text = text.replace(o.line, t.trim('\r\n') + ';\r\n');
 			}
@@ -83,22 +77,21 @@ async function change_file(file, txt, domain) {
 	}
 	var m = {};
 	var ar = text.split('\r\n');
-	const len = ar.length;
-	for(let i = 0; i < len; i++){
+	const l = ar.length;
+	for (var i = 0; i < l; i++) {
 		var o = ar[i];
 		if (o.indexOf('import') === 0 && o.indexOf('from') !== -1) {
 			var key = (o + '').between('import', 'from').trim();
 			m[key] = o;
 		}
 	}
-	
+
 	var importM = "";
-	for(var k in m){
+	for (var k in m) {
 		var line = m[k];
-		if(line)
-		{
+		if (line) {
 			text = text.replaceAll(line, '');
-			if(line.indexOf('.vue') === -1){
+			if (line.indexOf('.vue') === -1) {
 				importM += line + '\r\n';
 			}
 		}
@@ -126,12 +119,11 @@ async function main(ctx, db) {
 			var txt = f.loadText();
 			if (txt) {
 				var url = q['url'];
-				if(url){
-					if(url.indexOf('http') !== 0){
+				if (url) {
+					if (url.indexOf('http') !== 0) {
 						url = req.origin + url;
 					}
-				}
-				else {
+				} else {
 					url = req.origin;
 				}
 				var msg = await change_file(f, txt, url);

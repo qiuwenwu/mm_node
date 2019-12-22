@@ -152,7 +152,7 @@ dev.prototype.get = async function(req, db) {
 				var lt = cs.list;
 				var list = [];
 				const len = lt.length;
-				for (let i = 0; i < len; i++) {
+				for (var i = 0; i < len; i++) {
 					var cg = lt[i].config;
 					list.push({
 						name: cg.name,

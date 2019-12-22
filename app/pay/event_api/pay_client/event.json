@@ -1,0 +1,10 @@
+[{
+	"target": "/api/pay/*",
+	"name": "api_pay",
+	"title": "pay的客户端api接口",
+	"description": "用于支付访问接口",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 100
+}]

@@ -30,7 +30,7 @@ async function main(ctx, db) {
 	// var count = await db2.count(q);
 
 	// ret = await db2.getSql("`name` like '%asd3%'");
-	// return $.toJson('{ "test": 123 }');
+	// return JSON.stringify('{ "test": 123 }');
 	// console.log(ret);
 	// var ret = $.list(list, count);
 	// ret.id = id;

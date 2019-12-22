@@ -1,0 +1,47 @@
+{
+    "name": "pay_trade",
+    "title": "交易信息",
+    "table": "pay_trade",
+    "key": "trade_id",
+    "orderby_default": "`trade_id` desc",
+    "field_default": "`trade_id`,`state`,`from_user_id`,`to_user_id`,`seller_id`,`total`,`amount`,`fee`,`create_time`,`pay_time`,`end_time`,`update_time`,`platform`,`way`,`app`,`institution`,`title`,`transaction_id`,`ip`,`from_user`,`to_user`,`description`,`note`,`content`",
+    "method": "get",
+    "query": {
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "total_min": "`total` >= {0}",
+        "total_max": "`total` <= {0}",
+        "amount_min": "`amount` >= {0}",
+        "amount_max": "`amount` <= {0}",
+        "fee_min": "`fee` >= {0}",
+        "fee_max": "`fee` <= {0}",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "pay_time_min": "`pay_time` >= '{0}'",
+        "pay_time_max": "`pay_time` <= '{0}'",
+        "end_time_min": "`end_time` >= '{0}'",
+        "end_time_max": "`end_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'",
+        "platform": "`platform` like '%{0}%'",
+        "way": "`way` like '%{0}%'",
+        "app": "`app` like '%{0}%'",
+        "institution": "`institution` like '%{0}%'",
+        "title": "`title` like '%{0}%'",
+        "transaction_id": "`transaction_id` like '%{0}%'",
+        "ip": "`ip` like '%{0}%'",
+        "from_user": "`from_user` like '%{0}%'",
+        "to_user": "`to_user` like '%{0}%'",
+        "description": "`description` like '%{0}%'",
+        "note": "`note` like '%{0}%'",
+        "content": "`content` like '%{0}%'"
+    },
+    "query_default": {},
+    
+    "update": {
+        "state_add": "`state` = `state` + {0}",
+        "total_add": "`total` = `total` + {0}",
+        "amount_add": "`amount` = `amount` + {0}",
+        "fee_add": "`fee` = `fee` + {0}"
+    }
+}

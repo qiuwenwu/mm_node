@@ -9,7 +9,7 @@ async function getCode(db, username, password) {
 	var str = (date.toISOString() + username + password).md5();
 	
 	var code = "";
-	for (let i = 0; i < 20; i++) {
+	for (var i = 0; i < 20; i++) {
 		var c = str.substring(0, 8);
 		var count = await db.count('`invite_code`=' + c);
 		if(count === 0){
@@ -57,7 +57,7 @@ async function main(ctx, db) {
 	if (index > 0) {
 		return $.ret.error(true, '注册成功');
 	} else {
-		return $.ret.error(10000, '数据库业务逻辑错误。 ' + $.toJson(db.error, true));
+		return $.ret.error(10000, '数据库业务逻辑错误。 ' + JSON.stringify(db.error, true));
 	}
 };
 

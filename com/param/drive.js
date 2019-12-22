@@ -86,7 +86,7 @@ class Drive extends Item {
 Drive.prototype.updateCheck = function() {
 	var lt = this.config.list;
 	var len = lt.length;
-	for (let i = 0; i < len; i++) {
+	for (var i = 0; i < len; i++) {
 		var o = lt[i];
 		if (!o.check) {
 			lt[i] = new Check(o);
@@ -186,7 +186,7 @@ Drive.prototype.check_item = function(model, value, method) {
 Drive.prototype.getModel = function(name) {
 	var model;
 	var lt = this.config.list;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		if (o['name'] === name) {
 			model = o;
 			break;
@@ -204,7 +204,7 @@ Drive.prototype.getModel = function(name) {
  */
 Drive.prototype.check_sub = function(params, arr, required) {
 	var msg;
-	for (let i = 0; i < arr.length; i++) {
+	for (var i = 0; i < arr.length; i++) {
 		var k = arr[i];
 		var o = this.getModel(k);
 		if (o) {
@@ -284,7 +284,7 @@ Drive.prototype.check = function(query, body, method) {
 	if (!msg) {
 		var ar = m['body_not'];
 		if (ar && body && ar.length > 0) {
-			for (let i = 0; i < ar.length; i++) {
+			for (var i = 0; i < ar.length; i++) {
 				var k = ar[i];
 				delete body[k];
 			}

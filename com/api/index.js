@@ -44,7 +44,7 @@ Api.prototype.run = async function(ctx, db) {
 	}
 	const path = ctx.request.path;
 	var lt = this.list;
-	for (let i = 0, o; o = lt[i++];) {
+	for (var i = 0, o; o = lt[i++];) {
 		if (o.onOff && path.has(o.config.path)) {
 			var ret = await o.run(ctx, db);
 			if (ret) {
