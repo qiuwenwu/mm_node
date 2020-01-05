@@ -2,9 +2,9 @@
 	<mm_page class="page_btn">
 		<mm_body>
 			<mm_warp>
-				<mm_div url="/">
+				<mm_view url="/">
 					<div class="h3">栅格<span>&lt; 返回</span></div>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">常见栅格布局</div>
 				<mm_grid class="center mm_grid-x">
@@ -55,40 +55,40 @@
 				</div>
 				<mm_grid :col="col" class="center mm_grid-x">
 					<mm_col>
-						<mm_div>1</mm_div>
+						<mm_view>1</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>2</mm_div>
+						<mm_view>2</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>3</mm_div>
+						<mm_view>3</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>4</mm_div>
+						<mm_view>4</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>5</mm_div>
+						<mm_view>5</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>6</mm_div>
+						<mm_view>6</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>7</mm_div>
+						<mm_view>7</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>8</mm_div>
+						<mm_view>8</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>9</mm_div>
+						<mm_view>9</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>10</mm_div>
+						<mm_view>10</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>11</mm_div>
+						<mm_view>11</mm_view>
 					</mm_col>
 					<mm_col>
-						<mm_div>12</mm_div>
+						<mm_view>12</mm_view>
 					</mm_col>
 				</mm_grid>
 
@@ -96,7 +96,7 @@
 				</div>
 				<mm_grid class="center mm_grid-x mm_grid-sm">
 					<mm_col v-for="(o, idx) in num" :key="idx">
-						<mm_div>{{ o }}</mm_div>
+						<mm_view>{{ o }}</mm_view>
 					</mm_col>
 				</mm_grid>
 			</mm_warp>

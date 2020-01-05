@@ -40,14 +40,16 @@ define(function() {
 			// 对象
 			obj: {
 				type: Object,
-				default: function _default() {
-					return {};
+				default: function () {
+					return {
+						url: ""
+					};
 				}
 			},
 			// 视图模型
 			vm: {
 				type: Object,
-				default: function _default() {
+				default: function () {
 					return {
 						// 当前ID
 						id: 'id',
@@ -60,7 +62,9 @@ define(function() {
 						// 标题
 						title: 'title',
 						// 描述
-						desc: 'desc',
+						description: 'description',
+						// 图片
+						image: 'image',
 						// 内容
 						content: 'content',
 						// 时间

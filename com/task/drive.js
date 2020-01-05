@@ -68,42 +68,46 @@ class Drive extends Item {
 Drive.prototype.setPeriod = function(_this, func) {
 	var cg = _this.config;
 	var fn;
-	if (cg.time) {
-		if (cg.time.indexOf(' ') !== -1) {
-			if (cg.time.indexOf('-') !== -1) {
+	var time = cg.time;
+	if (time) {
+		if (time.indexOf(' ') !== -1) {
+			if (time.indexOf('-') !== -1) {
 				fn = function() {
-					if (new Date().toStr('MM-dd hh:mm:ss') == cg.time) {
+					if (new Date().toStr('MM-dd hh:mm:ss') === time) {
 						func();
 					}
 				};
 			} else {
 				fn = function() {
-					if (new Date().toStr('dd hh:mm:ss') == cg.time) {
+					if (new Date().toStr('dd hh:mm:ss') === time) {
 						func();
 					}
 				};
 			}
 		}
-		var arr = cg.time.split(':');
-		if (arr.length === 3) {
-			fn = function() {
-				if (new Date().toStr('hh:mm:ss') == cg.time) {
-					func();
-				}
-			};
-		} else if (arr.length === 2) {
-			fn = function() {
-				if (new Date().toStr('hh:mm') == cg.time) {
-					func();
-				}
-			};
-		} else {
-			fn = function() {
-				if (new Date().toStr('mm') == cg.time) {
-					func();
-				}
-			};
+		else {
+			var arr = time.split(':');
+			if (arr.length === 3) {
+				fn = function() {
+					if (new Date().toStr('hh:mm:ss') === time) {
+						func();
+					}
+				};
+			} else if (arr.length === 2) {
+				fn = function() {
+					if (new Date().toStr('hh:mm') === time) {
+						func();
+					}
+				};
+			} else {
+				fn = function() {
+					if (new Date().toStr('mm') === time) {
+						func();
+					}
+				};
+			}
 		}
+		
 	} else {
 		fn = func;
 	}
@@ -182,22 +186,22 @@ Drive.prototype.del = async function(name) {
 Drive.prototype.notify = async function(name, message) {
 	switch (message) {
 		case "start":
-			console.log(name + '任务已开启');
+			// console.log(name + '任务已开启');
 			break;
 		case "stop":
-			console.log(name + '已暂停');
+			// console.log(name + '已暂停');
 			break;
 		case "end":
 			// 主动中断
-			console.log(name + '已结束');
+			// console.log(name + '已结束');
 			break;
 		case "end time":
-			console.log(name + '时间到');
+			// console.log(name + '时间到');
 			// 删除任务
 			this.del(name)
 			break;
 		case "completed":
-			console.log(name + '已完成');
+			// console.log(name + '已完成');
 			// 删除任务
 			this.del(name)
 			break;

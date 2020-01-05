@@ -24,20 +24,20 @@
 		padding: 2rem 0;
 		position: relative;
 	}
-	
+
 	[class*=page_] .h3 {
 		padding-bottom: 0.5rem;
 		margin-bottom: 1rem;
 		border-bottom: 1px solid #dbdbdb;
 	}
-	
+
 	[class*=page_] .h3 span {
 		float: right;
 		color: #999;
 		font-size: 1rem;
 		padding-top: 0.75rem;
 	}
-	
+
 	[class*=page_] .h5 {
 		display: block;
 		margin-top: 2rem;

@@ -10,6 +10,7 @@ $.event_admin = require('../com/event').event_admin;
 $.task_admin = require('../com/task').task_admin;
 $.db_admin = require('../com/db').db_admin;
 $.cmd_admin = require('../com/cmd').cmd_admin;
+$.html = require('mm_html');
 
 // 加载全局配置
 $.config = "./config.json".loadJson(__dirname);

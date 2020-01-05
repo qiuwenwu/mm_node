@@ -1,6 +1,6 @@
 {
   "name": "mm_node",
-  "version": "1.3.0",
+  "version": "1.0.0",
   "description": "这是超级美眉基于nodeJS和Koa开发的服务端框架，可用于中小型商城和游戏、CMS。",
   "main": "main.js",
   "scripts": {
@@ -24,7 +24,9 @@
   ],
   "author": "邱文武",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "loadtest": "*"
+  },
   "dependencies": {
     "babel-preset-es2015": "^6.24.1",
     "koa": "^2.8.1",
@@ -35,7 +37,8 @@
     "mm_cache": "^1.3.1",
     "mm_check": "^1.2.8",
     "mm_crypto": "^1.0.3",
-    "mm_https": "^1.3.2",
+    "mm_html": "^1.0.0",
+    "mm_https": "^1.3.3",
     "mm_machine": "^1.3.3",
     "mm_matchs": "^1.0.2",
     "mm_mongodb": "^1.2.9",
@@ -45,7 +48,7 @@
     "mm_ret": "^1.2.9",
     "mm_session": "^1.3.1",
     "mm_statics": "^1.3.2",
-    "mm_timer": "^1.2.8",
+    "mm_timer": "^1.2.9",
     "mm_tpl": "^1.2.7",
     "mm_xml": "^1.0.6",
     "njwt": "^1.0.0",

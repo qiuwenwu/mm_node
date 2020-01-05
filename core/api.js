@@ -2,10 +2,6 @@
 var event_api = $.event_admin('api');
 event_api.update();
 
-// 定义模板引擎全局数据模型
-var tpl = new $.Tpl('sys', './app/');
-tpl.globalBag.server = "mm";
-
 /**
  * @description 处理接口请求
  * @param {Object} ctx 请求上下文
@@ -14,8 +10,7 @@ tpl.globalBag.server = "mm";
 module.exports = async function(ctx, next) {
 	var db = {
 		next: next,
-		ret: null,
-		tpl: tpl
+		ret: null
 	};
 	var ret = await event_api.run(ctx.path, ctx, db);
 	if (ret) {

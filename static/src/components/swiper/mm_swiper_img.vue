@@ -2,9 +2,9 @@
 	<!-- 轮播图 -->
 	<div class="swiper-container mm_swiper_img" indicator-dots autoplay circular :interval="5000">
 		<div class="swiper-slide" v-for="(o, idx) in list" :key="idx">
-			<mm_div :to="o[vm.url]">
+			<mm_view :to="o[vm.url]">
 				<mm_icon :src="o[vm.img]"></mm_icon>
-			</mm_div>
+			</mm_view>
 		</div>
 		<slot></slot>
 	</div>

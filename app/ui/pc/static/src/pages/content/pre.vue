@@ -2,25 +2,25 @@
 	<mm_page class="page_btn">
 		<mm_body>
 			<mm_warp>
-				<mm_div url="/">
+				<mm_view url="/">
 					<div class="h3">源代码<span>&lt; 返回</span></div>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">带复制</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_pre :code="code">
 						<code class="javascript"></code>
 					</mm_pre>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">不带复制</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_pre>
 						<code class="typescript">
 							{{ code }}
 						</code>
 					</mm_pre>
-				</mm_div>
+				</mm_view>
 			</mm_warp>
 		</mm_body>
 	</mm_page>

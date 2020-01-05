@@ -2,12 +2,12 @@
 	<mm_page class="page_btn">
 		<mm_body>
 			<mm_warp>
-				<mm_div url="/">
+				<mm_view url="/">
 					<div class="h3">组合框<span>&lt; 返回</span></div>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">输入框组合</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_group class="ba">
 						<input type="text" />
 						<mm_btn>按钮</mm_btn>
@@ -35,10 +35,10 @@
 						<input type="text" />
 						<mm_btn>按钮</mm_btn>
 					</mm_group>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">按钮组合</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_group class="ba">
 						<mm_btn>按钮</mm_btn>
 						<mm_btn>按钮</mm_btn>
@@ -48,7 +48,7 @@
 						<mm_btn type="warning">取消</mm_btn>
 						<mm_btn type="success">确定</mm_btn>
 					</mm_group>
-				</mm_div>
+				</mm_view>
 			</mm_warp>
 		</mm_body>
 	</mm_page>
@@ -58,7 +58,7 @@
 </script>
 
 <style>
-	.btn_3 .mm_group {
+	.btn-3 .mm_group {
 		margin-bottom: 1rem;
 	}
 </style>

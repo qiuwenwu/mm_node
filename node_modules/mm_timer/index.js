@@ -95,41 +95,44 @@ Timer.prototype.setPeriod = function(func) {
 	var _this = this;
 	var cg = this.config;
 	var fn;
-	if (cg.time) {
-		if (cg.time.indexOf(' ') !== -1) {
-			if (cg.time.indexOf('-') !== -1) {
+	var time = time;
+	if (time) {
+		if (time.indexOf(' ') !== -1) {
+			if (time.indexOf('-') !== -1) {
 				fn = function() {
-					if (new Date().toStr('MM-dd hh:mm:ss') == cg.time) {
+					if (new Date().toStr('MM-dd hh:mm:ss') === time) {
 						func();
 					}
 				};
 			} else {
 				fn = function() {
-					if (new Date().toStr('dd hh:mm:ss') == cg.time) {
+					if (new Date().toStr('dd hh:mm:ss') === time) {
 						func();
 					}
 				};
 			}
 		}
-		var arr = cg.time.split(':');
-		if (arr.length == 3) {
-			fn = function() {
-				if (new Date().toStr('hh:mm:ss') == cg.time) {
-					func();
-				}
-			};
-		} else if (arr.length == 2) {
-			fn = function() {
-				if (new Date().toStr('hh:mm') == cg.time) {
-					func();
-				}
-			};
-		} else {
-			fn = function() {
-				if (new Date().toStr('mm') == cg.time) {
-					func();
-				}
-			};
+		else {
+			var arr = time.split(':');
+			if (arr.length == 3) {
+				fn = function() {
+					if (new Date().toStr('hh:mm:ss') === time) {
+						func();
+					}
+				};
+			} else if (arr.length == 2) {
+				fn = function() {
+					if (new Date().toStr('hh:mm') === time) {
+						func();
+					}
+				};
+			} else {
+				fn = function() {
+					if (new Date().toStr('mm') === time) {
+						func();
+					}
+				};
+			}
 		}
 	} else {
 		fn = func;

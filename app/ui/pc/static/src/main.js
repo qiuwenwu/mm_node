@@ -22,7 +22,7 @@ require({
 		mm_component: '/src/mm_component',
 		mm_ui_expand: '/js/mm_ui_expand',
 		swiper: '/js/swiper.min',
-		
+		mm_flexble: '/js/mm_flexble',
 		store: './store',
 		router: './router'
 	},
@@ -56,10 +56,12 @@ require({
 			'templateVar': '__template__'
 		}
 	}
-}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'mm_ui_expand', 'clipboard', 'vue!./App.vue', 'mm_component'], function(Vue,
+}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'mm_ui_expand', 'clipboard', 'vue!./App.vue', 'mm_component',
+	'mm_flexble'
+], function(Vue,
 	mm_sdk,
 	mm_vue, store, router,
-	ui, mm_ui_expand, clipboard, app, mm_component) {
+	ui, mm_ui_expand, clipboard, app, mm_component, mm_flexble) {
 	// 开启调试模式
 	Vue.config.debug = true;
 	// 使用UI组件
@@ -67,10 +69,8 @@ require({
 
 	Vue.use(mm_vue);
 	Vue.use(ui);
-	setTimeout(function(){
-		Vue.use(mm_component);
-	}, 2000);
-	
+	Vue.use(mm_component);
+
 	/**
 	 * @description 初始化整个Vue应用程序
 	 * 由于组件预先注册的标记名而自动放置的组件头将在应用程序模板中找到

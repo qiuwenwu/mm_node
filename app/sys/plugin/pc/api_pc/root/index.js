@@ -8,6 +8,7 @@ const file = __dirname + '/index.html';
  */
 async function main(ctx, db) {
 	var model = { name: "超级美眉", age: 18, sex: true };
+	db.tpl.globalBag.server = "mm";
 	return db.tpl.view(file, model);
 }
 

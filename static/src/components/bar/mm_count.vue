@@ -9,7 +9,7 @@
 		props: {
 			
 		},
-		data() {
+		data() { return {};
 		}
 	}
 </script>

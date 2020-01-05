@@ -23,8 +23,6 @@ class Static extends Index {
 		this.Drive = Drive;
 		this.type = "static";
 
-
-
 		var $this = this;
 
 		/**

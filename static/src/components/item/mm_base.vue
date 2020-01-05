@@ -15,6 +15,8 @@
 	export default {
 		mixins: [mixin],
 		data() {
+			return {
+			};
 		}
 	}
 </script>

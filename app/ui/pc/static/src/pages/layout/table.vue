@@ -2,17 +2,17 @@
 	<mm_page class="page_btn">
 		<mm_body>
 			<mm_warp>
-				<mm_div url="/">
+				<mm_view url="/">
 					<div class="h3">表格<span>&lt; 返回</span></div>
-				</mm_div>
+				</mm_view>
 
-				<mm_div>
+				<mm_view>
 					<mm_btn type="info" @click.native="small = !small">切换大小</mm_btn>
 					<mm_btn type="info" @click.native="set_color()">反色</mm_btn>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式一</div>
-				<mm_div class="">
+				<mm_view class="">
 
 					<mm_table :type="type" class="table-hover" :class="{'table-sm': small }">
 						<thead>
@@ -44,10 +44,10 @@
 							</tr>
 						</tbody>
 					</mm_table>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式二</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_table :type="type" class="table-striped table-hover" :class="{'table-sm': small }">
 						<thead>
 							<tr>
@@ -78,10 +78,10 @@
 							</tr>
 						</tbody>
 					</mm_table>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式三</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_table :type="type" class="table-bordered table-hover" :class="{'table-sm': small }">
 						<thead>
 							<tr>
@@ -112,10 +112,10 @@
 							</tr>
 						</tbody>
 					</mm_table>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式四</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_table :type="type" class="table-bordered table-striped table-hover" :class="{'table-sm': small }">
 						<thead>
 							<tr>
@@ -146,7 +146,7 @@
 							</tr>
 						</tbody>
 					</mm_table>
-				</mm_div>
+				</mm_view>
 			</mm_warp>
 		</mm_body>
 	</mm_page>

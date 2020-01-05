@@ -16,6 +16,13 @@ define(["Vue", "VueRouter"], function(Vue, VueRouter) {
 				return require(['vue!./pages/index.vue'], resolve);
 			}
 		},
+		{
+			// 设计规范
+			path: "/design",
+			component: function(resolve) {
+				return require(['vue!./pages/design.vue'], resolve);
+			}
+		},
 		/* 内容 */
 		{
 			// 按钮

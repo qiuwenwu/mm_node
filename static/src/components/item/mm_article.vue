@@ -6,7 +6,7 @@
 		<div class="desc">{{ obj[vm.desc] }}</div>
 		<div class="time">{{ obj[vm.time] }}</div>
 		<div class="collect" v-if="obj[vm.collect] && show" @click="run('collect', obj)">
-			<span class="fa fa-heart" v-bind:class="{ 'font_default': obj[vm.collect] }"></span>
+			<span class="fa fa-heart" v-bind:class="{ 'font-default': obj[vm.collect] }"></span>
 			<span>{{ obj[vm.collect] }}</span></div>
 		<div class="tag" v-html="obj[vm.tag]"></div>
 	</div>

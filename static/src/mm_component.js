@@ -19,7 +19,6 @@ import mm_media from '/src/components/item/mm_media.vue';
 import mm_message from '/src/components/item/mm_message.vue';
 import mm_music from '/src/components/item/mm_music.vue';
 import mm_news from '/src/components/item/mm_news.vue';
-import mm_number from '/src/components/item/mm_number.vue';
 import mm_question from '/src/components/item/mm_question.vue';
 import mm_user from '/src/components/item/mm_user.vue';
 import mm_video from '/src/components/item/mm_video.vue';
@@ -56,7 +55,6 @@ export default {
 
 		Vue.component('mm_music', mm_music);
 		Vue.component('mm_news', mm_news);
-		Vue.component('mm_number', mm_number);
 		Vue.component('mm_question', mm_question);
 		Vue.component('mm_user', mm_user);
 		Vue.component('mm_video', mm_video);

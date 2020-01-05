@@ -11,7 +11,7 @@ $.nav.update();
 $.task = $.task_admin('sys');
 $.task.update();
 // 启动计时器
-// $.timer.start();
+$.timer.start();
 
 // 将Api的缓存改为cache方式
 // $.cache = $.cache_admin();
@@ -32,8 +32,6 @@ module.exports = function(app) {
 	
 	// 使用MM事件 + 接口处理器, 如果不使用则可注释
 	app.use(api);
-	
-
 	
 	// 如果使用koa默认路由方式, 可以写在这里
 	// console.log('自定义的初始化函数');

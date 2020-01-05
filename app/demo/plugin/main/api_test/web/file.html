@@ -14,5 +14,11 @@
 		</div><img src="/img/logo.png" />
 		<div>${'应用名称：' + viewBag.app}</div>
 		<div>${'所使用的服务器：' + globalBag.server}</div>
+		<div>${'所使用的服务器：' + globalBag.server}</div>
+		<ul>
+		  <% for(let i=0; i < model.list.length; i++) { %>
+		    <li><%= model.list.ip %></li>
+		  <% } %>
+		</ul>
 	</body>
 </html>

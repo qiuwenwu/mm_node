@@ -44,10 +44,11 @@
 		font-size: 0.625rem;
 		display: none;
 	}
+
 	.mm_code:hover .copy_btn {
 		display: block;
 	}
-	
+
 	.mm_code .copy_btn:active {
 		background: #f5f5f5;
 	}

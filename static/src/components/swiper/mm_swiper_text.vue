@@ -3,7 +3,7 @@
 	<div class="swiper-container mm_swiper_text" autoplay circular vertical>
 		<div class="swiper-wrapper">
 			<div class="swiper-slide" v-for="(o, idx) in list" :key="idx">
-				<nuxt-link class="mm_div" :to="o[vm.url]">
+				<nuxt-link class="mm_view" :to="o[vm.url]">
 					{{ o[vm.title] }}
 				</nuxt-link>
 			</div>
@@ -46,7 +46,7 @@
 		height: 2.5rem;
 	}
 
-	.mm_swiper_text .mm_div {
+	.mm_swiper_text .mm_view {
 		color: #666;
 		padding: 0 1rem;
 		font-size: 85%;

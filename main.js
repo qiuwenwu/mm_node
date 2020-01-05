@@ -1,6 +1,4 @@
 const path = require('path');
-const http = require('http');
-const https = require('https');
 const Koa = require('koa');
 const statics = require('mm_statics');
 const bodyParser = require("koa-bodyparser");

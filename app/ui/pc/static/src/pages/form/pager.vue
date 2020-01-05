@@ -2,36 +2,36 @@
 	<mm_page class="page_pager">
 		<mm_body>
 			<mm_warp>
-				<mm_div url="/">
+				<mm_view url="/">
 					<div class="h3">分页器<span>&lt; 返回</span></div>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式一</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_pager v-model="query.page" :count="count / query.size" :func="goTo"></mm_pager>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式二</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_pager class="mm_pager-x" v-model="query.page" :count="count / query.size" :func="goTo"></mm_pager>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式三</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_pager display="2" v-model="query.page" :count="count / query.size" :func="goTo"></mm_pager>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式四</div>
-				<mm_div class="">
+				<mm_view class="">
 					<mm_pager display="2" v-model="query.page" :count="count / query.size" :func="goTo" :icons="['首页', '上一页', '下一页', '尾页']"></mm_pager>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5"></div>
-				<mm_div class="">
+				<mm_view class="">
 					<p>当前：弟 {{ query.page }} 页</p>
 					<p>每页显示：{{ query.size }} 条</p>
 					<p>总计：{{ count }} 条</p>
-				</mm_div>
+				</mm_view>
 			</mm_warp>
 		</mm_body>
 	</mm_page>

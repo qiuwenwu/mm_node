@@ -251,7 +251,7 @@ function __dealCssEvent(eventNameArr, callback) {
 				var button = params[i][j];
 				var buttonClass = button.label ? "actions-modal-label" : "actions-modal-button";
 				if (button.bold) buttonClass += " actions-modal-button-bold";
-				if (button.color) buttonClass += " font_" + button.color;
+				if (button.color) buttonClass += " font-" + button.color;
 				if (button.bg) buttonClass += " bg_" + button.bg;
 				if (button.disabled) buttonClass += " disabled";
 				buttonsHTML += "<span class=\"" + buttonClass + "\">" + button.text + "</span>";

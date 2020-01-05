@@ -3,9 +3,9 @@
 	<div class="swiper-container mm_swiper_card" indicatorDots autoplay>
 		<div class="swiper-wrapper">
 			<div class="swiper-slide" v-for="(o, idx) in list" :key="idx">
-				<mm_div :to="o[vm.url]">
+				<mm_view :to="o[vm.url]">
 					<mm_icon :src="o[vm.img]"></mm_icon>
-				</mm_div>
+				</mm_view>
 			</div>
 			<slot></slot>
 		</div>

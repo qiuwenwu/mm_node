@@ -4,7 +4,7 @@
 		<mm_icon :src="obj[vm.icon]"></mm_icon>
 		<div class="title">{{ obj[vm.title] }}</div>
 		<div class="desc">
-			<div class="collect" v-if="obj.users && obj.users.length > 0"><span class="fa fa-heart" v-bind:class="{ 'font_default': has_collect(obj.users) }"></span><span>{{ obj[vm.collect] }}</span></div>
+			<div class="collect" v-if="obj.users && obj.users.length > 0"><span class="fa fa-heart" v-bind:class="{ 'font-default': has_collect(obj.users) }"></span><span>{{ obj[vm.collect] }}</span></div>
 		</div>
 	</div>
 </template>

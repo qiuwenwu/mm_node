@@ -52,9 +52,9 @@
 					</tbody>
 				</mm_table>
 				<div v-else>
-					<mm_div class="none">
+					<mm_view class="none">
 						<div class="h5">该作用域下没有接口</div>
-					</mm_div>
+					</mm_view>
 				</div>
 			</mm_body>
 			<mm_body class="dev_body" v-if="query.name">

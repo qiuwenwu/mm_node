@@ -1,0 +1,44 @@
+/* 图片 */
+.mm_img {
+	margin: .5rem;
+	border: 1px solid #DBDBDB;
+	box-shadow: 0 0.125rem .25rem 0 rgba(0, 0, 0, .1);
+	border-radius: 2%;
+	overflow: hidden;
+	position: relative;
+}
+
+.mm_img .box {
+	padding: .5rem;
+}
+
+.mm_img .title {
+	line-height: 1.5rem;
+	font-size: .75rem;
+	text-align: center;
+}
+
+.mm_img .desc {
+	font-size: .75rem;
+}
+
+.mm_img .title {
+	margin: .5rem .75rem;
+}
+
+.mm_img .desc {
+	margin: .25rem .75rem 1rem .75rem;
+}
+
+.mm_img .tag {
+	position: absolute;
+	right: 0;
+	top: .5rem;
+	font-size: .625rem;
+	color: #fff;
+	padding: .125rem .75rem;
+	background: #44b549;
+	border-radius: .25rem 0 0 .25rem;
+}
+
+/* 文章 */

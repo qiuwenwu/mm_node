@@ -2,19 +2,19 @@
 	<mm_page class="page_checkbox">
 		<mm_body>
 			<mm_warp>
-				<mm_div url="/">
+				<mm_view url="/">
 					<div class="h3">复选框<span>&lt; 返回</span></div>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式一(PC)</div>
-				<mm_div class="pc">
+				<mm_view class="pc">
 					<mm_checkbox v-model="value" :options="options" :disabled="true"></mm_checkbox>
-				</mm_div>
+				</mm_view>
 
 				<div class="h5">样式二(mobile)</div>
-				<mm_div class="mobile">
+				<mm_view class="mobile">
 					<mm_checkbox v-model="value" :options="options"></mm_checkbox>
-				</mm_div>
+				</mm_view>
 			</mm_warp>
 		</mm_body>
 	</mm_page>
