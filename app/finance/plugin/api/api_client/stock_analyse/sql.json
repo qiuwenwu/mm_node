@@ -1,0 +1,27 @@
+{
+    "name": "finance_stock_analyse",
+    "title": "",
+    "table": "finance_stock_analyse",
+    "key": "analyse_id",
+    "orderby_default": "`analyse_id` desc",
+    "field_default": "`analyse_id`,`weight`,`update_time`,`datetime`,`code`,`action`,`policy`,`presage`,`tip`,`predict`",
+    "method": "get",
+    "query": {
+        "weight_min": "`weight` >= {0}",
+        "weight_max": "`weight` <= {0}",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'",
+        "datetime_min": "`datetime` >= '{0}'",
+        "datetime_max": "`datetime` <= '{0}'",
+        "code": "`code` like '%{0}%'",
+        "action": "`action` like '%{0}%'",
+        "policy": "`policy` like '%{0}%'",
+        "presage": "`presage` like '%{0}%'",
+        "tip": "`tip` like '%{0}%'",
+        "predict": "`predict` like '%{0}%'"
+    },
+    "query_default": {},
+    "update": {
+        "weight_add": "`weight` = `weight` + {0}"
+    }
+}

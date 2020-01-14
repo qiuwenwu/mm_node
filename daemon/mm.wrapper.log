@@ -1,0 +1,123 @@
+2020-01-06 10:02:05 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Administrator\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file E:\mm_koa\main.js --log "mm wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-06 10:02:06 - Started 2396
+2020-01-07 02:30:54 - Stopping mm.exe
+2020-01-07 02:30:54 - ProcessKill 2396
+2020-01-07 02:30:55 - Shutdown exception
+Message:系统正在关机。 (异常来自 HRESULT:0x8007045B)
+Stacktrace:   在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Management.ManagementScope.InitializeGuts(Object o)
+   在 System.Management.ManagementScope.Initialize()
+   在 System.Management.ManagementObjectSearcher.Initialize()
+   在 System.Management.ManagementObjectSearcher.Get()
+   在 winsw.WrapperService.GetChildPids(Int32 pid)
+   在 winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   在 winsw.WrapperService.StopIt()
+   在 winsw.WrapperService.OnShutdown()
+2020-01-07 08:24:38 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Administrator\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file E:\mm_koa\main.js --log "mm wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-07 08:24:38 - Started 4604
+2020-01-07 11:54:50 - Stopping mm.exe
+2020-01-07 11:54:50 - ProcessKill 4604
+2020-01-07 11:54:52 - Shutdown exception
+Message:系统正在关机。 (异常来自 HRESULT:0x8007045B)
+Stacktrace:   在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Management.ManagementScope.InitializeGuts(Object o)
+   在 System.Management.ManagementScope.Initialize()
+   在 System.Management.ManagementObjectSearcher.Initialize()
+   在 System.Management.ManagementObjectSearcher.Get()
+   在 winsw.WrapperService.GetChildPids(Int32 pid)
+   在 winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   在 winsw.WrapperService.StopIt()
+   在 winsw.WrapperService.OnShutdown()
+2020-01-07 13:45:06 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Administrator\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file E:\mm_koa\main.js --log "mm wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-07 13:45:06 - Started 4720
+2020-01-08 07:42:06 - Stopping mm.exe
+2020-01-08 07:42:06 - ProcessKill 4720
+2020-01-08 07:42:07 - Found child process: 4740 Name: conhost.exe
+2020-01-08 07:42:07 - Found child process: 4344 Name: node.exe
+2020-01-08 07:42:07 - Stopping process 4740
+2020-01-08 07:42:07 - Send SIGINT 4740
+2020-01-08 07:42:07 - SIGINT to 4740 failed - Killing as fallback
+2020-01-08 07:42:07 - Stopping process 4344
+2020-01-08 07:42:07 - Send SIGINT 4344
+2020-01-08 07:42:07 - SIGINT to 4344 failed - Killing as fallback
+2020-01-08 07:42:07 - Stopping process 4720
+2020-01-08 07:42:07 - Send SIGINT 4720
+2020-01-08 07:42:07 - SIGINT to 4720 failed - Killing as fallback
+2020-01-08 07:42:07 - Finished mm.exe
+2020-01-10 13:43:01 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Administrator\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file E:\mm_koa\main.js --log "mm wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-10 13:43:01 - Started 4296
+2020-01-10 15:42:17 - Stopping mm.exe
+2020-01-10 15:42:17 - ProcessKill 4296
+2020-01-10 15:42:18 - Shutdown exception
+Message:系统正在关机。 (异常来自 HRESULT:0x8007045B)
+Stacktrace:   在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Management.ManagementScope.InitializeGuts(Object o)
+   在 System.Management.ManagementScope.Initialize()
+   在 System.Management.ManagementObjectSearcher.Initialize()
+   在 System.Management.ManagementObjectSearcher.Get()
+   在 winsw.WrapperService.GetChildPids(Int32 pid)
+   在 winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   在 winsw.WrapperService.StopIt()
+   在 winsw.WrapperService.OnShutdown()
+2020-01-10 19:08:21 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Administrator\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file E:\mm_koa\main.js --log "mm wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-10 19:08:21 - Started 4492
+2020-01-11 00:42:45 - Stopping mm.exe
+2020-01-11 00:42:45 - ProcessKill 4492
+2020-01-11 00:42:47 - Shutdown exception
+Message:系统正在关机。 (异常来自 HRESULT:0x8007045B)
+Stacktrace:   在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Management.ManagementScope.InitializeGuts(Object o)
+   在 System.Management.ManagementScope.Initialize()
+   在 System.Management.ManagementObjectSearcher.Initialize()
+   在 System.Management.ManagementObjectSearcher.Get()
+   在 winsw.WrapperService.GetChildPids(Int32 pid)
+   在 winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   在 winsw.WrapperService.StopIt()
+   在 winsw.WrapperService.OnShutdown()
+2020-01-11 09:51:24 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Administrator\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file E:\mm_koa\main.js --log "mm wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-11 09:51:24 - Started 4688
+2020-01-11 23:28:24 - Stopping mm.exe
+2020-01-11 23:28:24 - ProcessKill 4688
+2020-01-11 23:28:26 - Shutdown exception
+Message:系统正在关机。 (异常来自 HRESULT:0x8007045B)
+Stacktrace:   在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Management.ManagementScope.InitializeGuts(Object o)
+   在 System.Management.ManagementScope.Initialize()
+   在 System.Management.ManagementObjectSearcher.Initialize()
+   在 System.Management.ManagementObjectSearcher.Get()
+   在 winsw.WrapperService.GetChildPids(Int32 pid)
+   在 winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   在 winsw.WrapperService.StopIt()
+   在 winsw.WrapperService.OnShutdown()
+2020-01-12 08:43:02 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Administrator\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file E:\mm_koa\main.js --log "mm wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-12 08:43:02 - Started 4428
+2020-01-14 00:19:14 - Stopping mm.exe
+2020-01-14 00:19:14 - ProcessKill 4428
+2020-01-14 00:19:16 - Shutdown exception
+Message:系统正在关机。 (异常来自 HRESULT:0x8007045B)
+Stacktrace:   在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Management.ManagementScope.InitializeGuts(Object o)
+   在 System.Management.ManagementScope.Initialize()
+   在 System.Management.ManagementObjectSearcher.Initialize()
+   在 System.Management.ManagementObjectSearcher.Get()
+   在 winsw.WrapperService.GetChildPids(Int32 pid)
+   在 winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   在 winsw.WrapperService.StopIt()
+   在 winsw.WrapperService.OnShutdown()
+2020-01-14 13:52:10 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Administrator\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file E:\mm_koa\main.js --log "mm wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-14 13:52:10 - Started 4516
+2020-01-14 21:00:55 - Stopping mm.exe
+2020-01-14 21:00:55 - ProcessKill 4516
+2020-01-14 21:00:56 - Shutdown exception
+Message:系统正在关机。 (异常来自 HRESULT:0x8007045B)
+Stacktrace:   在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Management.ManagementScope.InitializeGuts(Object o)
+   在 System.Management.ManagementScope.Initialize()
+   在 System.Management.ManagementObjectSearcher.Initialize()
+   在 System.Management.ManagementObjectSearcher.Get()
+   在 winsw.WrapperService.GetChildPids(Int32 pid)
+   在 winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   在 winsw.WrapperService.StopIt()
+   在 winsw.WrapperService.OnShutdown()
+2020-01-14 21:01:46 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 C:\Users\Administrator\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file E:\mm_koa\main.js --log "mm wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-01-14 21:01:46 - Started 4468

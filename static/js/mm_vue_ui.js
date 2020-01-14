@@ -1144,7 +1144,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_code = {
-		template: "<!-- \u9A8C\u8BC1\u7801 --><div class=\"mm_code\"><mm_icon :icon=\"icon\"></mm_icon><div class=\"mm_title\" v-if=\"title\">{{ title }}</div><slot><mm_group><input type=\"text\" :value=\"value\" :placeholder=\"desc\" @input=\"$emit('input', $event.target.value)\"></input><button :class=\"'btn-' + type\" v-html=\"btn\"></button></mm_group></slot><mm_tip v-if=\"tip\" v-html=\"tip\"></mm_tip></div>",
+		template: "<!-- \u9A8C\u8BC1\u7801 --><div class=\"mm_code\"><mm_icon :icon=\"icon\"></mm_icon><div class=\"title\" v-if=\"title\">{{ title }}</div><slot><mm_group><input type=\"text\" :value=\"value\" :placeholder=\"desc\" @input=\"$emit('input', $event.target.value)\"></input><button :class=\"'btn-' + type\" v-html=\"btn\"></button></mm_group></slot><div class=\"tip\" v-if=\"tip\" v-html=\"tip\"></div></div>",
 		mixins: [form_mixin],
 		props: {
 			btn: {

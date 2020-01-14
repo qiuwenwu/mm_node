@@ -22,7 +22,6 @@ require({
 		mm_component: '/src/mm_component',
 		mm_ui_expand: '/js/mm_ui_expand',
 		swiper: '/js/swiper.min',
-		mm_flexble: '/js/mm_flexble',
 		store: './store',
 		router: './router'
 	},
@@ -56,12 +55,10 @@ require({
 			'templateVar': '__template__'
 		}
 	}
-}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'mm_ui_expand', 'clipboard', 'vue!./App.vue', 'mm_component',
-	'mm_flexble'
-], function(Vue,
+}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'mm_ui_expand', 'clipboard', 'vue!./App.vue', 'mm_component'], function(Vue,
 	mm_sdk,
 	mm_vue, store, router,
-	ui, mm_ui_expand, clipboard, app, mm_component, mm_flexble) {
+	ui, mm_ui_expand, clipboard, app, mm_component) {
 	// 开启调试模式
 	Vue.config.debug = true;
 	// 使用UI组件

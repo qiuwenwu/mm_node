@@ -1,0 +1,24 @@
+{
+    "name": "finance_stock",
+    "title": "",
+    "table": "finance_stock",
+    "key": "stock_id",
+    "orderby_default": "`stock_id` desc",
+    "field_default": "`stock_id`,`name`,`code`,`company`,`description`,`profit`,`bonus`",
+    "method": "get",
+    "query": {
+        "name": "`name` like '%{0}%'",
+        "code": "`code` like '%{0}%'",
+        "company": "`company` like '%{0}%'",
+        "description": "`description` like '%{0}%'",
+        "profit_min": "`profit` >= {0}",
+        "profit_max": "`profit` <= {0}",
+        "bonus_min": "`bonus` >= {0}",
+        "bonus_max": "`bonus` <= {0}"
+    },
+    "query_default": {},
+    "update": {
+        "profit_add": "`profit` = `profit` + {0}",
+        "bonus_add": "`bonus` = `bonus` + {0}"
+    }
+}

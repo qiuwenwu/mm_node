@@ -1,0 +1,11 @@
+{
+    "name": "finance_stock_info",
+    "title": "",
+    "description": "",
+    "path": "/api/finance/stock_info",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "check_param": true,
+	"func_file": "./index.js"
+}

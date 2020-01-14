@@ -1,0 +1,13 @@
+{
+	"title": "股票早盘抓取任务",
+	"description": "每天早上10点准时抓取股票信息, 然后加以分析存储",
+	"name": "stock",
+	"func_file": "./index.js",
+	"num": 0,
+	"interval": 1000,
+	"wait": 0,
+	"time": "23:53",
+	"date_start": "",
+	"date_end": "",
+	"sort": 100
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<title>W3C规范页面示例</title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 页面框架 -->
+			<div class="page">
+				<!-- 页眉 -->
+				<div class="head">
+					<!-- 顶部导航模块 -->
+					<div class="view" id="nav_top">
+						<!-- 导航栏 （可封装成组件） -->
+						<div class="bar_nav">
+							<a href="/"><span>首页</span></a>
+							<a href="/news"><span>新闻</span></a>
+							<a href="/doc"><span>文档</span></a>
+						</div>
+					</div>
+				</div>
+				<!-- 页主体 -->
+				<div class="body">
+					<!-- 主要文章模块 -->
+					<div class="block" id="article_main">
+						<!-- 标题栏 -->
+						<div class="bar_title">
+							<div class="title"><span>最新文章</span></div>
+						</div>
+						<!-- 文章列表（可封装成组件） -->
+						<div class="list_article">
+							<!-- 列表项 -->
+							<a href="/article_view?article_id=1">
+								<div class="icon">
+									<img src="/static/img/logo.png" alt="对应标题"/>
+								</div>
+								<div class="info">
+									<div class="title"><span>标题</span></div>
+									<div class="desc"><span>描述</span></div>
+								</div>
+							</a>
+							<a href="/article_view?article_id=2">
+								<div class="icon">
+									<img src="/static/img/logo.png" alt="对应标题"/>
+								</div>
+								<div class="info">
+									<div class="title"><span>标题</span></div>
+									<div class="desc"><span>描述</span></div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- 页脚 -->
+				<div class="foot">
+					<!-- 底部标签栏模块 -->
+					<div class="block" id="tags_bottom">
+						<!-- 标签栏（可封装成组件） -->
+						<div class="bar_tags">
+							<!-- 标签项 -->
+							<a href="/article_view?article_id=1">
+								<div class="icon">
+									<img src="/static/img/logo.png" alt="首页"/>
+								</div>
+								<div class="info">
+									<div class="title"><span>首页</span></div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- 模态窗 -->
+				<div class="modal">
+					<!-- 账户登录模块 -->
+					<div class="block" id="account_login">
+						<!-- 账户表单（可封装成组件） -->
+						<div class="form_account">
+							<div class="item">
+								<label>用户名</label><input name="username" type="text" value="" />
+							</div>
+							<div class="item">
+								<label>密码</label><input name="password" type="text" value="" />
+							</div>
+							<div class="item">
+								<button name="login"><span>登录</span></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

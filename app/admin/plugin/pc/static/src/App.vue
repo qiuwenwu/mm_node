@@ -1,8 +1,8 @@
 <template>
 	<div id="app" class="mm_page">
 		<mm_head id="head">
-			<div class="logo_box" :style="'width: ' + width + 'px'" @click="$router.push('/')">
-				<mm_icon class="logo" src="/img/logo.png"></mm_icon>
+			<div class="logo" :style="'width: ' + width + 'px'" @click="$router.push('/')">
+				<mm_icon src="/img/logo.png"></mm_icon>
 				<span>超级美眉</span>
 			</div>
 			<nav_quick></nav_quick>
@@ -154,7 +154,7 @@
 		position: relative;
 	}
 
-	.logo_box {
+	.logo {
 		min-width: 12rem;
 		height: 2.5rem;
 		padding: 0 1rem;
@@ -163,7 +163,7 @@
 		position: relative;
 	}
 
-	.logo_box:before {
+	.logo:before {
 		content: "";
 		display: block;
 		position: absolute;
@@ -173,7 +173,7 @@
 		left: 0;
 	}
 
-	.logo_box:after {
+	.logo:after {
 		content: "";
 		display: block;
 		position: absolute;
@@ -183,20 +183,15 @@
 		top: 0;
 	}
 
-	.logo_box span {
+	.logo span {
 		line-height: 2.5rem;
 	}
-
-	.logo {
+	
+	.logo .mm_icon {
 		float: left;
 		width: 1.5rem;
 		margin-top: 0.45rem;
 		margin-right: 1rem;
-	}
-
-	.logo img {
-		width: 1.5rem;
-		height: 1.5rem;
 	}
 
 	#tabs {

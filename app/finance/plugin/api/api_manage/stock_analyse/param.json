@@ -1,0 +1,217 @@
+{
+    "name": "finance_stock_analyse2",
+    "title": "",
+    "add": {
+        "body": [
+            "weight",
+            "update_time",
+            "datetime",
+            "code",
+            "action",
+            "policy",
+            "presage",
+            "tip",
+            "predict"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "analyse_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "analyse_id",
+            "weight_min",
+            "weight_max"
+        ],
+        "query_required": [],
+        "body": [
+            "weight",
+            "weight_add",
+            "update_time",
+            "datetime",
+            "code",
+            "action",
+            "policy",
+            "presage",
+            "tip",
+            "predict"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "analyse_id",
+            "weight_min",
+            "weight_max",
+            "update_time_min",
+            "update_time_max",
+            "datetime_min",
+            "datetime_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "analyse_id",
+            "title": "分析ID",
+            "description": "用来查询和修改结果",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "weight",
+            "title": "权重得分",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "weight_min",
+            "title": "权重得分——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "weight_max",
+            "title": "权重得分——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "datetime",
+            "title": "当日时间",
+            "description": "指股票当天",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "datetime_min",
+            "title": "当日时间——开始时间",
+            "description": "指股票当天",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "datetime_max",
+            "title": "当日时间——结束时间",
+            "description": "指股票当天",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "code",
+            "title": "股票代码",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "action",
+            "title": "行动方式",
+            "description": "买、卖、留",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "policy",
+            "title": "决策",
+            "description": "buy买, sell买, hold留，如果没买有，留就是观察",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "presage",
+            "title": "预示得分",
+            "description": "today今日, recently近日, next之后（后市）",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "tip",
+            "title": "分析提示",
+            "description": "告诉技术分析",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "predict",
+            "title": "预言",
+            "description": "告知近日和将来走势",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}
