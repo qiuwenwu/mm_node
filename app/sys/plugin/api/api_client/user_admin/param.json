@@ -21,13 +21,10 @@
     "set": {
         "query": [
             "admin_id",
-            "display",
             "display_min",
             "display_max",
-            "type",
             "name",
-            "description",
-            "icon"
+            "description"
         ],
         "query_required": [],
         "body": [
@@ -44,13 +41,10 @@
     "get": {
         "query": [
             "admin_id",
-            "display",
             "display_min",
             "display_max",
-            "type",
             "name",
-            "description",
-            "icon"
+            "description"
         ],
         "query_required": []
     },

@@ -15,7 +15,6 @@
         "icon": "`icon` like '%{0}%'"
     },
     "query_default": {},
-    
     "update": {
         "display_add": "`display` = `display` + {0}"
     }

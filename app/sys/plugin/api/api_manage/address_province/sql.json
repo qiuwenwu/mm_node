@@ -12,7 +12,6 @@
         "display_max": "`display` <= {0}",
         "name": "`name` like '%{0}%'"
     },
-    
     "update": {
         "show_add": "`show` = `show` + {0}",
         "display_add": "`display` = `display` + {0}"

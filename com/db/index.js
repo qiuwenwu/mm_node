@@ -53,6 +53,7 @@ DB.prototype.load = function(path) {
  */
 DB.prototype.getObj = function(table) {
 	var obj;
+	var list = this.list;
 	for (var i = 0, o; o = list[i++];) {
 		if (o.config.table === table) {
 			obj = o;

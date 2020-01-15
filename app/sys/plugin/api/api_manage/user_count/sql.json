@@ -37,7 +37,6 @@
         "coin_min": "`coin` >= {0}",
         "coin_max": "`coin` <= {0}"
     },
-    
     "update": {
         "level_add": "`level` = `level` + {0}",
         "iq_add": "`iq` = `iq` + {0}",

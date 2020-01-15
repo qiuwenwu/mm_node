@@ -34,7 +34,6 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
-    
     "update": {
         "encrypt_add": "`encrypt` = `encrypt` + {0}",
         "times_allow_add": "`times_allow` = `times_allow` + {0}",

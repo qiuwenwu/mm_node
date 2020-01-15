@@ -4,7 +4,7 @@
     "table": "wechat_message",
     "key": "message_id",
     "orderby_default": "`message_id` desc",
-    "field_default": "`message_id`,`end`,`stage`,`update_time`,`create_time`,`msg_type`,`from_user`,`to_user`,`group`,`type`,`robot`,`cmd`,`check`,`keyword`,`note`,`form`,`content`",
+    "field_default": "`message_id`,`end`,`create_time`,`update_time`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`content`,`note`,`msg_type`,`form`,`stage`",
     "query": {
         "create_time_min": "`create_time` >= '{0}'",
         "create_time_max": "`create_time` <= '{0}'",

@@ -1,0 +1,232 @@
+{
+    "name": "pay_account_amount",
+    "title": "账户余额",
+    "add": {
+        "body": [
+            "usd",
+            "cny",
+            "mm",
+            "btc",
+            "eth",
+            "eos"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "seller_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "seller_id",
+            "usd_min",
+            "usd_max",
+            "cny_min",
+            "cny_max",
+            "mm_min",
+            "mm_max",
+            "btc_min",
+            "btc_max",
+            "eth_min",
+            "eth_max",
+            "eos_min",
+            "eos_max"
+        ],
+        "query_required": [],
+        "body": [
+            "usd",
+            "usd_add",
+            "cny",
+            "cny_add",
+            "mm",
+            "mm_add",
+            "btc",
+            "btc_add",
+            "eth",
+            "eth_add",
+            "eos",
+            "eos_add"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "seller_id",
+            "usd_min",
+            "usd_max",
+            "cny_min",
+            "cny_max",
+            "mm_min",
+            "mm_max",
+            "btc_min",
+            "btc_max",
+            "eth_min",
+            "eth_max",
+            "eos_min",
+            "eos_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "seller_id",
+            "title": "商户ID",
+            "description": "用于对应商户",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "usd",
+            "title": "美元余额",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "usd_min",
+            "title": "美元余额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "usd_max",
+            "title": "美元余额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "cny",
+            "title": "人民币余额",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "cny_min",
+            "title": "人民币余额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "cny_max",
+            "title": "人民币余额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "mm",
+            "title": "美眉币余额",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "mm_min",
+            "title": "美眉币余额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "mm_max",
+            "title": "美眉币余额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "btc",
+            "title": "比特币余额",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "btc_min",
+            "title": "比特币余额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "btc_max",
+            "title": "比特币余额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "eth",
+            "title": "以太币余额",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "eth_min",
+            "title": "以太币余额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "eth_max",
+            "title": "以太币余额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "eos",
+            "title": "柚子币余额",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "eos_min",
+            "title": "柚子币余额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "eos_max",
+            "title": "柚子币余额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        }
+    ]
+}

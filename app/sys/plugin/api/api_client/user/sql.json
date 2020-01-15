@@ -37,7 +37,6 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
-    
     "update": {
         "state_add": "`state` = `state` + {0}",
         "vip_add": "`vip` = `vip` + {0}",

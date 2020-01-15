@@ -1,0 +1,12 @@
+{
+    "name": "pay_trade",
+    "title": "交易信息",
+    "description": "",
+    "path": "/api/pay/trade",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

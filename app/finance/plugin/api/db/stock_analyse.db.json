@@ -58,7 +58,7 @@
             "min": 0,
             "max": 0,
             "decimal": 0,
-            "default": "0000-00-00 00:00:00",
+            "default": "CURRENT_TIMESTAMP",
             "join_in": [],
             "join_out": []
         },
