@@ -1,9 +1,6 @@
 <template>
 	<div class="page_api" id="api_index">
 		<mm_side class="dev_side" id="app_dev_side" :func="set_width">
-			<mm_head class="dev_head">
-				<div></div>
-			</mm_head>
 			<mm_body class="dev_body">
 				<div v-if="scope_list.length > 0">
 					<div class="plugin_count">共<span>{{ scope_list.length }}</span>个作用域</div>
@@ -14,10 +11,7 @@
 			</mm_body>
 		</mm_side>
 		<div class="dev_main">
-			<mm_head class="dev_head">
-				<div></div>
-			</mm_head>
-			<mm_body class="dev_body" v-show="!query.name">
+			<mm_body class="dev_body" v-if="!query.name">
 				<div class="pc inline" name="search">
 					<div class="buttons">
 						<mm_btn type="info" @click.native="update()">更新</mm_btn>
@@ -51,13 +45,11 @@
 						</tr>
 					</tbody>
 				</mm_table>
-				<div v-else>
-					<mm_view class="none">
-						<div class="h5">该作用域下没有接口</div>
-					</mm_view>
-				</div>
+				<mm_view class="none" v-else>
+					<div class="h5">该作用域下没有接口</div>
+				</mm_view>
 			</mm_body>
-			<mm_body class="dev_body" v-if="query.name">
+			<mm_body class="dev_body" v-else>
 				<div class="head"><strong>{{ api_title }}</strong> <span class="desc">接口明细</span>
 					<mm_btn type="info" class="fr" @click.native="query.name = '';set_name('')"><i class="fa-chevron-left"></i> 返回</mm_btn>
 				</div>
@@ -102,7 +94,7 @@
 </template>
 
 <script>
-	import page_param from '/dev/src/components/page_param.vue';
+	import page_param from './param.vue';
 
 	import mixin from 'page';
 

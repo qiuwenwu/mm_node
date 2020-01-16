@@ -1,7 +1,7 @@
 {
     "name": "home_article_comment2",
-    "title": "",
-    "description": "",
+    "title": "文章评论",
+    "description": "这是文章评论增删改查接口",
     "path": "/apis/home/article_comment",
     "method": "ALL",
     "cache": 0,

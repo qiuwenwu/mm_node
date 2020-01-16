@@ -41,6 +41,7 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
+    
     "update": {
         "level_add": "`level` = `level` + {0}",
         "iq_add": "`iq` = `iq` + {0}",

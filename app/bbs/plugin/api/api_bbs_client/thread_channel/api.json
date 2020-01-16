@@ -3,10 +3,23 @@
     "title": "主题板块",
     "description": "",
     "path": "/api/bbs/thread_channel",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "",
+    "func_name": "",
     "method": "GET",
     "cache": 0,
     "client_cache": false,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true
+    "check_param": true,
+    "oauth": {
+        "scope": true,
+        "signIn": false,
+        "vip": 0,
+        "gm": 0,
+        "mc": 0,
+        "user_admin": [],
+        "user_group": []
+    }
 }

@@ -1,7 +1,7 @@
 {
     "name": "home_article_channel2",
-    "title": "",
-    "description": "",
+    "title": "文章栏目",
+    "description": "这是文章频道查询接口",
     "path": "/apis/home/article_channel",
     "method": "ALL",
     "cache": 0,

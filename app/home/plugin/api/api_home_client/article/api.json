@@ -1,7 +1,7 @@
 {
     "name": "home_article",
-    "title": "",
-    "description": "",
+    "title": "文章",
+    "description": "这是门户文章查询接口",
     "path": "/api/home/article",
     "method": "GET",
     "cache": 10,

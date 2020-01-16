@@ -22,9 +22,12 @@
     "set": {
         "query": [
             "config_id",
+            "type",
             "name",
             "title",
-            "description"
+            "value",
+            "description",
+            "model"
         ],
         "query_required": [],
         "body": [
@@ -41,9 +44,12 @@
     "get": {
         "query": [
             "config_id",
+            "type",
             "name",
             "title",
-            "description"
+            "value",
+            "description",
+            "model"
         ],
         "query_required": []
     },

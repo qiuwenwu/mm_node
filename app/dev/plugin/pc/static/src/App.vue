@@ -29,6 +29,10 @@
 </script>
 
 <style>
+	.mm_side {
+		min-height: calc(100vh - 3.75rem - 3px);
+	}
+
 	.mm_page>.mm_body {
 		padding: 2rem 0 1.75rem 0;
 	}
@@ -39,6 +43,10 @@
 
 	.diy_right>div {
 		float: right;
+	}
+
+	.dev_main {
+		overflow: hidden;
 	}
 
 	#body {
@@ -96,10 +104,6 @@
 		text-align: center;
 		margin-right: 0.5rem;
 		margin-top: 0.35rem;
-	}
-
-	.mm_side .line {
-		top: 4rem;
 	}
 
 	.table-sm th {

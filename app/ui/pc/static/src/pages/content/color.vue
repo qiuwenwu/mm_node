@@ -8,35 +8,34 @@
 				
 				<div class="h5">炫彩</div>
 				<mm_grid col="5">
-					<mm_col><a href="javascript:void(0)" class="wave linear-red-1"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-red-2"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-yellow-1"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-yellow-2"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-green-1"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-green-2"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-blue-1"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-blue-2"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-purple-1"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-purple-2"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_red-1"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_red-2"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_yellow-1"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_yellow-2"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_green-1"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_green-2"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_blue-1"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_blue-2"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_purple-1"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_purple-2"></a></mm_col>
 				</mm_grid>
-					
 					
 				<div class="h5">炫彩(无高光)</div>
 				<mm_grid col="5">
-					<mm_col><a href="javascript:void(0)" class="wave linear-red"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-yellow"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-green"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-blue"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave linear-purple"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_red"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_yellow"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_green"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_blue"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave linear_purple"></a></mm_col>
 				</mm_grid>
 					
 				<div class="h5">常规</div>
 				<mm_grid col="5">
-					<mm_col><a href="javascript:void(0)" class="wave bg-red"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave bg-yellow"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave bg-green"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave bg-blue"></a></mm_col>
-					<mm_col><a href="javascript:void(0)" class="wave bg-purple"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave bg_red"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave bg_yellow"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave bg_green"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave bg_blue"></a></mm_col>
+					<mm_col><a href="javascript:void(0)" class="wave bg_purple"></a></mm_col>
 				</mm_grid>
 			</mm_warp>
 		</mm_body>

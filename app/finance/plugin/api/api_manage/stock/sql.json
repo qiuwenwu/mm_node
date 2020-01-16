@@ -4,7 +4,7 @@
     "table": "finance_stock",
     "key": "stock_id",
     "orderby_default": "`stock_id` desc",
-    "field_default": "`stock_id`,`name`,`code`,`company`,`description`,`bonus`,`issue_price`,`pe`,`pb`,`profit`,`num`,`time_to_market`",
+    "field_default": "`stock_id`,`name`,`code`,`company`,`description`,`profit`,`bonus`",
     "query": {
         "name": "`name` like '%{0}%'",
         "code": "`code` like '%{0}%'",
@@ -13,25 +13,11 @@
         "profit_min": "`profit` >= {0}",
         "profit_max": "`profit` <= {0}",
         "bonus_min": "`bonus` >= {0}",
-        "bonus_max": "`bonus` <= {0}",
-        "issue_price_min": "`issue_price` >= {0}",
-        "issue_price_max": "`issue_price` <= {0}",
-        "pe_min": "`pe` >= {0}",
-        "pe_max": "`pe` <= {0}",
-        "pb_min": "`pb` >= {0}",
-        "pb_max": "`pb` <= {0}",
-        "num_min": "`num` >= {0}",
-        "num_max": "`num` <= {0}",
-        "time_to_market_min": "`time_to_market` >= '{0}'",
-        "time_to_market_max": "`time_to_market` <= '{0}'"
+        "bonus_max": "`bonus` <= {0}"
     },
     "update": {
         "profit_add": "`profit` = `profit` + {0}",
-        "bonus_add": "`bonus` = `bonus` + {0}",
-        "issue_price_add": "`issue_price` = `issue_price` + {0}",
-        "pe_add": "`pe` = `pe` + {0}",
-        "pb_add": "`pb` = `pb` + {0}",
-        "num_add": "`num` = `num` + {0}"
+        "bonus_add": "`bonus` = `bonus` + {0}"
     },
     "field_hide": []
 }

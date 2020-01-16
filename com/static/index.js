@@ -6,7 +6,6 @@ const {
 	join
 } = require('path');
 
-
 /**
  * @description 静态文件管理类
  * @extends {Index}

@@ -31,13 +31,27 @@
     "set": {
         "query": [
             "user_id",
+            "sex",
             "sex_min",
             "sex_max",
+            "idcard_state",
             "idcard_state_min",
             "idcard_state_max",
+            "age",
             "age_min",
             "age_max",
-            "name"
+            "province_id",
+            "city_id",
+            "name",
+            "job",
+            "school",
+            "major",
+            "idcard",
+            "company_address",
+            "address",
+            "job_scope",
+            "company_business",
+            "idcard_img"
         ],
         "query_required": [],
         "body": [
@@ -67,15 +81,30 @@
     "get": {
         "query": [
             "user_id",
+            "sex",
             "sex_min",
             "sex_max",
+            "idcard_state",
             "idcard_state_min",
             "idcard_state_max",
+            "age",
             "age_min",
             "age_max",
+            "province_id",
+            "city_id",
+            "birthday",
             "birthday_min",
             "birthday_max",
-            "name"
+            "name",
+            "job",
+            "school",
+            "major",
+            "idcard",
+            "company_address",
+            "address",
+            "job_scope",
+            "company_business",
+            "idcard_img"
         ],
         "query_required": []
     },

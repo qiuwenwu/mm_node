@@ -17,6 +17,7 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
+    
     "update": {},
     "filter": {
         "table": "table",

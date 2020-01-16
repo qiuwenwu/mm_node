@@ -1,5 +1,5 @@
 <template>
-	<div id="app_index" class="fixed">
+	<div id="app_index">
 		<mm_side id="side" :func="set_width">
 			<mm_head class="dev_head">
 				<!-- 应用下拉菜单 -->
@@ -146,6 +146,10 @@
 </script>
 
 <style>
+	#app_index .mm_side .line {
+		top: 4rem;
+		height: calc(100% - 4rem);
+	}
 	.plugin_tip {
 		text-align: center;
 		padding: 2rem 1rem;

@@ -26,18 +26,26 @@
     "set": {
         "query": [
             "group_id",
+            "display",
             "display_min",
             "display_max",
+            "level",
             "level_min",
             "level_max",
+            "next_group_id",
+            "exp",
             "exp_min",
             "exp_max",
+            "discount",
             "discount_min",
             "discount_max",
+            "bonus",
             "bonus_min",
             "bonus_max",
+            "app",
             "name",
-            "description"
+            "description",
+            "icon"
         ],
         "query_required": [],
         "body": [
@@ -63,18 +71,26 @@
     "get": {
         "query": [
             "group_id",
+            "display",
             "display_min",
             "display_max",
+            "level",
             "level_min",
             "level_max",
+            "next_group_id",
+            "exp",
             "exp_min",
             "exp_max",
+            "discount",
             "discount_min",
             "discount_max",
+            "bonus",
             "bonus_min",
             "bonus_max",
+            "app",
             "name",
-            "description"
+            "description",
+            "icon"
         ],
         "query_required": []
     },

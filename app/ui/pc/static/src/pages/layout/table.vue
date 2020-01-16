@@ -8,13 +8,12 @@
 
 				<mm_view>
 					<mm_btn type="info" @click.native="small = !small">切换大小</mm_btn>
-					<mm_btn type="info" @click.native="set_color()">反色</mm_btn>
+					<mm_btn type="info" @click.native="dark = !dark">反色</mm_btn>
 				</mm_view>
 
 				<div class="h5">样式一</div>
-				<mm_view class="">
-
-					<mm_table :type="type" class="table-hover" :class="{'table-sm': small }">
+				<mm_view>
+					<mm_table type="hover" :class="{'table-sm': small, 'table_dark': dark }">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
@@ -48,7 +47,7 @@
 
 				<div class="h5">样式二</div>
 				<mm_view class="">
-					<mm_table :type="type" class="table-striped table-hover" :class="{'table-sm': small }">
+					<mm_table type="hover" class="table_striped" :class="{'table-sm': small, 'table_dark': dark }">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
@@ -82,7 +81,7 @@
 
 				<div class="h5">样式三</div>
 				<mm_view class="">
-					<mm_table :type="type" class="table-bordered table-hover" :class="{'table-sm': small }">
+					<mm_table type="hover" class="table_bordered" :class="{'table-sm': small, 'table_dark': dark }">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
@@ -116,7 +115,7 @@
 
 				<div class="h5">样式四</div>
 				<mm_view class="">
-					<mm_table :type="type" class="table-bordered table-striped table-hover" :class="{'table-sm': small }">
+					<mm_table type="hover" class="table_bordered table_striped" :class="{'table-sm': small, 'table_dark': dark }">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
@@ -157,12 +156,7 @@
 		data() {
 			return {
 				small: false,
-				type: ""
-			}
-		},
-		methods: {
-			set_color() {
-				this.type = this.type ? '' : 'dark'
+				dark: false
 			}
 		}
 	}

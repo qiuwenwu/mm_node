@@ -1,7 +1,7 @@
 {
     "name": "home_article2",
-    "title": "",
-    "description": "",
+    "title": "文章",
+    "description": "这是门户文章增删改查接口",
     "path": "/apis/home/article",
     "method": "ALL",
     "cache": 0,

@@ -29,6 +29,7 @@
     "query_default": {
         "user_id": "`user_id` = {user_id}"
     },
+    
     "update": {
         "sex_add": "`sex` = `sex` + {0}",
         "idcard_state_add": "`idcard_state` = `idcard_state` + {0}",

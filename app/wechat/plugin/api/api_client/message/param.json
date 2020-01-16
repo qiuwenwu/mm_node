@@ -4,21 +4,21 @@
     "add": {
         "body": [
             "end",
-            "create_time",
+            "stage",
             "update_time",
-            "group",
-            "type",
+            "create_time",
+            "msg_type",
             "from_user",
             "to_user",
+            "group",
+            "type",
             "robot",
             "cmd",
-            "keyword",
             "check",
-            "content",
+            "keyword",
             "note",
-            "msg_type",
             "form",
-            "stage"
+            "content"
         ],
         "body_required": []
     },
@@ -32,29 +32,29 @@
         "query": [
             "message_id",
             "end",
-            "content",
             "stage_min",
-            "stage_max"
+            "stage_max",
+            "content"
         ],
         "query_required": [],
         "body": [
             "end",
-            "create_time",
+            "stage",
+            "stage_add",
             "update_time",
-            "group",
-            "type",
+            "create_time",
+            "msg_type",
             "from_user",
             "to_user",
+            "group",
+            "type",
             "robot",
             "cmd",
-            "keyword",
             "check",
-            "content",
+            "keyword",
             "note",
-            "msg_type",
             "form",
-            "stage",
-            "stage_add"
+            "content"
         ],
         "body_required": [],
         "body_not": []
@@ -63,13 +63,13 @@
         "query": [
             "message_id",
             "end",
-            "create_time_min",
-            "create_time_max",
+            "stage_min",
+            "stage_max",
             "update_time_min",
             "update_time_max",
-            "content",
-            "stage_min",
-            "stage_max"
+            "create_time_min",
+            "create_time_max",
+            "content"
         ],
         "query_required": []
     },
@@ -98,36 +98,33 @@
             }
         },
         {
-            "name": "create_time",
-            "title": "会话创建时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
+            "name": "stage",
+            "title": "阶段",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
             }
         },
         {
-            "name": "create_time_min",
-            "title": "会话创建时间——开始时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
+            "name": "stage_min",
+            "title": "阶段——最小值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
             }
         },
         {
-            "name": "create_time_max",
-            "title": "会话创建时间——结束时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
+            "name": "stage_max",
+            "title": "阶段——最大值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
             }
         },
         {
@@ -164,17 +161,42 @@
             }
         },
         {
-            "name": "group",
-            "title": "用户群组",
+            "name": "create_time",
+            "title": "会话创建时间",
             "description": "",
             "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
         },
         {
-            "name": "type",
-            "title": "会话类型",
-            "description": "一般情况下，1永久会话/群、2临时会话/群",
+            "name": "create_time_min",
+            "title": "会话创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "会话创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "msg_type",
+            "title": "消息类型",
+            "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
@@ -196,6 +218,22 @@
             "string": {}
         },
         {
+            "name": "group",
+            "title": "用户群组",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "type",
+            "title": "会话类型",
+            "description": "一般情况下，1永久会话/群、2临时会话/群",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
             "name": "robot",
             "title": "服务的机器人",
             "description": "",
@@ -212,14 +250,6 @@
             "string": {}
         },
         {
-            "name": "keyword",
-            "title": "关键词句",
-            "description": "除指令外，过滤、抽取后的词句",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
             "name": "check",
             "title": "复查指令",
             "description": "当用户再驱动指令而缺少参数时，执行该语句",
@@ -228,11 +258,11 @@
             "string": {}
         },
         {
-            "name": "content",
-            "title": "会话正文",
-            "description": "",
+            "name": "keyword",
+            "title": "关键词句",
+            "description": "除指令外，过滤、抽取后的词句",
             "type": "string",
-            "dataType": "text",
+            "dataType": "varchar",
             "string": {}
         },
         {
@@ -244,14 +274,6 @@
             "string": {}
         },
         {
-            "name": "msg_type",
-            "title": "消息类型",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
             "name": "form",
             "title": "表单",
             "description": "用于记录用户已填参数",
@@ -260,34 +282,12 @@
             "string": {}
         },
         {
-            "name": "stage",
-            "title": "阶段",
-            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 9
-            }
-        },
-        {
-            "name": "stage_min",
-            "title": "阶段——最小值",
-            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 9
-            }
-        },
-        {
-            "name": "stage_max",
-            "title": "阶段——最大值",
-            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 9
-            }
+            "name": "content",
+            "title": "会话正文",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
         }
     ]
 }

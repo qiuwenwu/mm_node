@@ -25,6 +25,7 @@
         "company_business": "`company_business` like '%{0}%'",
         "idcard_img": "`idcard_img` like '%{0}%'"
     },
+    
     "update": {
         "sex_add": "`sex` = `sex` + {0}",
         "idcard_state_add": "`idcard_state` = `idcard_state` + {0}",

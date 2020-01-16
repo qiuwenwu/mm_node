@@ -1,9 +1,9 @@
 {
     "name": "home_article_comment",
-    "title": "",
-    "description": "",
+    "title": "文章评论",
+    "description": "这是文章评论查询、增改接口",
     "path": "/api/home/article_comment",
-    "method": "GET",
+    "method": "All",
     "cache": 0,
     "client_cache": false,
     "param_path": "./param.json",

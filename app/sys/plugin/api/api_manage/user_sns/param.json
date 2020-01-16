@@ -1,6 +1,6 @@
 {
     "name": "sys_user_sns2",
-    "title": "社交账号",
+    "title": "用户社交账号",
     "add": {
         "body": [
             "qq",
@@ -25,10 +25,15 @@
     "set": {
         "query": [
             "user_id",
+            "qq",
             "qq_state",
+            "wechat",
             "wechat_state",
+            "mm",
             "mm_state",
+            "baidu",
             "baidu_state",
+            "taobao",
             "taobao_state"
         ],
         "query_required": [],
@@ -50,10 +55,15 @@
     "get": {
         "query": [
             "user_id",
+            "qq",
             "qq_state",
+            "wechat",
             "wechat_state",
+            "mm",
             "mm_state",
+            "baidu",
             "baidu_state",
+            "taobao",
             "taobao_state"
         ],
         "query_required": []

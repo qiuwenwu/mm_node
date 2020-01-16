@@ -1,7 +1,7 @@
 {
     "name": "home_config2",
-    "title": "",
-    "description": "",
+    "title": "门户配置",
+    "description": "这是门户配置增删改查接口",
     "path": "/apis/home/config",
     "method": "ALL",
     "cache": 0,

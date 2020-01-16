@@ -1,7 +1,7 @@
 {
     "name": "home_article_type2",
-    "title": "",
-    "description": "",
+    "title": "文章分类",
+    "description": "这是文章分类接口",
     "path": "/apis/home/article_type",
     "method": "ALL",
     "cache": 0,

@@ -1,7 +1,7 @@
 {
     "name": "home_article_channel",
-    "title": "",
-    "description": "",
+    "title": "文章栏目",
+    "description": "这是文章栏目查询接口",
     "path": "/api/home/article_channel",
     "method": "GET",
     "cache": 0,

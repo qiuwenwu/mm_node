@@ -20,7 +20,10 @@
     },
     "set": {
         "query": [
-            "refresh_id"
+            "refresh_id",
+            "user_id",
+            "appid",
+            "refresh_token"
         ],
         "query_required": [],
         "body": [
@@ -36,10 +39,15 @@
     "get": {
         "query": [
             "refresh_id",
+            "user_id",
+            "create_time",
             "create_time_min",
             "create_time_max",
+            "update_time",
             "update_time_min",
-            "update_time_max"
+            "update_time_max",
+            "appid",
+            "refresh_token"
         ],
         "query_required": []
     },
