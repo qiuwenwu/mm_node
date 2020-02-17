@@ -56,10 +56,7 @@ startup(app);
 
 // 配置端口
 const port_http = process.env.PORT || 8000;
-// const port_https = 44300;
-
-// 创建服务器
-// http.createServer(app.callback()).listen(port_http);
-// https.createServer(app.callback()).listen(port_https);
-app.listen(port_http);
-console.log("服务端访问地址为 http://localhost:%s", port_http);
+const host_http = process.env.IP || '0.0.0.0';
+app.listen(port_http, host_http,()=> {
+	console.log("服务端访问地址为 http://%s:%s", host_http, port_http);
+});

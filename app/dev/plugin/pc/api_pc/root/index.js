@@ -15,8 +15,8 @@ async function main(ctx, db) {
 	if (req.path.indexOf('.') === -1) {
 		var model = {
 			title: "超级美眉——开发者",
-			description: "超级美眉mm_koa版服务端框架是一个高并发、分布式服务端框架, 适用于开发中小型商城、游戏、saas平台",
-			keywords: "超级美眉 mm_koa 高并发 异步 服务端 分布式 框架 商城 游戏 saas async",
+			description: "超级美眉mm_node版服务端框架是一个高并发、分布式服务端框架, 适用于开发中小型商城、游戏、saas平台",
+			keywords: "超级美眉 mm_node 高并发 异步 服务端 分布式 框架 商城 游戏 saas async",
 			content: ""
 		};
 

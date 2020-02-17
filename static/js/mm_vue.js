@@ -38,6 +38,18 @@ define(["Vue"], function(Vue) {
 			Vue.prototype.$ = $;
 
 			/**
+			 * 路由跳转
+			 * @param {String} url
+			 */
+			Vue.prototype.$redirect = function(url) {
+				if (url) {
+					$.route.redirect_url = url;
+				} else {
+					return $.route.redirect_url;
+				}
+			};
+
+			/**
 			 * @description 路由跳转
 			 */
 			Vue.prototype.$back = function() {
@@ -78,10 +90,12 @@ define(["Vue"], function(Vue) {
 				var token = $.db.get("token");
 
 				var queryStr = query ? $.toUrl(query) : "";
+				var _this = this;
 				$.http.get(url.replace("~/", host) + queryStr, function(json, status) {
 					if (json.error) {
 						if (json.error.message.indexOf('未登录') !== -1) {
 							$.db.set("token", "");
+							_this.$router.push('/sign_in');
 						}
 					}
 					if (func) {

@@ -2,7 +2,7 @@
 
 require({
 	// 基础路径, 会将 ./ 替换成该路径
-	baseUrl: '/admin/src/',
+	baseUrl: '/admin/pc/src/',
 	// 是否保留注释
 	preserveLicenseComments: true,
 	waitSeconds: 0,
@@ -21,7 +21,7 @@ require({
 		mm_sdk: '/js/mm_sdk',
 		mm_vue: '/js/mm_vue',
 		ui: '/js/mm_vue_ui',
-		nav: '/api/nav.js?name=admin',
+		nav: '/api/nav.js?scope=admin_pc',
 		store: './store',
 		router: './router',
 		echarts: '/js/echarts',

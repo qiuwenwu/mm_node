@@ -68,31 +68,32 @@ DB.prototype.getObj = function(table) {
  * @param {Object} db 数据库管理器
  * @param {String} name 要更新的配置名
  * @param {String} table 表名关键词, 支持*table后缀匹配、table*前缀匹配、*table*包含匹配
+ * @param {Boolean} cover 是否覆盖文件
  * @return {String} 更新成功返回null, 失败返回错误提示
  */
-DB.prototype.update_config = async function(db, name, table) {
+DB.prototype.update_config = async function(db, name, table, cover = true) {
 	if (name) {
 		var o = this.get(name);
 		if (o) {
-			await o.update_config(db, true);
+			await o.update_config(db, cover);
 		} else {
 			return "该配置不存在";
 		}
 	} else {
 		var list = await db.tables(table);
-		const len = list.length;
+		var len = list.length;
 		if (len > 0) {
 			var lt = [];
-			const len = list.length;
+			var len = list.length;
 			for (var i = 0; i < len; i++) {
 				var te = list[i];
 				var obj = this.getObj(te);
 				if (obj) {
-					obj.update_config(db, true);
+					obj.update_config(db, cover);
 				} else {
 					var drive = new Drive();
 					drive.config.table = te;
-					drive.update_config(db, true);
+					drive.update_config(db, cover);
 					this.list.push(drive);
 				}
 			}
@@ -120,7 +121,7 @@ DB.prototype.update_db = async function(db, name, table, all) {
 		}
 	} else {
 		var list = this.list;
-		const len = list.length;
+		var len = list.length;
 		if (len > 0) {
 			if (table) {
 				for (var i = 0, o; o = list[i++];) {

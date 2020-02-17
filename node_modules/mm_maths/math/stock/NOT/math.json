@@ -1,0 +1,8 @@
+{
+	"key": "NOT",
+	"name": "NOT",
+	"title": "取反",
+	"group": "if",
+	"type": "stock",
+	"func_file": "./index.js"
+}

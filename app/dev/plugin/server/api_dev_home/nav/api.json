@@ -1,0 +1,10 @@
+{
+	"path": "/api/dev/nav",
+	"type": "api",
+	"name": "dev_nav",
+	"title": "管理路由导航的接口",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "ALL",
+	"param_path": "./param.json"
+}

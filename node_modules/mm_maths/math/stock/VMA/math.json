@@ -1,0 +1,8 @@
+{
+	"key": "VMA",
+	"name": "Count Moving Average",
+	"title": "总价移动平均值",
+	"group": "array",
+	"type": "stock",
+	"func_file": "./index.js"
+}

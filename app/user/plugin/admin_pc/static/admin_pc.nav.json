@@ -1,0 +1,201 @@
+{
+    "name": "admin_pc",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "user",
+            "path": "/user",
+            "redirect": "/user/account"
+        },
+        {
+            "name": "user_account",
+            "path": "/user/account",
+            "component": "/user/admin_pc/src/pages/account.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_account_form",
+            "path": "/user/account_form",
+            "component": "/user/admin_pc/src/pages/account_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_admin",
+            "path": "/user/admin",
+            "component": "/user/admin_pc/src/pages/admin.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_admin_form",
+            "path": "/user/admin_form",
+            "component": "/user/admin_pc/src/pages/admin_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_count",
+            "path": "/user/count",
+            "component": "/user/admin_pc/src/pages/count.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_count_form",
+            "path": "/user/count_form",
+            "component": "/user/admin_pc/src/pages/count_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_group",
+            "path": "/user/group",
+            "component": "/user/admin_pc/src/pages/group.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_group_form",
+            "path": "/user/group_form",
+            "component": "/user/admin_pc/src/pages/group_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_info",
+            "path": "/user/info",
+            "component": "/user/admin_pc/src/pages/info.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_info_form",
+            "path": "/user/info_form",
+            "component": "/user/admin_pc/src/pages/info_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "user_sns",
+            "path": "/user/sns",
+            "component": "/user/admin_pc/src/pages/sns.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "vip": 0,
+                "gm": 2,
+                "mc": 0,
+                "user_admin": [],
+                "user_group": []
+            }
+        },
+        {
+            "name": "user_sns_form",
+            "path": "/user/sns_form",
+            "component": "/user/admin_pc/src/pages/sns_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "vip": 0,
+                "gm": 2,
+                "mc": 0,
+                "user_admin": [],
+                "user_group": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "用户",
+            "name": "user",
+            "url": "/user",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "用户账号",
+                    "show": false,
+                    "name": "user_account",
+                    "url": "/user/account"
+                },
+                {
+                    "title": "管理组",
+                    "show": false,
+                    "name": "user_admin",
+                    "url": "/user/admin"
+                },
+                {
+                    "title": "用户统计",
+                    "show": false,
+                    "name": "user_count",
+                    "url": "/user/count"
+                },
+                {
+                    "title": "用户组",
+                    "show": false,
+                    "name": "user_group",
+                    "url": "/user/group"
+                },
+                {
+                    "title": "用户资料",
+                    "show": false,
+                    "name": "user_info",
+                    "url": "/user/info"
+                },
+                {
+                    "title": "社交账号",
+                    "show": false,
+                    "name": "user_sns",
+                    "url": "/user/sns"
+                }
+            ]
+        }
+    ]
+}

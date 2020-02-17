@@ -43,7 +43,6 @@ async function post(method, param, AppId, db, query) {
 			url = url.replace('{' + k + '}', query[k]);
 		}
 		url = url.replace(/\{[a-zA-Z0-9_]+\}/, '');
-		console.log(url);
 		if (param) {
 			var res = await http.post(url, param);
 			return res.body;

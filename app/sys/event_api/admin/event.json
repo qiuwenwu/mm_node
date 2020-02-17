@@ -1,0 +1,11 @@
+{
+	"target": "/apis/sys/*",
+	"name": "sys_admin",
+	"title": "系统管理端调用的接口事件",
+	"description": "用于管理客户端访问服务端时调用的接口",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 99,
+	"end": true
+}

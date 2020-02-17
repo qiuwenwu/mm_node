@@ -1,0 +1,195 @@
+{
+    "name": "pay",
+    "sort": 2,
+    "routes": [
+        {
+            "name": "pay",
+            "path": "/pay",
+            "redirect": "/pay/account"
+        },
+        {
+            "name": "pay",
+            "path": "/pay/account",
+            "component": "/pay/admin_pc/src/pages/account.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/account_form",
+            "component": "/pay/admin_pc/src/pages/account_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/account_amount",
+            "component": "/pay/admin_pc/src/pages/account_amount.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/account_amount_form",
+            "component": "/pay/admin_pc/src/pages/account_amount_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/account_discount",
+            "component": "/pay/admin_pc/src/pages/account_discount.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/account_discount_form",
+            "component": "/pay/admin_pc/src/pages/account_discount_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/config",
+            "component": "/pay/admin_pc/src/pages/config.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/config_form",
+            "component": "/pay/admin_pc/src/pages/config_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/seller",
+            "component": "/pay/admin_pc/src/pages/seller.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/seller_form",
+            "component": "/pay/admin_pc/src/pages/seller_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/trade",
+            "component": "/pay/admin_pc/src/pages/trade.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "pay",
+            "path": "/pay/trade_form",
+            "component": "/pay/admin_pc/src/pages/trade_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "支付",
+            "name": "pay",
+            "url": "/pay",
+            "display": 5,
+            "sub": [
+                {
+                    "title": "支付账户",
+                    "show": false,
+                    "name": "pay_account",
+                    "url": "/pay/account"
+                },
+                {
+                    "title": "账户余额",
+                    "show": false,
+                    "name": "pay_account_amount",
+                    "url": "/pay/account_amount"
+                },
+                {
+                    "title": "账户提现",
+                    "show": false,
+                    "name": "pay_account_discount",
+                    "url": "/pay/account_discount"
+                },
+                {
+                    "title": "支付配置",
+                    "show": false,
+                    "name": "pay_config",
+                    "url": "/pay/config"
+                },
+                {
+                    "title": "商户信息",
+                    "show": false,
+                    "name": "pay_seller",
+                    "url": "/pay/seller"
+                },
+                {
+                    "title": "交易信息",
+                    "show": false,
+                    "name": "pay_trade",
+                    "url": "/pay/trade"
+                }
+            ]
+        }
+    ]
+}

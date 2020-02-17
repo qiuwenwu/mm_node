@@ -1,7 +1,7 @@
 <template>
-	<mm_grid class="mm_search">
+	<div class="mm_search">
 		
-	</mm_grid>
+	</div>
 </template>
 
 <script>

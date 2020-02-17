@@ -87,7 +87,7 @@
 							<td><a :href="'./api_view.html?scope=' + query.scope + '&name=' + o.name">{{ o.name }}</a></td>
 							<td>{{ o.title }}</td>
 							<td>{{ o.description }}</td>
-							<td><a class="mm_btn btn-info-x" :href="'./api_view.html?scope=' + query.scope + '&name=' + o.name">查看</a></td>
+							<td><a class="mm_btn btn_info-x" :href="'./api_view.html?scope=' + query.scope + '&name=' + o.name">查看</a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -125,7 +125,7 @@
 				},
 				created() {
 					var arr = location.search.split("&");
-					const len = arr.length;
+					var len = arr.length;
 					if (len > 0) {
 						for (var i = 0; i < len; i++) {
 							var o = arr[i];

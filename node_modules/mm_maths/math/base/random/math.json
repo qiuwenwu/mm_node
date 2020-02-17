@@ -1,0 +1,8 @@
+{
+	"key": "random",
+	"name": "random",
+	"title": "随机数",
+	"group": "default",
+	"type": "base",
+	"func_file": "./index.js"
+}

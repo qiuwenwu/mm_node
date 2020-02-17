@@ -10,7 +10,7 @@ async function main(ctx, db) {
 	const host = "http://localhost:8080";
 	
 	// 访问服务端地址 如果这个端就是服务端，那么可以设置为 server = "/";
-	const server = "http://localhost:8000/";
+	const server = "http://localhost:3000/";
 	return await $.core_spa(host, server, ctx, db);
 }
 

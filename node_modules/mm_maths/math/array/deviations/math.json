@@ -1,0 +1,8 @@
+{
+	"key": "deviations",
+	"name": "deviations",
+	"title": "求偏差值",
+	"group": "array",
+	"type": "base",
+	"func_file": "./index.js"
+}

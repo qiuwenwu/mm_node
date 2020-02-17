@@ -33,7 +33,12 @@ define(function() {
 				// 线上对象
 				obj: {},
 				// 查询参数
-				query: {},
+				query: {
+					// // 当前页面
+					// page: 1,
+					// // 页面大小
+					// size: 10
+				},
 				// 配置
 				config: {
 					// 默认当前页面
@@ -64,7 +69,9 @@ define(function() {
 				// 响应提示
 				tip: "",
 				// 默认请求方式
-				mode: "obj",
+				mode: "list",
+				// 清除列表
+				clear_list: true,
 				// 响应错误消息
 				message: ""
 			};
@@ -303,14 +310,33 @@ define(function() {
 			 * @param {Object} query 查询参数
 			 * @param {Function} func 回调函数
 			 */
-			get_main: function get_main(query, func){
+			get_main: function get_main(query, func) {
 				if (this.url_get_obj) {
 					var _this = this;
 					this.get_obj(query, function() {
-						_this.search(query, func);
+						_this.get_first(query, func);
 					});
 				} else {
-					this.search(query, func);
+					this.get_first(query, func);
+				}
+			},
+			/**
+			 * 验证请求
+			 * @param {Object} param 请求参数
+			 */
+			get_obj_check: function get_obj_check(param){
+				var bl = false;
+				for(var k in param){
+					if(param[k]){
+						bl = true;
+						break;
+					};
+				}
+				if(bl){
+					return null;
+				}
+				else {
+					return "缺少查询条件";
 				}
 			},
 			/**
@@ -327,8 +353,8 @@ define(function() {
 				var _this = this;
 				this.$get(this.toUrl(query, url), null, function(json, status) {
 					var res = json.result;
-					var obj = _this.events("get_obj_after", res, func);
-					if (!obj && res) {
+					if (res) {
+						var obj;
 						$.push(_this, res);
 						if (res.obj) {
 							obj = res.obj;
@@ -337,28 +363,34 @@ define(function() {
 							if (list && list.length > 0) {
 								obj = list[0];
 							} else {
-								$.push(_this.obj, res);
+								obj = res;
 							}
 						}
-					}
-					if (obj) {
-						$.push(_this.obj, obj);
+						if (obj) {
+							if (Object.keys(_this.obj).length === 0) {
+								_this.obj = obj;
+							} else {
+								$.push(_this.obj, obj);
+							}
+						}
 					} else if (json.error) {
 						console.log(json.error.message);
-					} else if (!res) {
+					} else {
 						_this.toast("服务器连接失败！");
+					}
+					_this.events("get_obj_after", res);
+
+					if (func) {
+						func(res);
 					}
 				});
 			},
 			/**
 			 * @description 获取到对象后事件
 			 * @param {Object} res 响应结果
-			 * @param {Function} func 回调函数
 			 */
-			get_obj_after: function get_obj_after(res, func) {
-				if (func) {
-					func();
-				}
+			get_obj_after: function get_obj_after(res) {
+				$.push(this.form, this.obj);
 			},
 			/**
 			 * @description 查询多条数据(主程序)
@@ -376,31 +408,31 @@ define(function() {
 				this.$get(this.toUrl(query, url), null, function(json, status) {
 					_this.loading = 100;
 					var res = json.result;
-					var list = _this.events("get_list_after", res, func);
-					if (!list && res) {
-						list = res.list;
-					}
-					if (list) {
-						_this.list.addList(list);
+					if (res) {
+						if (_this.list.length === 0 && _this.count === 0) {
+							_this.list.addList(res.list);
+						}
 						if (res.count !== undefined) {
 							_this.count = res.count;
 						}
 					} else if (json.error) {
 						console.log(json.error.message);
-					} else if (!res) {
+					} else {
 						_this.toast("服务器连接失败！");
+					}
+
+					_this.events("get_list_after", res);
+					if (func) {
+						func(res);
 					}
 				});
 			},
 			/**
 			 * @description 获取到列表事件
 			 * @param {Object} res 响应结果
-			 * @param {Function} func 回调函数
 			 */
-			get_list_after: function get_list_after(res, func) {
-				if (func) {
-					func();
-				}
+			get_list_after: function get_list_after(res) {
+
 			},
 			/**
 			 * 搜索
@@ -416,7 +448,25 @@ define(function() {
 				}
 				this.query.page = 1;
 				$.route.push("?" + this.toUrl(this.query));
-				this.get_first(query);
+				this.get_first(this.query);
+			},
+			get_prev_next(res) {
+				var _this = this;
+				var query = this.query;
+				if (query.page < this.page_count) {
+					var q = Object.assign({}, query);
+					q.page += 1;
+					_this.get_list(q, function(res) {
+						_this.list_next = res.list;
+					});
+				}
+				if (query.page > 1) {
+					var q = Object.assign({}, query);
+					q.page -= 1;
+					_this.get_list(q, function(res) {
+						_this.list_prev = res.list;
+					});
+				}
 			},
 			/**
 			 * @description 查询多条数据 (首次)
@@ -429,26 +479,23 @@ define(function() {
 				this.list.clear();
 				this.list_next.clear();
 				this.list_prev.clear();
+				_this.count = 0;
+				var q = Object.assign({
+					count_ret: "true"
+				}, query);
 				if (this.mode === "list") {
-					this.get_list(q, function() {
-						_this.loading = 100;
-						if (_this.list.length > 0) {
-							if (query.page === 1) {
-								_this.next(func);
-							} else {
-								_this.next(function() {
-									_this.prev(func);
-								});
-							}
-						} else if (func) {
-							func();
-						}
-					});
-				} else {
-					this.get_list(query, function() {
+					this.get_list(q, function(res) {
 						_this.loading = 100;
 						if (func) {
-							func();
+							func(res);
+						}
+						_this.get_prev_next(res);
+					});
+				} else {
+					this.get_list(q, function(res) {
+						_this.loading = 100;
+						if (func) {
+							func(res);
 						}
 					});
 				}
@@ -460,17 +507,22 @@ define(function() {
 			next: function next(func) {
 				console.log("next");
 				var list_next = this.list_next;
+				this.list_prev = [];
+				this.list_prev.addList(this.list);
+				if (this.clear_list) {
+					this.list.clear()
+				}
 				this.list.addList(list_next);
 				list_next.clear();
-				var q = Object.assign({}, this.query);
-				if (q < this.page_count) {
+				if (this.query.page < this.page_count || this.page_count === 0) {
+					var q = Object.assign({}, this.query);
 					q.page += 1;
 					this.get_list(q, function(res, f) {
 						if (res.list) {
 							list_next.addList(res.list);
 						}
 						if (func) {
-							func();
+							func(res);
 						}
 						return [];
 					});
@@ -483,20 +535,25 @@ define(function() {
 			prev: function prev(func) {
 				console.log("prev");
 				var lt = this.list;
+				this.list_next = [];
+				this.list_next.addList(this.list);
+				if (this.clear_list) {
+					this.list.clear();
+				}
 				var list_prev = this.list_prev;
 				list_prev.addList(lt);
 				this.list.clear();
 				this.list.addList(list_prev);
 				list_prev.clear();
 				var q = Object.assign({}, this.query);
-				if (q > 1) {
+				if (q.page > 1) {
 					q.page -= 1;
 					this.get_list(q, function(res, f) {
 						if (res.list) {
 							list_prev.addList(res.list);
 						}
 						if (func) {
-							func();
+							func(res);
 						}
 						return [];
 					});
@@ -516,22 +573,13 @@ define(function() {
 			submit_main: function submit_main() {
 				var url = this.url_submit;
 				if (url) {
-					var form = this.submit_before(this.form);
-					if (!form) {
-						form = this.form;
-					}
-					var tip = this.submit_check(form);
-					if (tip) {
-						this.toast(tip);
-					} else {
-						var _this = this;
-						this.$post(url, this.events("submit_before", form), function(json, status) {
-							var msg = _this.events("submit_after", json, status);
-							if (msg) {
-								_this.toast(msg);
-							}
-						});
-					}
+					var _this = this;
+					this.$post(url, this.form, function(json, status) {
+						var msg = _this.events("submit_after", json, status);
+						if (msg) {
+							_this.toast(msg);
+						}
+					});
 				}
 			},
 			/**
@@ -549,7 +597,7 @@ define(function() {
 			 */
 			submit_after: function submit_after(json, status) {
 				if (json.result) {
-					this.toast(json.result.message);
+					this.toast(json.result.tip);
 				} else if (json.error) {
 					this.toast(json.error.message);
 				} else {
@@ -582,8 +630,10 @@ define(function() {
 					this.next();
 				} else if (p - 1 == page) {
 					this.prev();
-				} else {
-					this.search_main();
+				} else if (p == 1 && page !== 1) {
+					this.get_first(query);
+				} else if (p == this.page_count && page !== this.page_count) {
+					this.get_first(query);
 				}
 			},
 			/**
@@ -612,12 +662,12 @@ define(function() {
 				$.push(this.query, query);
 				if ($.route.history.length > 1) {
 					_this.init_after(function() {
-						_this.get(query);
+						_this.get(_this.query);
 					})
 				} else {
 					_this.$get_user(function() {
 						_this.init_after(function() {
-							_this.get(query);
+							_this.get(_this.query);
 						});
 					});
 				}
@@ -665,6 +715,9 @@ define(function() {
 				if (func) {
 					func();
 				}
+			},
+			end_before: function end_before(param){
+				this.reset();
 			}
 		},
 		computed: {
@@ -672,7 +725,7 @@ define(function() {
 			 * 分页数量
 			 */
 			page_count: function page_count() {
-				return parseInt(this.count / this.size);
+				return Math.ceil(this.count / this.query.size);
 			}
 		},
 		created: function created() {
@@ -681,6 +734,9 @@ define(function() {
 		},
 		mounted: function mounted() {
 			this.showing = 100;
+		},
+		beforeDestroy: function beforeDestroy(){
+			this.events('end_before');
 		}
 	};
 });

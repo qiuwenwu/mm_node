@@ -1,0 +1,12 @@
+{
+	"path": "/api/user/sign_up",
+	"type": "api",
+	"name": "user_sign_up",
+	"title": "账户注册",
+	"description": "用来注册账户",
+	"func_file": "./index.js",
+	"method": "POST",
+	"cache": 0,
+	"client_cache": false,
+	"param_path": "./param.json"
+}

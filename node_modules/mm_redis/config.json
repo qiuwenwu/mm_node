@@ -1,10 +1,7 @@
 {
- 	// 服务器地址
  	"host": "localhost",
- 	// 端口号
  	"port": 6379,
- 	// 密码
  	"password": "asd123",
- 	/// 数据库
- 	"database": 0
- }
+ 	"database": 0,
+	"prefix": "mm:"
+}

@@ -1,0 +1,8 @@
+{
+	"key": "sumproduct",
+	"name": "sumproduct",
+	"title": "求数组乘积",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

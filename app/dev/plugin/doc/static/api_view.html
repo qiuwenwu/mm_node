@@ -160,8 +160,8 @@
 		<div id="app">
 			<div class="mm_warp">
 				<h4>欢迎使用 <strong>超级美眉</strong> 接口文档 <a class="fr" :href="'./api_list.html?scope=' + query.scope">回到列表</a></h4>
-				<p class="desc" v-if="error.code === 0">该接口使用明细请看下方：</p>
-				<p class="desc" v-else>{{ error.message }}</p>
+				<!-- <p class="desc" v-if="error.code === 0">该接口使用明细请看下方：</p> -->
+				<p class="desc">{{ error.message }}</p>
 				<div class="mm_view" v-if="config.name">
 					<h5 style="border: none;">{{ config.title ? config.title : config.name }} <span class="mm_badge" v-if="oauth">{{ oauth }}</span></h5>
 					<p class="desc" style="border: none;">{{ config.description }}</p>

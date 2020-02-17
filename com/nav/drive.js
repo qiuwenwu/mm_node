@@ -1,4 +1,7 @@
+const fs = require('fs');
 const Item = require('mm_machine').Item;
+const tpl = new $.Tpl('nav_tpl');
+tpl.dir = __dirname;
 
 /**
  * @description Catch抓包驱动类
@@ -9,11 +12,12 @@ class Drive extends Item {
 	/**
 	 * @description 构造函数
 	 * @param {String} dir 当前目录
+	 * @param {String} scope 作用域
 	 * @constructor
 	 */
-	constructor(dir) {
+	constructor(dir, scope) {
 		super(dir, __dirname);
-		this.default_file = "./nav.json";
+		this.default_file = "./" + scope + ".nav.json";
 
 		/* 通用项 */
 		// 配置参数
@@ -115,7 +119,7 @@ Drive.prototype.run = function(type) {
  */
 Drive.prototype.merge_sub = function(arr, lt) {
 	if (lt) {
-		const len = lt.length;
+		var len = lt.length;
 		for (var i = 0; i < len; i++) {
 			var o = lt[i];
 			if (o.name) {
@@ -153,6 +157,8 @@ Drive.prototype.sort = async function() {
  */
 Drive.prototype.merge = function(o) {
 	var cg = this.config;
+	cg.name = o.name;
+	cg.sort = o.sort;
 	this.merge_sub(cg.routes, o.routes);
 	this.merge_sub(cg.top, o.top);
 	this.merge_sub(cg.left, o.left);
@@ -192,10 +198,10 @@ Drive.prototype.new_routes = function(app, plugin, name, group, oauth) {
 	var pn = plugin === 'pc' ? '' : plugin;
 	var n = name.replace(app + "_", '');
 	var obj = {
-		"name": plugin,
+		"name": name,
 		"path": "/" + app + "/" + n,
-		"component": "/" + app + "/" + pn + "/src/pages/" + n + ".vue",
-		"level": n.replace("_edit", '').replace("_view", '').indexOf('_') === -1 ? 3 : 2,
+		"component": "/" + app + (pn ? "/" + pn : '') + "/src/pages/" + n + ".vue",
+		"level": n.replace("_form", '').replace("_view", '').indexOf('_') === -1 ? 3 : 2,
 		"oauth": oauth
 	};
 	if (!oauth) {
@@ -232,14 +238,17 @@ Drive.prototype.new_config = function(file) {
 	// fl.copyFile(file);
 	var cg = this.config;
 	var plugin = (file + '').right('plugin' + $.slash).left($.slash, true);
-	var dir = (file + '').left(plugin) + "api" + $.slash;
+	var dir = (file + '').left(plugin) + "server" + $.slash;
 	var _this = this;
 
 	var app = (file + '').right('app' + $.slash).left($.slash, true);
 	var nav = [];
 
 	if (plugin.indexOf('admin') !== -1) {
-		var d = dir + 'api_manage';
+		var d = dir + 'api_admin';
+		if (!d.hasDir()) {
+			d = dir + `api_${app}_admin`;
+		}
 		if (d.hasDir()) {
 			var list = $.file.getAll(d, '*api.json');
 
@@ -252,7 +261,7 @@ Drive.prototype.new_config = function(file) {
 					var obj = _this.new_routes(app, plugin, name, 1, o.oauth);
 
 					//添加一个详情页
-					var obj2 = _this.new_routes(app, plugin, name + '_edit', 1, o.oauth);
+					var obj2 = _this.new_routes(app, plugin, name + '_form', 1, o.oauth);
 					obj2.level += 1;
 
 					cg.routes.push(obj);
@@ -263,14 +272,19 @@ Drive.prototype.new_config = function(file) {
 			});
 		}
 	} else {
-		var d = dir + 'api_client';
+		var d = dir + 'api_home';
+		if (!d.hasDir()) {
+			d = dir + `api_${app}_home`;
+		}
 		if (d.hasDir()) {
 			var list = $.file.getAll(d, '*api.json');
 
 			list.map(function(f) {
 				var o = f.loadJson();
-				if (o) {
-					delete o.oauth.scope;
+				if (o && !Array.isArray(o)) {
+					if (o.oauth) {
+						delete o.oauth.scope;
+					}
 
 					var name = o.name;
 					// 添加一个列表页
@@ -315,7 +329,7 @@ Drive.prototype.new_config = function(file) {
 		"display": 0,
 		"sub": nav
 	}];
-	file.saveText(JSON.stringify(cg, true));
+	file.saveText(JSON.stringify(cg, null, 4));
 };
 
 /**
@@ -333,6 +347,124 @@ Drive.prototype.load = function(cg) {
 		obj = cg;
 	}
 	this.loadObj(obj);
+};
+
+/**
+ * 创建vue文件
+ * @param {String} file 文件保存路径
+ * @param {Object} route 路由配置
+ */
+Drive.prototype.create_vue = function(file, route) {
+	var l = $.slash;
+	var arr = file.split(l);
+	var name = arr[arr.length - 1].replace('.vue', '');
+	var f = "./tpl/";
+	var plugin = "";
+	if (arr.length > 5) {
+		plugin = arr[5];
+		f += plugin + '/';
+	} else if (file.indexOf('mobile' + l) !== -1) {
+		f += "mobile/";
+	} else if (file.indexOf('admin' + l) !== -1) {
+		f += "admin/";
+	} else if (file.indexOf('pc' + l) !== -1) {
+		f += "pc/";
+	}
+	if (name.endsWith('_form')) {
+		f += 'page_form.vue';
+	} else if (name.endsWith('_view')) {
+		f += 'page_view.vue';
+	} else if (name.endsWith('_table')) {
+		f += 'page_table.vue';
+	} else if (name.endsWith('_list')) {
+		f += 'page_list.vue';
+	} else if (name.endsWith('_channel')) {
+		f += 'page_channel.vue';
+	} else if (name.endsWith('_type')) {
+		f += 'page_type.vue';
+	} else if (name.endsWith('_nav')) {
+		f += 'page_nav.vue';
+	} else {
+		f += 'page_default.vue';
+	}
+
+	var model = {
+		config: this.config,
+		plugin,
+		name,
+		group: arr[arr.length - 2],
+		route
+	};
+	console.log(model.name);
+	var vue = tpl.view(f, model);
+	file.saveText(vue);
+};
+
+/**
+ * @创建路径
+ * @param {String} filepath 文件路径
+ */
+Drive.prototype.mkdir = function(filepath) {
+	var l = $.slash;
+	var arr = filepath.split(l);
+	var dir = arr[0];
+	for (var i = 1; i < arr.length; i++) {
+		if (!fs.existsSync(dir)) {
+			fs.mkdirSync(dir);
+		}
+		dir = dir + l + arr[i];
+	}
+}
+
+/**
+ * 更新路由vue文件
+ * @param {Boolean} cover 是否覆盖文件
+ * @param {String} route_name 路由名称
+ * @param {String} route_path 路由路径
+ */
+Drive.prototype.update_vue = async function(cover, route_name, route_path) {
+	var lt = this.config.routes;
+	var dir = '';
+	var p = '';
+	var len = lt.length;
+
+	for (var i = 0; i < len; i++) {
+		var o = lt[i];
+		var f = o.component;
+		if (f) {
+			p = f.dirname().replace(/\\/g, '/');
+			var fl = f.replace('/', '').replace('/', '\\plugin\\').replace('/', '\\static\\');
+			dir = ('./app/' + fl).fullname().dirname();
+			break;
+		}
+	}
+
+	if (route_name) {
+		for (var i = 0; i < len; i++) {
+			var o = lt[i];
+			if (o.name === route_name || o.path.indexOf(route_path) !== -1) {
+				var f = o.component;
+				if (f) {
+					var file = f.replace(p, dir).fullname();
+					this.mkdir(file);
+					this.create_vue(file, o);
+				}
+				break;
+			}
+		}
+	} else {
+		for (var i = 0; i < len; i++) {
+			var o = lt[i];
+			var f = o.component;
+			if (f) {
+				var file = f.replace(p, dir).fullname();
+				if (cover || !file.hasFile()) {
+					this.mkdir(file);
+					this.create_vue(file, o);
+				}
+			}
+		}
+	}
 };
 
 module.exports = Drive;

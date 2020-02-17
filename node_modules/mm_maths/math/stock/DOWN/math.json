@@ -1,0 +1,8 @@
+{
+	"key": "DOWN",
+	"name": "DOWN",
+	"title": "下降趋势",
+	"group": "if",
+	"type": "stock",
+	"func_file": "./index.js"
+}

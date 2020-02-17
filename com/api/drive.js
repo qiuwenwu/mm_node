@@ -70,6 +70,8 @@ class Drive extends Item {
 			"sql_path": "",
 			// 是否验证参数
 			"check_param": true,
+			// 执行顺序, 数字越小，越优先执行
+			"sort": 100,
 			// oauth身份验证模型, 参考oauth文件
 			"oauth": {
 				"scope": true,
@@ -103,7 +105,7 @@ Drive.prototype.setParam = function(param) {
 		var lt = $.param.list;
 		if (lt) {
 			var has = false;
-			const len = lt.length;
+			var len = lt.length;
 			for (var i = 0; i < len; i++) {
 				var o = lt[i];
 				if (param.filename === o.filename) {
@@ -163,7 +165,7 @@ Drive.prototype.setSql = function(sql) {
 		var lt = $.sql.list;
 		if (lt) {
 			var has = false;
-			const len = lt.length;
+			var len = lt.length;
 			for (var i = 0; i < len; i++) {
 				var o = lt[i];
 				if (sql.filename === o.filename) {
@@ -297,12 +299,13 @@ Drive.prototype.getCache = async function(ctx) {
 			}
 		}
 	}
-	var userID = "(everyone)";
-	var id = ctx.cookies.get($.dict.session_id);
-	if (id) {
-		userID = id;
-	}
-	var data = await $.cache.get("api_" + userID + ":" + req.url);
+	// var userID = "(everyone)";
+	// var id = ctx.cookies.get($.dict.session_id);
+	// if (id) {
+	// 	userID = id;
+	// }
+	// var data = await $.cache.get("api_" + userID + ":" + req.url);
+	var data = await $.cache.get("api:" + req.url);
 	if (data) {
 		var obj = JSON.parse(data);
 		ctx.response.type = obj.type;

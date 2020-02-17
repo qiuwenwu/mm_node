@@ -1,7 +1,7 @@
 <template>
-	<mm_grid class="mm_chat">
+	<div class="mm_chat">
 		
-	</mm_grid>
+	</div>
 </template>
 
 <script>

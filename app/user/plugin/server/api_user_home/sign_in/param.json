@@ -1,0 +1,107 @@
+{
+	"title": "用户登录验证模型",
+	"name": "user_sign_in",
+	"filter": true,
+	"file": "",
+	"get": {
+		"query": ["username", "qq", "wechat", "mm", "baidu", "taobao"],
+		"query_required": ["password"]
+	},
+	"post": {
+		"body": ["username", "qq", "wechat", "mm", "baidu", "taobao"],
+		"body_required": ["password"]
+	},
+	"list": [{
+			"name": "method",
+			"title": "登录方式",
+			"description": "如果为sns则表示使用社交账号登录",
+			"type": "string"
+		}, {
+			"name": "username",
+			"title": "用户名",
+			"type": "string",
+			"string": {
+				"min": 5,
+				"max": 16,
+				"format": "username"
+			}
+		},
+		{
+			"name": "password",
+			"title": "密码",
+			"description": "由注册密码进行md5加密后获得",
+			"type": "string",
+			"string": {
+				"min": 32,
+				"max": 32,
+				"format": "password",
+				"different": "username"
+			}
+		},
+		{
+			"name": "qq",
+			"title": "QQ号",
+			"description": "",
+			"type": "string",
+			"dataType": "varchar",
+			"string": {
+				"range": [
+					5,
+					12
+				]
+			}
+		},
+		{
+			"name": "wechat",
+			"title": "微信号",
+			"description": "",
+			"type": "string",
+			"dataType": "varchar",
+			"string": {
+				"range": [
+					5,
+					16
+				]
+			}
+		},
+		{
+			"name": "mm",
+			"title": "MM号",
+			"description": "",
+			"type": "string",
+			"dataType": "varchar",
+			"string": {
+				"range": [
+					5,
+					16
+				]
+			}
+		},
+		{
+			"name": "baidu",
+			"title": "百度账号",
+			"description": "",
+			"type": "string",
+			"dataType": "varchar",
+			"string": {
+				"range": [
+					5,
+					14
+				]
+			}
+		},
+		{
+			"name": "taobao",
+			"title": "淘宝账号",
+			"description": "",
+			"type": "string",
+			"dataType": "varchar",
+			"string": {
+				"range": [
+					5,
+					10
+				]
+			}
+		}
+	]
+}

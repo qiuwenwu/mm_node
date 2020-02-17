@@ -42,7 +42,8 @@
 	"stage": "action",
 	"tense": "main",
 	"func_file": "./action_main.js",
-	"sort": 100
+	"sort": 100,
+	"end": true
 }, {
 	"target": "/test/*",
 	"name": "test",

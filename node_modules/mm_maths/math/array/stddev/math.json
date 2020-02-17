@@ -1,0 +1,8 @@
+{
+	"key": "stddev",
+	"name": "stddev",
+	"title": "求标准差",
+	"group": "array",
+	"type": "base",
+	"func_file": "./index.js"
+}

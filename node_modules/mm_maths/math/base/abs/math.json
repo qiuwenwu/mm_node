@@ -1,0 +1,8 @@
+{
+	"key": "abs",
+	"name": "absolute value",
+	"title": "绝对值",
+	"group": "default",
+	"type": "base",
+	"func_file": "./index.js"
+}

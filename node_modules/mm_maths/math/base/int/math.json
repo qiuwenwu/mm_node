@@ -1,0 +1,8 @@
+{
+	"key": "int",
+	"name": "integer",
+	"title": "整数",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

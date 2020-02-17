@@ -1,0 +1,8 @@
+{
+	"key": "exp",
+	"name": "index number",
+	"title": "指数",
+	"group": "default",
+	"type": "base",
+	"func_file": "./index.js"
+}

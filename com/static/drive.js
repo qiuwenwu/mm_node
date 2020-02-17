@@ -87,7 +87,7 @@ Drive.prototype.loadObj = function(obj) {
 	if (obj.maxAge) {
 		obj.maxAge *= 1000;
 	}
-	$.push(this.config, obj);
+	$.push(this.config, obj, true);
 	var cg = this.config;
 	if (cg.convert_amd) {
 		this.mode(true);

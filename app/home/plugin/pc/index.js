@@ -1,8 +1,12 @@
 /**
- * @fileOverview home_pc
+ * @fileOverview pc
  * @author <a href="作者主页地址">插件作者</a>
  * @version 1.0
  */
+
+// 集合路由、导航，不开发前端的情况下可以将以下2行注释掉
+const nav = $.nav_admin('home_pc');
+nav.update();
 
 /**
  * @description 插件对象

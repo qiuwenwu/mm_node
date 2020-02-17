@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+	<head>
+		<!-- 必需的元标记 -->
+		<meta charset="utf-8">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="description" content="${model.description}">
+		<meta name="keywords" content="${model.keywords}">
+		<meta name="author" content="邱文武">
+
+		<!-- 加载JS -->
+		<!--if lt IE 9]><script src="/js/html5.min.js"></script><![endif]-->
+		<title>${model.title}</title>
+
+		<!-- 加载CSS -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="/css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="./css/mm_base.css" />
+		<link rel="stylesheet" type="text/css" href="./css/mm_common.css" />
+		<link rel="stylesheet" type="text/css" href="./css/mm_component.css" />
+		<link rel="stylesheet" type="text/css" href="/css/mm_theme.css" />
+		<style>
+			main { padding: 2.5rem 0; }
+		</style>
+	</head>
+	<body>
+		<div class="mm_page" id="page_index">
+			<header class="fixed">
+				<div class="mm_grid">
+					<div class="mm_col_75">
+						<aside id="logo"><a class="div-lr" href="#">
+								<figure>
+									<img src="img/logo.png" alt="超级美眉LOGO" />
+								</figure>
+								<h5><span>超级美眉</span></h5>
+						</a></aside>
+						<nav id="nav_main">
+							<a href="#">
+								<span>首页</span>
+							</a>
+							<a href="#">
+								<span>文档</span>
+							</a>
+							<a href="#">
+								<span>社区</span>
+							</a>
+							<a href="#">
+								<span>模板</span>
+							</a>
+							<a href="#">
+								<span>应用</span>
+							</a>
+							<a href="#">
+								<span>工作台</span>
+							</a>
+						</nav>
+					</div>
+					<div class="mm_col_25">
+						<nav id="bar_user">
+							<a href="/sign_up"><span>注册</span></a>
+							<a href="/sign_in"><span>登录</span></a>
+						</nav>
+					</div>
+				</div>
+			</header>
+			<main>
+				<div class="mm_grid">
+					<div class="mm_col_100">
+						<aside id="slide_top">
+							<ul class="mm_slide">
+								<li>
+									<a class="mm_item" href="#">
+										<figure><img src="/img/banner_2.png" /></figure>
+									</a>
+								</li>
+							</ul>
+						</aside>
+					</div>
+					<div class="mm_col_100">
+						<nav id="nav_path">
+							<a href="/"><span>首页</span></a>
+							<a href="#"><span>文档</span></a>
+							<a href="#"><span>前端开发</span></a>
+						</nav>
+					</div>
+					<div class="mm_col_75">
+						<article class="mm_view card">
+							<header>
+								<h2><span>极速高效前端开发技巧</span></h2>
+								<p><span class="time">2020-02-14 17:28:53</span></p>
+							</header>
+							<section>
+								<h3>第一个章节</h3>
+								<p>测试文章效果更看看看吗</p>
+								<blockquote>
+									<p>测试blockquote标签</p>
+									请注意，浏览器在 blockquote 元素前后添加了换行，并增加了外边距。
+								</blockquote>
+							</section>
+							<section>
+								<h3>第二个章节</h3>
+								<h4>一、喜欢的运动</h4>
+								<ul>
+									<li>羽毛球</li>
+									<li>滑轮</li>
+									<li>游泳</li>
+								</ul>
+								<h4>二、喜欢的水果</h4>
+								<ul>
+									<li>哈密瓜</li>
+									<li>西瓜</li>
+									<li>芒果</li>
+								</ul>
+							</section>
+							<section>
+								<h3>第三个章节</h3>
+								<h4>常见问题</h4>
+								<ol>
+									<li>超人是什么练成的？</li>
+									<li>外星人真的存在吗？</li>
+									<li>AI能否代替人类？</li>
+								</ol>
+							</section>
+							<section>
+								<h3>第四个章节</h3>
+								<h4>代码展示</h4>
+								<figure class="mm_code"><pre><code>
+public static void main(String[] args){
+	System.out.println("hellow world"):
+}
+							</code></pre></figure>
+							</section>
+							<footer>
+								<div class="fl">
+									<button><span>阅读 10万+</span></button>
+									<button><span>点赞 9999+</span></button>
+								</div>
+								<div class="fr">
+									<button><i class="fa-heart-o"></i> <span>收藏</span></button>
+									<button><i class="fa-edit"></i> <span>评论</span></button>
+								</div>
+							</footer>
+						</article>
+						<!-- <aside id="side_right">
+		
+						</aside>
+						<article>
+						
+						</article> -->
+					</div>
+					<div class="mm_col_25">
+						<aside class="mm_view card" id="list_article_hot"><header>
+								<h5>热门文章</h5>
+							</header>
+							<ol class="mm_list">
+								<li>
+									<a href="#"><span class="title">前端开发技巧</span><span class="hot">9999+</span></a>
+								</li>
+								<li>
+									<a href="#"><span class="title">后端开发技巧</span><span class="hot">2301</span></a>
+								</li>
+								<li>
+									<a href="#"><span class="title">UI设计规范</span><span class="hot">123123</span></a>
+								</li>
+								<li>
+									<a href="#"><span class="title">前端页面结构</span><span class="hot">3121</span></a>
+								</li>
+								<li>
+									<a href="#"><span class="title">插件开发示例</span><span class="hot">3121</span></a>
+								</li>
+								<li>
+									<a href="#"><span class="title">数据库设计规范</span><span class="hot">3121</span></a>
+								</li>
+							</ol></aside>
+						<aside id="ad_right">
+							<a class="mm_item" href="#">
+								<figure><img src="/img/web.png" /></figure>
+							</a>
+						</aside>
+						<aside class="card" id="list_article_about">
+							<header>
+								<h5>相关文章</h5>
+							</header>
+							<ul>
+								<li>
+									<a href="#"><span class="title">前端开发技巧</span><span class="time">2020-02-15</span></a>
+								</li>
+								<li>
+									<a href="#"><span class="title">后端开发技巧</span><span class="time">2020-02-13</span></a>
+								</li>
+								<li>
+									<a href="#"><span class="title">UI设计规范</span><span class="time">2020-02-12</span></a>
+								</li>
+								<li>
+									<a href="#"><span class="title">前端页面结构</span><span class="time">2020-02-11</span></a>
+								</li>
+							</ul>
+						</aside>
+					</div>
+					<div class="mm_col_100">
+						<aside class="card">
+							<header>
+								<h5>计算属性</h5>
+							</header>
+							<table>
+								<thead>
+									<tr>
+										<th>列1</th>
+										<th>列2</th>
+										<th>列3</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+									</tr>
+									<tr>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+									</tr>
+									<tr>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td>Data</td>
+										<td>Data</td>
+										<td>Data</td>
+									</tr>
+								</tfoot>
+							</table>
+							<footer>
+								<nav id="nav_pager">
+									<a href="#"><i class="fa-chevron-left"></i></a>
+									<a href="#1"><span>1</span></a>
+									<a href="#2"><span>2</span></a>
+									<a href="#3"><span>3</span></a>
+									<a href="#4"><span>4</span></a>
+									<a href="#"><i class="fa-chevron-right"></i></a>
+								</nav>
+							</footer>
+						</aside>
+					</div>
+					<div class="mm_col_50">
+						<form class="card">
+							<header class="arrow">
+								<h5>表单</h5>
+							</header>
+							<dl>
+								<dt>姓名</dt>
+								<dd>
+									<label>
+										<input type="text" name="name" placeholder="由2-16个字符组成" />
+									</label>
+								</dd>
+								<dt>年龄</dt>
+								<dd><input type="number" name="age" placeholder="由2-16个字符组成" /></dd>
+							</dl>
+							<footer>
+								<div class="mm_group"><button type="reset">重置</button><button type="button">发送</button><button type="submit">提交</button></div>
+							</footer>
+						</form>
+					</div>
+					<div class="mm_col_50">
+						<form class="card">
+							<header class="arrow active">
+								<h5>表单</h5>
+							</header>
+							<dl>
+								<dt>姓名</dt>
+								<dd>
+									<label>
+										<input type="text" name="name" placeholder="由2-16个字符组成" />
+									</label>
+								</dd>
+								<dt>年龄</dt>
+								<dd><input type="number" name="age" placeholder="由2-16个字符组成" /></dd>
+							</dl>
+							<footer>
+								<div class="mm_group">
+									<button type="reset">重置</button>
+									<button type="submit">提交</button>
+								</div>
+							</footer>
+						</form>
+					</div>
+				</div>
+			</main>
+			<footer>
+				<div class="mm_grid">
+					<div class="mm_col_100">
+						<nav id="nav_bottom">
+							<a href="#about">关于我们</a>
+							<a href="#join">加入我们</a>
+							<a href="#address">联系方式</a>
+							<a href="#business">合作企业</a>
+							<a href="#help">帮助中心</a>
+							<a href="#fliend">友情链接</a>
+						</nav>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

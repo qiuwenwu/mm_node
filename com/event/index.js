@@ -125,6 +125,15 @@ Event.prototype.load = function(path) {
 		});
 	});
 };
+/**
+ * @description 事件排序
+ * @param {String} situation 事态
+ */
+Event.prototype.sort_sub = function(list) {
+	list.sort(function(o1, o2) {
+		return o1.config.sort - o2.config.sort;
+	});
+};
 
 /**
  * @description 事件排序
@@ -133,23 +142,23 @@ Event.prototype.load = function(path) {
 Event.prototype.sort = function(situation) {
 	if (situation) {
 		if (this[situation]) {
-			this[situation].sortBy('asc', 'sort');
+			this.sort_sub(this[situation]);
 		} else {
 			console.log('排序失败，事态{0}不存在！'.replace('{0}', situation));
 		}
 	} else {
 		/// 验证前
-		this.check_before.sortBy('asc', 'sort');
-		this.check_main.sortBy('asc', 'sort');
-		this.check_after.sortBy('asc', 'sort');
+		this.sort_sub(this.check_before);
+		this.sort_sub(this.check_main);
+		this.sort_sub(this.check_after);
 		/* ===  执行  === */
-		this.action_before.sortBy('asc', 'sort');
-		this.action_main.sortBy('asc', 'sort');
-		this.action_after.sortBy('asc', 'sort');
+		this.sort_sub(this.action_before);
+		this.sort_sub(this.action_main);
+		this.sort_sub(this.action_after);
 		/* ===  渲染  === */
-		this.render_before.sortBy('asc', 'sort');
-		this.render_main.sortBy('asc', 'sort');
-		this.render_after.sortBy('asc', 'sort');
+		this.sort_sub(this.render_before);
+		this.sort_sub(this.render_main);
+		this.sort_sub(this.render_after);
 	}
 };
 

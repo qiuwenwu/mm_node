@@ -1,0 +1,48 @@
+[{
+		"title": "频道类前台",
+		"name_rule": "*_channel",
+		"web": ["client"],
+		"device": ["pc", "moblie"],
+		"tpl": [{
+			"title": "频道页",
+			"page": "channel"
+		}]
+	},
+	{
+		"title": "频道类",
+		"name_rule": "*_channel",
+		"web": ["manage"],
+		"device": ["pc", "moblie"],
+		"tpl": [{
+				"title": "{title}",
+				"name": "{name}",
+				"page": "table"
+			},
+			{
+				"title": "{title}编辑",
+				"name": "{name}_form",
+				"page": "edit"
+			}
+		]
+	},
+	{
+		"title": "频道类",
+		"name_rule": "*_channel",
+		"web": ["manage"],
+		"device": ["pc", "moblie"],
+		"tpl": [{
+			"title": "列表页",
+			"page": "list"
+		}]
+	},
+	{
+		"title": "其它类",
+		"web": ["client"],
+		"device": ["pc", "moblie"],
+		"name_rule": "*",
+		"tpl": [{
+			"title": "",
+			"page": "view"
+		}]
+	}
+]

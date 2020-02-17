@@ -1,7 +1,7 @@
 <template>
-	<mm_grid class="mm_sort">
+	<div class="mm_sort">
 		
-	</mm_grid>
+	</div>
 </template>
 
 <script>

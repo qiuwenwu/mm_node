@@ -1,0 +1,18 @@
+{
+    "name": "user_count2",
+    "title": "用户统计",
+    "description": "",
+    "path": "/apis/user/count",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true,
+    "oauth": {
+        "scope": true,
+        "signIn": true,
+        "gm": 2,
+        "user_admin": []
+    }
+}

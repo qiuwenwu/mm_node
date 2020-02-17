@@ -1,0 +1,42 @@
+{
+	"title": "用户注册验证模型",
+	"name": "user_sign_up",
+	"filter": true,
+	"file": "",
+	"post": {
+		"body": [],
+		"body_required": ["username", "password", "confirm_password"]
+	},
+	"list": [
+		{
+			"name": "username",
+			"title": "用户名",
+			"type": "string",
+			"string": {
+				"min": 5,
+				"max": 16,
+				"format": "username"
+			}
+		},
+		{
+			"name": "password",
+			"title": "密码",
+			"type": "string",
+			"string": {
+				"min": 5,
+				"max": 16,
+				"format": "password",
+				"different": "username"
+			}
+		},
+		{
+			"name": "confirm_password",
+			"title": "确认密码",
+			"type": "string",
+			"string": {
+				"format": "password",
+				"identical": "password"
+			}
+		}
+	]
+}

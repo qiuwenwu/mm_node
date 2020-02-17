@@ -1,0 +1,8 @@
+{
+	"key": "log",
+	"name": "logarithm",
+	"title": "对数",
+	"group": "default",
+	"type": "base",
+	"func_file": "./index.js"
+}

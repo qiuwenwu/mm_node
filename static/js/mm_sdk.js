@@ -2411,6 +2411,10 @@ if (typeof($) === "undefined") {
 	 */
 	$.route = {
 		/**
+		 * 重定向地址
+		 */
+		redirect_url: "/",
+		/**
 		 * 路由历史记录
 		 */
 		history: {

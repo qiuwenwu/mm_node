@@ -1,0 +1,11 @@
+{
+	"app": "admin",
+	"name": "pc",
+	"title": "后台管理系统(电脑版)",
+	"description": "这是电脑版后台管理系统",
+	"version": "1.0",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "",
+	"sort": 10
+}

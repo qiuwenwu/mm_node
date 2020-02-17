@@ -246,7 +246,7 @@ Drive.prototype.update_db = async function(db) {
 
 	if (fields.length === 0) {
 		var k = cg.key;
-		const len = list.length;
+		var len = list.length;
 		for (var i = 0; i < len; i++) {
 			var o = list[i];
 			if (k === o.name) {
@@ -272,7 +272,7 @@ Drive.prototype.update_db = async function(db) {
 		}
 
 		// 添加或修改配置
-		const len = list.length;
+		var len = list.length;
 		for (var i = 0; i < len; i++) {
 			var o = list[i];
 			var arr = fields.get({
@@ -397,7 +397,7 @@ Drive.prototype.update_app = async function(cover) {
 			fs.mkdirSync(dir);
 		}
 
-		dir += "/api";
+		dir += "/server";
 		if (!fs.existsSync(dir)) {
 			fs.mkdirSync(dir);
 		}
@@ -455,8 +455,17 @@ Drive.prototype.update_api = async function(dir, cover) {
 	if (arr.length > 1) {
 		name = cg.table.replace(arr[0], '').trim('_');
 	}
-
-	var client = dir + "/api_client";
+	var l = $.slash;
+	var app = arr[0];
+	var o = $.pool.api[app + '_home'];
+	var client = "";
+	if(o)
+	{
+		client = dir + l + "api_" + app + "_home";
+	}
+	else {
+		client = dir +  l + "api_home"
+	}
 	if (!fs.existsSync(client)) {
 		fs.mkdirSync(client);
 	}
@@ -464,12 +473,19 @@ Drive.prototype.update_api = async function(dir, cover) {
 	if (!fs.existsSync(client)) {
 		fs.mkdirSync(client);
 	}
-
-	var manage = dir + "/api_manage";
+	
+	o = $.pool.api[app + '_admin'];
+	var manage = "";
+	if(o)
+	{
+		manage = dir + l + "api_" + app + "_admin";
+	}
+	else {
+		manage = dir +  l + "api_admin"
+	}
 	if (!fs.existsSync(manage)) {
 		fs.mkdirSync(manage);
 	}
-
 	manage += "/" + name;
 	if (!fs.existsSync(manage)) {
 		fs.mkdirSync(manage);
@@ -526,7 +542,7 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 	var orderby = "";
 	var id = $.dict.user_id;
 	// 设置sql模板
-	const len = lt.length;
+	var len = lt.length;
 	for (var i = 0; i < len; i++) {
 		var o = lt[i];
 		var p = o.type;
@@ -653,7 +669,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 		},
 		list: []
 	};
-	const len = lt.length;
+	var len = lt.length;
 	for (var i = 0; i < len; i++) {
 		var o = lt[i];
 		var p = o.type;

@@ -304,7 +304,7 @@ define(['jquery'], function(jquery) {
 					var button = params[i][j];
 					var buttonClass = button.label ? "actions-modal-label" : "actions-modal-button";
 					if (button.bold) buttonClass += " actions-modal-button-bold";
-					if (button.color) buttonClass += " font-" + button.color;
+					if (button.color) buttonClass += " font_" + button.color;
 					if (button.bg) buttonClass += " bg_" + button.bg;
 					if (button.disabled) buttonClass += " disabled";
 					buttonsHTML += "<span class=\"" + buttonClass + "\">" + button.text + "</span>";
@@ -749,7 +749,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_btn = {
-		template: "<!-- \u6309\u94AE --><button :class=\"'mm_btn' + te\" v-if=\"!url\" @click=\"click_down()\"><slot></slot></button><button type=\"button\" :class=\"'mm_btn' + te\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></button><router-link :class=\"'mm_btn' + te\" :to=\"url\" v-else><slot></slot></router-link>",
+		template: "<!-- \u6309\u94AE --><button :class=\"'mm_btn btn_' + type\" v-if=\"!url\" @click=\"click_down()\"><slot></slot></button><button type=\"button\" :class=\"'mm_btn btn_' + type\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></button><router-link :class=\"'mm_btn' + type\" :to=\"url\" v-else><slot></slot></router-link>",
 		props: {
 			url: {
 				type: String,
@@ -764,11 +764,6 @@ define(['jquery'], function(jquery) {
 				default: function _default() {}
 			}
 		},
-		data: function data() {
-			return {
-				te: ""
-			};
-		},
 		methods: {
 			openBrowser: function openBrowser() {
 				if (window) {
@@ -780,19 +775,10 @@ define(['jquery'], function(jquery) {
 					this.func();
 				}
 			}
-		},
-		created: function created() {
-			var t = this.type;
-
-			if (t) {
-				if (t.indexOf("btn-") == -1) {
-					this.te = " btn-" + t;
-				}
-			}
 		}
 	};
 	var mm_icon = {
-		template: "<!-- \u56FE\u6807 --><div class=\"mm_icon\" v-if=\"src.indexOf('<') !== -1\" v-html=\"src\"></div><div class=\"mm_icon\" v-else-if=\"src\"><img :src=\"src\" mode=\"mode\" /></div><div class=\"mm_icon\" v-else></div>",
+		template: "<!-- \u56FE\u6807 --><figure class=\"mm_icon\" v-if=\"src.indexOf('<') !== -1\" v-html=\"src\"></figure><figure class=\"mm_icon\" v-else-if=\"src\"><img :src=\"src\" :alt=\"alt\" mode=\"mode\" /><figcaption><slot></slot></figcaption></figure><figure class=\"mm_icon\" v-else></figure>",
 		props: {
 			src: {
 				type: String,
@@ -805,6 +791,10 @@ define(['jquery'], function(jquery) {
 			auto: {
 				type: String,
 				default: ""
+			},
+			alt: {
+				type: String,
+				default: "图片"
 			}
 		},
 		data: function data() {
@@ -899,7 +889,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_foot = {
-		template: "<!-- \u5757\u5C3E --><div class=\"mm_foot\"><slot></slot></div>"
+		template: "<!-- \u5757\u5C3E --><footer class=\"mm_foot\"><slot></slot></footer>"
 	};
 	var mm_grid = {
 		template: "<!-- \u6805\u683C --><div :class=\"'mm_grid' + cl\"><slot></slot></div>",
@@ -925,7 +915,7 @@ define(['jquery'], function(jquery) {
 		template: "<!-- \u7EC4\u5408\u6846 --><div class=\"mm_group\"><slot></slot></div>"
 	};
 	var mm_head = {
-		template: "<!-- \u5757\u5934 --><div class=\"mm_head\"><slot></slot></div>"
+		template: "<!-- \u5757\u5934 --><header class=\"mm_head\"><slot></slot></header>"
 	};
 	var mm_item = {
 		template: "<!-- \u9879\u76EE\u5757 --><div class=\"mm_item\" v-if=\"!url\"><slot></slot></div><div class=\"mm_item\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></div><router-link class=\"mm_item\" :to=\"url\" v-else><slot></slot></router-link>",
@@ -933,12 +923,11 @@ define(['jquery'], function(jquery) {
 			url: {
 				type: String,
 				default: ""
+			},
+			type: {
+				type: String,
+				default: ""
 			}
-		},
-		data: function data() {
-			return {
-				type: ""
-			};
 		},
 		methods: {
 			openBrowser: function openBrowser() {
@@ -949,7 +938,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_list = {
-		template: "<!-- \u5217\u8868 --><div :class=\"'mm_list' + cl\"><slot></slot></div>",
+		template: "<!-- \u5217\u8868 --><nav :class=\"'mm_list' + cl\"><slot></slot></nav>",
 		props: {
 			col: {
 				type: String,
@@ -1015,12 +1004,11 @@ define(['jquery'], function(jquery) {
 			url: {
 				type: String,
 				default: ""
+			},
+			type: {
+				type: String,
+				default: ""
 			}
-		},
-		data: function data() {
-			return {
-				type: ""
-			};
 		},
 		methods: {
 			openBrowser: function openBrowser() {
@@ -1091,24 +1079,11 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_table = {
-		template: "<table :class=\"'mm_table' + te\"><slot></slot></table>",
+		template: "<table :class=\"'mm_table table-' + type\"><slot></slot></table>",
 		props: {
 			type: {
 				type: String,
 				default: ""
-			}
-		},
-		computed: {
-			te: function te() {
-				var t = this.type;
-
-				if (t) {
-					if (t.indexOf("table-") == -1) {
-						t = " table-" + t;
-					}
-				}
-
-				return t;
 			}
 		}
 	};
@@ -1191,7 +1166,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_number = {
-		template: "<!-- \u6570\u5B57\u6846 --><div class=\"mm_number\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><mm_btn :type=\"type\" @click.native=\"del\"><span class=\"btn-del\"></span></mm_btn><input type=\"number\" :value=\"value\" :min=\"min\" :max=\"max\" @input=\"set\" @blur=\"setInt\" :disabled=\"disabled\"/><mm_btn :type=\"type\" @click.native=\"add\"><span class=\"btn-add\"></span></mm_btn></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<!-- \u6570\u5B57\u6846 --><div class=\"mm_number\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><mm_btn type=\"primary\" class=\"btn_del\" @click.native=\"del\"><span></span></mm_btn><input type=\"number\" :value=\"value\" :min=\"min\" :max=\"max\" @input=\"set\" @blur=\"setInt\" :disabled=\"disabled\"/><mm_btn type=\"primary\" class=\"btn_add\" @click.native=\"add\"><span></span></mm_btn></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			setInt: function setInt(e) {
@@ -1466,7 +1441,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_nav = {
-		template: "<ul class=\"mm_nav\"><li v-for=\"(o, index) in list\" :key=\"index\"><a :href=\"o.url\" v-if=\"o.url.indexOf('http:') === 0 || o.url.indexOf('https:') === 0\">{{ o.title }}<span class=\"message\" v-show=\"o.message > 0\">{{ o.message }}</span></a><router-link :to=\"o.url\" v-else>{{ o.title }}<span class=\"message\" v-show=\"o.message > 0\">{{ o.message }}</span></router-link></li></ul>",
+		template: "<nav class=\"mm_nav\"><ul><li v-for=\"(o, index) in list\" :key=\"index\"><a :href=\"o.url\" v-if=\"o.url.indexOf('http:') === 0 || o.url.indexOf('https:') === 0\">{{ o.title }}<span class=\"message\" v-show=\"o.message > 0\">{{ o.message }}</span></a><router-link :to=\"o.url\" v-else>{{ o.title }}<span class=\"message\" v-show=\"o.message > 0\">{{ o.message }}</span></router-link></li></ul></nav>",
 		props: {
 			list: {
 				type: Array,
@@ -1489,6 +1464,19 @@ define(['jquery'], function(jquery) {
 			}
 		}
 	};
+	
+	var mm_title = {
+		template: "<div class=\"mm_title\"><slot></slot></div>",
+		props: {}
+	};
+	var mm_content = {
+		template: "<div class=\"mm_content\"><slot></slot></div>",
+		props: {}
+	};
+	var mm_form = {
+		template: "<form class=\"mm_form\"><slot></slot></form>",
+		props: {}
+	};
 	return {
 		install: function install(Vue, options) {
 			Vue.component("mm_icon", mm_icon);
@@ -1510,6 +1498,9 @@ define(['jquery'], function(jquery) {
 			Vue.component("mm_side", mm_side);
 			Vue.component("mm_table", mm_table);
 			Vue.component("mm_warp", mm_warp);
+			Vue.component("mm_title", mm_title);
+			Vue.component("mm_content", mm_content);
+			Vue.component("mm_form", mm_form);
 			Vue.component("mm_checkbox", mm_checkbox);
 			Vue.component("mm_code", mm_code);
 			Vue.component("mm_input", mm_input);

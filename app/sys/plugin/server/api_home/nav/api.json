@@ -1,0 +1,15 @@
+{
+    "name": "nav",
+    "title": "导航信息",
+    "description": "获取指定app的导航链接和路由信息",
+    "path": "/api/nav*",
+    "type": "api",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "",
+    "check_param": true
+}

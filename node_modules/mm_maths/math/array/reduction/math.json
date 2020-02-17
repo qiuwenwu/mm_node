@@ -1,0 +1,8 @@
+{
+	"key": "reduction",
+	"name": "dimension reduction",
+	"title": "维度下降",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

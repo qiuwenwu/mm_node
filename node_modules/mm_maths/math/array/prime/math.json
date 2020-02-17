@@ -1,0 +1,8 @@
+{
+	"key": "prime",
+	"name": "prime number",
+	"title": "获取所有素数",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

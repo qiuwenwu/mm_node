@@ -1,0 +1,8 @@
+{
+	"key": "sqrt",
+	"name": "square root",
+	"title": "开平方根",
+	"group": "default",
+	"type": "base",
+	"func_file": "./index.js"
+}

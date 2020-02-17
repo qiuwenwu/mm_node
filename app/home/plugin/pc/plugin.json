@@ -1,11 +1,11 @@
 {
-	"name": "home_pc",
-	"title": "门户PC版",
-	"description": "该应用带文章、新闻资讯、企业动态等信息",
+	"app": "home",
+	"name": "pc",
+	"title": "门户(电脑版)",
+	"description": "这是门户电脑版插件",
 	"version": "1.0",
-	"identifier": "home_pc",
 	"lang_path": "./lang/",
 	"icon": "/img/logo.png",
-	"cmd": "home_pc",
+	"cmd": "",
 	"sort": 10
 }

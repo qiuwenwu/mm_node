@@ -1,0 +1,8 @@
+{
+	"symbol": "^",
+	"key": "power",
+	"name": "power",
+	"title": "幂次方",
+	"func_file": "./index.js",
+	"sort": 11
+}

@@ -24,10 +24,10 @@ import mm_user from '/src/components/item/mm_user.vue';
 import mm_video from '/src/components/item/mm_video.vue';
 
 // 轮播
-import mm_swiper_card from '/src/components/swiper/mm_swiper_card.vue';
-import mm_swiper_img from '/src/components/swiper/mm_swiper_img.vue';
-import mm_swiper_page from '/src/components/swiper/mm_swiper_page.vue';
-import mm_swiper_text from '/src/components/swiper/mm_swiper_text.vue';
+import mm_slide_card from '/src/components/slide/mm_slide_card.vue';
+import mm_slide_img from '/src/components/slide/mm_slide_img.vue';
+import mm_slide_page from '/src/components/slide/mm_slide_page.vue';
+import mm_slide_text from '/src/components/slide/mm_slide_text.vue';
 
 /* === 创建全局组件 === */
 export default {
@@ -60,9 +60,9 @@ export default {
 		Vue.component('mm_video', mm_video);
 
 		// 轮播
-		Vue.component('mm_swiper_card', mm_swiper_card);
-		Vue.component('mm_swiper_img', mm_swiper_img);
-		Vue.component('mm_swiper_page', mm_swiper_page);
-		Vue.component('mm_swiper_text', mm_swiper_text);
+		Vue.component('mm_slide_card', mm_slide_card);
+		Vue.component('mm_slide_img', mm_slide_img);
+		Vue.component('mm_slide_page', mm_slide_page);
+		Vue.component('mm_slide_text', mm_slide_text);
 	}
 }

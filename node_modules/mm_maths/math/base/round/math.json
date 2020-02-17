@@ -1,0 +1,8 @@
+{
+	"key": "round",
+	"name": "round",
+	"title": "四舍五入",
+	"group": "default",
+	"type": "base",
+	"func_file": "./index.js"
+}

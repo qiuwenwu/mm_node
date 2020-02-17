@@ -1,0 +1,8 @@
+{
+	"key": "max",
+	"name": "maximum value",
+	"title": "最大值",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

@@ -122,7 +122,7 @@
 	width: 100%;
 }
 
-.modal-button:after {
+.modal-button::after {
 	-webkit-transform-origin: 100% 50%;
 	background-color: #fff;
 	bottom: auto;
@@ -196,8 +196,8 @@ html:not(.watch-active-state) .modal-button:active {
 	width: 100%;
 }
 
-.actions-modal-button:after,
-.actions-modal-label:after {
+.actions-modal-button::after,
+.actions-modal-label::after {
 	-webkit-transform-origin: 50% 100%;
 	background-color: #d2d2d6;
 	bottom: 0;
@@ -375,8 +375,8 @@ html.with-statusbar-overlay .popup-overlay {
 	float: right;
 }
 
-.modal-inner:after,
-.modal-buttons-vertical .modal-button:after {
+.modal-inner::after,
+.modal-buttons-vertical .modal-button::after {
 	-webkit-transform-origin: 50% 100%;
 	background-color: #fff;
 	bottom: 0;
@@ -421,7 +421,7 @@ html.with-statusbar-overlay .popup.tablet-fullscreen {
 	z-index: 10999;
 }
 
-.modal-inner:after {
+.modal-inner::after {
 	-webkit-transform-origin: 50% 100%;
 	background-color: #e5e5e5;
 	bottom: 0;
@@ -446,7 +446,7 @@ html.with-statusbar-overlay .popup.tablet-fullscreen {
 	font-weight: 500;
 }
 
-.modal-buttons-vertical .modal-button:after {
+.modal-buttons-vertical .modal-button::after {
 	-webkit-transform-origin: 50% 100%;
 	background-color: #b5b5b5;
 	bottom: 0;
@@ -488,24 +488,24 @@ input.modal-text-input+input.modal-text-input {
 	color: #666;
 }
 
-.modal-button:last-child:after,
-.modal-buttons-vertical .modal-button:after,
-.modal-buttons-vertical .modal-button:before,
-.modal-buttons-vertical .modal-button:last-child:after,
+.modal-button:last-child::after,
+.modal-buttons-vertical .modal-button::after,
+.modal-buttons-vertical .modal-button::before,
+.modal-buttons-vertical .modal-button:last-child::after,
 .modal-no-buttons .modal-buttons,
-.modal-no-buttons .modal-inner:after,
-.actions-modal-button:last-child:after,
-.actions-modal-label:last-child:after,
-.picker-modal.picker-modal-inline .toolbar:before,
-.picker-calendar-row:last-child:after,
-.modal-button:last-child:after,
-.modal-buttons-vertical .modal-button:after,
-.modal-buttons-vertical .modal-button:before,
-.modal-buttons-vertical .modal-button:last-child:after,
+.modal-no-buttons .modal-inner::after,
+.actions-modal-button:last-child::after,
+.actions-modal-label:last-child::after,
+.picker-modal.picker-modal-inline .toolbar::before,
+.picker-calendar-row:last-child::after,
+.modal-button:last-child::after,
+.modal-buttons-vertical .modal-button::after,
+.modal-buttons-vertical .modal-button::before,
+.modal-buttons-vertical .modal-button:last-child::after,
 .modal-no-buttons .modal-buttons,
-.modal-no-buttons .modal-inner:after,
-.actions-modal-button:last-child:after,
-.actions-modal-label:last-child:after {
+.modal-no-buttons .modal-inner::after,
+.actions-modal-button:last-child::after,
+.actions-modal-label:last-child::after {
 	display: none;
 }
 
@@ -538,19 +538,19 @@ input.modal-text-input+input.modal-text-input {
 
 @media only screen and -webkit-min-device-pixel-ratio2 {
 
-	.modal-inner:after,
-	.modal-button:after,
-	.modal-buttons-vertical .modal-button:after,
-	.actions-modal-button:after,
-	.actions-modal-label:after,
-	.picker-modal .toolbar:before,
-	.picker-modal.picker-modal-inline .toolbar:after,
-	.picker-calendar-week-days:after,
-	.picker-calendar-row:after,
-	.picker-center-highlight:before,
-	.picker-center-highlight:after,
-	.picker-modal .bar:before,
-	.picker-modal .bar:after {
+	.modal-inner::after,
+	.modal-button::after,
+	.modal-buttons-vertical .modal-button::after,
+	.actions-modal-button::after,
+	.actions-modal-label::after,
+	.picker-modal .toolbar::before,
+	.picker-modal.picker-modal-inline .toolbar::after,
+	.picker-calendar-week-days::after,
+	.picker-calendar-row::after,
+	.picker-center-highlight::before,
+	.picker-center-highlight::after,
+	.picker-modal .bar::before,
+	.picker-modal .bar::after {
 		-webkit-transform: scaleY(.5);
 		transform: scaleY(.5);
 	}
@@ -558,19 +558,19 @@ input.modal-text-input+input.modal-text-input {
 
 @media only screen and -webkit-min-device-pixel-ratio3 {
 
-	.modal-inner:after,
-	.modal-button:after,
-	.modal-buttons-vertical .modal-button:after,
-	.actions-modal-button:after,
-	.actions-modal-label:after,
-	.picker-modal .toolbar:before,
-	.picker-modal.picker-modal-inline .toolbar:after,
-	.picker-calendar-week-days:after,
-	.picker-calendar-row:after,
-	.picker-center-highlight:before,
-	.picker-center-highlight:after,
-	.picker-modal .bar:before,
-	.picker-modal .bar:after {
+	.modal-inner::after,
+	.modal-button::after,
+	.modal-buttons-vertical .modal-button::after,
+	.actions-modal-button::after,
+	.actions-modal-label::after,
+	.picker-modal .toolbar::before,
+	.picker-modal.picker-modal-inline .toolbar::after,
+	.picker-calendar-week-days::after,
+	.picker-calendar-row::after,
+	.picker-center-highlight::before,
+	.picker-center-highlight::after,
+	.picker-modal .bar::before,
+	.picker-modal .bar::after {
 		-webkit-transform: scaleY(.33);
 		transform: scaleY(.33);
 	}
@@ -600,11 +600,11 @@ all and max-width629px {
 
 @media only screen and -webkit-min-device-pixel-ratio2 {
 
-	.modal-inner:after,
-	.modal-button:after,
-	.modal-buttons-vertical .modal-button:after,
-	.actions-modal-button:after,
-	.actions-modal-label:after {
+	.modal-inner::after,
+	.modal-button::after,
+	.modal-buttons-vertical .modal-button::after,
+	.actions-modal-button::after,
+	.actions-modal-label::after {
 		-webkit-transform: scaleY(.5);
 		transform: scaleY(.5);
 	}
@@ -612,11 +612,11 @@ all and max-width629px {
 
 @media only screen and -webkit-min-device-pixel-ratio3 {
 
-	.modal-inner:after,
-	.modal-button:after,
-	.modal-buttons-vertical .modal-button:after,
-	.actions-modal-button:after,
-	.actions-modal-label:after {
+	.modal-inner::after,
+	.modal-button::after,
+	.modal-buttons-vertical .modal-button::after,
+	.actions-modal-button::after,
+	.actions-modal-label::after {
 		-webkit-transform: scaleY(.33);
 		transform: scaleY(.33);
 	}

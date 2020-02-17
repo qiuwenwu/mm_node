@@ -1,0 +1,8 @@
+{
+	"key": "min",
+	"name": "minimum value",
+	"title": "最小值",
+	"group": "array",
+	"type": "base",
+	"func_file": "./index.js"
+}

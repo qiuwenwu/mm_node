@@ -1,0 +1,8 @@
+{
+	"key": "average",
+	"name": "average",
+	"title": "平均值",
+	"group": "array",
+	"type": "base",
+	"func_file": "./index.js"
+}

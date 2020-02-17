@@ -1,0 +1,11 @@
+{
+	"path": "/api/user/sign_in",
+	"type": "api",
+	"name": "user_sign_in",
+	"title": "账户登录",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "ALL",
+	"param_path": "./param.json",
+	"check_param": true
+}

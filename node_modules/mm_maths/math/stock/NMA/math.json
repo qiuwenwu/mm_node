@@ -1,0 +1,8 @@
+{
+	"key": "NMA",
+	"name": "Naive Moving Average",
+	"title": "纯真移动平均值",
+	"group": "array",
+	"type": "stock",
+	"func_file": "./index.js"
+}

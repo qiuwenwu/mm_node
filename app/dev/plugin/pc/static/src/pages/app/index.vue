@@ -238,7 +238,7 @@
 		margin-right: 1rem;
 	}
 
-	.plugin_info .btn-warning {
+	.plugin_info .btn_warning {
 		margin-left: 0.5rem;
 	}
 

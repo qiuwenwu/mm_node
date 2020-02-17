@@ -1,0 +1,8 @@
+{
+	"key": "floor",
+	"name": "floor",
+	"title": "向下取整",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

@@ -1,0 +1,8 @@
+{
+	"key": "square",
+	"name": "square",
+	"title": "求数组成员的平方",
+	"group": "array",
+	"type": "base",
+	"func_file": "./index.js"
+}

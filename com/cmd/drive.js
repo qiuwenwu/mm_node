@@ -161,7 +161,7 @@ Drive.prototype.not_match = function(content, db) {
 Drive.prototype.extract = async function(content, db) {
 	var list = this.config.extract;
 	var ret = content;
-	const len = list.length;
+	var len = list.length;
 	for (var i = 0; i < len; i++) {
 		var format = list[i];
 		var str = content.matchs(format);
@@ -181,7 +181,7 @@ Drive.prototype.extract = async function(content, db) {
  */
 Drive.prototype.remove = async function(content, db) {
 	var list = this.config.remove;
-	const len = list.length;
+	var len = list.length;
 	for (var i = 0; i < len; i++) {
 		var str = list[i];
 		var value = content.matchs(str);
@@ -255,7 +255,7 @@ Drive.prototype.fill = async function(msg, db, stage) {
 	} else {
 		// 补全内容
 		ct = db.msg.content;
-		const len = list.length;
+		var len = list.length;
 		for (var i = 0; i < len; i++) {
 			var o = list[i];
 			var k = o.name;
@@ -320,7 +320,7 @@ Drive.prototype.update = async function(msg, db, stage) {
 	var ct = msg.content;
 	var keyword = db.msg.keyword + "";
 	var form = db.msg.form.toJson();
-	const len = list.length;
+	var len = list.length;
 	for (var i = 0; i < len; i++) {
 		var o = list[i];
 		var k = o.name;
@@ -471,7 +471,7 @@ Drive.prototype.view = function(msg, db) {
 		if (stage) {
 			var list = stage.param;
 			if (list) {
-				const len = list.length;
+				var len = list.length;
 				for (var i = 0; i < len; i++) {
 					var o = list[i];
 					var value = json[o.name];

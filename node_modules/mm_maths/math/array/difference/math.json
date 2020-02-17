@@ -1,0 +1,8 @@
+{
+	"key": "difference",
+	"name": "difference",
+	"title": "差集",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

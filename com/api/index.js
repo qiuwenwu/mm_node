@@ -26,7 +26,14 @@ Api.prototype.sort = function() {
 	this.list.sort(function(o1, o2) {
 		var p1 = o1.config.path;
 		var p2 = o2.config.path;
-		return p2.length - p1.length;
+		var n = p2.length - p1.length;
+		if(n)
+		{
+			return n;
+		}
+		else {
+			return o1.config.sort - o2.config.sort;
+		}
 	});
 };
 

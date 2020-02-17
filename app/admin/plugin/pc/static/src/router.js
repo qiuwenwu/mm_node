@@ -2,8 +2,6 @@ define(["Vue", "VueRouter", "mm_sdk", "nav"], function(Vue, VueRouter, mm_sdk, n
 	"use strict";
 
 	Vue.use(VueRouter);
-	var routePath = "/admin";
-	var filePath = "/admin";
 	var routes = [{
 		path: "/",
 		component: function component(resolve) {
@@ -41,14 +39,14 @@ define(["Vue", "VueRouter", "mm_sdk", "nav"], function(Vue, VueRouter, mm_sdk, n
 
 	var router = new VueRouter({
 		mode: "history",
-		base: routePath,
+		base: "/admin",
 		hashbang: true,
 		history: false,
 		saveScrollPosition: true,
 		transitionOnLoad: true,
 		routes: routes
 	});
-
+	
 	VueRouter.prototype.goBack = function(url) {
 		this.isBack = true;
 		if (window.history.length > 1) {
@@ -59,15 +57,18 @@ define(["Vue", "VueRouter", "mm_sdk", "nav"], function(Vue, VueRouter, mm_sdk, n
 	};
 
 	router.beforeEach(function(to, from, next) {
-		if (to.oauth) {
+		var path = to.path;
+		var o = routes.getObj({ path });
+		if (o.oauth) {
 			var token = $.db.get("token");
-			if (to.oauth.signIn && !token) {
-				$.url_back = to.path + "?" + $.toUrl(to.query);
-				next("/login");
+			if (o.oauth.signIn && !token) {
+				$.route.redirect_url = to.path + "?" + $.toUrl(to.query);
+				next("/sign_in");
 				return;
 			}
 		}
 		next();
 	});
+	
 	return router;
 });

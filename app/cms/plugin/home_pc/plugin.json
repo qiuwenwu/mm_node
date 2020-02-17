@@ -1,0 +1,11 @@
+{
+	"name": "cms_pc",
+	"title": "门户PC版",
+	"description": "该应用带文章、新闻资讯、企业动态等信息",
+	"version": "1.0",
+	"identifier": "cms_pc",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "cms_pc",
+	"sort": 10
+}

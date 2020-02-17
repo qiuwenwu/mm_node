@@ -1,0 +1,8 @@
+{
+	"key": "LEFT",
+	"name": "array left",
+	"title": "取数组左边N个成员",
+	"group": "array",
+	"type": "stock",
+	"func_file": "./index.js"
+}

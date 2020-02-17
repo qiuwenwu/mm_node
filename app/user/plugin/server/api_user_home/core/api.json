@@ -1,0 +1,53 @@
+[
+    {
+        "path": "/api/user/password",
+        "type": "api",
+        "name": "user_password",
+        "title": "修改密码",
+        "cache": 0,
+        "func_file": "./password.js",
+        "method": "POST"
+    },
+    {
+        "path": "/api/user/forgot",
+        "type": "api",
+        "name": "user_forgot",
+        "title": "找回密码",
+        "cache": 0,
+        "func_file": "./forgot.js",
+        "method": "POST"
+    },
+    {
+        "name": "user_send_code",
+        "title": "发送验证码",
+        "description": "用来发送手机或邮箱验证码",
+        "path": "/api/user/send_code",
+        "type": "api",
+        "func_file": "./send_code.js",
+        "func_name": "",
+        "method": "POST",
+        "cache": 0,
+        "client_cache": false,
+        "param_path": "",
+        "sql_path": "",
+        "check_param": true
+    },
+    {
+        "path": "/api/user/state",
+        "type": "api",
+        "name": "user_state",
+        "title": "获取登录态",
+        "cache": 0,
+        "func_file": "./state.js",
+        "method": "GET"
+    },
+    {
+        "path": "/api/user/sign_out",
+        "type": "api",
+        "name": "user_sign_out",
+        "title": "账户退出",
+        "cache": 0,
+        "func_file": "./sign_out.js",
+        "method": "GET"
+    }
+]

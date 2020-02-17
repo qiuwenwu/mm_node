@@ -1,0 +1,12 @@
+{
+    "name": "user_group",
+    "title": "用户组",
+    "description": "",
+    "path": "/api/user/group",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

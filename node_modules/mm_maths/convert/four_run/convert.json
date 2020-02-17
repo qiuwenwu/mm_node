@@ -1,0 +1,8 @@
+{
+	"key": "four_run",
+	"name": "four run",
+	"title": "四则运算",
+	"descarption": "将式子做加减乘除变形",
+	"func_file": "./index.js",
+	"sort": 10
+}

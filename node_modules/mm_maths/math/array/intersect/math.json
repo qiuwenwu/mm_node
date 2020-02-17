@@ -1,0 +1,8 @@
+{
+	"key": "intersect",
+	"name": "intersect",
+	"title": "交集",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

@@ -1,0 +1,30 @@
+{
+	"sys": {
+		"name": "MM",
+		"title": "超级美眉",
+		"cache": "redis",
+		"task": true,
+		"log": false
+	},
+	"mysql": {
+		"host": "127.0.0.1",
+		"port": 3306,
+		"user": "root",
+		"password": "asd123",
+		"database": "mm"
+	},
+	"redis": {
+		"host": "127.0.0.1",
+		"port": 6379,
+		"password": "asd123",
+		"database": 0,
+		"prefix": "mm"
+	},
+	"mongodb": {
+		"host": "127.0.0.1",
+		"port": 27017,
+		"user": "admin",
+		"password": "asd123",
+		"database": "mm"
+	}
+}

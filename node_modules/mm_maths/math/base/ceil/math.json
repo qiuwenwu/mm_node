@@ -1,0 +1,8 @@
+{
+	"key": "ceil",
+	"name": "ceil",
+	"title": "向上取整",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

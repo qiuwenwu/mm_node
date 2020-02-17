@@ -1,0 +1,8 @@
+{
+	"key": "row",
+	"name": "row",
+	"title": "获取指定行数据",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

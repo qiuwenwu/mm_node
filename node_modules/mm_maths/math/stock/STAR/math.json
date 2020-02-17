@@ -1,0 +1,8 @@
+{
+	"key": "STAR",
+	"name": "STAR line",
+	"title": "十字星线",
+	"group": "if",
+	"type": "stock",
+	"func_file": "./index.js"
+}

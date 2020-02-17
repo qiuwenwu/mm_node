@@ -1,0 +1,8 @@
+{
+	"key": "composite",
+	"name": "composite number",
+	"title": "获取所有合数",
+	"group": "fraction",
+	"type": "base",
+	"func_file": "./index.js"
+}

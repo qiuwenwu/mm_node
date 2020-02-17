@@ -57,7 +57,7 @@ Task.prototype.load_item = function(dir, cg, file) {
 	var drive = new this.Drive(dir);
 	drive.loadObj(cg);
 	drive.filename = file;
-	drive.task_manager = this;
+	drive.task_adminr = this;
 	this.list.push(drive);
 };
 

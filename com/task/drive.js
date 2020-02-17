@@ -56,7 +56,7 @@ class Drive extends Item {
 		this.num = 0;
 		
 		// 任务管理器
-		this.task_manager = {};
+		this.task_adminr = {};
 	}
 }
 
@@ -175,7 +175,7 @@ Drive.prototype.setNum = function(_this) {
  * @param {String} name
  */
 Drive.prototype.del = async function(name) {
-	this.task_manager.del(name);
+	this.task_adminr.del(name);
 };
 
 /**
