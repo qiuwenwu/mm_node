@@ -56,18 +56,33 @@
 				height: 1.5rem;
 				border: 1px solid #e5e5e5;
 			}
+			
+			#list_scope {
+				width: 32rem;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="app">
 			<div class="mm_warp">
-				<h4>欢迎使用超级美眉API接口文档</h4>
+				<h4>API接口文档 —— <span>作用域</span></h4>
 				<p>所有的API接口都作用在不同的域下，您可以点击以下域，访问该域下的接口列表</p>
-				<ul class="scope_list">
-					<li v-for="(o, k) in list" :key="k">
-						<a class="font_info" :href="'/dev/doc/api_list.html?scope=' + o">{{ o }}</a>
-					</li>
-				</ul>
+				<table class="mm_table table-hover mt" v-if="list.length" id="list_scope">
+					<thead>
+						<tr>
+							<th width="60">#</th>
+							<th width="160">名称</th>
+							<th>标题</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(o, k) in list" :key="k" @click="go(o.name)">
+							<th>{{ k + 1 }}</th>
+							<td><a class="font_info">{{ o.name }}</a></td>
+							<td>{{ o.title }}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<script>
@@ -78,6 +93,9 @@
 					list: []
 				},
 				methods: {
+					go(scope){
+						location.href = '/dev/doc/api_list.html?scope=' + scope
+					},
 					get_list() {
 						var _this = this;
 						$.http.get(this.url, function(json, status) {

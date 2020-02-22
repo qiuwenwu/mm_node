@@ -1,7 +1,7 @@
 {
 	"target": "/api/*",
-	"name": "home",
-	"title": "门户客户端调用的接口事件",
+	"name": "client_api",
+	"title": "客户端调用的接口事件",
 	"description": "用于门户客户端访问服务端时调用的接口",
 	"stage": "action",
 	"tense": "main",

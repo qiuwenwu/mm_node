@@ -1,0 +1,12 @@
+{
+    "name": "sys_address_province",
+    "title": "省份",
+    "description": "",
+    "path": "/api/sys/address_province",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

@@ -1,0 +1,18 @@
+{
+    "name": "sys_ad2",
+    "title": "广告信息",
+    "description": "",
+    "path": "/apis/sys/ad",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true,
+    "oauth": {
+        "scope": true,
+        "signIn": true,
+        "gm": 2,
+        "user_admin": []
+    }
+}

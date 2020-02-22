@@ -1,4 +1,4 @@
-var api = $.api_admin('home');
+var api = $.api_admin('client', '默认客户端API');
 // 首次启动更新api接口;
 api.update();
 

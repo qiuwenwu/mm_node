@@ -1,0 +1,598 @@
+{
+    "name": "user_count2",
+    "title": "用户统计",
+    "add": {
+        "body": [
+            "level",
+            "iq",
+            "credit",
+            "credit_points",
+            "exp",
+            "extcredits1",
+            "extcredits2",
+            "extcredits3",
+            "extcredits4",
+            "extcredits5",
+            "extcredits6",
+            "extcredits7",
+            "extcredits8",
+            "money",
+            "coin"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "user_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "user_id",
+            "level_min",
+            "level_max",
+            "iq_min",
+            "iq_max",
+            "credit_min",
+            "credit_max",
+            "credit_points_min",
+            "credit_points_max",
+            "exp_min",
+            "exp_max",
+            "extcredits1_min",
+            "extcredits1_max",
+            "extcredits2_min",
+            "extcredits2_max",
+            "extcredits3_min",
+            "extcredits3_max",
+            "extcredits4_min",
+            "extcredits4_max",
+            "extcredits5_min",
+            "extcredits5_max",
+            "extcredits6_min",
+            "extcredits6_max",
+            "extcredits7_min",
+            "extcredits7_max",
+            "extcredits8_min",
+            "extcredits8_max",
+            "money_min",
+            "money_max",
+            "coin_min",
+            "coin_max"
+        ],
+        "query_required": [],
+        "body": [
+            "level",
+            "level_add",
+            "iq",
+            "iq_add",
+            "credit",
+            "credit_add",
+            "credit_points",
+            "credit_points_add",
+            "exp",
+            "exp_add",
+            "extcredits1",
+            "extcredits1_add",
+            "extcredits2",
+            "extcredits2_add",
+            "extcredits3",
+            "extcredits3_add",
+            "extcredits4",
+            "extcredits4_add",
+            "extcredits5",
+            "extcredits5_add",
+            "extcredits6",
+            "extcredits6_add",
+            "extcredits7",
+            "extcredits7_add",
+            "extcredits8",
+            "extcredits8_add",
+            "money",
+            "money_add",
+            "coin",
+            "coin_add"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "user_id",
+            "level_min",
+            "level_max",
+            "iq_min",
+            "iq_max",
+            "credit_min",
+            "credit_max",
+            "credit_points_min",
+            "credit_points_max",
+            "exp_min",
+            "exp_max",
+            "extcredits1_min",
+            "extcredits1_max",
+            "extcredits2_min",
+            "extcredits2_max",
+            "extcredits3_min",
+            "extcredits3_max",
+            "extcredits4_min",
+            "extcredits4_max",
+            "extcredits5_min",
+            "extcredits5_max",
+            "extcredits6_min",
+            "extcredits6_max",
+            "extcredits7_min",
+            "extcredits7_max",
+            "extcredits8_min",
+            "extcredits8_max",
+            "money_min",
+            "money_max",
+            "coin_min",
+            "coin_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "user_id",
+            "title": "用户ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "level",
+            "title": "等级",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "level_min",
+            "title": "等级——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "level_max",
+            "title": "等级——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "iq",
+            "title": "IQ智商",
+            "description": "用于激励用户评论和发帖",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    80,
+                    200
+                ]
+            }
+        },
+        {
+            "name": "iq_min",
+            "title": "IQ智商——最小值",
+            "description": "用于激励用户评论和发帖",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    80,
+                    200
+                ]
+            }
+        },
+        {
+            "name": "iq_max",
+            "title": "IQ智商——最大值",
+            "description": "用于激励用户评论和发帖",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    80,
+                    200
+                ]
+            }
+        },
+        {
+            "name": "credit",
+            "title": "信用度",
+            "description": "用于评估用户信誉",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_min",
+            "title": "信用度——最小值",
+            "description": "用于评估用户信誉",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_max",
+            "title": "信用度——最大值",
+            "description": "用于评估用户信誉",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_points",
+            "title": "积分",
+            "description": "用于代金消费或兑换商品",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_points_min",
+            "title": "积分——最小值",
+            "description": "用于代金消费或兑换商品",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "credit_points_max",
+            "title": "积分——最大值",
+            "description": "用于代金消费或兑换商品",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "exp",
+            "title": "经验值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "exp_min",
+            "title": "经验值——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "exp_max",
+            "title": "经验值——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits1",
+            "title": "拓展积分1",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits1_min",
+            "title": "拓展积分1——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits1_max",
+            "title": "拓展积分1——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits2",
+            "title": "拓展积分2",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits2_min",
+            "title": "拓展积分2——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits2_max",
+            "title": "拓展积分2——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits3",
+            "title": "拓展积分3",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits3_min",
+            "title": "拓展积分3——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits3_max",
+            "title": "拓展积分3——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits4",
+            "title": "拓展积分4",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits4_min",
+            "title": "拓展积分4——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits4_max",
+            "title": "拓展积分4——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits5",
+            "title": "拓展积分5",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits5_min",
+            "title": "拓展积分5——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits5_max",
+            "title": "拓展积分5——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits6",
+            "title": "拓展积分6",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits6_min",
+            "title": "拓展积分6——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits6_max",
+            "title": "拓展积分6——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits7",
+            "title": "拓展积分7",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits7_min",
+            "title": "拓展积分7——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits7_max",
+            "title": "拓展积分7——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits8",
+            "title": "拓展积分8",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits8_min",
+            "title": "拓展积分8——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "extcredits8_max",
+            "title": "拓展积分8——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "money",
+            "title": "钱",
+            "description": "用于现金业务",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "money_min",
+            "title": "钱——最小值",
+            "description": "用于现金业务",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "money_max",
+            "title": "钱——最大值",
+            "description": "用于现金业务",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "coin",
+            "title": "货币",
+            "description": "用于游戏或数字货币业务",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "coin_min",
+            "title": "货币——最小值",
+            "description": "用于游戏或数字货币业务",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        },
+        {
+            "name": "coin_max",
+            "title": "货币——最大值",
+            "description": "用于游戏或数字货币业务",
+            "type": "number",
+            "dataType": "decimal",
+            "number": {}
+        }
+    ]
+}

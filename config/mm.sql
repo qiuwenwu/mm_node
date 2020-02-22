@@ -4,120 +4,22 @@ Navicat MySQL Data Transfer
 Source Server         : 本地
 Source Server Version : 50553
 Source Host           : localhost:3306
-Source Database       : mm
+Source Database       : test
 
 Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2020-02-17 17:25:27
+Date: 2020-02-22 22:28:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `bbs_thread`
+-- Table structure for `cms_article`
 -- ----------------------------
-DROP TABLE IF EXISTS `bbs_thread`;
-CREATE TABLE `bbs_thread` (
-  `thread_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '主题id：[1,8388607]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用后前台才会显示该主题',
-  `state` smallint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态：[1,5]1正常，2推荐，3认证，4官方，5违规',
-  `type_id` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '主题分类ID：[1,1000]用来搜索指定类型的主题',
-  `channel_id` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '频道ID：[1,10000]该主题所属频道，仅该频道列表可以看到该主题',
-  `display` smallint(5) unsigned NOT NULL DEFAULT '100' COMMENT '排序：[0,10000]决定主题显示的顺序',
-  `city_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '所属城市ID：[1,8388607]对于一些地方主题，可以通过该ID筛看',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID：[1,8388607]编辑这篇主题到本站的用户ID',
-  `hot` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '热度：[0,1000000000]访问这篇主题的人次',
-  `praise` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '点赞次数：[0,1000000000]',
-  `collect_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '采集规则ID：[1,1000000000]如果主题是通过采集的方式获得，那么具有采集ID',
-  `create_time` datetime NOT NULL DEFAULT '1997-01-01 00:00:00' COMMENT '创建时间：',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间：',
-  `title` varchar(125) DEFAULT NULL COMMENT '标题：[0,125]用于主题和html的<title>标签中',
-  `keywords` varchar(125) DEFAULT NULL COMMENT '关键词：[0,125]用于搜索引擎收录',
-  `description` varchar(255) DEFAULT NULL COMMENT '描述：[0,255]用于主题提纲和搜索引擎收录',
-  `img` varchar(255) DEFAULT NULL COMMENT '封面图：[0,255]用于显示于主题列表页，多个封面图用换行分隔',
-  `url` varchar(255) DEFAULT NULL COMMENT '来源地址：[0,255]用于跳转到发布该主题的网站',
-  `tag` varchar(255) DEFAULT NULL COMMENT '标签：[0,255]用于标注主题所属相关内容，多个标签用空格隔开',
-  `content` text COMMENT '正文：主题的主体内容',
-  `collecter` text COMMENT '收藏者：多个收藏者用”,“分隔',
-  PRIMARY KEY (`thread_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of bbs_thread
--- ----------------------------
-
--- ----------------------------
--- Table structure for `bbs_thread_channel`
--- ----------------------------
-DROP TABLE IF EXISTS `bbs_thread_channel`;
-CREATE TABLE `bbs_thread_channel` (
-  `channel_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID：[1,10000]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用后才可以看到该频道',
-  `hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏：[0,1]隐藏非管理员该频道无法查看. 0为不隐藏，1为隐藏',
-  `can_comment` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否可评论：[0,1]不可评论则用户只能看，无法点评。0为不可评论，1为可评论',
-  `display` smallint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示顺序：[0,1000]决定频道显示的先后顺序',
-  `father_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '上级ID：[1,10000]在频道列表操作时，当上级频道展开时，才显示该频道',
-  `city_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '所属城市：[1,8388607]一些地方频道，可以通过该条判断是否可查看',
-  `type` varchar(16) NOT NULL DEFAULT 'article' COMMENT '频道类型：[0,16]question问答、info资讯、news新闻、article主题、activity活动',
-  `name` varchar(16) NOT NULL DEFAULT '' COMMENT '频道名称：[2,16]',
-  `template` varchar(64) DEFAULT NULL COMMENT '风格模板：[0,64]频道和主题都使用的样式',
-  `description` varchar(255) DEFAULT NULL COMMENT '描述：[0,255]描述该频道的作用',
-  `icon` varchar(255) DEFAULT NULL COMMENT '频道图标：[0,255]',
-  `url` varchar(255) DEFAULT NULL COMMENT '外链地址：[0,255]如果该频道是跳转到其他网站的情况下，就在该URL上设置',
-  PRIMARY KEY (`channel_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of bbs_thread_channel
--- ----------------------------
-
--- ----------------------------
--- Table structure for `bbs_thread_comment`
--- ----------------------------
-DROP TABLE IF EXISTS `bbs_thread_comment`;
-CREATE TABLE `bbs_thread_comment` (
-  `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论id：[1,2147483647]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用则显示该评论',
-  `score` smallint(1) unsigned NOT NULL DEFAULT '0' COMMENT '评分：[0,5]最低1分、最多5分',
-  `display` smallint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示排序：[0,1000]决定显示的顺序',
-  `thread_id` mediumint(8) unsigned NOT NULL DEFAULT '1' COMMENT '所属主题id：[1,8388607]',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID：[1,8388607]编辑评论的用户ID',
-  `tag` varchar(64) DEFAULT NULL COMMENT '标签：[0,64]评论人给的标签，多个标签用空格隔开',
-  `reply` text COMMENT '评论回复：对评论人的评论做出的回复。通过form-url格式保存，多个人的回复用换行分隔',
-  `content` text COMMENT '正文：评论内容',
-  PRIMARY KEY (`comment_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of bbs_thread_comment
--- ----------------------------
-
--- ----------------------------
--- Table structure for `bbs_thread_type`
--- ----------------------------
-DROP TABLE IF EXISTS `bbs_thread_type`;
-CREATE TABLE `bbs_thread_type` (
-  `type_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '主题分类ID：[1,30000]',
-  `display` smallint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示顺序：[0,1000]',
-  `father_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID：[1,32767]',
-  `channel_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '频道ID：[1,10000]',
-  `name` varchar(16) DEFAULT NULL COMMENT '分类名称：[0,16]',
-  `icon` varchar(255) DEFAULT NULL COMMENT '分类图标：[0,255]',
-  `description` varchar(255) DEFAULT NULL COMMENT '分类描述：[0,255]',
-  PRIMARY KEY (`type_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of bbs_thread_type
--- ----------------------------
-
--- ----------------------------
--- Table structure for `home_article`
--- ----------------------------
-DROP TABLE IF EXISTS `home_article`;
-CREATE TABLE `home_article` (
+DROP TABLE IF EXISTS `cms_article`;
+CREATE TABLE `cms_article` (
   `article_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '文章id：[1,8388607]',
   `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用后前台才会显示该文章',
   `state` smallint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态：[1,5]1正常，2推荐，3认证，4官方，5违规',
@@ -142,20 +44,17 @@ CREATE TABLE `home_article` (
   `content` text COMMENT '正文：文章的主体内容',
   `collecter` text COMMENT '收藏者：多个收藏者用”,“分隔',
   PRIMARY KEY (`article_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of home_article
+-- Records of cms_article
 -- ----------------------------
-INSERT INTO `home_article` VALUES ('1', '1', '1', '0', '100', '1', '0', '0', '0', '0', '0', '1997-01-01 00:00:00', '2019-11-03 09:49:30', '', '文章1', '', '', '', '', '', '', '', '');
-INSERT INTO `home_article` VALUES ('2', '1', '1', '0', '100', '1', '0', '0', '0', '0', '0', '1997-01-01 00:00:00', '2019-11-02 18:10:46', '', '万年长青2', '', '', '', '', '', '', '', '');
-INSERT INTO `home_article` VALUES ('3', '1', '1', '0', '100', '2', '0', '0', '0', '0', '0', '1997-01-01 00:00:00', '2019-11-02 18:10:48', '', '万年长青3', '', '', '/img/logo.png', '', '', '', '', '');
 
 -- ----------------------------
--- Table structure for `home_article_channel`
+-- Table structure for `cms_article_channel`
 -- ----------------------------
-DROP TABLE IF EXISTS `home_article_channel`;
-CREATE TABLE `home_article_channel` (
+DROP TABLE IF EXISTS `cms_article_channel`;
+CREATE TABLE `cms_article_channel` (
   `channel_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID：[1,10000]',
   `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用后才可以看到该频道',
   `hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏：[0,1]隐藏非管理员该频道无法查看. 0为不隐藏，1为隐藏',
@@ -170,18 +69,17 @@ CREATE TABLE `home_article_channel` (
   `icon` varchar(255) DEFAULT NULL COMMENT '频道图标：[0,255]',
   `url` varchar(255) DEFAULT NULL COMMENT '外链地址：[0,255]如果该频道是跳转到其他网站的情况下，就在该URL上设置',
   PRIMARY KEY (`channel_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of home_article_channel
+-- Records of cms_article_channel
 -- ----------------------------
-INSERT INTO `home_article_channel` VALUES ('1', '1', '0', '1', '100', '0', '0', 'article', '默认栏目', null, null, null, null);
 
 -- ----------------------------
--- Table structure for `home_article_comment`
+-- Table structure for `cms_article_comment`
 -- ----------------------------
-DROP TABLE IF EXISTS `home_article_comment`;
-CREATE TABLE `home_article_comment` (
+DROP TABLE IF EXISTS `cms_article_comment`;
+CREATE TABLE `cms_article_comment` (
   `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论id：[1,2147483647]',
   `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用则显示该评论',
   `score` smallint(1) unsigned NOT NULL DEFAULT '0' COMMENT '评分：[0,5]最低1分、最多5分',
@@ -196,31 +94,31 @@ CREATE TABLE `home_article_comment` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of home_article_comment
+-- Records of cms_article_comment
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `home_article_content`
+-- Table structure for `cms_article_content`
 -- ----------------------------
-DROP TABLE IF EXISTS `home_article_content`;
-CREATE TABLE `home_article_content` (
-  `content_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '内容模块ID',
-  `article_id` int(10) unsigned NOT NULL COMMENT '对应文章ID',
-  `title` varchar(255) DEFAULT NULL COMMENT '章节标题',
-  `content` text COMMENT '章节内容',
-  `img` text COMMENT '章节图片',
+DROP TABLE IF EXISTS `cms_article_content`;
+CREATE TABLE `cms_article_content` (
+  `content_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '内容模块ID：[1,2147483647]',
+  `article_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '对应文章ID：[1,2147483647]',
+  `title` varchar(255) DEFAULT NULL COMMENT '章节标题：[0,255]',
+  `content` text COMMENT '章节内容：',
+  `img` text COMMENT '章节图片：',
   PRIMARY KEY (`content_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of home_article_content
+-- Records of cms_article_content
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `home_article_type`
+-- Table structure for `cms_article_type`
 -- ----------------------------
-DROP TABLE IF EXISTS `home_article_type`;
-CREATE TABLE `home_article_type` (
+DROP TABLE IF EXISTS `cms_article_type`;
+CREATE TABLE `cms_article_type` (
   `type_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '文章分类ID：[1,30000]',
   `display` smallint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示顺序：[0,1000]',
   `channel_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '频道ID：[1,10000]',
@@ -232,382 +130,7 @@ CREATE TABLE `home_article_type` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of home_article_type
--- ----------------------------
-
--- ----------------------------
--- Table structure for `mall_product`
--- ----------------------------
-DROP TABLE IF EXISTS `mall_product`;
-CREATE TABLE `mall_product` (
-  `product_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '产品id：[1,8388607]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用后前台才会显示该产品',
-  `state` smallint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态：[0,5]1出售中，2预售中，3已下架，4已删除，5已违规',
-  `type_id` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '产品分类ID：[1,1000]用来搜索指定类型的产品',
-  `display` smallint(5) unsigned NOT NULL DEFAULT '100' COMMENT '排序：[0,10000]决定产品显示的顺序',
-  `channel_id` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '频道ID：[1,10000]该产品所属频道，仅该频道列表可以看到该产品',
-  `shop_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '店铺ID：[1,8388607]该商品所属的店铺',
-  `city_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '所属城市ID：[1,8388607]对于一些地方产品，可以通过该ID筛看',
-  `hot` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '热度：[0,1000000000]访问这篇产品的人次',
-  `praise` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '点赞次数：[0,1000000000]',
-  `price` double(8,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '卖价：[1]',
-  `price_old` double(8,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '原价：[1]',
-  `create_time` datetime NOT NULL DEFAULT '1997-01-01 00:00:00' COMMENT '创建时间：',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间：',
-  `title` varchar(125) DEFAULT NULL COMMENT '标题：[0,125]用于产品和html的<title>标签中',
-  `keywords` varchar(125) DEFAULT NULL COMMENT '关键词：[0,125]用于搜索引擎收录',
-  `description` varchar(255) DEFAULT NULL COMMENT '描述：[0,255]用于产品提纲和搜索引擎收录',
-  `img` varchar(255) DEFAULT NULL COMMENT '封面图：[0,255]用于显示于产品列表页，多个封面图用换行分隔',
-  `tag` varchar(255) DEFAULT NULL COMMENT '标签：[0,255]用于标注产品所属相关内容，多个标签用空格隔开',
-  `property` text NOT NULL COMMENT '产品属性：包含产品的规格、参数等信息，用JSON格式保存',
-  `content` text COMMENT '正文：产品的主体内容',
-  `collecter` text COMMENT '收藏者：多个收藏者用”,“分隔',
-  `brand` varchar(18) DEFAULT NULL COMMENT '品牌：[0,18]商品的品牌',
-  PRIMARY KEY (`product_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of mall_product
--- ----------------------------
-
--- ----------------------------
--- Table structure for `mall_product_channel`
--- ----------------------------
-DROP TABLE IF EXISTS `mall_product_channel`;
-CREATE TABLE `mall_product_channel` (
-  `channel_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID：[1,10000]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用后才可以看到该频道',
-  `hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏：[0,1]隐藏非管理员该频道无法查看. 0为不隐藏，1为隐藏',
-  `can_comment` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否可评论：[0,1]不可评论则用户只能看，无法点评。0为不可评论，1为可评论',
-  `display` mediumint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示顺序：[0,1000]决定频道显示的先后顺序',
-  `father_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '上级ID：[1,10000]在频道列表操作时，当上级频道展开时，才显示该频道',
-  `city_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '所属城市：[1,8388607]一些地方频道，可以通过该条判断是否可查看',
-  `type` varchar(16) NOT NULL DEFAULT 'product' COMMENT '频道类型：[0,16]question问答、info资讯、news新闻、product产品、activity活动',
-  `name` varchar(16) NOT NULL DEFAULT '' COMMENT '频道名称：[2,16]',
-  `template` varchar(64) DEFAULT NULL COMMENT '风格模板：[0,64]频道和产品都使用的样式',
-  `icon` varchar(255) DEFAULT NULL COMMENT '频道图标：[0,255]',
-  `url` varchar(255) DEFAULT NULL COMMENT '外链地址：[0,255]如果该频道是跳转到其他网站的情况下，就在该URL上设置',
-  `description` varchar(255) DEFAULT NULL COMMENT '描述：[0,255]描述该频道的作用',
-  PRIMARY KEY (`channel_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of mall_product_channel
--- ----------------------------
-
--- ----------------------------
--- Table structure for `mall_product_comment`
--- ----------------------------
-DROP TABLE IF EXISTS `mall_product_comment`;
-CREATE TABLE `mall_product_comment` (
-  `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论id：[1,2147483647]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用则显示该评论',
-  `score` smallint(1) unsigned NOT NULL DEFAULT '0' COMMENT '评分：[0,5]最低1分、最多5分',
-  `display` smallint(3) unsigned NOT NULL DEFAULT '100' COMMENT '显示排序：[0,1000]决定显示的顺序',
-  `product_id` mediumint(8) unsigned NOT NULL DEFAULT '1' COMMENT '所属产品id：[1,8388607]',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID：[1,8388607]编辑评论的用户ID',
-  `name` varchar(16) DEFAULT NULL COMMENT '留言者姓名：[2,16]用于实名回复',
-  `tag` varchar(64) DEFAULT NULL COMMENT '标签：[0,64]评论人给的标签，多个标签用空格隔开',
-  `content` text COMMENT '正文：评论内容',
-  `reply` text COMMENT '评论回复：对评论人的评论做出的回复。通过form-url格式保存，多个人的回复用换行分隔',
-  PRIMARY KEY (`comment_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of mall_product_comment
--- ----------------------------
-
--- ----------------------------
--- Table structure for `mall_product_property`
--- ----------------------------
-DROP TABLE IF EXISTS `mall_product_property`;
-CREATE TABLE `mall_product_property` (
-  `property_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '产品分类ID：[1,30000]',
-  `display` smallint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示顺序：[0,1000]',
-  `name` varchar(16) DEFAULT NULL COMMENT '分类名称：[0,16]',
-  `icon` varchar(255) DEFAULT NULL COMMENT '分类图标：[0,255]',
-  `description` varchar(255) DEFAULT NULL COMMENT '分类描述：[0,255]',
-  PRIMARY KEY (`property_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of mall_product_property
--- ----------------------------
-
--- ----------------------------
--- Table structure for `mall_product_type`
--- ----------------------------
-DROP TABLE IF EXISTS `mall_product_type`;
-CREATE TABLE `mall_product_type` (
-  `type_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '产品分类ID：[1,30000]',
-  `display` smallint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示顺序：[0,1000]',
-  `channel_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '频道ID：[1,10000]',
-  `father_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID：[1,32767]',
-  `name` varchar(16) DEFAULT NULL COMMENT '分类名称：[0,16]',
-  `icon` varchar(255) DEFAULT NULL COMMENT '分类图标：[0,255]',
-  `description` varchar(255) DEFAULT NULL COMMENT '分类描述：[0,255]',
-  PRIMARY KEY (`type_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of mall_product_type
--- ----------------------------
-
--- ----------------------------
--- Table structure for `mall_shop`
--- ----------------------------
-DROP TABLE IF EXISTS `mall_shop`;
-CREATE TABLE `mall_shop` (
-  `shop_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '店铺id：[1,8388607]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用后前台才会显示该店铺',
-  `state` smallint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态：[0,5]1营业中，2已歇业，3已关店，4已删除，5已违规',
-  `type_id` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '店铺分类ID：[1,1000]用来搜索指定类型的店铺',
-  `display` smallint(4) unsigned NOT NULL DEFAULT '100' COMMENT '排序：[0,1000]决定店铺显示的顺序',
-  `channel_id` smallint(5) unsigned NOT NULL DEFAULT '1' COMMENT '频道ID：[1,10000]该店铺所属频道，仅该频道列表可以看到该店铺',
-  `city_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '所属城市ID：[1,8388607]对于一些地方店铺，可以通过该ID筛看',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '店铺所属人ID：[1,8388607]即该店铺是属于哪个用户的',
-  `hot` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '热度：[0,1000000000]访问这篇店铺的人次',
-  `praise` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '点赞次数：[0,1000000000]',
-  `create_time` datetime NOT NULL DEFAULT '1997-01-01 00:00:00' COMMENT '创建时间：',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间：',
-  `name` varchar(125) DEFAULT NULL COMMENT '标题：[0,125]用于店铺和html的<title>标签中',
-  `description` varchar(255) DEFAULT NULL COMMENT '描述：[0,255]用于店铺提纲和搜索引擎收录',
-  `keywords` varchar(64) DEFAULT NULL COMMENT '关键词：[0,64]用于搜索引擎收录',
-  `img` varchar(255) DEFAULT NULL COMMENT '封面图：[0,255]用于显示于店铺列表页，多个封面图用换行分隔',
-  `tag` varchar(255) DEFAULT NULL COMMENT '标签：[0,255]用于标注店铺所属相关内容，多个标签用空格隔开',
-  `collecter` text COMMENT '收藏者：多个收藏者用”,“分隔',
-  PRIMARY KEY (`shop_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of mall_shop
--- ----------------------------
-
--- ----------------------------
--- Table structure for `mall_shop_channel`
--- ----------------------------
-DROP TABLE IF EXISTS `mall_shop_channel`;
-CREATE TABLE `mall_shop_channel` (
-  `channel_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID：[1,10000]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用后才可以看到该频道',
-  `hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏：[0,1]隐藏非管理员该频道无法查看. 0为不隐藏，1为隐藏',
-  `can_comment` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否可评论：[0,1]不可评论则用户只能看，无法点评。0为不可评论，1为可评论',
-  `display` mediumint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示顺序：[0,1000]决定频道显示的先后顺序',
-  `father_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '上级ID：[1,10000]在频道列表操作时，当上级频道展开时，才显示该频道',
-  `city_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '所属城市：[1,8388607]一些地方频道，可以通过该条判断是否可查看',
-  `type` varchar(16) NOT NULL DEFAULT 'shop' COMMENT '频道类型：[0,16]question问答、info资讯、news新闻、shop店铺、activity活动',
-  `name` varchar(16) NOT NULL DEFAULT '' COMMENT '频道名称：[2,16]',
-  `template` varchar(64) DEFAULT NULL COMMENT '风格模板：[0,64]频道和店铺都使用的样式',
-  `icon` varchar(255) DEFAULT NULL COMMENT '频道图标：[0,255]',
-  `url` varchar(255) DEFAULT NULL COMMENT '外链地址：[0,255]如果该频道是跳转到其他网站的情况下，就在该URL上设置',
-  `description` varchar(255) DEFAULT NULL COMMENT '描述：[0,255]描述该频道的作用',
-  PRIMARY KEY (`channel_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of mall_shop_channel
--- ----------------------------
-
--- ----------------------------
--- Table structure for `mall_shop_comment`
--- ----------------------------
-DROP TABLE IF EXISTS `mall_shop_comment`;
-CREATE TABLE `mall_shop_comment` (
-  `comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论id：[1,2147483647]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否启用：[0,1]启用则显示该评论',
-  `score` smallint(1) unsigned NOT NULL DEFAULT '0' COMMENT '评分：[0,5]最低1分、最多5分',
-  `display` smallint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示排序：[0,1000]决定显示的顺序',
-  `shop_id` mediumint(8) unsigned NOT NULL DEFAULT '1' COMMENT '所属店铺id：[1,8388607]',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID：[1,8388607]编辑评论的用户ID',
-  `name` varchar(16) DEFAULT NULL COMMENT '留言者姓名：[2,16]用于实名回复',
-  `tag` varchar(64) DEFAULT NULL COMMENT '标签：[0,64]评论人给的标签，多个标签用空格隔开',
-  `content` text COMMENT '正文：评论内容',
-  `reply` text COMMENT '评论回复：对评论人的评论做出的回复。通过form-url格式保存，多个人的回复用换行分隔',
-  PRIMARY KEY (`comment_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of mall_shop_comment
--- ----------------------------
-
--- ----------------------------
--- Table structure for `mall_shop_type`
--- ----------------------------
-DROP TABLE IF EXISTS `mall_shop_type`;
-CREATE TABLE `mall_shop_type` (
-  `type_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '店铺分类ID：[1,30000]',
-  `display` smallint(4) unsigned NOT NULL DEFAULT '100' COMMENT '显示顺序：[0,1000]',
-  `channel_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '频道ID：[1,10000]',
-  `father_id` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID：[1,32767]',
-  `name` varchar(16) DEFAULT NULL COMMENT '分类名称：[0,16]',
-  `icon` varchar(255) DEFAULT NULL COMMENT '分类图标：[0,255]',
-  `description` varchar(255) DEFAULT NULL COMMENT '分类描述：[0,255]',
-  PRIMARY KEY (`type_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of mall_shop_type
--- ----------------------------
-
--- ----------------------------
--- Table structure for `pay_account`
--- ----------------------------
-DROP TABLE IF EXISTS `pay_account`;
-CREATE TABLE `pay_account` (
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID：[1,8388607]',
-  `state` smallint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态：[0,10]1为正常，2为异常，3为冻结，4为注销',
-  `bank` varchar(32) DEFAULT NULL COMMENT '网银账户：[0,32]',
-  `bank_name` varchar(255) DEFAULT NULL COMMENT '网银名称：[0,255]含支行',
-  `bank_state` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '微信认证：[0,1]0未认证，1已认证',
-  `wechat` varchar(32) DEFAULT NULL COMMENT '收款微信账户：[0,32]',
-  `wechat_state` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '微信认证：[0,1]0未认证，1已认证',
-  `alipay` varchar(32) DEFAULT NULL COMMENT '收款支付宝账户：[0,32]',
-  `alipay_state` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '微信认证：[0,1]0未认证，1已认证',
-  `btc` varchar(255) DEFAULT NULL COMMENT '比特币地址：[0,255]',
-  `btc_state` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '比特币地址认证：[0,1]0未认证，1已认证',
-  `eth` varchar(255) DEFAULT NULL COMMENT '以太币地址：[0,255]',
-  `eth_state` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '以太币地址认证：[0,1]0未认证，1已认证',
-  `eos` varchar(255) DEFAULT NULL COMMENT '柚子币地址：[0,255]',
-  `eos_state` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '柚子币地址认证：[0,1]0未认证，1已认证',
-  `mm` varchar(255) DEFAULT NULL COMMENT '美眉币地址：[0,255]',
-  `mm_state` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '美眉币地址认证：[0,1]0未认证，1已认证',
-  PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of pay_account
--- ----------------------------
-INSERT INTO `pay_account` VALUES ('1', '1', null, null, '0', null, '0', null, '0', null, '0', null, '0', null, '0', null, '0');
-
--- ----------------------------
--- Table structure for `pay_account_amount`
--- ----------------------------
-DROP TABLE IF EXISTS `pay_account_amount`;
-CREATE TABLE `pay_account_amount` (
-  `seller_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '商户ID：[1,8388607]用于对应商户',
-  `usd` decimal(16,2) NOT NULL DEFAULT '0.00' COMMENT '美元余额：',
-  `cny` decimal(16,2) NOT NULL DEFAULT '0.00' COMMENT '人民币余额：',
-  `mm` decimal(16,4) NOT NULL DEFAULT '0.0000' COMMENT '美眉币余额：',
-  `btc` decimal(16,8) NOT NULL DEFAULT '0.00000000' COMMENT '比特币余额：',
-  `eth` decimal(16,8) NOT NULL DEFAULT '0.00000000' COMMENT '以太币余额：',
-  `eos` decimal(16,8) NOT NULL DEFAULT '0.00000000' COMMENT '柚子币余额：',
-  PRIMARY KEY (`seller_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of pay_account_amount
--- ----------------------------
-INSERT INTO `pay_account_amount` VALUES ('1', '0.00', '0.00', '0.0000', '0.00000000', '0.00000000', '0.00000000');
-
--- ----------------------------
--- Table structure for `pay_account_discount`
--- ----------------------------
-DROP TABLE IF EXISTS `pay_account_discount`;
-CREATE TABLE `pay_account_discount` (
-  `discount_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '提现申请ID：[1,2147483647]',
-  `state` smallint(1) unsigned NOT NULL DEFAULT '1' COMMENT '提现状态：[0,10]1申请中，2转帐中，3已完成，4已拒绝',
-  `to_user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '收款人：[1,8388607]如果是商户收款，可选填',
-  `seller_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '商户ID：[1,8388607]商户收款的ID',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '审批人：[1,8388607]转账申请处理负责人，即由谁放款的',
-  `amount` decimal(17,8) NOT NULL DEFAULT '0.00000000' COMMENT '提现金额：',
-  `fee` decimal(16,8) NOT NULL DEFAULT '0.00000000' COMMENT '手续费：',
-  `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间：',
-  `pay_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '转账支付时间：',
-  `end_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '资金到账时间：',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后编辑时间：用于判断提现申请是否异常',
-  `platform` varchar(12) DEFAULT NULL COMMENT '应用平台：[0,12]pc电脑版网站、moblie移动版网站、wechat微信公众号、app手机应用',
-  `way` varchar(12) DEFAULT NULL COMMENT '收款方式：[0,12]third第三方支付、bank网银、digiccy数字货币',
-  `institution` varchar(16) DEFAULT NULL COMMENT '转账机构：[0,16]第三方填支付宝、微信，银行填银行名称例如建设银行，数字货币填数字货币名称，例如比特币',
-  `ip` varchar(32) DEFAULT NULL COMMENT '发起提现时的IP：[0,32]',
-  `from_user` varchar(128) DEFAULT NULL COMMENT '付款账户：[0,128]',
-  `to_user` varchar(128) DEFAULT NULL COMMENT '收款账户：[0,128]',
-  `cause` varchar(255) DEFAULT NULL COMMENT '拒绝原因：[0,255]告知商户为什么拒绝本次提现',
-  `note` varchar(255) DEFAULT NULL COMMENT '商户备注：[0,255]提现完成后的商户备注信息，便于商户查询',
-  PRIMARY KEY (`discount_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of pay_account_discount
--- ----------------------------
-INSERT INTO `pay_account_discount` VALUES ('1', '1', '0', '0', '0', '0.00000000', '0.00000000', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '2019-10-20 16:33:29', null, null, null, null, null, null, null, null);
-
--- ----------------------------
--- Table structure for `pay_config`
--- ----------------------------
-DROP TABLE IF EXISTS `pay_config`;
-CREATE TABLE `pay_config` (
-  `config_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID：[1,2147483647]',
-  `type` varchar(16) NOT NULL DEFAULT 'string' COMMENT '数据类型：[0,16]string文本型、number数字型、boolean布尔型',
-  `name` varchar(16) NOT NULL DEFAULT '' COMMENT '变量名：[0,16]',
-  `title` varchar(16) DEFAULT NULL COMMENT '变量标题：[0,16]可以用中文名',
-  `description` varchar(255) DEFAULT NULL COMMENT '变量描述：[0,255]描述该变量的作用',
-  `value` varchar(255) DEFAULT NULL COMMENT '变量值：[0,255]',
-  `model` text COMMENT '数据模型：json格式，用于单选、多选模式',
-  PRIMARY KEY (`config_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of pay_config
--- ----------------------------
-
--- ----------------------------
--- Table structure for `pay_seller`
--- ----------------------------
-DROP TABLE IF EXISTS `pay_seller`;
-CREATE TABLE `pay_seller` (
-  `seller_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '商户ID：[1,8388607]',
-  `institution_state` smallint(1) unsigned NOT NULL DEFAULT '1' COMMENT '认证状态：[0,10]1为未认证，2为认证中，3为已认证，4为认证失败',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '商户持有人：[1,8388607]',
-  `province_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '省份ID：[1,2147483647]用户所在地的省份',
-  `city_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所在城市ID：[1,2147483647]',
-  `name` varchar(16) NOT NULL DEFAULT '' COMMENT '商户名称：[0,16]',
-  `institution` varchar(64) DEFAULT NULL COMMENT '注册企业名：[0,64]',
-  `institution_code` varchar(64) DEFAULT NULL COMMENT '组织机构码：[0,64]',
-  `address` varchar(255) DEFAULT NULL COMMENT '详细地址：[0,255]商户办公地的详细地址',
-  `business` varchar(255) DEFAULT NULL COMMENT '经营范围：[0,255]',
-  `institution_img` text COMMENT '营业执照图片：',
-  PRIMARY KEY (`seller_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of pay_seller
--- ----------------------------
-INSERT INTO `pay_seller` VALUES ('1', '1', '0', '0', '0', '', null, null, null, null, null);
-
--- ----------------------------
--- Table structure for `pay_trade`
--- ----------------------------
-DROP TABLE IF EXISTS `pay_trade`;
-CREATE TABLE `pay_trade` (
-  `trade_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '交易序号：[1,2147483647]',
-  `state` smallint(1) unsigned NOT NULL DEFAULT '0' COMMENT '付款状态：[0,10]1待付款，2待确认，3已完成，4已取消',
-  `from_user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '付款人：[1,8388607]',
-  `to_user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '收款人：[1,8388607]如果是商户收款，可选填',
-  `seller_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '商户ID：[1,8388607]商户收款的ID',
-  `total` decimal(16,8) NOT NULL DEFAULT '0.00000000' COMMENT '付款总计金额：',
-  `amount` decimal(16,8) NOT NULL DEFAULT '0.00000000' COMMENT '实际付款金额：',
-  `fee` decimal(16,8) NOT NULL DEFAULT '0.00000000' COMMENT '手续费：',
-  `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '订单创建时间：',
-  `pay_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '转账支付时间：',
-  `end_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '付款到账时间：',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后编辑时间：用于判断订单是否异常',
-  `platform` varchar(12) DEFAULT NULL COMMENT '应用平台：[0,12]pc电脑版网站、moblie移动版网站、wechat微信公众号、app手机应用',
-  `way` varchar(12) DEFAULT NULL COMMENT '付款方式：[0,12]third第三方支付、bank网银、digiccy数字货币',
-  `app` varchar(16) DEFAULT NULL COMMENT '付款应用：[0,16]cms内容管理系统、mall商城、bbs论坛，可自定义',
-  `institution` varchar(16) DEFAULT NULL COMMENT '转账机构：[0,16]第三方填支付宝、微信，银行填银行名称例如建设银行，数字货币填数字货币名称，例如比特币',
-  `title` varchar(16) DEFAULT NULL COMMENT '付款标题：[0,16]',
-  `transaction_id` varchar(32) DEFAULT NULL COMMENT '交易ID：[0,32]类似合同编号，可用来查询该笔交易明细',
-  `ip` varchar(67) DEFAULT NULL COMMENT '转账时的用户IP：[0,67]',
-  `from_user` varchar(128) DEFAULT NULL COMMENT '付款账户：[0,128]',
-  `to_user` varchar(128) DEFAULT NULL COMMENT '收款账户：[0,128]',
-  `description` varchar(255) DEFAULT NULL COMMENT '付款描述：[0,255]告知用户付款的原因',
-  `note` varchar(255) DEFAULT NULL COMMENT '付款人备注：[0,255]付款完成后的用户备注信息，便于用户查询',
-  `content` text COMMENT '付款内容：根据应用定格式，一般为json格式',
-  PRIMARY KEY (`trade_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of pay_trade
+-- Records of cms_article_type
 -- ----------------------------
 
 -- ----------------------------
@@ -4321,7 +3844,7 @@ CREATE TABLE `user_account` (
 -- ----------------------------
 -- Records of user_account
 -- ----------------------------
-INSERT INTO `user_account` VALUES ('1', '40', '5', '5', '5', '0', '1970-01-01 00:00:00', '2020-01-29 15:19:57', 'mm2019', 'df91d1', '15817188815', '0', 'admin', '管理员', 'd1d3ca239d5fb1703e8cdb39b4df91d1', '', '0', '5,5', '1', '127.0.0.1', null, null, null, null);
+INSERT INTO `user_account` VALUES ('1', '40', '5', '5', '5', '0', '1970-01-01 00:00:00', '2020-02-18 08:24:31', 'mm2019', 'df91d1', '15817188815', '0', 'admin', '管理员', 'd1d3ca239d5fb1703e8cdb39b4df91d1', '', '0', '5,5', '1', '127.0.0.1', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `user_admin`
@@ -4462,88 +3985,3 @@ CREATE TABLE `user_sns` (
 -- Records of user_sns
 -- ----------------------------
 INSERT INTO `user_sns` VALUES ('1', '573242395', '0', 'qiuwenwu91', '0', 'qiuwenwu91', '0', null, '0', null, '0');
-
--- ----------------------------
--- Table structure for `wechat_app`
--- ----------------------------
-DROP TABLE IF EXISTS `wechat_app`;
-CREATE TABLE `wechat_app` (
-  `app_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '应用序号：[1,8388607]',
-  `available` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否可用：[0,1]在未审核状态下， 该应用授权为不可用',
-  `encrypt` smallint(1) unsigned NOT NULL DEFAULT '1' COMMENT '加解密方式：[0,10]0明文模式，1兼容模式，2安全模式',
-  `times_allow` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '每日允许请求次数：[0,32767]用于限制应用每日可授权次数',
-  `times_today` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '今日请求次数：[0,32767]用于记录今日请求授权次数，判断授权次数是否超限',
-  `max_age` smallint(5) unsigned NOT NULL DEFAULT '1825' COMMENT '有效期时长：[0,32767]授权应用可以使用的时长，超时需重新申请（单位：天）',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '持有者ID：[1,8388607]该客户端所有人的ID',
-  `times_count` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '请求总次数：[0,2147483647]用于记录授权总次数',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '上次使用时间：用于记录上次授权时间，防止频繁操作',
-  `name` varchar(16) NOT NULL DEFAULT '' COMMENT '应用名称：[0,16]用于用户登陆时显示授权应用',
-  `appid` varchar(16) NOT NULL DEFAULT '' COMMENT '应用ID：[0,16]用于应用授权访问时的账号',
-  `token` varchar(32) DEFAULT NULL COMMENT '消息访问令牌：[0,32]用于访问应用时验证身份',
-  `encoding_aes_key` varchar(43) DEFAULT NULL COMMENT '消息加密钥匙：[16,43]用于给应用发送消息时的加密钥匙',
-  `appsecret` varchar(64) NOT NULL DEFAULT '' COMMENT '应用密钥：[0,64]用于应用授权访问时的密码',
-  `icon` varchar(255) DEFAULT NULL COMMENT '应用图标：[0,255]用于用户登录时显示',
-  `url` varchar(255) DEFAULT NULL COMMENT '消息访问地址：[0,255]当接收到用户所发消息后回访该地址',
-  `bind_ip` text COMMENT '访问绑定IP：网站授权时确认重定向网址为已授权IP',
-  `scope` text COMMENT '允许使用的接口：多个接口用”，“分隔',
-  `scope_not` text COMMENT '不允许使用的接口：“多个接口用”，“分隔',
-  `users` text COMMENT '授权的用户：',
-  PRIMARY KEY (`app_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of wechat_app
--- ----------------------------
-
--- ----------------------------
--- Table structure for `wechat_app_refresh`
--- ----------------------------
-DROP TABLE IF EXISTS `wechat_app_refresh`;
-CREATE TABLE `wechat_app_refresh` (
-  `refresh_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '刷新Token的ID：[1,2147483647]',
-  `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID：[1,8388607]表示当前Token绑定的用户uid',
-  `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间：用来判断刷新令牌有效期',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间：用来判断是否频繁刷新访问牌',
-  `appid` varchar(16) NOT NULL DEFAULT '' COMMENT '应用ID：[0,16]',
-  `refresh_token` varchar(32) NOT NULL DEFAULT '' COMMENT '刷新令牌：[0,32]用来刷新访问牌，保留30天',
-  PRIMARY KEY (`refresh_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of wechat_app_refresh
--- ----------------------------
-
--- ----------------------------
--- Table structure for `wechat_message`
--- ----------------------------
-DROP TABLE IF EXISTS `wechat_message`;
-CREATE TABLE `wechat_message` (
-  `message_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '消息ID：[1,2147483647]',
-  `end` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '结束会话：[0,1]1已结束,0为未结束会话,如果未结束则查询当前正文',
-  `create_time` datetime NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '会话创建时间：',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '会话更新时间：',
-  `group` varchar(64) DEFAULT NULL COMMENT '用户群组：[0,64]',
-  `type` varchar(16) DEFAULT '1' COMMENT '会话类型：[0,16]一般情况下，1永久会话/群、2临时会话/群',
-  `from_user` varchar(64) DEFAULT NULL COMMENT '会话发起人：[0,64]',
-  `to_user` varchar(64) DEFAULT NULL COMMENT '会话接收人：[0,64]',
-  `robot` varchar(64) DEFAULT NULL COMMENT '服务的机器人：[0,64]',
-  `cmd` varchar(24) DEFAULT NULL COMMENT '所使用的指令：[0,24]',
-  `keyword` varchar(255) DEFAULT NULL COMMENT '关键词句：[0,255]除指令外，过滤、抽取后的词句',
-  `check` varchar(255) DEFAULT NULL COMMENT '复查指令：[0,255]当用户再驱动指令而缺少参数时，执行该语句',
-  `content` text COMMENT '会话正文：',
-  `note` text COMMENT '备注信息：',
-  `msg_type` varchar(16) DEFAULT NULL COMMENT '消息类型：[0,16]',
-  `form` text COMMENT '表单：用于记录用户已填参数',
-  `stage` smallint(1) unsigned NOT NULL DEFAULT '1' COMMENT '阶段：[null,9]第1阶段用于补全信息，第二阶段用于校验信息',
-  PRIMARY KEY (`message_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of wechat_message
--- ----------------------------
-INSERT INTO `wechat_message` VALUES ('11', '1', '2019-11-24 20:41:25', '2019-11-24 20:43:42', '', '1', 'oxn1OtzdF4ra66ObrkYJQ3Ahy5nc', 'gh_c41337e972b2', null, 'ems', 'null\r\n773009367627529', null, '今天天气怎么样？\r\n深圳\r\n773009367627529\r\n快递查询', null, 'text', null, '1');
-INSERT INTO `wechat_message` VALUES ('12', '1', '2019-11-24 20:55:17', '2019-11-24 20:58:42', '', '1', 'oxn1OtzdF4ra66ObrkYJQ3Ahy5nc', 'gh_c41337e972b2', null, 'music', null, null, '听音乐\r\n光年之外\r\n泡沫', null, 'text', null, '1');
-INSERT INTO `wechat_message` VALUES ('13', '1', '2019-11-24 20:58:50', '2019-11-24 21:04:56', '', '1', 'oxn1OtzdF4ra66ObrkYJQ3Ahy5nc', 'gh_c41337e972b2', null, 'ems', 'null\r\n7', null, '泡沫\r\n计算\r\n1+3+7\r\n1+3+7=\r\n有事吗？\r\n吃饭了没\r\n找工作\r\n快递查询', null, 'text', null, '1');
-INSERT INTO `wechat_message` VALUES ('14', '1', '2019-11-24 21:05:10', '2019-11-24 21:05:22', '', '1', 'oxn1OtzdF4ra66ObrkYJQ3Ahy5nc', 'gh_c41337e972b2', null, 'ems', 'null\r\n773009367627529', null, '773009367627529\r\n快递查询', null, 'text', null, '1');
-INSERT INTO `wechat_message` VALUES ('15', '1', '2019-11-24 21:05:48', '2019-11-24 21:05:51', '', '1', 'oxn1OtzdF4ra66ObrkYJQ3Ahy5nc', 'gh_c41337e972b2', null, 'ems', '9897043662549', null, '快递查询9897043662549', null, 'text', null, '1');
-INSERT INTO `wechat_message` VALUES ('16', '1', '2019-11-24 21:07:13', '2019-11-25 07:24:39', '', '1', 'oxn1OtzdF4ra66ObrkYJQ3Ahy5nc', 'gh_c41337e972b2', null, 'music', null, null, '今日头条\r\n新闻\r\n王心凌爱你\r\n听音乐\r\n王心凌爱你', null, 'text', null, '1');

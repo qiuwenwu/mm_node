@@ -1,13 +1,13 @@
 <template>
 	<!-- 页头 -->
-	<mm_head id="head">
+	<header>
 		<div class="logo">
 			<router-link to="/"><img src="./img/logo_gray.png" /></router-link>
 		</div>
 		<mm_nav class="nav_top" :list="nav.top" :value="$route.path"></mm_nav>
 		<dev_diy class="diy_left" :list="diy.top_left"></dev_diy>
 		<dev_diy class="diy_right" :list="diy.top_right"></dev_diy>
-	</mm_head>
+	</header>
 </template>
 
 <script>

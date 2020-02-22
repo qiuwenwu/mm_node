@@ -1,30 +1,64 @@
 {
+	/* 系统项 */
 	"sys": {
-		"name": "MM",
+		// 服务端名称
+		"name": "mm",
+		// 服务端中文名
 		"title": "超级美眉",
+		// 缓存方式, 选填 redis, cache, memory
 		"cache": "redis",
+		// 是否启用定时任务服务
 		"task": true,
+		// 是否启用websocket服务
+		"websocket": true,
+		// 是否启用多静态文件处理服务
+		"static": true,
+		// 是否启用数据库管理器
+		"db_admin": true,
+		// 是否输出操作日志
 		"log": false
 	},
-	"mysql": {
-		"host": "127.0.0.1",
-		"port": 3306,
-		"user": "root",
-		"password": "asd123",
-		"database": "mm"
-	},
 	"redis": {
+		// 服务器地址
 		"host": "127.0.0.1",
+		// 端口号
 		"port": 6379,
+		// 密码
 		"password": "asd123",
+		// 选用的数据库0-9
 		"database": 0,
+		// 键前缀
 		"prefix": "mm"
 	},
-	"mongodb": {
+	"mysql": {
+		// 服务器地址
 		"host": "127.0.0.1",
-		"port": 27017,
-		"user": "admin",
-		"password": "",
+		// 端口号
+		"port": 3306,
+		// 用户名
+		"user": "root",
+		// 密码
+		"password": "asd123",
+		// 数据库名称
 		"database": "mm"
+	},
+	"mongodb": {
+		// 服务器地址
+		"host": "127.0.0.1",
+		// 端口号
+		"port": 27017,
+		// 用户名
+		"user": "admin",
+		// 密码
+		"password": "asd123",
+		// 数据库名称
+		"database": "mm"
+	},
+	/* 域名重定向 */
+	"redirect": {
+		// 将m.开头的域名指向到/phone/路由路径
+		"m.*": "/phone/",
+		"pad.*": "/pad/",
+		"tv.*": "/tv/"
 	}
 }

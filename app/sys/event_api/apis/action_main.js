@@ -1,6 +1,6 @@
-var apis = $.api_admin('admin');
+var api = $.api_admin('manage', '默认管理端API');
 // 首次启动更新api接口;
-apis.update();
+api.update();
 
 var sql = $.mysql_admin('sys', __dirname);
 sql.setConfig($.config.mysql);
@@ -15,7 +15,7 @@ sql.open();
 async function main(ctx, db) {
 	// 在这定义要访问的数据库 (分布式开发时设置不同的数据库名)
 	$.push(db, sql.db(), true);
-	return apis.run(ctx, db);
+	return api.run(ctx, db);
 };
 
 exports.main = main;

@@ -4,11 +4,11 @@
 			<mm_head class="dev_head">
 				<!-- 应用下拉菜单 -->
 				<app_menu v-model="query.app" :func="set_app"></app_menu>
-			</mm_head>
+			</header>
 			<mm_body class="dev_body">
 				<!-- 插件列表 -->
 				<plugin_list v-model="query.plugin" :app="query.app" :func="set_plugin"></plugin_list>
-			</mm_body>
+			</main>
 		</mm_side>
 		<mm_main id="main">
 			<div class="dev_head" v-once>

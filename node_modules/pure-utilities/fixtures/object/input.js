@@ -65,6 +65,14 @@ const object = {
         input: [{ a: 0, b: { c: 0 } }]
       }
     ]
+  },
+  recsort: {
+    examples:
+    [
+      {
+        input: [{ b: 2, a: 1 }]
+      }
+    ]
   }
 }
 module.exports = object

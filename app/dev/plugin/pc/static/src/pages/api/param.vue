@@ -6,13 +6,13 @@
 				<a href="javascript:void(0)" v-for="(o, i) in tabs" :key="i" :class="{'active': i === index}" @click="index = i">
 					{{ o }}
 				</a>
-				<a class="save" @click="save()">保存</a>
+				<a class="save" @click="">搜索</a>
 				<input class="search" v-model="keyword" placeholder="搜索关键词"></input>
 			</div>
 			<div class="mm_collapse mm_collapse_default" v-if="list_headers.length > 0">
-				<mm_head>
+				<header>
 					协议头参数<span>（Headers）</span>
-				</mm_head>
+				</header>
 				<mm_body>
 					<table class="mm_table table-bordered table-sm table-hover">
 						<thead>
@@ -34,13 +34,13 @@
 							</tr>
 						</tbody>
 					</table>
-				</mm_body>
+				</main>
 			</div>
 
 			<div class="mm_collapse mm_collapse_info" v-if="list_query.length > 0">
-				<mm_head>
+				<header>
 					URL请求参数<span>（Query）</span>
-				</mm_head>
+				</header>
 				<mm_body>
 					<table class="mm_table table-bordered table-sm table-hover">
 						<thead>
@@ -60,23 +60,23 @@
 								<td>{{ o.required ? '是' : '否' }}</td>
 								<td>
 									<mm_group v-if="o.type == 'number'">
-										<mm_input type="number" class="range" v-model.number="o.number.range[0]" v-if="o.number.range.length > 1"></mm_input>
-										<mm_input type="number" class="range" v-model.number="o.number.min" v-else></mm_input>
+										<mm_input type="number" class="range" @blur="save()" v-model.number="o.number.range[0]" v-if="o.number.range.length > 1"></mm_input>
+										<mm_input type="number" class="range" @blur="save()" v-model.number="o.number.min" v-else></mm_input>
 										<div class="range_x">~</div>
-										<mm_input type="number" class="range" v-model.number="o.number.range[1]" v-if="o.number.range.length > 1"></mm_input>
-										<mm_input type="number" class="range" v-model.number="o.number.max" v-else></mm_input>
+										<mm_input type="number" class="range" @blur="save()" v-model.number="o.number.range[1]" v-if="o.number.range.length > 1"></mm_input>
+										<mm_input type="number" class="range" @blur="save()" v-model.number="o.number.max" v-else></mm_input>
 									</mm_group>
 									<mm_group v-else-if="o.type == 'string'">
-										<mm_input type="number" class="range" v-model.number="o.string.range[0]" v-if="o.string.range.length > 1"></mm_input>
-										<mm_input type="text" class="range" v-model="o.string.min" v-else></mm_input>
+										<mm_input type="number" class="range" @blur="save()" v-model.number="o.string.range[0]" v-if="o.string.range.length > 1"></mm_input>
+										<mm_input type="text" class="range" @blur="save()" v-model="o.string.min" v-else></mm_input>
 										<div class="range_x">~</div>
-										<mm_input type="number" class="range" v-model.number="o.string.range[1]" v-if="o.string.range.length > 1"></mm_input>
-										<mm_input type="text" class="range" v-model="o.string.max" v-else></mm_input>
+										<mm_input type="number" class="range" @blur="save()" v-model.number="o.string.range[1]" v-if="o.string.range.length > 1"></mm_input>
+										<mm_input type="text" class="range" @blur="save()" v-model="o.string.max" v-else></mm_input>
 									</mm_group>
 								</td>
 								<td>
-									<mm_input class="title" v-model="o.title"></mm_input>
-									<mm_input class="desc" v-model="o.description"></mm_input>
+									<mm_input class="title" @blur="save()" v-model="o.title"></mm_input>
+									<mm_input class="desc" @blur="save()" v-model="o.description"></mm_input>
 								</td>
 								<td>
 									<div class="handle">
@@ -86,7 +86,7 @@
 							</tr>
 						</tbody>
 					</table>
-				</mm_body>
+				</main>
 			</div>
 
 			<div class="mm_collapse  mm_collapse_primary" v-if="list_body.length > 0">
@@ -357,7 +357,7 @@
 				this.$post('/api/dev/api?method=set_param&' + $.toUrl(this.query), this.obj.param.config, function(json, status) {
 					var res = json.result;
 					if (res) {
-						$.toast(res.tip);
+						// $.toast(res.tip);
 					} else if (json.error) {
 						$.toast(json.error.message);
 					} else {

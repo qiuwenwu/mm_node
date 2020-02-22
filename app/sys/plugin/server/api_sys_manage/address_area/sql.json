@@ -1,0 +1,20 @@
+{
+    "name": "sys_address_area2",
+    "title": "地区",
+    "table": "sys_address_area",
+    "key": "area_id",
+    "orderby_default": "`area_id` desc",
+    "field_default": "`area_id`,`show`,`display`,`city_id`,`name`",
+    "query": {
+        "show_min": "`show` >= {0}",
+        "show_max": "`show` <= {0}",
+        "display_min": "`display` >= {0}",
+        "display_max": "`display` <= {0}",
+        "name": "`name` like '%{0}%'"
+    },
+    "update": {
+        "show_add": "`show` = `show` + {0}",
+        "display_add": "`display` = `display` + {0}"
+    },
+    "field_hide": []
+}

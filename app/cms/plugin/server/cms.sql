@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地数据库
+Source Server         : 本地
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : mm
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-12-15 01:14:58
+Date: 2020-02-22 20:13:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -44,14 +44,11 @@ CREATE TABLE `cms_article` (
   `content` text COMMENT '正文：文章的主体内容',
   `collecter` text COMMENT '收藏者：多个收藏者用”,“分隔',
   PRIMARY KEY (`article_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of cms_article
 -- ----------------------------
-INSERT INTO `cms_article` VALUES ('1', '1', '1', '0', '100', '1', '0', '0', '0', '0', '0', '1997-01-01 00:00:00', '2019-11-03 09:49:30', '', '文章1', '', '', '', '', '', '', '', '');
-INSERT INTO `cms_article` VALUES ('2', '1', '1', '0', '100', '1', '0', '0', '0', '0', '0', '1997-01-01 00:00:00', '2019-11-02 18:10:46', '', '万年长青2', '', '', '', '', '', '', '', '');
-INSERT INTO `cms_article` VALUES ('3', '1', '1', '0', '100', '2', '0', '0', '0', '0', '0', '1997-01-01 00:00:00', '2019-11-02 18:10:48', '', '万年长青3', '', '', '/img/logo.png', '', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for `cms_article_channel`
@@ -72,12 +69,11 @@ CREATE TABLE `cms_article_channel` (
   `icon` varchar(255) DEFAULT NULL COMMENT '频道图标：[0,255]',
   `url` varchar(255) DEFAULT NULL COMMENT '外链地址：[0,255]如果该频道是跳转到其他网站的情况下，就在该URL上设置',
   PRIMARY KEY (`channel_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of cms_article_channel
 -- ----------------------------
-INSERT INTO `cms_article_channel` VALUES ('1', '1', '0', '1', '100', '0', '0', 'article', '默认栏目', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `cms_article_comment`
@@ -102,6 +98,23 @@ CREATE TABLE `cms_article_comment` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `cms_article_content`
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_article_content`;
+CREATE TABLE `cms_article_content` (
+  `content_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '内容模块ID：[1,2147483647]',
+  `article_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '对应文章ID：[1,2147483647]',
+  `title` varchar(255) DEFAULT NULL COMMENT '章节标题：[0,255]',
+  `content` text COMMENT '章节内容：',
+  `img` text COMMENT '章节图片：',
+  PRIMARY KEY (`content_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of cms_article_content
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `cms_article_type`
 -- ----------------------------
 DROP TABLE IF EXISTS `cms_article_type`;
@@ -118,23 +131,4 @@ CREATE TABLE `cms_article_type` (
 
 -- ----------------------------
 -- Records of cms_article_type
--- ----------------------------
-
--- ----------------------------
--- Table structure for `cms_config`
--- ----------------------------
-DROP TABLE IF EXISTS `cms_config`;
-CREATE TABLE `cms_config` (
-  `config_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID：[1,2147483647]',
-  `type` varchar(16) NOT NULL DEFAULT 'string' COMMENT '数据类型：[0,16]string文本型、number数字型、boolean布尔型',
-  `name` varchar(16) NOT NULL DEFAULT '' COMMENT '变量名：[0,16]',
-  `title` varchar(16) DEFAULT NULL COMMENT '变量标题：[0,16]可以用中文名',
-  `value` varchar(255) DEFAULT NULL COMMENT '变量值：[0,255]',
-  `description` varchar(255) DEFAULT NULL COMMENT '变量描述：[0,255]描述该变量的作用',
-  `model` text COMMENT '数据模型：json格式，用于单选、多选模式',
-  PRIMARY KEY (`config_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of cms_config
 -- ----------------------------

@@ -4,15 +4,15 @@
 			<router-view></router-view>
 		</mm_page>
 		<mm_page v-else>
-			<mm_head id="head">
+			<header>
 				<div class="logo" :style="'width: ' + width + 'px'" @click="$router.push('/')">
 					<mm_icon src="/img/logo.png"></mm_icon>
 					<span>超级美眉</span>
 				</div>
 				<nav_quick></nav_quick>
 				<nav_top></nav_top>
-			</mm_head>
-			<mm_body id="body">
+			</header>
+			<main>
 				<mm_side id="side" :func="set_width">
 					<nav_main></nav_main>
 				</mm_side>
@@ -28,7 +28,7 @@
 					</div>
 					<router-view class="mm_grid"></router-view>
 				</mm_main>
-			</mm_body>
+			</main>
 			<nav_float></nav_float>
 		</mm_page>
 	</div>
@@ -136,7 +136,7 @@
 		float: right;
 	}
 
-	#head {
+	header {
 		height: 2.5rem;
 		min-height: 2.5rem;
 		background: #24292e;

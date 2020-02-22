@@ -83,7 +83,7 @@ function change(str, format, rx, key) {
 	var f = format;
 	var mh = str.match(rx);
 	if (mh) {
-		const len = mh.length;
+		var len = mh.length;
 		for (var i = 0; i < len; i++) {
 			var k = mh[i];
 			if (t.indexOf(k) !== -1) {
@@ -110,7 +110,7 @@ function change_func(str, format, rx, key, func) {
 	var f = format;
 	var mh = str.match(rx);
 	if (mh) {
-		const len = mh.length;
+		var len = mh.length;
 		for (var i = 0; i < len; i++) {
 			var k = mh[i];
 			if (t.indexOf(k) !== -1) {
@@ -748,7 +748,7 @@ Matchs.prototype.get = function(str, format) {
 
 
 	var f = format;
-	const len = arr.length;
+	var len = arr.length;
 	for (var i = 0; i < len; i++) {
 		var key = arr[i];
 		var func_name = this.dict[key];

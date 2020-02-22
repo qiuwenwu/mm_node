@@ -5,10 +5,10 @@
 				<div v-if="scope_list.length > 0">
 					<div class="plugin_count">共<span>{{ scope_list.length }}</span>个作用域</div>
 					<mm_list class="scope_list" col="1">
-						<mm_item v-for="(o, idx) in scope_list" :key="idx" :class="{'active': query.scope === o }" @click.native="set_scope(o)">{{ o }}</mm_item>
+						<mm_item v-for="(o, idx) in scope_list" :key="idx" :class="{'active': query.scope === o.name }" @click.native="set_scope(o.name)">{{ o.title || o.name }}</mm_item>
 					</mm_list>
 				</div>
-			</mm_body>
+			</main>
 		</mm_side>
 		<div class="dev_main">
 			<mm_body class="dev_body" v-if="!query.name">
@@ -48,47 +48,16 @@
 				<mm_view class="none" v-else>
 					<div class="h5">该作用域下没有接口</div>
 				</mm_view>
-			</mm_body>
+			</main>
 			<mm_body class="dev_body" v-else>
 				<div class="head"><strong>{{ api_title }}</strong> <span class="desc">接口明细</span>
 					<mm_btn type="info" class="fr" @click.native="query.name = '';set_name('')"><i class="fa-chevron-left"></i> 返回</mm_btn>
 				</div>
 				<page_param :query="query"></page_param>
-			</mm_body>
+			</main>
 		</div>
 		<mm_modal v-model="show" mask="true">
-			<mm_head>
-				<span class="h4">{{ obj.title }}</span>
-			</mm_head>
-			<mm_body class="pc">
-				<mm_grid>
-					<mm_col width="20">
-						<span>路由</span>
-					</mm_col>
-					<mm_col width="80">
-						<mm_input title="请求路径" v-model="obj.path"></mm_input>
-						<mm_select title="请求方式" v-model="obj.method" :options="options_method"></mm_select>
-						<mm_select title="返回类型" v-model="obj.contentType" :options="options_type"></mm_select>
-						<mm_number title="缓存时长" v-model.number="obj.cache" :min="0"></mm_number>
-						<mm_select title="缓存方式" v-model="obj.client_cache" :options="options_cache"></mm_select>
-					</mm_col>
-				</mm_grid>
-				<mm_grid>
-					<mm_col width="20">
-						<span>权限</span>
-					</mm_col>
-					<mm_col width="80">
-						<mm_switch title="开放域" v-model="obj.oauth.scope" type="bool"></mm_switch>
-						<mm_switch title="需要登录" v-model="obj.oauth.signIn" type="bool"></mm_switch>
-						<mm_number title="会员权限" v-model.number="obj.oauth.vip" :min="0" :max="5"></mm_number>
-						<mm_number title="管理权限" v-model.number="obj.oauth.gm" :min="0" :max="5"></mm_number>
-						<mm_number title="商户权限" v-model.number="obj.oauth.mc" :min="0" :max="5"></mm_number>
-						<mm_input title="用户组" v-model="user_group"></mm_input>
-						<mm_input title="管理组" v-model="user_admin"></mm_input>
-					</mm_col>
-				</mm_grid>
-				<mm_btn class="btn-save" type="primary" @click.native="set_sub()">保存</mm_btn>
-			</mm_body>
+			
 		</mm_modal>
 	</div>
 </template>
@@ -242,9 +211,10 @@
 				$('#app_dev_side .app_list').width(width);
 			},
 			set_scope(scope) {
+				console.log('点击');
 				this.list.clear();
 				var query = this.query;
-				if (this.scope_list.indexOf(scope) !== -1) {
+				if (this.scope_list.getObj({name: scope})) {
 					query.scope = scope;
 					query.name = "";
 					this.get_list();

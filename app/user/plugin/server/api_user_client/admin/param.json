@@ -1,0 +1,130 @@
+{
+    "name": "user_admin",
+    "title": "管理组",
+    "add": {
+        "body": [
+            "display",
+            "type",
+            "description",
+            "icon"
+        ],
+        "body_required": [
+            "name"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "admin_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "admin_id",
+            "display_min",
+            "display_max",
+            "name",
+            "description"
+        ],
+        "query_required": [],
+        "body": [
+            "display",
+            "display_add",
+            "type",
+            "name",
+            "description",
+            "icon"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "admin_id",
+            "display_min",
+            "display_max",
+            "name",
+            "description"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "admin_id",
+            "title": "管理组ID",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    1000
+                ]
+            }
+        },
+        {
+            "name": "display",
+            "title": "显示顺序",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_min",
+            "title": "显示顺序——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_max",
+            "title": "显示顺序——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "type",
+            "title": "分类",
+            "description": "用于区分用户组使用范围",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "name",
+            "title": "管理组名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "description",
+            "title": "描述",
+            "description": "描述该用户组的特点或权限范围",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "icon",
+            "title": "图标",
+            "description": "用于标识用户组",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}

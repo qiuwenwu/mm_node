@@ -1,0 +1,87 @@
+{
+    "name": "nav",
+    "filter": true,
+    "method": "get",
+    "add": {
+        "body": [],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": []
+    },
+    "set": {
+        "query": [],
+        "query_required": [],
+        "body": [],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "name",
+            "type"
+        ],
+        "query_required": []
+    },
+    "post": {
+        "query": [],
+        "query_required": [],
+        "body": [],
+        "body_required": [],
+        "body_not": []
+    },
+    "list": [
+        {
+            "splitter": "|",
+            "type": "string",
+            "string": {
+                "notEmpty": false,
+                "min": 2,
+                "max": 16,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            },
+            "name": "name",
+            "title": "应用名称",
+            "description": "用于查询是什么应用的导航",
+            "dataType": "varchar"
+        },
+        {
+            "splitter": "|",
+            "type": "string",
+            "string": {
+                "notEmpty": false,
+                "min": 2,
+                "max": 16,
+                "range": [],
+                "regex": "",
+                "identical": "",
+                "different": "",
+                "extension": "",
+                "format": ""
+            },
+            "number": {
+                "min": 0,
+                "max": 0,
+                "range": []
+            },
+            "name": "type",
+            "title": "类型",
+            "description": "用于获取指定类型的导航, 可以为空, 为空获取所有类型的导航",
+            "dataType": "varchar"
+        }
+    ],
+    "func_file": "",
+    "func_name": "",
+    "title": "导航信息获取接口"
+}

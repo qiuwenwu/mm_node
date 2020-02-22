@@ -1,0 +1,150 @@
+{
+    "name": "sys_address_area2",
+    "title": "地区",
+    "add": {
+        "body": [
+            "show",
+            "display",
+            "city_id"
+        ],
+        "body_required": [
+            "name"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "area_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "area_id",
+            "show_min",
+            "show_max",
+            "display_min",
+            "display_max",
+            "name"
+        ],
+        "query_required": [],
+        "body": [
+            "show",
+            "show_add",
+            "display",
+            "display_add",
+            "city_id",
+            "name"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "area_id",
+            "show_min",
+            "show_max",
+            "display_min",
+            "display_max",
+            "name"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "area_id",
+            "title": "地区ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "show",
+            "title": "是否可见",
+            "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 2
+            }
+        },
+        {
+            "name": "show_min",
+            "title": "是否可见——最小值",
+            "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 2
+            }
+        },
+        {
+            "name": "show_max",
+            "title": "是否可见——最大值",
+            "description": "0为仅表单可见，1为仅表单和搜索时可见 ，2为均可见",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 2
+            }
+        },
+        {
+            "name": "display",
+            "title": "显示顺序",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_min",
+            "title": "显示顺序——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "display_max",
+            "title": "显示顺序——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 1000
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所属城市ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "地区名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        }
+    ]
+}

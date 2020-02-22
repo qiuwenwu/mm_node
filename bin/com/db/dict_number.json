@@ -1,0 +1,104 @@
+[{
+	// 名称
+	"name": "user_id",
+	// 标题
+	"title": "用户ID",
+	// 描述
+	"description": "",
+	// 分组
+	"group": "通用",
+	// 简写
+	"abridge": "user_id",
+	// 参数类型 string字符串、number数字、bool布尔、dateTime时间、array数组类型、object对象类型
+	"type": "number",
+	// 数据库类型
+	"dataType": "mediumint",
+	// 是否主键
+	"key": true,
+	// 是否自动递增, 或自动更新（时间）
+	"auto": "auto_increment",
+	// 是否含符号
+	"symbol": false,
+	// 是否填充0
+	"fill_zero": false,
+	// 是否非空, 1表示非空, 0表示空
+	"not_null": 1,
+	// 小数点位数
+	"decimal": 0,
+	// 默认值
+	"default": "0",
+	/* 字符串类型校验 */ 
+	"string": {
+		// 传参最小长度, 0为不限
+		"min": 0,
+		// 传参最大长度, 0为不限
+		"max": 6,
+		// 传参长度范围 例如:[0,6]
+		"range": [],
+		// 正则表达式, 用于校验字符串格式是否正确
+		"regex": "",
+		// 需与什么参数相同, 例如confirm_password确认密码需和password相同
+		"identical": "",
+		// 需与什么不同, 例如password密码需和username用户名不同
+		"different": "",
+		// 拓展名
+		"extension": "",
+		// 校验格式类型, email邮箱、url网址、date日期、dateISO日期格式、number数值、digits数字、phone手机
+		"format": ""
+	},
+	/* 数字类型校验 */ 
+	"number": {
+		// 传参最小值, 0为不限
+		"min": 1,
+		// 传参最大值, 0为不限
+		"max": 32767,
+		// 传参数值范围, 例如:[0,6]
+		"range": []
+	},
+	/* 日期 */ 
+	"date": {
+		// 最小时间
+		"min": "1970-01-01 00:00:00",
+		// 最大时间, 如果为今天, 则天now
+		"max": "now"
+	},
+	/* 数据库模板 */ 
+	"sql": {
+		"query": {
+			"user_id_min": "`user_id` >= {0}",
+			"user_id_max": "`user_id` <= {0}"
+		},
+		"query_default": "",
+		"field_default": true,
+		"orderby_default": "desc",
+		"filter": false
+	},
+	"param": {
+		"add": {
+			"body": false,
+			"body_required": false
+		},
+		"del": {
+			"query": true,
+			"query_required": false
+		},
+		"set": {
+			"query": true,
+			"query_required": false,
+			"body": true,
+			"body_required": false,
+			"body_not": false
+		},
+		"get": {
+			"query": true,
+			"query_required": false
+		},
+		"post": {
+			"query": true,
+			"query_required": false,
+			"body": true,
+			"body_required": false,
+			"body_not": false
+		}
+	}
+}]

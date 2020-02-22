@@ -1,4 +1,4 @@
-var api = $.api_admin('admin_pc');
+var api = $.api_admin('admin_pc', '管理后台(PC版)');
 // 首次启动更新api接口;
 api.update();
 

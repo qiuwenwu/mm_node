@@ -3,7 +3,7 @@
 		<mm_side class="dev_side" id="app_dev_side" :func="set_width">
 			<mm_head class="dev_head">
 				<div></div>
-			</mm_head>
+			</header>
 			<mm_body class="dev_body">
 				<div v-if="scope_list.length > 0">
 					<div class="plugin_count">共<span>{{ scope_list.length }}</span>个作用域</div>
@@ -11,13 +11,13 @@
 						<mm_item v-for="(o, idx) in scope_list" :key="idx" :class="{'active': query.scope === o }" @click.native="set_scope(o)">{{ o }}</mm_item>
 					</mm_list>
 				</div>
-			</mm_body>
+			</main>
 		</mm_side>
 		<div class="dev_main">
 			<mm_head class="dev_head">
 				<div></div>
 				<div></div>
-			</mm_head>
+			</header>
 			<mm_body class="dev_body">
 				<div class="pc inline" name="search">
 					<div class="buttons">
@@ -58,7 +58,7 @@
 						<div class="h5">该作用域下没有数据表</div>
 					</mm_view>
 				</div>
-			</mm_body>
+			</main>
 		</div>
 	</div>
 </template>

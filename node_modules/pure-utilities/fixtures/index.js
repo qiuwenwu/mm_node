@@ -4,11 +4,13 @@ const collection = require('./collection/output')
 const date = require('./date/output')
 const math = require('./math/output')
 const object = require('./object/output')
+const json = require('./json/output')
 module.exports = {
   string,
   array,
   collection,
   date,
   math,
-  object
+  object,
+  json
 }

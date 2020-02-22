@@ -50,7 +50,7 @@ function set_vue_code(script) {
 		var src = script.between('[', ']');
 		var imports = src;
 		var arr = imports.split(',');
-		const len = arr.length;
+		var len = arr.length;
 		for (var i = 0; i < len; i++) {
 			var s = arr[i];
 			if (s.endsWith('.vue"')) {

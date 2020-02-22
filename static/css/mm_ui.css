@@ -10,7 +10,7 @@ ul li {list-style:none;}
 a { text-decoration:none; color: inherit; }
 button,a {cursor:pointer}
 button:focus {outline:none;}
-select {/*Chrome和Firefox里面的边框是不一样的，所以复写了一下*//*很关键：将默认的select选择框样式清除*/appearance:none;-moz-appearance:none;-webkit-appearance:none;/*为下拉小箭头留出一点位置，避免被文字覆盖*/padding-left:.5rem;padding-right:1.25rem;/*在选择框的最右侧中间显示小箭头图片*/background:url("/img/down.png") no-repeat scroll right center transparent;}
+select {/*Chrome和Firefox里面的边框是不一样的，所以复写了一下*//*很关键：将默认的select选择框样式清除*/appearance:none;-moz-appearance:none;-webkit-appearance:none;/*为下拉小箭头留出一点位置，避免被文字覆盖*/padding-left:.5rem;padding-right:1.25rem;/*在选择框的最右侧中间显示小箭头图片*//* background:url("/img/down.png") no-repeat scroll right center transparent; */}
 select::-ms-expand {display:none;}
 image {width:100%;}
 input {border:1px solid transparent;padding:0 0.5rem;}
@@ -125,6 +125,7 @@ h4,.h4,h5,.h5,h6,.h6 { font-weight: 600; }
 .mm_side .line:hover {cursor:w-resize;}
 .mm_main {position:relative;z-index:1;}
 .mm_side ~ .mm_main { margin-left: 14rem; overflow: hidden; }
+.mm_warp { max-width: 75rem; margin: auto; }
 .mm_warp::before,.mm_warp::after {display:block;content:"";clear:both;float:none;}
 .mm_grid,[class*=mm_grid_] {display:block;width:100%;max-width:77rem;margin:0 auto;position:relative;}
 .full .mm_warp { max-width: initial; }

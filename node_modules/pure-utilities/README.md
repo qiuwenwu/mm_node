@@ -1,6 +1,7 @@
 # pure-utilities
 
-![npm](https://img.shields.io/npm/v/pure-utilities.svg) ![build](https://img.shields.io/codeship/9375a010-5a24-0136-54ed-56905797af22/master.svg)
+[![npm](https://img.shields.io/npm/v/pure-utilities.svg)](https://www.npmjs.com/package/pure-utilities)
+[![build](https://github.com/buxlabs/pure-utilities/workflows/build/badge.svg)](https://github.com/buxlabs/pure-utilities/actions)
 
 > A set of pure functions.
 

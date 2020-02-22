@@ -23,7 +23,7 @@ require({
 		store: './store',
 		router: './router',
 		echarts: '/js/echarts',
-		page: '/src/mixins/page'
+		page: '/src/mixins/page.js'
 	},
 	shim: {
 		clipboard: {

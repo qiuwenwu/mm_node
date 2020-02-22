@@ -1,5 +1,5 @@
 <template>
-	<div id="root_index">
+	<main id="root_index">
 		<mm_col>
 			<mm_view>
 				<mm_title>
@@ -11,7 +11,7 @@
 				</div>
 			</mm_view>
 		</mm_col>
-	</div>
+	</main>
 </template>
 
 <script>

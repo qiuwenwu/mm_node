@@ -3,6 +3,7 @@
  * @author <a href="http://qww.elins.cn">邱文武</a>
  * @version 1.2
  */
+const JSON5 = require('json5')
 const {
 	j2xParser,
 	parse
@@ -14,6 +15,7 @@ const {
 	copyFileSync,
 	statSync,
 	readdirSync,
+	mkdirSync,
 	unlink,
 	rmdir
 } = require('fs');
@@ -354,9 +356,9 @@ function clear(obj) {
  */
 function toJson(obj, format) {
 	if (format) {
-		return JSON.stringify(obj, null, 4);
+		return JSON5.stringify(obj, null, 4);
 	} else {
-		return JSON.stringify(obj);
+		return JSON5.stringify(obj);
 	}
 }
 
@@ -805,7 +807,7 @@ if (typeof($) === "undefined") {
 	 */
 	String.prototype.toJson = function() {
 		try {
-			return JSON.parse(this);
+			return JSON5.parse(this);
 		} catch (e) {
 			console.log('json反序列化错误');
 			return null;
@@ -1270,6 +1272,22 @@ if (typeof($) === "undefined") {
 		rmdir(this.fullname(dir), function(e) {});
 	};
 
+	/**
+	 * @创建路径
+	 * @param {String} dir 文件路径
+	 */
+	String.prototype.addDir = function(dirbase) {
+		var dir = this + '';
+		var arr = dir.fullname(dirbase || $.runPath).split(slash);
+		var dir = arr[0];
+		for (var i = 1; i < arr.length; i++) {
+			if (!existsSync(dir)) {
+				mkdirSync(dir);
+			}
+			dir = dir + slash + arr[i];
+		}
+	};
+	
 	/**
 	 * @description 复制文件
 	 * @param {String} file 保存路径

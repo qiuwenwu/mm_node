@@ -6,6 +6,7 @@ const keys = require('./keys')
 const merge = require('./merge')
 const clone = require('./clone')
 const deepclone = require('./deepclone')
+const recsort = require('./recsort')
 
 module.exports = {
   rename,
@@ -15,5 +16,6 @@ module.exports = {
   keys,
   merge,
   clone,
-  deepclone
+  deepclone,
+  recsort
 }

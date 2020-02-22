@@ -3,41 +3,41 @@ body {
 }
 
 /* 页头 */
-#head {
+header {
 	min-height: 2rem;
 	background: #24292e;
 	color: #fff;
 }
 
-#head a {
+header a {
 	font-size: 0.875rem;
 }
 
 /* logo */
-#head .logo {
+header .logo {
 	width: 3rem;
 	height: 2rem;
 	float: left;
 	text-align: center;
 }
 
-#head .logo img {
+header .logo img {
 	margin-top: 0.35rem;
 	width: 1.25rem;
 	height: 1.25rem;
 }
 
 /* 导航 */
-#head .nav_top {
+header .nav_top {
 	line-height: 2rem;
 }
 
-#head .nav_top li {
+header .nav_top li {
 	float: left;
 	padding: 0 0.75rem;
 }
 
-#head .nav_top li:hover {
+header .nav_top li:hover {
 	background: #2f363d;
 }
 

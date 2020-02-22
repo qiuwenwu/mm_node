@@ -1,9 +1,9 @@
 <template>
 	<div id="app">
 		<dev_head></dev_head>
-		<mm_body id="body">
+		<main>
 			<router-view></router-view>
-		</mm_body>
+		</main>
 		<dev_foot></dev_foot>
 		<!-- 浮动栏 -->
 		<div id="dev_float"></div>

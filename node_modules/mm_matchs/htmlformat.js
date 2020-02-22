@@ -22,7 +22,7 @@ function style_html(html_source, indent_size, indent_character, max_char) {
 			single_token: 'br,input,link,meta,!doctype,basefont,base,area,hr,wbr,param,img,isindex,?xml,embed'.split(','), //all the single tags for HTML
 			extra_liners: 'head,body,/html'.split(','), //for tags that need a line of whitespace before them
 			in_array: function(what, arr) {
-				const len = arr.length;
+				var len = arr.length;
 				for (var i = 0; i < len; i++) {
 					if (what === arr[i]) {
 						return true;

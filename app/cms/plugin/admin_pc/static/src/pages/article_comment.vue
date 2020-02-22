@@ -9,7 +9,7 @@
 </template>
 
 <script>
-	import mixin from '/src/mixins/page';
+	import mixin from '/src/mixins/page.js';
 
 	export default {
 		mixins: [mixin],

@@ -1,0 +1,11 @@
+[{
+	"target": "/api/cms/*",
+	"name": "api_client",
+	"title": "cms的客户端api接口",
+	"description": "用于门户访问接口",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 100,
+	"end": true
+}]

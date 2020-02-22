@@ -54,6 +54,13 @@ const object = {
       en: 'Creates deep copy of the passed object (objects are clone as value).',
       pl: 'Tworzy głęboką kopię przekazanego obiektu (obiekty są klonowane jako wartość).'
     }
+  },
+  recsort: {
+    parameters: ['object'],
+    description: {
+      en: 'Sorts keys of an object.',
+      pl: 'Sortuje klucze obiektu.'
+    }
   }
 }
 module.exports = object
