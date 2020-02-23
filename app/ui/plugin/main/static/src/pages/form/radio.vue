@@ -2,7 +2,7 @@
 	<mm_page id="page_radio">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>单选框</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view class="pc">
 						<h5>样式一(PC)</h5>
 						<mm_radio v-model="value" :options="options"></mm_radio>

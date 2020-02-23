@@ -2,7 +2,7 @@
 	<mm_page id="page_pre">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>源代码</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view>
 						<h5>带复制</h5>
 						<mm_pre :code="code">

@@ -2,7 +2,7 @@
 	<mm_page id="page_root">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view>
 						<h3>
 							<span>MM-UI组件示例</span>
@@ -13,7 +13,7 @@
 			</mm_grid>
 		</header>
 		<main>
-			<mm_grid class="center">
+			<mm_grid col="3" class="center grid_min-1">
 				<mm_col width="100">
 					<div>基础组件</div>
 				</mm_col>
@@ -21,7 +21,7 @@
 					<mm_view>
 						<h4>内容容器</h4>
 						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in content" :key="idx" :url="o.url">{{ o.title }} <span>{{ o.name }}</span></mm_item>
+							<mm_item class="arrow" v-for="(o, idx) in content" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
 						</mm_list>
 					</mm_view>
 				</mm_col>
@@ -29,7 +29,7 @@
 					<mm_view>
 						<h4>布局容器</h4>
 						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in layout" :key="idx" :url="o.url">{{ o.title }} <span>{{ o.name }}</span></mm_item>
+							<mm_item class="arrow" v-for="(o, idx) in layout" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
 						</mm_list>
 					</mm_view>
 				</mm_col>
@@ -37,12 +37,12 @@
 					<mm_view>
 						<h4>表单组件</h4>
 						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in form" :key="idx" :url="o.url">{{ o.title }} <span>{{ o.name }}</span></mm_item>
+							<mm_item class="arrow" v-for="(o, idx) in form" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
 						</mm_list>
 					</mm_view>
 				</mm_col>
 			</mm_grid>
-			<mm_grid class="center">
+			<mm_grid col="3" class="center grid_min-1">
 				<mm_col width="100">
 					<div class="mt">复合组件</div>
 				</mm_col>
@@ -50,7 +50,7 @@
 					<mm_view>
 						<h4>栏</h4>
 						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in bar" :key="idx" :url="o.url">{{ o.title }} <span>{{ o.name }}</span></mm_item>
+							<mm_item class="arrow" v-for="(o, idx) in bar" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
 						</mm_list>
 					</mm_view>
 				</mm_col>
@@ -58,7 +58,7 @@
 					<mm_view>
 						<h4>列表</h4>
 						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in list" :key="idx" :url="o.url">{{ o.title }} <span>{{ o.name }}</span></mm_item>
+							<mm_item class="arrow" v-for="(o, idx) in list" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
 						</mm_list>
 					</mm_view>
 				</mm_col>
@@ -66,7 +66,7 @@
 					<mm_view>
 						<h4>轮播</h4>
 						<mm_list col="1">
-							<mm_item class="arrow" v-for="(o, idx) in swiper" :key="idx" :url="o.url">{{ o.title }} <span>{{ o.name }}</span></mm_item>
+							<mm_item class="arrow" v-for="(o, idx) in swiper" :key="idx" :url="o.url"><span>{{ o.title }}</span> <span>{{ o.name }}</span></mm_item>
 						</mm_list>
 					</mm_view>
 				</mm_col>
@@ -327,14 +327,7 @@
 </script>
 
 <style>
-	#page_root .mm_col {
-		min-width: 18rem;
-	}
-	#page_root h3 {
-		padding-bottom: 0.5rem;
-		margin-bottom: 1rem;
-		border-bottom: 1px solid #dbdbdb;
-	}
+	
 
 	#page_root h3 a {
 		font-size: 1rem;
@@ -360,7 +353,7 @@
 		margin-top: -1px;
 	}
 
-	#page_root .mm_item span {
+	#page_root .mm_item span:last-child {
 		color: #999;
 		float: right;
 	}

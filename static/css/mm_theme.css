@@ -95,12 +95,12 @@ input:-ms-input-placeholder {
 .btn_danger-x:active { color:#ff5000; background-color:rgba(255, 80, 0, 0.1); }
 .btn_info-x:active { color:#0fbfff; background-color:rgba(21, 186, 248, 0.1); }
 
-.btn_default {background-color:#666; color: #fff}
-.btn_warning {background-color:#f12f04; color: #fff}
-.btn_success {background-color:#44b549; color: #fff}
-.btn_primary {background-color:#38f; color: #fff}
-.btn_danger {background-color:#ff9000; color: #fff}
-.btn_info {background-color:#26d2ff; color: #fff}
+.btn_default {background-color:#666; color: #fff;border-color: transparent !important;}
+.btn_warning {background-color:#f12f04; color: #fff;border-color: transparent !important;}
+.btn_success {background-color:#44b549; color: #fff;border-color: transparent !important;}
+.btn_primary {background-color:#38f; color: #fff;border-color: transparent !important;}
+.btn_danger {background-color:#ff9000; color: #fff;border-color: transparent !important;}
+.btn_info {background-color:#26d2ff; color: #fff;border-color: transparent !important;}
 
 .btn_default:active { background-color:#333; color: #fff}
 .btn_warning:active {background-color:#d10000; color: #fff}
@@ -127,51 +127,33 @@ input:-ms-input-placeholder {
 .linear_purple-2 { background-image: linear-gradient(135deg, #ffe8dc 0%, #ec4cff 20%, #652afa 100%); color: #fff; }
 
 /* 表格样式 */
-.table_bordered {border:1px solid #dee2e6}
-.table_bordered td,.table_bordered th {border:1px solid #dee2e6}
-.table_bordered thead td,.table_bordered thead th {border-bottom-width:2px}
-.table_striped tbody tr:nth-of-type(odd) {background-color:rgba(0,0,0,.05)}
-.table-hover tbody tr:hover {background-color:rgba(0,0,0,.075)}
+.mm_table_2 tbody tr:nth-of-type(odd) {background-color:rgba(0,0,0,.05)}
+.mm_table_3 th, .mm_table_3 td { border-right: none; border-left: none; }
+.mm_table_4 tbody tr:nth-of-type(odd) {background-color:rgba(0,0,0,.05)}
+.mm_table_4 th, .mm_table_4 td { border-right: none; border-left: none; }
 
-.table_primary,.table_primary>td,.table_primary>th {background-color:#38f; color: #fff;}
-.table-hover .table_primary:hover {background-color:#9fcdff}
-.table-hover .table_primary:hover>td,.table-hover .table_primary:hover>th {background-color:#9fcdff}
+.table_primary,.table_primary tr {background-color:#38f; color: #fff;}
+.table_primary tr:hover {background-color:#9fcdff}
 
-.table_success,.table_success>td,.table_success>th {background-color:#44b549; color: #fff;}
-.table-hover .table_success:hover {background-color:#b1dfbb}
-.table-hover .table_success:hover>td,.table-hover .table_success:hover>th {background-color:#b1dfbb}
+.table_success,.table_success tr {background-color:#44b549; color: #fff;}
+.table_success tr:hover {background-color:#b1dfbb}
 
-.table_info,.table_info>td,.table_info>th {background-color:#26d2ff; color: #fff;}
-.table-hover .table_info:hover {background-color:#abdde5}
-.table-hover .table_info:hover>td,.table-hover .table_info:hover>th {background-color:#abdde5}
+.table_info,.table_info tr {background-color:#26d2ff; color: #fff;}
+.table_info tr:hover {background-color:#abdde5}
 
-.table_warning,.table_warning>td,.table_warning>th {background-color:#f12f04; color: #fff;}
-.table-hover .table_warning:hover {background-color:#ffe8a1}
-.table-hover .table_warning:hover>td,.table-hover .table_warning:hover>th {background-color:#ffe8a1}
+.table_warning,.table_warning tr {background-color:#f12f04; color: #fff;}
+.table_warning tr:hover {background-color:#f1b0b7}
 
-.table_danger,.table_danger>td,.table_danger>th {background-color:#ff9000; color: #fff;}
-.table-hover .table_danger:hover {background-color:#f1b0b7}
-.table-hover .table_danger:hover>td,.table-hover .table_danger:hover>th {background-color:#f1b0b7}
+.table_danger,.table_danger tr {background-color:#ff9000; color: #fff;}
+.table_danger tr:hover {background-color:#ffe8a1}
 
-.table_light,.table_light>td,.table_light>th {background-color:#fdfdfe}
-.table-hover .table_light:hover {background-color:#ececf6}
-.table-hover .table_light:hover>td,.table-hover .table_light:hover>th {background-color:#ececf6}
-
-.table_dark,.table_dark>td,.table_dark>th {background-color:#c6c8ca}
-.table-hover .table_dark:hover {background-color:#b9bbbe}
-.table-hover .table_dark:hover>td,.table-hover .table_dark:hover>th {background-color:#b9bbbe}
-
-.table_active,.table_active>td,.table_active>th {background-color:rgba(0,0,0,.075)}
-.table-hover .table_active:hover {background-color:rgba(0,0,0,.075)}
-.table-hover .table_active:hover>td,.table-hover .table_active:hover>th {background-color:rgba(0,0,0,.075)}
+.table_light,.table_light tr {background-color:#fdfdfe}
+.table_light tr:hover {background-color:#ececf6}
 
 .table_dark {color:#fff;background-color:#212529}
 .table_dark td,.table_dark th,.table_dark thead th {border-color:#32383e}
-.table_dark.table_bordered {border:0}
-.table_dark.table_striped tbody tr:nth-of-type(odd) {background-color:rgba(255,255,255,.05)}
-.table_dark.table-hover tbody tr:hover {background-color:rgba(255,255,255,.075)}
+.table_dark tbody tr:hover {background-color:rgba(255,255,255,.085)}
 .table_dark.thead_dark th {color:#fff;background-color:#212529;border-color:#32383e}
-.table_dark.thead_light th {color:#495057;background-color:#e9ecef;border-color:#dee2e6}
 
 /* 反相（反转颜色） 可用于表格或按钮等 */
 .inverted { filter: invert(100%); }

@@ -2,7 +2,7 @@
 	<mm_page id="page_btn">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>计数器</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view class="pc">
 						<h5>样式一</h5>
 						<mm_number v-model="value" :min="min" :max="max" :num="num"></mm_number>

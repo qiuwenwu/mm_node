@@ -2,7 +2,7 @@
 	<mm_page id="page_btn">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>按钮</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view>
 						<h5>按钮颜色——带背景</h5>
 						<mm_btn type="default">默认</mm_btn>

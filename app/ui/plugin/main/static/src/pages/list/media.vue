@@ -3,7 +3,7 @@
 	<mm_page id="page_media">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>媒体</span>
@@ -15,7 +15,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<div class="list_media">
 						<mm_media v-for="(o, k) in list" :key="k" :obj="o"></mm_media>
 					</div>

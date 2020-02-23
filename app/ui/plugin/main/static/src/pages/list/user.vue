@@ -3,7 +3,7 @@
 	<mm_page id="page_user">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>用户</span>
@@ -15,7 +15,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<div class="list_user">
 						<mm_user v-for="(o, k) in list" :key="k" :obj="o"></mm_user>
 					</div>

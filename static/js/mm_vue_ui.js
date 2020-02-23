@@ -778,7 +778,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_icon = {
-		template: "<!-- \u56FE\u6807 --><figure class=\"mm_icon\" v-if=\"src.indexOf('<') !== -1\" v-html=\"src\"></figure><figure class=\"mm_icon\" v-else-if=\"src\"><img :src=\"src\" :alt=\"alt\" mode=\"mode\" /><figcaption><slot></slot></figcaption></figure><figure class=\"mm_icon\" v-else></figure>",
+		template: "<!-- \u56FE\u6807 --><figure class=\"mm_icon\" v-if=\"src.indexOf('<') !== -1\" v-html=\"src\"></figure><figure class=\"mm_icon\" v-else-if=\"src\" :style=\"'background-image: url(' + src + ');'\"><img :src=\"src\" :alt=\"alt\" mode=\"mode\" /><figcaption><slot></slot></figcaption></figure><figure class=\"mm_icon\" v-else></figure>",
 		props: {
 			src: {
 				type: String,
@@ -1079,11 +1079,11 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_table = {
-		template: "<table :class=\"'mm_table table-' + type\"><slot></slot></table>",
+		template: "<table :class=\"'mm_table_' + type\"><slot></slot></table>",
 		props: {
 			type: {
 				type: String,
-				default: ""
+				default: "1"
 			}
 		}
 	};

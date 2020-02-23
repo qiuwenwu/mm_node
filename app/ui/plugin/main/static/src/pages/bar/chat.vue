@@ -2,7 +2,7 @@
 	<mm_page id="page_chat">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>聊天输入栏</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<div class="h3">文章<span>&lt; 返回</span></div>
 					</mm_view>

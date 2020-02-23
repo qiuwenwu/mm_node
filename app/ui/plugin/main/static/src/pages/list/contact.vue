@@ -3,7 +3,7 @@
 	<mm_page id="page_contact">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>联系人</span>
@@ -15,7 +15,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<div class="list_contact">
 						<mm_contact v-for="(o, k) in list" :key="k" :obj="o"></mm_contact>
 					</div>

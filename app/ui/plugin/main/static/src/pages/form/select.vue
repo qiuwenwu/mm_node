@@ -2,7 +2,7 @@
 	<mm_page id="page_btn">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>选择框</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view class="pc">
 						<h5>样式一 (原生)</h5>
 						<mm_select v-model="value" :options="options"></mm_select>

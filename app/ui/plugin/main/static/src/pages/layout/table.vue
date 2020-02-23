@@ -2,7 +2,7 @@
 	<mm_page id="page_table">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>表格</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view>
 						<mm_btn type="info" @click.native="small = !small">切换大小</mm_btn>
 						<mm_btn type="info" @click.native="dark = !dark">反色</mm_btn>
@@ -22,7 +22,7 @@
 
 					<mm_view>
 						<h5>样式一</h5>
-						<mm_table type="hover" :class="{'table-sm': small, 'table_dark': dark }">
+						<mm_table type="1" :class="{'table-sm': small, 'table_dark': dark }">
 							<thead>
 								<tr>
 									<th scope="col">#</th>
@@ -57,7 +57,7 @@
 				
 					<mm_view>
 						<h5>样式二</h5>
-						<mm_table type="hover" class="table_striped" :class="{'table-sm': small, 'table_dark': dark }">
+						<mm_table type="2" :class="{'table-sm': small, 'table_dark': dark }">
 							<thead>
 								<tr>
 									<th scope="col">#</th>
@@ -92,7 +92,7 @@
 					
 					<mm_view>
 						<h5>样式三</h5>
-						<mm_table type="hover" class="table_bordered" :class="{'table-sm': small, 'table_dark': dark }">
+						<mm_table type="3" :class="{'table-sm': small, 'table_dark': dark }">
 							<thead>
 								<tr>
 									<th scope="col">#</th>
@@ -126,7 +126,7 @@
 
 					<mm_view>
 						<h5>样式四</h5>
-						<mm_table type="hover" class="table_bordered table_striped" :class="{'table-sm': small, 'table_dark': dark }">
+						<mm_table type="4" :class="{'table-sm': small, 'table_dark': dark }">
 							<thead>
 								<tr>
 									<th scope="col">#</th>

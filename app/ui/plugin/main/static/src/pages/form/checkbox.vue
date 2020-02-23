@@ -2,7 +2,7 @@
 	<mm_page id="page_checkbox">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>复选框</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view class="pc">
 						<h5>样式一(PC)</h5>
 						<mm_checkbox v-model="value" :options="options" :disabled="true"></mm_checkbox>

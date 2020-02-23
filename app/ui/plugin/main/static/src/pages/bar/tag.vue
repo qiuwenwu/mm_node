@@ -2,7 +2,7 @@
 	<mm_page id="page_tag">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>标签栏</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view :func="func"></mm_view>
 				</mm_col>
 			</mm_grid>

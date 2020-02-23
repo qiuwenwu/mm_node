@@ -17,31 +17,23 @@
 </script>
 
 <style>
-	.mm_page {
-		min-height: 100vh;
+	body {
+		background: #fff;
+	}
+	body>div>header {
+		background: #fff;
+		color: #333;
+		padding-top: 3rem;
+		border-bottom: 1px solid #DBDBDB;
+		padding-bottom: 0.5rem;
+	}
+	
+	main {
 		padding: 2rem 0;
-		position: relative;
 	}
-
-	.mm_page>header h3 {
-		padding-bottom: .5rem;
-		border-bottom: 1px solid #dbdbdb;
-	}
-
-	.mm_page>header h3 .fr {
+	header h3 .fr {
 		color: #999;
 		font-size: 1rem;
-		padding-top: 0.75rem;
+		padding-top: .5rem;
 	}
-
-	.mm_view>h5 {
-		display: block;
-		margin-top: 2rem;
-		margin-bottom: .5rem;
-	}
-	
-	.mm_col>.mm_view, [class^=mm_col_]>.mm_view {
-		margin: 1rem;
-	}
-	
 </style>

@@ -3,7 +3,7 @@
 	<mm_page id="page_video">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>音乐</span>
@@ -15,7 +15,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<div class="list_music">
 						<mm_music v-for="(o, k) in list" :key="k" :obj="o"></mm_music>
 					</div>

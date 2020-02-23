@@ -2,7 +2,7 @@
 	<mm_page id="page_loading">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>加载</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					
 					<mm_view>
 						<h5>样式一</h5>

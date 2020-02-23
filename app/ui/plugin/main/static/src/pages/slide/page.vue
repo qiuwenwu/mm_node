@@ -2,7 +2,7 @@
 	<mm_page id="page_card">
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<div class="h3">块<span>&lt; 返回</span></div>
 					</mm_view>

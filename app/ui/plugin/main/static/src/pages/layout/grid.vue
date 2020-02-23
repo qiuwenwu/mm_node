@@ -2,7 +2,7 @@
 	<mm_page id="page_grid">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>栅格</span>
@@ -14,10 +14,10 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view>
 						<h5>常见栅格布局</h5>
-						<mm_grid class="center mm_grid-x">
+						<mm_grid class="center grid-x">
 							<!-- 100% -->
 							<mm_col width="100"><mm_view>100</mm_view></mm_col>
 
@@ -64,7 +64,7 @@
 					<mm_view>
 						<h5>通过父级改变列数 <mm_btn type="info" @click.native="add()">{{ col }}列</mm_btn>
 						</h5>
-						<mm_grid :col="col" class="center mm_grid-x">
+						<mm_grid :col="col" class="center grid-x">
 							<mm_col>
 								<mm_view>1</mm_view>
 							</mm_col>
@@ -106,7 +106,7 @@
 					<mm_view>
 						<h5>自适应列数 <mm_btn type="info" @click.native="add_num()">{{ num }}列</mm_btn>
 						</h5>
-						<mm_grid class="center mm_grid-x mm_grid-sm">
+						<mm_grid class="center grid-x mm_grid-sm">
 							<mm_col v-for="(o, idx) in num" :key="idx">
 								<mm_view>{{ o }}</mm_view>
 							</mm_col>

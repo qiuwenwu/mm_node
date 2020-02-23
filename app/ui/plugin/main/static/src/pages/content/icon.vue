@@ -2,7 +2,7 @@
 	<mm_page id="page_icon">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>图标</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view>
 						<h5>字体图标</h5>
 						<mm_icon src="<i class='fa fa-user'></i>"></mm_icon>

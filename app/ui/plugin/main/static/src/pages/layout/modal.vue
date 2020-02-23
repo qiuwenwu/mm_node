@@ -2,7 +2,7 @@
 	<mm_page id="page_modal">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>模态窗</span>
@@ -14,7 +14,7 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view>
 						<h5>点击按钮测试</h5>
 						<mm_btn type="info" @click.native="show1 = !show1, show2 = false">带遮罩 {{ show1 }}</mm_btn>
@@ -33,7 +33,7 @@
 				<header>块头</header>
 				<mm_body>
 					<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-				</main>
+				</mm_body>
 				<mm_foot>块脚</mm_foot>
 			</mm_view>
 		</mm_modal>
@@ -42,7 +42,7 @@
 				<header>块头 <span class="fr" @click="show2 = false">×</span></header>
 				<mm_body>
 					<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-				</main>
+				</mm_body>
 				<mm_foot>块脚</mm_foot>
 			</mm_view>
 		</mm_modal>

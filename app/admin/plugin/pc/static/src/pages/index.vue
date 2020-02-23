@@ -1,17 +1,16 @@
 <template>
-	<main id="root_index">
+	<mm_grid id="root_index">
 		<mm_col>
 			<mm_view>
-				<mm_title>
+				<mm_title class="arrow">
 					<span class="h5">超级美眉</span>
-					<span class="arrow"></span>
 				</mm_title>
 				<div class="tencent_desc">
 
 				</div>
 			</mm_view>
 		</mm_col>
-	</main>
+	</mm_grid>
 </template>
 
 <script>

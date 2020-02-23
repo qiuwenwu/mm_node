@@ -17,6 +17,7 @@
 					<nav_main></nav_main>
 				</mm_side>
 				<mm_main id="main" :style="'margin-left: ' + (width || 192) + 'px;'">
+					<!-- 页签组件 -->
 					<div class="mm_tab_head" id="tabs">
 						<div v-for="(o, idx) in nav.cache" :key="idx" :class="{ 'active': o.url === url_now }">
 							<i class="fa-times-circle" v-if="idx > 0" @click="del_tab(o)"></i>
@@ -26,7 +27,7 @@
 						</div>
 						<div></div>
 					</div>
-					<router-view class="mm_grid"></router-view>
+					<router-view></router-view>
 				</mm_main>
 			</main>
 			<nav_float></nav_float>

@@ -3,7 +3,7 @@
 	<mm_page id="page_design">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>设计规范</span>
@@ -14,34 +14,34 @@
 			</mm_grid>
 		</header>
 		<main>
-			<mm_grid>
+			<mm_grid col="3" class="grid_min-1">
 				<mm_col>
 					<mm_view>
 						<h5>字体大小</h5>
-						<table class="font_size">
+						<table>
 							<tr>
 								<td>
 									<h1><span>标题一</span></h1>
-								</td>
-								<td><span class="unit">2rem</span></td>
-							</tr>
-							<tr>
-								<td>
-									<h2><span>标题二</span></h2>
 								</td>
 								<td><span class="unit">1.75rem</span></td>
 							</tr>
 							<tr>
 								<td>
-									<h3><span>标题三</span></h3>
+									<h2><span>标题二</span></h2>
 								</td>
 								<td><span class="unit">1.5rem</span></td>
 							</tr>
 							<tr>
 								<td>
-									<h4><span>标题四</span></h4>
+									<h3><span>标题三</span></h3>
 								</td>
 								<td><span class="unit">1.25rem</span></td>
+							</tr>
+							<tr>
+								<td>
+									<h4><span>标题四</span></h4>
+								</td>
+								<td><span class="unit">1.125rem</span></td>
 							</tr>
 							<tr>
 								<td>
@@ -59,11 +59,11 @@
 								<td>
 									<p><span>正文</span></p>
 								</td>
-								<td><span class="unit">0.875rem</span></td>
+								<td><span class="unit">1rem</span></td>
 							</tr>
 							<tr>
 								<td>
-									<p class="font-sm"><span>正文小</span></p>
+									<p><span class="font-small">正文小</span></p>
 								</td>
 								<td><span class="unit">0.75rem</span></td>
 							</tr>
@@ -73,7 +73,7 @@
 				<mm_col>
 					<mm_view>
 						<h5>图标大小</h5>
-						<table class="icon_size">
+						<table>
 							<tr>
 								<td>
 									<img src="/img/logo.png" class="img-1" />
@@ -110,7 +110,7 @@
 				<mm_col>
 					<mm_view>
 						<h5>字体颜色</h5>
-						<table class="font_color">
+						<table>
 							<tr>
 								<td>
 									<span class="font_primary">主要</span>

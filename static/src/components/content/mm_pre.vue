@@ -1,9 +1,6 @@
 <template>
 	<!-- 代码 -->
-	<div class="mm_code">
-		<button class="copy_btn" @click="$copy(code)" v-if="code">复制</button>
-		<pre v-highlightjs="code"><slot><code :lang="lang" :contenteditable="edit"></code></slot></pre>
-	</div>
+	<pre class="mm_code" v-highlightjs="code"><button class="copy_btn" @click="$copy(code)" v-if="code"><span>复制</span></button><slot><code :lang="lang" :contenteditable="edit"></code></slot></pre>
 </template>
 
 <script>
@@ -43,6 +40,9 @@
 		background: #fff;
 		font-size: 0.625rem;
 		display: none;
+		z-index:20;
+		line-height: 1.5;
+		height: auto;
 	}
 
 	.mm_code:hover .copy_btn {

@@ -5,7 +5,7 @@
 *{margin:0;padding:0;}
 *,::before,::after{-webkit-box-sizing: border-box;box-sizing: border-box;}
 html{font-family:"Helvetica Neue", helvetica, arial, sans-serif;line-height:1.15;}
-body{background-color:#ededed;color:#333;line-height:1.5;overflow-x:hidden;letter-spacing:0.125rem;font-size:0.875rem}
+body{background-color:#ededed;color:#333;line-height:1.5;overflow-x:hidden;/* letter-spacing:0.125rem; */}
 
 /** 不可见元素 **/
 [type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto;}
@@ -13,7 +13,7 @@ body{background-color:#ededed;color:#333;line-height:1.5;overflow-x:hidden;lette
 [type=search]::-webkit-search-decoration{-webkit-appearance:none;}
 ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}
 [hidden],.hidden{display:none!important;}
-[disabled],.disabled { background: #ededed; }
+/* [disabled],.disabled { background: #ededed; } */
 [tabindex=-1]:focus:not(:focus-visible){outline:0!important;}
 ::-webkit-datetime-edit{background:url(../selection.gif);padding:1px;}
 ::-webkit-datetime-edit-fields-wrapper{background-color:#eee;}
@@ -60,14 +60,16 @@ article>header { text-align: center; }
 article>footer { padding: .5rem 2rem 2rem 2rem; }
 article>footer button { border: none; color: #666; }
 blockquote { padding: 0 1rem; color: #6a737d; border-left: 3px solid #dfe2e5; }
-code { font-size: 1rem; }
+code { font-size: 1rem; padding: .5rem; }
 aside {position:relative;display: block; margin: auto;}
 aside table { margin: 1rem; width: calc(100% - 2rem); }
+
 
 /* ===  表单类  === */
 input,input::after,input::before{box-sizing:border-box;}
 button:focus{outline:none;}
-button{border-radius:.25rem;cursor:pointer;}
+button:active{background: #F5F5F5; border-color: #F5F5F5;}
+button{border-radius:.25rem;cursor:pointer;border: 1px solid #DBDBDB;}
 select{-moz-appearance:none;-webkit-appearance:none;appearance:none;background:url(/img/down.png) no-repeat scroll right center transparent;padding-left:.5rem;padding-right:1.25rem;word-wrap:normal;}
 select::-ms-expand{display:none;}
 input,select,button,textarea {
@@ -78,7 +80,7 @@ input:focus,select:focus,button:focus,textarea:focus{
 }
 input,select,button{height:2rem;line-height:2rem;}
 optgroup{line-height:inherit;}
-input,textarea{max-width:20rem;width:100%;}
+form input,form textarea{max-width:20rem;width:100%;}
 textarea{overflow-x:hidden;overflow-y:auto;resize:vertical;}
 button,input{overflow:visible;}
 button,select{text-transform:none;}
@@ -87,7 +89,7 @@ button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focu
 input[type=radio],input[type=checkbox]{box-sizing:border-box;padding:0;}
 input[type=date],input[type=time],input[type=datetime-local],input[type=month]{-webkit-appearance:listbox;}
 fieldset{border:0;min-width:0;}
-
+label~label {margin-left:1rem;}
 
 /* ===  列表类  === */
 table{background-color:#FFF;border:1px solid #dee2e6;border-collapse:collapse;width:100%; border-radius:0.25rem;}
@@ -102,7 +104,7 @@ li{ position: relative; }
 ul{display: block; }
 dl,dd{display:block;}
 form dl { margin: 0.5rem 1rem 1rem 1rem; }
-dl::before,dl::after,ul::before,ul::after{content: "";display:block; clear: both;}
+dl::before,dl::after,ul::before,ul::after,ol::before,ol::after{content: "";display:block; clear: both;}
 ol { padding-left: 2.5rem;padding-right: 1rem; }
 
 
@@ -123,9 +125,9 @@ h2,.h2{font-size:1.5rem;}
 h3,.h3{font-size:1.25rem;}
 h4,.h4{font-size:1.125rem;}
 h5,.h5{font-size:1rem;}
-h6,.h6{font-size:0.75rem;}
-h1,.h1,h2,.h2,h3,.h3{font-weight:500;}
-h4,.h4,h5,.h5,h6,.h6{font-weight:600;}
+h6,.h6{font-size:0.875rem;}
+h1,.h1,h2,.h2{font-weight:500;}
+h3,.h3,h4,.h4,h5,.h5,h6,.h6{font-weight:550;}
 small,.font-small{font-size:75%!important;}
 big,.font-big{font-size:125%!important;}
 
@@ -144,14 +146,18 @@ figure {
 	position: relative;
 	overflow: hidden;
 	display: block;
+	background: url(/img/default.png) center center no-repeat;
+	background-size: 100%;
 }
 figure img {
 	width: 100%;
 }
-
 /* 图片描述 */
 figcaption {
 	display: block;
+}
+figure~div {
+	overflow: hidden;
 }
 
 /* 图片 */
@@ -167,7 +173,9 @@ video {}
 /* 链接 */
 a{background-color:transparent;color:inherit;cursor:pointer;text-decoration:none;}
 a:hover,a:not([href]){color:inherit;text-decoration:none;}
-nav>a { display: inline-block; font-size: .875rem; }
+nav>a { display: inline-block; }
+header nav>a,
+footer nav>a { font-size: .875rem; }
 nav a:hover { color: #38f; }
 nav a:active { color: #317EF3; }
 

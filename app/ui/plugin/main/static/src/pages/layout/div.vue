@@ -2,7 +2,7 @@
 	<mm_page id="page_div">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>块</span>
@@ -14,9 +14,9 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_grid class="center">
-						<mm_col>
+						<mm_col width="100">
 							<h5>默认块</h5>
 							<mm_view class="ba">
 								<header>块头</header>
@@ -34,7 +34,7 @@
 								<mm_foot class="bg_light">块脚</mm_foot>
 							</mm_view>
 						</mm_col>
-						<mm_col>
+						<mm_col width="100">
 							<h5>带圆角块</h5>
 							<mm_view class="ba b-a">
 								<header>块头</header>

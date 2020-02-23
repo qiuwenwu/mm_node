@@ -2,7 +2,7 @@
 	<mm_page id="page_list">
 		<header>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view url="/">
 						<h3>
 							<span>列表</span>
@@ -14,11 +14,11 @@
 		</header>
 		<main>
 			<mm_grid>
-				<mm_col>
+				<mm_col width="100">
 					<mm_view>
 						<h5>通过父级改变列数 <mm_btn type="info" @click.native="add()">{{ col }}列</mm_btn>
 						</h5>
-						<mm_list :col="col" class="center mm_list-x">
+						<mm_list :col="col" class="center list-x">
 							<mm_item>
 								<mm_view>1</mm_view>
 							</mm_item>
@@ -60,9 +60,9 @@
 					<mm_view>
 						<h5>自适应列数 <mm_btn type="info" @click.native="add_num()">{{ num }}列</mm_btn>
 						</h5>
-						<mm_list class="center mm_list-x mm_list-sm">
+						<mm_list class="center list-x list-sm">
 							<mm_item v-for="(o, idx) in num" :key="idx">
-								<mm_view>{{ o }}</mm_view>
+								{{ o }}
 							</mm_item>
 						</mm_list>
 					</mm_view>
