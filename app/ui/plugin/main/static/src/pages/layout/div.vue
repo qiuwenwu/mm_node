@@ -22,16 +22,16 @@
 								<header>块头</header>
 								<mm_body>
 									<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-								</main>
-								<mm_foot>块脚</mm_foot>
+								</mm_body>
+								<footer>块脚</footer>
 							</mm_view>
 							
-							<mm_view class="ba">
-								<mm_head class="bg_info">块头</header>
+							<mm_view class="card bn">
+								<header>块头</header>
 								<mm_body>
 									<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-								</main>
-								<mm_foot class="bg_light">块脚</mm_foot>
+								</mm_body>
+								<footer>块脚</footer>
 							</mm_view>
 						</mm_col>
 						<mm_col width="100">
@@ -40,15 +40,15 @@
 								<header>块头</header>
 								<mm_body>
 									<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-								</main>
-								<mm_foot>块脚</mm_foot>
+								</mm_body>
+								<footer>块脚</footer>
 							</mm_view>
-							<mm_view class="ba b-a">
-								<mm_head class="bg_info">块头</header>
+							<mm_view class="card">
+								<header>块头</header>
 								<mm_body>
 									<p>&nbsp;</p>内容主体<p>&nbsp;</p>
-								</main>
-								<mm_foot class="bg_light">块脚</mm_foot>
+								</mm_body>
+								<footer>块脚</footer>
 							</mm_view>
 						</mm_col>
 					</mm_grid>
@@ -62,4 +62,7 @@
 </script>
 
 <style>
+	#page_div header, #page_div footer{
+		background: #FDFDFD;
+	}
 </style>

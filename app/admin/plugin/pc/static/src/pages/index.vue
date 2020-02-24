@@ -1,16 +1,18 @@
 <template>
-	<mm_grid id="root_index">
-		<mm_col>
-			<mm_view>
-				<mm_title class="arrow">
-					<span class="h5">超级美眉</span>
-				</mm_title>
-				<div class="tencent_desc">
+	<main id="root_index">
+		<mm_grid>
+			<mm_col width="100">
+				<mm_view>
+					<header class="arrow">
+						<span class="h5">超级美眉</span>
+					</header>
+					<div class="tencent_desc">
 
-				</div>
-			</mm_view>
-		</mm_col>
-	</mm_grid>
+					</div>
+				</mm_view>
+			</mm_col>
+		</mm_grid>
+	</main>
 </template>
 
 <script>

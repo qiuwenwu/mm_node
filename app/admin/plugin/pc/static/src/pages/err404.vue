@@ -1,5 +1,5 @@
 <template>
-	<div id="error_err404">
+	<main id="error_err404">
 		<div class="box">
 			<h1>404</h1>
 			<div class="mm_grid">
@@ -14,7 +14,7 @@
 		</div>
 		<div class="border"></div>
 		<div class="border br2"></div>
-	</div>
+	</main>
 </template>
 
 <script>

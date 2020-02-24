@@ -71,8 +71,8 @@
 .b-rt {border-top-right-radius:0.25rem !important;overflow:hidden;}
 
 /* ===  格子  === */
-.mm_col,[class*=mm_col_] {display: block;float:left; overflow: hidden;}
-main .mm_col>*,main [class*=mm_col_]>* {margin: 0.5rem;}
+.mm_col,[class*=mm_col_] {display: block;float:left; }
+main .mm_col>*,main [class*=mm_col_]>* {margin: 0.5rem;overflow: hidden;}
 main .mm_col>*~*,main [class*=mm_col_]>*~* { margin-top: 1rem;}
 
 .mm_col_10 {width:10% !important;flex-basis:10% !important;}
@@ -90,7 +90,7 @@ main .mm_col>*~*,main [class*=mm_col_]>*~* { margin-top: 1rem;}
 
 
 /* ===  栅格  === */
-.grid-x>* {margin-top:-1px;margin-right:-1px;border:1px solid #DBDBDB;flex: 1;}
+.grid-x>* {margin-bottom:-1px;margin-right:-1px;border:1px solid #DBDBDB;flex: 1;}
 .mm_grid,[class*=mm_grid_] {max-width:76rem; width: 100%; margin:0 auto;position:relative;flex-wrap: wrap; display:flex; align-content: flex-start; align-items: stretch; justify-content: space-between; justify-items: stretch; }
 [class*=mm_grid_]>* {-webkit-flex:1;flex:1;}
 .mm_grid_1>* {width:100%;flex-basis:100%}
@@ -116,6 +116,8 @@ main .mm_col>*~*,main [class*=mm_col_]>*~* { margin-top: 1rem;}
 .div-ll figure { float: left; }
 .div-ll h5 { float: left; }
 .div-ll p { float: left; }
+.div-lr figure { float: left; }
+.div-lr h5 { float: right; }
 .div-ltb figure { float: left; }
 .div-tb figure { width: 100%; }
 .div-tb h5 { width: 100%; }
@@ -130,15 +132,13 @@ main .mm_col>*~*,main [class*=mm_col_]>*~* { margin-top: 1rem;}
 .div-rl figure { float: right; }
 .div-rl h5 { float: left; }
 
-.fixed { position: fixed; }
-.fixed~main { padding: 3rem 0; }
 
 /* ===  卡片  === */
 .card {background:#fff;border-radius:0.5rem;box-shadow:0 .25rem .5rem 0 rgba(7,17,27,0.1);overflow:hidden;}
 .card>header {min-height:1.5rem;border-bottom:1px solid #F5F5F5;}
 .card>footer {min-height:2rem;border-top:1px solid #F5F5F5;}
 .card>header {padding:.5rem 1rem;}
-article.card>header { padding-top: 1rem; }
+article.card>header { padding-top: 1.5rem; }
 
 /* 箭头 */
 .arrow {position: relative; padding-right: 2rem !important; }
@@ -151,8 +151,8 @@ article.card>header { padding-top: 1rem; }
 .mm_code ul { list-style-type: none; }
 
 /* ===  列表  === */
-.list-x>* {margin-top:-1px;margin-right:-1px;border:1px solid #DBDBDB;}
-.mm_list,[class*=mm_list_] {display:-webkit-flex;display:flex;flex-flow:row wrap;align-items:flex-start;justify-content:flex-start;background:#fff;}
+.list-x>* {margin-bottom:-1px;margin-right:-1px;border:1px solid #DBDBDB;}
+.mm_list,[class*=mm_list_] {display:-webkit-flex;display:flex;flex-flow:row wrap;align-items:flex-start;justify-content:flex-start;}
 .mm_list>*,[class*=mm_list_]>* {display:block;float:left;list-style:none;position:relative;min-width:8.333333%;}
 .mm_list_1>* {width:100%;flex-basis:100%}
 .mm_list_2>* {width:50%;flex-basis:50%}

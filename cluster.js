@@ -9,7 +9,7 @@ const len = numCPUs * 2;
 startup.use(app);
  
  // 配置端口
- const port_http = process.env.PORT || 8000;
+ const port_http = process.env.PORT || 3000;
  const host_http = process.env.IP || '0.0.0.0';
 
 if (cluster.isMaster) {

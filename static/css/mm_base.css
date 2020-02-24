@@ -53,6 +53,7 @@ blockquote{margin:0 0 1rem;}
 address{font-style:normal;line-height:inherit;}
 article { overflow: hidden; }
 section { position:relative; padding: .5rem 2rem;}
+main { overflow: hidden;position: relative; }
 address,article,aside,code,figcaption,hgroup,main,nav,header,footer,section,iframe,frame,form,pre{display:block;}
 header::before,header::after,footer::before,footer::after,frame::before,frame::after,iframe::before,iframe::after,code::before,code::after,address::before,address::after,section::before,section::after{clear:both;content:"";display:block;}
 article::before,article::after{content:"";display:block;}
@@ -82,7 +83,6 @@ input,select,button{height:2rem;line-height:2rem;}
 optgroup{line-height:inherit;}
 form input,form textarea{max-width:20rem;width:100%;}
 textarea{overflow-x:hidden;overflow-y:auto;resize:vertical;}
-button,input{overflow:visible;}
 button,select{text-transform:none;}
 button,[type=button],[type=reset],[type=submit]{-webkit-appearance:button;}
 button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0;}
@@ -146,7 +146,7 @@ figure {
 	position: relative;
 	overflow: hidden;
 	display: block;
-	background: url(/img/default.png) center center no-repeat;
+	background: center center no-repeat;
 	background-size: 100%;
 }
 figure img {

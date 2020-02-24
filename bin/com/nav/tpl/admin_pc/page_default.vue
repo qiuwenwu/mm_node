@@ -1,10 +1,17 @@
 <template>
 	<main id="${model.name}">
-		<section id="">
-			<mm_title>
-				<mm_icon></mm_icon>
-			</mm_title>
-		</section>
+		<mm_grid>
+			<mm_col width="100">
+				<mm_view>
+					<header class="arrow">
+						<span class="h5">超级美眉</span>
+					</header>
+					<div class="tencent_desc">
+						
+					</div>
+				</mm_view>
+			</mm_col>
+		</mm_grid>
 	</main>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-	<mm_list id="nav_main" col="1">
+	<mm_list id="nav_side" col="1">
 		<mm_item v-for="(o, idx) in nav.main" :key="idx" :url="o.sub.length > 0 ? '' : o.url" :class="{'active': select == idx }">
 			<div class="btn" @click="select = idx">
 				<mm_icon :src="o.icon" v-if="o.icon"></mm_icon>
@@ -54,17 +54,17 @@
 </script>
 
 <style>
-	#nav_main .mm_item>.btn {
+	#nav_side .mm_item>.btn {
 		border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 	}
 
-	#nav_main .btn {
+	#nav_side .btn {
 		line-height: 2.5rem;
 		padding: 0 1rem;
 		color: #999;
 	}
 
-	#nav_main a {
+	#nav_side a {
 		display: block;
 		color: inherit;
 		line-height: 2.5rem;
@@ -72,12 +72,12 @@
 		position: relative;
 	}
 
-	#nav_main .btn {
+	#nav_side .btn {
 		position: relative;
 		overflow: hidden;
 	}
 
-	#nav_main .btn:after {
+	#nav_side .btn:after {
 		position: absolute;
 		right: 1rem;
 		top: 50%;
@@ -90,12 +90,12 @@
 		transition: all 0.2s;
 	}
 
-	#nav_main .btn:hover {
+	#nav_side .btn:hover {
 		color: #fff;
 		background: rgba(3, 4, 29, 0.1);
 	}
 
-	#nav_main .active .btn {
+	#nav_side .active .btn {
 		color: #fff;
 		background: rgb(49, 131, 246);
 		background: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.5) 0%, rgba(102, 188, 244, 0.42) 39%, rgba(49, 166, 247, 0.42) 40%, rgba(49, 131, 246, 0.3) 100%);
@@ -105,20 +105,20 @@
 		background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(102, 188, 244, 0.42) 39%, rgba(49, 166, 247, 0.42) 40%, rgba(49, 131, 246, 0.3) 100%);
 	}
 
-	#nav_main .active .btn:after {
+	#nav_side .active .btn:after {
 		transform: translateY(-50%) rotate(45deg);
 		border-color: #fff;
 	}
 
-	#nav_main a:hover {
+	#nav_side a:hover {
 		color: #fff;
 	}
 
-	#nav_main .router-link-active {
+	#nav_side .router-link-active {
 		color: #3388ff;
 	}
 
-	#nav_main .btn:hover:before {
+	#nav_side .btn:hover:before {
 		content: "";
 		display: block;
 		width: 2px;
@@ -130,7 +130,7 @@
 		background: #38f;
 	}
 
-	#nav_main .box {
+	#nav_side .box {
 		overflow: hidden;
 		max-height: 0;
 		-webkit-transition: max-height 0.2s;
@@ -141,7 +141,7 @@
 		border-color: rgba(255, 255, 255, 0.1);
 	}
 
-	#nav_main .active .box {
+	#nav_side .active .box {
 		max-height: 80vh;
 		padding: 0.5rem 0;
 	}

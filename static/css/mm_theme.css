@@ -9,7 +9,7 @@
 
 
 /* 重置样式 */
-body  { color: #333; }
+body  { color: #333; background: #efeff4; }
 input { color: #333; }
 a { color: inherit; }
 /* a:{ color: ; } */

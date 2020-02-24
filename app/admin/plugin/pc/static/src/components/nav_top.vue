@@ -129,7 +129,6 @@
 	}
 
 	#nav_top .user .avatar {
-		margin-top: 0.5rem;
 		border-radius: 50%;
 	}
 

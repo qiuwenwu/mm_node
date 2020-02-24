@@ -12,24 +12,22 @@
 				<nav_quick></nav_quick>
 				<nav_top></nav_top>
 			</header>
-			<main>
-				<mm_side id="side" :func="set_width">
-					<nav_main></nav_main>
-				</mm_side>
-				<mm_main id="main" :style="'margin-left: ' + (width || 192) + 'px;'">
-					<!-- 页签组件 -->
-					<div class="mm_tab_head" id="tabs">
-						<div v-for="(o, idx) in nav.cache" :key="idx" :class="{ 'active': o.url === url_now }">
-							<i class="fa-times-circle" v-if="idx > 0" @click="del_tab(o)"></i>
-							<router-link :to="o.url">
-								{{ o.title }}
-							</router-link>
-						</div>
-						<div></div>
+			<mm_side id="side" :func="set_width">
+				<nav_main></nav_main>
+			</mm_side>
+			<mm_main id="main" :style="'margin-left: ' + (width || 192) + 'px;'">
+				<!-- 页签组件 -->
+				<div class="mm_tab_head" id="tabs">
+					<div v-for="(o, idx) in nav.cache" :key="idx" :class="{ 'active': o.url === url_now }">
+						<i class="fa-times-circle" v-if="idx > 0" @click="del_tab(o)"></i>
+						<router-link :to="o.url">
+							{{ o.title }}
+						</router-link>
 					</div>
-					<router-view></router-view>
-				</mm_main>
-			</main>
+					<div></div>
+				</div>
+				<router-view></router-view>
+			</mm_main>
 			<nav_float></nav_float>
 		</mm_page>
 	</div>
@@ -124,6 +122,9 @@
 </script>
 
 <style>
+	main {
+		margin: .5rem;
+	}
 	.mm_page {
 		min-height: 100vh;
 		position: relative;
@@ -137,7 +138,7 @@
 		float: right;
 	}
 
-	header {
+	.mm_page>header {
 		height: 2.5rem;
 		min-height: 2.5rem;
 		background: #24292e;
@@ -250,8 +251,8 @@
 	}
 
 	#tabs>.active {
-		background: #f6f8fa;
-		border-bottom: 1px solid #f6f8fa;
+		background: #efeff4;
+		border-bottom: 1px solid #efeff4;
 	}
 
 	#body>.mm_main>.mm_grid {
@@ -291,8 +292,8 @@
 	.mm_col>.mm_view,
 	[class*=mm_col_]>.mm_view {
 		background: #fff;
-		border-radius: .25rem;
-		box-shadow: 0 1px .125rem 0 rgba(0, 0, 0, .1);
+		border-radius: .5rem;
+		box-shadow: 0 0.25rem 0.5rem 0 rgba(7,17,27,0.1);
 	}
 
 	.mm_view>.mm_title {
