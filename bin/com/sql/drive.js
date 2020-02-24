@@ -36,7 +36,7 @@ class Drive extends Item {
 			"field_hide": ["*password*", "*token*", "salt"],
 			// 分页大小，默认一页显示条数
 			"page_size": 30,
-			// 过滤
+			/* 过滤参数 */
 			"filter": {
 				/**
 				 * 表名
@@ -81,7 +81,7 @@ class Drive extends Item {
 			"func_file": "",
 			// 回调函数名 用于决定调用脚本的哪个函数
 			"func_name": "",
-			// 导入导出转换
+			/* 导入导出转换 */ 
 			"convert": {
 				/*
 				需要转换的字段名
@@ -104,12 +104,15 @@ class Drive extends Item {
 				}
 				*/
 			},
+			/* 去重 */
 			"del_repeat": {
 				// 判断重复的字段，例如字段名 number
 				"groupBy": "",
 				// 排序方式 例如： `diJia` ASC
 				"orderBy": ""
-			}
+			},
+			/* 逻辑符 */
+			"logic": {}
 		};
 	}
 }
