@@ -16,7 +16,9 @@
 		// 是否启用数据库管理器
 		"db_admin": true,
 		// 是否输出操作日志
-		"log": false
+		"log": false,
+		// 进程频道数, 4条表示开启4个端口
+		"passes": 4
 	},
 	"redis": {
 		// 服务器地址

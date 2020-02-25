@@ -6,6 +6,7 @@
 	"scripts": {
 		"start": "node server.js",
 		"server": "node nw.js",
+		"start_group": "node cluster.js",
 		"dev": "./node_modules/.bin/cross-env NODE_ENV=dev PORT=3000 nodemon"
 	},
 	"keywords": [
