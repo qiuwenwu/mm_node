@@ -351,7 +351,6 @@
 		padding: 0.5rem 1.5rem;
 		border: 1px solid #dbdbdb;
 		margin-top: -1px;
-	}
 
 	#page_root .mm_item span:last-child {
 		color: #999;

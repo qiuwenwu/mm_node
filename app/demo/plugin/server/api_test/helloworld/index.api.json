@@ -1,0 +1,15 @@
+{
+    "path": "/test/hello*",
+	"type": "api",
+    "name": "test_hello",
+    "title": "初次测试接口",
+    "description": "描述接口使用方法",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 5000,
+    "client_cache": false,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": true
+}

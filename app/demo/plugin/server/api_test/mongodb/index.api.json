@@ -1,0 +1,10 @@
+{
+	"path": "/test/mongodb",
+	"type": "api",
+	"name": "test_mongodb",
+	"title": "测试mongodb接口",
+	"cache": 0,
+	"description": "描述接口使用方法",
+	"func_file": "./index.js",
+	"method": "ALL"
+}

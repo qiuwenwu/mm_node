@@ -90,8 +90,7 @@
 
 	#app_menu .app_list .state {
 		border: 1px solid #e1e4e8;
-		margin-bottom: -1px;
-	}
+		margin-top: -1px;
 
 	#app_menu .app_list .title {
 		color: #333;

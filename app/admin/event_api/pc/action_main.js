@@ -2,6 +2,10 @@ var api = $.api_admin('admin_pc', '管理后台(PC版)');
 // 首次启动更新api接口;
 api.update();
 
+// 集合路由、导航，不开发前端的情况下可以将以下2行注释掉
+const nav = $.nav_admin('admin_pc');
+nav.update();
+
 var sql = $.mysql_admin('sys', __dirname);
 sql.setConfig($.config.mysql);
 sql.open();

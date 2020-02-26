@@ -78,7 +78,8 @@
 
 <style>
 	#sign_in {
-		background: url(/admin/img/bg_sign.png) center center no-repeat;
+		background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+		max-width: initial;
 		height: 100vh;
 	}
 
@@ -96,7 +97,6 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		margin-left: 25rem;
 		background: rgba(255, 255, 255, 0.35);
 		border-radius: 0.25rem;
 		overflow: hidden;

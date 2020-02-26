@@ -1,13 +1,13 @@
 {
 	"name": "mm_node",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"description": "这是超级美眉基于nodeJS和Koa开发的服务端框架，可用于中小型商城和游戏、CMS。",
 	"main": "server.js",
 	"scripts": {
 		"start": "node server.js",
 		"server": "node nw.js",
 		"start_group": "node cluster.js",
-		"dev": "./node_modules/.bin/cross-env NODE_ENV=dev PORT=3000 nodemon"
+		"dev": "./node_modules/.bin/cross-env NODE_ENV=dev PORT=5000 nodemon"
 	},
 	"keywords": [
 		"mm",
@@ -30,41 +30,29 @@
 		"loadtest": "*"
 	},
 	"dependencies": {
-		"babel-preset-es2015": "^6.24.1",
-		"cross-env": "^6.0.3",
-		"koa": "^2.8.1",
+		"colors": "^1.4.0",
+		"http-proxy": "^1.18.0",
+		"koa": "^2.11.0",
 		"koa-bodyparser": "^4.2.1",
-		"koa-compress": "^3.0.0",
 		"koa-websocket": "^6.0.0",
-		"koa-xml-body": "^2.1.0",
-		"mm_cache": "^1.3.2",
+		"mm_cache": "^1.3.3",
 		"mm_check": "^1.3.3",
-		"mm_crypto": "^1.0.4",
-		"mm_html": "^1.0.1",
-		"mm_https": "^1.3.4",
-		"mm_machine": "^1.3.5",
-		"mm_matchs": "^1.0.3",
-		"mm_mongodb": "^1.3.0",
-		"mm_mysql": "^1.3.8",
-		"mm_process": "^1.3.0",
-		"mm_redis": "^1.3.1",
-		"mm_ret": "^1.3.0",
-		"mm_session": "^1.3.2",
-		"mm_statics": "^1.3.4",
-		"mm_stock": "^1.0.8",
-		"mm_timer": "^1.3.0",
+		"mm_crypto": "^1.0.6",
+		"mm_es6_to_amd": "^1.3.1",
+		"mm_html": "^1.0.2",
+		"mm_https": "^1.3.5",
+		"mm_machine": "^1.3.6",
+		"mm_matchs": "^1.0.5",
+		"mm_mongodb": "^1.3.1",
+		"mm_mysql": "^1.3.9",
+		"mm_process": "^1.3.7",
+		"mm_redis": "^1.3.2",
+		"mm_ret": "^1.3.1",
+		"mm_session": "^1.3.4",
+		"mm_statics": "^1.3.6",
+		"mm_timer": "^1.3.1",
 		"mm_tpl": "^1.2.9",
 		"mm_xml": "^1.0.6",
-		"njwt": "^1.0.0",
-		"node-windows": "^1.0.0-beta.1",
-		"nodemon": "^1.19.2"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/qiuwenwu/mm_node.git"
-	},
-	"bugs": {
-		"url": "https://github.com/qiuwenwu/mm_node/issues"
-	},
-	"homepage": "https://github.com/qiuwenwu/mm_node#readme"
+		"node-windows": "^1.0.0-beta.1"
+	}
 }

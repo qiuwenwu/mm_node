@@ -9,14 +9,23 @@
 		"cache": "redis",
 		// 是否启用定时任务服务
 		"task": true,
-		// 是否启用websocket服务
-		"websocket": true,
+		// 是否启用数据库管理器
+		"db_admin": true
+	},
+	/* http服务配置 */
+	"server": {
 		// 是否启用多静态文件处理服务
 		"static": true,
-		// 是否启用数据库管理器
-		"db_admin": true,
+		// 是否启用websocket服务
+		"websocket": true,
 		// 是否输出操作日志
-		"log": false
+		"log": false,
+		// 服务器地址
+		"host": "0.0.0.0",
+		// 端口号
+		"port": 3000,
+		// 频道数, 4表示开启4个端口
+		"channel": 0
 	},
 	"redis": {
 		// 服务器地址

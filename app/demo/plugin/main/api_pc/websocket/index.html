@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-dns-prefetch-control" content="on">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="x-dns-prefetch-control" content="on">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>web socket测试</title>
+		
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script src="../js/mm_sdk.js"></script>
+		<script src="../js/vue.js"></script>
+		<script src="../js/mm_websocket.js"></script>
+
+		<style>
+			#chat_window {
+				max-width: 40rem;
+				margin: 5rem auto;
+				border: 1px solid #DBDBDB;
+			}
+
+			#msg_box {
+				height: 25rem;
+				overflow-x: hidden;
+				overflow-y: scroll;
+				border-bottom: 1px solid #DBDBDB;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="chat_window">
+				<div id="msg_box">
+					<div id="msg_list">
+						<div class="msg" v-for="(o, k) in arr_msg" :key="k">
+							<dl>
+								<dt>{{ o.from_user }}</dt>
+								<dd>{{ o.content }}</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<div id="chat_bar">
+					<input v-model="content" @keydown.enter="send(content)" />
+					<button @click="send(content)">发送消息</button>
+				</div>
+			</div>
+			<div class="">
+				<button @click="get_method()">测试调用服务端函数</button>
+			</div>
+		</div>
+
+		<script>
+			var vue = new Vue({
+				el: '#app',
+				data: {
+					arr_msg: [],
+					ws: {},
+					user: {
+						username: "小白"
+					},
+					to_user: "小明",
+					content: ""
+				},
+				methods: {
+					/**
+					 * 接收消息函数
+					 * @param {String} message
+					 */
+					receive: function(data) {
+						try {
+							if (data.result) {
+								data = data.result
+							}
+							if (data.content || Array.isArray(data)) {
+								this.arr_msg.add(data);
+							} else {
+								this.noticy('message', data);
+							}
+							setTimeout(function(){
+								$("#msg_box").scrollTop($("#msg_list").height());
+							}, 50)
+							
+						} catch (e) {
+							console.log(e);
+						}
+					},
+					/**
+					 * 连接通知
+					 * @param {String} type 通知类型
+					 * @param {Object} content 通知内容
+					 */
+					noticy: function(type, content) {
+						console.log(type, content);
+					},
+					/**
+					 * 创建连接
+					 */
+					connect: function() {
+						var host = window.location.host;
+						var url = 'ws://' + host + "/ws/chat";
+
+						// 连接名称
+						var name = 'test_chat';
+						// this.ws = $.socket(url, this.receive, this.noticy, name);
+						this.ws = new Socket(url, this.receive, this.noticy, name);
+						this.set_method();
+					},
+					/**
+					 * 发送消息
+					 * @param {String} content 
+					 */
+					send: function(content) {
+						var msg = {
+							// 消息发送人，为当前登录用户
+							from_user: this.user.username,
+							// 消息接收人，即该条消息是要发送给谁的
+							to_user: this.to_user,
+							// 消息发送的时间
+							create_time: "chat" + new Date().stamp(),
+							// 0为持久会话，1为临时会话
+							type: 1,
+							// 如果是群消息，则group传入群ID
+							group: "",
+							// 消息内容
+							content: content,
+						};
+						// 将消息序列化之后发送
+						this.ws.req('message', msg);
+						// this.ws.send(JSON.stringify(msg));
+						/*
+							也可以通过 this.ws.send(JSON.stringify(msg)); 发送
+							不同的是this.ws.send发送的是字符出, 且没法传递回调函数
+						*/
+						this.content = "";
+					},
+					set_method: function() {
+						var lt = this.arr_msg;
+						// 除了主动请求外, 还可以添加方法, 让服务端直接访问
+						this.ws.methods.get_message = function(params) {
+							var len = lt.length;
+							return lt[len - 1];
+						}
+					},
+					get_method: function(){
+						// 除了向服务端发送消息，还可以调用服务端开放的函数，方法如下:
+						var func = function(res){
+							console.log('查询结果为:', res);
+						};
+						// 传递给服务端的参数，一般为json格式
+						var params = null;
+						// 通过回调函数func来获取服务端开放函数执行结果
+						this.ws.req('get_method', params, func);
+					}
+				},
+				created() {
+					// 连接socket，由于mm_sdk缓存了连接对象，即时重新执行该函数，也不会重新创建
+					this.connect();
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -356,9 +356,9 @@ function clear(obj) {
  */
 function toJson(obj, format) {
 	if (format) {
-		return JSON5.stringify(obj, null, 4);
+		return JSON.stringify(obj, null, 4);
 	} else {
-		return JSON5.stringify(obj);
+		return JSON.stringify(obj);
 	}
 }
 
@@ -1120,17 +1120,38 @@ if (typeof($) === "undefined") {
 	 * @return {String} 编译后的字符串
 	 */
 	String.prototype.tpl = function(obj) {
-		var text = this + '';
-
+		var template = this + '';
+		let evalExpr = /<%=(.+?)%>/g;
+		let expr = /<%([\s\S]+?)%>/g;
+		
+		template = template
+		  .replace(/%>\n\s+/g, '%>')
+		  .replace(evalExpr, '`); \n  echo( $1 ); \n  echo(`')
+		  .replace(expr, '`); \n $1 \n  echo(`');
+		
+		template = 'echo(`' + template + '`);';
+		
 		function render() {
 			if (obj) {
 				for (var k in obj) {
 					this[k] = obj[k];
 				}
 			}
-			return eval("`" + text + "`");
+			return eval(`(function parse(data){
+            var output = "";
+            function echo(html){
+                if(typeof html === "object"){
+                    output += JSON.stringify(html);
+                }
+                else{
+                    output += html;
+                }
+            }
+            ${template}
+            return output;
+        })`);
 		}
-		return render();
+		return render()(obj);
 	};
 	/**
 	 * @description 补全路径

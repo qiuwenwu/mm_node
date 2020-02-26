@@ -1,0 +1,9 @@
+{
+	"path": "/test",
+	"type": "api",
+	"name": "test",
+	"title": "示例接口",
+	"description": "描述接口使用方法",
+	"func_file": "./index.js",
+	"method": "ALL"
+}

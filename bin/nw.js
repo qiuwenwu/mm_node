@@ -1,3 +1,4 @@
+require('mm_expand');
 /**
 	安装windows系统服务模式
 */
@@ -13,7 +14,7 @@ let svc = new Service({
 	//  描述
 	description: 'This is the mm_node web server',
 	// nodejs项目要启动的文件路径
-	script: resolve('../server.js'),
+	script: resolve('../server.js'.fullname(__dirname)),
 	  nodeOptions: [
 		'--harmony',
 		'--max_old_space_size=4096'

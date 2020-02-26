@@ -160,8 +160,7 @@
 		padding: 0.5rem 1rem;
 		border-top: 1px solid #DBDBDB;
 		border-bottom: 1px solid #DBDBDB;
-		margin-top: -1px;
-		font-size: 0.875rem;
+		margin-top: -1px;font-size: 0.875rem;
 	}
 
 	.list .mm_item:hover {

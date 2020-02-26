@@ -6,6 +6,7 @@ require("mm_timer");
 require('mm_crypto');
 require('mm_es6_to_amd');
 require('mm_matchs');
+$.html = require('mm_html');
 
 $.redis_admin = require("mm_redis").redis_admin;
 $.mongoDB_admin = require("mm_mongodb").mongoDB_admin;
@@ -20,7 +21,7 @@ $.task_admin = require('./com/task').task_admin;
 $.db_admin = require('./com/db').db_admin;
 $.cmd_admin = require('./com/cmd').cmd_admin;
 $.nav_admin = require('./com/nav').nav_admin;
-$.html = require('mm_html');
+
 
 // 加载全局配置
 const NODE_ENV = process.env.NODE_ENV || 'local';
