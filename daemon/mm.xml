@@ -5,9 +5,9 @@
 	<executable>C:\Program Files\nodejs\node.exe</executable>
 	<argument>--harmony</argument>
 	<argument>--max_old_space_size=4096</argument>
-	<argument>E:\mm_koa\node_modules\node-windows\lib\wrapper.js</argument>
+	<argument>F:\mm_node\node_modules\node-windows\lib\wrapper.js</argument>
 	<argument>--file</argument>
-	<argument>E:\mm_koa\bin\server.js</argument>
+	<argument>F:\mm_node\server.js</argument>
 	<argument>--scriptoptions=</argument>
 	<argument>--log</argument>
 	<argument>mm wrapper</argument>
@@ -24,9 +24,9 @@
 	<logmode>rotate</logmode>
 	<stoptimeout>30sec</stoptimeout>
 	<serviceaccount>
-		<domain>V_WENWUQIU-NB1</domain>
+		<domain>DESKTOP-O9L4O5Q</domain>
 		<user>LocalSystem</user>
 		<password></password>
 	</serviceaccount>
-	<workingdirectory>E:\mm_koa\bin\bat</workingdirectory>
+	<workingdirectory>F:\mm_node</workingdirectory>
 </service>

@@ -1,9 +1,8 @@
 require("colors");
-const init = require("./expand.js");
+const init = require("./bin/expand.js");
 const Process = require('mm_process');
 const net = require('net');
-
-
+var { join } = require('path');
 
 // 加载全局配置
 const NODE_ENV = process.env.NODE_ENV || 'local';
