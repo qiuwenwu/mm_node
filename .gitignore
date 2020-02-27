@@ -92,7 +92,3 @@ sw.*
 #  mm app
 app/*
 !app/README.md
-!app/user/
-!app/sys/
-!app/admin/
-!app/dev/
