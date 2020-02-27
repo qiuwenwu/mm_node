@@ -88,3 +88,11 @@ sw.*
 
 # Vim swap files
 *.swp
+
+#  mm app
+app/*
+!app/README.md
+!app/user/
+!app/sys/
+!app/admin/
+!app/cms/
