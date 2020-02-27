@@ -95,4 +95,4 @@ app/*
 !app/user/
 !app/sys/
 !app/admin/
-!app/cms/
+!app/dev/
