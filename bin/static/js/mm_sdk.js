@@ -2134,8 +2134,9 @@ if (typeof($) === "undefined") {
 		 * 设置值
 		 * @param {String} key 键
 		 * @param {Object} value 值
+		 * @param {Number} longTime 保存时长（单位:分钟）
 		 */
-		set: function(key, value) {
+		set: function(key, value, longTime) {
 			window.localStorage.setItem(key, value);
 		},
 		/**

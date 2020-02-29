@@ -1,6 +1,6 @@
 {
     "name": "cms_article_section",
-    "title": "",
+    "title": "文章正文章节",
     "add": {
         "body": [
             "article_id",
@@ -8,7 +8,9 @@
             "content",
             "img"
         ],
-        "body_required": []
+        "body_required": [
+            "tag"
+        ]
     },
     "del": {
         "query": [],
@@ -20,14 +22,16 @@
         "query": [
             "content_id",
             "title",
-            "content"
+            "content",
+            "tag"
         ],
         "query_required": [],
         "body": [
             "article_id",
             "title",
             "content",
-            "img"
+            "img",
+            "tag"
         ],
         "body_required": [],
         "body_not": []
@@ -36,7 +40,8 @@
         "query": [
             "content_id",
             "title",
-            "content"
+            "content",
+            "tag"
         ],
         "query_required": []
     },
@@ -90,6 +95,16 @@
             "type": "string",
             "dataType": "text",
             "string": {}
+        },
+        {
+            "name": "tag",
+            "title": "章节标签",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
         }
     ]
 }

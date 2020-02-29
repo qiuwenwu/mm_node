@@ -16,8 +16,8 @@
 			<mm_grid>
 				<mm_col width="100">
 					<mm_view>
-						<mm_btn type="info" @click.native="small = !small">切换大小</mm_btn>
-						<mm_btn type="info" @click.native="dark = !dark">反色</mm_btn>
+						<mm_btn class="btn_info" @click.native="small = !small">切换大小</mm_btn>
+						<mm_btn class="btn_info" @click.native="dark = !dark">反色</mm_btn>
 					</mm_view>
 
 					<mm_view>

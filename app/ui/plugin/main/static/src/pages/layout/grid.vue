@@ -62,7 +62,7 @@
 						</mm_grid>
 					</mm_view>
 					<mm_view>
-						<h5>通过父级改变列数 <mm_btn type="info" @click.native="add()">{{ col }}列</mm_btn>
+						<h5>通过父级改变列数 <mm_btn class="btn_info" @click.native="add()">{{ col }}列</mm_btn>
 						</h5>
 						<mm_grid :col="col" class="center grid-x">
 							<mm_col>
@@ -104,7 +104,7 @@
 						</mm_grid>
 					</mm_view>
 					<mm_view>
-						<h5>自适应列数 <mm_btn type="info" @click.native="add_num()">{{ num }}列</mm_btn>
+						<h5>自适应列数 <mm_btn class="btn_info" @click.native="add_num()">{{ num }}列</mm_btn>
 						</h5>
 						<mm_grid class="center grid-x mm_grid-sm">
 							<mm_col v-for="(o, idx) in num" :key="idx">

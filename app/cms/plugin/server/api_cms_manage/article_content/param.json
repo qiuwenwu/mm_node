@@ -1,6 +1,6 @@
 {
-    "name": "cms_article_content2",
-    "title": "",
+    "name": "cms_article_section2",
+    "title": "文章正文章节",
     "add": {
         "body": [
             "article_id",

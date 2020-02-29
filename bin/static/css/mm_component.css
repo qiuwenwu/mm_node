@@ -492,7 +492,7 @@
 .pc .mm_input input {
 	padding: .25rem .5rem;
 	border-radius: .25rem;
-	border: 1px solid #DBDBDB;
+	border: 1px solid rgba(125,125,125,0.25);
 	height: 2rem;
 	min-width: 12rem;
 }
@@ -600,7 +600,7 @@
 }
 
 .pc .mm_number input {
-	border: 1px solid #DBDBDB;
+	border: 1px solid rgba(125,125,125,0.25);
 	border-radius: .25rem;
 }
 
@@ -611,6 +611,7 @@
 
 .mobile .mm_number [class*=mm_btn] {
 	border-radius: 0;
+	min-width: 2rem;
 }
 
 input::-webkit-outer-spin-button,
@@ -691,8 +692,8 @@ input::-webkit-inner-spin-button {
 	margin-bottom: -1px;
 	padding-top: .25rem;
 	padding-bottom: .25rem;
-	border-top: 1px solid #DBDBDB;
-	border-bottom: 1px solid #DBDBDB;
+	border-top: 1px solid rgba(125,125,125,0.25);
+	border-bottom: 1px solid rgba(125,125,125,0.25);
 	overflow: hidden;
 }
 
@@ -723,7 +724,7 @@ input::-webkit-inner-spin-button {
 .mm_select select {
 	padding: 0 .5rem;
 	border-radius: .25rem;
-	border: 1px solid #DBDBDB;
+	border: 1px solid rgba(125,125,125,0.25);
 	height: 2rem;
 	background-position-x: calc(100% - .25rem);
 }
@@ -733,7 +734,7 @@ input::-webkit-inner-spin-button {
 	border-radius: .25rem;
 	height: 2rem;
 	line-height: 2rem;
-	border: 1px solid #DBDBDB;
+	border: 1px solid rgba(125,125,125,0.25);
 	/* background:url("/img/down.png") no-repeat scroll right center transparent;background-position-x:calc(100% - .25rem); */
 }
 
@@ -742,7 +743,7 @@ input::-webkit-inner-spin-button {
 	bottom: initial;
 	overflow: hidden;
 	background: #fff;
-	border: 1px solid #DBDBDB;
+	border: 1px solid rgba(125,125,125,0.25);
 	border-radius: .25rem;
 	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
@@ -900,7 +901,7 @@ input::-webkit-inner-spin-button {
 	height: 2rem;
 	line-height: calc(2rem - 2px);
 	color: #333;
-	border: 1px solid #dbdbdb;
+	border: 1px solid rgba(125,125,125,0.25);
 	margin-left: -1px;
 	text-align: center;
 }
@@ -1015,7 +1016,7 @@ input::-webkit-inner-spin-button {
 /* 图片 */
 /* .mm_list_img {
 		margin: .5rem;
-		border: 1px solid #DBDBDB;
+		border: 1px solid rgba(125,125,125,0.25);
 		box-shadow: 0 0.125rem .25rem 0 rgba(0, 0, 0, .1);
 		border-radius: .5rem;
 		overflow: hidden;
@@ -1113,7 +1114,7 @@ input::-webkit-inner-spin-button {
 }
 
 #nav_pager a {
-	border: 1px solid #DBDBDB;
+	border: 1px solid rgba(125,125,125,0.25);
 	width: 2rem;
 	height: 2rem;
 	margin: .25rem;
@@ -1150,7 +1151,7 @@ input::-webkit-inner-spin-button {
 #list_about li {
 	width: 100%;
 	padding: .5rem 0;
-	border-top: 1px dashed #DBDBDB;
+	border-top: 1px dashed rgba(125,125,125,0.25);
 }
 
 #list_about li:first-child {
@@ -1169,7 +1170,7 @@ input::-webkit-inner-spin-button {
 #list_hot li {
 	width: 100%;
 	padding: .5rem 0;
-	border-top: 1px dashed #DBDBDB;
+	border-top: 1px dashed rgba(125,125,125,0.25);
 }
 
 #list_hot li:first-child {
@@ -1190,7 +1191,7 @@ input::-webkit-inner-spin-button {
 }
 
 #list_img_1.icon-x figure {
-	border: 1px solid #dbdbdb;
+	border: 1px solid rgba(125,125,125,0.25);
 }
 
 #list_img_1 h5 {
@@ -1331,13 +1332,13 @@ input::-webkit-inner-spin-button {
 	height: 2rem;
 	line-height: calc(2rem - 2px);
 	padding: 0 1rem;
-	border-bottom: 1px solid #DBDBDB;
-	border-right: 1px solid #DBDBDB;
+	border-bottom: 1px solid rgba(125,125,125,0.25);
+	border-right: 1px solid rgba(125,125,125,0.25);
 }
 
 .mm_tab_head>div:last-child {
 	flex: auto;
-	border-bottom: 1px solid #DBDBDB;
+	border-bottom: 1px solid rgba(125,125,125,0.25);
 	border-right: 0;
 }
 

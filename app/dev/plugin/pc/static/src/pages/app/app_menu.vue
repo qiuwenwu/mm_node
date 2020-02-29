@@ -111,7 +111,7 @@
 		min-width: 15rem;
 		background: #24292e;
 		padding: 0.5rem;
-		color: #DBDBDB;
+		color: rgba(125,125,125,0.25);
 		overflow-x: hidden;
 		overflow-y: auto;
 	}

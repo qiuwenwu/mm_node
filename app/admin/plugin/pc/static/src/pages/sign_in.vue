@@ -9,7 +9,7 @@
 					<mm_input title="账号" type="text" v-model="form.account" desc="用户名/手机/邮箱"></mm_input>
 					<mm_input title="密码" type="password" v-model="form.password" desc="由6-12位英文+数字符号组成"></mm_input>
 					<label id="remember_me"><input type="checkbox" v-model="remember_me" /><span>记住账户</span></label>
-					<mm_btn type="primary" class="wave linear_blue-1" @click.native="sign_in()">登录</mm_btn>
+					<mm_btn class="btn_primary wave linear_blue-1" @click.native="sign_in()">登录</mm_btn>
 				</mm_form>
 			</mm_view>
 		</mm_col>
@@ -46,17 +46,17 @@
 				}
 				var _this = this;
 				this.$post('~/api/user/sign_in', form, function(res) {
-					if (res.result) {
-						_this.$store.commit('set_user', res.result);
-						if (_this.remember_me) {
-							$.db.set('account', account);
-						}
-						var url = _this.$redirect();
-						_this.$router.push(url);
-
-					} else if (res.error) {
-						$.toast(res.error.message);
-					}
+					console.log(res);
+					// if (res.result) {
+					// 	if (_this.remember_me) {
+					// 		$.db.set('account', account);
+					// 	}
+					// 	_this.$store.commit('set_user', res.result);
+					// 	var url = _this.$redirect();
+					// 	_this.$router.push(url);
+					// } else if (res.error) {
+					// 	$.toast(res.error.message);
+					// }
 				});
 			}
 		},

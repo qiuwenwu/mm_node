@@ -2,7 +2,7 @@
     "name": "cms_article_section2",
     "title": "文章正文章节",
     "description": "文章的正文是单独一块保存的，一个个章节保存",
-    "path": "/apis/cms/article_session",
+    "path": "/apis/cms/article_section",
     "method": "ALL",
     "cache": 0,
     "client_cache": false,

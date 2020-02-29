@@ -70,18 +70,18 @@
             }
         },
         {
-            "name": "cms_article_content",
-            "path": "/cms/article_content",
-            "component": "/cms/home_phone/src/pages/article_content.vue",
+            "name": "cms_article_section",
+            "path": "/cms/article_session",
+            "component": "/cms/home_phone/src/pages/article_session.vue",
             "level": 2,
             "oauth": {
                 "signIn": false
             }
         },
         {
-            "name": "cms_article_content_view",
-            "path": "/cms/article_content_view",
-            "component": "/cms/home_phone/src/pages/article_content_view.vue",
+            "name": "cms_article_section_view",
+            "path": "/cms/article_session_view",
+            "component": "/cms/home_phone/src/pages/article_session_view.vue",
             "level": 3,
             "oauth": {
                 "signIn": false
@@ -158,14 +158,14 @@
                 {
                     "title": "",
                     "show": false,
-                    "name": "cms_article_content",
-                    "url": "/cms/article_content"
+                    "name": "cms_article_section",
+                    "url": "/cms/article_session"
                 },
                 {
                     "title": "",
                     "show": false,
-                    "name": "cms_article_content_view",
-                    "url": "/cms/article_content_view"
+                    "name": "cms_article_section_view",
+                    "url": "/cms/article_session_view"
                 },
                 {
                     "title": "文章分类",

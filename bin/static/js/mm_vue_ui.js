@@ -749,7 +749,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_btn = {
-		template: "<!-- \u6309\u94AE --><button :class=\"'mm_btn btn_' + type\" v-if=\"!url\" @click=\"click_down()\"><slot></slot></button><button type=\"button\" :class=\"'mm_btn btn_' + type\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></button><router-link :class=\"'mm_btn' + type\" :to=\"url\" v-else><slot></slot></router-link>",
+		template: "<!-- \u6309\u94AE --><button :type=\"type\" class=\"mm_btn\" v-if=\"!url\" @click=\"click_down()\"><slot></slot></button><button class=\"mm_btn\" @click=\"openBrowser()\" v-else-if=\"url.indexOf('http:') === 0 || url.indexOf('https:') === 0\"><slot></slot></button><router-link class=\"mm_btn\" :to=\"url\" v-else><slot></slot></router-link>",
 		props: {
 			url: {
 				type: String,
@@ -757,7 +757,7 @@ define(['jquery'], function(jquery) {
 			},
 			type: {
 				type: String,
-				default: ""
+				default: "button"
 			},
 			func: {
 				type: Function,
@@ -1166,7 +1166,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_number = {
-		template: "<!-- \u6570\u5B57\u6846 --><div class=\"mm_number\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><mm_btn type=\"primary\" class=\"btn_del\" @click.native=\"del\"><span></span></mm_btn><input type=\"number\" :value=\"value\" :min=\"min\" :max=\"max\" @input=\"set\" @blur=\"setInt\" :disabled=\"disabled\"/><mm_btn type=\"primary\" class=\"btn_add\" @click.native=\"add\"><span></span></mm_btn></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<!-- \u6570\u5B57\u6846 --><div class=\"mm_number\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><mm_btn class=\"btn_primary btn_del\" @click.native=\"del\"><span></span></mm_btn><input type=\"number\" :value=\"value\" :min=\"min\" :max=\"max\" @input=\"set\" @blur=\"setInt\" :disabled=\"disabled\"/><mm_btn class=\"btn_primary btn_add\" @click.native=\"add\"><span></span></mm_btn></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		methods: {
 			setInt: function setInt(e) {

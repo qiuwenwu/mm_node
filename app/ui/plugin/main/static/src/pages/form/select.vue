@@ -13,7 +13,7 @@
 			</mm_grid>
 		</header>
 		<main>
-			<mm_grid>
+			<mm_grid class="pb">
 				<mm_col width="100">
 					<mm_view class="pc">
 						<h5>样式一 (原生)</h5>
@@ -42,7 +42,7 @@
 							<mm_icon src="/img/avatar.png"></mm_icon>
 						</mm_select>
 					</mm_view>
-
+					
 					<mm_view>
 						{{ value }}
 					</mm_view>

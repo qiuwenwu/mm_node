@@ -14,7 +14,7 @@
 			<mm_body class="dev_body" v-if="!query.name">
 				<div class="pc inline" name="search">
 					<div class="buttons">
-						<mm_btn type="info" @click.native="update()">更新</mm_btn>
+						<mm_btn class="btn_info" @click.native="update()">更新</mm_btn>
 					</div>
 					<mm_input title="搜索" v-model="keyword"></mm_input>
 				</div>
@@ -35,7 +35,7 @@
 							<td><input v-model="o.title" @blur="set({title: o.title, name: o.name})"></input></td>
 							<td><input v-model="o.description" @blur="set({description: o.description, name: o.name})"></input></td>
 							<td>
-								<mm_btn type="info-x btn-sm" @click.native="set_show(o.name)">查看</mm_btn>
+								<mm_btn class="btn_info-x btn-sm" @click.native="set_show(o.name)">查看</mm_btn>
 							</td>
 						</tr>
 						<tr v-show="list_api.length === 0">
@@ -48,10 +48,10 @@
 				<mm_view class="none" v-else>
 					<div class="h5">该作用域下没有接口</div>
 				</mm_view>
-			</main>
+			</mm_body>
 			<mm_body class="dev_body" v-else>
 				<div class="head"><strong>{{ api_title }}</strong> <span class="desc">接口明细</span>
-					<mm_btn type="info" class="fr" @click.native="query.name = '';set_name('')"><i class="fa-chevron-left"></i> 返回</mm_btn>
+					<mm_btn class="btn_info" class="fr" @click.native="query.name = '';set_name('')"><i class="fa-chevron-left"></i> 返回</mm_btn>
 				</div>
 				<page_param :query="query"></page_param>
 			</main>
@@ -326,7 +326,7 @@
 	}
 
 	#api_index .from_default .mm_col_20 {
-		border-right: 2px solid #dbdbdb;
+		border-right: 2px solid rgba(125,125,125,0.25);
 	}
 
 	#api_index .from_default .mm_col_20 span {
@@ -407,7 +407,7 @@
 
 	#api_index .dev_body .head {
 		padding: .5rem 1rem;
-		border-bottom: 1px solid #DBDBDB;
+		border-bottom: 1px solid rgba(125,125,125,0.25);
 		overflow: hidden;
 		font-size: 1.25rem;
 	}

@@ -1,7 +1,13 @@
 const dev = require('../com.js').dev;
+$.db_admin = require('../../../../../../bin/com/db').db_admin;
+// 是否启用数据库管理器
+if ($.config.sys.db_admin) {
+	// 创建数据库管理器
+	var db = $.db_admin('sys');
+	db.update();
+}
 
 var dev_class = new dev('db');
-
 /**
  * @description 更新配置文件
  * @param {Object} req HTTP上文

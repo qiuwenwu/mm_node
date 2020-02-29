@@ -11,7 +11,7 @@
     "check_param": true,
     "oauth": {
         "scope": true,
-        "signIn": false,
+        "signIn": true,
         "vip": 0,
         "user_group": []
     }

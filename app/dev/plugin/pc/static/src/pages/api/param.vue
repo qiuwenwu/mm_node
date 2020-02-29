@@ -449,21 +449,21 @@
 
 <style>
 	.page_param .search {
-		border-left: 1px solid #DBDBDB;
+		border-left: 1px solid rgba(125,125,125,0.25);
 		padding: 0.45rem 0.5rem;
 		float: right;
 	}
 
 	.page_param .mm_tabs {
 		margin: 2rem 1rem;
-		border: 1px solid #DBDBDB;
+		border: 1px solid rgba(125,125,125,0.25);
 	}
 
 	.page_param .mm_tabs a,
 	.page_param .mm_tabs span {
 		display: inline-block;
 		padding: 0.25rem 0.5rem;
-		border-right: 1px solid #DBDBDB;
+		border-right: 1px solid rgba(125,125,125,0.25);
 	}
 
 	.page_param .mm_tabs a:hover {
@@ -482,7 +482,7 @@
 
 	.save {
 		float: right;
-		background: #DBDBDB;
+		background: rgba(125,125,125,0.25);
 		padding-left: 1rem !important;
 		padding-right: 1rem !important;
 	}

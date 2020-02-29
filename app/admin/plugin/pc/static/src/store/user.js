@@ -28,10 +28,10 @@ define(function() {
 		},
 		mutations: {
 			set_user: function set_user(state, obj) {
-				$.push(state, obj);
 				if(obj.token){
 					$.db.set("token", obj.token, 120);
 				}
+				$.push(state, obj);
 			},
 			sign_in: function sign_in(state, token) {
 				state.token = token;

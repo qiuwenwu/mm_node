@@ -84,7 +84,7 @@
 	font-weight: 500;
 	padding: .25rem;
 	text-align: center;
-	border-bottom: 1px solid #DBDBDB;
+	border-bottom: 1px solid rgba(125,125,125,0.25);
 	margin-bottom: 0.5rem;
 }
 

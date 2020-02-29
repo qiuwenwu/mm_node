@@ -58,7 +58,7 @@
 	#cmd_index .plugin_window .log {
 		width: 100%;
 		
-		border: 1px solid #DBDBDB;
+		border: 1px solid rgba(125,125,125,0.25);
 		overflow-x: hidden;
 		overflow-y: auto;
 	}
@@ -75,7 +75,7 @@
 
 	#cmd_index .plugin_window .h5 {
 		padding: 0.25rem 0.5rem;
-		border-bottom: 1px solid #DBDBDB;
+		border-bottom: 1px solid rgba(125,125,125,0.25);
 	}
 
 	#cmd_index .plugin_window .log i {

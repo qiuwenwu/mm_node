@@ -214,14 +214,14 @@
 
 	#app_index .tabs_body .h3 {
 		padding-bottom: .5rem;
-		border-bottom: 1px solid #DBDBDB;
+		border-bottom: 1px solid rgba(125,125,125,0.25);
 	}
 
 	#app_index .tabs_body .desc {
 		margin: 1rem 0;
 		padding: 0.125rem 0;
 		padding-left: 1rem;
-		border-left: 3px solid #DBDBDB;
+		border-left: 3px solid rgba(125,125,125,0.25);
 	}
 
 	#app_index .tabs_body .onOff {

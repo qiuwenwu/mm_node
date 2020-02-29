@@ -20,11 +20,15 @@
 	body {
 		background: #fff;
 	}
+	body>div>header h3{ 
+		padding-left: .5rem;
+		padding-right: .5rem;
+	}
 	body>div>header {
 		background: #fff;
 		color: #333;
 		padding-top: 3rem;
-		border-bottom: 1px solid #DBDBDB;
+		border-bottom: 1px solid rgba(125,125,125,0.25);
 		padding-bottom: 0.5rem;
 	}
 	

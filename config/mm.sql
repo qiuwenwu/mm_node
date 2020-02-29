@@ -98,10 +98,10 @@ CREATE TABLE `cms_article_comment` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `cms_article_content`
+-- Table structure for `cms_article_section`
 -- ----------------------------
-DROP TABLE IF EXISTS `cms_article_content`;
-CREATE TABLE `cms_article_content` (
+DROP TABLE IF EXISTS `cms_article_section`;
+CREATE TABLE `cms_article_section` (
   `content_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '内容模块ID：[1,2147483647]',
   `article_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '对应文章ID：[1,2147483647]',
   `title` varchar(255) DEFAULT NULL COMMENT '章节标题：[0,255]',
@@ -111,7 +111,7 @@ CREATE TABLE `cms_article_content` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of cms_article_content
+-- Records of cms_article_section
 -- ----------------------------
 
 -- ----------------------------

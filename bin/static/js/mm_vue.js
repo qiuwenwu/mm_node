@@ -88,7 +88,7 @@ define(["Vue"], function(Vue) {
 			 */
 			Vue.prototype.$get = function(url, query, func) {
 				var token = $.db.get("token");
-
+				console.log('访问牌', token);
 				var queryStr = query ? $.toUrl(query) : "";
 				var _this = this;
 				$.http.get(url.replace("~/", host) + queryStr, function(json, status) {

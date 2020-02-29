@@ -3,7 +3,6 @@ require('./common.js');
 
 async function init(){
 	$.plugin_admin = require('./com/plugin').plugin_admin;
-	$.db_admin = require('./com/db').db_admin;
 	$.task_admin = require('./com/task').task_admin;
 }
 
@@ -35,13 +34,7 @@ function use(config){
 		// 启动计时器
 		$.timer.start();
 	}
-	
-	// 是否启用数据库管理器
-	if (sys.db_admin) {
-		// 创建数据库管理器
-		var db = $.db_admin('sys');
-		db.update();
-	}
+
 }
 
 /**
