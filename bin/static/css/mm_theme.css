@@ -42,7 +42,7 @@ input:-ms-input-placeholder {
 /* 背景 */
 .bg_white {background:#fff !important;color:#333;}
 .bg_black {background:#333 !important;color:#fff;border-color:#333;}
-.bg_light { background:#F9F9F9 !important; color:#666; border-color:#F5F5F5;}
+.bg_light { background:#F9F9F9 !important; color:#666; border-color:rgba(125,125,125, 0.25);}
 .bg_dark {background:#666 !important;color:#fff;border-color:#666;}
 .bg_grey,.bg_default {background:#999 !important;color:#fff;border-color:#999;}
 .bg_red,.bg_warning {background: #FF0036 !important;color:#fff;border-color:#FF0036;}

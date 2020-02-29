@@ -614,6 +614,6 @@ html.with-statusbar-overlay .popup,html.with-statusbar-overlay .login-screen,htm
 
 /* 卡片 */
 .card {background:#fff;border-radius:0.5rem;box-shadow:0 .25rem .5rem 0 rgba(7,17,27,0.1);overflow:hidden;}
-.card>header {min-height:1.5rem;border-bottom:1px solid #F5F5F5;}
-.card>footer {min-height:2rem;border-top:1px solid #F5F5F5;}
+.card>header {min-height:1.5rem;border-bottom:1px solid rgba(125,125,125, 0.25);}
+.card>footer {min-height:2rem;border-top:1px solid rgba(125,125,125, 0.25);}
 .card>header {padding:.5rem 1rem;}

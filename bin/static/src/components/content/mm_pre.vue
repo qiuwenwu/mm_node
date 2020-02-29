@@ -50,7 +50,7 @@
 	}
 
 	.mm_code .copy_btn:active {
-		background: #f5f5f5;
+		background: rgba(125,125,125, 0.25);
 	}
 
 	.hljs li {

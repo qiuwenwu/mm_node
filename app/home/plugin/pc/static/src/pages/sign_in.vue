@@ -121,7 +121,6 @@
 	}
 
 	#sign_in #form_account {
-		display: inline-block;
 		text-align: left;
 		padding: 2rem 1rem;
 	}

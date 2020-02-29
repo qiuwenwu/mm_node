@@ -56,7 +56,8 @@ section { position:relative; padding: .5rem 2rem;}
 main { overflow: hidden;position: relative; }
 address,article,aside,code,figcaption,hgroup,main,nav,header,footer,section,iframe,frame,form,pre{display:block;}
 header::before,header::after,footer::before,footer::after,frame::before,frame::after,iframe::before,iframe::after,code::before,code::after,address::before,address::after,section::before,section::after{clear:both;content:"";display:block;}
-article::before,article::after{content:"";display:block;}
+article::before,article::after{content:"";display:block; clear: both;}
+form::before,form::after{content:"";display:block; clear: both;}
 article>header { text-align: center; }
 article>footer { padding: .5rem 2rem 2rem 2rem; }
 article>footer button { border: none; color: #666; }
@@ -69,7 +70,7 @@ aside table { margin: 1rem; width: calc(100% - 2rem); }
 /* ===  表单类  === */
 input,input::after,input::before{box-sizing:border-box;}
 button:focus{outline:none;}
-button:active{background: #F5F5F5; border-color: #F5F5F5;}
+button:active{background: rgba(125,125,125, 0.25); border-color: rgba(125,125,125, 0.25);}
 button{border-radius:.25rem;cursor:pointer;border: 1px solid rgba(125,125,125,0.25);}
 select{-moz-appearance:none;-webkit-appearance:none;appearance:none;background:url(/img/down.png) no-repeat scroll right center transparent;padding-left:.5rem;padding-right:1.25rem;word-wrap:normal;}
 select::-ms-expand{display:none;}

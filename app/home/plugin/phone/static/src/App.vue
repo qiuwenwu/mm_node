@@ -277,7 +277,7 @@
 		height: 2.5rem;
 		line-height: 2.5rem;
 		padding: 0 1rem;
-		border-bottom: 1px solid #f5f5f5;
+		border-bottom: 1px solid rgba(125,125,125, 0.25);
 		border-radius: 2px 2px 0 0;
 		font-size: 14px;
 	}

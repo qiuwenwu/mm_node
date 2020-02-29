@@ -13,6 +13,7 @@ sql.open();
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
+	db.tpl = new $.Tpl();
 	$.push(db, sql.db(), true);
 	return api_test.run(ctx, db);
 };

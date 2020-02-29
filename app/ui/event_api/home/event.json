@@ -1,8 +1,8 @@
 [{
-	"target": "/api/bbs/*",
-	"name": "api_bbs",
-	"title": "bbs的客户端api接口",
-	"description": "用于社区访问接口",
+	"target": "/ui*",
+	"name": "ui",
+	"title": "UI的客户端api接口",
+	"description": "用于UI访问接口",
 	"stage": "action",
 	"tense": "main",
 	"func_file": "./action_main.js",
