@@ -395,7 +395,7 @@ Drive.prototype.create_vue = function(file, route) {
 		group: arr[arr.length - 2],
 		route
 	};
-	console.log(model.name);
+	console.log('更新vue文件：', model.name);
 	var vue = tpl.view(f, model);
 	file.saveText(vue);
 };
@@ -419,15 +419,13 @@ Drive.prototype.mkdir = function(filepath) {
 /**
  * 更新路由vue文件
  * @param {Boolean} cover 是否覆盖文件
- * @param {String} route_name 路由名称
  * @param {String} route_path 路由路径
  */
-Drive.prototype.update_vue = async function(cover, route_name, route_path) {
+Drive.prototype.update_vue = async function(route_path, cover) {
 	var lt = this.config.routes;
 	var dir = '';
 	var p = '';
 	var len = lt.length;
-
 	for (var i = 0; i < len; i++) {
 		var o = lt[i];
 		var f = o.component;
@@ -438,18 +436,16 @@ Drive.prototype.update_vue = async function(cover, route_name, route_path) {
 			break;
 		}
 	}
-
-	if (route_name) {
+	if (route_path) {
 		for (var i = 0; i < len; i++) {
 			var o = lt[i];
-			if (o.name === route_name || o.path.indexOf(route_path) !== -1) {
-				var f = o.component;
-				if (f) {
-					var file = f.replace(p, dir).fullname();
+			var f = o.component;
+			if (f && o.path.indexOf(route_path) !== -1) {
+				var file = f.replace(p, dir).fullname();
+				if (cover || !file.hasFile()) {
 					this.mkdir(file);
 					this.create_vue(file, o);
 				}
-				break;
 			}
 		}
 	} else {

@@ -21,6 +21,7 @@ async function main(ctx, db) {
 		var list = [];
 		// 获取登录方式
 		var method = params["method"];
+		console.log('登录方式', method);
 		if (!method) {
 			// 如果登录方式默认，则用常规登录方式
 			db.table = "user_account";
@@ -103,7 +104,6 @@ async function main(ctx, db) {
 				});
 			}
 		}
-
 		if (list.length === 0) {
 			return $.ret.error(10000, '账号不存在');
 		} else {
@@ -129,11 +129,13 @@ async function main(ctx, db) {
 				var user = Object.assign({}, u);
 				delete user.user_id;
 				// 自动生成的uuid是通过IP和浏览器信息加密而成，如果需要解密确认其身份，可再加上user_id加密，自行生成uuid
-				return $.ret.body({
+				var body = $.ret.body({
 					token: ctx.session.uuid,
 					user: user,
 					ip: ip
 				});
+				// console.log('入场', body);
+				return body
 			}
 		}
 	}

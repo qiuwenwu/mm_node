@@ -1,10 +1,17 @@
 <template>
 	<main id="article">
-		<section id="">
-			<mm_title>
-				<mm_icon></mm_icon>
-			</mm_title>
-		</section>
+		<mm_grid>
+			<mm_col width="100">
+				<mm_view>
+					<header class="arrow">
+						<span class="h5">超级美眉</span>
+					</header>
+					<div class="tencent_desc">
+						
+					</div>
+				</mm_view>
+			</mm_col>
+		</mm_grid>
 	</main>
 </template>
 
@@ -19,22 +26,11 @@
 				url_get_list: "",
 				// 查询条件
 				query: {},
-				// 排序项
-				sort: {},
 				// 视图模型
 				vm: {}
 			}
 		},
 		methods: {
-			/**
-			 * @description 查询数据
-			 * @param {Object} query 查询参数
-			 * @param {Function} func 回调函数
-			 */
-			get(query, func) {
-				this.get_main(query, func);
-				// 如果页面需要其他查询，可将函数写在这
-			},
 			/**
 			 * @description 滚动刷新
 			 * @param {Number} n 滚动的方向，-1是向上， 1是向下

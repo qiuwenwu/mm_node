@@ -1,10 +1,17 @@
 <template>
 	<main id="address_city">
-		<section id="">
-			<mm_title>
-				<mm_icon></mm_icon>
-			</mm_title>
-		</section>
+		<mm_grid>
+			<mm_col width="100">
+				<mm_view>
+					<header class="arrow">
+						<span class="h5">超级美眉</span>
+					</header>
+					<div class="tencent_desc">
+						
+					</div>
+				</mm_view>
+			</mm_col>
+		</mm_grid>
 	</main>
 </template>
 
@@ -19,8 +26,6 @@
 				url_get_list: "",
 				// 查询条件
 				query: {},
-				// 排序项
-				sort: {},
 				// 视图模型
 				vm: {}
 			}

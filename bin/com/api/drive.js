@@ -377,10 +377,12 @@ Drive.prototype.body = function(ret, res, t) {
 				}
 				res.type = type;
 			}
-			if (type.indexOf('/json') !== -1 || type.indexOf('form') !== -1) {
-				return JSON.stringify(ret);
-			} else {
+			
+			if (type.indexOf('/xml') !== -1) {
 				return $.toXml(ret);
+			}
+			else {
+				return JSON.stringify(ret);
 			}
 		} else if (tp === "string") {
 			ret = ret.trim();

@@ -201,6 +201,9 @@ Event.prototype.exec = async function(stage, target, ctx, db) {
 		ret = await this.exec_sub(this[stage + '_main'], target, ctx, db);
 		this.exec_sub(this[stage + '_after'], target, ctx, db);
 	}
+	else {
+		db.ret = ret;
+	}
 	return ret;
 };
 

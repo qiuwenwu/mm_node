@@ -28,7 +28,7 @@ class Socket extends Index {
  * @param {Function} next 跳过当前, 然后继续执行函数
  */
 Socket.prototype.run = async function(ctx, next) {
-	await next(ctx);
+	await next();
 	var list = this.list;
 	const path = ctx.path;
 	for (var i = 0, o; o = list[i++];) {

@@ -11,9 +11,6 @@ var dev_class = new dev('nav');
 dev_class.update_vue = async function(req, db) {
 	var q = req.query;
 	var scope = q["scope"];
-	if (!scope) {
-		scope = "sys";
-	}
 	var pool = $.pool.nav[scope];
 	var msg = await pool.update_vue(q);
 	if (msg) {

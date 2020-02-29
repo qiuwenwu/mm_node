@@ -4,10 +4,9 @@
 	"get": {
 		"query": [
 			"method",
-			"scope",
 			"name"
 		],
-		"query_required": []
+		"query_required": ["scope"]
 	},
 	"list": [{
 			"name": "method",

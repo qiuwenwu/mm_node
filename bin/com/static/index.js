@@ -30,20 +30,30 @@ class Static extends Index {
 		 * @param {Object} ctx Http请求上下文
 		 * @param {Object} next 跳过函数
 		 */
-		Static.prototype.run = async function(ctx, next) {
+		this.run = async function(ctx, next) {
+			var done;
+			var md = ctx.method;
 			var path = ctx.path;
-			if (path.indexOf('.') !== -1) {
-				var done;
-				var md = ctx.method;
-				if (md === 'GET' || md === 'HEAD') {
+			if (md === 'GET' || md === 'HEAD') {
+				var list = $this.list;
+				var len = list.length;
+				if (path.indexOf('.') !== -1) {
+					for (var i = 0; i < len; i++) {
+						var o = list[i];
+						var p = o.config.path;
+						done = await o.run(ctx, path, next);
+						if (done) {
+							break;
+						}
+					}
+					await next();
+				} else {
+					await next();
 					var q = ctx.request.querystring;
-					var list = $this.list;
-					var len = list.length;
 					for (var i = 0; i < len; i++) {
 						var o = list[i];
 						var p = o.config.path;
 						if (path === p) {
-							await next();
 							done = ' ';
 							if (ctx.status === 404) {
 								if (q) {
@@ -53,17 +63,19 @@ class Static extends Index {
 								}
 							}
 							break;
-						} else {
+						}
+						else {
 							done = await o.run(ctx, path, next);
 							if (done) {
 								break;
 							}
 						}
 					}
+					return
 				}
 			}
-			if (!done) {
-				next();
+			else {
+				await next();
 			}
 		};
 	}

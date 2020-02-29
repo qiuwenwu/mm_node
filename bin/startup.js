@@ -79,7 +79,7 @@ function use(config) {
 		app.use($.static.run);
 	}
 
-	// 使用 websocket 服务
+	//使用 websocket 服务
 	if (server.websocket) {
 		const Socket = require('./com/socket').Socket;
 		$.socket = new Socket();
@@ -98,8 +98,10 @@ function use(config) {
 		};
 		var ret = await event_api.run(ctx.path, ctx, db);
 		if (ret) {
-			ctx.response.body = ret;
+			ctx.body = ret;
+			ctx.status = ctx.status == 404 ? 200 : ctx.status;
 		}
+		await next();
 	});
 
 	return app;

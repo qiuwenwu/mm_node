@@ -18,8 +18,8 @@
 			<mm_main id="main" :style="'margin-left: ' + (width || 192) + 'px;'">
 				<!-- 页签组件 -->
 				<div class="mm_tab_head" id="tabs">
-					<div v-for="(o, idx) in nav.cache" :key="idx" :class="{ 'active': o.url === url_now }">
-						<i class="fa-times-circle" v-if="idx > 0" @click="del_tab(o)"></i>
+					<div v-for="(o, idx) in nav_cache" :key="idx" :class="{ 'active': o.url === url_now }">
+						<i class="fa-times-circle" v-if="idx !== 'index'" @click="del_tab(o)"></i>
 						<router-link :to="o.url">
 							{{ o.title }}
 						</router-link>
@@ -49,6 +49,7 @@
 		},
 		data: function() {
 			return {
+				nav_cache: this.$store.state.web.nav_cache,
 				nav: this.$store.state.web.nav,
 				web: this.$store.state.web,
 				user: this.$store.state.user,
@@ -85,9 +86,10 @@
 			},
 			del_tab(o) {
 				this.$store.commit('del_nav_cache', o);
-				var tabs = this.nav.cache;
-				if (tabs.length > 0) {
-					this.$router.push(tabs[tabs.length - 1].url);
+				var tabs = this.nav_cache;
+				var keys = Object.keys(tabs);
+				if (keys.length > 0) {
+					this.$router.push(tabs[keys[keys.length - 1]].url);
 				} else {
 					this.$router.push('/');
 				}

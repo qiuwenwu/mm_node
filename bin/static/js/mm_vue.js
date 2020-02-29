@@ -279,7 +279,7 @@ define(["Vue"], function(Vue) {
 			 */
 			$get_user: function $get_user(func) {
 				var _this = this;
-				this.$get('~/user/info', null, function(json, status) {
+				this.$get('~/api/user/state', null, function(json, status) {
 					if (json.result) {
 						_this.$sotre.commit('set_user', json.result);
 					} else if (json.error) {

@@ -25,13 +25,7 @@
 		},
 		methods: {
 			set_tab(o) {
-				var _this = this;
-				var url = _this.url_now;
-				setTimeout(function() {
-					if (o.url === url) {
-						_this.$store.commit('set_nav_cache', o)
-					}
-				}, 200)
+				this.$store.commit('set_nav_cache', o)
 			},
 			show_title(o) {
 				if (o.title) {

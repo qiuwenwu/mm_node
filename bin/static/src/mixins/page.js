@@ -660,17 +660,9 @@ define(function() {
 			init_main: function init_main(query) {
 				var _this = this;
 				$.push(this.query, query);
-				if ($.route.history.length > 1) {
-					_this.init_after(function() {
-						_this.get(_this.query);
-					})
-				} else {
-					_this.$get_user(function() {
-						_this.init_after(function() {
-							_this.get(_this.query);
-						});
-					});
-				}
+				_this.init_after(function() {
+					_this.get(_this.query);
+				});
 			},
 			/**
 			 * 初始化后函数

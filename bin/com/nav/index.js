@@ -124,7 +124,7 @@ Nav.prototype.update_vue = async function(param) {
 	if (name) {
 		var o = this.get(name);
 		if (o) {
-			await o.update_vue(cover);
+			await o.update_vue(route_path, cover);
 		} else {
 			return "该配置不存在";
 		}

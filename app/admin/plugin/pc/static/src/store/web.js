@@ -7,14 +7,14 @@ define(["nav"], function(nav) {
 			delete n.routes;
 			return {
 				config: [],
-				
-				nav: Object.assign({
-					cache: [{
+				nav_cache: {
+					"index": {
 						title: "首页",
 						name: "index",
-						url: "/"
-					}]
-				}, n),
+						url: "/",
+					}
+				},
+				nav: n,
 				lang_now: "",
 				lang: []
 			};
@@ -31,19 +31,10 @@ define(["nav"], function(nav) {
 				$.push(state.nav, obj);
 			},
 			set_nav_cache: function set_nav_cache(state, o) {
-				var list = state.nav.cache;
-				var bl = list.has({
-					url: o.url
-				});
-				if (!bl) {
-					list.push(o);
-				}
+				state.nav_cache[o.name] = o;
 			},
 			del_nav_cache: function del_nav_cache(state, o) {
-				var list = state.nav.cache;
-				list.del({
-					url: o.url
-				});
+				delete state.nav_cache[o.name];
 			}
 		}
 	};

@@ -1,5 +1,5 @@
 <template>
-	<main id="root_index">
+	<main id="main_">
 		<mm_grid>
 			<mm_col width="100">
 				<mm_view>
@@ -7,7 +7,7 @@
 						<span class="h5">超级美眉</span>
 					</header>
 					<div class="tencent_desc">
-
+						
 					</div>
 				</mm_view>
 			</mm_col>
@@ -16,19 +16,48 @@
 </template>
 
 <script>
-	import Vue from 'Vue';
+	import mixin from '/src/mixins/page.js';
 
 	export default {
-		data: function() {
+		mixins: [mixin],
+		data() {
 			return {
-				web: this.$store.state.web
+				// 列表请求地址
+				url_get_list: "",
+				// 查询条件
+				query: {},
+				// 视图模型
+				vm: {}
+			}
+		},
+		methods: {
+			/**
+			 * @description 滚动刷新
+			 * @param {Number} n 滚动的方向，-1是向上， 1是向下
+			 */
+			scoll(n) {
+				this.go(n);
 			}
 		}
-	};
+	}
 </script>
 
 <style>
-	#root_index .tencent_desc {
-		min-height: calc(100vh - 9.25rem);
-	}
+	/* {title} */
+	#id {}
+
+	/* 标题栏 */
+	#id #title {}
+
+	/* 搜索栏 */
+	#id #search {}
+
+	/* 排序栏 */
+	#id #sort {}
+
+	/* 列表 */
+	#id #table {}
+
+	/* 选择栏 */
+	#id #options {}
 </style>
