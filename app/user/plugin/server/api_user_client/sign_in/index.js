@@ -21,7 +21,7 @@ async function main(ctx, db) {
 		var list = [];
 		// 获取登录方式
 		var method = params["method"];
-		console.log('登录方式', method);
+		// console.log('登录方式', method);
 		if (!method) {
 			// 如果登录方式默认，则用常规登录方式
 			db.table = "user_account";
