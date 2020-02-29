@@ -196,9 +196,11 @@ Event.prototype.exec_sub = async function(list, target, ctx, db) {
  * @return {Object} 执行结果
  */
 Event.prototype.exec = async function(stage, target, ctx, db) {
-	this.exec_sub(this[stage + '_before'], target, ctx, db);
-	var ret = await this.exec_sub(this[stage + '_main'], target, ctx, db);
-	this.exec_sub(this[stage + '_after'], target, ctx, db);
+	var ret = this.exec_sub(this[stage + '_before'], target, ctx, db);
+	if(!ret){
+		ret = await this.exec_sub(this[stage + '_main'], target, ctx, db);
+		this.exec_sub(this[stage + '_after'], target, ctx, db);
+	}
 	return ret;
 };
 
