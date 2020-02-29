@@ -92,12 +92,11 @@ sw.*
 #  mm app
 app/*
 !app/README.md
-!app/ui/
 !app/admin/
+!app/cms/
+!app/demo/
 !app/dev/
+!app/home/
 !app/sys/
 !app/ui/
 !app/user/
-!app/demo/
-!app/cms/
-!app/home/
