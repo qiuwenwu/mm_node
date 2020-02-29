@@ -4,7 +4,7 @@ const init = require('./startup.js');
 var app = null;
 
 // 实例化子进程通讯函数
-var ps = new Process_sub({
+$.process = new Process_sub({
 	// 添加方法
 	methods: {
 		// 修改消息接收方法

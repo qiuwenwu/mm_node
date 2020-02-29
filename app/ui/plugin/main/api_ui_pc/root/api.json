@@ -1,0 +1,12 @@
+{
+    "name": "ui",
+    "title": "ui示例",
+    "description": "介绍UI组件和使用方法",
+    "path": "/ui*",
+    "type": "web",
+    "contentType": "html",
+    "func_file": "./index.js",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false
+}

@@ -1,4 +1,4 @@
-const app = require('./app.js');
+const app = require('./web.js');
 require('./common.js');
 
 async function init() {

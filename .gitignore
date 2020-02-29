@@ -92,3 +92,4 @@ sw.*
 #  mm app
 app/*
 !app/README.md
+!app/ui/

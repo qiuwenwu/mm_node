@@ -65,6 +65,7 @@ async function run() {
 		// 发送完句柄后关闭监听
 		server.close();
 	});
+	$.process = p;
 	init(config);
 }
 

@@ -1,0 +1,11 @@
+{
+	"name": "ui",
+	"title": "UI示例",
+	"description": "该应用用于查看UI使用示例",
+	"version": "1.0",
+	"identifier": "",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "",
+	"sort": 10
+}
