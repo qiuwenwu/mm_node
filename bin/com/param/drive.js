@@ -164,7 +164,7 @@ Drive.prototype.check_item = function(model, value, method) {
 	var msg;
 	if (value === undefined || value === null) {
 		if (method.has(model.name)) {
-			msg = model.msg('required');
+			msg = model.msg_head(model) + model.msg('required');
 		}
 	} else {
 		msg = model.run(value);
