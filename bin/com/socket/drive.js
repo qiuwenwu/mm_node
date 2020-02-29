@@ -1,5 +1,10 @@
 const Item = require('mm_machine').Item;
 
+// 提供一个全局方法容器
+if (!$.methods) {
+	$.methods = {};
+}
+
 /**
  * @description websocket驱动类
  * @extends {Item}
@@ -35,10 +40,10 @@ class Drive extends Item {
 		};
 
 		// 开放给前端调用的函数
-		this.methods = {};
+		this.methods = Object.assign({}, $.methods);
 
 		// 客户端集合
-		this.dict = {};
+		this.clients = {};
 	}
 }
 
@@ -83,6 +88,7 @@ Drive.prototype.new_config = function(file) {
 /**
  * @description 获取session ID
  * @param {Object} ctx HTTP上下文
+ * @return {String} 返回用户的uuid
  */
 Drive.prototype.getToken = async function(ctx) {
 	var uuid = await ctx.cookies.get("mm:uuid");
@@ -139,7 +145,7 @@ Drive.prototype.noticy = async function(type, bodyStr, ctx, token) {
 Drive.prototype.onclose = async function(bodyStr, ctx, token) {
 	var del = await this.noticy("close", ctx, token);
 	if (del) {
-		var lt = this.dict[token];
+		var lt = this.clients[token];
 		var index = lt.indexOf(ctx);
 		lt.splice(index, 1);
 	}
@@ -166,7 +172,7 @@ Drive.prototype.set_socket = function(ctx, token) {
 	ws.req = async function(method, params, func) {
 		var key = _this.config.name + '';
 		var data = {
-			id: key + new Date().stamp(),
+			id: key + new Date().getTime() + Math.random(),
 			method: method,
 			params: params
 		};
@@ -210,12 +216,12 @@ Drive.prototype.success = function(ctx, token) {
  */
 Drive.prototype.add = async function(ctx) {
 	var token = await this.getToken(ctx);
-	if (!this.dict[token]) {
-		this.dict[token] = [];
+	if (!this.clients[token]) {
+		this.clients[token] = [];
 	}
 	this.set_socket(ctx, token);
 	this.success(ctx, token);
-	this.dict[token].push(ctx);
+	this.clients[token].push(ctx);
 };
 
 /**
@@ -225,14 +231,14 @@ Drive.prototype.add = async function(ctx) {
  */
 Drive.prototype.send = async function(body, token) {
 	if (token) {
-		var list = this.dict[token];
+		var list = this.clients[token];
 		if (list) {
 			list.maps(async (ctx) => {
 				ctx.websocket.send(body);
 			})
 		}
 	} else {
-		var dt = this.dict;
+		var dt = this.clients;
 		for (let k in dt) {
 			var list = dt[k];
 			list.maps(async (ctx) => {
@@ -246,17 +252,17 @@ Drive.prototype.send = async function(body, token) {
  * 发送消息 —— 会发送给所有目标, 如须过滤目标, 则须在渲染时过滤
  * @param {String} method 方法名称
  * @param {Object} params 请求参数
- * @param {String} token 临时访问牌, 用于指定客户端发消息
  * @param {Function} func 回调函数 可以为空
+ * @param {String} token 临时访问牌, 用于指定客户端发消息
  */
-Drive.prototype.req = async function(method, params, token, func) {
+Drive.prototype.req = async function(method, params, func, token) {
 	if (token) {
-		var ctx = this.dict[token];
+		var ctx = this.clients[token];
 		if (ctx) {
 			ctx.websocket.req(params, func);
 		}
 	} else {
-		var dt = this.dict;
+		var dt = this.clients;
 		for (let k in dt) {
 			ctx.websocket.req(params, func);
 		}
@@ -265,6 +271,10 @@ Drive.prototype.req = async function(method, params, token, func) {
 
 /**
  * 执行
+ * @param {String} bodyStr 正文字符串
+ * @param {Object} ctx 请求上下文
+ * @param {String} token 临时访问牌
+ * @return {Object} 返回执行结果
  */
 Drive.prototype.run = async function(bodyStr, ctx, token) {
 	var ws = ctx.websocket;
@@ -315,6 +325,9 @@ Drive.prototype.run = async function(bodyStr, ctx, token) {
 
 /**
  * 非定义函数时执行
+ * @param {Object} body 请求正文
+ * @param {Object} websocket 当前的服务
+ * @return {Object} 返回响应结果
  */
 Drive.prototype.main = async function(body, websocket) {
 	return null;
@@ -324,8 +337,15 @@ Drive.prototype.main = async function(body, websocket) {
  * 初始化函数, 用于定义开放给前端的函数
  */
 Drive.prototype.init = async function init() {
-	var m = this.methods;
+	
+};
 
+/**
+ * @description 加载完成时
+ */
+Drive.prototype.load_after = function() {
+	this.init();
+	var m = this.methods;
 	/**
 	 * 获取所有方法
 	 * @param {Object} params 参数
@@ -334,13 +354,6 @@ Drive.prototype.init = async function init() {
 	m.get_method = function(params, ws) {
 		return $.keys(m);
 	};
-};
-
-/**
- * @description 加载完成时
- */
-Drive.prototype.load_after = function() {
-	this.init();
 };
 
 module.exports = Drive;

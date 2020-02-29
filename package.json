@@ -31,6 +31,7 @@
 	},
 	"dependencies": {
 		"colors": "^1.4.0",
+		"cross-env": "^7.0.0",
 		"http-proxy": "^1.18.0",
 		"koa": "^2.11.0",
 		"koa-bodyparser": "^4.2.1",
@@ -45,7 +46,7 @@
 		"mm_matchs": "^1.0.5",
 		"mm_mongodb": "^1.3.1",
 		"mm_mysql": "^1.3.9",
-		"mm_process": "^1.3.7",
+		"mm_process": "^1.4.0",
 		"mm_redis": "^1.3.2",
 		"mm_ret": "^1.3.1",
 		"mm_session": "^1.3.4",

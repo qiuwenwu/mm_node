@@ -34,16 +34,6 @@ exports.sync = async function(ws) {
  */
 exports.init = async function() {
 	var m = this.methods;
-	
-	/**
-	 * 获取所有方法
-	 * @param {Object} params 参数
-	 * @param {Object} ws Websocket服务
-	 */
-	m.get_method = function(params, ws) {
-		return Object.keys(m);
-	};
-	
 	/**
 	 * @param {Object} params 参数
 	 * @param {Object} ws Websocket服务
