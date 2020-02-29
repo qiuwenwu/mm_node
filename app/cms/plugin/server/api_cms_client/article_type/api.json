@@ -1,0 +1,12 @@
+{
+    "name": "cms_article_type",
+    "title": "文章分类",
+    "description": "这是文章分类接口",
+    "path": "/api/cms/article_type",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

@@ -1,0 +1,75 @@
+[
+    {
+        "name": "test_oauth",
+        "title": "测试oauth登录访问",
+        "description": "测试第三方登录",
+        "path": "/test/oauth",
+        "type": "api",
+        "func_file": "./oauth.js",
+        "func_name": "",
+        "method": "ALL",
+        "cache": 0,
+        "client_cache": false,
+        "param_path": "",
+        "sql_path": "",
+        "check_param": true
+    },
+    {
+        "name": "test_user",
+        "title": "测试获取用户信息",
+        "description": "从缓存中拿到用户的信息",
+        "path": "/test/user",
+        "type": "api",
+        "func_file": "./user.js",
+        "func_name": "",
+        "method": "ALL",
+        "cache": 0,
+        "client_cache": false,
+        "param_path": "",
+        "sql_path": "",
+        "check_param": true
+    },
+    {
+        "name": "test_power",
+        "title": "校验权限",
+        "description": "测试获取登录权限",
+        "path": "/test/power",
+        "type": "api",
+        "func_file": "./power.js",
+        "func_name": "",
+        "method": "ALL",
+        "cache": 0,
+        "client_cache": false,
+        "param_path": "",
+        "sql_path": "",
+        "check_param": true,
+        "oauth": {
+            "signIn": true,
+            "vip": 2,
+            "gm": 2,
+            "mc": 2,
+            "user_group": [
+                "1"
+            ],
+            "user_admin": [
+                "1"
+            ],
+            "func_file": ""
+        }
+    },
+    {
+        "name": "test_login",
+        "title": "登录",
+        "description": "测试登录",
+        "path": "/test/login",
+        "type": "api",
+        "func_file": "./login.js",
+        "func_name": "",
+        "method": "ALL",
+        "cache": 0,
+        "client_cache": false,
+        "param_path": "",
+        "sql_path": "",
+        "check_param": true
+    }
+]

@@ -1,0 +1,139 @@
+{
+    "name": "home",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "home",
+            "path": "/home",
+            "redirect": "/cms/article"
+        },
+        {
+            "name": "cms_article",
+            "path": "/cms/article",
+            "component": "/cms/admin_pc/src/pages/article.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "cms_article_form",
+            "path": "/cms/article_form",
+            "component": "/cms/admin_pc/src/pages/article_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": false,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "cms_article_channel",
+            "path": "/cms/article_channel",
+            "component": "/cms/admin_pc/src/pages/article_channel.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "cms_article_channel_form",
+            "path": "/cms/article_channel_form",
+            "component": "/cms/admin_pc/src/pages/article_channel_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "cms_article_comment",
+            "path": "/cms/article_comment",
+            "component": "/cms/admin_pc/src/pages/article_comment.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "cms_article_comment_form",
+            "path": "/cms/article_comment_form",
+            "component": "/cms/admin_pc/src/pages/article_comment_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "cms_article_type",
+            "path": "/cms/article_type",
+            "component": "/cms/admin_pc/src/pages/article_type.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "cms_article_type_form",
+            "path": "/cms/article_type_form",
+            "component": "/cms/admin_pc/src/pages/article_type_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "门户",
+            "name": "home",
+            "url": "/home",
+            "display": 1,
+            "sub": [
+                {
+                    "title": "文章信息",
+                    "show": false,
+                    "name": "cms_article",
+                    "url": "/cms/article"
+                },
+                {
+                    "title": "文章栏目",
+                    "show": false,
+                    "name": "cms_article_channel",
+                    "url": "/cms/article_channel"
+                },
+                {
+                    "title": "文章评论",
+                    "show": false,
+                    "name": "cms_article_comment",
+                    "url": "/cms/article_comment"
+                },
+                {
+                    "title": "文章分类",
+                    "show": false,
+                    "name": "cms_article_type",
+                    "url": "/cms/article_type"
+                }
+            ]
+        }
+    ]
+}

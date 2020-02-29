@@ -1,0 +1,15 @@
+{
+    "name": "test_server",
+    "title": "初次服务器连接",
+    "description": "连接服务器",
+    "path": "/test/server",
+    "type": "api",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": true
+}

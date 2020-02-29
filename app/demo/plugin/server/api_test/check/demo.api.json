@@ -1,0 +1,15 @@
+{
+    "name": "test_demo",
+    "title": "示例接口",
+    "description": "描述接口使用方法",
+    "path": "/test/demo",
+    "type": "api",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./index.param.json",
+    "sql_path": "./index.sql.json",
+    "check_param": true
+}

@@ -1,0 +1,39 @@
+{
+	"name": "home",
+	"sort": 1,
+	"routes": [{
+			"name": "root",
+			"path": "/",
+			"component": "/home/phone/src/pages/index.vue",
+			"level": 1,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"user_admin": []
+			}
+		},
+		{
+			"name": "sign_in",
+			"path": "/sign_in",
+			"component": "/home/phone/src/pages/sign_in.vue",
+			"level": 2
+		}, {
+			"name": "sign_up",
+			"path": "/sign_up",
+			"component": "/home/phone/src/pages/sign_up.vue",
+			"level": 2
+		}, {
+			"name": "forgot",
+			"path": "/forgot",
+			"component": "/home/phone/src/pages/forgot.vue",
+			"level": 2
+		}
+	],
+	"top": [],
+	"left": [],
+	"bottom": [],
+	"right": [],
+	"quick": [],
+	"desktop": [],
+	"main": []
+}

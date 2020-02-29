@@ -93,3 +93,11 @@ sw.*
 app/*
 !app/README.md
 !app/ui/
+!app/admin/
+!app/dev/
+!app/sys/
+!app/ui/
+!app/user/
+!app/demo/
+!app/cms/
+!app/home/

@@ -1,0 +1,8 @@
+{
+	"index": "index.html",
+	"maxAge": 0,
+	"immutable": false,
+	"brotli": true,
+	"gzip": true,
+	"convert_amd": true
+}

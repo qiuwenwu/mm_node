@@ -73,13 +73,13 @@ button:active{background: #F5F5F5; border-color: #F5F5F5;}
 button{border-radius:.25rem;cursor:pointer;border: 1px solid #DBDBDB;}
 select{-moz-appearance:none;-webkit-appearance:none;appearance:none;background:url(/img/down.png) no-repeat scroll right center transparent;padding-left:.5rem;padding-right:1.25rem;word-wrap:normal;}
 select::-ms-expand{display:none;}
-input,select,button,textarea {
+select,button,textarea {
 	border:1px solid #DBDBDB;border-radius:.25rem;padding:0 .75rem;display:inline-block;background:#fff;color: #333;
 }
 input:focus,select:focus,button:focus,textarea:focus{
 	border-color:#38f;box-shadow:0 0 0 .25rem rgba(38, 210, 255, .25); z-index:20;
 }
-input,select,button{height:2rem;line-height:2rem;}
+input[type=text],input[type=number],input[type=password],input[type=tel],input[type=email],input[type=date],input[type=datetime],input[type=time],input[type=datetime-local],select,button{height:2rem;line-height:2rem;}
 optgroup{line-height:inherit;}
 form input,form textarea{max-width:20rem;width:100%;}
 textarea{overflow-x:hidden;overflow-y:auto;resize:vertical;}

@@ -1,0 +1,16 @@
+{
+    "name": "test_api_list",
+    "title": "测试获取API接口",
+    "description": "用户获取api接口",
+    "path": "/test/api_list",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "./index.js",
+    "func_name": "main",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": true
+}

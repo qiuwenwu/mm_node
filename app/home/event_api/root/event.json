@@ -1,0 +1,10 @@
+[{
+	"target": "/",
+	"name": "root",
+	"title": "首页",
+	"description": "当访问首页时路由转向/home",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 101
+}]
