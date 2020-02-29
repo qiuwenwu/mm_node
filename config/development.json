@@ -1,6 +1,10 @@
 {
 	/* 系统项 */
 	"sys": {
+		// 服务端名称
+		"name": "mm",
+		// 服务端中文名
+		"title": "超级美眉",
 		// 缓存方式, 选填 redis, cache, memory
 		"cache": "redis",
 		// 是否启用定时任务服务
@@ -10,10 +14,6 @@
 	},
 	/* http服务配置 */
 	"server": {
-		// 服务端名称
-		"name": "mm",
-		// 服务端中文名
-		"title": "超级美眉",
 		// 是否启用多静态文件处理服务
 		"static": true,
 		// 是否启用websocket服务

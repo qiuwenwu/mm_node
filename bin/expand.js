@@ -14,7 +14,7 @@ function use(config){
 	// 选择缓存方式,默认memory缓存
 	if (sys.redis == 'redis') {
 		// 将Api的缓存改为redis方式，如果不用redis可以将以下4行注释掉
-		var redis = $.redis_admin($.dict.server);
+		var redis = $.redis_admin('sys');
 		redis.setConfig(config.redis);
 		redis.open();
 		$.cache = redis;

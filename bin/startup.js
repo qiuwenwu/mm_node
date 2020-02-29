@@ -6,7 +6,7 @@ async function init() {
 	$.api_admin = require('./com/api').api_admin;
 	$.cmd_admin = require('./com/cmd').cmd_admin;
 	$.nav_admin = require('./com/nav').nav_admin;
-	
+
 	/**
 	 * @description 跨域spa应用
 	 * @param {String} host SPA应用地址
@@ -55,12 +55,12 @@ async function init() {
  */
 function use(config) {
 	$.config = config;
-	
+
 	// 选择缓存方式, 默认memory缓存
 	var sys = config.sys;
 	if (sys.redis == 'redis') {
 		// 将Api的缓存改为redis方式，如果不用redis可以将以下4行注释掉
-		var redis = $.redis_admin($.dict.server);
+		var redis = $.redis_admin('sys');
 		redis.setConfig(config.redis);
 		redis.open();
 		$.cache = redis;
@@ -68,7 +68,7 @@ function use(config) {
 		// 将Api的缓存改为cache方式, 本地缓存方式
 		$.cache = $.cache_admin();
 	}
-	
+
 	// 初始化函数写在这里，建议引入初始化文件，可以引入多个初始化文件
 	const server = config.server;
 	// 使用多路径静态文件处理器
@@ -78,7 +78,7 @@ function use(config) {
 		$.static.update();
 		app.use($.static.run);
 	}
-	
+
 	// 使用 websocket 服务
 	if (server.websocket) {
 		const Socket = require('./com/socket').Socket;
@@ -86,10 +86,11 @@ function use(config) {
 		$.socket.update();
 		app.ws.use($.socket.run);
 	}
-	
+
 	// 创建一个API事件
-	var event_api = $.event_admin('api');
+	var event_api = $.event_admin('api', 'API事件');
 	event_api.update();
+	
 	app.use(async function(ctx, next) {
 		var db = {
 			next: next,
@@ -100,7 +101,7 @@ function use(config) {
 			ctx.response.body = ret;
 		}
 	});
-	
+
 	return app;
 };
 
