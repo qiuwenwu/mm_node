@@ -126,6 +126,7 @@ class Drive extends Item {
 Drive.prototype.before = async function(params, db) {
 	return params;
 };
+
 /**
  * @description 验证, 用于判断是否执行
  * @param {Object} params 参数对象 (object) 包含query和body

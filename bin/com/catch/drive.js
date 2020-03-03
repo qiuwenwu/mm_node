@@ -28,6 +28,7 @@ class Drive extends Item {
 			"func_file": "",
 			// 回调函数名 用于决定调用脚本的哪个函数
 			"func_name": "",
+			/* 请求 */ 
 			"req": {
 				"method": "get",
 				// 抓取数据的接口地址
@@ -43,6 +44,7 @@ class Drive extends Item {
 
 				}
 			},
+			/* 响应 */ 
 			"res": {
 				// 抓取数据的接口地址
 				"url": "http://www.baidu.com/",
