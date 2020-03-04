@@ -65,6 +65,36 @@ Api.prototype.run = async function(ctx, db) {
 	return db.ret;
 };
 
+
+/**
+ * 运行GRPC方法
+ * @param {Object} db 数据库管理器
+ * @param {String} class_name 类名
+ * @param {String} method 方法名称
+ * @param {Object} query 查询条件
+ * @param {Object} body 增改项
+ * @return {Object} 返回执行结果
+ */
+Api.prototype.runRPC = async function(db, class_name, method, query, body) {
+	if (!db) {
+		db = {
+			ret: null
+		};
+	}
+	
+	var lt = this.list;
+	for (var i = 0, o; o = lt[i++];) {
+		if (o.onOff && class_name == o.config.name) {
+			var ret = await o.runRPC(db, method, query, body);
+			if (ret) {
+				db.ret = ret;
+				break;
+			}
+		}
+	}
+	return db.ret;
+};
+
 /**
  * @module 导出API类
  */

@@ -3,7 +3,7 @@ const Param = require('../param/drive'); // 是MM自带的参数机制，可以�
 const Sql = require('../sql/drive'); // 是MM自带的参数机制，可以不使用
 const Oauth = require('./oauth'); // 是MM自带的身份验证机制，基于Oauth2.0，可以不使用
 const Ret = require('mm_ret').Ret;
-const CacheBase = require('mm_cachebase').CacheBase;
+const CacheBase = require('mm_cachebase');
 
 if (!$.dict) {
 	if (!$.dict.session_id) {
@@ -58,6 +58,8 @@ class Drive extends Item {
 			"func_file": "",
 			// 回调函数名 用于决定调用脚本的哪个函数
 			"func_name": "",
+			// Rpc接口文件路径
+			"rpc_file": "",
 			// 请求方式, POST或GET, 为空或ALL表示都可以
 			"method": "GET",
 			// 缓存时长 (单位：秒) 默认：60秒，建议600秒
@@ -83,6 +85,17 @@ class Drive extends Item {
 				"user_group": []
 			}
 		};
+
+		/**
+		 * 定义rpc 方法
+		 */
+		this.methods = {
+
+		};
+		/**
+		 * 定义当前RPC文件路径
+		 */
+		this.rpc_file_now = "";
 	}
 }
 
@@ -93,6 +106,7 @@ Drive.prototype.load_after = function() {
 	var cg = this.config;
 	this.loadParam(cg.param_path);
 	this.loadSql(cg.sql_path);
+	this.loadRPC(cg.rpc_file);
 	this.loadOauth();
 };
 
@@ -220,6 +234,42 @@ Drive.prototype.loadSql = async function(file_path) {
 };
 
 /**
+ * @description 加载RPC方法
+ * @param {String} file_path 文件路径
+ */
+Drive.prototype.loadRPC = async function(file_path) {
+	if (file_path) {
+		var p = file_path.fullname(this.dir);
+		this.rpc_file_now = file_path;
+		if (p.hasFile()) {
+			await this.unloadRPC(this.rpc_file_now);
+			var f = require(p);
+			this.methods = f(this);
+		}
+		else {
+			var fl = this.dir_base + "/rpc.js";
+			fl.copyFile(p);
+			var f = require(p);
+			this.methods = f(this);
+		}
+	}
+};
+
+/**
+ * @description 卸载RPC方法
+ * @param {String} file_path 文件路径
+ */
+Drive.prototype.unloadRPC = async function(file_path) {
+	if (file_path) {
+		var p = file_path.fullname(this.dir);
+		if (p.hasFile()) {
+			delete require.cache[require.resolve(p)];
+			this.methods = {};
+		}
+	}
+};
+
+/**
  * @description 加载身份验证配置
  * @param {Object} cg 配置对象
  */
@@ -299,13 +349,13 @@ Drive.prototype.getCache = async function(ctx) {
 			}
 		}
 	}
-	// var userID = "(everyone)";
-	// var id = ctx.cookies.get($.dict.session_id);
-	// if (id) {
-	// 	userID = id;
-	// }
-	// var data = await $.cache.get("api_" + userID + ":" + req.url);
-	var data = await $.cache.get("api:" + req.url);
+	var userID = "(everyone)";
+	var id = ctx.cookies.get($.dict.session_id);
+	if (id) {
+		userID = id;
+	}
+	var data = await $.cache.get("api_" + userID + ":" + req.url);
+	// var data = await $.cache.get("api:" + req.url);
 	if (data) {
 		var obj = JSON.parse(data);
 		ctx.response.type = obj.type;
@@ -377,11 +427,10 @@ Drive.prototype.body = function(ret, res, t) {
 				}
 				res.type = type;
 			}
-			
+
 			if (type.indexOf('/xml') !== -1) {
 				return $.toXml(ret);
-			}
-			else {
+			} else {
 				return JSON.stringify(ret);
 			}
 		} else if (tp === "string") {
@@ -448,6 +497,43 @@ Drive.prototype.checkOauth = async function(ctx) {
 	} else {
 		return null;
 	}
+};
+
+/**
+ * 运行GRPC方法
+ * @param {Object} db 数据库管理器
+ * @param {String} method 方法名称
+ * @param {Object} query 查询条件
+ * @param {Object} body 增改项
+ * @return {Object} 返回执行结果
+ */
+Drive.prototype.runRPC = async function(db, method, query, body) {
+	var func = this.methods[method];
+	var ret = {};
+	try {
+		if(func){
+			ret = await func(db, query, body);
+		}
+		else {
+			ret = {
+				error: {
+					code: 60000,
+					message: "方法名称不存在",
+					data: Object.keys(this.methods)
+				}
+			}
+		}
+	}
+	catch (err){
+		console.log(err);
+		ret = {
+			error: {
+				code: 500,
+				message: "服务端业务逻辑错误"
+			}
+		}
+	}
+	return ret;
 };
 
 module.exports = Drive;

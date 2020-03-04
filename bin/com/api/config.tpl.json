@@ -9,6 +9,8 @@
 	"description": "描述接口使用方法",
 	// 函数文件, 用于驱动脚本, 实现业务 
 	"func_file": "./index.js",
+	// Rpc接口文件路径
+	"rpc_file": "rpc.js",
 	// 请求方法, 选填 GET, POST, ALL。 ALL指同时支持GET/POST
 	"method": "ALL",
 	// 开放域, 如果域未开放, 则只有特定的协议头才能访问该API, 同时API文档不接见
