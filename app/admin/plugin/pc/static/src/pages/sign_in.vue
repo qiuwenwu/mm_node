@@ -88,7 +88,8 @@
 	}
 	#account_sign_in {
 		position: absolute;
-		width: 30rem;
+		min-width: 27rem;
+		width: 25%;
 		top: 45%;
 		left: 50%;
 		transform: translate(-50%, -50%);

@@ -4,11 +4,11 @@
 			<mm_col width="100">
 				<mm_view>
 					<header class="arrow">
-						<span class="h5">超级美眉</span>
+						<h5>超级美眉</h5>
 					</header>
-					<div class="tencent_desc">
+					<mm_body>
 						
-					</div>
+					</mm_body>
 				</mm_view>
 			</mm_col>
 		</mm_grid>

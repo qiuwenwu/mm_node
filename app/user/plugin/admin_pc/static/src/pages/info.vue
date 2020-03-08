@@ -4,11 +4,11 @@
 			<mm_col width="100">
 				<mm_view>
 					<header class="arrow">
-						<span class="h5">超级美眉</span>
+						<h5>超级美眉</h5>
 					</header>
-					<div class="tencent_desc">
-						
-					</div>
+					<mm_body>
+
+					</mm_body>
 				</mm_view>
 			</mm_col>
 		</mm_grid>
@@ -25,7 +25,28 @@
 				// 列表请求地址
 				url_get_list: "",
 				// 查询条件
-				query: {},
+				query: {
+					// 用户ID
+					"user_id": 0,
+					// 性别——最小值
+					"sex_min": 0,
+					// 性别——最大值
+					"sex_max": 0,
+					// 身份实名认证——最小值
+					"idcard_state_min": 0,
+					// 身份实名认证——最大值
+					"idcard_state_max": 0,
+					// 年龄——最小值
+					"age_min": 0,
+					// 年龄——最大值
+					"age_max": 0,
+					// 生日——开始时间
+					"birthday_min": "",
+					// 生日——结束时间
+					"birthday_max": "",
+					// 姓名
+					"name": ""
+				},
 				// 视图模型
 				vm: {}
 			}

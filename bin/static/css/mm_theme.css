@@ -217,3 +217,6 @@ input:-ms-input-placeholder {
 
 /* 内容元素 */
 .time { color: #666; }
+
+/* 禁用 */
+.disabled {  background: rgba(250, 250, 250, 1); color: #999 !important; }

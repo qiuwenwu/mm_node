@@ -1,5 +1,5 @@
 const Item = require('mm_machine').Item;
-const Param = require('../param/drive');
+const Param = require('../param/drive.js');
 
 /**
  * @description 指令驱动类

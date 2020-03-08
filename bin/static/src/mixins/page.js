@@ -73,7 +73,9 @@ define(function() {
 				// 清除列表
 				clear_list: true,
 				// 响应错误消息
-				message: ""
+				message: "",
+				// 选中集
+				selects: ""
 			};
 		},
 		methods: {

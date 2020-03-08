@@ -1,7 +1,7 @@
 const Item = require('mm_machine').Item;
-const Param = require('../param/drive'); // 是MM自带的参数机制，可以不使用
-const Sql = require('../sql/drive'); // 是MM自带的参数机制，可以不使用
-const Oauth = require('./oauth'); // 是MM自带的身份验证机制，基于Oauth2.0，可以不使用
+const Param = require('../param/drive.js'); // 是MM自带的参数机制，可以不使用
+const Sql = require('../sql/drive.js'); // 是MM自带的参数机制，可以不使用
+const Oauth = require('./oauth.js'); // 是MM自带的身份验证机制，基于Oauth2.0，可以不使用
 const Ret = require('mm_ret').Ret;
 const CacheBase = require('mm_cachebase');
 

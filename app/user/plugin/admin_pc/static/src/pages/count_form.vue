@@ -14,7 +14,38 @@
 		data() {
 			return {
 				url_get_obj: "",
-				query: {},
+				form: {
+					// 等级
+					"level": 0,
+					// IQ智商
+					"iq": 0,
+					// 信用度
+					"credit": 0,
+					// 积分
+					"credit_points": 0,
+					// 经验值
+					"exp": 0,
+					// 拓展积分1
+					"extcredits1": 0,
+					// 拓展积分2
+					"extcredits2": 0,
+					// 拓展积分3
+					"extcredits3": 0,
+					// 拓展积分4
+					"extcredits4": 0,
+					// 拓展积分5
+					"extcredits5": 0,
+					// 拓展积分6
+					"extcredits6": 0,
+					// 拓展积分7
+					"extcredits7": 0,
+					// 拓展积分8
+					"extcredits8": 0,
+					// 钱
+					"money": 0,
+					// 货币
+					"coin": 0
+				},
 				// 视图模型
 				vm: {}
 			}
@@ -44,7 +75,5 @@
 	#id #sort {}
 
 	/* 列表 */
-	#id #obj {
-		
-	}
+	#id #obj {}
 </style>

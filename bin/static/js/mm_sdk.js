@@ -256,8 +256,8 @@ function toUrl(obj, url) {
 			if (value > 0) {
 				queryStr += "&" + key + "=" + obj[key];
 			}
-		} else if (value) {
-			queryStr += "&" + key + "=" + encodeURI(obj[key]);
+		} else if (value && value !== '0') {
+			queryStr += "&" + key + "=" + encodeURI(value);
 		}
 	}
 	if (url) {

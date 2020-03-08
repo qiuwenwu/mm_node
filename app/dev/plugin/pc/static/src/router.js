@@ -97,7 +97,7 @@ define(["Vue", "VueRouter"], function(Vue, VueRouter) {
 	}, {
 		path: "/404",
 		component: function component(resolve) {
-			return require(["vue!./pages/err404.vue"], resolve);
+			return require(["vue!./pages/404.vue"], resolve);
 		}
 	}, {
 		path: "*",

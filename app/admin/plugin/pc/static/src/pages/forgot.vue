@@ -3,12 +3,12 @@
 		<mm_col>
 			<mm_view>
 				<mm_title>
-					<span class="h5">超级美眉</span>
+					<h5>超级美眉</h5>
 					<span class="arrow"></span>
 				</mm_title>
-				<div class="tencent_desc">
+				<mm_body>
 				
-				</div>
+				</mm_body>
 			</mm_view>
 		</mm_col>
 	</mm_grid>
@@ -27,7 +27,7 @@
 </script>
 
 <style>
-	#root_index .tencent_desc {
+	#root_index .mm_body {
 		min-height: calc(100vh - 9.25rem);
 	}
 </style>

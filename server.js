@@ -36,7 +36,7 @@ async function run() {
 	console.info(`欢迎使用《${config.sys.title}》服务端!`.yellow);
 	console.log("访问地址为 http://%s:%s", host, port);
 	console.log("世界频道数: ", channel);
-
+	
 	// 创建进程管理实例
 	var p = new Process();
 	for (var i = 0; i < channel; i++) {

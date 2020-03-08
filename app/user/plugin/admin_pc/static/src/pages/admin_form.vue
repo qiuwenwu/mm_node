@@ -14,7 +14,18 @@
 		data() {
 			return {
 				url_get_obj: "",
-				query: {},
+				form: {
+					// 管理组名称
+					"name": "",
+					// 显示顺序
+					"display": 0,
+					// 分类
+					"type": "",
+					// 描述
+					"description": "",
+					// 图标
+					"icon": ""
+				},
 				// 视图模型
 				vm: {}
 			}
@@ -44,7 +55,5 @@
 	#id #sort {}
 
 	/* 列表 */
-	#id #obj {
-		
-	}
+	#id #obj {}
 </style>

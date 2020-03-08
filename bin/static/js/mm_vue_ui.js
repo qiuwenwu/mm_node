@@ -1199,7 +1199,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_pager = {
-		template: "<!-- \u5206\u9875\u5668 --><div class=\"mm_pager\"><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"first\" @click=\"first\" v-bind:class=\"{ 'disabled': page === 1 }\"><span v-html=\"icons[0]\"></span></a><a href=\"javascript:void(0);\" class=\"previous\" @click=\"previous\" v-bind:class=\"{ 'disabled' : page <= 1 }\"><span v-html=\"icons[1]\"></span></a><a href=\"javascript:void(0);\" v-for=\"(p, i) in pages\" :key=\"i\" v-bind:class=\"{'active': page == p }\" @click=\"set(p)\">{{ p }}</a><a href=\"javascript:void(0);\" class=\"next\" v-bind:class=\"{ 'disabled': page >= count }\" @click=\"next\"><span v-html=\"icons[2]\"></span></a><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"last\" v-bind:class=\"{ 'disabled': page == count }\" @click=\"last\"><span v-html=\"icons[3]\"></span></a></div>",
+		template: "<!-- \u5206\u9875\u5668 --><div class=\"mm_pager\"><nav><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"first\" @click=\"first\" v-bind:class=\"{ 'disabled': page === 1 }\"><span v-html=\"icons[0]\"></span></a><a href=\"javascript:void(0);\" class=\"previous\" @click=\"previous\" v-bind:class=\"{ 'disabled' : page <= 1 }\"><span v-html=\"icons[1]\"></span></a><a href=\"javascript:void(0);\" v-for=\"(p, i) in pages\" :key=\"i\" v-bind:class=\"{'active': page == p }\" @click=\"set(p)\">{{ p }}</a><a href=\"javascript:void(0);\" class=\"next\" v-bind:class=\"{ 'disabled': page >= ct }\" @click=\"next\"><span v-html=\"icons[2]\"></span></a><a href=\"javascript:void(0);\" v-if=\"display === '2'\" class=\"last\" v-bind:class=\"{ 'disabled': page == ct }\" @click=\"last\"><span v-html=\"icons[3]\"></span></a></nav><slot></slot></div>",
 		model: {
 			prop: "page",
 			event: "input"
@@ -1239,7 +1239,8 @@ define(['jquery'], function(jquery) {
 		},
 		computed: {
 			ct: function ct() {
-				return Math.ceil(this.count);
+				var c = this.count ? this.count : 1;
+				return Math.ceil(c);
 			},
 			pages: function pages() {
 				var pe = this.page;
@@ -1271,7 +1272,6 @@ define(['jquery'], function(jquery) {
 				if (this.func) {
 					this.func(page);
 				}
-
 				this.$emit("input", page);
 			},
 			first: function first() {
@@ -1284,8 +1284,6 @@ define(['jquery'], function(jquery) {
 				if (this.pe < 1) {
 					this.pe = 1;
 				}
-
-				;
 				this.goTo(this.pe);
 			},
 			set: function set(p) {
@@ -1294,12 +1292,9 @@ define(['jquery'], function(jquery) {
 			},
 			next: function next() {
 				this.pe = this.page + 1;
-
 				if (this.pe > this.ct) {
 					this.pe = this.ct;
 				}
-
-				;
 				this.goTo(this.pe);
 			},
 			last: function last() {
@@ -1330,7 +1325,7 @@ define(['jquery'], function(jquery) {
 			set: function set() {
 				var n = this.seleted;
 				n += 1;
-				var lt = this.options;
+				var lt = this.ops;
 				var v = "";
 
 				if (n < lt.length) {
@@ -1362,7 +1357,7 @@ define(['jquery'], function(jquery) {
 					val = val.substring(1);
 				}
 
-				this.$emit("input", val);
+				this.$emit("input", val.trim(','));
 
 				if (this.func) {
 					this.func(val);
@@ -1370,21 +1365,39 @@ define(['jquery'], function(jquery) {
 			}
 		},
 		computed: {
-			seleted: function seleted() {
-				var lt = this.options;
-				var val = this.value;
-				var seleted = 2;
-
-				for (var i = 0; i < lt.length; i++) {
-					var o = lt[i];
-
-					if (val.indexOf(o) !== -1) {
-						seleted = i;
-						break;
+			ops: function ops() {
+				var o = this.options;
+				if (o) {
+					if (typeof(o) === 'string') {
+						return ["`" + o + "` asc", "`" + o + "` desc"]
+					} else if (typeof(o) === 'object' && o.length > 1) {
+						return o;
+					} else if (this.field) {
+						var f = this.field;
+						return ["`" + f + "` asc", "`" + f + "` desc"]
 					}
 				}
+				return ["asc", "desc"]
+			},
+			seleted: function seleted() {
+				if (this.ops) {
+					var lt = this.ops;
+					var val = this.value;
+					var seleted = 2;
 
-				return seleted;
+					for (var i = 0; i < lt.length; i++) {
+						var o = lt[i];
+
+						if (val.indexOf(o) !== -1) {
+							seleted = i;
+							break;
+						}
+					}
+
+					return seleted;
+				} else {
+					return 0;
+				}
 			}
 		}
 	};
@@ -1464,7 +1477,7 @@ define(['jquery'], function(jquery) {
 			}
 		}
 	};
-	
+
 	var mm_title = {
 		template: "<div class=\"mm_title\"><slot></slot></div>",
 		props: {}

@@ -1,5 +1,5 @@
 const dev = require('../com.js').dev;
-$.db_admin = require('../../../../../../bin/com/db').db_admin;
+$.db_admin = require('../../../../../../bin/com/db/index.js').db_admin;
 // 是否启用数据库管理器
 if ($.config.sys.db_admin) {
 	// 创建数据库管理器

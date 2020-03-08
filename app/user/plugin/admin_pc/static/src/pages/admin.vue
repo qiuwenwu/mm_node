@@ -4,11 +4,11 @@
 			<mm_col width="100">
 				<mm_view>
 					<header class="arrow">
-						<span class="h5">超级美眉</span>
+						<h5>超级美眉</h5>
 					</header>
-					<div class="tencent_desc">
-						
-					</div>
+					<mm_body>
+
+					</mm_body>
 				</mm_view>
 			</mm_col>
 		</mm_grid>
@@ -25,7 +25,18 @@
 				// 列表请求地址
 				url_get_list: "",
 				// 查询条件
-				query: {},
+				query: {
+					// 管理组ID
+					"admin_id": 0,
+					// 显示顺序——最小值
+					"display_min": 0,
+					// 显示顺序——最大值
+					"display_max": 0,
+					// 管理组名称
+					"name": "",
+					// 描述
+					"description": ""
+				},
 				// 视图模型
 				vm: {}
 			}

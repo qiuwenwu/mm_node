@@ -57,6 +57,36 @@ define(["Vue"], function(Vue) {
 			};
 
 			/**
+			 * 转为键值
+			 * @param {Object} arr 
+			 * @param {String} key
+			 * @param {String} name
+			 */
+			Vue.prototype.$to_kv = function(arr, key, name) {
+				var list = [];
+				if (key) {
+					list = [{ name: '全部', value: 0 }];
+					var n = name ? name : 'name';
+					for (var i = 0; i < arr.length; i++) {
+						var o = arr[i];
+						list.push({
+							name: o[n],
+							value: o[key]
+						});
+					}
+				} else {
+					for (var i = 0; i < arr.length; i++) {
+						var o = arr[i];
+						list.push({
+							name: o,
+							value: i
+						})
+					}
+				}
+				return list;
+			};
+
+			/**
 			 * @description 取host地址
 			 * @param {String} pathAndQuery 路径和参数 例如：'/app/test?name=123'
 			 */
@@ -88,14 +118,17 @@ define(["Vue"], function(Vue) {
 			 */
 			Vue.prototype.$get = function(url, query, func) {
 				var token = $.db.get("token");
-				console.log('访问牌', token);
+				// console.log('访问牌', token);
 				var queryStr = query ? $.toUrl(query) : "";
 				var _this = this;
 				$.http.get(url.replace("~/", host) + queryStr, function(json, status) {
 					if (json.error) {
-						if (json.error.message.indexOf('未登录') !== -1) {
+						var msg = json.error.message;
+						if (msg.indexOf('未登录') !== -1 || msg.indexOf('非法') !== -1) {
 							$.db.set("token", "");
 							_this.$router.push('/sign_in');
+						} else if (msg.indexOf('没有') !== -1) {
+							_this.$router.push('/no_power');
 						}
 					}
 					if (func) {

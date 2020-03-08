@@ -325,6 +325,8 @@
 
 	.th_name,
 	.th_time,
+	.th_email,
+	.th_phone,
 	.th_num {
 		width: 10rem;
 	}

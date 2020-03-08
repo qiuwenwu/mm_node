@@ -19,7 +19,7 @@
 				<!-- 页签组件 -->
 				<div class="mm_tab_head" id="tabs">
 					<div v-for="(o, idx) in nav_cache" :key="idx" :class="{ 'active': o.url === url_now }">
-						<i class="fa-times-circle" v-if="idx !== 'index'" @click="del_tab(o)"></i>
+						<i class="fa-times-circle" v-if="o.name !== 'index'" @click="del_tab(o)"></i>
 						<router-link :to="o.url">
 							{{ o.title }}
 						</router-link>
@@ -126,10 +126,12 @@
 <style>
 	main {
 		margin: .5rem;
+		width: calc(100% - 1rem);
+		height: calc(100% - 3rem);
 	}
-	.mm_page {
-		min-height: 100vh;
-		position: relative;
+	
+	.mm_side~.mm_main {
+	    height: calc(100vh - 2.5rem);
 	}
 
 	.diy_left>div {
@@ -152,7 +154,7 @@
 	#side {
 		height: calc(100vh - 2.5rem);
 		background: #24292e;
-		width: 12rem;
+		width: 12.5rem;
 		color: #fff;
 		font-size: 0.875rem;
 	}
@@ -172,7 +174,7 @@
 	}
 
 	.logo {
-		min-width: 12rem;
+		min-width: 12.5rem;
 		height: 2.5rem;
 		padding: 0 1rem;
 		border-right: 1px solid rgba(0, 0, 0, 0.4);
@@ -325,25 +327,6 @@
 		margin-right: .5rem;
 	}
 
-	.th_id {
-		width: 4rem;
-	}
-
-	.th_name,
-	.th_time,
-	.th_num {
-		width: 10rem;
-	}
-
-	.th_score,
-	.th_state {
-		width: 6rem;
-	}
-
-	.th_handle {
-		width: 10rem;
-	}
-
 	.keywords {
 		width: 100%;
 		height: 1.25rem;
@@ -351,19 +334,6 @@
 		overflow: hidden;
 	}
 
-	.mm_view .mm_pager {
-		position: absolute;
-		bottom: 1.5rem;
-		left: 50%;
-		transform: translate(-50%, 0);
-		white-space: nowrap;
-	}
-
-	.mm_view .mm_pager a {
-		margin: 0 0.25rem;
-		border-radius: 0.25rem;
-		font-size: 0.875rem;
-	}
 
 	.mm_pager .active {
 		border-color: #38f;

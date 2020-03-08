@@ -72,6 +72,9 @@
 
 /* ===  格子  === */
 .mm_col,[class*=mm_col_] {display: block;float:left; }
+[class*=mm_col_] {
+	flex: 1;
+}
 main .mm_col>*,main [class*=mm_col_]>* { margin: 0.5rem; }
 main .mm_col>*~*,main [class*=mm_col_]>*~* { margin-top: 1rem;}
 
@@ -177,7 +180,32 @@ ol.mm_list li:nth-child(3)::before{background-color: #ff9000;}
 
 /* ===  表格  === */
 .table-sm td,.table-sm th {padding:.25rem .5rem;}
+.th_id {
+	width: 4rem;
+}
 
+.th_name {
+	width: 8rem;
+}
+
+.th_phone,
+.th_email,
+.th_time {
+	width: 10rem;
+}
+
+.th_num {
+	width: 8rem;
+}
+
+.th_score,
+.th_state {
+	width: 6rem;
+}
+
+.th_handle {
+	width: 10rem;
+}
 
 /* ===  图标大小  === */
 .img-5, .icon_5 img {width:1.25rem;height:1.25rem;}
@@ -192,3 +220,39 @@ ol.mm_list li:nth-child(3)::before{background-color: #ff9000;}
 .icon_2 i { font-size: 1.5rem; }
 .icon_1 i { font-size: 1.75rem; }
 .icon-x figure { padding: .5rem; background: #fff !important; }
+
+
+@media only screen and (max-width: 1200px) {
+	.pad_hide {
+		display: none;
+	}
+
+}
+@media only screen and (max-width: 960px) {
+	main .mm_col_25 {min-width: 20rem;}
+	pre::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.phone_hide {
+		display: none;
+	}
+	
+	main .mm_col_50 {min-width: 20rem;}
+	main .mm_col_60 {min-width: 20rem;}
+	main .mm_col_66 {min-width: 20rem;}
+	main .mm_col_75 {min-width: 20rem;}
+	main .mm_col_80 {min-width: 20rem;}
+	main .mm_col_90 {min-width: 20rem;}
+	main .mm_col_100 {min-width: 20rem;}
+	.mm_col_75, .mm_col_80, .mm_col_90, .mm_col_100 {
+		 overflow-x: auto;
+	}
+	.mm_col_75::-webkit-scrollbar, .mm_col_80::-webkit-scrollbar, .mm_col_90::-webkit-scrollbar, .mm_col_100::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.disabled { pointer-events: none; cursor: not-allowed; }

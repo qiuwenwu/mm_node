@@ -14,7 +14,28 @@
 		data() {
 			return {
 				url_get_obj: "",
-				query: {},
+				form: {
+					// QQ号
+					"qq": "",
+					// QQ认证
+					"qq_state": 0,
+					// 微信号
+					"wechat": "",
+					// 微信认证
+					"wechat_state": 0,
+					// MM号
+					"mm": "",
+					// MM认证
+					"mm_state": 0,
+					// 百度账号
+					"baidu": "",
+					// 百度认证
+					"baidu_state": 0,
+					// 淘宝账号
+					"taobao": "",
+					// 淘宝认证
+					"taobao_state": 0
+				},
 				// 视图模型
 				vm: {}
 			}
@@ -44,7 +65,5 @@
 	#id #sort {}
 
 	/* 列表 */
-	#id #obj {
-		
-	}
+	#id #obj {}
 </style>

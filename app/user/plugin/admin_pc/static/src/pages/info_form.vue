@@ -14,7 +14,40 @@
 		data() {
 			return {
 				url_get_obj: "",
-				query: {},
+				form: {
+					// 性别
+					"sex": 0,
+					// 身份实名认证
+					"idcard_state": 0,
+					// 年龄
+					"age": 0,
+					// 省份ID
+					"province_id": 0,
+					// 所在城市ID
+					"city_id": 0,
+					// 生日
+					"birthday": "",
+					// 姓名
+					"name": "",
+					// 职业
+					"job": "",
+					// 毕业学校
+					"school": "",
+					// 所学专业
+					"major": "",
+					// 身份证号
+					"idcard": "",
+					// 公司地址
+					"company_address": "",
+					// 详细地址
+					"address": "",
+					// 工作范围
+					"job_scope": "",
+					// 公司经营范围
+					"company_business": "",
+					// 身份证图片
+					"idcard_img": ""
+				},
 				// 视图模型
 				vm: {}
 			}
@@ -44,7 +77,5 @@
 	#id #sort {}
 
 	/* 列表 */
-	#id #obj {
-		
-	}
+	#id #obj {}
 </style>

@@ -3,15 +3,20 @@
 	<head>
 		<!-- 必需的元标记 -->
 		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="x-dns-prefetch-control" content="on">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="description" content="${model.description}">
-		<meta name="keywords" content="${model.keywords}">
+		<meta name="description" content="描述">
+		<meta name="keywords" content="关键词">
 		<meta name="author" content="邱文武">
-
+		
 		<!-- 加载JS -->
 		<!--if lt IE 9]><script src="/js/html5.min.js"></script><![endif]-->
-		<title>${model.title}</title>
+		<title>超级美眉UI测试</title>
 
 		<!-- 加载CSS -->
 		<link rel="shortcut icon" href="/favicon.ico">
@@ -36,8 +41,8 @@
 									<img src="img/logo.png" alt="超级美眉LOGO" />
 								</figure>
 								<h5><span>超级美眉</span></h5>
-						</a></aside>
-						<nav id="nav_main">
+							</a></aside>
+						<nav id="nav_top">
 							<a href="#">
 								<span>首页</span>
 							</a>
@@ -127,11 +132,13 @@
 							<section>
 								<h3>第四个章节</h3>
 								<h4>代码展示</h4>
-								<figure class="mm_code"><pre><code>
+								<figure class="mm_code">
+									<pre><code>
 public static void main(String[] args){
 	System.out.println("hellow world"):
 }
-							</code></pre></figure>
+							</code></pre>
+								</figure>
 							</section>
 							<footer>
 								<div class="fl">
@@ -152,7 +159,8 @@ public static void main(String[] args){
 						</article> -->
 					</div>
 					<div class="mm_col_25">
-						<aside class="mm_view card" id="list_hot"><header>
+						<aside class="mm_view card" id="list_hot">
+							<header>
 								<h5>热门文章</h5>
 							</header>
 							<ol class="mm_list">
@@ -174,7 +182,8 @@ public static void main(String[] args){
 								<li>
 									<a href="#"><span class="title">数据库设计规范</span><span class="hot">3121</span></a>
 								</li>
-							</ol></aside>
+							</ol>
+						</aside>
 						<aside id="ad_right">
 							<a class="mm_item" href="#">
 								<figure><img src="/img/web.png" /></figure>
@@ -295,7 +304,7 @@ public static void main(String[] args){
 					</div>
 				</div>
 			</main>
-			<footer>
+			<footer class="fixed">
 				<div class="mm_grid">
 					<div class="mm_col_100">
 						<nav id="nav_bottom">

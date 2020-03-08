@@ -22,7 +22,7 @@ class Drive extends Item {
 		/* 通用项 */
 		// 配置参数
 		this.config = {
-			"name": "admin",
+			"name": "",
 			// 加载顺序，数字越大越后面加载
 			"sort": 1,
 			// 路由
@@ -243,15 +243,13 @@ Drive.prototype.new_config = function(file) {
 
 	var app = (file + '').right('app' + $.slash).left($.slash, true);
 	var nav = [];
-
 	if (plugin.indexOf('admin') !== -1) {
-		var d = dir + 'api_admin';
+		var d = dir + 'api_manage';
 		if (!d.hasDir()) {
-			d = dir + `api_${app}_admin`;
+			d = dir + `api_${app}_manage`;
 		}
 		if (d.hasDir()) {
 			var list = $.file.getAll(d, '*api.json');
-
 			list.map(function(f) {
 				var o = f.loadJson();
 				if (o) {

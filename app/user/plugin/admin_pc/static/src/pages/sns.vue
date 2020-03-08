@@ -4,11 +4,11 @@
 			<mm_col width="100">
 				<mm_view>
 					<header class="arrow">
-						<span class="h5">超级美眉</span>
+						<h5>超级美眉</h5>
 					</header>
-					<div class="tencent_desc">
-						
-					</div>
+					<mm_body>
+
+					</mm_body>
 				</mm_view>
 			</mm_col>
 		</mm_grid>
@@ -25,7 +25,20 @@
 				// 列表请求地址
 				url_get_list: "",
 				// 查询条件
-				query: {},
+				query: {
+					// 用户ID
+					"user_id": 0,
+					// QQ认证
+					"qq_state": 0,
+					// 微信认证
+					"wechat_state": 0,
+					// MM认证
+					"mm_state": 0,
+					// 百度认证
+					"baidu_state": 0,
+					// 淘宝认证
+					"taobao_state": 0
+				},
 				// 视图模型
 				vm: {}
 			}

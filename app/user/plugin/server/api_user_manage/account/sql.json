@@ -6,6 +6,7 @@
     "orderby_default": "`user_id` desc",
     "field_default": "`user_id`,`state`,`vip`,`gm`,`mc`,`referee_id`,`create_time`,`login_time`,`invite_code`,`phone`,`phone_state`,`username`,`nickname`,`email`,`email_state`,`user_group`,`user_admin`,`login_ip`,`signature`,`avatar`,`friends`,`admin_group`",
     "query": {
+		"keyword": "`username` like '%{0}%' || `nickname` like '%{0}%' || `email` like '%{0}%' || `phone` like '%{0}%'",
         "state_min": "`state` >= {0}",
         "state_max": "`state` <= {0}",
         "vip_min": "`vip` >= {0}",

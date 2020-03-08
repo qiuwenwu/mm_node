@@ -344,7 +344,7 @@ define(["Vue", "VueRouter"], function(Vue, VueRouter) {
 		{
 			// 错误404
 			path: "*",
-			redirect: "/err404"
+			redirect: "/404"
 		}
 	];
 	var router = new VueRouter({
