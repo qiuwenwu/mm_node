@@ -979,11 +979,6 @@ table .mm_reverse .title {
 	padding: 1rem;
 }
 
-.mm_view .mm_pager a {
-	margin: 0 0.25rem;
-	border-radius: 0.25rem;
-}
-
 .mm_pager .active,
 [class*=mm_pager_] .active {
 	background: #38f;

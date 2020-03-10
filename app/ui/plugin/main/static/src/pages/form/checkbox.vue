@@ -17,7 +17,7 @@
 				<mm_col width="100">
 					<mm_view class="pc">
 						<h5>样式一(PC)</h5>
-						<mm_checkbox v-model="value" :options="options" :disabled="true"></mm_checkbox>
+						<mm_checkbox v-model="value" :options="options"></mm_checkbox>
 					</mm_view>
 					<mm_view class="mobile">
 						<h5>样式二(mobile)</h5>
