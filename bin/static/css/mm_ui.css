@@ -385,7 +385,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {-webkit-appea
 .goto input {font-size:0.75rem;position:relative;top:-0.05rem;width:3rem;text-align:center;}
 .goto {padding:0.25rem 0;}
 .mm_pager-x {overflow:hidden;display:inline-block;}
-.mm_pager-x a {display:block;float:left;margin-right:.25rem;color:#333;border-radius: .25rem;}
+.mm_pager-x a {display:block;float:left;margin-right:.5rem;color:#333;border-radius: .25rem;}
 .mm_pager-x a:last-of-type {margin-right:0;}
 .mm_pager-x .active {background:#38f;color:#fff;}
 

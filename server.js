@@ -1,12 +1,12 @@
-require("colors");
-const init = require("./bin/expand.js");
+const startup = require("./startup.js");
 const Process = require('mm_process');
 const net = require('net');
 var { join } = require('path');
 
 // 加载全局配置
 const NODE_ENV = process.env.NODE_ENV || 'local';
-var config = `./config/${NODE_ENV}.json`.loadJson(__dirname);
+$.log.info('当前环境', NODE_ENV);
+var config = `./config/${NODE_ENV}.json`.loadJson();
 
 // 频道数, 端口号, 主机地址
 var {
@@ -21,18 +21,10 @@ host = process.env.IP || host;
 channel = channel || require('os').cpus().length;
 
 /**
- * 频道信息输出
- * @param {Object} res 响应结果
- */
-async function about(res) {
-	console.log(`  频道${res.channel_id} -> 端口: ${res.port}  进程ID: ${res.pid}`);
-}
-
-
-/**
  * 定义服务程序
  */
 async function run() {
+	startup(config);
 	console.info(`欢迎使用《${config.sys.title}》服务端!`.yellow);
 	console.log("访问地址为 http://%s:%s", host, port);
 	console.log("世界频道数: ", channel);
@@ -41,7 +33,7 @@ async function run() {
 	var p = new Process();
 	for (var i = 0; i < channel; i++) {
 		// 添加子进程
-		var child = await p.add('./bin/main.js');
+		var child = await p.add('./bin/web_main.js');
 		// 设置配置
 		var channel_id = i + 1;
 		var cg = Object.assign({}, config);
@@ -52,7 +44,7 @@ async function run() {
 			runPath: $.runPath
 		}, true);
 		// 初始化子进程
-		p.request('init', cg, about, child.process.pid);
+		p.request('init', cg, null, child.process.pid);
 	}
 
 	var server = net.createServer();
@@ -66,7 +58,6 @@ async function run() {
 		server.close();
 	});
 	$.process = p;
-	init(config);
 }
 
 run();

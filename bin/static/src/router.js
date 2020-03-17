@@ -10,6 +10,11 @@ define(["Vue", "VueRouter", "mm_sdk", "nav"], function(Vue, VueRouter, mm_sdk, n
 			return require(["vue!./pages/index.vue"], resolve);
 		}
 	}, {
+		path: "/not_power",
+		component: function component(resolve) {
+			return require(["vue!./pages/not_power.vue"], resolve);
+		}
+	}, {
 		path: "/404",
 		component: function component(resolve) {
 			return require(["vue!./pages/404.vue"], resolve);

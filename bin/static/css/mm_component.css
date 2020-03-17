@@ -58,10 +58,6 @@
 	z-index: 1;
 }
 
-.mm_side~.mm_main {
-	overflow: hidden;
-}
-
 /* 加载 */
 .mm_loading {
 	text-align: center;
@@ -220,12 +216,6 @@
 
 .mm_view>footer {
 	border-top: 1px solid rgba(125, 125, 125, 0.25);
-}
-
-.mm_view .mm_pager a {
-	margin: 0 0.25rem;
-	border-radius: 0.25rem;
-	font-size: 0.875rem;
 }
 
 /* ===  模态窗  === */
@@ -489,7 +479,7 @@
 	float: left;
 	padding-left: 1rem;
 	padding-right: .5rem;
-	min-width: 5.5rem;
+	min-width: 6.5rem;
 	line-height: 2rem;
 }
 
@@ -760,7 +750,7 @@ input::-webkit-inner-spin-button {
 }
 
 .mm_select select {
-	padding: 0 .5rem;
+	padding: 0 1.5rem 0 0.5rem;
 	border-radius: .25rem;
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	height: 2rem;
@@ -957,6 +947,14 @@ table .mm_reverse .title {
 	margin-left: -1px;
 	text-align: center;
 }
+.mm_pager a:first-child {
+	border-top-left-radius: .25rem;
+	border-bottom-left-radius: .25rem;
+}
+.mm_pager a:last-child {
+	border-top-right-radius: .25rem;
+	border-bottom-right-radius: .25rem;
+}
 
 .mm_pager.group>a,
 [class*=mm_pager_].group>a {
@@ -975,15 +973,16 @@ table .mm_reverse .title {
 	font-size: 0.85rem;
 }
 
-.mm_view .mm_pager {
-	padding: 1rem;
-}
-
 .mm_pager .active,
 [class*=mm_pager_] .active {
 	background: #38f;
 	color: #fff;
 	border-color: #38f;
+}
+
+.mm_data_count {
+	line-height: 2rem;
+	padding: .5rem 0;
 }
 
 .goto input {
@@ -998,15 +997,8 @@ table .mm_reverse .title {
 	padding: 0.25rem 0;
 }
 
-.mm_pager-x {
-	overflow: hidden;
-	display: inline-block;
-}
-
 .mm_pager-x a {
-	display: block;
-	float: left;
-	margin-right: .25rem;
+	margin-left: .5rem;
 	color: #333;
 	border-radius: .25rem;
 }
@@ -1432,4 +1424,36 @@ table .mm_btn {
 
 @media only screen and (max-width: 640px) {
 	
+}
+
+/* 图片上传 */
+.mm_upload_img .mm_icon{
+	border: 1px dashed rgba(125,125,125,0.5);
+}
+
+.mm_upload_img .mm_icon img {
+	display: none;
+}
+
+.mm_upload_img .mm_icon {
+	border-radius: .5rem;
+}
+
+.upload_add .mm_icon::before,.upload_add .mm_icon::after {
+	content: "";
+	display: block;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background: rgba(125,125,125,0.5);
+}
+.upload_add .mm_icon::before {
+	width: 1rem;
+	height: .125rem;
+}
+
+.upload_add .mm_icon::after {
+	width: .125rem;
+	height: 1rem;
 }

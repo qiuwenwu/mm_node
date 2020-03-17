@@ -355,12 +355,6 @@
 		white-space: nowrap;
 	}
 
-	.mm_view .mm_pager a {
-		margin: 0 0.25rem;
-		border-radius: 0.25rem;
-		font-size: 0.875rem;
-	}
-
 	.mm_pager .active {
 		border-color: #38f;
 	}

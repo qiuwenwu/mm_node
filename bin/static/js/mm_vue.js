@@ -65,7 +65,7 @@ define(["Vue"], function(Vue) {
 			Vue.prototype.$to_kv = function(arr, key, name) {
 				var list = [];
 				if (key) {
-					list = [{ name: '全部', value: 0 }];
+					list = [{ name: '', value: 0 }];
 					var n = name ? name : 'name';
 					for (var i = 0; i < arr.length; i++) {
 						var o = arr[i];
@@ -85,7 +85,35 @@ define(["Vue"], function(Vue) {
 				}
 				return list;
 			};
-
+			
+			/**
+			 * 转换时间
+			 * @param {String} datetime 
+			 * @param {String} format
+			 */
+			Vue.prototype.$to_time = function(datetime, format) {
+				if(!format)
+				{
+					format = 'yyyy-MM-dd hh:mm';
+				}
+				return new Date(datetime).toStr(format);
+			};
+			/**
+			 * 转页面大小
+			 * @param {Object} arr
+			 */
+			Vue.prototype.$to_size = function(arr) {
+				if(!arr || arr.length == 0){
+					arr = [10, 30, 50, 100, 200];
+				}
+				var list =[];
+				for(var i = 0; i < arr.length; i++){
+					var n = arr[i];
+					list.push({name: n + "条/页", value: n});
+				}
+				return list;
+			};
+			
 			/**
 			 * @description 取host地址
 			 * @param {String} pathAndQuery 路径和参数 例如：'/app/test?name=123'
@@ -128,7 +156,7 @@ define(["Vue"], function(Vue) {
 							$.db.set("token", "");
 							_this.$router.push('/sign_in');
 						} else if (msg.indexOf('没有') !== -1) {
-							_this.$router.push('/no_power');
+							_this.$router.push('/not_power');
 						}
 					}
 					if (func) {

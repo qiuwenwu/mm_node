@@ -112,7 +112,9 @@ class Drive extends Item {
 				"orderBy": ""
 			},
 			/* 逻辑符 */
-			"logic": {}
+			"logic": {},
+			// 输出sql语句 
+			log: false
 		};
 	}
 }
@@ -284,10 +286,17 @@ Drive.prototype.main = async function(params, db) {
 			}
 			break;
 		case "set":
+			if(body[this.config.key])
+			{
+				qy[this.config.key] = body[this.config.key];
+			}
 			// 修改
 			var query_str = db.tpl_query(qy, cg.query);
 			var set_str = db.tpl_body(body, cg.update);
+			
 			ret = $.ret.bl(await db.setSql(query_str, set_str));
+			
+			// console.log(db.sql);
 			if (ret.result.bl < 1) {
 				ret.result.tip = '没有改变任何数据'
 			}
@@ -320,6 +329,9 @@ Drive.prototype.main = async function(params, db) {
 		default:
 			ret = $.ret.error(50001, '不支持的操作方式');
 			break;
+	}
+	if(cg.log){
+		console.log('SQL语句', db.sql)
 	}
 	// console.log(db.sql);
 	// 				case "import": //导入

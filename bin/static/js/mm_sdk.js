@@ -109,7 +109,6 @@ function speed(func, times) {
  * @param {Boolean} bl 是否补充没有的对象
  * @return {Object} 新对象
  */
-
 function push(objA, objB, bl) {
 	if (!objA || !objB) {
 		return;
@@ -310,6 +309,22 @@ function keys(obj, file) {
 }
 
 /**
+ * @description 删除对象空属性
+ * @param {Object} obj
+ */
+function delete_prop(obj){
+	var o = Object.assign({}, obj);
+	for(var k in o)
+	{
+		var v = o[k];
+		if(!v){
+			delete o[k];
+		}
+	}
+	return o;
+}
+
+/**
  * @namespace
  * @property {Object} pool 数据连接池, 用于存储有关数据库的操作类
  * @property {Object} task 任务池, 用于存储定时任务操作类
@@ -376,7 +391,9 @@ var funcs = {
 	// 复制一个新对象
 	copy: copy,
 	// 查询获取对象属性键
-	keys: keys
+	keys: keys,
+	// 删除对象属性
+	delete: delete_prop
 };
 if (typeof($) === "undefined") {
 	window.$ = funcs
@@ -1106,6 +1123,7 @@ if (typeof($) === "undefined") {
 	Array.prototype.getVal = function(key, query) {
 		var obj = this.getObj(query);
 		if (obj) {
+			console.log('ruchag', obj[key]);
 			return obj[key];
 		} else {
 			return null;

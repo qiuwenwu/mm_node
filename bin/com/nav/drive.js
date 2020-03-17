@@ -358,8 +358,10 @@ Drive.prototype.create_vue = function(file, route) {
 	var name = arr[arr.length - 1].replace('.vue', '');
 	var f = "./tpl/";
 	var plugin = "";
-	if (arr.length > 5) {
-		plugin = arr[5];
+	var app = "";
+	if (arr.length > 6) {
+		plugin = arr[6];
+		app = arr[4];
 		f += plugin + '/';
 	} else if (file.indexOf('mobile' + l) !== -1) {
 		f += "mobile/";
@@ -385,16 +387,18 @@ Drive.prototype.create_vue = function(file, route) {
 	} else {
 		f += 'page_default.vue';
 	}
-
+	f = f.fullname(__dirname);
 	var model = {
 		config: this.config,
 		plugin,
-		name,
+		name: app + '_' + name,
 		group: arr[arr.length - 2],
 		route
 	};
+	// console.log(file, route);
 	console.log('更新vue文件：', model.name);
 	var vue = tpl.view(f, model);
+	// console.log(f, f.hasFile());
 	file.saveText(vue);
 };
 

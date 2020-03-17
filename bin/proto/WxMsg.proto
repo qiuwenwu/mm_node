@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package Medipedia;
+
+message Openid2OpenidReq
+{
+    string openid = 1;                  // 需要转换的openid
+    string target_appid = 2;            // 目标appid
+}
+message Openid2OpenidResp
+{
+    string target_openid = 1;           // 转换后的openid
+}
+
+message SendTemplateMsgReq
+{
+    message MiniProgram
+    {
+        string appid = 1;               // 小程序appid
+        string pagepath = 2;           // 小程序页面路径
+    }
+    message Data
+    {
+        string name = 1;                // 模板中的key，如"first", "keyword1"等
+        string value = 2;               // key对应的value
+        string color = 3;               // 色值
+    }
+    string appid = 1;                   // 公众号appid
+    string template_id = 2;             // 模板ID
+    string redirect_url = 3;            // 点击模板消息跳转链接
+    MiniProgram miniprogram = 4;        // 跳转到小程序所需数据
+    repeated Data data = 5;             // 模板数据
+    string openid = 6;                  // 指定openid，不通过uin查询openid
+    int32 type = 7;                     // 0: 服务号模板消息; 1: 小程序订阅消息
+}
+message SendTemplateMsgResp
+{
+}
+
+message CheckWxSubscriptionReq
+{
+    string login_appid = 1;             // 登录使用的appid
+    string target_appid = 2;            // 目标appid，不填则使用login_appid
+}
+message CheckWxSubscriptionResp
+{
+    int32 subscribe = 1;                // 0: 未关注; 1: 已关注
+}
+
+message SubscribeReq
+{
+    string disease = 1;                 // 订阅词条
+}
+message SubscribeResp
+{
+}
+
+message CheckSubscriptionReq
+{
+    string disease = 1;                 // 订阅词条
+}
+message CheckSubscriptionResp
+{
+    int32 subscribe = 1;                // 0: 未订阅; 1: 已订阅
+}
+
+message GetAccessTokenReq
+{
+    string appid = 1;
+}
+message GetAccessTokenResp
+{
+    string access_token = 1;
+}
+
+service WxMsg
+{
+    // openid转换
+    rpc Openid2Openid (Openid2OpenidReq) returns (Openid2OpenidResp);
+    // 发送模板消息
+    rpc SendTemplateMsg (SendTemplateMsgReq) returns (SendTemplateMsgResp);
+    // 查询是否关注公众号
+    rpc CheckWxSubscription (CheckWxSubscriptionReq) returns (CheckWxSubscriptionResp);
+    // 订阅疾病词条
+    rpc Subscribe (SubscribeReq) returns (SubscribeResp);
+    // 查询是否订阅词条
+    rpc CheckSubscription (CheckSubscriptionReq) returns (CheckSubscriptionResp);
+    // 获取托管公众号/小程序的access token
+    rpc GetAccessToken (GetAccessTokenReq) returns (GetAccessTokenResp);
+}

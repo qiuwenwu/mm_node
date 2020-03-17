@@ -6,6 +6,8 @@ define(function() {
 			return {
 				// 标题
 				title: "",
+				// 地址
+				url: "",
 				// 添加地址
 				url_add: "",
 				// 删除地址
@@ -75,7 +77,13 @@ define(function() {
 				// 响应错误消息
 				message: "",
 				// 选中集
-				selects: ""
+				selects: "",
+				// 当前页, 用于跳转页面
+				page_now: 1,
+				// 选择项状态
+				select_state: false,
+				// 修改条件
+				query_set: {}
 			};
 		},
 		methods: {
@@ -152,6 +160,20 @@ define(function() {
 				}
 				return ret;
 			},
+			del_show: function(o, id) {
+				var _this = this;
+				$.confirm('删除后将无法回复!<br/>是否确定要删除?', function() {
+					// console.log('确定删除!');
+					var query = {};
+					query[id] = o[id];
+					_this.del(query, function(){
+						_this.list.del(query);
+						_this.count -= 1;
+					});
+				}, function() {
+					// console.log('取消删除!')
+				})
+			},
 			/**
 			 * @description 修改数据
 			 * @param {Object} param 修改项
@@ -173,6 +195,33 @@ define(function() {
 					ret = this.events("set_main", pm, func);
 				}
 				return ret;
+			},
+			/**
+			 * 修改前事件
+			 * @param {Object} param
+			 */
+			set_before: function set_before(param) {
+				// console.log('修改前', $.toJson(param));
+				return $.delete(param);
+			},
+			/**
+			 * 批量修改
+			 */
+			set_bath: function set_bath() {
+				var _this = this;
+				$.confirm('批量修改数据无法挽回<br/>确定要操作吗?', function() {
+					var q = Object.assign({}, _this.query, _this.query_set);
+					q[_this.field] = _this.selects;
+					delete q.page;
+					delete q.size;
+					delete q.orderby;
+					_this.set(_this.form, q, function(json) {
+						if (json.result) {
+							_this.show = false;
+							_this.get();
+						}
+					});
+				});
 			},
 			/**
 			 * @description 查询多条数据
@@ -244,6 +293,13 @@ define(function() {
 				}
 				return ret;
 			},
+			/**
+			 * 提交前事件
+			 * @param {Object} param 提交参数
+			 */
+			submit_before: function(param) {
+				return $.delete(param);
+			},
 			upload: function upload(param, func) {
 				var pm = this.events("upload_before", param) || param;
 				var msg = this.events("upload_check", pm);
@@ -268,14 +324,58 @@ define(function() {
 			 * @param {Object} value 要添加的数据
 			 */
 			add_main: function add_main(value) {
-
+				var url = "";
+				if (this.url) {
+					url = this.url + "method=add";
+				} else {
+					url = this.url_add;
+				}
+				if (!url) {
+					return;
+				}
+				this.$post(url, value, function(json) {
+					if (json.result) {
+						$.toast('添加' + json.result.tip);
+					} else if (json.error) {
+						$.toast(json.error.message);
+					} else {
+						$.toast('添加失败! 原因:是服务器连接失败!');
+					}
+				});
 			},
 			/**
 			 * @description 删除数据
 			 * @param {Object} query 查询条件
+			 * @param {Function} func 删除回调函数函数
 			 */
-			del_main: function del_main(query) {
-
+			del_main: function del_main(query, func) {
+				var url = "";
+				if (this.url) {
+					url = this.url + "method=del";
+				} else {
+					url = this.url_del;
+				}
+				var _this = this;
+				this.$get(url, query, function(json) {
+					_this.events("del_after", json, func);
+					if (json.result) {
+						$.toast('删除' + json.result.tip);
+					} else if (json.error) {
+						$.toast(json.error.message);
+					} else {
+						$.toast('删除失败! 原因:是服务器连接失败!');
+					}
+				});
+			},
+			/**
+			 * 删除之后事件
+			 * @param {Object} json 返回的结果
+			 * @param {Object} func 回调函数
+			 */
+			del_after: function del_after(json, func){
+				if(func){
+					func();
+				}
 			},
 			/**
 			 * @description 修改数据
@@ -283,21 +383,36 @@ define(function() {
 			 * @param {Object} value 修改项
 			 */
 			set_main: function set_main(value, func) {
-				var url = this.url_set;
+				var url = "";
+				if (this.url) {
+					url = this.url + "method=set";
+				} else {
+					url = this.url_set;
+				}
 				if (!url) {
 					return;
 				}
 				var _this = this;
 				this.$post(this.toUrl(this.query_set, url), value, function(json, status) {
 					_this.events("set_after", json, func);
-					if (json.error) {
-						_this.toast(json.error.message);
-					} else if (json.result) {
-						if (!json.result.bl) {
-							_this.toast(json.result.tip);
-						}
+					if (json.result) {
+						$.toast('修改' + json.result.tip);
+					} else if (json.error) {
+						$.toast(json.error.message);
+					} else {
+						$.toast('修改失败! 原因:是服务器连接失败!');
 					}
 				});
+			},
+			/**
+			 * 修改成功时执行
+			 * @param {Object} json 结果
+			 * @param {Object} func 回调函数
+			 */
+			set_after: function set_after(json, func) {
+				if (func) {
+					func(json);
+				}
 			},
 			/**
 			 * @description 查询数据
@@ -313,7 +428,13 @@ define(function() {
 			 * @param {Function} func 回调函数
 			 */
 			get_main: function get_main(query, func) {
-				if (this.url_get_obj) {
+				var url = "";
+				if (this.url) {
+					url = this.url + "method=get";
+				} else {
+					url = this.url_get_obj;
+				}
+				if (url) {
 					var _this = this;
 					this.get_obj(query, function() {
 						_this.get_first(query, func);
@@ -326,18 +447,17 @@ define(function() {
 			 * 验证请求
 			 * @param {Object} param 请求参数
 			 */
-			get_obj_check: function get_obj_check(param){
+			get_obj_check: function get_obj_check(param) {
 				var bl = false;
-				for(var k in param){
-					if(param[k]){
+				for (var k in param) {
+					if (param[k]) {
 						bl = true;
 						break;
 					};
 				}
-				if(bl){
+				if (bl) {
 					return null;
-				}
-				else {
+				} else {
 					return "缺少查询条件";
 				}
 			},
@@ -348,7 +468,12 @@ define(function() {
 			 */
 			get_obj_main: function get_obj_main(query, func) {
 				// console.log("get_obj_main");
-				var url = this.url_get_obj;
+				var url = "";
+				if (this.url) {
+					url = this.url + "method=get";
+				} else {
+					url = this.url_get_obj;
+				}
 				if (!url) {
 					return;
 				}
@@ -393,6 +518,12 @@ define(function() {
 			 */
 			get_obj_after: function get_obj_after(res) {
 				$.push(this.form, this.obj);
+				var o = this.form;
+				for (var k in o) {
+					if (k.indexOf('time') !== -1) {
+						o[k] = o[k].replace('T', ' ').replace('Z', '').replace('.000', '').replace('Z', '');
+					}
+				}
 			},
 			/**
 			 * @description 查询多条数据(主程序)
@@ -434,7 +565,7 @@ define(function() {
 			 * @param {Object} res 响应结果
 			 */
 			get_list_after: function get_list_after(res) {
-
+				this.page_now = this.query.page;
 			},
 			/**
 			 * 搜索
@@ -452,6 +583,10 @@ define(function() {
 				$.route.push("?" + this.toUrl(this.query));
 				this.get_first(this.query);
 			},
+			/**
+			 * 请求上下页数据
+			 * @param {Object} res 结果
+			 */
 			get_prev_next(res) {
 				var _this = this;
 				var query = this.query;
@@ -572,11 +707,39 @@ define(function() {
 			/**
 			 * 提交表单
 			 */
-			submit_main: function submit_main() {
-				var url = this.url_submit;
+			submit_main: function submit_main(param) {
+				var url = this.url ? this.url : this.url_submit;
+				if (url) {
+					if (this.field) {
+						var id = param[this.field];
+						if (id) {
+							var q = {
+								method: 'set'
+							};
+							q[this.field] = id;
+							url = this.toUrl(q, url);
+						} else {
+							url += "method=add"
+						}
+					} else {
+						url += "method=submit"
+					}
+				} else {
+					if (this.field) {
+						var id = param[this.field];
+						console.log('提交的ID', id);
+						if (id) {
+							url = this.url_set;
+						} else {
+							url = this.url_add;
+						}
+					}
+				}
+
+				console.log('提交', url);
 				if (url) {
 					var _this = this;
-					this.$post(url, this.form, function(json, status) {
+					this.$post(url, param, function(json, status) {
 						var msg = _this.events("submit_after", json, status);
 						if (msg) {
 							_this.toast(msg);
@@ -679,6 +842,13 @@ define(function() {
 			 * @param {Function} func 回调函数
 			 */
 			upload_main: function upload_main(func) {
+				var url = "";
+				if (this.url) {
+					url = this.url + "method=upload";
+				} else {
+					url = this.url_upload;
+				}
+
 				if (!param) {
 					param = this.form;
 				}
@@ -687,7 +857,7 @@ define(function() {
 				} else {
 					this.uploading = 0;
 					var _this = this;
-					this.$upload(this.url_upload, param, function(json, status) {
+					this.$upload(url, param, function(json, status) {
 						_this.uploading = 100;
 						_this.events("upload_after", json, func);
 					});
@@ -710,8 +880,114 @@ define(function() {
 					func();
 				}
 			},
-			end_before: function end_before(param){
+			/**
+			 * 结束前
+			 * @param {Object} param 参数
+			 */
+			end_before: function end_before(param) {
 				this.reset();
+			},
+			/**
+			 * 选择项全改
+			 */
+			select_all: function select_all() {
+				var bl = !this.select_state;
+				if (!bl) {
+					this.selects = '';
+				} else {
+					var s = '';
+					var list = this.list;;
+					for (var i = 0; i < list.length; i++) {
+						s += '|' + list[i][this.field];
+					}
+					this.selects = s.replace('|', '');
+				}
+				this.select_state = bl;
+			},
+			/**
+			 * 选择项改变
+			 * @param {String|Number} id 选择的ID
+			 */
+			select_change: function select_change(id) {
+				var has = false
+				var arr = this.selects.split('|');
+				for (var i = 0; i < arr.length; i++) {
+					var o = arr[i];
+					if (id == o) {
+						arr.splice(i, 1);
+						has = true;
+						break;
+					}
+				}
+				if (!has) {
+					arr.push(id)
+				}
+				var s = arr.join('|');
+				if (s.indexOf('|') == 0) {
+					this.selects = s.substring(1)
+				} else {
+					this.selects = s;
+				}
+			},
+			/**
+			 * 选择项含有
+			 * @param {String|Number} id 选择的ID
+			 */
+			select_has: function select_has(id) {
+				var ids = '|' + this.selects + '|';
+				return ids.indexOf('|' + id + '|') !== -1;
+			},
+			/**
+			 * 页面改变时
+			 * @param {Object} e 事件
+			 */
+			page_change: function page_change(e) {
+				var n = Number(e.target.value);
+				if (isNaN(n)) {
+					n = 1;
+				}
+				if (n < 1) {
+					n = 1;
+				} else if (n > this.page_count) {
+					n = this.page_count
+				}
+				this.page_now = n;
+			},
+			/**
+			 * 获取名称
+			 * @param {Array} list 用来取名的列表
+			 * @param {String} arr_str id集合
+			 * @param {String} key 键
+			 * @param {String} span 分隔符
+			 */
+			get_name(list, arr_str, key, span) {
+				var name = "";
+				if (arr_str) {
+					if (typeof(arr_str) == 'string') {
+						if (!span) {
+							span = ',';
+						}
+						var arr = arr_str.split(span);
+						var id = Number(arr[0]);
+
+						for (var i = 0; i < list.length; i++) {
+							var o = list[i];
+							if (o[key] == id) {
+								name += '|' + o.name;
+							}
+						}
+					} else {
+						var id = arr_str;
+						for (var i = 0; i < list.length; i++) {
+							var o = list[i];
+							if (o[key] == id) {
+								name = o.name;
+								break
+							}
+						}
+					}
+				}
+				return name.replace('|', '');
 			}
 		},
 		computed: {
@@ -729,7 +1005,7 @@ define(function() {
 		mounted: function mounted() {
 			this.showing = 100;
 		},
-		beforeDestroy: function beforeDestroy(){
+		beforeDestroy: function beforeDestroy() {
 			this.events('end_before');
 		}
 	};

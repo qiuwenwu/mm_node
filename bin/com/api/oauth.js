@@ -83,13 +83,15 @@ Oauth.prototype.check = async function(ctx) {
 		var token = ctx.headers[$.dict.token];
 		if (token) {
 			var u = await $.cache.get($.dict.session_id + '_' + token);
-			var type = typeof(u);
-			if (type === "string") {
-				var o = u.toJson();
-				user = o.user;
-			} else if (type === "object") {
-				if (Object.keys(u).length > 0) {
-					user = u.user;
+			if(u){
+				var type = typeof(u);
+				if (type === "string") {
+					var o = u.toJson();
+					user = o.user;
+				} else if (type === "object") {
+					if (Object.keys(u).length > 0) {
+						user = u.user;
+					}
 				}
 			}
 		}
@@ -135,7 +137,10 @@ Oauth.prototype.check = async function(ctx) {
 			}
 		}
 	} else {
-		return error;
+		return {
+			code: 60000,
+			message: "账户未登录!"
+		};
 	}
 
 	return null;

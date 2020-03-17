@@ -7,10 +7,14 @@
 		"title": "超级美眉",
 		// 缓存方式, 选填 redis, cache, memory
 		"cache": "redis",
+		// 数据存储方式
+		"db": "mysql",
 		// 是否启用定时任务服务
 		"task": true,
 		// 是否启用数据库管理器
-		"db_admin": true
+		"db_admin": true,
+		// 是否开启GRPC服务
+		"grpc": true
 	},
 	/* http服务配置 */
 	"server": {
@@ -27,6 +31,14 @@
 		// 频道数, 1表示开启1个端口, 0表示根据CPU数决定
 		"channel": 1
 	},
+	/* GRPC通信设置 */
+	"grpc": {
+		// 服务文件
+		"file": "mm.proto",
+		// 端口号
+		"port": 10000
+	},
+	/* 外缓存配置 */
 	"redis": {
 		// 服务器地址
 		"host": "127.0.0.1",
@@ -37,8 +49,9 @@
 		// 选用的数据库0-9
 		"database": 0,
 		// 键前缀
-		"prefix": "mm"
+		"prefix": "mm_"
 	},
+	/* 数据库存储配置 */
 	"mysql": {
 		// 服务器地址
 		"host": "127.0.0.1",
@@ -46,18 +59,6 @@
 		"port": 3306,
 		// 用户名
 		"user": "root",
-		// 密码
-		"password": "asd123",
-		// 数据库名称
-		"database": "mm"
-	},
-	"mongodb": {
-		// 服务器地址
-		"host": "127.0.0.1",
-		// 端口号
-		"port": 27017,
-		// 用户名
-		"user": "admin",
 		// 密码
 		"password": "asd123",
 		// 数据库名称

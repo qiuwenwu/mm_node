@@ -57,6 +57,8 @@
 	transform: translate3d(-50%, 0, 0) scale(1.185);
 	transition-property: transform, opacity;
 	z-index: 11000;
+	max-width: 25rem;
+	
 }
 
 .modal .modal-in {

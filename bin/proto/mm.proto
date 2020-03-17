@@ -1,0 +1,41 @@
+// 采用的是类似JSON-RPC2.0的通讯方式
+// web端主要传入method和uin，query和body直接将前端传的代入即可
+
+syntax = "proto3";
+
+// 包名称也是数据表前缀
+package MM;
+
+// 定义服务接口
+service Greeter {
+	// 定义服务函数
+	rpc CMD (JsonReq) returns (JsonRes) {}
+}
+
+// 请求参数格式
+message JsonReq {
+	// 请求方法，类名.函数名，通常类名为表名，函数名为增删改查等操作名，常见的函数名有：add增、del删、改set、get查、update更新、save备份、load加载备份、upload上传、download下载
+	string method = 1;
+	// 查询、删除、修改附加参数，修改时如果带有query，则修改所有查询条件符合query的, 建议传json格式字符串
+	string query = 2;
+	// 提交正文 可以传xml、json、form-data格式字符串，建议json格式
+	string body = 3;
+}
+
+// 错误模型
+message Error {
+	// 错误码，常见0无错误、500服务端业务错误
+	int32 code = 1;
+	// 错误提示
+	string message = 2;
+}
+
+// 响应
+message JsonRes {
+	// 对应请求的消息ID，用于识别对那个请求做响应
+	string id = 1;
+	// 错误模型，如果存在错误，则返回错误模型
+	Error error = 2;
+	// 接口执行结果，通常返回json格式字符串，直接返回给前端即可
+	string result = 3;
+}

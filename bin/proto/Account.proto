@@ -1,0 +1,527 @@
+syntax = "proto3";
+
+package Medipedia;
+
+enum THIRD_PARTY
+{
+    THIRD_PARTY_UNKNOWN = 0;
+    THIRD_PARTY_WEIXIN = 1;             // 微信
+    THIRD_PARTY_QQ = 2;                 // QQ
+    THIRD_PARTY_PHONE = 3;              // 手机号
+    THIRD_PARTY_QB_GUID = 4;            // QQ浏览器guid注册
+}
+
+message LoginWithWeixinReq
+{
+    string code = 1;                    // 微信返回的code
+    string device = 2;                  // 设备名
+    string deviceId = 3;                // 设备ID
+    string headers = 4;                 // http headers
+    string guid = 5;                    // QQ浏览器guid
+    string appid = 6;                   // 公众号或者小程序appid
+    int32 bindGuid = 7;                 // 1: 绑定guid; 0: 不绑定guid
+    bool is_async = 10;                 // 是否异步登录
+    string async_token = 11;            // 已返回的token
+}
+message LoginWithWeixinResp
+{
+    string token = 1;                   // 登录成功后的token
+    uint32 expires_in = 2;              // token有效时间，单位秒
+    int64 uin = 3;                      // 登录后的用户ID
+}
+
+message LoginWithQQReq
+{
+    string code = 1;                    // QQ返回的code
+    string appid = 2;                   // QQ开放平台appid
+    string redirect_uri = 3;            // 获取code时填写的redirect_uri，需要URLEncode
+    int32 get_unionid = 4;              // 是否获取unionid(用于关联不同appid下的用户)，需要在开放平台申请权限。
+    string device = 5;                  // 设备名
+    string deviceId = 6;                // 设备ID
+    string headers = 7;                 // http headers
+    string guid = 8;                    // QQ浏览器guid
+    int32 bindGuid = 9;                 // 1: 绑定guid; 0: 不绑定guid
+    bool is_async = 10;                 // 是否异步登录
+    string async_token = 11;            // 已返回的token
+}
+message LoginWithQQResp
+{
+    string token = 1;                   // 登录成功后的token
+    uint32 expires_in = 2;              // token有效时间，单位秒
+    int64 uin = 3;                      // 登录后的用户ID
+}
+
+message LoginWithQQTokenReq
+{
+    string access_token = 1;            // QQ返回的AccessToken
+    string appid = 2;                   // QQ开放平台appid
+    int32 get_unionid = 3;              // 是否获取unionid(用于关联不同appid下的用户)，需要在开放平台申请权限。
+    string device = 4;                  // 设备名
+    string deviceId = 5;                // 设备ID
+    int32 expires_in = 6;               // access token过期时间
+}
+message LoginWithQQTokenResp
+{
+    string token = 1;                   // 登录成功后的token
+    uint32 expires_in = 2;              // token有效时间，单位秒
+    int64 uin = 3;                      // 登录后的用户ID
+}
+
+message LoginReq
+{
+    string phone = 1;                   // 手机号
+    string password = 2;                // 短信验证码或用户设置的密码
+    string device = 3;                  // 设备名
+    string deviceId = 4;                // 设备ID
+    string headers = 5;                 // http headers
+    string guid = 6;                    // QQ浏览器guid
+    int32 bindGuid = 7;                 // 1: 绑定guid; 0: 不绑定guid
+    int32 useGuid = 8;                  // 只在header中的isTourist为1时有效，表示优先使用guid登录，无guid则使用游客登录
+    bool is_async = 9;                  // 是否异步登录
+    string async_token = 10;            // 已返回的token
+}
+message LoginResp
+{
+    string token = 1;                   // 登录成功后的token
+    int32 expires_in = 2;               // token有效时间，单位秒
+    string guid = 3;                    // 如果使用guid登录，则返回对应的guid
+    int64 uin = 4;                      // 登录后的用户ID
+}
+
+message LoginWithGuidReq
+{
+    string guid = 1;                    // QQ浏览器guid
+    string device = 2;                  // 设备名
+    string deviceId = 3;                // 设备ID
+    string headers = 4;                 // http headers
+    bool is_async = 5;                  // 是否异步登录
+    string async_token = 6;             // 已返回的token
+}
+message LoginWithGuidResp
+{
+    string token = 1;                   // 登录成功后的token
+    uint32 expires_in = 2;              // token有效时间，单位秒
+    int64 uin = 3;                      // 登录后的用户ID
+}
+
+message LoginWithOpenidReq
+{
+    string openid = 1;                  // 微信openid
+    string appid = 2;                   // 微信appid
+    bool is_async = 3;                  // 是否异步登录
+    string async_token = 4;             // 已返回的token
+}
+message LoginWithOpenidResp
+{
+    string token = 1;                   // 登录成功后的token
+    uint32 expires_in = 2;              // token有效时间，单位秒
+    int64 uin = 3;                      // 登录后的用户ID
+}
+
+message LoginWithAppidReq
+{
+    string appid = 1;                   // appid
+    string app_secret = 2;              // app secret
+}
+message LoginWithAppidResp
+{
+    string token = 1;                   // 登录成功后的token
+    uint32 expires_in = 2;              // token有效时间，单位秒
+}
+
+message LogoutReq
+{
+    string token = 1;                   // token
+}
+message LogoutResp
+{
+}
+
+message SignUpReq
+{
+    string phone = 1;                   // 手机号
+    string code = 2;                    // 短信验证码
+    string password = 3;                // 登录密码(最少8位)
+}
+message SignUpResp
+{
+    string token = 1;                   // 注册成功后的token
+}
+
+message RegisterPartnerReq
+{
+    string name = 1;                    // 合作方名称
+    string desc = 2;                    // 描述信息
+    string creator = 3;                 // 创建者
+    repeated string owners = 4;         // 负责人
+    int32 simpleSecret = 5;             // 1: 生成短secret
+}
+message RegisterPartnerResp
+{
+    string appid = 1;                   // appid
+    string app_secret = 2;              // app secret
+}
+
+message GetPartnersReq
+{
+    int32 offset = 1;                   // 列表起始位置
+    int32 count = 2;                    // 拉取的列表长度
+}
+message PartnerInfo
+{
+    string name = 1;                    // 合作方名称
+    string creator = 2;                 // 创建者
+    repeated string owners = 3;         // 负责人
+    string appid = 4;                   // appid
+    string app_secret = 5;              // app secret
+    string desc = 6;                    // 简介
+    string adtag = 7;                   // 来源
+}
+message GetPartnersResp
+{
+    repeated PartnerInfo partners = 1;  // 合作方信息
+    int32 total = 2;                    // 合作方总数
+}
+
+message GetPartnerInfoReq
+{
+    string appid = 1;                   // appid
+}
+message GetPartnerInfoResp
+{
+    PartnerInfo info = 1;               // 合作方信息
+}
+
+message BindPhoneReq
+{
+    string phone = 1;                   // 绑定的手机号
+    string code = 2;                    // 短信验证码
+}
+message BindPhoneResp
+{
+}
+
+message BindWeiXinReq
+{
+    string code = 1;                    // 微信code
+    string appid = 2;                   // 公众号appid
+}
+message BindWeiXinResp
+{
+}
+
+message BindQQOpenReq
+{
+    string code = 1;                    // QQ返回的code
+    string appid = 2;                   // QQ开放平台appid
+    string redirect_uri = 3;            // 获取code时填写的redirect_uri，需要URLEncode
+    int32 get_unionid = 4;              // 是否获取unionid(用于关联不同appid下的用户)，需要在开放平台申请权限。
+}
+message BindQQOpenResp
+{
+}
+
+message BindQQOpenTokenReq
+{
+    string access_token = 1;            // QQ返回的AccessToken
+    string appid = 2;                   // QQ开放平台appid
+    int32 get_unionid = 3;              // 是否获取unionid(用于关联不同appid下的用户)，需要在开放平台申请权限。
+}
+message BindQQOpenTokenResp
+{
+}
+
+message UnBindReq
+{
+    THIRD_PARTY thirdParty = 1;         // 第三方平台
+}
+message UnBindResp
+{
+}
+
+message SendSmsCodeReq
+{
+    string phone = 1;                   // 接收短信验证码的手机号
+}
+message SendSmsCodeResp
+{
+}
+
+message CheckSmsCodeReq
+{
+    string phone = 1;                   // 接收短信验证码的手机号
+    string code = 2;                    // 短信验证码
+}
+message CheckSmsCodeResp
+{
+}
+
+message CheckTokenReq
+{
+    string token = 1;                   // 需要校验的token
+}
+message CheckTokenResp
+{
+    int32 expires_in = 1;               // token有效时间，单位秒
+    int64 uin = 2;
+}
+
+message CheckWxaUserInfoReq
+{
+    string token = 1;                   // 登录的token
+    int32 success = 2;                  // 小程序用户是否授权获取用户信息
+    string rawData = 3;                 // 小程序返回参数
+    string signature = 4;               // 小程序返回参数
+    string encryptedData = 5;           // 小程序返回参数
+    string iv = 6;                      // 小程序返回参数
+    string appid = 7;                   // 小程序appid
+}
+message CheckWxaUserInfoResp
+{
+}
+
+message SignForJsSDKReq
+{
+    string url = 1;                     // 需要签名的url
+    string appid = 2;                   // 公众号appid
+}
+message SignForJsSDKResp
+{
+    int64 timestamp = 1;
+    string noncestr = 2;
+    string signature = 3;
+    string appid = 4;
+}
+
+message GetUserInfoReq
+{
+}
+message ThirdPartyUserInfo
+{
+    THIRD_PARTY thirdParty = 1;         // 第三方平台
+    string nickname = 2;                // 昵称
+    string avatarUrl = 3;               // 头像url
+    int32 gender = 4;                   // 性别 1: 男性; 2: 女性
+    string city = 5;                    // 城市
+    string province = 6;                // 省份
+    string country = 7;                 // 国家
+}
+message GetUserInfoResp
+{
+    int64 uin = 1;                      // 用户UIN
+    string nickname = 2;                // 昵称
+    string avatarUrl = 3;               // 头像url
+    int32 gender = 4;                   // 性别 1: 男性; 2: 女性
+    string city = 5;                    // 城市
+    string province = 6;                // 省份
+    string country = 7;                 // 国家
+    string phone = 8;                   // 脱敏后的手机号
+    int32 bindWx = 9;                   // 0: 未绑定微信号; 1: 已绑定微信号. (也可以通过vUserInfo来判断)
+    int32 auth = 10;                    // 0: 用户未授权获取用户信息; 1: 用户已授权获取用户信息
+    repeated ThirdPartyUserInfo vUserInfo = 11;     // 绑定的第三方账号信息
+}
+
+message GetAccessTokenReq
+{
+    string appid = 1;                   // appid
+    string app_secret = 2;              // app_secret
+    int32 refresh = 3;                  // 0: 优先使用缓存中的数据; 1: 强制获取新的token
+}
+message GetAccessTokenResp
+{
+    string access_token = 1;            // access_token
+}
+
+message GetUserAccessTokenReq
+{
+    string appid = 1;                   // appid
+}
+message GetUserAccessTokenResp
+{
+    string access_token = 1;            // access_token
+    string scope = 2;                   // 微信登录时的scope
+}
+
+enum SENSITIVE_DATA_TYPE
+{
+    SENSITIVE_UNKNOWN = 0;
+    SENSITIVE_PHONE = 1;                // 手机号
+}
+
+message GetWxUserInfoReq
+{
+    string appid = 1;                   // 公众号appid
+}
+message GetWxUserInfoResp
+{
+    uint32 subscribe = 1;               // 用户是否订阅该公众号标识，值为0时，代表此用户没有关注该公众号，拉取不到其余信息。
+    string openid = 2;                  // 用户的标识，对当前公众号唯一
+    string nickname = 3;                // 用户的昵称
+    uint32 sex = 4;                     // 用户的性别，值为1时是男性，值为2时是女性，值为0时是未知
+    string city = 5;                    // 用户所在城市
+    string province = 6;                // 用户所在省份
+    string country = 7;                 // 用户所在国家
+    string headimgurl = 8;              // 用户头像
+    string unionid = 9;                 // 只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。
+    int64 subscribe_time = 10;          // 用户关注时间，为时间戳。
+}
+
+message GetTimIdentifierReq
+{
+    string phone = 1;
+}
+message GetTimIdentifierResp
+{
+    string identifier = 1;
+}
+
+message GetUserOpenidReq
+{
+    string appid = 1;
+}
+message GetUserOpenidResp
+{
+    string openid = 1;
+    THIRD_PARTY thirdParty = 2;
+}
+
+message GetWxTicketReq
+{
+    string appid = 1;                   // appid
+    string type = 2;                    // ticket类型。JS-SDK:jsapi; 卡券: wx_card
+}
+message GetWxTicketResp
+{
+    string ticket = 1;                  // ticket
+}
+
+message EncryptReq
+{
+    string data = 1;                    // 待加密数据
+    string salt = 2;
+}
+message EncryptResp
+{
+    string encrypt = 1;                 // 加密后数据
+}
+
+message DecryptReq
+{
+    string encrypt = 1;                 // 加密后数据
+    string salt = 2;
+}
+message DecryptResp
+{
+    string decrypt = 1;                 // 解密后数据
+}
+
+message GetJsApiTicketReq
+{
+    string appid = 1;
+    string access_token = 2;
+}
+message GetJsApiTicketResp
+{
+    string ticket = 1;
+}
+
+message BindGuidReq
+{
+    string guid = 1;
+}
+message BindGuidResp
+{
+}
+
+message Openid2UnionidReq
+{
+    string openid = 1;
+}
+message Openid2UnionidResp
+{
+    string unionid = 1;
+}
+
+service Account
+{
+    // 使用微信登录
+    rpc LoginWithWeixin (LoginWithWeixinReq) returns (LoginWithWeixinResp);
+    // 使用微信登录(异步)
+    rpc LoginWithWeixinAsync (LoginWithWeixinReq) returns (LoginWithWeixinResp);
+    // 使用QQ开放平台登录(网页版)
+    rpc LoginWithQQ (LoginWithQQReq) returns (LoginWithQQResp);
+    // 使用QQ开放平台登录(网页版)(异步)
+    rpc LoginWithQQAsync (LoginWithQQReq) returns (LoginWithQQResp);
+    // 使用QQ开放平台登录(APP版)
+    rpc LoginWithQQToken (LoginWithQQTokenReq) returns (LoginWithQQTokenResp);
+    // 手机号登录
+    rpc Login (LoginReq) returns (LoginResp);
+    // 登录(异步)
+    rpc LoginAsync (LoginReq) returns (LoginResp);
+    // 使用QQ浏览器GUID登录
+    rpc LoginWithGuid (LoginWithGuidReq) returns (LoginWithGuidResp);
+    // 使用QQ浏览器GUID登录(异步)
+    rpc LoginWithGuidAsync (LoginWithGuidReq) returns (LoginWithGuidResp);
+    // 使用openid登录
+    rpc LoginWithOpenid (LoginWithOpenidReq) returns (LoginWithOpenidResp);
+    // 使用openid登录(异步)
+    rpc LoginWithOpenidAsync (LoginWithOpenidReq) returns (LoginWithOpenidResp);
+    // 使用appid登录
+    rpc LoginWithAppid (LoginWithAppidReq) returns (LoginWithAppidResp);
+    // 退出登录
+    rpc Logout (LogoutReq) returns (LogoutResp);
+    // 注册
+    rpc SignUp (SignUpReq) returns (SignUpResp);
+    // 第三方合作伙伴注册
+    rpc RegisterPartner (RegisterPartnerReq) returns (RegisterPartnerResp);
+    // 获取第三方合作方列表
+    rpc GetPartners (GetPartnersReq) returns (GetPartnersResp);
+    // 获取第三方合作方信息
+    rpc GetPartnerInfo (GetPartnerInfoReq) returns (GetPartnerInfoResp);
+    // 绑定手机号
+    rpc BindPhone (BindPhoneReq) returns (BindPhoneResp);
+    // 绑定微信号
+    rpc BindWeiXin (BindWeiXinReq) returns (BindWeiXinResp);
+    // 绑定QQ号(开放平台方式，H5)
+    rpc BindQQOpen (BindQQOpenReq) returns (BindQQOpenResp);
+    // 绑定QQ号(开放平台方式，APP)
+    rpc BindQQOpenToken (BindQQOpenTokenReq) returns (BindQQOpenTokenResp);
+    // 解绑第三方账号
+    rpc UnBind (UnBindReq) returns (UnBindResp);
+    // 发送短信验证码
+    rpc SendSmsCode (SendSmsCodeReq) returns (SendSmsCodeResp);
+    // 校验短信验证码
+    rpc CheckSmsCode (CheckSmsCodeReq) returns (CheckSmsCodeResp);
+    // 校验token有效性
+    rpc CheckToken (CheckTokenReq) returns (CheckTokenResp);
+    // 校验小程序用户信息
+    rpc CheckWxaUserInfo (CheckWxaUserInfoReq) returns (CheckWxaUserInfoResp);
+    // 获取微信H5转发签名
+    rpc SignForJsSDK (SignForJsSDKReq) returns (SignForJsSDKResp);
+    // 获取用户信息
+    rpc GetUserInfo (GetUserInfoReq) returns (GetUserInfoResp);
+    // 获取微信用户信息
+    rpc GetWxUserInfo (GetWxUserInfoReq) returns (GetWxUserInfoResp);
+    // 获取微信access token
+    rpc GetAccessToken (GetAccessTokenReq) returns (GetAccessTokenResp);
+    // 获取用户access token
+    rpc GetUserAccessToken (GetUserAccessTokenReq) returns (GetUserAccessTokenResp);
+    // 获取云通信identifier
+    rpc GetTimIdentifier (GetTimIdentifierReq) returns (GetTimIdentifierResp);
+    // 获取用户openid
+    rpc GetUserOpenid (GetUserOpenidReq) returns (GetUserOpenidResp);
+    // 获取微信ticket
+    rpc GetWxTicket (GetWxTicketReq) returns (GetWxTicketResp);
+    // 获取JsApi ticket
+    rpc GetJsApiTicket (GetJsApiTicketReq) returns (GetJsApiTicketResp);
+    // 绑定guid
+    rpc BindGuid (BindGuidReq) returns (BindGuidResp);
+
+    // 微信openid转unionid
+    rpc Openid2Unionid (Openid2UnionidReq) returns (Openid2UnionidResp);
+
+    // 加密
+    rpc Encrypt (EncryptReq) returns (EncryptResp);
+    // 解密
+    rpc Decrypt (DecryptReq) returns (DecryptResp);
+}

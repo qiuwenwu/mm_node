@@ -1,4 +1,701 @@
 "use strict";
+function import_picker($) {
+    "use strict";
+    var Picker = function (params) {
+        var p = this;
+        var defaults = {
+            updateValuesOnMomentum: false,
+            updateValuesOnTouchmove: true,
+            rotateEffect: false,
+            momentumRatio: 7,
+            freeMode: false,
+            // Common settings
+            scrollToInput: true,
+            inputReadOnly: true,
+            toolbar: true,
+            toolbarCloseText: '确定',
+            toolbarTemplate: '<header class="bar bar-nav">\
+                <nav>\
+				<div class="fr">\
+				<button class="btn btn-link pull-right close-picker">确定</button>\
+                </div>\
+				<div class="fm">请选择</div>\
+				</nav>\
+                </header>',
+        };
+        params = params || {};
+        for (var def in defaults) {
+            if (typeof params[def] === 'undefined') {
+                params[def] = defaults[def];
+            }
+        }
+        p.params = params;
+        p.cols = [];
+        p.initialized = false;
+
+        // Inline flag
+        p.inline = p.params.container ? true : false;
+
+        // 3D Transforms origin bug, only on safari
+        var originBug = $.device.ios || (navigator.userAgent.toLowerCase().indexOf('safari') >= 0 && navigator.userAgent.toLowerCase().indexOf('chrome') < 0) && !$.device.android;
+
+        // Value
+        p.setValue = function (arrValues, transition) {
+            var valueIndex = 0;
+            for (var i = 0; i < p.cols.length; i++) {
+                if (p.cols[i] && !p.cols[i].divider) {
+                    p.cols[i].setValue(arrValues[valueIndex], transition);
+                    valueIndex++;
+                }
+            }
+        };
+        p.updateValue = function () {
+            var newValue = [];
+            var newDisplayValue = [];
+            for (var i = 0; i < p.cols.length; i++) {
+                if (!p.cols[i].divider) {
+                    newValue.push(p.cols[i].value);
+                    newDisplayValue.push(p.cols[i].displayValue);
+                }
+            }
+            if (newValue.indexOf(undefined) >= 0) {
+                return;
+            }
+            p.value = newValue;
+            p.displayValue = newDisplayValue;
+            if (p.params.onChange) {
+                p.params.onChange(p, p.value, p.displayValue);
+            }
+            if (p.input && p.input.length > 0) {
+                $(p.input).val(p.params.formatValue ? p.params.formatValue(p, p.value, p.displayValue) : p.value.join(' '));
+                $(p.input).trigger('change');
+            }
+        };
+
+        // Columns Handlers
+        p.initPickerCol = function (colElement, updateItems) {
+            var colContainer = $(colElement);
+            var colIndex = colContainer.index();
+            var col = p.cols[colIndex];
+            if (col.divider) return;
+            col.container = colContainer;
+            col.wrapper = col.container.find('.picker-items-col-wrapper');
+            col.items = col.wrapper.find('.picker-item');
+
+            var i, j;
+            var wrapperHeight, itemHeight, itemsHeight, minTranslate, maxTranslate;
+            col.replaceValues = function (values, displayValues) {
+                col.destroyEvents();
+                col.values = values;
+                col.displayValues = displayValues;
+                var newItemsHTML = p.columnHTML(col, true);
+                col.wrapper.html(newItemsHTML);
+                col.items = col.wrapper.find('.picker-item');
+                col.calcSize();
+                col.setValue(col.values[0], 0, true);
+                col.initEvents();
+            };
+            col.calcSize = function () {
+                if (p.params.rotateEffect) {
+                    col.container.removeClass('picker-items-col-absolute');
+                    if (!col.width) col.container.css({width:''});
+                }
+                var colWidth, colHeight;
+                colWidth = 0;
+                colHeight = col.container[0].offsetHeight;
+                wrapperHeight = col.wrapper[0].offsetHeight;
+                itemHeight = col.items[0].offsetHeight;
+                itemsHeight = itemHeight * col.items.length;
+                minTranslate = colHeight / 2 - itemsHeight + itemHeight / 2;
+                maxTranslate = colHeight / 2 - itemHeight / 2;
+                if (col.width) {
+                    colWidth = col.width;
+                    if (parseInt(colWidth, 10) === colWidth) colWidth = colWidth + 'px';
+                    col.container.css({width: colWidth});
+                }
+                if (p.params.rotateEffect) {
+                    if (!col.width) {
+                        col.items.each(function () {
+                            var item = $(this);
+                            item.css({width:'auto'});
+                            colWidth = Math.max(colWidth, item[0].offsetWidth);
+                            item.css({width:''});
+                        });
+                        col.container.css({width: (colWidth + 2) + 'px'});
+                    }
+                    col.container.addClass('picker-items-col-absolute');
+                }
+            };
+            col.calcSize();
+
+            col.wrapper.transform('translate3d(0,' + maxTranslate + 'px,0)').transition(0);
+
+
+            var activeIndex = 0;
+            var animationFrameId;
+
+            // Set Value Function
+            col.setValue = function (newValue, transition, valueCallbacks) {
+                if (typeof transition === 'undefined') transition = '';
+                var newActiveIndex = col.wrapper.find('.picker-item[data-picker-value="' + newValue + '"]').index();
+                if(typeof newActiveIndex === 'undefined' || newActiveIndex === -1) {
+                    return;
+                }
+                var newTranslate = -newActiveIndex * itemHeight + maxTranslate;
+                // Update wrapper
+                col.wrapper.transition(transition);
+                col.wrapper.transform('translate3d(0,' + (newTranslate) + 'px,0)');
+
+                // Watch items
+                if (p.params.updateValuesOnMomentum && col.activeIndex && col.activeIndex !== newActiveIndex ) {
+                    $.cancelAnimationFrame(animationFrameId);
+                    col.wrapper.transitionEnd(function(){
+                        $.cancelAnimationFrame(animationFrameId);
+                    });
+                    updateDuringScroll();
+                }
+
+                // Update items
+                col.updateItems(newActiveIndex, newTranslate, transition, valueCallbacks);
+            };
+
+            col.updateItems = function (activeIndex, translate, transition, valueCallbacks) {
+                if (typeof translate === 'undefined') {
+                    translate = $.getTranslate(col.wrapper[0], 'y');
+                }
+                if(typeof activeIndex === 'undefined') activeIndex = -Math.round((translate - maxTranslate)/itemHeight);
+                if (activeIndex < 0) activeIndex = 0;
+                if (activeIndex >= col.items.length) activeIndex = col.items.length - 1;
+                var previousActiveIndex = col.activeIndex;
+                col.activeIndex = activeIndex;
+                /*
+                   col.wrapper.find('.picker-selected, .picker-after-selected, .picker-before-selected').removeClass('picker-selected picker-after-selected picker-before-selected');
+
+                   col.items.transition(transition);
+                   var selectedItem = col.items.eq(activeIndex).addClass('picker-selected').transform('');
+                   var prevItems = selectedItem.prevAll().addClass('picker-before-selected');
+                   var nextItems = selectedItem.nextAll().addClass('picker-after-selected');
+                   */
+                //去掉 .picker-after-selected, .picker-before-selected 以提高性能
+                col.wrapper.find('.picker-selected').removeClass('picker-selected');
+                if (p.params.rotateEffect) {
+                    col.items.transition(transition);
+                }
+                var selectedItem = col.items.eq(activeIndex).addClass('picker-selected').transform('');
+
+                if (valueCallbacks || typeof valueCallbacks === 'undefined') {
+                    // Update values
+                    col.value = selectedItem.attr('data-picker-value');
+                    col.displayValue = col.displayValues ? col.displayValues[activeIndex] : col.value;
+                    // On change callback
+                    if (previousActiveIndex !== activeIndex) {
+                        if (col.onChange) {
+                            col.onChange(p, col.value, col.displayValue);
+                        }
+                        p.updateValue();
+                    }
+                }
+
+                // Set 3D rotate effect
+                if (!p.params.rotateEffect) {
+                    return;
+                }
+                var percentage = (translate - (Math.floor((translate - maxTranslate)/itemHeight) * itemHeight + maxTranslate)) / itemHeight;
+
+                col.items.each(function () {
+                    var item = $(this);
+                    var itemOffsetTop = item.index() * itemHeight;
+                    var translateOffset = maxTranslate - translate;
+                    var itemOffset = itemOffsetTop - translateOffset;
+                    var percentage = itemOffset / itemHeight;
+
+                    var itemsFit = Math.ceil(col.height / itemHeight / 2) + 1;
+
+                    var angle = (-18*percentage);
+                    if (angle > 180) angle = 180;
+                    if (angle < -180) angle = -180;
+                    // Far class
+                    if (Math.abs(percentage) > itemsFit) item.addClass('picker-item-far');
+                    else item.removeClass('picker-item-far');
+                    // Set transform
+                    item.transform('translate3d(0, ' + (-translate + maxTranslate) + 'px, ' + (originBug ? -110 : 0) + 'px) rotateX(' + angle + 'deg)');
+                });
+            };
+
+            function updateDuringScroll() {
+                animationFrameId = $.requestAnimationFrame(function () {
+                    col.updateItems(undefined, undefined, 0);
+                    updateDuringScroll();
+                });
+            }
+
+            // Update items on init
+            if (updateItems) col.updateItems(0, maxTranslate, 0);
+
+            var allowItemClick = true;
+            var isTouched, isMoved, touchStartY, touchCurrentY, touchStartTime, touchEndTime, startTranslate, returnTo, currentTranslate, prevTranslate, velocityTranslate, velocityTime;
+            function handleTouchStart (e) {
+                if (isMoved || isTouched) return;
+                e.preventDefault();
+                isTouched = true;
+                touchStartY = touchCurrentY = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
+                touchStartTime = (new Date()).getTime();
+
+                allowItemClick = true;
+                startTranslate = currentTranslate = $.getTranslate(col.wrapper[0], 'y');
+            }
+            function handleTouchMove (e) {
+                if (!isTouched) return;
+                e.preventDefault();
+                allowItemClick = false;
+                touchCurrentY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
+                if (!isMoved) {
+                    // First move
+                    $.cancelAnimationFrame(animationFrameId);
+                    isMoved = true;
+                    startTranslate = currentTranslate = $.getTranslate(col.wrapper[0], 'y');
+                    col.wrapper.transition(0);
+                }
+                e.preventDefault();
+
+                var diff = touchCurrentY - touchStartY;
+                currentTranslate = startTranslate + diff;
+                returnTo = undefined;
+
+                // Normalize translate
+                if (currentTranslate < minTranslate) {
+                    currentTranslate = minTranslate - Math.pow(minTranslate - currentTranslate, 0.8);
+                    returnTo = 'min';
+                }
+                if (currentTranslate > maxTranslate) {
+                    currentTranslate = maxTranslate + Math.pow(currentTranslate - maxTranslate, 0.8);
+                    returnTo = 'max';
+                }
+                // Transform wrapper
+                col.wrapper.transform('translate3d(0,' + currentTranslate + 'px,0)');
+
+                // Update items
+                col.updateItems(undefined, currentTranslate, 0, p.params.updateValuesOnTouchmove);
+
+                // Calc velocity
+                velocityTranslate = currentTranslate - prevTranslate || currentTranslate;
+                velocityTime = (new Date()).getTime();
+                prevTranslate = currentTranslate;
+            }
+            function handleTouchEnd (e) {
+                if (!isTouched || !isMoved) {
+                    isTouched = isMoved = false;
+                    return;
+                }
+                isTouched = isMoved = false;
+                col.wrapper.transition('');
+                if (returnTo) {
+                    if (returnTo === 'min') {
+                        col.wrapper.transform('translate3d(0,' + minTranslate + 'px,0)');
+                    }
+                    else col.wrapper.transform('translate3d(0,' + maxTranslate + 'px,0)');
+                }
+                touchEndTime = new Date().getTime();
+                var velocity, newTranslate;
+                if (touchEndTime - touchStartTime > 300) {
+                    newTranslate = currentTranslate;
+                }
+                else {
+                    velocity = Math.abs(velocityTranslate / (touchEndTime - velocityTime));
+                    newTranslate = currentTranslate + velocityTranslate * p.params.momentumRatio;
+                }
+
+                newTranslate = Math.max(Math.min(newTranslate, maxTranslate), minTranslate);
+
+                // Active Index
+                var activeIndex = -Math.floor((newTranslate - maxTranslate)/itemHeight);
+
+                // Normalize translate
+                if (!p.params.freeMode) newTranslate = -activeIndex * itemHeight + maxTranslate;
+
+                // Transform wrapper
+                col.wrapper.transform('translate3d(0,' + (parseInt(newTranslate,10)) + 'px,0)');
+
+                // Update items
+                col.updateItems(activeIndex, newTranslate, '', true);
+
+                // Watch items
+                if (p.params.updateValuesOnMomentum) {
+                    updateDuringScroll();
+                    col.wrapper.transitionEnd(function(){
+                        $.cancelAnimationFrame(animationFrameId);
+                    });
+                }
+
+                // Allow click
+                setTimeout(function () {
+                    allowItemClick = true;
+                }, 100);
+            }
+
+            function handleClick(e) {
+                if (!allowItemClick) return;
+                $.cancelAnimationFrame(animationFrameId);
+                /*jshint validthis:true */
+                var value = $(this).attr('data-picker-value');
+                col.setValue(value);
+            }
+
+            col.initEvents = function (detach) {
+                var method = detach ? 'off' : 'on';
+                col.container[method]($.touchEvents.start, handleTouchStart);
+                col.container[method]($.touchEvents.move, handleTouchMove);
+                col.container[method]($.touchEvents.end, handleTouchEnd);
+                col.items[method]('click', handleClick);
+            };
+            col.destroyEvents = function () {
+                col.initEvents(true);
+            };
+
+            col.container[0].f7DestroyPickerCol = function () {
+                col.destroyEvents();
+            };
+
+            col.initEvents();
+
+        };
+        p.destroyPickerCol = function (colContainer) {
+            colContainer = $(colContainer);
+            if ('f7DestroyPickerCol' in colContainer[0]) colContainer[0].f7DestroyPickerCol();
+        };
+        // Resize cols
+        function resizeCols() {
+            if (!p.opened) return;
+            for (var i = 0; i < p.cols.length; i++) {
+                if (!p.cols[i].divider) {
+                    p.cols[i].calcSize();
+                    p.cols[i].setValue(p.cols[i].value, 0, false);
+                }
+            }
+        }
+        $(window).on('resize', resizeCols);
+
+        // HTML Layout
+        p.columnHTML = function (col, onlyItems) {
+            var columnItemsHTML = '';
+            var columnHTML = '';
+            if (col.divider) {
+                columnHTML += '<div class="picker-items-col picker-items-col-divider ' + (col.textAlign ? 'picker-items-col-' + col.textAlign : '') + ' ' + (col.cssClass || '') + '">' + col.content + '</div>';
+            }
+            else {
+                for (var j = 0; j < col.values.length; j++) {
+                    columnItemsHTML += '<div class="picker-item" data-picker-value="' + col.values[j] + '">' + (col.displayValues ? col.displayValues[j] : col.values[j]) + '</div>';
+                }
+
+                columnHTML += '<div class="picker-items-col ' + (col.textAlign ? 'picker-items-col-' + col.textAlign : '') + ' ' + (col.cssClass || '') + '"><div class="picker-items-col-wrapper">' + columnItemsHTML + '</div></div>';
+            }
+            return onlyItems ? columnItemsHTML : columnHTML;
+        };
+        p.layout = function () {
+            var pickerHTML = '';
+            var pickerClass = '';
+            var i;
+            p.cols = [];
+            var colsHTML = '';
+            for (i = 0; i < p.params.cols.length; i++) {
+                var col = p.params.cols[i];
+                colsHTML += p.columnHTML(p.params.cols[i]);
+                p.cols.push(col);
+            }
+            pickerClass = 'picker-modal picker-columns ' + (p.params.cssClass || '') + (p.params.rotateEffect ? ' picker-3d' : '');
+            pickerHTML =
+                '<div class="' + (pickerClass) + '">' +
+                (p.params.toolbar ? p.params.toolbarTemplate.replace(/{{closeText}}/g, p.params.toolbarCloseText) : '') +
+                '<div class="picker-modal-inner picker-items">' +
+                colsHTML +
+                '<div class="picker-center-highlight"></div>' +
+                '</div>' +
+                '</div>';
+
+            p.pickerHTML = pickerHTML;
+        };
+
+        // Input Events
+        function openOnInput(e) {
+            e.preventDefault();
+            // 安卓微信webviewreadonly的input依然弹出软键盘问题修复
+            if ($.device.isWeixin && $.device.android && p.params.inputReadOnly) {
+                /*jshint validthis:true */
+                this.focus();
+                this.blur();
+            }
+            if (p.opened) return;
+            p.open();
+            if (p.params.scrollToInput) {
+                var pageContent = p.input.parents('.content');
+                if (pageContent.length === 0) return;
+
+                var paddingTop = parseInt(pageContent.css('padding-top'), 10),
+                    paddingBottom = parseInt(pageContent.css('padding-bottom'), 10),
+                    pageHeight = pageContent[0].offsetHeight - paddingTop - p.container.height(),
+                    pageScrollHeight = pageContent[0].scrollHeight - paddingTop - p.container.height(),
+                    newPaddingBottom;
+                var inputTop = p.input.offset().top - paddingTop + p.input[0].offsetHeight;
+                if (inputTop > pageHeight) {
+                    var scrollTop = pageContent.scrollTop() + inputTop - pageHeight;
+                    if (scrollTop + pageHeight > pageScrollHeight) {
+                        newPaddingBottom = scrollTop + pageHeight - pageScrollHeight + paddingBottom;
+                        if (pageHeight === pageScrollHeight) {
+                            newPaddingBottom = p.container.height();
+                        }
+                        pageContent.css({'padding-bottom': (newPaddingBottom) + 'px'});
+                    }
+                    pageContent.scrollTop(scrollTop, 300);
+                }
+            }
+        }
+        function closeOnHTMLClick(e) {
+            if (!p.opened) return;
+            if (p.input && p.input.length > 0) {
+                if (e.target !== p.input[0] && $(e.target).parents('.picker-modal').length === 0) p.close();
+            }
+            else {
+                if ($(e.target).parents('.picker-modal').length === 0) p.close();
+            }
+        }
+
+        if (p.params.input) {
+            p.input = $(p.params.input);
+            if (p.input.length > 0) {
+                if (p.params.inputReadOnly) p.input.prop('readOnly', true);
+                if (!p.inline) {
+                    p.input.on('click', openOnInput);
+                }
+            }
+        }
+
+        if (!p.inline) $('html').on('click', closeOnHTMLClick);
+
+        // Open
+        function onPickerClose() {
+            p.opened = false;
+            if (p.input && p.input.length > 0) p.input.parents('.content').css({'padding-bottom': ''});
+            if (p.params.onClose) p.params.onClose(p);
+
+            // Destroy events
+            p.container.find('.picker-items-col').each(function () {
+                p.destroyPickerCol(this);
+            });
+        }
+
+        p.opened = false;
+        p.open = function () {
+            if (!p.opened) {
+
+                // Layout
+                p.layout();
+
+                // Append
+                if (p.inline) {
+                    p.container = $(p.pickerHTML);
+                    p.container.addClass('picker-modal-inline');
+                    $(p.params.container).append(p.container);
+                    p.opened = true;
+                }
+                else {
+                    p.container = $($.pickerModal(p.pickerHTML));
+                    $(p.container)
+                        .one('opened', function() {
+                            p.opened = true;
+                        })
+                        .on('close', function () {
+                            onPickerClose();
+                        });
+                }
+
+                // Store picker instance
+                p.container[0].f7Picker = p;
+
+                // Init Events
+                p.container.find('.picker-items-col').each(function () {
+                    var updateItems = true;
+                    if ((!p.initialized && p.params.value) || (p.initialized && p.value)) updateItems = false;
+                    p.initPickerCol(this, updateItems);
+                });
+
+                // Set value
+                if (!p.initialized) {
+                    if (p.params.value) {
+                        p.setValue(p.params.value, 0);
+                    }
+                }
+                else {
+                    if (p.value) p.setValue(p.value, 0);
+                }
+            }
+
+            // Set flag
+            p.initialized = true;
+
+            if (p.params.onOpen) p.params.onOpen(p);
+        };
+
+        // Close
+        p.close = function () {
+            if (!p.opened || p.inline) return;
+            $.closeModal(p.container);
+            return;
+        };
+
+        // Destroy
+        p.destroy = function () {
+            p.close();
+            if (p.params.input && p.input.length > 0) {
+                p.input.off('click', openOnInput);
+            }
+            $('html').off('click', closeOnHTMLClick);
+            $(window).off('resize', resizeCols);
+        };
+
+        if (p.inline) {
+            p.open();
+        }
+
+        return p;
+    };
+
+    $(document).on("click", ".close-picker", function() {
+        var pickerToClose = $('.picker-modal.modal-in');
+        $.closeModal(pickerToClose);
+    });
+
+    $.fn.picker = function(params) {
+        var args = arguments;
+        return this.each(function() {
+            if(!this) return;
+            var $this = $(this);
+
+            var picker = $this.data("picker");
+            if(!picker) {
+                var p = $.extend({
+                    input: this,
+                    value: $this.val() ? $this.val().split(' ') : ''
+                }, params);
+                picker = new Picker(p);
+                $this.data("picker", picker);
+            }
+            if(typeof params === typeof "a") {
+                picker[params].apply(picker, Array.prototype.slice.call(args, 1));
+            }
+        });
+    };
+};
+
+function import_datetimePicker($) {
+	"use strict";
+
+	var today = new Date();
+
+	var getDays = function(max) {
+		var days = [];
+		for (var i = 1; i <= (max || 31); i++) {
+			days.push(i < 10 ? "0" + i : i);
+		}
+		return days;
+	};
+
+	var getDaysByMonthAndYear = function(month, year) {
+		var int_d = new Date(year, parseInt(month) + 1 - 1, 1);
+		var d = new Date(int_d - 1);
+		return getDays(d.getDate());
+	};
+
+	var formatNumber = function(n) {
+		return n < 10 ? "0" + n : n;
+	};
+
+	var initMonthes = ('01 02 03 04 05 06 07 08 09 10 11 12').split(' ');
+
+	var initYears = (function() {
+		var arr = [];
+		for (var i = 1950; i <= 2050; i++) {
+			arr.push(i);
+		}
+		return arr;
+	})();
+
+
+	var defaults = {
+
+		rotateEffect: false, //为了性能
+
+		value: [today.getFullYear(), formatNumber(today.getMonth() + 1), formatNumber(today.getDate()), today.getHours(),
+			formatNumber(today.getMinutes())
+		],
+
+		onChange: function(picker, values, displayValues) {
+			var days = getDaysByMonthAndYear(picker.cols[1].value, picker.cols[0].value);
+			var currentValue = picker.cols[2].value;
+			if (currentValue > days.length) currentValue = days.length;
+			picker.cols[2].setValue(currentValue);
+		},
+
+		formatValue: function(p, values, displayValues) {
+			return displayValues[0] + '-' + values[1] + '-' + values[2] + ' ' + values[3] + ':' + values[4];
+		},
+
+		cols: [
+			// Years
+			{
+				values: initYears
+			},
+			// Months
+			{
+				values: initMonthes
+			},
+			// Days
+			{
+				values: getDays()
+			},
+
+			// Space divider
+			{
+				divider: true,
+				content: '  '
+			},
+			// Hours
+			{
+				values: (function() {
+					var arr = [];
+					for (var i = 0; i <= 23; i++) {
+						arr.push(i);
+					}
+					return arr;
+				})(),
+			},
+			// Divider
+			{
+				divider: true,
+				content: ':'
+			},
+			// Minutes
+			{
+				values: (function() {
+					var arr = [];
+					for (var i = 0; i <= 59; i++) {
+						arr.push(i < 10 ? '0' + i : i);
+					}
+					return arr;
+				})(),
+			}
+		]
+	};
+
+	$.fn.datetimePicker = function(params) {
+		return this.each(function() {
+			if (!this) return;
+			var p = $.extend(defaults, params);
+			$(this).picker(p);
+			if (params.value) $(this).val(p.formatValue(p, p.value, p.value));
+		});
+	};
+};
+
 
 function _defineProperty(obj, key, value) {
 	if (key in obj) {
@@ -16,6 +713,8 @@ function _defineProperty(obj, key, value) {
 }
 
 define(['jquery'], function(jquery) {
+	import_picker(jquery);
+	import_datetimePicker(jquery);
 	"use strict";
 	/* 动效API */
 
@@ -1490,6 +2189,86 @@ define(['jquery'], function(jquery) {
 		template: "<form class=\"mm_form\"><slot></slot></form>",
 		props: {}
 	};
+
+	var mm_upload_img = {
+		template: "<!-- \u56FE\u7247\u4E0A\u4F20\u5668 --><div class=\"mm_upload_img\" @click=\"choose()\" v-bind:class=\"{ 'upload_add': !bg && !value }\">\t<mm_icon :src=\"value\" :style=\"'width:' + width + other\"></mm_icon>\t<slot></slot>\t<input type=\"file\" hidden @change=\"addImg\" :id=\"name\" accept=\"image/*\"/></div>",
+		props: {
+			name: {
+				type: String,
+				required: true
+			},
+			value: {
+				type: String,
+				default: ''
+			},
+			// 显示方式
+			display: {
+				type: String,
+				default: '1'
+			},
+			// 显示隐藏
+			show: {
+				type: Boolean,
+				default: false
+			},
+			func: {
+				type: Function,
+				default: function _default(obj) {}
+			},
+			width: {
+				type: String,
+				default: '5rem'
+			},
+			height: {
+				type: String,
+				default: ''
+			},
+			bg: {
+				type: String,
+				default: ''
+			}
+		},
+		data: function data() {
+			var other = this.bg ? '; background: url(' + this.bg + ') center center no-repeat; background-size:100%' : '';
+
+			if (this.height) {
+				other += ';height:' + this.height;
+			}
+
+			return {
+				other: other
+			};
+		},
+		methods: {
+			choose: function choose() {
+				this.$('.mm_upload_img #' + this.name).click();
+			},
+			addImg: function addImg(e) {
+				var _this = this;
+
+				var src,
+					url = window.URL || window.webkitURL || window.mozURL,
+					files = e.target.files;
+
+				if (files.length > 0) {
+					var file = files[0];
+					var reader = new FileReader();
+					reader.readAsDataURL(file);
+
+					reader.onload = function(e) {
+						src = this.result;
+
+						_this.$emit('input', src);
+
+						if (_this.func) {
+							_this.func(src, file);
+						}
+					};
+				}
+			}
+		}
+	};
+
 	return {
 		install: function install(Vue, options) {
 			Vue.component("mm_icon", mm_icon);
@@ -1524,6 +2303,9 @@ define(['jquery'], function(jquery) {
 			Vue.component("mm_select", mm_select);
 			Vue.component("mm_switch", mm_switch);
 			Vue.component("mm_nav", mm_nav);
+
+			Vue.component("mm_upload_img", mm_upload_img);
+
 		}
 	};
 });

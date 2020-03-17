@@ -72,9 +72,7 @@
 
 /* ===  格子  === */
 .mm_col,[class*=mm_col_] {display: block;float:left; }
-[class*=mm_col_] {
-	flex: 1;
-}
+main { overflow-y: auto; }
 main .mm_col>*,main [class*=mm_col_]>* { margin: 0.5rem; }
 main .mm_col>*~*,main [class*=mm_col_]>*~* { margin-top: 1rem;}
 
@@ -108,6 +106,15 @@ main .mm_col>*~*,main [class*=mm_col_]>*~* { margin-top: 1rem;}
 .mm_grid_12>* {width:8.333333%;flex-basis:8.333333%}
 .grid_min-1>* { min-width: 20rem; }
 .grid_min-2>* { min-width: 10rem; }
+
+/* === 基础组件 === */
+/* 按钮 */
+.mm_btn,[class*=mm_btn_] {text-align:center;border-radius:.25rem;display:inline-block;height:2rem;line-height:2rem;padding-left:1rem;padding-right:1rem;font-size:0.75rem;cursor:pointer;background:#fff;border:1px solid transparent;white-space:nowrap;}
+.mm_btn:active {background-color:#EFEFEF;}
+.mm_btn::after,[class*=mm_btn_]::after {display:none;}
+.btn-full,.mm_btn.full,[class*=mm_btn_].full {width:calc(100% - 2rem);display:block;margin-left:auto;margin-right:auto;}
+.btn-link {background:none;border:none;padding:0;line-height:1;height:initial;}
+.btn-sm {height:1.5rem;line-height:1.5rem;font-size:0.625rem;padding-left:0.75rem;padding-right:0.75rem;}
 
 /* ===  组合框  === */
 .mm_group,[class*=mm_group_] {display:flex;flex-flow:row nowrap;justify-content:space-between;align-items:stretch; padding-left: 1px; padding-right: 1px;}
@@ -183,12 +190,26 @@ ol.mm_list li:nth-child(3)::before{background-color: #ff9000;}
 .th_id {
 	width: 4rem;
 }
-
+.th_uin {
+	width: 12rem;
+}
 .th_name {
 	width: 8rem;
 }
-
-.th_phone,
+.th_type {
+	width: 10rem;
+}
+.th_address {
+	min-width: 15rem;
+}
+.th_username {
+	width: 10rem;
+}
+.th_nickname {
+	width: 10rem;
+}
+.th_title { width: 15rem; }
+.th_phone {width: 9rem;}
 .th_email,
 .th_time {
 	width: 10rem;
@@ -200,7 +221,7 @@ ol.mm_list li:nth-child(3)::before{background-color: #ff9000;}
 
 .th_score,
 .th_state {
-	width: 6rem;
+width: 5.5rem;
 }
 
 .th_handle {
@@ -226,9 +247,10 @@ ol.mm_list li:nth-child(3)::before{background-color: #ff9000;}
 	.pad_hide {
 		display: none;
 	}
-
-}
-@media only screen and (max-width: 960px) {
+	
+	[class*=mm_col_] {
+		flex: 1;
+	}
 	main .mm_col_25 {min-width: 20rem;}
 	pre::-webkit-scrollbar {
 		display: none;
@@ -255,4 +277,4 @@ ol.mm_list li:nth-child(3)::before{background-color: #ff9000;}
 	}
 }
 
-.disabled { pointer-events: none; cursor: not-allowed; }
+.disabled { pointer-events: none; cursor: not-allowed; border: initial; }

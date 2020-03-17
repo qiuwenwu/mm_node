@@ -512,7 +512,11 @@ Drive.prototype.runRPC = async function(db, method, query, body) {
 	var ret = {};
 	try {
 		if(func){
-			ret = await func(db, query, body);
+			ret = this.checkParam(query, body, method);
+			if(!ret)
+			{
+				ret = await func(db, query, body);
+			}
 		}
 		else {
 			ret = {

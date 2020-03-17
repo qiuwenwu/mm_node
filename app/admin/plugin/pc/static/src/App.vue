@@ -425,4 +425,8 @@
 		float: right;
 		margin-top: 0.25rem;
 	}
+	
+	.pager_now {
+		width: 2.5rem; text-align: center; height: 1.25rem; border-radius: .25rem; border: 1px solid rgba(125, 125, 125, 0.25);;
+	}
 </style>

@@ -29,7 +29,7 @@
 		// 端口号
 		"port": 3000,
 		// 频道数, 1表示开启1个端口, 0表示根据CPU数决定
-		"channel": 0
+		"channel": 1
 	},
 	/* GRPC通信设置 */
 	"grpc": {
@@ -41,28 +41,28 @@
 	/* 外缓存配置 */
 	"redis": {
 		// 服务器地址
-		"host": "127.0.0.1",
+		"host": "10.101.202.186",
 		// 端口号
 		"port": 6379,
 		// 密码
-		"password": "asd123",
+		"password": "zSGm^MeA4!hTNg",
 		// 选用的数据库0-9
 		"database": 0,
 		// 键前缀
-		"prefix": "mm_"
+		"prefix": "mm_test_"
 	},
 	/* 数据库存储配置 */
 	"mysql": {
 		// 服务器地址
-		"host": "127.0.0.1",
+		"host": "10.101.192.174",
 		// 端口号
 		"port": 3306,
 		// 用户名
-		"user": "root",
+		"user": "writeuser",
 		// 密码
-		"password": "asd123",
+		"password": "71bgSP+1NIeYDQ",
 		// 数据库名称
-		"database": "mm"
+		"database": "mm_test"
 	},
 	/* 域名重定向 */
 	"redirect": {

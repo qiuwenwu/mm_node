@@ -1,5 +1,5 @@
 const Process_sub = require('mm_process/sub');
-const init = require('./startup.js');
+const startup = require('./web_startup.js');
 
 var app = null;
 
@@ -26,10 +26,12 @@ $.process = new Process_sub({
 				pid: this.process.pid
 			};
 			$.runPath = runPath;
+			
 			// 在初始化的时候才加载http服务
-			app = init(config).listen(port, host);
-			// app = http.createServer(.callback())
-			return { pid: $.channel.pid, channel_id, port, host };
+			app = startup(config).listen(port, host);
+			
+			$.log.info('进程:' + process.pid + ' 初始化成功! 端口号为:' + port);
+			console.log(`  频道${channel_id} -> 端口: ${port}  进程ID: ${$.channel.pid}`);
 		}
 	}
 });
