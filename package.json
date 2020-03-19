@@ -7,7 +7,7 @@
 		"start": "node server.js",
 		"server": "node nw.js",
 		"start_group": "node cluster.js",
-		"dev": "./node_modules/.bin/cross-env NODE_ENV=dev PORT=3000 nodemon"
+		"dev": "./node_modules/.bin/cross-env NODE_ENV=development nodemon"
 	},
 	"keywords": [
 		"mm",
@@ -44,6 +44,7 @@
 		"mm_es6_to_amd": "^1.3.1",
 		"mm_html": "^1.0.2",
 		"mm_https": "^1.3.5",
+		"mm_logs": "^1.0.0",
 		"mm_machine": "^1.3.6",
 		"mm_matchs": "^1.0.5",
 		"mm_mongodb": "^1.3.1",
@@ -56,7 +57,6 @@
 		"mm_stock": "^1.0.8",
 		"mm_timer": "^1.3.1",
 		"mm_tpl": "^1.2.9",
-		"mm_xml": "^1.0.6",
-		"node-windows": "^1.0.0-beta.1"
+		"mm_xml": "^1.0.6"
 	}
 }

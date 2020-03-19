@@ -1,33 +1,15 @@
-require("colors");
+require("mm_logs");
 require('mm_tpl');
 require("mm_https");
 require('mm_crypto');
 require('mm_matchs');
 require("mm_timer");
-const log4js = require('log4js');
 
 $.html = require('mm_html');
 $.redis_admin = require("mm_redis").redis_admin;
 $.mongoDB_admin = require("mm_mongodb").mongoDB_admin;
 $.mysql_admin = require('mm_mysql').mysql_admin;
 
-
-log4js.configure({
-	appenders: {
-		cheese: {
-			type: 'file',
-			filename: 'output.log'
-		}
-	},
-	categories: {
-		default: {
-			appenders: ['cheese'],
-			level: 'error'
-		}
-	}
-});
-$.log = log4js.getLogger('cheese');
-$.log.level = 'debug';
 
 /**
  * 初始化程序
