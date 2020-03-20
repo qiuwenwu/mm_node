@@ -6,9 +6,9 @@
  */
 async function main(ctx, db) {
 	var req = ctx.request;
-	// console.log(ctx.headers);
-	// console.log(req.body);
-	// console.log(req.bodyStr);
+	// $.log.debug(ctx.headers);
+	// $.log.debug(req.body);
+	// $.log.debug(req.bodyStr);
 	// ctx.response.body = req.body;
 	ctx.response.type = 'text/xml';
 	// 获取请求参数

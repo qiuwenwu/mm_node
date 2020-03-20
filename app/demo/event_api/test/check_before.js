@@ -5,7 +5,7 @@
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	// console.log('验证前，可以统计访问次数');
+	// $.log.debug('验证前，可以统计访问次数');
 	return null;
 };
 

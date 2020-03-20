@@ -86,7 +86,7 @@
 							}, 50)
 							
 						} catch (e) {
-							console.log(e);
+							$.log.debug(e);
 						}
 					},
 					/**
@@ -95,7 +95,7 @@
 					 * @param {Object} content 通知内容
 					 */
 					noticy: function(type, content) {
-						console.log(type, content);
+						$.log.debug(type, content);
 					},
 					/**
 					 * 创建连接
@@ -149,7 +149,7 @@
 					get_method: function(){
 						// 除了向服务端发送消息，还可以调用服务端开放的函数，方法如下:
 						var func = function(res){
-							console.log('查询结果为:', res);
+							$.log.debug('查询结果为:', res);
 						};
 						// 传递给服务端的参数，一般为json格式
 						var params = null;

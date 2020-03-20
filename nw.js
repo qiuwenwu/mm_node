@@ -9,7 +9,7 @@ const {
 let Service = require('node-windows').Service;
 
 var file = join(__dirname, './server.js');
-console.log(file);
+$.log.debug(file);
 let svc = new Service({
 	// 服务名称
 	name: 'mm',
@@ -28,9 +28,9 @@ svc.on('install', () => {
 });
 
 svc.on('uninstall', function() {
-	console.log('Uninstall complete.');
-	console.log('The service exists: ', svc.exists);
+	$.log.debug('Uninstall complete.');
+	$.log.debug('The service exists: ', svc.exists);
 });
 svc.uninstall();
 svc.install();
-console.log("mm系统服务模式安装成功，可以在windows中查看到mm");
+$.log.debug("mm系统服务模式安装成功，可以在windows中查看到mm");

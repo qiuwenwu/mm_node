@@ -116,6 +116,8 @@ main .mm_col>*~*,main [class*=mm_col_]>*~* { margin-top: 1rem;}
 .btn-link {background:none;border:none;padding:0;line-height:1;height:initial;}
 .btn-sm {height:1.5rem;line-height:1.5rem;font-size:0.625rem;padding-left:0.75rem;padding-right:0.75rem;}
 
+.disabled { pointer-events: none; cursor: not-allowed; border-color: transparent !important; }
+
 /* ===  组合框  === */
 .mm_group,[class*=mm_group_] {display:flex;flex-flow:row nowrap;justify-content:space-between;align-items:stretch; padding-left: 1px; padding-right: 1px;}
 .mm_group>*,[class*=mm_group_]>* {margin-right: -1px;flex:1;float:left;border-radius:0 !important;white-space:nowrap;}
@@ -276,5 +278,3 @@ width: 5.5rem;
 		display: none;
 	}
 }
-
-.disabled { pointer-events: none; cursor: not-allowed; border: initial; }

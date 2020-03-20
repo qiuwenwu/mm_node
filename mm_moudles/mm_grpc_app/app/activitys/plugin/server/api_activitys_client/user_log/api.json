@@ -1,0 +1,13 @@
+{
+    "name": "activitys_user_log",
+    "title": "参与活动者日志",
+    "description": "用来记录参与活动的人和中奖情况",
+    "path": "/api/activitys/user_log",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true,
+	"rpc_file": "./rpc.js"
+}

@@ -5,7 +5,7 @@
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	console.log('事件进行中');
+	$.log.debug('事件进行中');
 	return null;
 };
 

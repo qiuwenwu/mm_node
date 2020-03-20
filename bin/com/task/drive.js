@@ -186,22 +186,22 @@ Drive.prototype.del = async function(name) {
 Drive.prototype.notify = async function(name, message) {
 	switch (message) {
 		case "start":
-			// console.log(name + '任务已开启');
+			// $.log.debug(name + '任务已开启');
 			break;
 		case "stop":
-			// console.log(name + '已暂停');
+			// $.log.debug(name + '已暂停');
 			break;
 		case "end":
 			// 主动中断
-			// console.log(name + '已结束');
+			// $.log.debug(name + '已结束');
 			break;
 		case "end time":
-			// console.log(name + '时间到');
+			// $.log.debug(name + '时间到');
 			// 删除任务
 			this.del(name)
 			break;
 		case "completed":
-			// console.log(name + '已完成');
+			// $.log.debug(name + '已完成');
 			// 删除任务
 			this.del(name)
 			break;
@@ -273,7 +273,7 @@ Drive.prototype.set_state = function(state) {
  * @description 定时执行函数
  */
 Drive.prototype.main = async function() {
-	console.log('定时任务, 执行中...')
+	$.log.debug('定时任务, 执行中...')
 };
 
 

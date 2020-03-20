@@ -5,7 +5,7 @@
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	// console.log('行动前，可以统计行动次数');
+	// $.log.debug('行动前，可以统计行动次数');
 	return null;
 };
 

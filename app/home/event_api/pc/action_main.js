@@ -20,7 +20,7 @@ async function main(ctx, db) {
 	db.tpl = new $.Tpl();
 	// 在这定义要访问的数据库 (分布式开发时设置不同的数据库名)
 	$.push(db, sql.db(), true);
-	// console.log('home_pc');
+	// $.log.debug('home_pc');
 	return api.run(ctx, db);
 };
 

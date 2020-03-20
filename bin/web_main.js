@@ -30,8 +30,8 @@ $.process = new Process_sub({
 			// 在初始化的时候才加载http服务
 			app = startup(config).listen(port, host);
 			
-			$.log.info('进程:' + process.pid + ' 初始化成功! 端口号为:' + port);
-			console.log(`  频道${channel_id} -> 端口: ${port}  进程ID: ${$.channel.pid}`);
+			// $.log.success('子进程', 'PID:' + process.pid + ' 端口:' + port + ' 初始化成功!');
+			console.log(`  频道${channel_id} -> 端口: ${port}  进程ID: ${$.channel.pid}`.yellow);
 		}
 	}
 });

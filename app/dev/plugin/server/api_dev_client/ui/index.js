@@ -14,7 +14,7 @@ async function load(file, domain) {
 		var f = "";
 		if (file.indexOf('./') === 0) {
 			f = file.replace('./', domain + '/')
-			console.log(f);
+			$.log.debug(f);
 		} else {
 			f = domain + file
 		}

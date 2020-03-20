@@ -5,7 +5,7 @@
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	// console.log('行动后，可以记录行动结果，下次免重新行动，还可以并发事务');
+	// $.log.debug('行动后，可以记录行动结果，下次免重新行动，还可以并发事务');
 	return null;
 };
 

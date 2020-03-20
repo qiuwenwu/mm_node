@@ -17,8 +17,8 @@ async function get_config(api_head, name, path) {
 			}
 		}
 	}
-	console.log(ph, ne);
-	console.log(config);
+	$.log.debug(ph, ne);
+	$.log.debug(config);
 	return config;
 }
 
@@ -94,7 +94,7 @@ async function main(ctx, db) {
 			break;
 		}
 	}
-	console.log();
+	$.log.debug();
 };
 
 exports.main = main;

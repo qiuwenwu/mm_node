@@ -1,0 +1,232 @@
+{
+    "name": "activitys_user_log",
+    "title": "参与活动者日志",
+    "add": {
+        "body": [
+            "activitys_id",
+            "state",
+            "time_update",
+            "time_create",
+            "uin_user",
+            "uin_prize winners",
+            "prize_item_1",
+            "prize_item_2",
+            "prize_item_3",
+            "price_item_t"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "log_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "log_id",
+            "state_min",
+            "state_max"
+        ],
+        "query_required": [],
+        "body": [
+            "activitys_id",
+            "state",
+            "state_add",
+            "time_update",
+            "time_create",
+            "uin_user",
+            "uin_prize winners",
+            "prize_item_1",
+            "prize_item_2",
+            "prize_item_3",
+            "price_item_t"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "log_id",
+            "state_min",
+            "state_max",
+            "time_update_min",
+            "time_update_max",
+            "time_create_min",
+            "time_create_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "log_id",
+            "title": "参与者记录",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "activitys_id",
+            "title": "活动ID",
+            "description": "用来识别是那个活动",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "state",
+            "title": "领取状态",
+            "description": "1未领取，2已寄出，3已签收，4已领取",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "state_min",
+            "title": "领取状态——最小值",
+            "description": "1未领取，2已寄出，3已签收，4已领取",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "state_max",
+            "title": "领取状态——最大值",
+            "description": "1未领取，2已寄出，3已签收，4已领取",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "time_update",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "uin_user",
+            "title": "用户唯一标识",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "uin_prize winners",
+            "title": "颁奖者uin",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "prize_item_1",
+            "title": "一等奖",
+            "description": "传入中奖物品id",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "prize_item_2",
+            "title": "二等奖",
+            "description": "传入中奖物品id",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "prize_item_3",
+            "title": "三等奖",
+            "description": "传入中奖物品id",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "price_item_t",
+            "title": "特等奖",
+            "description": "传入中奖物品id",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        }
+    ]
+}

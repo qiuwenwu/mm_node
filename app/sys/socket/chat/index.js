@@ -11,13 +11,13 @@ var test_msg = {
  * @param {Object} ws websocket通讯器
  */
 exports.main = async function(body, ws) {
-	console.log('收到客户端推送数据', body);
+	$.log.debug('收到客户端推送数据', body);
 	test_msg["create_time"] = new Date().stamp();
 	
 	ws.send(JSON.stringify([body.params, test_msg]));
 	// ws.req('get_method', 1, function(res){
-	// 	console.log("从客户端获取数据:", res);
-	// 	console.log("查看消息队列数:", ws.list_msg.length);
+	// 	$.log.debug("从客户端获取数据:", res);
+	// 	$.log.debug("查看消息队列数:", ws.list_msg.length);
 	// });
 };
 

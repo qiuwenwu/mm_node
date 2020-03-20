@@ -132,7 +132,7 @@ Drive.prototype.onmessage = async function(bodyStr, ctx, token) {
  * @return {Boolean} 返回true表示做状态修改, 例如关闭时为true, 会删除该客户端
  */
 Drive.prototype.noticy = async function(type, bodyStr, ctx, token) {
-	console.log('通知:', '关闭了');
+	$.log.debug('通知:', '关闭了');
 	return true;
 };
 

@@ -1,0 +1,29 @@
+{
+    "name": "activitys_item2",
+    "title": "活动奖品",
+    "table": "activitys_item",
+    "key": "activitys_item_id",
+    "orderby_default": "`activitys_item_id` desc",
+    "field_default": "`item_id`,`price`,`time_create`,`time_update`,`num`,`name`,`type`,`creator_uin`,`title`,`descrtption`,`img_cover`",
+    "query": {
+        "price_min": "`price` >= {0}",
+        "price_max": "`price` <= {0}",
+        "time_create_min": "`time_create` >= '{0}'",
+        "time_create_max": "`time_create` <= '{0}'",
+        "time_update_min": "`time_update` >= '{0}'",
+        "time_update_max": "`time_update` <= '{0}'",
+        "num_min": "`num` >= {0}",
+        "num_max": "`num` <= {0}",
+        "name": "`name` like '%{0}%'",
+        "type": "`type` like '%{0}%'",
+        "creator_uin": "`creator_uin` like '%{0}%'",
+        "title": "`title` like '%{0}%'",
+        "descrtption": "`descrtption` like '%{0}%'",
+        "img_cover": "`img_cover` like '%{0}%'"
+    },
+    "update": {
+        "price_add": "`price` = `price` + {0}",
+        "num_add": "`num` = `num` + {0}"
+    },
+    "field_hide": []
+}

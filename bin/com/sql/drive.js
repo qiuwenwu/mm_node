@@ -296,7 +296,7 @@ Drive.prototype.main = async function(params, db) {
 			
 			ret = $.ret.bl(await db.setSql(query_str, set_str));
 			
-			// console.log(db.sql);
+			// $.log.debug(db.sql);
 			if (ret.result.bl < 1) {
 				ret.result.tip = '没有改变任何数据'
 			}
@@ -331,9 +331,9 @@ Drive.prototype.main = async function(params, db) {
 			break;
 	}
 	if(cg.log){
-		console.log('SQL语句', db.sql)
+		$.log.debug('SQL语句', db.sql)
 	}
-	// console.log(db.sql);
+	// $.log.debug(db.sql);
 	// 				case "import": //导入
 	// 					if (can.Contains("export")) {
 	// 						if (paracg.TryGetValue("url", out object fileToken)) {

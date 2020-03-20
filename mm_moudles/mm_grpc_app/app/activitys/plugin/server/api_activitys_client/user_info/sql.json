@@ -1,0 +1,29 @@
+{
+    "name": "activitys_user_info",
+    "title": "参与者信息ID",
+    "table": "activitys_user_info",
+    "key": "info_id",
+    "orderby_default": "`info_id` desc",
+    "field_default": "`info_id`,`state`,`phone`,`liaison_phone`,`name`,`idcard`,`liaison_name`,`uin_user`,`uin_checker`,`location`,`address`,`idcard_img_a`,`idcard_img_b`,`note`",
+    "method": "get set add del",
+    "query": {
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "phone": "`phone` like '%{0}%'",
+        "liaison_phone": "`liaison_phone` like '%{0}%'",
+        "name": "`name` like '%{0}%'",
+        "idcard": "`idcard` like '%{0}%'",
+        "liaison_name": "`liaison_name` like '%{0}%'",
+        "uin_user": "`uin_user` like '%{0}%'",
+        "uin_checker": "`uin_checker` like '%{0}%'",
+        "location": "`location` like '%{0}%'",
+        "address": "`address` like '%{0}%'",
+        "idcard_img_a": "`idcard_img_a` like '%{0}%'",
+        "idcard_img_b": "`idcard_img_b` like '%{0}%'",
+        "note": "`note` like '%{0}%'"
+    },
+    "query_default": {},
+    "update": {
+        "state_add": "`state` = `state` + {0}"
+    }
+}

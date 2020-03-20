@@ -347,6 +347,54 @@ Drive.prototype.load = function(cg) {
 	this.loadObj(obj);
 };
 
+
+/**
+ * 获取API配置
+ * @param {String} app 应用域名
+ * @param {Object} route 路由配置
+ * @return {Object} 返回api配置
+ */
+Drive.prototype.get_api = function(app, route) {
+	var {path, component} = route;
+	var scope = app;
+	var api_route = "";
+	var p = path.replace('_table', '').replace('_list', '').replace('_view', '').replace('_form', '');
+	if(component.indexOf('/admin') !== -1){
+		scope += "_manage";
+		api_route = "/apis" + p
+	}
+	else {
+		scope += "_client";
+		api_route = "/api" + p
+	}
+	var api = $.pool.api[scope];
+	// $.log.debug('api', scope, api);
+	if(!api)
+	{
+		return null;
+	}
+	var lt = api.list;
+	var config = {
+		api: {},
+		param: {},
+		sql: {}
+	};
+	for(var i = 0; i <  lt.length; i++)
+	{
+		var o = lt[i];
+		if(o.config.path.indexOf(api_route) === 0){
+			config = {
+				api: o.config,
+				param: o.param.config,
+				sql: o.sql.config
+			};
+			break;
+		}
+	}
+	return config;
+	// $.log.debug('api', api_route, config);
+};
+
 /**
  * 创建vue文件
  * @param {String} file 文件保存路径
@@ -359,9 +407,9 @@ Drive.prototype.create_vue = function(file, route) {
 	var f = "./tpl/";
 	var plugin = "";
 	var app = "";
-	if (arr.length > 6) {
-		plugin = arr[6];
-		app = arr[4];
+	if (arr.length > 5) {
+		plugin = arr[5];
+		app = arr[3];
 		f += plugin + '/';
 	} else if (file.indexOf('mobile' + l) !== -1) {
 		f += "mobile/";
@@ -389,16 +437,19 @@ Drive.prototype.create_vue = function(file, route) {
 	}
 	f = f.fullname(__dirname);
 	var model = {
-		config: this.config,
-		plugin,
 		name: app + '_' + name,
+		app,
+		plugin,
 		group: arr[arr.length - 2],
-		route
+		nav_config: this.config,
+		route,
+		config: this.get_api(app, route)
 	};
-	// console.log(file, route);
-	console.log('更新vue文件：', model.name);
+	// $.log.debug(file, route);
+	$.log.debug('更新vue文件：', model.name);
+	// $.log.debug('路径', f, route, model);
 	var vue = tpl.view(f, model);
-	// console.log(f, f.hasFile());
+	// $.log.debug(f, f.hasFile());
 	file.saveText(vue);
 };
 

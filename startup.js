@@ -10,6 +10,7 @@ async function startup(config){
 	
 	$.plugin_admin = require('./bin/com/plugin').plugin_admin;
 	$.task_admin = require('./bin/com/task').task_admin;
+	$.cmd_admin = require('./bin/com/cmd').cmd_admin;
 	
 	// 创建App管理器
 	$.app = $.plugin_admin('sys');

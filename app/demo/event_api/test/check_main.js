@@ -5,7 +5,7 @@
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	// console.log('验证，可以验证是否有权限调用');
+	// $.log.debug('验证，可以验证是否有权限调用');
 	// return $.ret.error(30000, "身份验证失败");
 	return null;
 };

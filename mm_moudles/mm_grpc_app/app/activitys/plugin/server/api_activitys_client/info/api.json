@@ -1,0 +1,13 @@
+{
+    "name": "activitys_info",
+    "title": "活动信息",
+    "description": "用来编辑添加活动",
+    "path": "/api/activitys/info",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true,
+	"rpc_file": "./rpc.js"
+}

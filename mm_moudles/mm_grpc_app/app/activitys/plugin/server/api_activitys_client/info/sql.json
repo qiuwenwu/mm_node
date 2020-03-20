@@ -1,0 +1,42 @@
+{
+    "name": "activitys_info",
+    "title": "活动信息",
+    "table": "activitys_info",
+    "key": "activitys_id",
+    "orderby_default": "`activitys_id` desc",
+    "field_default": "`activitys_id`,`period_num`,`num_people`,`num_winner`,`time_create`,`time_update`,`time_start`,`time_end`,`name`,`type`,`period_unit`,`uin_creator`,`title`,`descrtption`,`content`,`prize_1`,`prize_2`,`prize_3`,`price_t`",
+    "method": "get",
+    "query": {
+        "period_num_min": "`period_num` >= {0}",
+        "period_num_max": "`period_num` <= {0}",
+        "num_people_min": "`num_people` >= {0}",
+        "num_people_max": "`num_people` <= {0}",
+        "num_winner_min": "`num_winner` >= {0}",
+        "num_winner_max": "`num_winner` <= {0}",
+        "time_create_min": "`time_create` >= '{0}'",
+        "time_create_max": "`time_create` <= '{0}'",
+        "time_update_min": "`time_update` >= '{0}'",
+        "time_update_max": "`time_update` <= '{0}'",
+        "time_start_min": "`time_start` >= '{0}'",
+        "time_start_max": "`time_start` <= '{0}'",
+        "time_end_min": "`time_end` >= '{0}'",
+        "time_end_max": "`time_end` <= '{0}'",
+        "name": "`name` like '%{0}%'",
+        "type": "`type` like '%{0}%'",
+        "period_unit": "`period_unit` like '%{0}%'",
+        "uin_creator": "`uin_creator` like '%{0}%'",
+        "title": "`title` like '%{0}%'",
+        "descrtption": "`descrtption` like '%{0}%'",
+        "content": "`content` like '%{0}%'",
+        "prize_1": "`prize_1` like '%{0}%'",
+        "prize_2": "`prize_2` like '%{0}%'",
+        "prize_3": "`prize_3` like '%{0}%'",
+        "price_t": "`price_t` like '%{0}%'"
+    },
+    "query_default": {},
+    "update": {
+        "period_num_add": "`period_num` = `period_num` + {0}",
+        "num_people_add": "`num_people` = `num_people` + {0}",
+        "num_winner_add": "`num_winner` = `num_winner` + {0}"
+    }
+}

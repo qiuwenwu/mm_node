@@ -13,7 +13,7 @@ async function test() {
 		confirm_password: "123456"
 	};
 	var msg = ck.check(params, 'query');
-	console.log(msg);
+	$.log.debug(msg);
 }
 
 test();
@@ -82,14 +82,14 @@ test();
 // 	};
 // 	var ck = new Drive();
 // 	ck.loadObj(config);
-// 	// console.log(ck.config.list);
+// 	// $.log.debug(ck.config.list);
 // 	var msg = ck.check({
 // 		name: "张三",
 // 		age: 150,
 // 		birthday: '1970-01-01',
 // 		headImg: "http://img.png1"
 // 	});
-// 	console.log(msg);
+// 	$.log.debug(msg);
 // }
 // 
 // test();

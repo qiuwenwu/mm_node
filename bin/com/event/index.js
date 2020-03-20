@@ -52,7 +52,7 @@ Event.prototype.clear = function(situation) {
 		if (this[situation]) {
 			this[situation] = [];
 		} else {
-			console.log('清空失败，事态{0}不存在！'.replace('{0}', situation));
+			$.log.debug('清空失败，事态{0}不存在！'.replace('{0}', situation));
 		}
 	} else {
 		/// 验证前
@@ -146,7 +146,7 @@ Event.prototype.sort = function(situation) {
 		if (this[situation]) {
 			this.sort_sub(this[situation]);
 		} else {
-			console.log('排序失败，事态{0}不存在！'.replace('{0}', situation));
+			$.log.debug('排序失败，事态{0}不存在！'.replace('{0}', situation));
 		}
 	} else {
 		/// 验证前

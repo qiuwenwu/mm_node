@@ -5,7 +5,7 @@
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	// console.log('验证后，可以缓存验证结果，下次免重新验证');
+	// $.log.debug('验证后，可以缓存验证结果，下次免重新验证');
 	return null;
 };
 

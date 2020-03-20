@@ -1,0 +1,429 @@
+{
+    "name": "activitys_info",
+    "title": "活动信息",
+    "add": {
+        "body": [
+            "period_num",
+            "num_people",
+            "num_winner",
+            "time_create",
+            "time_update",
+            "time_start",
+            "time_end",
+            "name",
+            "type",
+            "period_unit",
+            "uin_creator",
+            "title",
+            "descrtption",
+            "content",
+            "prize_1",
+            "prize_2",
+            "prize_3",
+            "price_t"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "activitys_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "activitys_id",
+            "period_num_min",
+            "period_num_max",
+            "num_people_min",
+            "num_people_max",
+            "num_winner_min",
+            "num_winner_max",
+            "name",
+            "title",
+            "content"
+        ],
+        "query_required": [],
+        "body": [
+            "period_num",
+            "period_num_add",
+            "num_people",
+            "num_people_add",
+            "num_winner",
+            "num_winner_add",
+            "time_create",
+            "time_update",
+            "time_start",
+            "time_end",
+            "name",
+            "type",
+            "period_unit",
+            "uin_creator",
+            "title",
+            "descrtption",
+            "content",
+            "prize_1",
+            "prize_2",
+            "prize_3",
+            "price_t"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "activitys_id",
+            "period_num_min",
+            "period_num_max",
+            "num_people_min",
+            "num_people_max",
+            "num_winner_min",
+            "num_winner_max",
+            "time_create_min",
+            "time_create_max",
+            "time_update_min",
+            "time_update_max",
+            "time_start_min",
+            "time_start_max",
+            "time_end_min",
+            "time_end_max",
+            "name",
+            "title",
+            "content"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "activitys_id",
+            "title": "活动ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "period_num",
+            "title": "活动周期数",
+            "description": "即多少天或多少年为一个周期",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 999
+            }
+        },
+        {
+            "name": "period_num_min",
+            "title": "活动周期数——最小值",
+            "description": "即多少天或多少年为一个周期",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 999
+            }
+        },
+        {
+            "name": "period_num_max",
+            "title": "活动周期数——最大值",
+            "description": "即多少天或多少年为一个周期",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 999
+            }
+        },
+        {
+            "name": "num_people",
+            "title": "参与人数",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_people_min",
+            "title": "参与人数——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_people_max",
+            "title": "参与人数——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_winner",
+            "title": "中奖人数",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_winner_min",
+            "title": "中奖人数——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_winner_max",
+            "title": "中奖人数——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "time_create",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_start",
+            "title": "开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_start_min",
+            "title": "开始时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_start_max",
+            "title": "开始时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_end",
+            "title": "结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_end_min",
+            "title": "结束时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_end_max",
+            "title": "结束时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "name",
+            "title": "活动名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "type",
+            "title": "活动类型",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "period_unit",
+            "title": "活动周期单位",
+            "description": "year年、month月、day日、week星期",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "uin_creator",
+            "title": "创建者uin",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "title",
+            "title": "活动标题",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "descrtption",
+            "title": "活动描述",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "content",
+            "title": "活动详情",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "prize_1",
+            "title": "一等奖",
+            "description": "数组中前者为奖品item_id，后者为中奖概率",
+            "type": "string",
+            "dataType": "text",
+            "string": {
+                "min": 0
+            }
+        },
+        {
+            "name": "prize_2",
+            "title": "二等奖",
+            "description": "数组中前者为奖品item_id，后者为中奖概率",
+            "type": "string",
+            "dataType": "text",
+            "string": {
+                "min": 0
+            }
+        },
+        {
+            "name": "prize_3",
+            "title": "三等奖",
+            "description": "数组中前者为奖品item_id，后者为中奖概率",
+            "type": "string",
+            "dataType": "text",
+            "string": {
+                "min": 0
+            }
+        },
+        {
+            "name": "price_t",
+            "title": "特等奖",
+            "description": "数组中前者为奖品item_id，后者为中奖概率",
+            "type": "string",
+            "dataType": "text",
+            "string": {
+                "min": 0
+            }
+        }
+    ]
+}

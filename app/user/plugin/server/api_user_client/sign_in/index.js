@@ -21,7 +21,7 @@ async function main(ctx, db) {
 	var list = [];
 	// 获取登录方式
 	var method = params["method"];
-	// console.log('登录方式', method);
+	// $.log.debug('登录方式', method);
 	if (!method) {
 		// 如果登录方式默认，则用常规登录方式
 		db.table = "user_account";
@@ -134,7 +134,7 @@ async function main(ctx, db) {
 				user: user,
 				ip: ip
 			});
-			// console.log('入场', body);
+			// $.log.debug('入场', body);
 			return body
 		}
 	}

@@ -1,0 +1,7 @@
+# 父镜像
+FROM csighub.tencentyun.com/medipedia/medi-js:1.0
+# 安装服务
+ADD activitys_server.tar.gz /usr/local/services/activitys_server
+# 安装启动脚本
+COPY ./activitys_server.ini  /etc/supervisord.d/
+COPY ./start.sh  /etc/kickStart.d/

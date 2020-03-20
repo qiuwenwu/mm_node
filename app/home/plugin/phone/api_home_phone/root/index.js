@@ -19,7 +19,7 @@ async function main(ctx, db) {
 			description: "",
 			content: ""
 		};
-		console.log("路径" + path);
+		$.log.debug("路径" + path);
 		return db.tpl.view(file, model);
 	}
 	return null;

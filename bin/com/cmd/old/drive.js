@@ -172,7 +172,7 @@ Drive.prototype.how = async function(param, db) {
 						db.msg_log.keyword = content.trim();
 					}
 				} catch (e) {
-					console.log('正则表达式错误:' + str);
+					$.log.debug('正则表达式错误:' + str);
 				}
 			} else if (!content.has(str)) {
 				obj = o;
@@ -238,7 +238,7 @@ Drive.prototype.supply = async function(content, db) {
 							ct = ct.replace(value, '');
 						}
 					} catch (e) {
-						console.log('正则表达式错误:' + str);
+						$.log.debug('正则表达式错误:' + str);
 					}
 				} else {
 					form[k] = "";
@@ -374,7 +374,7 @@ Drive.prototype.filter = async function(content, db) {
 				var rx = eval(str);
 				content = content.replace(rx, '');
 			} catch (e) {
-				console.log('正则表达式错误:' + str);
+				$.log.debug('正则表达式错误:' + str);
 			}
 		} else {
 			content = content.replace(str, '');
@@ -406,7 +406,7 @@ Drive.prototype.extract = async function(content, db) {
 					content = ct;
 				}
 			} catch (e) {
-				console.log('正则表达式错误:' + str);
+				$.log.debug('正则表达式错误:' + str);
 			}
 		} else if (str.startWith('*')) {
 			content = content.left(str.replace('*', ''), true)

@@ -4,7 +4,7 @@
  * @param {Object} ws websocket通讯器
  */
 exports.main = async function(body, ws) {
-	console.log('收到客户端推送数据', body);
+	$.log.debug('收到客户端推送数据', body);
 };
 
 /**
