@@ -1,0 +1,255 @@
+{
+    "name": "activity_item2",
+    "title": "",
+    "add": {
+        "body": [
+            "price",
+            "time_create",
+            "time_update",
+            "num",
+            "type",
+            "creator_uin",
+            "title",
+            "descrtption",
+            "img_cover"
+        ],
+        "body_required": [
+            "name"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "item_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "item_id",
+            "price_min",
+            "price_max",
+            "num_min",
+            "num_max",
+            "name",
+            "title"
+        ],
+        "query_required": [],
+        "body": [
+            "price",
+            "price_add",
+            "time_create",
+            "time_update",
+            "num",
+            "num_add",
+            "name",
+            "type",
+            "creator_uin",
+            "title",
+            "descrtption",
+            "img_cover"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "item_id",
+            "price_min",
+            "price_max",
+            "time_create_min",
+            "time_create_max",
+            "time_update_min",
+            "time_update_max",
+            "num_min",
+            "num_max",
+            "name",
+            "title"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "item_id",
+            "title": "物品ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "price",
+            "title": "物品价值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "price_min",
+            "title": "物品价值——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "price_max",
+            "title": "物品价值——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "time_create",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_create_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "time_update_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "num",
+            "title": "物品剩余数量",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_min",
+            "title": "物品剩余数量——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_max",
+            "title": "物品剩余数量——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "name",
+            "title": "物品名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "type",
+            "title": "物品类型",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "creator_uin",
+            "title": "创建者uin",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "title",
+            "title": "物品标题",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "descrtption",
+            "title": "物品描述",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "img_cover",
+            "title": "封面图",
+            "description": "传base64",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        }
+    ]
+}

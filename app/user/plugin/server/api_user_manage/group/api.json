@@ -1,7 +1,7 @@
 {
     "name": "user_group2",
-    "title": "用户组",
-    "description": "用于用户前端身份和鉴权",
+    "title": "",
+    "description": "",
     "path": "/apis/user/group",
     "method": "ALL",
     "cache": 0,

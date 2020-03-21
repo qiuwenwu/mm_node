@@ -21,20 +21,8 @@ class Drive extends Item {
 		super(dir, __dirname);
 		this.default_file = "./db.json";
 
-		// 是否设置字符串为可查询
 		this.query_string = ["name", "title", "keywords", "tag", "description", "content"];
-
-		// 是否设置数值类型为可查询
-		this.query_number = ["state", "uin"];
-
-		// 是否设置数值类型为关键词可查
-		this.query_keyword = ["name", "title", "keywords", "tag", "description"];
-
-		// 是否设置以下字段为get查列表SQL时不可见
-		this.get_not = ['password', 'salt', 'content'];
-
-		// 是否设置以下字段为getObj查对象SQL时不可见
-		this.getObj_not = ['password', 'salt', 'display'];
+		this.query_number = ["state"];
 
 		/**
 		 * 配置参数
@@ -45,7 +33,7 @@ class Drive extends Item {
 			// 描述
 			"description": "",
 			// 名称
-			"name": "default",
+			"name": "",
 			// 表名
 			"table": "",
 			// 主键，用于实体模型
@@ -232,20 +220,6 @@ Drive.prototype.update_config = async function(db, cover) {
 	db.table = cg.table + "";
 	var list = [];
 
-	var sql = "SELECT TABLE_NAME, TABLE_COMMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" + db.database +
-		"' && TABLE_NAME = '" + cg.table + "';";
-
-	var lt = await db.run(sql);
-	if (lt && lt.length > 0) {
-		var commit = lt[0].TABLE_COMMENT;
-		var arr = commit.replace('：', ':').split(':');
-		cg.title = arr[0];
-		if (arr.length > 1) {
-			cg.description = arr[1];
-		}
-		// console.log(commit);
-	}
-
 	// 获取所有字段
 	var fields = await db.fields();
 	for (var i = 0; i < fields.length; i++) {
@@ -276,17 +250,13 @@ Drive.prototype.update_db = async function(db) {
 		for (var i = 0; i < len; i++) {
 			var o = list[i];
 			if (k === o.name) {
-				await db.addTable(cg.table, o.name, o.type, o.auto, cg.title + "：" + cg.description);
+				await db.addTable(cg.table, o.name, o.type, o.auto);
 				fields.push({
 					name: o.name
 				});
 				break;
 			}
 		}
-	} else {
-		var commit = cg.title + "：" + cg.description;
-		var sql = "alter table `{0}` comment '{1}';".replace('{0}', cg.table).replace('{1}', commit);
-		db.exec(sql);
 	}
 	if (fields.length > 0) {
 		// 删除配置中没有的字段
@@ -394,10 +364,10 @@ Drive.prototype.update_db = async function(db) {
 
 			if (arr.length === 0) {
 				// 如果没有则添加
-				await db.exec("alter table `{0}` add ".replace("{0}", cg.table) + sql);
+				await db.exec("alter table `{0}` add ".replace('{0}', cg.table) + sql);
 			} else {
 				// 如果有则修改
-				await db.exec("alter table `{0}` change `{1}` ".replace("{0}", cg.table).replace('{1}', o.name) + sql);
+				await db.exec("alter table `{0}` change `{1}` ".replace('{0}', cg.table).replace('{1}', o.name) + sql);
 			}
 		}
 	} else {
@@ -489,10 +459,12 @@ Drive.prototype.update_api = async function(dir, cover) {
 	var app = arr[0];
 	var o = $.pool.api[app + '_client'];
 	var client = "";
-	if (o) {
+	if(o)
+	{
 		client = dir + l + "api_" + app + "_client";
-	} else {
-		client = dir + l + "api_client"
+	}
+	else {
+		client = dir +  l + "api_client"
 	}
 	if (!fs.existsSync(client)) {
 		fs.mkdirSync(client);
@@ -501,13 +473,15 @@ Drive.prototype.update_api = async function(dir, cover) {
 	if (!fs.existsSync(client)) {
 		fs.mkdirSync(client);
 	}
-
+	
 	o = $.pool.api[app + '_manage'];
 	var manage = "";
-	if (o) {
+	if(o)
+	{
 		manage = dir + l + "api_" + app + "_manage";
-	} else {
-		manage = dir + l + "api_manage"
+	}
+	else {
+		manage = dir +  l + "api_manage"
 	}
 	if (!fs.existsSync(manage)) {
 		fs.mkdirSync(manage);
@@ -546,7 +520,7 @@ Drive.prototype.new_event = async function(dir, path, scope) {
 	var f = dir + "/action_main.js";
 	if (!f.hasFile()) {
 		var code = (__dirname + '/event_script.js').loadText();
-		code = code.replaceAll("{0}", path).replaceAll('{1}', scope);
+		code = code.replaceAll('{0}', path).replaceAll('{1}', scope);
 		f.saveText(code);
 	}
 };
@@ -564,36 +538,29 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 	var query = {};
 	var update = {};
 	var field = "";
-	var field_obj = "";
 	var query_default = {};
 	var orderby = "";
 	var id = $.dict.user_id;
 	// 设置sql模板
 	var len = lt.length;
-	var keyword = "";
 	for (var i = 0; i < len; i++) {
 		var o = lt[i];
 		var p = o.type;
 		var n = o.name;
-		if (this.isCan(n, this.get_not)) {
+		if (n.indexOf('password') === -1 && n.indexOf('salt') === -1) {
 			field += ",`" + n + "`";
 		}
-		if (this.isCan(n, this.getObj_not)) {
-			field_obj += ",`" + n + "`";
-		}
+
 		if (p === 'varchar' || p === 'text') {
 			query[n] = "`" + n + "` like '%{0}%'";
-			if (this.isSet(n, this.query_keyword)) {
-				keyword += " || `" + n + "` like '%{0}%'";
-			}
 		} else if (p === 'date' || p === 'time' || p === 'datetime' || p === 'datetime' || p === 'timestamp') {
 			query[n + "_min"] = "`" + n + "` >= '{0}'";
 			query[n + "_max"] = "`" + n + "` <= '{0}'";
 		} else if (p !== 'tinyint') {
 			if (!n.endWith('id')) {
-				query[n + "_min"] = "`" + n + "` >= '{0}'";
-				query[n + "_max"] = "`" + n + "` <= '{0}'";
-				update[n + "_add"] = "`" + n + "` = `" + n + "` + '{0}'";
+				query[n + "_min"] = "`" + n + "` >= {0}";
+				query[n + "_max"] = "`" + n + "` <= {0}";
+				update[n + "_add"] = "`" + n + "` = `" + n + "` + {0}";
 
 				if (n === "sort" || n === "display" || n === "orderby") {
 					orderby = '`' + n + '` asc';
@@ -603,9 +570,6 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 			}
 		}
 	}
-	if (keyword) {
-		query["keyword"] = "(" + keyword.replace(' || ', '') + ")";
-	}
 
 	// 创建模型
 	var m = {
@@ -614,7 +578,6 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 		table: cg.table,
 		key: cg.key,
 		orderby_default: '`' + cg.key + '` desc',
-		field_obj: field_obj.replace(',', ''),
 		field_default: field.replace(',', ''),
 		method: 'get',
 		query: query,
@@ -644,7 +607,6 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 		delete m.method;
 		m.field_hide = [];
 		m.name += 2;
-		m.field_obj = m.field_obj.replace(",`time_create`", "").replace(",`time_update`", "");
 		delete m.query_default;
 		this.save_file(manage + '/sql.json', m, cover);
 	}
@@ -707,7 +669,6 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 		},
 		list: []
 	};
-	var keyword = "";
 	var len = lt.length;
 	for (var i = 0; i < len; i++) {
 		var o = lt[i];
@@ -776,7 +737,6 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			if (this.isSet(n, this.query_string)) {
 				cm.get.query.push(n);
 				cm.set.query.push(n);
-				keyword += "、" + o.title + "(" + n + ")";
 			}
 			cm.set.body.push(n);
 
@@ -843,13 +803,7 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 				cm.list.push(m);
 				if (m.dataType !== "tinyint") {
 					var ne = n;
-					if (ne.endWith('id')) {
-						cm.set.query.push(n);
-						cm.get.query.push(n);
-					} else if (this.isSet(n, this.query_number)) {
-						cm.set.query.push(n);
-						cm.get.query.push(n);
-					} else {
+					if (!ne.endWith('id')) {
 						cm.get.query.push(n + "_min");
 						cm.get.query.push(n + "_max");
 						cm.set.query.push(n + "_min");
@@ -863,6 +817,11 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 						m_max.name = n + "_max";
 						m_max.title += "——最大值";
 						cm.list.push(m_max);
+					} else {
+						if (this.isSet(n, this.query_number)) {
+							cm.set.query.push(n);
+							cm.get.query.push(n);
+						}
 					}
 				} else {
 					cm.set.query.push(n);
@@ -871,21 +830,6 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			}
 		}
 	}
-
-	if (keyword) {
-		cm.get.query.push('keyword');
-		cm.set.query.push('keyword');
-		var m_k = {
-			"name": "keyword",
-			"title": "关键词",
-			"description": "用于搜索" + keyword.replace('、', ''),
-			"key": false,
-			"type": "string",
-			"dataType": "varchar"
-		};
-		cm.list.push(m_k);
-	}
-
 	// 保存配置文件
 	if (client) {
 		this.save_file(client + '/param.json', cm, cover);
@@ -911,22 +855,6 @@ Drive.prototype.isSet = function(name, arr) {
 		}
 	}
 	return bl;
-};
-
-/**
- * 是否排除
- * @param {String} name 名称
- * @param {Array} arr 匹配的对象
- */
-Drive.prototype.isCan = function(name, arr) {
-	var bl = false;
-	for (var i = 0; i < arr.length; i++) {
-		if (name.indexOf(arr[i]) !== -1) {
-			bl = true;
-			break;
-		}
-	}
-	return !bl;
 };
 
 /**

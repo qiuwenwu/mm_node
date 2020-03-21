@@ -1,0 +1,91 @@
+{
+	"button": [{
+			"name": "生活服务",
+			"sub_button": [{
+					"type": "click",
+					"name": "买卖闲置",
+					"key": "idle_business"
+				},
+				{
+					"type": "click",
+					"name": "租房买房",
+					"key": "rent_house"
+				},
+				{
+					"type": "click",
+					"name": "求职招聘",
+					"key": "employment"
+				},
+				{
+					"type": "click",
+					"name": "快速购物",
+					"key": "shopping"
+				},
+				{
+					"type": "click",
+					"name": "便民查询",
+					"key": "cnvenience"
+				}
+			]
+		},
+		{
+			"name": "学术研究",
+			"sub_button": [{
+					"type": "click",
+					"name": "企业运维",
+					"key": "operation"
+				},
+				{
+					"type": "click",
+					"name": "投资理财",
+					"key": "manage_money"
+				},
+				{
+					"type": "click",
+					"name": "生活妙招",
+					"key": "trick_of_life"
+				},
+				{
+					"type": "click",
+					"name": "人生领悟",
+					"key": "understanding"
+				},
+				{
+					"type": "click",
+					"name": "二次开发",
+					"key": "developer"
+				}
+			]
+		},
+		{
+			"name": "我的",
+			"sub_button": [
+				{
+					"type": "click",
+					"name": "个人设置",
+					"key": "setting"
+				},
+				{
+					"type": "click",
+					"name": "财务自由",
+					"key": "financial_free"
+				},
+				{
+					"type": "click",
+					"name": "代办事项",
+					"key": "backlog"
+				},
+				{
+					"type": "click",
+					"name": "人脉圈子",
+					"key": "connections"
+				},
+				{
+					"type": "click",
+					"name": "电子名片",
+					"key": "name_card"
+				}
+			]
+		}
+	]
+}

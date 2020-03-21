@@ -1,6 +1,6 @@
 {
     "name": "sys_app2",
-    "title": "应用信息",
+    "title": "",
     "description": "",
     "path": "/apis/sys/app",
     "method": "ALL",

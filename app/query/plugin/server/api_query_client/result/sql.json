@@ -1,0 +1,24 @@
+{
+    "name": "query_result",
+    "title": "",
+    "table": "query_result",
+    "key": "result_id",
+    "orderby_default": "`result_id` desc",
+    "field_default": "`result_id`,`task_id`,`time`,`engine`,`city`,`query`,`ip`,`html`,`create_time`,`update_time`",
+    "method": "get",
+    "query": {
+        "time_min": "`time` >= '{0}'",
+        "time_max": "`time` <= '{0}'",
+        "engine": "`engine` like '%{0}%'",
+        "city": "`city` like '%{0}%'",
+        "query": "`query` like '%{0}%'",
+        "ip": "`ip` like '%{0}%'",
+        "html": "`html` like '%{0}%'",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'"
+    },
+    "query_default": {},
+    "update": {}
+}

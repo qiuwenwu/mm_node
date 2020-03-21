@@ -1,0 +1,167 @@
+{
+    "name": "admin_pc",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "bbs",
+            "path": "/bbs",
+            "redirect": "/bbs/config"
+        },
+        {
+            "name": "bbs_config",
+            "path": "/bbs/config",
+            "component": "/bbs/admin_pc/src/pages/config.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "bbs_config_form",
+            "path": "/bbs/config_form",
+            "component": "/bbs/admin_pc/src/pages/config_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "bbs_thread",
+            "path": "/bbs/thread",
+            "component": "/bbs/admin_pc/src/pages/thread.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "bbs_thread_form",
+            "path": "/bbs/thread_form",
+            "component": "/bbs/admin_pc/src/pages/thread_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "bbs_thread_channel",
+            "path": "/bbs/thread_channel",
+            "component": "/bbs/admin_pc/src/pages/thread_channel.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "bbs_thread_channel_form",
+            "path": "/bbs/thread_channel_form",
+            "component": "/bbs/admin_pc/src/pages/thread_channel_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "bbs_thread_comment",
+            "path": "/bbs/thread_comment",
+            "component": "/bbs/admin_pc/src/pages/thread_comment.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "bbs_thread_comment_form",
+            "path": "/bbs/thread_comment_form",
+            "component": "/bbs/admin_pc/src/pages/thread_comment_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "bbs_thread_type",
+            "path": "/bbs/thread_type",
+            "component": "/bbs/admin_pc/src/pages/thread_type.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "bbs_thread_type_form",
+            "path": "/bbs/thread_type_form",
+            "component": "/bbs/admin_pc/src/pages/thread_type_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "社区",
+            "name": "bbs",
+            "url": "/bbs",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "社区配置",
+                    "show": false,
+                    "name": "bbs_config",
+                    "url": "/bbs/config"
+                },
+                {
+                    "title": "社区主题",
+                    "show": false,
+                    "name": "bbs_thread",
+                    "url": "/bbs/thread"
+                },
+                {
+                    "title": "主题板块",
+                    "show": false,
+                    "name": "bbs_thread_channel",
+                    "url": "/bbs/thread_channel"
+                },
+                {
+                    "title": "主题评论",
+                    "show": false,
+                    "name": "bbs_thread_comment",
+                    "url": "/bbs/thread_comment"
+                },
+                {
+                    "title": "主题分类",
+                    "show": false,
+                    "name": "bbs_thread_type",
+                    "url": "/bbs/thread_type"
+                }
+            ]
+        }
+    ]
+}

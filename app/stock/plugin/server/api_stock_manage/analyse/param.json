@@ -1,0 +1,455 @@
+{
+    "name": "stock_analyse2",
+    "title": "",
+    "add": {
+        "body": [
+            "weight",
+            "update_time",
+            "datetime",
+            "policy_buy",
+            "policy_hold",
+            "policy_sell",
+            "presage_today",
+            "presage_recently",
+            "presage_next",
+            "code",
+            "tip",
+            "action",
+            "predict"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "analyse_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "analyse_id",
+            "weight_min",
+            "weight_max",
+            "policy_buy_min",
+            "policy_buy_max",
+            "policy_hold_min",
+            "policy_hold_max",
+            "policy_sell_min",
+            "policy_sell_max",
+            "presage_today_min",
+            "presage_today_max",
+            "presage_recently_min",
+            "presage_recently_max",
+            "presage_next_min",
+            "presage_next_max"
+        ],
+        "query_required": [],
+        "body": [
+            "weight",
+            "weight_add",
+            "update_time",
+            "datetime",
+            "policy_buy",
+            "policy_buy_add",
+            "policy_hold",
+            "policy_hold_add",
+            "policy_sell",
+            "policy_sell_add",
+            "presage_today",
+            "presage_today_add",
+            "presage_recently",
+            "presage_recently_add",
+            "presage_next",
+            "presage_next_add",
+            "code",
+            "tip",
+            "action",
+            "predict"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "analyse_id",
+            "weight_min",
+            "weight_max",
+            "update_time_min",
+            "update_time_max",
+            "datetime_min",
+            "datetime_max",
+            "policy_buy_min",
+            "policy_buy_max",
+            "policy_hold_min",
+            "policy_hold_max",
+            "policy_sell_min",
+            "policy_sell_max",
+            "presage_today_min",
+            "presage_today_max",
+            "presage_recently_min",
+            "presage_recently_max",
+            "presage_next_min",
+            "presage_next_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "analyse_id",
+            "title": "分析ID",
+            "description": "用来查询和修改结果",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "weight",
+            "title": "权重得分",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "weight_min",
+            "title": "权重得分——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "weight_max",
+            "title": "权重得分——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "datetime",
+            "title": "当日时间",
+            "description": "指股票当天",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "datetime_min",
+            "title": "当日时间——开始时间",
+            "description": "指股票当天",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "datetime_max",
+            "title": "当日时间——结束时间",
+            "description": "指股票当天",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "policy_buy",
+            "title": "决策买入",
+            "description": "分值越高，别是越应该买入",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "policy_buy_min",
+            "title": "决策买入——最小值",
+            "description": "分值越高，别是越应该买入",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "policy_buy_max",
+            "title": "决策买入——最大值",
+            "description": "分值越高，别是越应该买入",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "policy_hold",
+            "title": "决策留守",
+            "description": "分值越高，别是越应该留守",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "policy_hold_min",
+            "title": "决策留守——最小值",
+            "description": "分值越高，别是越应该留守",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "policy_hold_max",
+            "title": "决策留守——最大值",
+            "description": "分值越高，别是越应该留守",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "policy_sell",
+            "title": "决策卖出",
+            "description": "分值越高，别是越应该卖出",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "policy_sell_min",
+            "title": "决策卖出——最小值",
+            "description": "分值越高，别是越应该卖出",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "policy_sell_max",
+            "title": "决策卖出——最大值",
+            "description": "分值越高，别是越应该卖出",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 99
+            }
+        },
+        {
+            "name": "presage_today",
+            "title": "预示今日",
+            "description": "今日涨跌评分，负分看跌，正分看涨",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "presage_today_min",
+            "title": "预示今日——最小值",
+            "description": "今日涨跌评分，负分看跌，正分看涨",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "presage_today_max",
+            "title": "预示今日——最大值",
+            "description": "今日涨跌评分，负分看跌，正分看涨",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "presage_recently",
+            "title": "预示近日",
+            "description": "近3日涨跌评分，负分看跌，正分看涨",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "presage_recently_min",
+            "title": "预示近日——最小值",
+            "description": "近3日涨跌评分，负分看跌，正分看涨",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "presage_recently_max",
+            "title": "预示近日——最大值",
+            "description": "近3日涨跌评分，负分看跌，正分看涨",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "presage_next",
+            "title": "预示后市",
+            "description": "之后涨跌走势评分，负分看跌，正分看涨",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "presage_next_min",
+            "title": "预示后市——最小值",
+            "description": "之后涨跌走势评分，负分看跌，正分看涨",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "presage_next_max",
+            "title": "预示后市——最大值",
+            "description": "之后涨跌走势评分，负分看跌，正分看涨",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    -99,
+                    99
+                ]
+            }
+        },
+        {
+            "name": "code",
+            "title": "股票代码",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "tip",
+            "title": "分析提示",
+            "description": "技术分析名称",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "action",
+            "title": "行动方式",
+            "description": "买、卖、留",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "predict",
+            "title": "预言",
+            "description": "告知近日和将来走势",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}

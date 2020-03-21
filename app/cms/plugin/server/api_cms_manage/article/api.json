@@ -1,7 +1,7 @@
 {
     "name": "cms_article2",
-    "title": "文章",
-    "description": "用于内容管理系统的文章",
+    "title": "",
+    "description": "",
     "path": "/apis/cms/article",
     "method": "ALL",
     "cache": 0,

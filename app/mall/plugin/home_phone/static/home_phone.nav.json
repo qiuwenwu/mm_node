@@ -1,0 +1,329 @@
+{
+    "name": "home_phone",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "mall",
+            "path": "/mall",
+            "redirect": "/mall/product"
+        },
+        {
+            "name": "mall_product",
+            "path": "/mall/product",
+            "component": "/mall/home_phone/src/pages/product.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "mall_product_view",
+            "path": "/mall/product_view",
+            "component": "/mall/home_phone/src/pages/product_view.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "mall_product_channel",
+            "path": "/mall/product_channel",
+            "component": "/mall/home_phone/src/pages/product_channel.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "mall_product_channel_view",
+            "path": "/mall/product_channel_view",
+            "component": "/mall/home_phone/src/pages/product_channel_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "mall_product_comment",
+            "path": "/mall/product_comment",
+            "component": "/mall/home_phone/src/pages/product_comment.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "vip": 0,
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_product_comment_view",
+            "path": "/mall/product_comment_view",
+            "component": "/mall/home_phone/src/pages/product_comment_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "vip": 0,
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_product_property",
+            "path": "/mall/product_property",
+            "component": "/mall/home_phone/src/pages/product_property.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": false,
+                "vip": 0,
+                "gm": 0,
+                "mc": 0,
+                "user_admin": [],
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_product_property_view",
+            "path": "/mall/product_property_view",
+            "component": "/mall/home_phone/src/pages/product_property_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false,
+                "vip": 0,
+                "gm": 0,
+                "mc": 0,
+                "user_admin": [],
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_product_type",
+            "path": "/mall/product_type",
+            "component": "/mall/home_phone/src/pages/product_type.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": false,
+                "vip": 0,
+                "gm": 0,
+                "mc": 0,
+                "user_admin": [],
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_product_type_view",
+            "path": "/mall/product_type_view",
+            "component": "/mall/home_phone/src/pages/product_type_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false,
+                "vip": 0,
+                "gm": 0,
+                "mc": 0,
+                "user_admin": [],
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_shop",
+            "path": "/mall/shop",
+            "component": "/mall/home_phone/src/pages/shop.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "vip": 0,
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_shop_view",
+            "path": "/mall/shop_view",
+            "component": "/mall/home_phone/src/pages/shop_view.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "vip": 0,
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_shop_channel",
+            "path": "/mall/shop_channel",
+            "component": "/mall/home_phone/src/pages/shop_channel.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "mall_shop_channel_view",
+            "path": "/mall/shop_channel_view",
+            "component": "/mall/home_phone/src/pages/shop_channel_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "mall_shop_comment",
+            "path": "/mall/shop_comment",
+            "component": "/mall/home_phone/src/pages/shop_comment.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "vip": 0,
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_shop_comment_view",
+            "path": "/mall/shop_comment_view",
+            "component": "/mall/home_phone/src/pages/shop_comment_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "vip": 0,
+                "user_group": []
+            }
+        },
+        {
+            "name": "mall_shop_type",
+            "path": "/mall/shop_type",
+            "component": "/mall/home_phone/src/pages/shop_type.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "mall_shop_type_view",
+            "path": "/mall/shop_type_view",
+            "component": "/mall/home_phone/src/pages/shop_type_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "商城",
+            "name": "mall",
+            "url": "/mall",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "商品信息",
+                    "show": false,
+                    "name": "mall_product",
+                    "url": "/mall/product"
+                },
+                {
+                    "title": "商品信息",
+                    "show": false,
+                    "name": "mall_product_view",
+                    "url": "/mall/product_view"
+                },
+                {
+                    "title": "商品专区",
+                    "show": false,
+                    "name": "mall_product_channel",
+                    "url": "/mall/product_channel"
+                },
+                {
+                    "title": "商品专区",
+                    "show": false,
+                    "name": "mall_product_channel_view",
+                    "url": "/mall/product_channel_view"
+                },
+                {
+                    "title": "商品评论",
+                    "show": false,
+                    "name": "mall_product_comment",
+                    "url": "/mall/product_comment"
+                },
+                {
+                    "title": "商品评论",
+                    "show": false,
+                    "name": "mall_product_comment_view",
+                    "url": "/mall/product_comment_view"
+                },
+                {
+                    "title": "商品属性",
+                    "show": false,
+                    "name": "mall_product_property",
+                    "url": "/mall/product_property"
+                },
+                {
+                    "title": "商品属性",
+                    "show": false,
+                    "name": "mall_product_property_view",
+                    "url": "/mall/product_property_view"
+                },
+                {
+                    "title": "商品分类",
+                    "show": false,
+                    "name": "mall_product_type",
+                    "url": "/mall/product_type"
+                },
+                {
+                    "title": "商品分类",
+                    "show": false,
+                    "name": "mall_product_type_view",
+                    "url": "/mall/product_type_view"
+                },
+                {
+                    "title": "店铺信息",
+                    "show": false,
+                    "name": "mall_shop",
+                    "url": "/mall/shop"
+                },
+                {
+                    "title": "店铺信息",
+                    "show": false,
+                    "name": "mall_shop_view",
+                    "url": "/mall/shop_view"
+                },
+                {
+                    "title": "店铺专区",
+                    "show": false,
+                    "name": "mall_shop_channel",
+                    "url": "/mall/shop_channel"
+                },
+                {
+                    "title": "店铺专区",
+                    "show": false,
+                    "name": "mall_shop_channel_view",
+                    "url": "/mall/shop_channel_view"
+                },
+                {
+                    "title": "店铺评论",
+                    "show": false,
+                    "name": "mall_shop_comment",
+                    "url": "/mall/shop_comment"
+                },
+                {
+                    "title": "店铺评论",
+                    "show": false,
+                    "name": "mall_shop_comment_view",
+                    "url": "/mall/shop_comment_view"
+                },
+                {
+                    "title": "店铺分类",
+                    "show": false,
+                    "name": "mall_shop_type",
+                    "url": "/mall/shop_type"
+                },
+                {
+                    "title": "店铺分类",
+                    "show": false,
+                    "name": "mall_shop_type_view",
+                    "url": "/mall/shop_type_view"
+                }
+            ]
+        }
+    ]
+}

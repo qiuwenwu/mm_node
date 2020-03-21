@@ -1,0 +1,13 @@
+{
+	"title": "获取所有股票名称及代码",
+	"description": "每月1号上午9:40进行获取, 用于更新股票和添加新股",
+	"name": "get_stock_info",
+	"func_file": "./index.js",
+	"num": 0,
+	"interval": 1000,
+	"wait": 0,
+	"time": "01 09:40:00",
+	"date_start": "",
+	"date_end": "",
+	"sort": 100
+}

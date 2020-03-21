@@ -1,7 +1,7 @@
 {
     "name": "user_group",
-    "title": "用户组",
-    "description": "用于用户前端身份和鉴权",
+    "title": "",
+    "description": "",
     "path": "/api/user/group",
     "method": "GET",
     "cache": 0,

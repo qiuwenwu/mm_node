@@ -1,0 +1,30 @@
+{
+    "name": "activity_item",
+    "title": "",
+    "table": "activity_item",
+    "key": "item_id",
+    "orderby_default": "`item_id` desc",
+    "field_default": "`item_id`,`price`,`time_create`,`time_update`,`num`,`name`,`type`,`creator_uin`,`title`,`descrtption`,`img_cover`",
+    "method": "get",
+    "query": {
+        "price_min": "`price` >= {0}",
+        "price_max": "`price` <= {0}",
+        "time_create_min": "`time_create` >= '{0}'",
+        "time_create_max": "`time_create` <= '{0}'",
+        "time_update_min": "`time_update` >= '{0}'",
+        "time_update_max": "`time_update` <= '{0}'",
+        "num_min": "`num` >= {0}",
+        "num_max": "`num` <= {0}",
+        "name": "`name` like '%{0}%'",
+        "type": "`type` like '%{0}%'",
+        "creator_uin": "`creator_uin` like '%{0}%'",
+        "title": "`title` like '%{0}%'",
+        "descrtption": "`descrtption` like '%{0}%'",
+        "img_cover": "`img_cover` like '%{0}%'"
+    },
+    "query_default": {},
+    "update": {
+        "price_add": "`price` = `price` + {0}",
+        "num_add": "`num` = `num` + {0}"
+    }
+}

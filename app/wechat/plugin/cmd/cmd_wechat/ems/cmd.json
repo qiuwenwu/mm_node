@@ -1,0 +1,22 @@
+{
+	"name": "ems",
+	"title": "快递查询",
+	"description": "用于查询快递",
+	"sort": 1000,
+	"group": "default",
+	"type": "query",
+	"match": ["*查快递*", "*快递查询*", "*快递到哪了*"],
+	"not": [],
+	"remove": [],
+	"extract": ["/[a-zA-Z0-9]+/g"],
+	"stage1": {
+		"param": [{
+			"name": "number",
+			"title": "快递单号",
+			"sort": 10,
+			"format": "/[a-zA-Z0-9_]+/g",
+			"not_tip": "快递单号多少？",
+			"func_name": ""
+		}]
+	}
+}

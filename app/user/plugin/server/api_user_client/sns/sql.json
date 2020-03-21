@@ -1,34 +1,30 @@
 {
     "name": "user_sns",
-    "title": "社交账户",
+    "title": "",
     "table": "user_sns",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
-    "field_obj": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`content`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
-    "field_default": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
+    "field_default": "`user_id`,`qq`,`qq_state`,`wechat`,`wechat_state`,`mm`,`mm_state`,`baidu`,`baidu_state`,`taobao`,`taobao_state`",
     "method": "get",
     "query": {
-        "group": "`group` like '%{0}%'",
-        "type": "`type` like '%{0}%'",
-        "from_user": "`from_user` like '%{0}%'",
-        "to_user": "`to_user` like '%{0}%'",
-        "robot": "`robot` like '%{0}%'",
-        "cmd": "`cmd` like '%{0}%'",
-        "keyword": "`keyword` like '%{0}%'",
-        "check": "`check` like '%{0}%'",
-        "content": "`content` like '%{0}%'",
-        "note": "`note` like '%{0}%'",
-        "msg_type": "`msg_type` like '%{0}%'",
-        "form": "`form` like '%{0}%'",
-        "stage_min": "`stage` >= '{0}'",
-        "stage_max": "`stage` <= '{0}'",
-        "create_time_min": "`create_time` >= '{0}'",
-        "create_time_max": "`create_time` <= '{0}'",
-        "update_time_min": "`update_time` >= '{0}'",
-        "update_time_max": "`update_time` <= '{0}'"
+        "qq": "`qq` like '%{0}%'",
+        "wechat": "`wechat` like '%{0}%'",
+        "mm": "`mm` like '%{0}%'",
+        "baidu": "`baidu` like '%{0}%'",
+        "taobao": "`taobao` like '%{0}%'"
     },
-    "query_default": {},
-    "update": {
-        "stage_add": "`stage` = `stage` + '{0}'"
+    "query_default": {
+        "user_id": "`user_id` = {user_id}"
+    },
+    "update": {},
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
     }
 }

@@ -1,0 +1,322 @@
+{
+    "name": "coin_info",
+    "title": "",
+    "add": {
+        "body": [
+            "name",
+            "company",
+            "description",
+            "bonus",
+            "issue_price",
+            "pe",
+            "pb",
+            "profit",
+            "num",
+            "time_to_market"
+        ],
+        "body_required": [
+            "code"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "coin_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "coin_id",
+            "name",
+            "description",
+            "bonus_min",
+            "bonus_max",
+            "issue_price_min",
+            "issue_price_max",
+            "pe_min",
+            "pe_max",
+            "pb_min",
+            "pb_max",
+            "profit_min",
+            "profit_max",
+            "num_min",
+            "num_max"
+        ],
+        "query_required": [],
+        "body": [
+            "name",
+            "code",
+            "company",
+            "description",
+            "bonus",
+            "bonus_add",
+            "issue_price",
+            "issue_price_add",
+            "pe",
+            "pe_add",
+            "pb",
+            "pb_add",
+            "profit",
+            "profit_add",
+            "num",
+            "num_add",
+            "time_to_market"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "coin_id",
+            "name",
+            "description",
+            "bonus_min",
+            "bonus_max",
+            "issue_price_min",
+            "issue_price_max",
+            "pe_min",
+            "pe_max",
+            "pb_min",
+            "pb_max",
+            "profit_min",
+            "profit_max",
+            "num_min",
+            "num_max",
+            "time_to_market_min",
+            "time_to_market_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "coin_id",
+            "title": "数字货币ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "name",
+            "title": "数字货币名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "code",
+            "title": "数字货币代码",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "company",
+            "title": "公司名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "description",
+            "title": "数字货币简介",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "bonus",
+            "title": "分红频率",
+            "description": "1年1次为1.0；2年一次为0.5；3年一次为0.33；不分红为0",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "bonus_min",
+            "title": "分红频率——最小值",
+            "description": "1年1次为1.0；2年一次为0.5；3年一次为0.33；不分红为0",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "bonus_max",
+            "title": "分红频率——最大值",
+            "description": "1年1次为1.0；2年一次为0.5；3年一次为0.33；不分红为0",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "issue_price",
+            "title": "",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "issue_price_min",
+            "title": "——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "issue_price_max",
+            "title": "——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "pe",
+            "title": "市盈率",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "pe_min",
+            "title": "市盈率——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "pe_max",
+            "title": "市盈率——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "pb",
+            "title": "市净率",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "pb_min",
+            "title": "市净率——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "pb_max",
+            "title": "市净率——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "profit",
+            "title": "公司利润",
+            "description": "如果为0或负数，表示公司不盈利",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "profit_min",
+            "title": "公司利润——最小值",
+            "description": "如果为0或负数，表示公司不盈利",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "profit_max",
+            "title": "公司利润——最大值",
+            "description": "如果为0或负数，表示公司不盈利",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "num",
+            "title": "发行量",
+            "description": "单位(万股)",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_min",
+            "title": "发行量——最小值",
+            "description": "单位(万股)",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "num_max",
+            "title": "发行量——最大值",
+            "description": "单位(万股)",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "time_to_market",
+            "title": "上市时间",
+            "description": "",
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": true,
+                "format": "date"
+            }
+        },
+        {
+            "name": "time_to_market_min",
+            "title": "上市时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": true,
+                "format": "date"
+            }
+        },
+        {
+            "name": "time_to_market_max",
+            "title": "上市时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": true,
+                "format": "date"
+            }
+        }
+    ]
+}

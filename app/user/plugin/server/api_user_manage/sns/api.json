@@ -1,7 +1,7 @@
 {
     "name": "user_sns2",
-    "title": "社交账户",
-    "description": "用于保存用的社交平台账户，方便同步登录",
+    "title": "",
+    "description": "",
     "path": "/apis/user/sns",
     "method": "ALL",
     "cache": 0,

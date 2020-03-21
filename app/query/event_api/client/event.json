@@ -1,0 +1,11 @@
+[{
+	"target": "/api/query/*",
+	"name": "api_query",
+	"title": "query的客户端api接口",
+	"description": "用于测评访问接口",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 100,
+	"end": true
+}]

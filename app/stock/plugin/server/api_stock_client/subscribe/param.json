@@ -1,0 +1,195 @@
+{
+    "name": "stock_subscribe",
+    "title": "",
+    "add": {
+        "body": [
+            "user_id",
+            "time1",
+            "time2",
+            "time3",
+            "stocks"
+        ],
+        "body_required": [
+            "way"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "subscribe_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "subscribe_id"
+        ],
+        "query_required": [],
+        "body": [
+            "user_id",
+            "time1",
+            "time2",
+            "time3",
+            "way",
+            "stocks"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "subscribe_id",
+            "time1_min",
+            "time1_max",
+            "time2_min",
+            "time2_max",
+            "time3_min",
+            "time3_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "subscribe_id",
+            "title": "订阅ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "订阅用户ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "time1",
+            "title": "通知时段1",
+            "description": "默认为开盘后半小时，一般通知什么股票要卖",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time1_min",
+            "title": "通知时段1——开始时间",
+            "description": "默认为开盘后半小时，一般通知什么股票要卖",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time1_max",
+            "title": "通知时段1——结束时间",
+            "description": "默认为开盘后半小时，一般通知什么股票要卖",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time2",
+            "title": "通知时段2",
+            "description": "默认为下午开盘时间，一般通知什么股票要卖",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time2_min",
+            "title": "通知时段2——开始时间",
+            "description": "默认为下午开盘时间，一般通知什么股票要卖",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time2_max",
+            "title": "通知时段2——结束时间",
+            "description": "默认为下午开盘时间，一般通知什么股票要卖",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time3",
+            "title": "通知时段3",
+            "description": "默认为收盘前半小时。一般通知什么股票要买",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time3_min",
+            "title": "通知时段3——开始时间",
+            "description": "默认为收盘前半小时。一般通知什么股票要买",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time3_max",
+            "title": "通知时段3——结束时间",
+            "description": "默认为收盘前半小时。一般通知什么股票要买",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "way",
+            "title": "订阅方式",
+            "description": "phone手机短信、email邮箱、wechat微信公众号、app应用端",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "stocks",
+            "title": "订阅的股票",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}

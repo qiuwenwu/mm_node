@@ -1,84 +1,204 @@
 {
     "name": "user_info",
-    "title": "用户信息",
+    "title": "",
     "add": {
         "body": [
-            "message_id",
-            "end",
-            "group",
-            "type",
-            "from_user",
-            "to_user",
-            "robot",
-            "cmd",
-            "keyword",
-            "check",
-            "content",
-            "note",
-            "msg_type",
-            "form",
-            "stage",
-            "create_time",
-            "update_time"
+            "sex",
+            "idcard_state",
+            "age",
+            "province_id",
+            "city_id",
+            "birthday",
+            "name",
+            "job",
+            "school",
+            "major",
+            "idcard",
+            "company_address",
+            "address",
+            "job_scope",
+            "company_business",
+            "idcard_img"
         ],
         "body_required": []
     },
     "del": {
         "query": [],
-        "query_required": []
+        "query_required": [
+            "user_id"
+        ]
     },
     "set": {
         "query": [
-            "message_id",
-            "end",
-            "content",
-            "stage_min",
-            "stage_max",
-            "keyword"
+            "user_id",
+            "sex_min",
+            "sex_max",
+            "idcard_state_min",
+            "idcard_state_max",
+            "age_min",
+            "age_max",
+            "name"
         ],
         "query_required": [],
         "body": [
-            "message_id",
-            "end",
-            "group",
-            "type",
-            "from_user",
-            "to_user",
-            "robot",
-            "cmd",
-            "keyword",
-            "check",
-            "content",
-            "note",
-            "msg_type",
-            "form",
-            "stage",
-            "stage_add",
-            "create_time",
-            "update_time"
+            "sex",
+            "sex_add",
+            "idcard_state",
+            "idcard_state_add",
+            "age",
+            "age_add",
+            "province_id",
+            "city_id",
+            "birthday",
+            "name",
+            "job",
+            "school",
+            "major",
+            "idcard",
+            "company_address",
+            "address",
+            "job_scope",
+            "company_business",
+            "idcard_img"
         ],
         "body_required": [],
         "body_not": []
     },
     "get": {
         "query": [
-            "message_id",
-            "end",
-            "content",
-            "stage_min",
-            "stage_max",
-            "create_time_min",
-            "create_time_max",
-            "update_time_min",
-            "update_time_max",
-            "keyword"
+            "user_id",
+            "sex_min",
+            "sex_max",
+            "idcard_state_min",
+            "idcard_state_max",
+            "age_min",
+            "age_max",
+            "birthday_min",
+            "birthday_max",
+            "name"
         ],
         "query_required": []
     },
     "list": [
         {
-            "name": "message_id",
-            "title": "消息ID",
+            "name": "user_id",
+            "title": "用户ID",
+            "description": "",
+            "type": "number",
+            "dataType": "mediumint",
+            "number": {
+                "range": [
+                    1,
+                    8388607
+                ]
+            }
+        },
+        {
+            "name": "sex",
+            "title": "性别",
+            "description": "0未设置、1男、2女",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 2
+            }
+        },
+        {
+            "name": "sex_min",
+            "title": "性别——最小值",
+            "description": "0未设置、1男、2女",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 2
+            }
+        },
+        {
+            "name": "sex_max",
+            "title": "性别——最大值",
+            "description": "0未设置、1男、2女",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 2
+            }
+        },
+        {
+            "name": "idcard_state",
+            "title": "身份实名认证",
+            "description": "1为未认证，2为认证中，3为认证通过",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "idcard_state_min",
+            "title": "身份实名认证——最小值",
+            "description": "1为未认证，2为认证中，3为认证通过",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "idcard_state_max",
+            "title": "身份实名认证——最大值",
+            "description": "1为未认证，2为认证中，3为认证通过",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 10
+            }
+        },
+        {
+            "name": "age",
+            "title": "年龄",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 150
+            }
+        },
+        {
+            "name": "age_min",
+            "title": "年龄——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 150
+            }
+        },
+        {
+            "name": "age_max",
+            "title": "年龄——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 150
+            }
+        },
+        {
+            "name": "province_id",
+            "title": "省份ID",
+            "description": "用户所在地的省份",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "city_id",
+            "title": "所在城市ID",
             "description": "",
             "type": "number",
             "dataType": "int",
@@ -90,214 +210,122 @@
             }
         },
         {
-            "name": "end",
-            "title": "结束会话",
-            "description": "1已结束,0为未结束会话,如果未结束则查询当前正文",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
+            "name": "birthday",
+            "title": "生日",
+            "description": "",
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": true,
+                "format": "date"
             }
         },
         {
-            "name": "group",
-            "title": "用户群组",
+            "name": "birthday_min",
+            "title": "生日——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": true,
+                "format": "date"
+            }
+        },
+        {
+            "name": "birthday_max",
+            "title": "生日——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": true,
+                "format": "date"
+            }
+        },
+        {
+            "name": "name",
+            "title": "姓名",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "range": [
+                    2,
+                    16
+                ]
+            }
+        },
+        {
+            "name": "job",
+            "title": "职业",
             "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "type",
-            "title": "会话类型",
-            "description": "一般情况下，1永久会话/群、2临时会话/群",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "from_user",
-            "title": "会话发起人",
+            "name": "school",
+            "title": "毕业学校",
             "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "to_user",
-            "title": "会话接收人",
+            "name": "major",
+            "title": "所学专业",
             "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "robot",
-            "title": "服务的机器人",
+            "name": "idcard",
+            "title": "身份证号",
             "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "cmd",
-            "title": "所使用的指令",
+            "name": "company_address",
+            "title": "公司地址",
+            "description": "用户当前就职的公司地址",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "address",
+            "title": "详细地址",
+            "description": "用户居住地的详细地址",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "job_scope",
+            "title": "工作范围",
             "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "keyword",
-            "title": "关键词句",
-            "description": "除指令外，过滤、抽取后的词句",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "check",
-            "title": "复查指令",
-            "description": "当用户再驱动指令而缺少参数时，执行该语句",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "content",
-            "title": "会话正文",
+            "name": "company_business",
+            "title": "公司经营范围",
             "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "idcard_img",
+            "title": "身份证图片",
+            "description": "保存json格式",
             "type": "string",
             "dataType": "text",
             "string": {}
-        },
-        {
-            "name": "note",
-            "title": "备注信息",
-            "description": "",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
-        },
-        {
-            "name": "msg_type",
-            "title": "消息类型",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "form",
-            "title": "表单",
-            "description": "用于记录用户已填参数",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
-        },
-        {
-            "name": "stage",
-            "title": "阶段",
-            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 9
-            }
-        },
-        {
-            "name": "stage_min",
-            "title": "阶段——最小值",
-            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 9
-            }
-        },
-        {
-            "name": "stage_max",
-            "title": "阶段——最大值",
-            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 9
-            }
-        },
-        {
-            "name": "create_time",
-            "title": "会话创建时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "create_time_min",
-            "title": "会话创建时间——开始时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "create_time_max",
-            "title": "会话创建时间——结束时间",
-            "description": "",
-            "type": "string",
-            "dataType": "datetime",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "update_time",
-            "title": "会话更新时间",
-            "description": "",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "update_time_min",
-            "title": "会话更新时间——开始时间",
-            "description": "",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "update_time_max",
-            "title": "会话更新时间——结束时间",
-            "description": "",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "keyword",
-            "title": "关键词",
-            "description": "用于搜索会话正文(content)",
-            "key": false,
-            "type": "string",
-            "dataType": "varchar"
         }
     ]
 }

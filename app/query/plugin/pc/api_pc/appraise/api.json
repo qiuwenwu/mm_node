@@ -1,0 +1,16 @@
+{
+    "name": "query_article_appraise",
+    "title": "查询文章评价",
+    "description": "用于文章测评时读取页面样式",
+    "path": "/query/article_appraise",
+    "type": "web",
+    "contentType": "html",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": true
+}

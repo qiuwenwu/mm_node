@@ -1,0 +1,26 @@
+{
+    "name": "query_task2",
+    "title": "",
+    "table": "query_task",
+    "key": "task_id",
+    "orderby_default": "`task_id` desc",
+    "field_default": "`task_id`,`state`,`user_id`,`people_num`,`name`,`note`,`query`,`create_time`,`update_time`",
+    "query": {
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "people_num_min": "`people_num` >= {0}",
+        "people_num_max": "`people_num` <= {0}",
+        "name": "`name` like '%{0}%'",
+        "note": "`note` like '%{0}%'",
+        "query": "`query` like '%{0}%'",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'"
+    },
+    "update": {
+        "state_add": "`state` = `state` + {0}",
+        "people_num_add": "`people_num` = `people_num` + {0}"
+    },
+    "field_hide": []
+}

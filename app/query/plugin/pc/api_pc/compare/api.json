@@ -1,0 +1,16 @@
+{
+    "name": "query_result_compare",
+    "title": "查询结果对比",
+    "description": "用于测评查询词条的结果",
+    "path": "/query/result_compare",
+    "type": "web",
+    "contentType": "html",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": true
+}

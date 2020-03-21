@@ -1,0 +1,33 @@
+{
+    "name": "query_article_appraise",
+    "title": "",
+    "table": "query_article_appraise",
+    "key": "appraise_id",
+    "orderby_default": "`appraise_id` desc",
+    "field_default": "`appraise_id`,`task_id`,`article_id`,`user_id`,`score`,`important`,`create_time`,`update_time`",
+    "method": "get",
+    "query": {
+        "score_min": "`score` >= {0}",
+        "score_max": "`score` <= {0}",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'"
+    },
+    "query_default": {
+        "user_id": "`user_id` = {user_id}"
+    },
+    "update": {
+        "score_add": "`score` = `score` + {0}"
+    },
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
+    }
+}

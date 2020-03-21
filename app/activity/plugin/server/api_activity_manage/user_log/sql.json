@@ -1,0 +1,35 @@
+{
+    "name": "activity_user_log2",
+    "title": "",
+    "table": "activity_user_log",
+    "key": "log_id",
+    "orderby_default": "`log_id` desc",
+    "field_default": "`log_id`,`state`,`prize_1`,`prize_2`,`prize_3`,`prize_t`,`activity_id`,`time_update`,`time_create`,`uin_user`,`uin_prize winners`,`img_prove`",
+    "query": {
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "prize_1_min": "`prize_1` >= {0}",
+        "prize_1_max": "`prize_1` <= {0}",
+        "prize_2_min": "`prize_2` >= {0}",
+        "prize_2_max": "`prize_2` <= {0}",
+        "prize_3_min": "`prize_3` >= {0}",
+        "prize_3_max": "`prize_3` <= {0}",
+        "prize_t_min": "`prize_t` >= {0}",
+        "prize_t_max": "`prize_t` <= {0}",
+        "time_update_min": "`time_update` >= '{0}'",
+        "time_update_max": "`time_update` <= '{0}'",
+        "time_create_min": "`time_create` >= '{0}'",
+        "time_create_max": "`time_create` <= '{0}'",
+        "uin_user": "`uin_user` like '%{0}%'",
+        "uin_prize winners": "`uin_prize winners` like '%{0}%'",
+        "img_prove": "`img_prove` like '%{0}%'"
+    },
+    "update": {
+        "state_add": "`state` = `state` + {0}",
+        "prize_1_add": "`prize_1` = `prize_1` + {0}",
+        "prize_2_add": "`prize_2` = `prize_2` + {0}",
+        "prize_3_add": "`prize_3` = `prize_3` + {0}",
+        "prize_t_add": "`prize_t` = `prize_t` + {0}"
+    },
+    "field_hide": []
+}

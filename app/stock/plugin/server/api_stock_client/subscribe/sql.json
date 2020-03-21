@@ -1,0 +1,33 @@
+{
+    "name": "stock_subscribe",
+    "title": "",
+    "table": "stock_subscribe",
+    "key": "subscribe_id",
+    "orderby_default": "`subscribe_id` desc",
+    "field_default": "`subscribe_id`,`user_id`,`time1`,`time2`,`time3`,`way`,`stocks`",
+    "method": "get",
+    "query": {
+        "time1_min": "`time1` >= '{0}'",
+        "time1_max": "`time1` <= '{0}'",
+        "time2_min": "`time2` >= '{0}'",
+        "time2_max": "`time2` <= '{0}'",
+        "time3_min": "`time3` >= '{0}'",
+        "time3_max": "`time3` <= '{0}'",
+        "way": "`way` like '%{0}%'",
+        "stocks": "`stocks` like '%{0}%'"
+    },
+    "query_default": {
+        "user_id": "`user_id` = {user_id}"
+    },
+    "update": {},
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
+    }
+}

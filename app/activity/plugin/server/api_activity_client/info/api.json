@@ -1,0 +1,12 @@
+{
+    "name": "activity_info",
+    "title": "",
+    "description": "",
+    "path": "/api/activity/info",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

@@ -1,6 +1,6 @@
 {
     "name": "sys_address_city2",
-    "title": "城市",
+    "title": "",
     "description": "",
     "path": "/apis/sys/address_city",
     "method": "ALL",

@@ -1,0 +1,20 @@
+{
+	"public": [{
+			"AppId": "wxab1b19e19011cd8b",
+			"AppSecret": "ef9b26503053a8ee4420002923a1d821",
+			"Token": "e22AJDuTGcuu262AtGhA",
+			"EncodingAESKey": "HrsCfFmKxvTqDooMfHOOnRhxrcHEuqEYHwoPzXxoGpW"
+		},
+		{
+			"AppId": "wx42e2f153a0f09971",
+			"AppSecret": "40358b2bcade8959eb59323252aab129",
+			"Token": "e22AJDuTGcuu262AtGhA",
+			"EncodingAESKey": "HrsCfFmKxvTqDooMfHOOnRhxrcHEuqEYHwoPzXxoGpW"
+		}
+	],
+	"talk": {
+		"APPID": "3K1ZqlB9v5DVmU9",
+		"TOKEN": "HlnmwhzlVzUivzPqyfI9QGrHYmsIt3",
+		"EncodingAESKey": "oMyCTmBj8RrPIo6HWGfOuFTdV72NPG0IOyixgquUjT7"
+	}
+}

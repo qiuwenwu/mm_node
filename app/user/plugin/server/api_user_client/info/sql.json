@@ -1,34 +1,47 @@
 {
     "name": "user_info",
-    "title": "用户信息",
+    "title": "",
     "table": "user_info",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
-    "field_obj": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`content`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
-    "field_default": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
+    "field_default": "`user_id`,`sex`,`idcard_state`,`age`,`province_id`,`city_id`,`birthday`,`name`,`job`,`school`,`major`,`idcard`,`company_address`,`address`,`job_scope`,`company_business`,`idcard_img`",
     "method": "get",
     "query": {
-        "group": "`group` like '%{0}%'",
-        "type": "`type` like '%{0}%'",
-        "from_user": "`from_user` like '%{0}%'",
-        "to_user": "`to_user` like '%{0}%'",
-        "robot": "`robot` like '%{0}%'",
-        "cmd": "`cmd` like '%{0}%'",
-        "keyword": "`keyword` like '%{0}%'",
-        "check": "`check` like '%{0}%'",
-        "content": "`content` like '%{0}%'",
-        "note": "`note` like '%{0}%'",
-        "msg_type": "`msg_type` like '%{0}%'",
-        "form": "`form` like '%{0}%'",
-        "stage_min": "`stage` >= '{0}'",
-        "stage_max": "`stage` <= '{0}'",
-        "create_time_min": "`create_time` >= '{0}'",
-        "create_time_max": "`create_time` <= '{0}'",
-        "update_time_min": "`update_time` >= '{0}'",
-        "update_time_max": "`update_time` <= '{0}'"
+        "sex_min": "`sex` >= {0}",
+        "sex_max": "`sex` <= {0}",
+        "idcard_state_min": "`idcard_state` >= {0}",
+        "idcard_state_max": "`idcard_state` <= {0}",
+        "age_min": "`age` >= {0}",
+        "age_max": "`age` <= {0}",
+        "birthday_min": "`birthday` >= '{0}'",
+        "birthday_max": "`birthday` <= '{0}'",
+        "name": "`name` like '%{0}%'",
+        "job": "`job` like '%{0}%'",
+        "school": "`school` like '%{0}%'",
+        "major": "`major` like '%{0}%'",
+        "idcard": "`idcard` like '%{0}%'",
+        "company_address": "`company_address` like '%{0}%'",
+        "address": "`address` like '%{0}%'",
+        "job_scope": "`job_scope` like '%{0}%'",
+        "company_business": "`company_business` like '%{0}%'",
+        "idcard_img": "`idcard_img` like '%{0}%'"
     },
-    "query_default": {},
+    "query_default": {
+        "user_id": "`user_id` = {user_id}"
+    },
     "update": {
-        "stage_add": "`stage` = `stage` + '{0}'"
+        "sex_add": "`sex` = `sex` + {0}",
+        "idcard_state_add": "`idcard_state` = `idcard_state` + {0}",
+        "age_add": "`age` = `age` + {0}"
+    },
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
     }
 }

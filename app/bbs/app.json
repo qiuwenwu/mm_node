@@ -1,0 +1,11 @@
+{
+	"name": "bbs",
+	"title": "社区",
+	"description": "该应用用作于用户交流",
+	"version": "1.0",
+	"identifier": "bbs",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "bbs",
+	"sort": 10
+}

@@ -1,0 +1,39 @@
+{
+    "name": "query_result_compare",
+    "title": "",
+    "table": "query_result_compare",
+    "key": "compare_id",
+    "orderby_default": "`compare_id` desc",
+    "field_default": "`compare_id`,`task_id`,`user_id`,`result_id_left`,`result_id_right`,`score`,`create_time`,`update_time`",
+    "method": "get",
+    "query": {
+        "result_id_left_min": "`result_id_left` >= {0}",
+        "result_id_left_max": "`result_id_left` <= {0}",
+        "result_id_right_min": "`result_id_right` >= {0}",
+        "result_id_right_max": "`result_id_right` <= {0}",
+        "score_min": "`score` >= {0}",
+        "score_max": "`score` <= {0}",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'"
+    },
+    "query_default": {
+        "user_id": "`user_id` = {user_id}"
+    },
+    "update": {
+        "result_id_left_add": "`result_id_left` = `result_id_left` + {0}",
+        "result_id_right_add": "`result_id_right` = `result_id_right` + {0}",
+        "score_add": "`score` = `score` + {0}"
+    },
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
+    }
+}

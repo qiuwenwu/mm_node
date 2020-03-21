@@ -1,7 +1,7 @@
 {
     "name": "user_count2",
-    "title": "用户统计",
-    "description": "用于统计用户等级、经验、积分等",
+    "title": "",
+    "description": "",
     "path": "/apis/user/count",
     "method": "ALL",
     "cache": 0,

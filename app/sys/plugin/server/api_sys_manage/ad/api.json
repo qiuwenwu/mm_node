@@ -1,6 +1,6 @@
 {
     "name": "sys_ad2",
-    "title": "广告信息",
+    "title": "",
     "description": "",
     "path": "/apis/sys/ad",
     "method": "ALL",

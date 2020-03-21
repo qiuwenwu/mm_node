@@ -1,0 +1,42 @@
+{
+    "name": "stock_analyse2",
+    "title": "",
+    "table": "stock_analyse",
+    "key": "analyse_id",
+    "orderby_default": "`analyse_id` desc",
+    "field_default": "`analyse_id`,`weight`,`update_time`,`datetime`,`policy_buy`,`policy_hold`,`policy_sell`,`presage_today`,`presage_recently`,`presage_next`,`code`,`tip`,`action`,`predict`",
+    "query": {
+        "weight_min": "`weight` >= {0}",
+        "weight_max": "`weight` <= {0}",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'",
+        "datetime_min": "`datetime` >= '{0}'",
+        "datetime_max": "`datetime` <= '{0}'",
+        "policy_buy_min": "`policy_buy` >= {0}",
+        "policy_buy_max": "`policy_buy` <= {0}",
+        "policy_hold_min": "`policy_hold` >= {0}",
+        "policy_hold_max": "`policy_hold` <= {0}",
+        "policy_sell_min": "`policy_sell` >= {0}",
+        "policy_sell_max": "`policy_sell` <= {0}",
+        "presage_today_min": "`presage_today` >= {0}",
+        "presage_today_max": "`presage_today` <= {0}",
+        "presage_recently_min": "`presage_recently` >= {0}",
+        "presage_recently_max": "`presage_recently` <= {0}",
+        "presage_next_min": "`presage_next` >= {0}",
+        "presage_next_max": "`presage_next` <= {0}",
+        "code": "`code` like '%{0}%'",
+        "tip": "`tip` like '%{0}%'",
+        "action": "`action` like '%{0}%'",
+        "predict": "`predict` like '%{0}%'"
+    },
+    "update": {
+        "weight_add": "`weight` = `weight` + {0}",
+        "policy_buy_add": "`policy_buy` = `policy_buy` + {0}",
+        "policy_hold_add": "`policy_hold` = `policy_hold` + {0}",
+        "policy_sell_add": "`policy_sell` = `policy_sell` + {0}",
+        "presage_today_add": "`presage_today` = `presage_today` + {0}",
+        "presage_recently_add": "`presage_recently` = `presage_recently` + {0}",
+        "presage_next_add": "`presage_next` = `presage_next` + {0}"
+    },
+    "field_hide": []
+}

@@ -1,0 +1,73 @@
+{
+    "name": "mall_shop_collect2",
+    "title": "",
+    "add": {
+        "body": [
+            "user_id",
+            "shop_id"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "collect_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "collect_id"
+        ],
+        "query_required": [],
+        "body": [
+            "user_id",
+            "shop_id"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "collect_id"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "collect_id",
+            "title": "",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "shop_id",
+            "title": "",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "min": 0
+            }
+        }
+    ]
+}

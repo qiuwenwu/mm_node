@@ -1,0 +1,216 @@
+{
+    "name": "query_article_appraise2",
+    "title": "",
+    "add": {
+        "body": [
+            "task_id",
+            "article_id",
+            "user_id",
+            "score",
+            "important",
+            "create_time",
+            "update_time"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "appraise_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "appraise_id",
+            "score_min",
+            "score_max",
+            "important"
+        ],
+        "query_required": [],
+        "body": [
+            "task_id",
+            "article_id",
+            "user_id",
+            "score",
+            "score_add",
+            "important",
+            "create_time",
+            "update_time"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "appraise_id",
+            "score_min",
+            "score_max",
+            "important",
+            "create_time_min",
+            "create_time_max",
+            "update_time_min",
+            "update_time_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "appraise_id",
+            "title": "评价ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "task_id",
+            "title": "任务分组ID",
+            "description": "用于对应批测任务查询统计",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    32767
+                ]
+            }
+        },
+        {
+            "name": "article_id",
+            "title": "文章ID",
+            "description": "用于查看文章详情时显示相关评论",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "测评人ID",
+            "description": "用于识别是哪个用户测评的",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "score",
+            "title": "评价得分",
+            "description": "-1差劲；0一般；2评良；3优秀；4完美",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "score_min",
+            "title": "评价得分——最小值",
+            "description": "-1差劲；0一般；2评良；3优秀；4完美",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "score_max",
+            "title": "评价得分——最大值",
+            "description": "-1差劲；0一般；2评良；3优秀；4完美",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "important",
+            "title": "强调",
+            "description": "表示测评者觉得该文章需重视，表示该文可能比较有用",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "create_time",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "name": "pay_account",
+    "title": "",
+    "table": "pay_account",
+    "key": "user_id",
+    "orderby_default": "`user_id` desc",
+    "field_default": "`user_id`,`state`,`bank`,`bank_name`,`bank_state`,`wechat`,`wechat_state`,`alipay`,`alipay_state`,`btc`,`btc_state`,`eth`,`eth_state`,`eos`,`eos_state`,`mm`,`mm_state`",
+    "method": "get",
+    "query": {
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "bank": "`bank` like '%{0}%'",
+        "bank_name": "`bank_name` like '%{0}%'",
+        "wechat": "`wechat` like '%{0}%'",
+        "alipay": "`alipay` like '%{0}%'",
+        "btc": "`btc` like '%{0}%'",
+        "eth": "`eth` like '%{0}%'",
+        "eos": "`eos` like '%{0}%'",
+        "mm": "`mm` like '%{0}%'"
+    },
+    "query_default": {
+        "user_id": "`user_id` = {user_id}"
+    },
+    "update": {
+        "state_add": "`state` = `state` + {0}"
+    },
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
+    }
+}

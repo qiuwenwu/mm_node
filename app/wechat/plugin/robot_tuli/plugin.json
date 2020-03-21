@@ -1,0 +1,11 @@
+{
+	"app": "wechat",
+	"name": "robot_tuli",
+	"title": "图灵机器人",
+	"description": "这是调用图灵机器人API, 用来做问答的机器人",
+	"version": "1.0",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "robot",
+	"sort": 300
+}

@@ -1,6 +1,6 @@
 {
     "name": "sys_app_refresh2",
-    "title": "应用刷新",
+    "title": "",
     "description": "",
     "path": "/apis/sys/app_refresh",
     "method": "ALL",

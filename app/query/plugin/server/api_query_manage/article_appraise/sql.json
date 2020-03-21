@@ -1,0 +1,20 @@
+{
+    "name": "query_article_appraise2",
+    "title": "",
+    "table": "query_article_appraise",
+    "key": "appraise_id",
+    "orderby_default": "`appraise_id` desc",
+    "field_default": "`appraise_id`,`task_id`,`article_id`,`user_id`,`score`,`important`,`create_time`,`update_time`",
+    "query": {
+        "score_min": "`score` >= {0}",
+        "score_max": "`score` <= {0}",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'"
+    },
+    "update": {
+        "score_add": "`score` = `score` + {0}"
+    },
+    "field_hide": []
+}

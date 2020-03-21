@@ -1,0 +1,222 @@
+{
+    "name": "query_result",
+    "title": "",
+    "add": {
+        "body": [
+            "task_id",
+            "time",
+            "engine",
+            "city",
+            "query",
+            "ip",
+            "html",
+            "create_time",
+            "update_time"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "result_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "result_id"
+        ],
+        "query_required": [],
+        "body": [
+            "task_id",
+            "time",
+            "engine",
+            "city",
+            "query",
+            "ip",
+            "html",
+            "create_time",
+            "update_time"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "result_id",
+            "time_min",
+            "time_max",
+            "create_time_min",
+            "create_time_max",
+            "update_time_min",
+            "update_time_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "result_id",
+            "title": "查询结果ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "task_id",
+            "title": "查询任务ID",
+            "description": "用于批测判断",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    32767
+                ]
+            }
+        },
+        {
+            "name": "time",
+            "title": "查询时间点",
+            "description": "是什么时候查询的",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time_min",
+            "title": "查询时间点——开始时间",
+            "description": "是什么时候查询的",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "time_max",
+            "title": "查询时间点——结束时间",
+            "description": "是什么时候查询的",
+            "type": "string",
+            "dataType": "time",
+            "string": {
+                "notEmpty": true,
+                "format": "time"
+            }
+        },
+        {
+            "name": "engine",
+            "title": "搜索引擎",
+            "description": "腾讯医典、百度、搜过、360",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "city",
+            "title": "查询城市",
+            "description": "用于记录查询时的城市",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "query",
+            "title": "查询词条",
+            "description": "用于记录是通过什么内容查询的",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "ip",
+            "title": "查询IP",
+            "description": "用于记录当前查询所在的IP地址",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "html",
+            "title": "查询结果代码",
+            "description": "为搜索结果列表",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "create_time",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        }
+    ]
+}

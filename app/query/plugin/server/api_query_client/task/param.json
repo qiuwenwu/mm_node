@@ -1,0 +1,241 @@
+{
+    "name": "query_task",
+    "title": "",
+    "add": {
+        "body": [
+            "state",
+            "user_id",
+            "people_num",
+            "name",
+            "note",
+            "query",
+            "create_time",
+            "update_time"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "task_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "task_id",
+            "state_min",
+            "state_max",
+            "people_num_min",
+            "people_num_max",
+            "name"
+        ],
+        "query_required": [],
+        "body": [
+            "state",
+            "state_add",
+            "user_id",
+            "people_num",
+            "people_num_add",
+            "name",
+            "note",
+            "query",
+            "create_time",
+            "update_time"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "task_id",
+            "state_min",
+            "state_max",
+            "people_num_min",
+            "people_num_max",
+            "name",
+            "create_time_min",
+            "create_time_max",
+            "update_time_min",
+            "update_time_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "task_id",
+            "title": "查询任务ID",
+            "description": "",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    32767
+                ]
+            }
+        },
+        {
+            "name": "state",
+            "title": "状态",
+            "description": "1待抓取、2抓取中、3待测评、4已关闭",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "state_min",
+            "title": "状态——最小值",
+            "description": "1待抓取、2抓取中、3待测评、4已关闭",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "state_max",
+            "title": "状态——最大值",
+            "description": "1待抓取、2抓取中、3待测评、4已关闭",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "创建者ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "people_num",
+            "title": "参与批测人数",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "people_num_min",
+            "title": "参与批测人数——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "people_num_max",
+            "title": "参与批测人数——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "name",
+            "title": "分组名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "note",
+            "title": "备注",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "query",
+            "title": "查询词条集合",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "create_time",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        }
+    ]
+}

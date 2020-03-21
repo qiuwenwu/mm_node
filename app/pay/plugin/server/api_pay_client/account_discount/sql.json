@@ -1,0 +1,51 @@
+{
+    "name": "pay_account_discount",
+    "title": "",
+    "table": "pay_account_discount",
+    "key": "discount_id",
+    "orderby_default": "`discount_id` desc",
+    "field_default": "`discount_id`,`state`,`to_user_id`,`seller_id`,`user_id`,`amount`,`fee`,`time_create`,`pay_time`,`time_end`,`time_update`,`platform`,`way`,`institution`,`ip`,`from_user`,`to_user`,`cause`,`note`",
+    "method": "get",
+    "query": {
+        "state_min": "`state` >= {0}",
+        "state_max": "`state` <= {0}",
+        "amount_min": "`amount` >= {0}",
+        "amount_max": "`amount` <= {0}",
+        "fee_min": "`fee` >= {0}",
+        "fee_max": "`fee` <= {0}",
+        "time_create_min": "`time_create` >= '{0}'",
+        "time_create_max": "`time_create` <= '{0}'",
+        "pay_time_min": "`pay_time` >= '{0}'",
+        "pay_time_max": "`pay_time` <= '{0}'",
+        "time_end_min": "`time_end` >= '{0}'",
+        "time_end_max": "`time_end` <= '{0}'",
+        "time_update_min": "`time_update` >= '{0}'",
+        "time_update_max": "`time_update` <= '{0}'",
+        "platform": "`platform` like '%{0}%'",
+        "way": "`way` like '%{0}%'",
+        "institution": "`institution` like '%{0}%'",
+        "ip": "`ip` like '%{0}%'",
+        "from_user": "`from_user` like '%{0}%'",
+        "to_user": "`to_user` like '%{0}%'",
+        "cause": "`cause` like '%{0}%'",
+        "note": "`note` like '%{0}%'"
+    },
+    "query_default": {
+        "user_id": "`user_id` = {user_id}"
+    },
+    "update": {
+        "state_add": "`state` = `state` + {0}",
+        "amount_add": "`amount` = `amount` + {0}",
+        "fee_add": "`fee` = `fee` + {0}"
+    },
+    "filter": {
+        "table": "table",
+        "page": "page",
+        "size": "size",
+        "method": "method",
+        "orderby": "orderby",
+        "field": "field",
+        "count_ret": "count_ret",
+        "user_id": "user_id"
+    }
+}

@@ -1,0 +1,167 @@
+{
+    "name": "admin_pc",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "activity",
+            "path": "/activity",
+            "redirect": "/activity/action_log"
+        },
+        {
+            "name": "activity_action_log",
+            "path": "/activity/action_log",
+            "component": "/activity/admin_pc/src/pages/action_log.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "activity_action_log_form",
+            "path": "/activity/action_log_form",
+            "component": "/activity/admin_pc/src/pages/action_log_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "activity_info",
+            "path": "/activity/info",
+            "component": "/activity/admin_pc/src/pages/info.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "activity_info_form",
+            "path": "/activity/info_form",
+            "component": "/activity/admin_pc/src/pages/info_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "activity_item",
+            "path": "/activity/item",
+            "component": "/activity/admin_pc/src/pages/item.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "activity_item_form",
+            "path": "/activity/item_form",
+            "component": "/activity/admin_pc/src/pages/item_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "activity_user_info",
+            "path": "/activity/user_info",
+            "component": "/activity/admin_pc/src/pages/user_info.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "activity_user_info_form",
+            "path": "/activity/user_info_form",
+            "component": "/activity/admin_pc/src/pages/user_info_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "activity_user_log",
+            "path": "/activity/user_log",
+            "component": "/activity/admin_pc/src/pages/user_log.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "activity_user_log_form",
+            "path": "/activity/user_log_form",
+            "component": "/activity/admin_pc/src/pages/user_log_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "未命名",
+            "name": "activity",
+            "url": "/activity",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "活动操作日志",
+                    "show": false,
+                    "name": "activity_action_log",
+                    "url": "/activity/action_log"
+                },
+                {
+                    "title": "活动信息",
+                    "show": false,
+                    "name": "activity_info",
+                    "url": "/activity/info"
+                },
+                {
+                    "title": "活动奖品",
+                    "show": false,
+                    "name": "activity_item",
+                    "url": "/activity/item"
+                },
+                {
+                    "title": "参与者信息",
+                    "show": false,
+                    "name": "activity_user_info",
+                    "url": "/activity/user_info"
+                },
+                {
+                    "title": "活动参与记录",
+                    "show": false,
+                    "name": "activity_user_log",
+                    "url": "/activity/user_log"
+                }
+            ]
+        }
+    ]
+}

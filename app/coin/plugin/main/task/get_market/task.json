@@ -1,0 +1,13 @@
+{
+	"title": "数字货币早盘抓取任务",
+	"description": "每天早上9点40分准时抓取数字货币信息, 然后加以分析存储",
+	"name": "bitcoin",
+	"func_file": "./index.js",
+	"num": 0,
+	"interval": 1000,
+	"wait": 0,
+	"time": "09:40:00",
+	"date_start": "",
+	"date_end": "",
+	"sort": 100
+}

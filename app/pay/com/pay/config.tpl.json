@@ -1,0 +1,9 @@
+{
+	"name": "{0}",
+	"app": "{0}",
+	"title": "智能合约示例",
+	"description": "描述该合约是做什么用的",
+	"version": "1.0",
+	"sort": 10,
+	"func_file": "./index.js"
+}

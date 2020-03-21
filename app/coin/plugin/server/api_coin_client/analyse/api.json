@@ -1,0 +1,12 @@
+{
+    "name": "coin_analyse",
+    "title": "",
+    "description": "",
+    "path": "/api/coin/analyse",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

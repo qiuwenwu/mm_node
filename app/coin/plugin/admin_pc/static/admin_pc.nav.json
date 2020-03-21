@@ -1,0 +1,167 @@
+{
+    "name": "admin_pc",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "coin",
+            "path": "/coin",
+            "redirect": "/coin/analyse"
+        },
+        {
+            "name": "coin_analyse",
+            "path": "/coin/analyse",
+            "component": "/coin/admin_pc/src/pages/analyse.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "coin_analyse_form",
+            "path": "/coin/analyse_form",
+            "component": "/coin/admin_pc/src/pages/analyse_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "coin_formula",
+            "path": "/coin/formula",
+            "component": "/coin/admin_pc/src/pages/formula.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "coin_formula_form",
+            "path": "/coin/formula_form",
+            "component": "/coin/admin_pc/src/pages/formula_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "coin_info",
+            "path": "/coin/info",
+            "component": "/coin/admin_pc/src/pages/info.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "coin_info_form",
+            "path": "/coin/info_form",
+            "component": "/coin/admin_pc/src/pages/info_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "coin_market",
+            "path": "/coin/market",
+            "component": "/coin/admin_pc/src/pages/market.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "coin_market_form",
+            "path": "/coin/market_form",
+            "component": "/coin/admin_pc/src/pages/market_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "coin_subscribe",
+            "path": "/coin/subscribe",
+            "component": "/coin/admin_pc/src/pages/subscribe.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "coin_subscribe_form",
+            "path": "/coin/subscribe_form",
+            "component": "/coin/admin_pc/src/pages/subscribe_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "金融分析器",
+            "name": "coin",
+            "url": "/coin",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "coin_analyse",
+                    "url": "/coin/analyse"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "coin_formula",
+                    "url": "/coin/formula"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "coin_info",
+                    "url": "/coin/info"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "coin_market",
+                    "url": "/coin/market"
+                },
+                {
+                    "title": "",
+                    "show": false,
+                    "name": "coin_subscribe",
+                    "url": "/coin/subscribe"
+                }
+            ]
+        }
+    ]
+}

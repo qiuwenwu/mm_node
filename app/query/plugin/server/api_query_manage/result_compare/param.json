@@ -1,0 +1,279 @@
+{
+    "name": "query_result_compare2",
+    "title": "",
+    "add": {
+        "body": [
+            "task_id",
+            "user_id",
+            "result_id_left",
+            "result_id_right",
+            "score",
+            "create_time",
+            "update_time"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "compare_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "compare_id",
+            "result_id_left_min",
+            "result_id_left_max",
+            "result_id_right_min",
+            "result_id_right_max",
+            "score_min",
+            "score_max"
+        ],
+        "query_required": [],
+        "body": [
+            "task_id",
+            "user_id",
+            "result_id_left",
+            "result_id_left_add",
+            "result_id_right",
+            "result_id_right_add",
+            "score",
+            "score_add",
+            "create_time",
+            "update_time"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "compare_id",
+            "result_id_left_min",
+            "result_id_left_max",
+            "result_id_right_min",
+            "result_id_right_max",
+            "score_min",
+            "score_max",
+            "create_time_min",
+            "create_time_max",
+            "update_time_min",
+            "update_time_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "compare_id",
+            "title": "对比ID",
+            "description": "用于查询判断用户对比测评结果",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "task_id",
+            "title": "任务ID",
+            "description": "用于对应批测任务查询统计",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "range": [
+                    1,
+                    32767
+                ]
+            }
+        },
+        {
+            "name": "user_id",
+            "title": "测评人ID",
+            "description": "用于识别是哪个用户测评的",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "result_id_left",
+            "title": "对比结果1ID",
+            "description": "用于识别谁和谁对比",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "result_id_left_min",
+            "title": "对比结果1ID——最小值",
+            "description": "用于识别谁和谁对比",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "result_id_left_max",
+            "title": "对比结果1ID——最大值",
+            "description": "用于识别谁和谁对比",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "result_id_right",
+            "title": "对比结果2ID",
+            "description": "用于识别谁和谁对比",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "result_id_right_min",
+            "title": "对比结果2ID——最小值",
+            "description": "用于识别谁和谁对比",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "result_id_right_max",
+            "title": "对比结果2ID——最大值",
+            "description": "用于识别谁和谁对比",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "score",
+            "title": "评价得分",
+            "description": "-1差劲；0一般；2评良；3优秀；4完美",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "score_min",
+            "title": "评价得分——最小值",
+            "description": "-1差劲；0一般；2评良；3优秀；4完美",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "score_max",
+            "title": "评价得分——最大值",
+            "description": "-1差劲；0一般；2评良；3优秀；4完美",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "create_time",
+            "title": "创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_min",
+            "title": "创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        }
+    ]
+}

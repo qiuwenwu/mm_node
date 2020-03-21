@@ -1,0 +1,11 @@
+{
+	"path": "/query/admin",
+	"index": "index.html",
+	"maxAge": 0,
+	"immutable": false,
+	"brotli": true,
+	"gzip": true,
+	"extensions": null,
+	"convert_amd": true,
+	"func_file": ""
+}

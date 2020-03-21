@@ -1,0 +1,33 @@
+{
+    "name": "wechat_message",
+    "title": "",
+    "table": "wechat_message",
+    "key": "message_id",
+    "orderby_default": "`message_id` desc",
+    "field_default": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`content`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
+    "method": "get",
+    "query": {
+        "group": "`group` like '%{0}%'",
+        "type": "`type` like '%{0}%'",
+        "from_user": "`from_user` like '%{0}%'",
+        "to_user": "`to_user` like '%{0}%'",
+        "robot": "`robot` like '%{0}%'",
+        "cmd": "`cmd` like '%{0}%'",
+        "keyword": "`keyword` like '%{0}%'",
+        "check": "`check` like '%{0}%'",
+        "content": "`content` like '%{0}%'",
+        "note": "`note` like '%{0}%'",
+        "msg_type": "`msg_type` like '%{0}%'",
+        "form": "`form` like '%{0}%'",
+        "stage_min": "`stage` >= {0}",
+        "stage_max": "`stage` <= {0}",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'"
+    },
+    "query_default": {},
+    "update": {
+        "stage_add": "`stage` = `stage` + {0}"
+    }
+}

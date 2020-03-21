@@ -1,6 +1,6 @@
 {
     "name": "sys_address_province",
-    "title": "省份",
+    "title": "",
     "description": "",
     "path": "/api/sys/address_province",
     "method": "GET",

@@ -1,0 +1,123 @@
+{
+	"name": "admin",
+	"sort": 1,
+	"routes": [{
+		"name": "query",
+		"path": "/query",
+		"redirect": "/query/test"
+	}, {
+		"name": "query_test",
+		"path": "/query/test",
+		"component": "/query/admin/src/pages/test.vue",
+		"level": 2,
+		"oauth": {
+			"signIn": true,
+			"vip": 0,
+			"gm": 1,
+			"mc": 0,
+			"user_admin": [],
+			"user_group": []
+		}
+	},
+	{
+		"name": "query_article_appraise",
+		"path": "/query/article_appraise",
+		"component": "/query/admin/src/pages/article_appraise.vue",
+		"level": 3,
+		"oauth": {
+			"signIn": true,
+			"vip": 0,
+			"gm": 2,
+			"mc": 0,
+			"user_admin": [],
+			"user_group": []
+		}
+	},
+	{
+		"name": "query_result_compare",
+		"path": "/query/result_compare",
+		"component": "/query/admin/src/pages/result_compare.vue",
+		"level": 3,
+		"oauth": {
+			"signIn": true,
+			"vip": 0,
+			"gm": 2,
+			"mc": 0,
+			"user_admin": [],
+			"user_group": []
+		}
+	},
+	{
+		"name": "query_task",
+		"path": "/query/task",
+		"component": "/query/admin/src/pages/task.vue",
+		"level": 2,
+		"oauth": {
+			"signIn": true,
+			"vip": 0,
+			"gm": 2,
+			"mc": 0,
+			"user_admin": [],
+			"user_group": []
+		}
+	},
+	{
+		"name": "query_task_edit",
+		"path": "/query/task_edit",
+		"component": "/query/admin/src/pages/task_edit.vue",
+		"level": 3,
+		"oauth": {
+			"signIn": true,
+			"vip": 0,
+			"gm": 2,
+			"mc": 0,
+			"user_admin": [],
+			"user_group": []
+		}
+	},
+	{
+		"name": "query_report",
+		"path": "/query/report",
+		"component": "/query/admin/src/pages/report.vue",
+		"level": 2,
+		"oauth": {
+			"signIn": true,
+			"vip": 0,
+			"gm": 2,
+			"mc": 0,
+			"user_admin": [],
+			"user_group": []
+		}
+	}],
+	"top": [],
+	"left": [],
+	"bottom": [],
+	"right": [],
+	"desktop": [],
+	"quick": [],
+	"main": [{
+		"title": "批测",
+		"name": "query",
+		"url": "/query",
+		"display": 0,
+		"sub": [{
+				"title": "任务管理",
+				"show": false,
+				"name": "query_task",
+				"url": "/query/task"
+			},
+			{
+				"title": "参与测评",
+				"show": false,
+				"name": "query_test",
+				"url": "/query/test"
+			},
+			{
+				"title": "测评报告",
+				"show": false,
+				"name": "query_report",
+				"url": "/query/report"
+			}
+		]
+	}]
+}

@@ -1,0 +1,167 @@
+{
+    "name": "admin_pc",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "stock",
+            "path": "/stock",
+            "redirect": "/stock/analyse"
+        },
+        {
+            "name": "stock_analyse",
+            "path": "/stock/analyse",
+            "component": "/stock/admin_pc/src/pages/analyse.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "stock_analyse_form",
+            "path": "/stock/analyse_form",
+            "component": "/stock/admin_pc/src/pages/analyse_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "stock_formula",
+            "path": "/stock/formula",
+            "component": "/stock/admin_pc/src/pages/formula.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "stock_formula_form",
+            "path": "/stock/formula_form",
+            "component": "/stock/admin_pc/src/pages/formula_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "stock_info",
+            "path": "/stock/info",
+            "component": "/stock/admin_pc/src/pages/info.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "stock_info_form",
+            "path": "/stock/info_form",
+            "component": "/stock/admin_pc/src/pages/info_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "stock_market",
+            "path": "/stock/market",
+            "component": "/stock/admin_pc/src/pages/market.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "stock_market_form",
+            "path": "/stock/market_form",
+            "component": "/stock/admin_pc/src/pages/market_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "stock_subscribe",
+            "path": "/stock/subscribe",
+            "component": "/stock/admin_pc/src/pages/subscribe.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "stock_subscribe_form",
+            "path": "/stock/subscribe_form",
+            "component": "/stock/admin_pc/src/pages/subscribe_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "股票",
+            "name": "stock",
+            "url": "/stock",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "股票分析",
+                    "show": false,
+                    "name": "stock_analyse",
+                    "url": "/stock/analyse"
+                },
+                {
+                    "title": "股票公式",
+                    "show": false,
+                    "name": "stock_formula",
+                    "url": "/stock/formula"
+                },
+                {
+                    "title": "股票信息",
+                    "show": false,
+                    "name": "stock_info",
+                    "url": "/stock/info"
+                },
+                {
+                    "title": "股票行情",
+                    "show": false,
+                    "name": "stock_market",
+                    "url": "/stock/market"
+                },
+                {
+                    "title": "股票订阅",
+                    "show": false,
+                    "name": "stock_subscribe",
+                    "url": "/stock/subscribe"
+                }
+            ]
+        }
+    ]
+}

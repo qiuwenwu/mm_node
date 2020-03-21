@@ -1,0 +1,11 @@
+{
+	"target": "/api/activity/*",
+	"name": "activity_client",
+	"title": "活动客户端调用的接口事件",
+	"description": "用于活动访问服务端时调用的接口",
+	"stage": "action",
+	"tense": "main",
+	"func_file": "./action_main.js",
+	"sort": 99,
+	"end": true
+}

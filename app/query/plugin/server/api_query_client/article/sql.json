@@ -1,0 +1,22 @@
+{
+    "name": "query_article",
+    "title": "",
+    "table": "query_article",
+    "key": "article_id",
+    "orderby_default": "`article_id` desc",
+    "field_default": "`article_id`,`result_id`,`title`,`description`,`keywords`,`url`,`html`,`create_time`,`update_time`",
+    "method": "get",
+    "query": {
+        "title": "`title` like '%{0}%'",
+        "description": "`description` like '%{0}%'",
+        "keywords": "`keywords` like '%{0}%'",
+        "url": "`url` like '%{0}%'",
+        "html": "`html` like '%{0}%'",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'"
+    },
+    "query_default": {},
+    "update": {}
+}
