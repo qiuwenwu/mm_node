@@ -215,7 +215,7 @@
             "join_out": []
         },
         {
-            "name": "create_time",
+            "name": "time_create",
             "title": "创建时间",
             "description": "",
             "type": "datetime",
@@ -234,7 +234,7 @@
             "join_out": []
         },
         {
-            "name": "update_time",
+            "name": "time_update",
             "title": "更新时间",
             "description": "",
             "type": "timestamp",

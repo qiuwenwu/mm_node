@@ -4,8 +4,8 @@
     "add": {
         "body": [
             "user_id",
-            "create_time",
-            "update_time"
+            "time_create",
+            "time_update"
         ],
         "body_required": [
             "appid",
@@ -20,13 +20,14 @@
     },
     "set": {
         "query": [
-            "refresh_id"
+            "refresh_id",
+            "user_id"
         ],
         "query_required": [],
         "body": [
             "user_id",
-            "create_time",
-            "update_time",
+            "time_create",
+            "time_update",
             "appid",
             "refresh_token"
         ],
@@ -36,10 +37,11 @@
     "get": {
         "query": [
             "refresh_id",
-            "create_time_min",
-            "create_time_max",
-            "update_time_min",
-            "update_time_max"
+            "user_id",
+            "time_create_min",
+            "time_create_max",
+            "time_update_min",
+            "time_update_max"
         ],
         "query_required": []
     },
@@ -71,7 +73,7 @@
             }
         },
         {
-            "name": "create_time",
+            "name": "time_create",
             "title": "创建时间",
             "description": "用来判断刷新令牌有效期",
             "type": "string",
@@ -82,7 +84,7 @@
             }
         },
         {
-            "name": "create_time_min",
+            "name": "time_create_min",
             "title": "创建时间——开始时间",
             "description": "用来判断刷新令牌有效期",
             "type": "string",
@@ -93,7 +95,7 @@
             }
         },
         {
-            "name": "create_time_max",
+            "name": "time_create_max",
             "title": "创建时间——结束时间",
             "description": "用来判断刷新令牌有效期",
             "type": "string",
@@ -104,7 +106,7 @@
             }
         },
         {
-            "name": "update_time",
+            "name": "time_update",
             "title": "更新时间",
             "description": "用来判断是否频繁刷新访问牌",
             "type": "string",
@@ -115,7 +117,7 @@
             }
         },
         {
-            "name": "update_time_min",
+            "name": "time_update_min",
             "title": "更新时间——开始时间",
             "description": "用来判断是否频繁刷新访问牌",
             "type": "string",
@@ -126,7 +128,7 @@
             }
         },
         {
-            "name": "update_time_max",
+            "name": "time_update_max",
             "title": "更新时间——结束时间",
             "description": "用来判断是否频繁刷新访问牌",
             "type": "string",

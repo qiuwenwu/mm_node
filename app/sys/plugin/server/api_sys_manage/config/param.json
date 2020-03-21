@@ -24,7 +24,8 @@
             "config_id",
             "name",
             "title",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -43,7 +44,8 @@
             "config_id",
             "name",
             "title",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": []
     },
@@ -112,6 +114,14 @@
             "type": "string",
             "dataType": "text",
             "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索变量名(name)、变量标题(title)、变量描述(description)",
+            "key": false,
+            "type": "string",
+            "dataType": "varchar"
         }
     ]
 }

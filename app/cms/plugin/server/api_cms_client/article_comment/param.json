@@ -29,9 +29,12 @@
             "score_max",
             "display_min",
             "display_max",
+            "article_id",
+            "user_id",
             "name",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -58,9 +61,12 @@
             "score_max",
             "display_min",
             "display_max",
+            "article_id",
+            "user_id",
             "name",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": []
     },

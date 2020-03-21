@@ -4,6 +4,7 @@
     "table": "sys_address_area",
     "key": "area_id",
     "orderby_default": "`display` asc",
+    "field_obj": "`area_id`,`show`,`city_id`,`name`",
     "field_default": "`area_id`,`show`,`display`,`city_id`,`name`",
     "method": "get",
     "query": {
@@ -11,7 +12,8 @@
         "show_max": "`show` <= {0}",
         "display_min": "`display` >= {0}",
         "display_max": "`display` <= {0}",
-        "name": "`name` like '%{0}%'"
+        "name": "`name` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%')"
     },
     "query_default": {},
     "update": {

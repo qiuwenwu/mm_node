@@ -38,6 +38,9 @@
             "ad_id",
             "display_min",
             "display_max",
+            "city_id",
+            "area_id",
+            "user_id",
             "times_user_min",
             "times_user_max",
             "times_max_min",
@@ -53,7 +56,8 @@
             "name",
             "title",
             "description",
-            "keywords"
+            "keywords",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -94,6 +98,9 @@
             "ad_id",
             "display_min",
             "display_max",
+            "city_id",
+            "area_id",
+            "user_id",
             "times_user_min",
             "times_user_max",
             "times_max_min",
@@ -109,7 +116,8 @@
             "name",
             "title",
             "description",
-            "keywords"
+            "keywords",
+            "keyword"
         ],
         "query_required": []
     },
@@ -453,6 +461,14 @@
             "type": "string",
             "dataType": "varchar",
             "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索广告名称(name)、广告标题(title)、广告描述(description)、关键词(keywords)",
+            "key": false,
+            "type": "string",
+            "dataType": "varchar"
         }
     ]
 }

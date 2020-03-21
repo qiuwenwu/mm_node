@@ -21,9 +21,11 @@
     "set": {
         "query": [
             "content_id",
+            "article_id",
             "title",
             "content",
-            "tag"
+            "tag",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -39,9 +41,11 @@
     "get": {
         "query": [
             "content_id",
+            "article_id",
             "title",
             "content",
-            "tag"
+            "tag",
+            "keyword"
         ],
         "query_required": []
     },

@@ -5,6 +5,7 @@
 	"orderby": "{0}",
 	"orderby_default": "`uid` desc",
 	"field": "{0}",
+	"field_obj": "{0}",
 	"field_default": "`username`, `name`, `phone`",
 	"field_hide": ["*password*", "*token*"],
 	"separator": "|",

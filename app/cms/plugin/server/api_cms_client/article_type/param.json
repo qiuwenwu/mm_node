@@ -23,8 +23,11 @@
             "type_id",
             "display_min",
             "display_max",
+            "channel_id",
+            "father_id",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -44,8 +47,11 @@
             "type_id",
             "display_min",
             "display_max",
+            "channel_id",
+            "father_id",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": []
     },

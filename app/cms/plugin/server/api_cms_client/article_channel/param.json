@@ -33,8 +33,11 @@
             "can_comment",
             "display_min",
             "display_max",
+            "father_id",
+            "city_id",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -63,8 +66,11 @@
             "can_comment",
             "display_min",
             "display_max",
+            "father_id",
+            "city_id",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": []
     },

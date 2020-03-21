@@ -44,7 +44,7 @@
             "join_out": []
         },
         {
-            "name": "create_time",
+            "name": "time_create",
             "title": "创建时间",
             "description": "用来判断刷新令牌有效期",
             "type": "datetime",
@@ -63,7 +63,7 @@
             "join_out": []
         },
         {
-            "name": "update_time",
+            "name": "time_update",
             "title": "更新时间",
             "description": "用来判断是否频繁刷新访问牌",
             "type": "timestamp",

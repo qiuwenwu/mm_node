@@ -10,7 +10,7 @@
             "max_age",
             "user_id",
             "times_count",
-            "update_time",
+            "time_update",
             "token",
             "encoding_aes_key",
             "icon",
@@ -44,9 +44,11 @@
             "times_today_max",
             "max_age_min",
             "max_age_max",
+            "user_id",
             "times_count_min",
             "times_count_max",
-            "name"
+            "name",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -62,7 +64,7 @@
             "user_id",
             "times_count",
             "times_count_add",
-            "update_time",
+            "time_update",
             "name",
             "appid",
             "token",
@@ -90,11 +92,13 @@
             "times_today_max",
             "max_age_min",
             "max_age_max",
+            "user_id",
             "times_count_min",
             "times_count_max",
-            "update_time_min",
-            "update_time_max",
-            "name"
+            "time_update_min",
+            "time_update_max",
+            "name",
+            "keyword"
         ],
         "query_required": []
     },
@@ -286,7 +290,7 @@
             }
         },
         {
-            "name": "update_time",
+            "name": "time_update",
             "title": "上次使用时间",
             "description": "用于记录上次授权时间，防止频繁操作",
             "type": "string",
@@ -297,7 +301,7 @@
             }
         },
         {
-            "name": "update_time_min",
+            "name": "time_update_min",
             "title": "上次使用时间——开始时间",
             "description": "用于记录上次授权时间，防止频繁操作",
             "type": "string",
@@ -308,7 +312,7 @@
             }
         },
         {
-            "name": "update_time_max",
+            "name": "time_update_max",
             "title": "上次使用时间——结束时间",
             "description": "用于记录上次授权时间，防止频繁操作",
             "type": "string",
@@ -418,6 +422,14 @@
             "type": "string",
             "dataType": "text",
             "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索应用名称(name)",
+            "key": false,
+            "type": "string",
+            "dataType": "varchar"
         }
     ]
 }

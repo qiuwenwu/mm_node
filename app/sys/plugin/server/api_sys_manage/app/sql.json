@@ -4,7 +4,8 @@
     "table": "sys_app",
     "key": "app_id",
     "orderby_default": "`app_id` desc",
-    "field_default": "`app_id`,`available`,`encrypt`,`times_allow`,`times_today`,`max_age`,`user_id`,`times_count`,`update_time`,`name`,`appid`,`token`,`encoding_aes_key`,`appsecret`,`icon`,`url`,`bind_ip`,`scope`,`scope_not`,`users`",
+    "field_obj": "`app_id`,`available`,`encrypt`,`times_allow`,`times_today`,`max_age`,`user_id`,`times_count`,`name`,`appid`,`token`,`encoding_aes_key`,`appsecret`,`icon`,`url`,`bind_ip`,`scope`,`scope_not`,`users`",
+    "field_default": "`app_id`,`available`,`encrypt`,`times_allow`,`times_today`,`max_age`,`user_id`,`times_count`,`time_update`,`name`,`appid`,`token`,`encoding_aes_key`,`appsecret`,`icon`,`url`,`bind_ip`,`scope`,`scope_not`,`users`",
     "query": {
         "encrypt_min": "`encrypt` >= {0}",
         "encrypt_max": "`encrypt` <= {0}",
@@ -16,8 +17,8 @@
         "max_age_max": "`max_age` <= {0}",
         "times_count_min": "`times_count` >= {0}",
         "times_count_max": "`times_count` <= {0}",
-        "update_time_min": "`update_time` >= '{0}'",
-        "update_time_max": "`update_time` <= '{0}'",
+        "time_update_min": "`time_update` >= '{0}'",
+        "time_update_max": "`time_update` <= '{0}'",
         "name": "`name` like '%{0}%'",
         "appid": "`appid` like '%{0}%'",
         "token": "`token` like '%{0}%'",
@@ -28,7 +29,8 @@
         "bind_ip": "`bind_ip` like '%{0}%'",
         "scope": "`scope` like '%{0}%'",
         "scope_not": "`scope_not` like '%{0}%'",
-        "users": "`users` like '%{0}%'"
+        "users": "`users` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%')"
     },
     "update": {
         "encrypt_add": "`encrypt` = `encrypt` + {0}",

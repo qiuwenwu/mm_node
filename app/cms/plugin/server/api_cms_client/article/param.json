@@ -13,8 +13,8 @@
             "hot",
             "praise",
             "collect_id",
-            "create_time",
-            "update_time",
+            "time_create",
+            "time_update",
             "author",
             "title",
             "keywords",
@@ -38,25 +38,29 @@
         "query": [
             "article_id",
             "available",
-            "state_min",
-            "state_max",
+            "state",
+            "type_id",
             "display_min",
             "display_max",
+            "channel_id",
+            "user_id",
+            "city_id",
             "hot_min",
             "hot_max",
             "praise_min",
             "praise_max",
+            "collect_id",
             "title",
             "keywords",
             "description",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": [],
         "body": [
             "available",
             "state",
-            "state_add",
             "type_id",
             "display",
             "display_add",
@@ -68,8 +72,8 @@
             "praise",
             "praise_add",
             "collect_id",
-            "create_time",
-            "update_time",
+            "time_create",
+            "time_update",
             "author",
             "title",
             "keywords",
@@ -88,23 +92,28 @@
         "query": [
             "article_id",
             "available",
-            "state_min",
-            "state_max",
+            "state",
+            "type_id",
             "display_min",
             "display_max",
+            "channel_id",
+            "user_id",
+            "city_id",
             "hot_min",
             "hot_max",
             "praise_min",
             "praise_max",
-            "create_time_min",
-            "create_time_max",
-            "update_time_min",
-            "update_time_max",
+            "collect_id",
+            "time_create_min",
+            "time_create_max",
+            "time_update_min",
+            "time_update_max",
             "title",
             "keywords",
             "description",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": []
     },
@@ -135,32 +144,6 @@
         {
             "name": "state",
             "title": "状态",
-            "description": "1正常，2推荐，3认证，4官方，5违规",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "range": [
-                    1,
-                    5
-                ]
-            }
-        },
-        {
-            "name": "state_min",
-            "title": "状态——最小值",
-            "description": "1正常，2推荐，3认证，4官方，5违规",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "range": [
-                    1,
-                    5
-                ]
-            }
-        },
-        {
-            "name": "state_max",
-            "title": "状态——最大值",
             "description": "1正常，2推荐，3认证，4官方，5违规",
             "type": "number",
             "dataType": "smallint",
@@ -327,7 +310,7 @@
             }
         },
         {
-            "name": "create_time",
+            "name": "time_create",
             "title": "创建时间",
             "description": "",
             "type": "string",
@@ -338,7 +321,7 @@
             }
         },
         {
-            "name": "create_time_min",
+            "name": "time_create_min",
             "title": "创建时间——开始时间",
             "description": "",
             "type": "string",
@@ -349,7 +332,7 @@
             }
         },
         {
-            "name": "create_time_max",
+            "name": "time_create_max",
             "title": "创建时间——结束时间",
             "description": "",
             "type": "string",
@@ -360,7 +343,7 @@
             }
         },
         {
-            "name": "update_time",
+            "name": "time_update",
             "title": "更新时间",
             "description": "",
             "type": "string",
@@ -371,7 +354,7 @@
             }
         },
         {
-            "name": "update_time_min",
+            "name": "time_update_min",
             "title": "更新时间——开始时间",
             "description": "",
             "type": "string",
@@ -382,7 +365,7 @@
             }
         },
         {
-            "name": "update_time_max",
+            "name": "time_update_max",
             "title": "更新时间——结束时间",
             "description": "",
             "type": "string",
