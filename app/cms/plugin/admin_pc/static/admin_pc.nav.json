@@ -1,10 +1,10 @@
 {
-    "name": "home",
+    "name": "admin_pc",
     "sort": 1,
     "routes": [
         {
-            "name": "home",
-            "path": "/home",
+            "name": "cms",
+            "path": "/cms",
             "redirect": "/cms/article"
         },
         {
@@ -13,7 +13,7 @@
             "component": "/cms/admin_pc/src/pages/article.vue",
             "level": 3,
             "oauth": {
-                "signIn": false,
+                "signIn": true,
                 "gm": 2,
                 "user_admin": []
             }
@@ -24,7 +24,7 @@
             "component": "/cms/admin_pc/src/pages/article_form.vue",
             "level": 4,
             "oauth": {
-                "signIn": false,
+                "signIn": true,
                 "gm": 2,
                 "user_admin": []
             }
@@ -74,6 +74,28 @@
             }
         },
         {
+            "name": "cms_article_section",
+            "path": "/cms/article_section",
+            "component": "/cms/admin_pc/src/pages/article_section.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "cms_article_section_form",
+            "path": "/cms/article_section_form",
+            "component": "/cms/admin_pc/src/pages/article_section_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
             "name": "cms_article_type",
             "path": "/cms/article_type",
             "component": "/cms/admin_pc/src/pages/article_type.vue",
@@ -105,18 +127,18 @@
     "main": [
         {
             "title": "门户",
-            "name": "home",
-            "url": "/home",
-            "display": 1,
+            "name": "cms",
+            "url": "/cms",
+            "display": 0,
             "sub": [
                 {
-                    "title": "文章信息",
+                    "title": "文章",
                     "show": false,
                     "name": "cms_article",
                     "url": "/cms/article"
                 },
                 {
-                    "title": "文章栏目",
+                    "title": "文章频道",
                     "show": false,
                     "name": "cms_article_channel",
                     "url": "/cms/article_channel"
@@ -126,6 +148,12 @@
                     "show": false,
                     "name": "cms_article_comment",
                     "url": "/cms/article_comment"
+                },
+                {
+                    "title": "文章正文章节",
+                    "show": false,
+                    "name": "cms_article_section",
+                    "url": "/cms/article_section"
                 },
                 {
                     "title": "文章分类",

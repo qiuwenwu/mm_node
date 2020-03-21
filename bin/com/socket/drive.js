@@ -59,7 +59,7 @@ Drive.prototype.new_script = function(file) {
 			var l = $.slash;
 			if (file.indexOf('socket' + l) !== -1) {
 				var name = file.between('socket' + l, l);
-				text = text.replaceAll('{0}', name);
+				text = text.replaceAll("{0}", name);
 			}
 			file.saveText(text);
 		}
@@ -78,7 +78,7 @@ Drive.prototype.new_config = function(file) {
 			var l = $.slash;
 			if (file.indexOf('socket' + l) !== -1) {
 				var name = file.between('socket' + l, l);
-				text = text.replaceAll('{0}', name);
+				text = text.replaceAll("{0}", name);
 			}
 			file.saveText(text);
 		}

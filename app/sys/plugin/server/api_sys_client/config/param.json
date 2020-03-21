@@ -3,56 +3,82 @@
     "title": "系统配置",
     "add": {
         "body": [
-            "title",
-            "value",
-            "description",
-            "model"
-        ],
-        "body_required": [
+            "message_id",
+            "end",
+            "group",
             "type",
-            "name"
-        ]
+            "from_user",
+            "to_user",
+            "robot",
+            "cmd",
+            "keyword",
+            "check",
+            "content",
+            "note",
+            "msg_type",
+            "form",
+            "stage",
+            "create_time",
+            "update_time"
+        ],
+        "body_required": []
     },
     "del": {
         "query": [],
-        "query_required": [
-            "config_id"
-        ]
+        "query_required": []
     },
     "set": {
         "query": [
-            "config_id",
-            "name",
-            "title",
-            "description",
+            "message_id",
+            "end",
+            "content",
+            "stage_min",
+            "stage_max",
             "keyword"
         ],
         "query_required": [],
         "body": [
+            "message_id",
+            "end",
+            "group",
             "type",
-            "name",
-            "title",
-            "value",
-            "description",
-            "model"
+            "from_user",
+            "to_user",
+            "robot",
+            "cmd",
+            "keyword",
+            "check",
+            "content",
+            "note",
+            "msg_type",
+            "form",
+            "stage",
+            "stage_add",
+            "create_time",
+            "update_time"
         ],
         "body_required": [],
         "body_not": []
     },
     "get": {
         "query": [
-            "config_id",
-            "name",
-            "title",
-            "description",
+            "message_id",
+            "end",
+            "content",
+            "stage_min",
+            "stage_max",
+            "create_time_min",
+            "create_time_max",
+            "update_time_min",
+            "update_time_max",
             "keyword"
         ],
         "query_required": []
     },
     "list": [
         {
-            "name": "config_id",
-            "title": "配置ID",
+            "name": "message_id",
+            "title": "消息ID",
             "description": "",
             "type": "number",
             "dataType": "int",
@@ -64,61 +90,211 @@
             }
         },
         {
+            "name": "end",
+            "title": "结束会话",
+            "description": "1已结束,0为未结束会话,如果未结束则查询当前正文",
+            "type": "number",
+            "dataType": "tinyint",
+            "number": {
+                "max": 1
+            }
+        },
+        {
+            "name": "group",
+            "title": "用户群组",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
             "name": "type",
-            "title": "数据类型",
-            "description": "string文本型、number数字型、boolean布尔型",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "name",
-            "title": "变量名",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "title",
-            "title": "变量标题",
-            "description": "可以用中文名",
+            "title": "会话类型",
+            "description": "一般情况下，1永久会话/群、2临时会话/群",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "value",
-            "title": "变量值",
+            "name": "from_user",
+            "title": "会话发起人",
             "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "description",
-            "title": "变量描述",
-            "description": "描述该变量的作用",
+            "name": "to_user",
+            "title": "会话接收人",
+            "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "model",
-            "title": "数据模型",
-            "description": "json格式，用于单选、多选模式",
+            "name": "robot",
+            "title": "服务的机器人",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "cmd",
+            "title": "所使用的指令",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词句",
+            "description": "除指令外，过滤、抽取后的词句",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "check",
+            "title": "复查指令",
+            "description": "当用户再驱动指令而缺少参数时，执行该语句",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "content",
+            "title": "会话正文",
+            "description": "",
             "type": "string",
             "dataType": "text",
             "string": {}
         },
         {
+            "name": "note",
+            "title": "备注信息",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "msg_type",
+            "title": "消息类型",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "form",
+            "title": "表单",
+            "description": "用于记录用户已填参数",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "stage",
+            "title": "阶段",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "stage_min",
+            "title": "阶段——最小值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "stage_max",
+            "title": "阶段——最大值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "create_time",
+            "title": "会话创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_min",
+            "title": "会话创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "会话创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "会话更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "会话更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "会话更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索变量名(name)、变量标题(title)、变量描述(description)",
+            "description": "用于搜索会话正文(content)",
             "key": false,
             "type": "string",
             "dataType": "varchar"

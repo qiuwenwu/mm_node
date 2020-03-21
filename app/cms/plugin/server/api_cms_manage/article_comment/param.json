@@ -1,79 +1,84 @@
 {
     "name": "cms_article_comment2",
-    "title": "",
+    "title": "文章评论",
     "add": {
         "body": [
-            "available",
-            "score",
-            "display",
-            "article_id",
-            "user_id",
-            "name",
-            "tag",
+            "message_id",
+            "end",
+            "group",
+            "type",
+            "from_user",
+            "to_user",
+            "robot",
+            "cmd",
+            "keyword",
+            "check",
             "content",
-            "reply"
+            "note",
+            "msg_type",
+            "form",
+            "stage",
+            "create_time",
+            "update_time"
         ],
         "body_required": []
     },
     "del": {
         "query": [],
-        "query_required": [
-            "comment_id"
-        ]
+        "query_required": []
     },
     "set": {
         "query": [
-            "comment_id",
-            "available",
-            "score_min",
-            "score_max",
-            "display_min",
-            "display_max",
-            "article_id",
-            "user_id",
-            "name",
-            "tag",
+            "message_id",
+            "end",
             "content",
+            "stage_min",
+            "stage_max",
             "keyword"
         ],
         "query_required": [],
         "body": [
-            "available",
-            "score",
-            "score_add",
-            "display",
-            "display_add",
-            "article_id",
-            "user_id",
-            "name",
-            "tag",
+            "message_id",
+            "end",
+            "group",
+            "type",
+            "from_user",
+            "to_user",
+            "robot",
+            "cmd",
+            "keyword",
+            "check",
             "content",
-            "reply"
+            "note",
+            "msg_type",
+            "form",
+            "stage",
+            "stage_add",
+            "create_time",
+            "update_time"
         ],
         "body_required": [],
         "body_not": []
     },
     "get": {
         "query": [
-            "comment_id",
-            "available",
-            "score_min",
-            "score_max",
-            "display_min",
-            "display_max",
-            "article_id",
-            "user_id",
-            "name",
-            "tag",
+            "message_id",
+            "end",
             "content",
+            "stage_min",
+            "stage_max",
+            "create_time_min",
+            "create_time_max",
+            "update_time_min",
+            "update_time_max",
             "keyword"
         ],
         "query_required": []
     },
     "list": [
         {
-            "name": "comment_id",
-            "title": "评论id",
+            "name": "message_id",
+            "title": "消息ID",
             "description": "",
             "type": "number",
             "dataType": "int",
@@ -85,9 +90,9 @@
             }
         },
         {
-            "name": "available",
-            "title": "是否启用",
-            "description": "启用则显示该评论",
+            "name": "end",
+            "title": "结束会话",
+            "description": "1已结束,0为未结束会话,如果未结束则查询当前正文",
             "type": "number",
             "dataType": "tinyint",
             "number": {
@@ -95,127 +100,204 @@
             }
         },
         {
-            "name": "score",
-            "title": "评分",
-            "description": "最低1分、最多5分",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 5
-            }
-        },
-        {
-            "name": "score_min",
-            "title": "评分——最小值",
-            "description": "最低1分、最多5分",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 5
-            }
-        },
-        {
-            "name": "score_max",
-            "title": "评分——最大值",
-            "description": "最低1分、最多5分",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 5
-            }
-        },
-        {
-            "name": "display",
-            "title": "显示排序",
-            "description": "决定显示的顺序",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "display_min",
-            "title": "显示排序——最小值",
-            "description": "决定显示的顺序",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "display_max",
-            "title": "显示排序——最大值",
-            "description": "决定显示的顺序",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 1000
-            }
-        },
-        {
-            "name": "article_id",
-            "title": "所属文章id",
+            "name": "group",
+            "title": "用户群组",
             "description": "",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
-            }
-        },
-        {
-            "name": "user_id",
-            "title": "用户ID",
-            "description": "编辑评论的用户ID",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
-            }
-        },
-        {
-            "name": "name",
-            "title": "留言者姓名",
-            "description": "用于实名回复",
             "type": "string",
             "dataType": "varchar",
-            "string": {
-                "range": [
-                    2,
-                    16
-                ]
-            }
+            "string": {}
         },
         {
-            "name": "tag",
-            "title": "标签",
-            "description": "评论人给的标签，多个标签用空格隔开",
+            "name": "type",
+            "title": "会话类型",
+            "description": "一般情况下，1永久会话/群、2临时会话/群",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "from_user",
+            "title": "会话发起人",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "to_user",
+            "title": "会话接收人",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "robot",
+            "title": "服务的机器人",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "cmd",
+            "title": "所使用的指令",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词句",
+            "description": "除指令外，过滤、抽取后的词句",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "check",
+            "title": "复查指令",
+            "description": "当用户再驱动指令而缺少参数时，执行该语句",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
             "name": "content",
-            "title": "正文",
-            "description": "评论内容",
+            "title": "会话正文",
+            "description": "",
             "type": "string",
             "dataType": "text",
             "string": {}
         },
         {
-            "name": "reply",
-            "title": "评论回复",
-            "description": "对评论人的评论做出的回复。通过form-url格式保存，多个人的回复用换行分隔",
+            "name": "note",
+            "title": "备注信息",
+            "description": "",
             "type": "string",
             "dataType": "text",
             "string": {}
+        },
+        {
+            "name": "msg_type",
+            "title": "消息类型",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "form",
+            "title": "表单",
+            "description": "用于记录用户已填参数",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "stage",
+            "title": "阶段",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "stage_min",
+            "title": "阶段——最小值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "stage_max",
+            "title": "阶段——最大值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "create_time",
+            "title": "会话创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_min",
+            "title": "会话创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "会话创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "会话更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "会话更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "会话更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索会话正文(content)",
+            "key": false,
+            "type": "string",
+            "dataType": "varchar"
         }
     ]
 }

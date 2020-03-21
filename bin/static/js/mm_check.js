@@ -18,7 +18,7 @@
 		creditcard: "需为有效的信用卡号码",
 		identical: "与 {1} 不一致",
 		different: "不能与 {1} 相同",
-		extension: "需为有效的后缀, 仅支持 {0}",
+		extension: "需为有效的后缀, 仅支持 '{0}'",
 		maxLength: "最多只能输入 {0} 个字符",
 		minLength: "最少需要输入 {0} 个字符",
 		rangeLength: "请输入长度在 {0} 到 {1} 之间的字符串",
@@ -101,9 +101,9 @@
 		var str = lang[key];
 		if (str) {
 			if (v2) {
-				return str.replace('{0}', v1).replace('{1}', v2);
+				return str.replace("{0}", v1).replace('{1}', v2);
 			} else {
-				return str.replace('{0}', v1);
+				return str.replace("{0}", v1);
 			}
 		} else {
 			return "参数不正确!";

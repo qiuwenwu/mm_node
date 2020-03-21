@@ -34,8 +34,8 @@
 	},
 	"sql": {
 		"query": {
-			"uid_min": "`uid` >= {0}",
-			"uid_max": "`uid` <= {0}"
+			"uid_min": "`uid` >= '{0}'",
+			"uid_max": "`uid` <= '{0}'"
 		},
 		"query_default": "",
 		"field_default": true,

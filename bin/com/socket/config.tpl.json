@@ -1,5 +1,5 @@
 {
-	"path": "/ws/{0}",
+	"path": "/ws/'{0}'",
 	"name": "{0}",
 	"title": "示例websocket",
 	"description": "用来测试",

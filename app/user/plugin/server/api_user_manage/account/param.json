@@ -1,262 +1,233 @@
 {
     "name": "user_account2",
-    "title": "用户账号",
+    "title": "用户账户",
     "add": {
         "body": [
-            "state",
-            "vip",
-            "gm",
-            "mc",
-            "referee_id",
+            "message_id",
+            "end",
+            "group",
+            "type",
+            "from_user",
+            "to_user",
+            "robot",
+            "cmd",
+            "keyword",
+            "check",
+            "content",
+            "note",
+            "msg_type",
+            "form",
+            "stage",
             "create_time",
-            "login_time",
-            "phone",
-            "phone_state",
-            "nickname",
-            "email",
-            "email_state",
-            "user_group",
-            "user_admin",
-            "login_ip",
-            "signature",
-            "avatar",
-            "friends",
-            "admin_group"
+            "update_time"
         ],
-        "body_required": [
-            "salt",
-            "invite_code",
-            "username",
-            "password"
-        ]
+        "body_required": []
     },
     "del": {
         "query": [],
-        "query_required": [
-            "user_id"
-        ]
+        "query_required": []
     },
     "set": {
         "query": [
-            "user_id",
-            "state_min",
-            "state_max",
-            "vip_min",
-            "vip_max",
-            "gm_min",
-            "gm_max",
-            "mc_min",
-            "mc_max",
-            "phone_state",
-            "username",
-            "nickname",
-            "email_state"
+            "message_id",
+            "end",
+            "content",
+            "stage_min",
+            "stage_max",
+            "keyword"
         ],
         "query_required": [],
         "body": [
-            "state",
-            "state_add",
-            "vip",
-            "vip_add",
-            "gm",
-            "gm_add",
-            "mc",
-            "mc_add",
-            "referee_id",
+            "message_id",
+            "end",
+            "group",
+            "type",
+            "from_user",
+            "to_user",
+            "robot",
+            "cmd",
+            "keyword",
+            "check",
+            "content",
+            "note",
+            "msg_type",
+            "form",
+            "stage",
+            "stage_add",
             "create_time",
-            "login_time",
-            "salt",
-            "invite_code",
-            "phone",
-            "phone_state",
-            "username",
-            "nickname",
-            "password",
-            "email",
-            "email_state",
-            "user_group",
-            "user_admin",
-            "login_ip",
-            "signature",
-            "avatar",
-            "friends",
-            "admin_group"
+            "update_time"
         ],
         "body_required": [],
         "body_not": []
     },
     "get": {
         "query": [
-            "user_id",
-            "state_min",
-            "state_max",
-            "vip_min",
-            "vip_max",
-            "gm_min",
-            "gm_max",
-            "mc_min",
-            "mc_max",
+            "message_id",
+            "end",
+            "content",
+            "stage_min",
+            "stage_max",
             "create_time_min",
             "create_time_max",
-            "login_time_min",
-            "login_time_max",
-            "phone_state",
-            "username",
-            "nickname",
-            "email_state"
+            "update_time_min",
+            "update_time_max",
+            "keyword"
         ],
         "query_required": []
     },
     "list": [
         {
-            "name": "user_id",
-            "title": "用户ID",
-            "description": "用户获取其他与用户相关的数据",
+            "name": "message_id",
+            "title": "消息ID",
+            "description": "",
             "type": "number",
-            "dataType": "mediumint",
+            "dataType": "int",
             "number": {
                 "range": [
                     1,
-                    8388607
+                    2147483647
                 ]
             }
         },
         {
-            "name": "state",
-            "title": "账户状态",
-            "description": "1为可用，2为异常，3为已冻结，4为已注销",
+            "name": "end",
+            "title": "结束会话",
+            "description": "1已结束,0为未结束会话,如果未结束则查询当前正文",
             "type": "number",
-            "dataType": "smallint",
+            "dataType": "tinyint",
             "number": {
-                "max": 10
+                "max": 1
             }
         },
         {
-            "name": "state_min",
-            "title": "账户状态——最小值",
-            "description": "1为可用，2为异常，3为已冻结，4为已注销",
+            "name": "group",
+            "title": "用户群组",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "type",
+            "title": "会话类型",
+            "description": "一般情况下，1永久会话/群、2临时会话/群",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "from_user",
+            "title": "会话发起人",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "to_user",
+            "title": "会话接收人",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "robot",
+            "title": "服务的机器人",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "cmd",
+            "title": "所使用的指令",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词句",
+            "description": "除指令外，过滤、抽取后的词句",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "check",
+            "title": "复查指令",
+            "description": "当用户再驱动指令而缺少参数时，执行该语句",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "content",
+            "title": "会话正文",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "note",
+            "title": "备注信息",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "msg_type",
+            "title": "消息类型",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "form",
+            "title": "表单",
+            "description": "用于记录用户已填参数",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "stage",
+            "title": "阶段",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
             "type": "number",
             "dataType": "smallint",
             "number": {
-                "max": 10
+                "max": 9
             }
         },
         {
-            "name": "state_max",
-            "title": "账户状态——最大值",
-            "description": "1为可用，2为异常，3为已冻结，4为已注销",
+            "name": "stage_min",
+            "title": "阶段——最小值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
             "type": "number",
             "dataType": "smallint",
             "number": {
-                "max": 10
+                "max": 9
             }
         },
         {
-            "name": "vip",
-            "title": "会员级别",
-            "description": "用于确定用户访问权限",
+            "name": "stage_max",
+            "title": "阶段——最大值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
             "type": "number",
             "dataType": "smallint",
             "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "vip_min",
-            "title": "会员级别——最小值",
-            "description": "用于确定用户访问权限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "vip_max",
-            "title": "会员级别——最大值",
-            "description": "用于确定用户访问权限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "gm",
-            "title": "管理员级别",
-            "description": "用于确定用户管理权限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "gm_min",
-            "title": "管理员级别——最小值",
-            "description": "用于确定用户管理权限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "gm_max",
-            "title": "管理员级别——最大值",
-            "description": "用于确定用户管理权限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "mc",
-            "title": "商家级别",
-            "description": "用于确定商家用户的管理权限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "mc_min",
-            "title": "商家级别——最小值",
-            "description": "用于确定商家用户的管理权限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "mc_max",
-            "title": "商家级别——最大值",
-            "description": "用于确定商家用户的管理权限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "referee_id",
-            "title": "推荐人ID",
-            "description": "用于推荐注册时积分奖级",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
+                "max": 9
             }
         },
         {
             "name": "create_time",
-            "title": "创建时间",
+            "title": "会话创建时间",
             "description": "",
             "type": "string",
             "dataType": "datetime",
@@ -267,7 +238,7 @@
         },
         {
             "name": "create_time_min",
-            "title": "创建时间——开始时间",
+            "title": "会话创建时间——开始时间",
             "description": "",
             "type": "string",
             "dataType": "datetime",
@@ -278,7 +249,7 @@
         },
         {
             "name": "create_time_max",
-            "title": "创建时间——结束时间",
+            "title": "会话创建时间——结束时间",
             "description": "",
             "type": "string",
             "dataType": "datetime",
@@ -288,8 +259,8 @@
             }
         },
         {
-            "name": "login_time",
-            "title": "上次登录时间",
+            "name": "update_time",
+            "title": "会话更新时间",
             "description": "",
             "type": "string",
             "dataType": "timestamp",
@@ -299,8 +270,8 @@
             }
         },
         {
-            "name": "login_time_min",
-            "title": "上次登录时间——开始时间",
+            "name": "update_time_min",
+            "title": "会话更新时间——开始时间",
             "description": "",
             "type": "string",
             "dataType": "timestamp",
@@ -310,8 +281,8 @@
             }
         },
         {
-            "name": "login_time_max",
-            "title": "上次登录时间——结束时间",
+            "name": "update_time_max",
+            "title": "会话更新时间——结束时间",
             "description": "",
             "type": "string",
             "dataType": "timestamp",
@@ -321,148 +292,12 @@
             }
         },
         {
-            "name": "salt",
-            "title": "短验证",
-            "description": "",
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索会话正文(content)",
+            "key": false,
             "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "invite_code",
-            "title": "邀请注册码",
-            "description": "随着用户注册而生成",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "phone",
-            "title": "手机号码",
-            "description": "用户的手机号码，用于找回密码时或登录时",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "format": "phone"
-            }
-        },
-        {
-            "name": "phone_state",
-            "title": "手机号码认证",
-            "description": "0为未认证，1为认证通过",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
-            }
-        },
-        {
-            "name": "username",
-            "title": "用户名",
-            "description": "用户登录时所用的账户名称",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "nickname",
-            "title": "昵称",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "password",
-            "title": "密码",
-            "description": "用户登录所需的密码，由6-16位数字或英文组成",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "email",
-            "title": "邮箱",
-            "description": "用户的邮箱，用于找回密码时或登录时",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "format": "email"
-            }
-        },
-        {
-            "name": "email_state",
-            "title": "邮箱认证",
-            "description": "0为未认证，1为认证通过",
-            "type": "number",
-            "dataType": "tinyint",
-            "number": {
-                "max": 1
-            }
-        },
-        {
-            "name": "user_group",
-            "title": "所在用户组",
-            "description": "多个用户组用“,“分隔",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "user_admin",
-            "title": "所在管理组",
-            "description": "多个管理组用“,“分隔",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "login_ip",
-            "title": "上次登录时的IP地址",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "signature",
-            "title": "个性签名",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "avatar",
-            "title": "头像地址",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
-            "name": "friends",
-            "title": "好友",
-            "description": "多个好友ID用“,”分隔",
-            "type": "string",
-            "dataType": "text",
-            "string": {}
-        },
-        {
-            "name": "admin_group",
-            "title": "所在管理组",
-            "description": "多个管理组用“,“分隔",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "varchar"
         }
     ]
 }

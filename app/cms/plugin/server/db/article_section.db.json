@@ -1,9 +1,9 @@
 {
-    "title": "应用刷新",
-    "description": "",
-    "name": "sys_app_refresh",
-    "table": "sys_app_refresh",
-    "key": "refresh_id",
+    "title": "文章正文章节",
+    "description": "文章的正文是单独一块保存的，一个个章节保存",
+    "name": "cms_article_section",
+    "table": "cms_article_section",
+    "key": "type_id",
     "fields": [
         {
             "name": "message_id",

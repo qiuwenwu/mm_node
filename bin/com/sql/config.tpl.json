@@ -23,10 +23,10 @@
 		"name": "`name` like '%{0}%'"
 	},
 	"where": {
-		"uid": "`uid` = {0}"
+		"uid": "`uid` = '{0}'"
 	},
 	"update": {
-		"name": "`name` = {0}"
+		"name": "`name` = '{0}'"
 	},
 	"func_file": "",
 	"convert": {},

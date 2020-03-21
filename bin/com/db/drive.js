@@ -26,10 +26,10 @@ class Drive extends Item {
 
 		// 是否设置数值类型为可查询
 		this.query_number = ["state", "uin"];
-		
+
 		// 是否设置数值类型为关键词可查
 		this.query_keyword = ["name", "title", "keywords", "tag", "description"];
-		
+
 		// 是否设置以下字段为get查列表SQL时不可见
 		this.get_not = ['password', 'salt', 'content'];
 
@@ -45,7 +45,7 @@ class Drive extends Item {
 			// 描述
 			"description": "",
 			// 名称
-			"name": "",
+			"name": "default",
 			// 表名
 			"table": "",
 			// 主键，用于实体模型
@@ -232,6 +232,20 @@ Drive.prototype.update_config = async function(db, cover) {
 	db.table = cg.table + "";
 	var list = [];
 
+	var sql = "SELECT TABLE_NAME, TABLE_COMMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '" + db.database +
+		"' && TABLE_NAME = '" + cg.table + "';";
+
+	var lt = await db.run(sql);
+	if (lt && lt.length > 0) {
+		var commit = lt[0].TABLE_COMMENT;
+		var arr = commit.replace('：', ':').split(':');
+		cg.title = arr[0];
+		if (arr.length > 1) {
+			cg.description = arr[1];
+		}
+		// console.log(commit);
+	}
+
 	// 获取所有字段
 	var fields = await db.fields();
 	for (var i = 0; i < fields.length; i++) {
@@ -262,13 +276,17 @@ Drive.prototype.update_db = async function(db) {
 		for (var i = 0; i < len; i++) {
 			var o = list[i];
 			if (k === o.name) {
-				await db.addTable(cg.table, o.name, o.type, o.auto);
+				await db.addTable(cg.table, o.name, o.type, o.auto, cg.title + "：" + cg.description);
 				fields.push({
 					name: o.name
 				});
 				break;
 			}
 		}
+	} else {
+		var commit = cg.title + "：" + cg.description;
+		var sql = "alter table `{0}` comment '{1}';".replace('{0}', cg.table).replace('{1}', commit);
+		db.exec(sql);
 	}
 	if (fields.length > 0) {
 		// 删除配置中没有的字段
@@ -376,10 +394,10 @@ Drive.prototype.update_db = async function(db) {
 
 			if (arr.length === 0) {
 				// 如果没有则添加
-				await db.exec("alter table `{0}` add ".replace('{0}', cg.table) + sql);
+				await db.exec("alter table `{0}` add ".replace("{0}", cg.table) + sql);
 			} else {
 				// 如果有则修改
-				await db.exec("alter table `{0}` change `{1}` ".replace('{0}', cg.table).replace('{1}', o.name) + sql);
+				await db.exec("alter table `{0}` change `{1}` ".replace("{0}", cg.table).replace('{1}', o.name) + sql);
 			}
 		}
 	} else {
@@ -528,7 +546,7 @@ Drive.prototype.new_event = async function(dir, path, scope) {
 	var f = dir + "/action_main.js";
 	if (!f.hasFile()) {
 		var code = (__dirname + '/event_script.js').loadText();
-		code = code.replaceAll('{0}', path).replaceAll('{1}', scope);
+		code = code.replaceAll("{0}", path).replaceAll('{1}', scope);
 		f.saveText(code);
 	}
 };
@@ -565,17 +583,17 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 		}
 		if (p === 'varchar' || p === 'text') {
 			query[n] = "`" + n + "` like '%{0}%'";
-			if(this.isSet(n, this.query_keyword)){
-				keyword += " OR `" + n + "` like '%{0}%'";
+			if (this.isSet(n, this.query_keyword)) {
+				keyword += " || `" + n + "` like '%{0}%'";
 			}
 		} else if (p === 'date' || p === 'time' || p === 'datetime' || p === 'datetime' || p === 'timestamp') {
 			query[n + "_min"] = "`" + n + "` >= '{0}'";
 			query[n + "_max"] = "`" + n + "` <= '{0}'";
 		} else if (p !== 'tinyint') {
 			if (!n.endWith('id')) {
-				query[n + "_min"] = "`" + n + "` >= {0}";
-				query[n + "_max"] = "`" + n + "` <= {0}";
-				update[n + "_add"] = "`" + n + "` = `" + n + "` + {0}";
+				query[n + "_min"] = "`" + n + "` >= '{0}'";
+				query[n + "_max"] = "`" + n + "` <= '{0}'";
+				update[n + "_add"] = "`" + n + "` = `" + n + "` + '{0}'";
 
 				if (n === "sort" || n === "display" || n === "orderby") {
 					orderby = '`' + n + '` asc';
@@ -585,8 +603,8 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 			}
 		}
 	}
-	if(keyword){
-		query["keyword"] = "(" + keyword.replace(' OR ', '') + ")";
+	if (keyword) {
+		query["keyword"] = "(" + keyword.replace(' || ', '') + ")";
 	}
 
 	// 创建模型

@@ -1,7 +1,7 @@
 {
     "name": "cms_article_type2",
     "title": "文章分类",
-    "description": "这是文章分类接口",
+    "description": "将文章归类，可选看不同类型的文章",
     "path": "/apis/cms/article_type",
     "method": "ALL",
     "cache": 0,

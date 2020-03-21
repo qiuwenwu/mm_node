@@ -114,7 +114,7 @@ class Drive extends Item {
 			/* 逻辑符 */
 			"logic": {},
 			// 输出sql语句 
-			log: false
+			log: true
 		};
 	}
 }
@@ -208,7 +208,7 @@ Drive.prototype.main = async function(params, db) {
 	// 设置操作的数据表
 	if (cg.table.has("*{0}*")) {
 		if (table) {
-			db.table = cg.table.replace('{0}', table);
+			db.table = cg.table.replace("{0}", table);
 		} else {
 			return $.ret.error(70000, '表名不能为空');
 		}
@@ -234,7 +234,7 @@ Drive.prototype.main = async function(params, db) {
 					if (cg.field_hide.getMatch(field)) {
 						return $.ret.error(70003, '不合法的查询参数');
 					}
-					db.field = cg.field.replace('{0}', field);
+					db.field = cg.field.replace("{0}", field);
 				} else if (cg.field_default) {
 					db.field = cg.field_default + '';
 				}
@@ -249,7 +249,7 @@ Drive.prototype.main = async function(params, db) {
 			var orderby = query[f.orderby];
 			if (cg.orderby.has("*{0}*")) {
 				if (orderby) {
-					db.orderby = cg.orderby.replace('{0}', orderby);
+					db.orderby = cg.orderby.replace("{0}", orderby);
 				} else if (cg.orderby_default) {
 					db.orderby = cg.orderby_default + '';
 				}

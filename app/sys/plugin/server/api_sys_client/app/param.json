@@ -3,123 +3,96 @@
     "title": "应用信息",
     "add": {
         "body": [
-            "available",
-            "encrypt",
-            "times_allow",
-            "times_today",
-            "max_age",
-            "user_id",
-            "times_count",
-            "time_update",
-            "token",
-            "encoding_aes_key",
-            "icon",
-            "url",
-            "bind_ip",
-            "scope",
-            "scope_not",
-            "users"
+            "message_id",
+            "end",
+            "group",
+            "type",
+            "from_user",
+            "to_user",
+            "robot",
+            "cmd",
+            "keyword",
+            "check",
+            "content",
+            "note",
+            "msg_type",
+            "form",
+            "stage",
+            "create_time",
+            "update_time"
         ],
-        "body_required": [
-            "name",
-            "appid",
-            "appsecret"
-        ]
+        "body_required": []
     },
     "del": {
         "query": [],
-        "query_required": [
-            "app_id"
-        ]
+        "query_required": []
     },
     "set": {
         "query": [
-            "app_id",
-            "available",
-            "encrypt_min",
-            "encrypt_max",
-            "times_allow_min",
-            "times_allow_max",
-            "times_today_min",
-            "times_today_max",
-            "max_age_min",
-            "max_age_max",
-            "user_id",
-            "times_count_min",
-            "times_count_max",
-            "name",
+            "message_id",
+            "end",
+            "content",
+            "stage_min",
+            "stage_max",
             "keyword"
         ],
         "query_required": [],
         "body": [
-            "available",
-            "encrypt",
-            "encrypt_add",
-            "times_allow",
-            "times_allow_add",
-            "times_today",
-            "times_today_add",
-            "max_age",
-            "max_age_add",
-            "user_id",
-            "times_count",
-            "times_count_add",
-            "time_update",
-            "name",
-            "appid",
-            "token",
-            "encoding_aes_key",
-            "appsecret",
-            "icon",
-            "url",
-            "bind_ip",
-            "scope",
-            "scope_not",
-            "users"
+            "message_id",
+            "end",
+            "group",
+            "type",
+            "from_user",
+            "to_user",
+            "robot",
+            "cmd",
+            "keyword",
+            "check",
+            "content",
+            "note",
+            "msg_type",
+            "form",
+            "stage",
+            "stage_add",
+            "create_time",
+            "update_time"
         ],
         "body_required": [],
         "body_not": []
     },
     "get": {
         "query": [
-            "app_id",
-            "available",
-            "encrypt_min",
-            "encrypt_max",
-            "times_allow_min",
-            "times_allow_max",
-            "times_today_min",
-            "times_today_max",
-            "max_age_min",
-            "max_age_max",
-            "user_id",
-            "times_count_min",
-            "times_count_max",
-            "time_update_min",
-            "time_update_max",
-            "name",
+            "message_id",
+            "end",
+            "content",
+            "stage_min",
+            "stage_max",
+            "create_time_min",
+            "create_time_max",
+            "update_time_min",
+            "update_time_max",
             "keyword"
         ],
         "query_required": []
     },
     "list": [
         {
-            "name": "app_id",
-            "title": "应用序号",
+            "name": "message_id",
+            "title": "消息ID",
             "description": "",
             "type": "number",
-            "dataType": "mediumint",
+            "dataType": "int",
             "number": {
                 "range": [
                     1,
-                    8388607
+                    2147483647
                 ]
             }
         },
         {
-            "name": "available",
-            "title": "是否可用",
-            "description": "在未审核状态下， 该应用授权为不可用",
+            "name": "end",
+            "title": "结束会话",
+            "description": "1已结束,0为未结束会话,如果未结束则查询当前正文",
             "type": "number",
             "dataType": "tinyint",
             "number": {
@@ -127,306 +100,201 @@
             }
         },
         {
-            "name": "encrypt",
-            "title": "加解密方式",
-            "description": "0明文模式，1兼容模式，2安全模式",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "encrypt_min",
-            "title": "加解密方式——最小值",
-            "description": "0明文模式，1兼容模式，2安全模式",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "encrypt_max",
-            "title": "加解密方式——最大值",
-            "description": "0明文模式，1兼容模式，2安全模式",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 10
-            }
-        },
-        {
-            "name": "times_allow",
-            "title": "每日允许请求次数",
-            "description": "用于限制应用每日可授权次数",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 32767
-            }
-        },
-        {
-            "name": "times_allow_min",
-            "title": "每日允许请求次数——最小值",
-            "description": "用于限制应用每日可授权次数",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 32767
-            }
-        },
-        {
-            "name": "times_allow_max",
-            "title": "每日允许请求次数——最大值",
-            "description": "用于限制应用每日可授权次数",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 32767
-            }
-        },
-        {
-            "name": "times_today",
-            "title": "今日请求次数",
-            "description": "用于记录今日请求授权次数，判断授权次数是否超限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 32767
-            }
-        },
-        {
-            "name": "times_today_min",
-            "title": "今日请求次数——最小值",
-            "description": "用于记录今日请求授权次数，判断授权次数是否超限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 32767
-            }
-        },
-        {
-            "name": "times_today_max",
-            "title": "今日请求次数——最大值",
-            "description": "用于记录今日请求授权次数，判断授权次数是否超限",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 32767
-            }
-        },
-        {
-            "name": "max_age",
-            "title": "有效期时长",
-            "description": "授权应用可以使用的时长，超时需重新申请（单位：天）",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 32767
-            }
-        },
-        {
-            "name": "max_age_min",
-            "title": "有效期时长——最小值",
-            "description": "授权应用可以使用的时长，超时需重新申请（单位：天）",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 32767
-            }
-        },
-        {
-            "name": "max_age_max",
-            "title": "有效期时长——最大值",
-            "description": "授权应用可以使用的时长，超时需重新申请（单位：天）",
-            "type": "number",
-            "dataType": "smallint",
-            "number": {
-                "max": 32767
-            }
-        },
-        {
-            "name": "user_id",
-            "title": "持有者ID",
-            "description": "该客户端所有人的ID",
-            "type": "number",
-            "dataType": "mediumint",
-            "number": {
-                "range": [
-                    1,
-                    8388607
-                ]
-            }
-        },
-        {
-            "name": "times_count",
-            "title": "请求总次数",
-            "description": "用于记录授权总次数",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "times_count_min",
-            "title": "请求总次数——最小值",
-            "description": "用于记录授权总次数",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "times_count_max",
-            "title": "请求总次数——最大值",
-            "description": "用于记录授权总次数",
-            "type": "number",
-            "dataType": "int",
-            "number": {
-                "max": 2147483647
-            }
-        },
-        {
-            "name": "time_update",
-            "title": "上次使用时间",
-            "description": "用于记录上次授权时间，防止频繁操作",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "time_update_min",
-            "title": "上次使用时间——开始时间",
-            "description": "用于记录上次授权时间，防止频繁操作",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "time_update_max",
-            "title": "上次使用时间——结束时间",
-            "description": "用于记录上次授权时间，防止频繁操作",
-            "type": "string",
-            "dataType": "timestamp",
-            "string": {
-                "notEmpty": true,
-                "format": "datetime"
-            }
-        },
-        {
-            "name": "name",
-            "title": "应用名称",
-            "description": "用于用户登陆时显示授权应用",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "appid",
-            "title": "应用ID",
-            "description": "用于应用授权访问时的账号",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "token",
-            "title": "消息访问令牌",
-            "description": "用于访问应用时验证身份",
+            "name": "group",
+            "title": "用户群组",
+            "description": "",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "encoding_aes_key",
-            "title": "消息加密钥匙",
-            "description": "用于给应用发送消息时的加密钥匙",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "range": [
-                    16,
-                    43
-                ]
-            }
-        },
-        {
-            "name": "appsecret",
-            "title": "应用密钥",
-            "description": "用于应用授权访问时的密码",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {
-                "notEmpty": 1
-            }
-        },
-        {
-            "name": "icon",
-            "title": "应用图标",
-            "description": "用于用户登录时显示",
+            "name": "type",
+            "title": "会话类型",
+            "description": "一般情况下，1永久会话/群、2临时会话/群",
             "type": "string",
             "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "url",
-            "title": "消息访问地址",
-            "description": "当接收到用户所发消息后回访该地址",
+            "name": "from_user",
+            "title": "会话发起人",
+            "description": "",
             "type": "string",
             "dataType": "varchar",
-            "string": {
-                "format": "url"
-            }
-        },
-        {
-            "name": "bind_ip",
-            "title": "访问绑定IP",
-            "description": "网站授权时确认重定向网址为已授权IP",
-            "type": "string",
-            "dataType": "text",
             "string": {}
         },
         {
-            "name": "scope",
-            "title": "允许使用的接口",
-            "description": "多个接口用”，“分隔",
+            "name": "to_user",
+            "title": "会话接收人",
+            "description": "",
             "type": "string",
-            "dataType": "text",
+            "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "scope_not",
-            "title": "不允许使用的接口",
-            "description": "“多个接口用”，“分隔",
+            "name": "robot",
+            "title": "服务的机器人",
+            "description": "",
             "type": "string",
-            "dataType": "text",
+            "dataType": "varchar",
             "string": {}
         },
         {
-            "name": "users",
-            "title": "授权的用户",
+            "name": "cmd",
+            "title": "所使用的指令",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词句",
+            "description": "除指令外，过滤、抽取后的词句",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "check",
+            "title": "复查指令",
+            "description": "当用户再驱动指令而缺少参数时，执行该语句",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "content",
+            "title": "会话正文",
             "description": "",
             "type": "string",
             "dataType": "text",
             "string": {}
         },
         {
+            "name": "note",
+            "title": "备注信息",
+            "description": "",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "msg_type",
+            "title": "消息类型",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "form",
+            "title": "表单",
+            "description": "用于记录用户已填参数",
+            "type": "string",
+            "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "stage",
+            "title": "阶段",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "stage_min",
+            "title": "阶段——最小值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "stage_max",
+            "title": "阶段——最大值",
+            "description": "第1阶段用于补全信息，第二阶段用于校验信息",
+            "type": "number",
+            "dataType": "smallint",
+            "number": {
+                "max": 9
+            }
+        },
+        {
+            "name": "create_time",
+            "title": "会话创建时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_min",
+            "title": "会话创建时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "create_time_max",
+            "title": "会话创建时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "datetime",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time",
+            "title": "会话更新时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_min",
+            "title": "会话更新时间——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
+            "name": "update_time_max",
+            "title": "会话更新时间——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "timestamp",
+            "string": {
+                "notEmpty": true,
+                "format": "datetime"
+            }
+        },
+        {
             "name": "keyword",
             "title": "关键词",
-            "description": "用于搜索应用名称(name)",
+            "description": "用于搜索会话正文(content)",
             "key": false,
             "type": "string",
             "dataType": "varchar"

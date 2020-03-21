@@ -4,16 +4,36 @@
     "table": "sys_app_refresh",
     "key": "refresh_id",
     "orderby_default": "`refresh_id` desc",
-    "field_obj": "`refresh_id`,`user_id`,`appid`,`refresh_token`",
-    "field_default": "`refresh_id`,`user_id`,`time_create`,`time_update`,`appid`,`refresh_token`",
+    "field_obj": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`content`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
+    "field_default": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
     "query": {
         "time_create_min": "`time_create` >= '{0}'",
         "time_create_max": "`time_create` <= '{0}'",
         "time_update_min": "`time_update` >= '{0}'",
         "time_update_max": "`time_update` <= '{0}'",
         "appid": "`appid` like '%{0}%'",
-        "refresh_token": "`refresh_token` like '%{0}%'"
+        "refresh_token": "`refresh_token` like '%{0}%'",
+        "group": "`group` like '%{0}%'",
+        "type": "`type` like '%{0}%'",
+        "from_user": "`from_user` like '%{0}%'",
+        "to_user": "`to_user` like '%{0}%'",
+        "robot": "`robot` like '%{0}%'",
+        "cmd": "`cmd` like '%{0}%'",
+        "keyword": "`keyword` like '%{0}%'",
+        "check": "`check` like '%{0}%'",
+        "content": "`content` like '%{0}%'",
+        "note": "`note` like '%{0}%'",
+        "msg_type": "`msg_type` like '%{0}%'",
+        "form": "`form` like '%{0}%'",
+        "stage_min": "`stage` >= '{0}'",
+        "stage_max": "`stage` <= '{0}'",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'"
     },
-    "update": {},
+    "update": {
+        "stage_add": "`stage` = `stage` + '{0}'"
+    },
     "field_hide": []
 }

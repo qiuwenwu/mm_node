@@ -11603,7 +11603,7 @@
 		// the generated code of all the slot contents.
 		var needsKey = !!el.if;
 
-		// OR when it is inside another scoped slot or v-for (the reactivity may be
+		// || when it is inside another scoped slot or v-for (the reactivity may be
 		// disconnected due to the intermediate scope variable)
 		// #9438, #9506
 		// TODO: this can be further optimized by properly analyzing in-scope bindings
