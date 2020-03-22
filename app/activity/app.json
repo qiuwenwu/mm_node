@@ -1,0 +1,10 @@
+{
+	"name": "activity",
+	"title": "活动",
+	"description": "用于举办在线抽奖、分享转发、投票等活动",
+	"version": "1.0",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "activity",
+	"sort": 10
+}

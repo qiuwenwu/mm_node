@@ -1,10 +1,11 @@
 {
     "name": "bbs_thread",
-    "title": "",
+    "title": "社区主题",
     "table": "bbs_thread",
     "key": "thread_id",
     "orderby_default": "`display` asc",
-    "field_default": "`thread_id`,`available`,`state`,`type_id`,`channel_id`,`display`,`city_id`,`user_id`,`hot`,`praise`,`collect_id`,`time_create`,`time_update`,`title`,`keywords`,`description`,`img`,`url`,`tag`,`content`,`collecter`",
+    "field_obj": "`thread_id`,`available`,`state`,`type_id`,`channel_id`,`city_id`,`user_id`,`hot`,`praise`,`collect_id`,`time_create`,`time_update`,`title`,`keywords`,`description`,`img`,`url`,`tag`,`content`,`collecter`",
+    "field_default": "`thread_id`,`available`,`state`,`type_id`,`channel_id`,`display`,`city_id`,`user_id`,`hot`,`praise`,`collect_id`,`time_create`,`time_update`,`title`,`keywords`,`description`,`img`,`url`,`tag`,`collecter`",
     "method": "get",
     "query": {
         "state_min": "`state` >= {0}",
@@ -26,7 +27,8 @@
         "url": "`url` like '%{0}%'",
         "tag": "`tag` like '%{0}%'",
         "content": "`content` like '%{0}%'",
-        "collecter": "`collecter` like '%{0}%'"
+        "collecter": "`collecter` like '%{0}%'",
+        "keyword": "(`title` like '%{0}%' || `keywords` like '%{0}%' || `description` like '%{0}%' || `tag` like '%{0}%')"
     },
     "query_default": {
         "user_id": "`user_id` = {user_id}"

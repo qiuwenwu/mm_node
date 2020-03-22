@@ -1,6 +1,6 @@
 {
     "name": "pay_account2",
-    "title": "",
+    "title": "支付账户",
     "add": {
         "body": [
             "state",
@@ -40,7 +40,8 @@
             "btc_state",
             "eth_state",
             "eos_state",
-            "mm_state"
+            "mm_state",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -77,7 +78,8 @@
             "btc_state",
             "eth_state",
             "eos_state",
-            "mm_state"
+            "mm_state",
+            "keyword"
         ],
         "query_required": []
     },
@@ -258,6 +260,14 @@
             "number": {
                 "max": 1
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索网银名称(bank_name)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

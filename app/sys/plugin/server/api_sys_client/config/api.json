@@ -1,6 +1,6 @@
 {
     "name": "sys_config",
-    "title": "",
+    "title": "系统配置",
     "description": "",
     "path": "/api/sys/config",
     "method": "GET",

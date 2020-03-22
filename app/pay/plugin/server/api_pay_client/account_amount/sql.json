@@ -1,9 +1,10 @@
 {
     "name": "pay_account_amount",
-    "title": "",
+    "title": "账户余额",
     "table": "pay_account_amount",
     "key": "seller_id",
     "orderby_default": "`seller_id` desc",
+    "field_obj": "`seller_id`,`usd`,`cny`,`mm`,`btc`,`eth`,`eos`",
     "field_default": "`seller_id`,`usd`,`cny`,`mm`,`btc`,`eth`,`eos`",
     "method": "get",
     "query": {

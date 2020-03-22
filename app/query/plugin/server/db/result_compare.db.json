@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "查询结果对比",
+    "description": "保存查询词条对比测评数据",
     "name": "query_result_compare",
     "table": "query_result_compare",
     "key": "compare_id",

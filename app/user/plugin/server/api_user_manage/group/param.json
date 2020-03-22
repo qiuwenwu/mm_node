@@ -1,6 +1,6 @@
 {
     "name": "user_group2",
-    "title": "",
+    "title": "用户组",
     "add": {
         "body": [
             "display",
@@ -37,7 +37,8 @@
             "bonus_min",
             "bonus_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -74,7 +75,8 @@
             "bonus_min",
             "bonus_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": []
     },
@@ -273,6 +275,14 @@
             "name": "icon",
             "title": "图标",
             "description": "用于标识用户组",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索用户名称(name)、描述(description)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

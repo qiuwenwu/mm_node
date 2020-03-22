@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread",
-    "title": "",
+    "title": "社区主题",
     "add": {
         "body": [
             "available",
@@ -48,7 +48,8 @@
             "keywords",
             "description",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -100,7 +101,8 @@
             "keywords",
             "description",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": []
     },
@@ -452,6 +454,14 @@
             "description": "多个收藏者用”,“分隔",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索标题(title)、关键词(keywords)、描述(description)、标签(tag)、正文(content)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "活动参与记录",
+    "description": "用来记录参与活动的人和中奖情况",
     "name": "activity_user_log",
     "table": "activity_user_log",
     "key": "log_id",

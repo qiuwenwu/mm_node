@@ -1,9 +1,10 @@
 {
     "name": "sys_ad2",
-    "title": "",
+    "title": "广告信息",
     "table": "sys_ad",
     "key": "ad_id",
     "orderby_default": "`ad_id` desc",
+    "field_obj": "`ad_id`,`city_id`,`area_id`,`user_id`,`times_user`,`times_max`,`times_show`,`times_click`,`fee`,`fee_max`,`name`,`type`,`location`,`fee_way`,`app`,`trade`,`title`,`description`,`img`,`url`,`keywords`",
     "field_default": "`ad_id`,`display`,`city_id`,`area_id`,`user_id`,`times_user`,`times_max`,`times_show`,`times_click`,`fee`,`fee_max`,`name`,`type`,`location`,`fee_way`,`app`,`trade`,`title`,`description`,`img`,`url`,`keywords`",
     "query": {
         "display_min": "`display` >= {0}",
@@ -30,7 +31,8 @@
         "description": "`description` like '%{0}%'",
         "img": "`img` like '%{0}%'",
         "url": "`url` like '%{0}%'",
-        "keywords": "`keywords` like '%{0}%'"
+        "keywords": "`keywords` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%' || `title` like '%{0}%' || `description` like '%{0}%' || `keywords` like '%{0}%')"
     },
     "update": {
         "display_add": "`display` = `display` + {0}",

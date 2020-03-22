@@ -114,7 +114,7 @@ class Drive extends Item {
 			/* 逻辑符 */
 			"logic": {},
 			// 输出sql语句 
-			log: true
+			log: false
 		};
 	}
 }

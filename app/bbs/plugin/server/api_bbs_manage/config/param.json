@@ -1,6 +1,6 @@
 {
     "name": "bbs_config2",
-    "title": "",
+    "title": "社区配置",
     "add": {
         "body": [
             "title",
@@ -24,7 +24,8 @@
             "config_id",
             "name",
             "title",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -43,7 +44,8 @@
             "config_id",
             "name",
             "title",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": []
     },
@@ -111,6 +113,14 @@
             "description": "json格式，用于单选、多选模式",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索变量名(name)、变量标题(title)、变量描述(description)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

@@ -1,6 +1,6 @@
 {
     "name": "coin_market",
-    "title": "",
+    "title": "数字货币行情",
     "add": {
         "body": [
             "HIGH",

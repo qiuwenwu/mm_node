@@ -1,6 +1,6 @@
 {
     "name": "user_sns",
-    "title": "",
+    "title": "社交账户",
     "add": {
         "body": [
             "qq",

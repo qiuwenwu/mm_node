@@ -1,6 +1,6 @@
 {
     "name": "cms_article_comment2",
-    "title": "",
+    "title": "文章评论",
     "add": {
         "body": [
             "available",
@@ -31,7 +31,8 @@
             "display_max",
             "name",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -60,7 +61,8 @@
             "display_max",
             "name",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": []
     },
@@ -209,6 +211,14 @@
             "description": "对评论人的评论做出的回复。通过form-url格式保存，多个人的回复用换行分隔",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索留言者姓名(name)、标签(tag)、正文(content)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

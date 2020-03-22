@@ -1,4 +1,4 @@
-var api_test = $.api_admin('query_client', '测评客户端API');
+var api_test = $.api_admin('query_client', '测评客户端');
 // 首次启动更新api接口;
 api_test.update('query/');
 

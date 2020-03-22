@@ -1,0 +1,10 @@
+{
+	"name": "user",
+	"title": "用户",
+	"description": "用于系统用户的账户信息管理",
+	"version": "1.0",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "user",
+	"sort": 10
+}

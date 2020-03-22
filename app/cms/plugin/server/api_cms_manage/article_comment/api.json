@@ -1,7 +1,7 @@
 {
     "name": "cms_article_comment2",
-    "title": "",
-    "description": "",
+    "title": "文章评论",
+    "description": "用于记录读者对某文章的评论",
     "path": "/apis/cms/article_comment",
     "method": "ALL",
     "cache": 0,

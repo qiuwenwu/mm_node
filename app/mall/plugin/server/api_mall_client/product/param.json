@@ -1,6 +1,6 @@
 {
     "name": "mall_product",
-    "title": "",
+    "title": "商品信息",
     "add": {
         "body": [
             "available",
@@ -53,7 +53,8 @@
             "keywords",
             "description",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -112,7 +113,8 @@
             "keywords",
             "description",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": []
     },
@@ -498,6 +500,14 @@
             "name": "brand",
             "title": "品牌",
             "description": "商品的品牌",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索标题(title)、关键词(keywords)、描述(description)、标签(tag)、正文(content)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

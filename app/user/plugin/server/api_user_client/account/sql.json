@@ -1,9 +1,10 @@
 {
     "name": "user_account",
-    "title": "",
+    "title": "用户账户",
     "table": "user_account",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
+    "field_obj": "`user_id`,`state`,`vip`,`gm`,`mc`,`referee_id`,`login_time`,`invite_code`,`phone`,`phone_state`,`username`,`nickname`,`email`,`email_state`,`user_group`,`user_admin`,`login_ip`,`signature`,`avatar`,`friends`,`admin_group`,`create_time`",
     "field_default": "`user_id`,`state`,`vip`,`gm`,`mc`,`referee_id`,`login_time`,`invite_code`,`phone`,`phone_state`,`username`,`nickname`,`email`,`email_state`,`user_group`,`user_admin`,`login_ip`,`signature`,`avatar`,`friends`,`admin_group`,`create_time`",
     "method": "get",
     "query": {
@@ -32,7 +33,8 @@
         "friends": "`friends` like '%{0}%'",
         "admin_group": "`admin_group` like '%{0}%'",
         "create_time_min": "`create_time` >= '{0}'",
-        "create_time_max": "`create_time` <= '{0}'"
+        "create_time_max": "`create_time` <= '{0}'",
+        "keyword": "(`username` like '%{0}%' || `nickname` like '%{0}%')"
     },
     "query_default": {
         "user_id": "`user_id` = {user_id}"

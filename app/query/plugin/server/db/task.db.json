@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "查询任务",
+    "description": "关联多个词条，用于批测",
     "name": "query_task",
     "table": "query_task",
     "key": "task_id",

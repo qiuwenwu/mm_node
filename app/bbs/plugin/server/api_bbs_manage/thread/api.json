@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread2",
-    "title": "",
+    "title": "社区主题",
     "description": "",
     "path": "/apis/bbs/thread",
     "method": "ALL",

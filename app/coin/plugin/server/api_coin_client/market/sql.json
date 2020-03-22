@@ -1,9 +1,10 @@
 {
     "name": "coin_market",
-    "title": "",
+    "title": "数字货币行情",
     "table": "coin_market",
     "key": "market_id",
     "orderby_default": "`market_id` desc",
+    "field_obj": "`market_id`,`code`,`HIGH`,`LOW`,`OPEN`,`CLOSE`,`VOL`,`CHG`,`TOTAL`,`DATETIME`",
     "field_default": "`market_id`,`code`,`HIGH`,`LOW`,`OPEN`,`CLOSE`,`VOL`,`CHG`,`TOTAL`,`DATETIME`",
     "method": "get",
     "query": {

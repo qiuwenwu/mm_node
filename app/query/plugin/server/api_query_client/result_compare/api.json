@@ -1,18 +1,12 @@
 {
     "name": "query_result_compare",
-    "title": "",
-    "description": "",
+    "title": "查询结果对比",
+    "description": "保存查询词条对比测评数据",
     "path": "/api/query/result_compare",
     "method": "GET",
     "cache": 0,
     "client_cache": false,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true,
-    "oauth": {
-        "scope": true,
-        "signIn": true,
-        "vip": 0,
-        "user_group": []
-    }
+    "check_param": true
 }

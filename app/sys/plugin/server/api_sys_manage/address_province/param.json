@@ -1,6 +1,6 @@
 {
     "name": "sys_address_province2",
-    "title": "",
+    "title": "省份",
     "add": {
         "body": [
             "show",
@@ -23,7 +23,8 @@
             "show_max",
             "display_min",
             "display_max",
-            "name"
+            "name",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -43,7 +44,8 @@
             "show_max",
             "display_min",
             "display_max",
-            "name"
+            "name",
+            "keyword"
         ],
         "query_required": []
     },
@@ -130,6 +132,14 @@
             "string": {
                 "notEmpty": 1
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索省份名称(name)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

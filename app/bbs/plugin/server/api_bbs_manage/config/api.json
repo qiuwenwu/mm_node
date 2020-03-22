@@ -1,6 +1,6 @@
 {
     "name": "bbs_config2",
-    "title": "",
+    "title": "社区配置",
     "description": "",
     "path": "/apis/bbs/config",
     "method": "ALL",

@@ -1,9 +1,10 @@
 {
     "name": "stock_formula",
-    "title": "",
+    "title": "股票公式",
     "table": "stock_formula",
     "key": "formula_id",
     "orderby_default": "`formula_id` desc",
+    "field_obj": "`formula_id`,`weight`,`policy`,`tense`,`name`,`filter`,`presage`,`description`,`express`",
     "field_default": "`formula_id`,`weight`,`policy`,`tense`,`name`,`filter`,`presage`,`description`,`express`",
     "method": "get",
     "query": {
@@ -15,7 +16,8 @@
         "filter": "`filter` like '%{0}%'",
         "presage": "`presage` like '%{0}%'",
         "description": "`description` like '%{0}%'",
-        "express": "`express` like '%{0}%'"
+        "express": "`express` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%' || `description` like '%{0}%')"
     },
     "query_default": {},
     "update": {

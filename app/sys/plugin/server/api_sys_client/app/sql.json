@@ -1,9 +1,10 @@
 {
     "name": "sys_app",
-    "title": "",
+    "title": "应用信息",
     "table": "sys_app",
     "key": "app_id",
     "orderby_default": "`app_id` desc",
+    "field_obj": "`app_id`,`available`,`encrypt`,`times_allow`,`times_today`,`max_age`,`user_id`,`times_count`,`time_update`,`name`,`appid`,`token`,`encoding_aes_key`,`appsecret`,`icon`,`url`,`bind_ip`,`scope`,`scope_not`,`users`",
     "field_default": "`app_id`,`available`,`encrypt`,`times_allow`,`times_today`,`max_age`,`user_id`,`times_count`,`time_update`,`name`,`appid`,`token`,`encoding_aes_key`,`appsecret`,`icon`,`url`,`bind_ip`,`scope`,`scope_not`,`users`",
     "method": "get",
     "query": {
@@ -29,7 +30,8 @@
         "bind_ip": "`bind_ip` like '%{0}%'",
         "scope": "`scope` like '%{0}%'",
         "scope_not": "`scope_not` like '%{0}%'",
-        "users": "`users` like '%{0}%'"
+        "users": "`users` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%')"
     },
     "query_default": {
         "user_id": "`user_id` = {user_id}"

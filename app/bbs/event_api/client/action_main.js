@@ -1,4 +1,4 @@
-var api_test = $.api_admin('bbs_client', '论坛客户端API');
+var api_test = $.api_admin('bbs_client', '论坛客户端');
 // 首次启动更新api接口;
 api_test.update('bbs/');
 

@@ -1,9 +1,10 @@
 {
     "name": "activity_action_log",
-    "title": "",
+    "title": "活动操作日志",
     "table": "activity_action_log",
     "key": "action_id",
     "orderby_default": "`action_id` desc",
+    "field_obj": "`action_id`,`time_create`,`time_update`,`func_name`,`uin_action`,`method`,`log`",
     "field_default": "`action_id`,`time_create`,`time_update`,`func_name`,`uin_action`,`method`,`log`",
     "method": "get",
     "query": {
@@ -14,7 +15,8 @@
         "func_name": "`func_name` like '%{0}%'",
         "uin_action": "`uin_action` like '%{0}%'",
         "method": "`method` like '%{0}%'",
-        "log": "`log` like '%{0}%'"
+        "log": "`log` like '%{0}%'",
+        "keyword": "(`func_name` like '%{0}%')"
     },
     "query_default": {},
     "update": {}

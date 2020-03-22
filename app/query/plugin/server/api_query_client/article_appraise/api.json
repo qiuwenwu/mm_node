@@ -1,18 +1,12 @@
 {
     "name": "query_article_appraise",
-    "title": "",
-    "description": "",
+    "title": "查询文章评价",
+    "description": "保存对单条文章的测评",
     "path": "/api/query/article_appraise",
     "method": "GET",
     "cache": 0,
     "client_cache": false,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true,
-    "oauth": {
-        "scope": true,
-        "signIn": true,
-        "vip": 0,
-        "user_group": []
-    }
+    "check_param": true
 }

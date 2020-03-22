@@ -1,6 +1,6 @@
 {
     "name": "pay_account_amount",
-    "title": "",
+    "title": "账户余额",
     "description": "",
     "path": "/api/pay/account_amount",
     "method": "GET",

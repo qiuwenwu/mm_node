@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "活动操作日志",
+    "description": "记录谁操作过什么",
     "name": "activity_action_log",
     "table": "activity_action_log",
     "key": "action_id",

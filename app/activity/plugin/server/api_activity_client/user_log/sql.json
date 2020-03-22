@@ -1,9 +1,10 @@
 {
     "name": "activity_user_log",
-    "title": "",
+    "title": "活动参与记录",
     "table": "activity_user_log",
     "key": "log_id",
     "orderby_default": "`log_id` desc",
+    "field_obj": "`log_id`,`state`,`prize_1`,`prize_2`,`prize_3`,`prize_t`,`activity_id`,`time_update`,`time_create`,`uin_user`,`uin_prize winners`,`img_prove`",
     "field_default": "`log_id`,`state`,`prize_1`,`prize_2`,`prize_3`,`prize_t`,`activity_id`,`time_update`,`time_create`,`uin_user`,`uin_prize winners`,`img_prove`",
     "method": "get",
     "query": {

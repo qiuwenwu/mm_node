@@ -1,6 +1,6 @@
 {
     "name": "mall_product_property2",
-    "title": "",
+    "title": "商品属性",
     "description": "",
     "path": "/apis/mall/product_property",
     "method": "ALL",

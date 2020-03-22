@@ -1,6 +1,6 @@
 {
     "name": "pay_trade2",
-    "title": "",
+    "title": "交易信息",
     "add": {
         "body": [
             "state",
@@ -48,7 +48,8 @@
             "fee_max",
             "title",
             "description",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -104,7 +105,8 @@
             "end_time_min",
             "end_time_max",
             "update_time_min",
-            "update_time_max"
+            "update_time_max",
+            "keyword"
         ],
         "query_required": []
     },
@@ -492,6 +494,14 @@
                 "notEmpty": true,
                 "format": "datetime"
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索付款标题(title)、付款描述(description)、付款内容(content)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

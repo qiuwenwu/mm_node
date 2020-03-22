@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "股票订阅",
+    "description": "用于记录用户订阅的股票，便于定时通知技术分析和走势",
     "name": "stock_subscribe",
     "table": "stock_subscribe",
     "key": "subscribe_id",

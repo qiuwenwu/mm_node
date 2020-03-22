@@ -1,6 +1,6 @@
 {
     "name": "stock_formula2",
-    "title": "",
+    "title": "股票公式",
     "description": "",
     "path": "/apis/stock/formula",
     "method": "ALL",

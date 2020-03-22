@@ -1,0 +1,10 @@
+{
+	"name": "sys",
+	"title": "系统",
+	"description": "描述该应用是做什么用的",
+	"version": "1.0",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "sys",
+	"sort": 10
+}

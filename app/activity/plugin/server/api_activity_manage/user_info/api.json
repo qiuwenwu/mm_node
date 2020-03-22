@@ -1,7 +1,7 @@
 {
     "name": "activity_user_info2",
-    "title": "",
-    "description": "",
+    "title": "参与者信息",
+    "description": "用来记录参与的用户的个人信息",
     "path": "/apis/activity/user_info",
     "method": "ALL",
     "cache": 0,

@@ -1,20 +1,34 @@
 {
-    "name": "sys_address_city2",
-    "title": "",
-    "table": "sys_address_city",
-    "key": "city_id",
-    "orderby_default": "`city_id` desc",
-    "field_default": "`city_id`,`show`,`display`,`province_id`,`name`",
-    "query": {
-        "show_min": "`show` >= {0}",
-        "show_max": "`show` <= {0}",
-        "display_min": "`display` >= {0}",
-        "display_max": "`display` <= {0}",
-        "name": "`name` like '%{0}%'"
-    },
-    "update": {
-        "show_add": "`show` = `show` + {0}",
-        "display_add": "`display` = `display` + {0}"
-    },
-    "field_hide": []
+	"title": "示例事件",
+	"table": "user",
+	"key": "uid",
+	"orderby": "{0}",
+	"orderby_default": "`uid` desc",
+	"field": "{0}",
+	"field_obj": "{0}",
+	"field_default": "`username`, `name`, `phone`",
+	"field_hide": ["*password*", "*token*"],
+	"separator": "|",
+	"keyword": {
+		"table": "table",
+		"orderby": "orderby",
+		"field": "field",
+		"page": "page",
+		"size": "size",
+		"count": "count",
+		"method": "method"
+	},
+	"method": "add del set get import export",
+	"query": {
+		"name": "`name` like '%{0}%'"
+	},
+	"where": {
+		"uid": "`uid` = '{0}'"
+	},
+	"update": {
+		"name": "`name` = '{0}'"
+	},
+	"func_file": "",
+	"convert": {},
+	"del_repeat": {}
 }

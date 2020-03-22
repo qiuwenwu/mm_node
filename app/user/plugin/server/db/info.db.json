@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "用户信息",
+    "description": "用于保存用户个人信息，如年龄、住址等",
     "name": "user_info",
     "table": "user_info",
     "key": "user_id",

@@ -1,6 +1,6 @@
 {
     "name": "pay_account_discount",
-    "title": "",
+    "title": "账户提现",
     "add": {
         "body": [
             "state",

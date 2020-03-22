@@ -1,6 +1,6 @@
 {
     "name": "query_result_compare",
-    "title": "",
+    "title": "查询结果对比",
     "add": {
         "body": [
             "task_id",

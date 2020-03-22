@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "活动信息",
+    "description": "用来编辑添加活动",
     "name": "activity_info",
     "table": "activity_info",
     "key": "activity_id",

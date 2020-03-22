@@ -1,4 +1,4 @@
-var api_test = $.api_admin('coin_manage', '数字货币管理端API');
+var api_test = $.api_admin('coin_manage', '数字货币管理端');
 // 首次启动更新api接口;
 api_test.update('coin/');
 

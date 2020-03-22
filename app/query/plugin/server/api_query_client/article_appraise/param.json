@@ -1,6 +1,6 @@
 {
     "name": "query_article_appraise",
-    "title": "",
+    "title": "查询文章评价",
     "add": {
         "body": [
             "task_id",

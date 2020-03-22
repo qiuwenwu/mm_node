@@ -1,7 +1,7 @@
 {
     "name": "query_result_compare2",
-    "title": "",
-    "description": "",
+    "title": "查询结果对比",
+    "description": "保存查询词条对比测评数据",
     "path": "/apis/query/result_compare",
     "method": "ALL",
     "cache": 0,

@@ -1,6 +1,6 @@
 {
     "name": "activity_user_log",
-    "title": "",
+    "title": "活动参与记录",
     "add": {
         "body": [
             "state",

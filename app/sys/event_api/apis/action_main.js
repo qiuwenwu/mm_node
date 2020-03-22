@@ -1,4 +1,4 @@
-var api = $.api_admin('manage', '默认管理端API');
+var api = $.api_admin('manage', '默认管理端');
 // 首次启动更新api接口;
 api.update();
 

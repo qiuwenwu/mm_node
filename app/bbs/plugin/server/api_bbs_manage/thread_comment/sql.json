@@ -1,10 +1,11 @@
 {
     "name": "bbs_thread_comment2",
-    "title": "",
+    "title": "主题评论",
     "table": "bbs_thread_comment",
     "key": "comment_id",
     "orderby_default": "`comment_id` desc",
-    "field_default": "`comment_id`,`available`,`score`,`display`,`thread_id`,`user_id`,`tag`,`reply`,`content`",
+    "field_obj": "`comment_id`,`available`,`score`,`thread_id`,`user_id`,`tag`,`reply`,`content`",
+    "field_default": "`comment_id`,`available`,`score`,`display`,`thread_id`,`user_id`,`tag`,`reply`",
     "query": {
         "score_min": "`score` >= {0}",
         "score_max": "`score` <= {0}",
@@ -12,7 +13,8 @@
         "display_max": "`display` <= {0}",
         "tag": "`tag` like '%{0}%'",
         "reply": "`reply` like '%{0}%'",
-        "content": "`content` like '%{0}%'"
+        "content": "`content` like '%{0}%'",
+        "keyword": "(`tag` like '%{0}%')"
     },
     "update": {
         "score_add": "`score` = `score` + {0}",

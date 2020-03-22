@@ -1,6 +1,6 @@
 {
     "name": "stock_info",
-    "title": "",
+    "title": "股票信息",
     "add": {
         "body": [
             "name",
@@ -40,7 +40,8 @@
             "profit_min",
             "profit_max",
             "num_min",
-            "num_max"
+            "num_max",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -83,7 +84,8 @@
             "num_min",
             "num_max",
             "time_to_market_min",
-            "time_to_market_max"
+            "time_to_market_max",
+            "keyword"
         ],
         "query_required": []
     },
@@ -317,6 +319,14 @@
                 "notEmpty": true,
                 "format": "date"
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索股票名称(name)、股票简介(description)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

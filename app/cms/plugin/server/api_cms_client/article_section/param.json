@@ -1,6 +1,6 @@
 {
     "name": "cms_article_section",
-    "title": "",
+    "title": "文章正文章节",
     "add": {
         "body": [
             "article_id",
@@ -23,7 +23,8 @@
             "content_id",
             "title",
             "content",
-            "tag"
+            "tag",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -41,7 +42,8 @@
             "content_id",
             "title",
             "content",
-            "tag"
+            "tag",
+            "keyword"
         ],
         "query_required": []
     },
@@ -105,6 +107,14 @@
             "string": {
                 "notEmpty": 1
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索章节标题(title)、章节内容(content)、章节标签(tag)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

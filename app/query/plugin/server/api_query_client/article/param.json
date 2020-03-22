@@ -1,6 +1,6 @@
 {
     "name": "query_article",
-    "title": "",
+    "title": "查询文章",
     "add": {
         "body": [
             "result_id",
@@ -25,7 +25,8 @@
             "article_id",
             "title",
             "description",
-            "keywords"
+            "keywords",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -50,7 +51,8 @@
             "create_time_min",
             "create_time_max",
             "update_time_min",
-            "update_time_max"
+            "update_time_max",
+            "keyword"
         ],
         "query_required": []
     },
@@ -188,6 +190,14 @@
                 "notEmpty": true,
                 "format": "datetime"
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索文章标题(title)、文章描述(description)、关键词(keywords)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

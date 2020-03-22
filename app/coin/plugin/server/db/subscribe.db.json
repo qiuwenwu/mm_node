@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "数字货币订阅",
+    "description": "用于记录用户订阅的数字货币，便于定时通知技术分析和走势",
     "name": "coin_subscribe",
     "table": "coin_subscribe",
     "key": "subscribe_id",

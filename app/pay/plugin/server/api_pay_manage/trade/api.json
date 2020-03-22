@@ -1,6 +1,6 @@
 {
     "name": "pay_trade2",
-    "title": "",
+    "title": "交易信息",
     "description": "",
     "path": "/apis/pay/trade",
     "method": "ALL",

@@ -1,6 +1,6 @@
 {
     "name": "sys_ad",
-    "title": "",
+    "title": "广告信息",
     "add": {
         "body": [
             "display",
@@ -53,7 +53,8 @@
             "name",
             "title",
             "description",
-            "keywords"
+            "keywords",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -109,7 +110,8 @@
             "name",
             "title",
             "description",
-            "keywords"
+            "keywords",
+            "keyword"
         ],
         "query_required": []
     },
@@ -450,6 +452,14 @@
             "name": "keywords",
             "title": "关键词",
             "description": "在出现于关键词相关的情况下才打广告，多个关键词用空格分隔",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索广告名称(name)、广告标题(title)、广告描述(description)、关键词(keywords)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

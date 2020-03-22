@@ -1,6 +1,6 @@
 {
     "name": "mall_shop_comment2",
-    "title": "",
+    "title": "店铺评论",
     "description": "",
     "path": "/apis/mall/shop_comment",
     "method": "ALL",

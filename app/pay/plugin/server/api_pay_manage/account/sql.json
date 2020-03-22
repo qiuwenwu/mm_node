@@ -1,9 +1,10 @@
 {
     "name": "pay_account2",
-    "title": "",
+    "title": "支付账户",
     "table": "pay_account",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
+    "field_obj": "`user_id`,`state`,`bank`,`bank_name`,`bank_state`,`wechat`,`wechat_state`,`alipay`,`alipay_state`,`btc`,`btc_state`,`eth`,`eth_state`,`eos`,`eos_state`,`mm`,`mm_state`",
     "field_default": "`user_id`,`state`,`bank`,`bank_name`,`bank_state`,`wechat`,`wechat_state`,`alipay`,`alipay_state`,`btc`,`btc_state`,`eth`,`eth_state`,`eos`,`eos_state`,`mm`,`mm_state`",
     "query": {
         "state_min": "`state` >= {0}",
@@ -15,7 +16,8 @@
         "btc": "`btc` like '%{0}%'",
         "eth": "`eth` like '%{0}%'",
         "eos": "`eos` like '%{0}%'",
-        "mm": "`mm` like '%{0}%'"
+        "mm": "`mm` like '%{0}%'",
+        "keyword": "(`bank_name` like '%{0}%')"
     },
     "update": {
         "state_add": "`state` = `state` + {0}"

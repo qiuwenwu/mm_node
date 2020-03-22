@@ -1,6 +1,6 @@
 {
     "name": "activity_user_info",
-    "title": "",
+    "title": "参与者信息",
     "add": {
         "body": [
             "state",
@@ -33,7 +33,8 @@
             "state_min",
             "state_max",
             "name",
-            "liaison_name"
+            "liaison_name",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -62,7 +63,8 @@
             "state_min",
             "state_max",
             "name",
-            "liaison_name"
+            "liaison_name",
+            "keyword"
         ],
         "query_required": []
     },
@@ -219,6 +221,14 @@
             "description": "",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索参与人姓名(name)、紧急联系人姓名(liaison_name)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

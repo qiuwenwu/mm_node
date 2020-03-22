@@ -1,6 +1,6 @@
 {
     "name": "wechat_message2",
-    "title": "",
+    "title": "微信消息",
     "add": {
         "body": [
             "end",
@@ -34,7 +34,8 @@
             "end",
             "content",
             "stage_min",
-            "stage_max"
+            "stage_max",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -69,7 +70,8 @@
             "create_time_min",
             "create_time_max",
             "update_time_min",
-            "update_time_max"
+            "update_time_max",
+            "keyword"
         ],
         "query_required": []
     },
@@ -288,6 +290,14 @@
                 "notEmpty": true,
                 "format": "datetime"
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索会话正文(content)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

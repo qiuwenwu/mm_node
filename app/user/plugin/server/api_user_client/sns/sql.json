@@ -1,9 +1,10 @@
 {
     "name": "user_sns",
-    "title": "",
+    "title": "社交账户",
     "table": "user_sns",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
+    "field_obj": "`user_id`,`qq`,`qq_state`,`wechat`,`wechat_state`,`mm`,`mm_state`,`baidu`,`baidu_state`,`taobao`,`taobao_state`",
     "field_default": "`user_id`,`qq`,`qq_state`,`wechat`,`wechat_state`,`mm`,`mm_state`,`baidu`,`baidu_state`,`taobao`,`taobao_state`",
     "method": "get",
     "query": {

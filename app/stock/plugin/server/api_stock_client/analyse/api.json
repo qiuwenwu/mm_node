@@ -1,6 +1,6 @@
 {
     "name": "stock_analyse",
-    "title": "",
+    "title": "股票分析",
     "description": "",
     "path": "/api/stock/analyse",
     "method": "GET",

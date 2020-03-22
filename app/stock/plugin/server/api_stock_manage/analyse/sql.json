@@ -1,9 +1,10 @@
 {
     "name": "stock_analyse2",
-    "title": "",
+    "title": "股票分析",
     "table": "stock_analyse",
     "key": "analyse_id",
     "orderby_default": "`analyse_id` desc",
+    "field_obj": "`analyse_id`,`weight`,`update_time`,`datetime`,`policy_buy`,`policy_hold`,`policy_sell`,`presage_today`,`presage_recently`,`presage_next`,`code`,`tip`,`action`,`predict`",
     "field_default": "`analyse_id`,`weight`,`update_time`,`datetime`,`policy_buy`,`policy_hold`,`policy_sell`,`presage_today`,`presage_recently`,`presage_next`,`code`,`tip`,`action`,`predict`",
     "query": {
         "weight_min": "`weight` >= {0}",

@@ -1,6 +1,6 @@
 {
     "name": "pay_account_discount2",
-    "title": "",
+    "title": "账户提现",
     "description": "",
     "path": "/apis/pay/account_discount",
     "method": "ALL",

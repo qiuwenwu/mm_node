@@ -1,10 +1,11 @@
 {
     "name": "mall_product_comment2",
-    "title": "",
+    "title": "商品评论",
     "table": "mall_product_comment",
     "key": "comment_id",
     "orderby_default": "`comment_id` desc",
-    "field_default": "`comment_id`,`available`,`score`,`display`,`product_id`,`user_id`,`name`,`tag`,`content`,`reply`",
+    "field_obj": "`comment_id`,`available`,`score`,`product_id`,`user_id`,`name`,`tag`,`content`,`reply`",
+    "field_default": "`comment_id`,`available`,`score`,`display`,`product_id`,`user_id`,`name`,`tag`,`reply`",
     "query": {
         "score_min": "`score` >= {0}",
         "score_max": "`score` <= {0}",
@@ -13,7 +14,8 @@
         "name": "`name` like '%{0}%'",
         "tag": "`tag` like '%{0}%'",
         "content": "`content` like '%{0}%'",
-        "reply": "`reply` like '%{0}%'"
+        "reply": "`reply` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%' || `tag` like '%{0}%')"
     },
     "update": {
         "score_add": "`score` = `score` + {0}",

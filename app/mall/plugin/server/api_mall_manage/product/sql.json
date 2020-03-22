@@ -1,10 +1,11 @@
 {
     "name": "mall_product2",
-    "title": "",
+    "title": "商品信息",
     "table": "mall_product",
     "key": "product_id",
     "orderby_default": "`product_id` desc",
-    "field_default": "`product_id`,`available`,`state`,`type_id`,`display`,`channel_id`,`shop_id`,`city_id`,`hot`,`praise`,`price`,`price_old`,`time_create`,`time_update`,`title`,`keywords`,`description`,`img`,`tag`,`content`,`collecter`,`brand`",
+    "field_obj": "`product_id`,`available`,`state`,`type_id`,`channel_id`,`shop_id`,`city_id`,`hot`,`praise`,`price`,`price_old`,`title`,`keywords`,`description`,`img`,`tag`,`content`,`collecter`,`brand`",
+    "field_default": "`product_id`,`available`,`state`,`type_id`,`display`,`channel_id`,`shop_id`,`city_id`,`hot`,`praise`,`price`,`price_old`,`time_create`,`time_update`,`title`,`keywords`,`description`,`img`,`tag`,`collecter`,`brand`",
     "query": {
         "state_min": "`state` >= {0}",
         "state_max": "`state` <= {0}",
@@ -29,7 +30,8 @@
         "tag": "`tag` like '%{0}%'",
         "content": "`content` like '%{0}%'",
         "collecter": "`collecter` like '%{0}%'",
-        "brand": "`brand` like '%{0}%'"
+        "brand": "`brand` like '%{0}%'",
+        "keyword": "(`title` like '%{0}%' || `keywords` like '%{0}%' || `description` like '%{0}%' || `tag` like '%{0}%')"
     },
     "update": {
         "state_add": "`state` = `state` + {0}",

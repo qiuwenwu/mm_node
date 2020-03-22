@@ -1,7 +1,7 @@
 {
     "name": "wechat_message2",
-    "title": "",
-    "description": "",
+    "title": "微信消息",
+    "description": "用于查询和保存聊天记录",
     "path": "/apis/wechat/message",
     "method": "ALL",
     "cache": 0,

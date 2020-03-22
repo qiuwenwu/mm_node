@@ -1,4 +1,4 @@
-var api = $.api_admin('dev_client', '开发者专用API');
+var api = $.api_admin('dev_client', '开发者专用');
 // 首次启动更新api接口;
 api.update('dev/');
 

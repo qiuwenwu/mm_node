@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "查询文章",
+    "description": "保存查询到的文章",
     "name": "query_article",
     "table": "query_article",
     "key": "article_id",

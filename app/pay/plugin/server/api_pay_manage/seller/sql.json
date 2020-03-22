@@ -1,9 +1,10 @@
 {
     "name": "pay_seller2",
-    "title": "",
+    "title": "商户信息",
     "table": "pay_seller",
     "key": "seller_id",
     "orderby_default": "`seller_id` desc",
+    "field_obj": "`seller_id`,`institution_state`,`user_id`,`province_id`,`city_id`,`name`,`institution`,`institution_code`,`address`,`business`,`institution_img`",
     "field_default": "`seller_id`,`institution_state`,`user_id`,`province_id`,`city_id`,`name`,`institution`,`institution_code`,`address`,`business`,`institution_img`",
     "query": {
         "institution_state_min": "`institution_state` >= {0}",
@@ -13,7 +14,8 @@
         "institution_code": "`institution_code` like '%{0}%'",
         "address": "`address` like '%{0}%'",
         "business": "`business` like '%{0}%'",
-        "institution_img": "`institution_img` like '%{0}%'"
+        "institution_img": "`institution_img` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%')"
     },
     "update": {
         "institution_state_add": "`institution_state` = `institution_state` + {0}"

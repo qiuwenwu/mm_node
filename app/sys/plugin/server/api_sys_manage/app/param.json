@@ -1,6 +1,6 @@
 {
     "name": "sys_app2",
-    "title": "",
+    "title": "应用信息",
     "add": {
         "body": [
             "available",
@@ -46,7 +46,8 @@
             "max_age_max",
             "times_count_min",
             "times_count_max",
-            "name"
+            "name",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -94,7 +95,8 @@
             "times_count_max",
             "time_update_min",
             "time_update_max",
-            "name"
+            "name",
+            "keyword"
         ],
         "query_required": []
     },
@@ -417,6 +419,14 @@
             "description": "",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索应用名称(name)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

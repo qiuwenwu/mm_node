@@ -1,18 +1,12 @@
 {
     "name": "wechat_app_refresh",
-    "title": "",
-    "description": "",
+    "title": "微信刷新访问牌",
+    "description": "用于微信公众号Oauth2.0刷新临时访问牌Token",
     "path": "/api/wechat/app_refresh",
     "method": "GET",
     "cache": 0,
     "client_cache": false,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true,
-    "oauth": {
-        "scope": true,
-        "signIn": true,
-        "vip": 0,
-        "user_group": []
-    }
+    "check_param": true
 }

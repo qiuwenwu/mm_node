@@ -1,7 +1,7 @@
 {
     "name": "query_article_appraise2",
-    "title": "",
-    "description": "",
+    "title": "查询文章评价",
+    "description": "保存对单条文章的测评",
     "path": "/apis/query/article_appraise",
     "method": "ALL",
     "cache": 0,

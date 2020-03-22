@@ -1,4 +1,4 @@
-var api = $.api_admin('user_manage', '用户管理端API');
+var api = $.api_admin('user_manage', '用户管理端');
 // 首次启动更新api接口;
 api.update('user/');
 

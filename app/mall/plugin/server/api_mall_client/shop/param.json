@@ -1,6 +1,6 @@
 {
     "name": "mall_shop",
-    "title": "",
+    "title": "店铺信息",
     "add": {
         "body": [
             "available",
@@ -44,7 +44,8 @@
             "name",
             "description",
             "keywords",
-            "tag"
+            "tag",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -92,7 +93,8 @@
             "name",
             "description",
             "keywords",
-            "tag"
+            "tag",
+            "keyword"
         ],
         "query_required": []
     },
@@ -404,6 +406,14 @@
             "description": "多个收藏者用”,“分隔",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索标题(name)、描述(description)、关键词(keywords)、标签(tag)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread_channel2",
-    "title": "",
+    "title": "主题板块",
     "description": "",
     "path": "/apis/bbs/thread_channel",
     "method": "ALL",

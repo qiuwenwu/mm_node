@@ -1,6 +1,6 @@
 {
     "name": "user_count2",
-    "title": "",
+    "title": "用户统计",
     "add": {
         "body": [
             "level",

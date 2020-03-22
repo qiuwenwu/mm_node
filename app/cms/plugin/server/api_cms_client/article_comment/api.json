@@ -1,18 +1,12 @@
 {
     "name": "cms_article_comment",
-    "title": "",
-    "description": "",
+    "title": "文章评论",
+    "description": "用于记录读者对某文章的评论",
     "path": "/api/cms/article_comment",
     "method": "GET",
     "cache": 0,
     "client_cache": false,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true,
-    "oauth": {
-        "scope": true,
-        "signIn": true,
-        "vip": 0,
-        "user_group": []
-    }
+    "check_param": true
 }

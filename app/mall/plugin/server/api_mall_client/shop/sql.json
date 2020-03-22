@@ -1,9 +1,10 @@
 {
     "name": "mall_shop",
-    "title": "",
+    "title": "店铺信息",
     "table": "mall_shop",
     "key": "shop_id",
     "orderby_default": "`display` asc",
+    "field_obj": "`shop_id`,`available`,`state`,`type_id`,`channel_id`,`city_id`,`user_id`,`hot`,`praise`,`time_create`,`time_update`,`name`,`description`,`keywords`,`img`,`tag`,`collecter`",
     "field_default": "`shop_id`,`available`,`state`,`type_id`,`display`,`channel_id`,`city_id`,`user_id`,`hot`,`praise`,`time_create`,`time_update`,`name`,`description`,`keywords`,`img`,`tag`,`collecter`",
     "method": "get",
     "query": {
@@ -24,7 +25,8 @@
         "keywords": "`keywords` like '%{0}%'",
         "img": "`img` like '%{0}%'",
         "tag": "`tag` like '%{0}%'",
-        "collecter": "`collecter` like '%{0}%'"
+        "collecter": "`collecter` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%' || `description` like '%{0}%' || `keywords` like '%{0}%' || `tag` like '%{0}%')"
     },
     "query_default": {
         "user_id": "`user_id` = {user_id}"

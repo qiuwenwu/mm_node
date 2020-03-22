@@ -1,9 +1,10 @@
 {
     "name": "query_article_appraise",
-    "title": "",
+    "title": "查询文章评价",
     "table": "query_article_appraise",
     "key": "appraise_id",
     "orderby_default": "`appraise_id` desc",
+    "field_obj": "`appraise_id`,`task_id`,`article_id`,`user_id`,`score`,`important`,`create_time`,`update_time`",
     "field_default": "`appraise_id`,`task_id`,`article_id`,`user_id`,`score`,`important`,`create_time`,`update_time`",
     "method": "get",
     "query": {

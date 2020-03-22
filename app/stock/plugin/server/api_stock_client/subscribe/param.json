@@ -1,6 +1,6 @@
 {
     "name": "stock_subscribe",
-    "title": "",
+    "title": "股票订阅",
     "add": {
         "body": [
             "user_id",

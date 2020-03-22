@@ -1,6 +1,6 @@
 {
     "name": "sys_config2",
-    "title": "",
+    "title": "系统配置",
     "description": "",
     "path": "/apis/sys/config",
     "method": "ALL",

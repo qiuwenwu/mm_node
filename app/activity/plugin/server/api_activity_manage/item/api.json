@@ -1,7 +1,7 @@
 {
     "name": "activity_item2",
-    "title": "",
-    "description": "",
+    "title": "活动奖品",
+    "description": "用来办法给用户的奖品",
     "path": "/apis/activity/item",
     "method": "ALL",
     "cache": 0,

@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "查询结果",
+    "description": "保存查询结果、用于批测做准备",
     "name": "query_result",
     "table": "query_result",
     "key": "result_id",

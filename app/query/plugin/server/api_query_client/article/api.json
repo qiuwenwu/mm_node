@@ -1,7 +1,7 @@
 {
     "name": "query_article",
-    "title": "",
-    "description": "",
+    "title": "查询文章",
+    "description": "保存查询到的文章",
     "path": "/api/query/article",
     "method": "GET",
     "cache": 0,

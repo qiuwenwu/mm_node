@@ -1,7 +1,7 @@
 {
     "name": "user_admin2",
-    "title": "",
-    "description": "",
+    "title": "管理组",
+    "description": "用于判断用户后台管理鉴权",
     "path": "/apis/user/admin",
     "method": "ALL",
     "cache": 0,

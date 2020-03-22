@@ -1,7 +1,7 @@
 {
     "name": "activity_user_log",
-    "title": "",
-    "description": "",
+    "title": "活动参与记录",
+    "description": "用来记录参与活动的人和中奖情况",
     "path": "/api/activity/user_log",
     "method": "GET",
     "cache": 0,

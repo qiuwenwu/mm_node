@@ -1,9 +1,10 @@
 {
     "name": "query_result_compare",
-    "title": "",
+    "title": "查询结果对比",
     "table": "query_result_compare",
     "key": "compare_id",
     "orderby_default": "`compare_id` desc",
+    "field_obj": "`compare_id`,`task_id`,`user_id`,`result_id_left`,`result_id_right`,`score`,`create_time`,`update_time`",
     "field_default": "`compare_id`,`task_id`,`user_id`,`result_id_left`,`result_id_right`,`score`,`create_time`,`update_time`",
     "method": "get",
     "query": {

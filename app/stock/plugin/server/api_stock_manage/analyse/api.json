@@ -1,6 +1,6 @@
 {
     "name": "stock_analyse2",
-    "title": "",
+    "title": "股票分析",
     "description": "",
     "path": "/apis/stock/analyse",
     "method": "ALL",

@@ -1,6 +1,6 @@
 {
     "name": "stock_market",
-    "title": "",
+    "title": "股票行情",
     "add": {
         "body": [
             "HIGH",

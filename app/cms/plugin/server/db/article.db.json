@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "文章",
+    "description": "用于内容管理系统的文章",
     "name": "cms_article",
     "table": "cms_article",
     "key": "article_id",

@@ -1,6 +1,6 @@
 {
     "name": "wechat_app_refresh",
-    "title": "",
+    "title": "微信刷新访问牌",
     "add": {
         "body": [
             "user_id",

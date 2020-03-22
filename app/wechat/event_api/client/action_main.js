@@ -1,4 +1,4 @@
-var api_wechat = $.api_admin('wechat', '微信公众号API');
+var api_wechat = $.api_admin('wechat', '微信公众号');
 
 // 首次启动更新api接口;
 api_wechat.update('wechat/');

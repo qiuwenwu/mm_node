@@ -1,18 +1,12 @@
 {
     "name": "coin_subscribe",
-    "title": "",
-    "description": "",
+    "title": "数字货币订阅",
+    "description": "用于记录用户订阅的数字货币，便于定时通知技术分析和走势",
     "path": "/api/coin/subscribe",
     "method": "GET",
     "cache": 0,
     "client_cache": false,
     "param_path": "./param.json",
     "sql_path": "./sql.json",
-    "check_param": true,
-    "oauth": {
-        "scope": true,
-        "signIn": true,
-        "vip": 0,
-        "user_group": []
-    }
+    "check_param": true
 }

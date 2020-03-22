@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "社交账户",
+    "description": "用于保存用的社交平台账户，方便同步登录",
     "name": "user_sns",
     "table": "user_sns",
     "key": "user_id",

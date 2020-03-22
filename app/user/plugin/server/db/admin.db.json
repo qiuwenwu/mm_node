@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "管理组",
+    "description": "用于判断用户后台管理鉴权",
     "name": "user_admin",
     "table": "user_admin",
     "key": "admin_id",

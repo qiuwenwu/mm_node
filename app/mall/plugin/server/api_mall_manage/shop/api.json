@@ -1,6 +1,6 @@
 {
     "name": "mall_shop2",
-    "title": "",
+    "title": "店铺信息",
     "description": "",
     "path": "/apis/mall/shop",
     "method": "ALL",

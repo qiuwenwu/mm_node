@@ -1,10 +1,10 @@
 {
 	"name": "stock",
 	"title": "股票",
-	"description": "该应用用于分析股票走势",
+	"description": "用于分析股票走势",
 	"version": "1.0",
 	"lang_path": "./lang/",
 	"icon": "/img/logo.png",
-	"cmd": "",
+	"cmd": "stock",
 	"sort": 10
 }

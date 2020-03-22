@@ -1,6 +1,6 @@
 {
     "name": "activity_action_log2",
-    "title": "",
+    "title": "活动操作日志",
     "add": {
         "body": [
             "time_create",
@@ -21,7 +21,8 @@
     "set": {
         "query": [
             "action_id",
-            "func_name"
+            "func_name",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -42,7 +43,8 @@
             "time_create_max",
             "time_update_min",
             "time_update_max",
-            "func_name"
+            "func_name",
+            "keyword"
         ],
         "query_required": []
     },
@@ -156,6 +158,14 @@
             "description": "",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索参操函数名(func_name)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

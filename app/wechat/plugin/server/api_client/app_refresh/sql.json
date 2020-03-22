@@ -1,9 +1,10 @@
 {
     "name": "wechat_app_refresh",
-    "title": "",
+    "title": "微信刷新访问牌",
     "table": "wechat_app_refresh",
     "key": "refresh_id",
     "orderby_default": "`refresh_id` desc",
+    "field_obj": "`refresh_id`,`user_id`,`appid`,`refresh_token`,`create_time`,`update_time`",
     "field_default": "`refresh_id`,`user_id`,`appid`,`refresh_token`,`create_time`,`update_time`",
     "method": "get",
     "query": {

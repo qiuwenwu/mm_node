@@ -1,0 +1,10 @@
+{
+	"path": "/api/dev/dict",
+	"type": "api",
+	"name": "dev_event",
+	"title": "管理数据字典的接口",
+	"cache": 0,
+	"func_file": "./index.js",
+	"method": "ALL",
+	"param_path": "./param.json"
+}

@@ -1,11 +1,14 @@
 {
     "name": "activity_info2",
-    "title": "",
+    "title": "活动信息",
     "table": "activity_info",
     "key": "activity_id",
     "orderby_default": "`activity_id` desc",
-    "field_default": "`activity_id`,`period_num`,`period_unit`,`prize_1`,`prize_2`,`prize_3`,`prize_t`,`num_people`,`num_winner`,`time_create`,`time_update`,`time_start`,`time_end`,`name`,`type`,`uin_creator`,`title`,`descrtption`,`content`,`num_applicant`",
+    "field_obj": "`activity_id`,`period_num`,`period_unit`,`prize_1`,`prize_2`,`prize_3`,`prize_t`,`num_people`,`num_winner`,`time_start`,`time_end`,`name`,`type`,`uin_creator`,`title`,`descrtption`,`content`,`num_applicant`",
+    "field_default": "`activity_id`,`period_num`,`period_unit`,`prize_1`,`prize_2`,`prize_3`,`prize_t`,`num_people`,`num_winner`,`time_create`,`time_update`,`time_start`,`time_end`,`name`,`type`,`uin_creator`,`title`,`descrtption`,`num_applicant`",
     "query": {
+        "keyword": "(`name` like '%{0}%' || `title` like '%{0}%')",
+        "prize": "(`prize_1` = '{0}' || `prize_2` = '{0}' || `prize_3` = '{0}' || `prize_t` = '{0}')",
         "period_num_min": "`period_num` >= {0}",
         "period_num_max": "`period_num` <= {0}",
         "period_unit_min": "`period_unit` >= {0}",

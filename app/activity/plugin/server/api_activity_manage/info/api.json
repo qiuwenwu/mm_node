@@ -1,7 +1,7 @@
 {
     "name": "activity_info2",
-    "title": "",
-    "description": "",
+    "title": "活动信息",
+    "description": "用来编辑添加活动",
     "path": "/apis/activity/info",
     "method": "ALL",
     "cache": 0,

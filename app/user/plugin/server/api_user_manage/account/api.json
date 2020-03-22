@@ -1,7 +1,7 @@
 {
     "name": "user_account2",
-    "title": "",
-    "description": "",
+    "title": "用户账户",
+    "description": "用于保存用户登录信息",
     "path": "/apis/user/account",
     "method": "ALL",
     "cache": 0,

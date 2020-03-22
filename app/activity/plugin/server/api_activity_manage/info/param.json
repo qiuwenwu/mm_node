@@ -1,6 +1,6 @@
 {
     "name": "activity_info2",
-    "title": "",
+    "title": "活动信息",
     "add": {
         "body": [
             "period_num",
@@ -55,7 +55,8 @@
             "title",
             "content",
             "num_applicant_min",
-            "num_applicant_max"
+            "num_applicant_max",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -122,7 +123,8 @@
             "title",
             "content",
             "num_applicant_min",
-            "num_applicant_max"
+            "num_applicant_max",
+            "keyword"
         ],
         "query_required": []
     },
@@ -591,6 +593,14 @@
             "number": {
                 "max": 2147483647
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索活动名称(name)、活动标题(title)、活动详情(content)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

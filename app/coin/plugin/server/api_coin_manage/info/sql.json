@@ -1,9 +1,10 @@
 {
     "name": "coin_info2",
-    "title": "",
+    "title": "数字货币信息",
     "table": "coin_info",
     "key": "coin_id",
     "orderby_default": "`coin_id` desc",
+    "field_obj": "`coin_id`,`name`,`code`,`company`,`description`,`bonus`,`issue_price`,`pe`,`pb`,`profit`,`num`,`time_to_market`",
     "field_default": "`coin_id`,`name`,`code`,`company`,`description`,`bonus`,`issue_price`,`pe`,`pb`,`profit`,`num`,`time_to_market`",
     "query": {
         "name": "`name` like '%{0}%'",
@@ -23,7 +24,8 @@
         "num_min": "`num` >= {0}",
         "num_max": "`num` <= {0}",
         "time_to_market_min": "`time_to_market` >= '{0}'",
-        "time_to_market_max": "`time_to_market` <= '{0}'"
+        "time_to_market_max": "`time_to_market` <= '{0}'",
+        "keyword": "(`name` like '%{0}%' || `description` like '%{0}%')"
     },
     "update": {
         "bonus_add": "`bonus` = `bonus` + {0}",

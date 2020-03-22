@@ -1,123 +1,167 @@
 {
-	"name": "admin",
-	"sort": 1,
-	"routes": [{
-		"name": "query",
-		"path": "/query",
-		"redirect": "/query/test"
-	}, {
-		"name": "query_test",
-		"path": "/query/test",
-		"component": "/query/admin/src/pages/test.vue",
-		"level": 2,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"gm": 1,
-			"mc": 0,
-			"user_admin": [],
-			"user_group": []
-		}
-	},
-	{
-		"name": "query_article_appraise",
-		"path": "/query/article_appraise",
-		"component": "/query/admin/src/pages/article_appraise.vue",
-		"level": 3,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"gm": 2,
-			"mc": 0,
-			"user_admin": [],
-			"user_group": []
-		}
-	},
-	{
-		"name": "query_result_compare",
-		"path": "/query/result_compare",
-		"component": "/query/admin/src/pages/result_compare.vue",
-		"level": 3,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"gm": 2,
-			"mc": 0,
-			"user_admin": [],
-			"user_group": []
-		}
-	},
-	{
-		"name": "query_task",
-		"path": "/query/task",
-		"component": "/query/admin/src/pages/task.vue",
-		"level": 2,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"gm": 2,
-			"mc": 0,
-			"user_admin": [],
-			"user_group": []
-		}
-	},
-	{
-		"name": "query_task_edit",
-		"path": "/query/task_edit",
-		"component": "/query/admin/src/pages/task_edit.vue",
-		"level": 3,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"gm": 2,
-			"mc": 0,
-			"user_admin": [],
-			"user_group": []
-		}
-	},
-	{
-		"name": "query_report",
-		"path": "/query/report",
-		"component": "/query/admin/src/pages/report.vue",
-		"level": 2,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"gm": 2,
-			"mc": 0,
-			"user_admin": [],
-			"user_group": []
-		}
-	}],
-	"top": [],
-	"left": [],
-	"bottom": [],
-	"right": [],
-	"desktop": [],
-	"quick": [],
-	"main": [{
-		"title": "批测",
-		"name": "query",
-		"url": "/query",
-		"display": 0,
-		"sub": [{
-				"title": "任务管理",
-				"show": false,
-				"name": "query_task",
-				"url": "/query/task"
-			},
-			{
-				"title": "参与测评",
-				"show": false,
-				"name": "query_test",
-				"url": "/query/test"
-			},
-			{
-				"title": "测评报告",
-				"show": false,
-				"name": "query_report",
-				"url": "/query/report"
-			}
-		]
-	}]
+    "name": "admin",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "query",
+            "path": "/query",
+            "redirect": "/query/article"
+        },
+        {
+            "name": "query_article",
+            "path": "/query/article",
+            "component": "/query/admin/src/pages/article.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "query_article_form",
+            "path": "/query/article_form",
+            "component": "/query/admin/src/pages/article_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "query_article_appraise",
+            "path": "/query/article_appraise",
+            "component": "/query/admin/src/pages/article_appraise.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "query_article_appraise_form",
+            "path": "/query/article_appraise_form",
+            "component": "/query/admin/src/pages/article_appraise_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "query_result",
+            "path": "/query/result",
+            "component": "/query/admin/src/pages/result.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "query_result_form",
+            "path": "/query/result_form",
+            "component": "/query/admin/src/pages/result_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "query_result_compare",
+            "path": "/query/result_compare",
+            "component": "/query/admin/src/pages/result_compare.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "query_result_compare_form",
+            "path": "/query/result_compare_form",
+            "component": "/query/admin/src/pages/result_compare_form.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "query_task",
+            "path": "/query/task",
+            "component": "/query/admin/src/pages/task.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        },
+        {
+            "name": "query_task_form",
+            "path": "/query/task_form",
+            "component": "/query/admin/src/pages/task_form.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": true,
+                "gm": 2,
+                "user_admin": []
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "查询测评",
+            "name": "query",
+            "url": "/query",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "查询文章",
+                    "show": false,
+                    "name": "query_article",
+                    "url": "/query/article"
+                },
+                {
+                    "title": "查询文章评价",
+                    "show": false,
+                    "name": "query_article_appraise",
+                    "url": "/query/article_appraise"
+                },
+                {
+                    "title": "查询结果",
+                    "show": false,
+                    "name": "query_result",
+                    "url": "/query/result"
+                },
+                {
+                    "title": "查询结果对比",
+                    "show": false,
+                    "name": "query_result_compare",
+                    "url": "/query/result_compare"
+                },
+                {
+                    "title": "查询任务",
+                    "show": false,
+                    "name": "query_task",
+                    "url": "/query/task"
+                }
+            ]
+        }
+    ]
 }

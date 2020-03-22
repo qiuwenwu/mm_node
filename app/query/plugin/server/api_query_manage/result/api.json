@@ -1,7 +1,7 @@
 {
     "name": "query_result2",
-    "title": "",
-    "description": "",
+    "title": "查询结果",
+    "description": "保存查询结果、用于批测做准备",
     "path": "/apis/query/result",
     "method": "ALL",
     "cache": 0,

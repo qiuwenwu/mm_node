@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "用户统计",
+    "description": "用于统计用户等级、经验、积分等",
     "name": "user_count",
     "table": "user_count",
     "key": "user_id",

@@ -1,4 +1,4 @@
-var api_test = $.api_admin('stock_client', '股票分析客户端API');
+var api_test = $.api_admin('stock_client', '股票分析客户端');
 // 首次启动更新api接口;
 api_test.update('stock/');
 

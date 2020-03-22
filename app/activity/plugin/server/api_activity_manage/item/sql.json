@@ -1,9 +1,10 @@
 {
     "name": "activity_item2",
-    "title": "",
+    "title": "活动奖品",
     "table": "activity_item",
     "key": "item_id",
     "orderby_default": "`item_id` desc",
+    "field_obj": "`item_id`,`price`,`num`,`name`,`type`,`creator_uin`,`title`,`descrtption`,`img_cover`",
     "field_default": "`item_id`,`price`,`time_create`,`time_update`,`num`,`name`,`type`,`creator_uin`,`title`,`descrtption`,`img_cover`",
     "query": {
         "price_min": "`price` >= {0}",
@@ -19,7 +20,8 @@
         "creator_uin": "`creator_uin` like '%{0}%'",
         "title": "`title` like '%{0}%'",
         "descrtption": "`descrtption` like '%{0}%'",
-        "img_cover": "`img_cover` like '%{0}%'"
+        "img_cover": "`img_cover` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%' || `title` like '%{0}%')"
     },
     "update": {
         "price_add": "`price` = `price` + {0}",

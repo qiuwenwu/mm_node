@@ -1,6 +1,6 @@
 {
     "name": "pay_account_amount2",
-    "title": "",
+    "title": "账户余额",
     "add": {
         "body": [
             "usd",

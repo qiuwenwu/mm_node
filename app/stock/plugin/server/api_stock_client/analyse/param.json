@@ -1,6 +1,6 @@
 {
     "name": "stock_analyse",
-    "title": "",
+    "title": "股票分析",
     "add": {
         "body": [
             "weight",

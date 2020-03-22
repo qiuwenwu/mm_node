@@ -1,0 +1,10 @@
+{
+	"name": "query",
+	"title": "查询测评",
+	"description": "用于搜索查询测评、对比",
+	"version": "1.0",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "query",
+	"sort": 10
+}

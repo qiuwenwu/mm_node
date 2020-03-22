@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "活动奖品",
+    "description": "用来办法给用户的奖品",
     "name": "activity_item",
     "table": "activity_item",
     "key": "item_id",

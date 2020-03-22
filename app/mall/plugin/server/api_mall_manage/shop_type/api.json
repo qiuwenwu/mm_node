@@ -1,6 +1,6 @@
 {
     "name": "mall_shop_type2",
-    "title": "",
+    "title": "店铺分类",
     "description": "",
     "path": "/apis/mall/shop_type",
     "method": "ALL",

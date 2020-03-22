@@ -1,6 +1,6 @@
 {
     "name": "coin_formula",
-    "title": "",
+    "title": "数字货币公式",
     "description": "",
     "path": "/api/coin/formula",
     "method": "GET",

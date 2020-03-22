@@ -1,6 +1,6 @@
 {
     "name": "stock_info",
-    "title": "",
+    "title": "股票信息",
     "description": "",
     "path": "/api/stock/info",
     "method": "GET",

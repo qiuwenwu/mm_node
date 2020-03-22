@@ -1,6 +1,6 @@
 {
     "name": "coin_market2",
-    "title": "",
+    "title": "数字货币行情",
     "description": "",
     "path": "/apis/coin/market",
     "method": "ALL",

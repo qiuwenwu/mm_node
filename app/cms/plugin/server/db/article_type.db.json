@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "文章分类",
+    "description": "将文章归类，可选看不同类型的文章",
     "name": "cms_article_type",
     "table": "cms_article_type",
     "key": "type_id",

@@ -1,0 +1,29 @@
+{
+	"name": "dev_event",
+	"get": {
+		"query": [
+			"scope",
+			"name"
+		],
+		"query_required": ["method"]
+	},
+	"list": [{
+			"name": "method",
+			"title": "执行方式",
+			"description": "add增、del删、get改、set查、update更新、load载入、save保存",
+			"type": "string"
+		},
+		{
+			"name": "scope",
+			"title": "作用域",
+			"description": "一般为sys系统，自定义机制输入自定义作用域名",
+			"type": "string"
+		},
+		{
+			"name": "name",
+			"title": "名称",
+			"description": "选择要操作的配置文件名称",
+			"type": "string"
+		}
+	]
+}

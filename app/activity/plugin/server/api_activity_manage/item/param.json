@@ -1,6 +1,6 @@
 {
     "name": "activity_item2",
-    "title": "",
+    "title": "活动奖品",
     "add": {
         "body": [
             "price",
@@ -31,7 +31,8 @@
             "num_min",
             "num_max",
             "name",
-            "title"
+            "title",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -63,7 +64,8 @@
             "num_min",
             "num_max",
             "name",
-            "title"
+            "title",
+            "keyword"
         ],
         "query_required": []
     },
@@ -249,6 +251,14 @@
             "description": "传base64",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索物品名称(name)、物品标题(title)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

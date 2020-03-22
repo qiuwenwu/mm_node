@@ -1,9 +1,10 @@
 {
     "name": "query_task2",
-    "title": "",
+    "title": "查询任务",
     "table": "query_task",
     "key": "task_id",
     "orderby_default": "`task_id` desc",
+    "field_obj": "`task_id`,`state`,`user_id`,`people_num`,`name`,`note`,`query`,`create_time`,`update_time`",
     "field_default": "`task_id`,`state`,`user_id`,`people_num`,`name`,`note`,`query`,`create_time`,`update_time`",
     "query": {
         "state_min": "`state` >= {0}",
@@ -16,7 +17,8 @@
         "create_time_min": "`create_time` >= '{0}'",
         "create_time_max": "`create_time` <= '{0}'",
         "update_time_min": "`update_time` >= '{0}'",
-        "update_time_max": "`update_time` <= '{0}'"
+        "update_time_max": "`update_time` <= '{0}'",
+        "keyword": "(`name` like '%{0}%')"
     },
     "update": {
         "state_add": "`state` = `state` + {0}",

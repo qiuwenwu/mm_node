@@ -1,6 +1,6 @@
 {
     "name": "mall_product_type2",
-    "title": "",
+    "title": "商品分类",
     "description": "",
     "path": "/apis/mall/product_type",
     "method": "ALL",

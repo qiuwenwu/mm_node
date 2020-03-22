@@ -1,6 +1,6 @@
 {
     "name": "coin_info",
-    "title": "",
+    "title": "数字货币信息",
     "description": "",
     "path": "/api/coin/info",
     "method": "GET",

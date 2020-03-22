@@ -1,6 +1,6 @@
 {
     "name": "query_task",
-    "title": "",
+    "title": "查询任务",
     "add": {
         "body": [
             "state",
@@ -27,7 +27,8 @@
             "state_max",
             "people_num_min",
             "people_num_max",
-            "name"
+            "name",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -56,7 +57,8 @@
             "create_time_min",
             "create_time_max",
             "update_time_min",
-            "update_time_max"
+            "update_time_max",
+            "keyword"
         ],
         "query_required": []
     },
@@ -236,6 +238,14 @@
                 "notEmpty": true,
                 "format": "datetime"
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索分组名称(name)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

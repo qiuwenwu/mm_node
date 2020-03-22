@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "查询文章评价",
+    "description": "保存对单条文章的测评",
     "name": "query_article_appraise",
     "table": "query_article_appraise",
     "key": "appraise_id",

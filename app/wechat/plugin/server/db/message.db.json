@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "微信消息",
+    "description": "用于查询和保存聊天记录",
     "name": "wechat_message",
     "table": "wechat_message",
     "key": "message_id",

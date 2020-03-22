@@ -1,6 +1,6 @@
 {
     "name": "query_result",
-    "title": "",
+    "title": "查询结果",
     "add": {
         "body": [
             "task_id",

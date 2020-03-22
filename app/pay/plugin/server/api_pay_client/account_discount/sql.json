@@ -1,9 +1,10 @@
 {
     "name": "pay_account_discount",
-    "title": "",
+    "title": "账户提现",
     "table": "pay_account_discount",
     "key": "discount_id",
     "orderby_default": "`discount_id` desc",
+    "field_obj": "`discount_id`,`state`,`to_user_id`,`seller_id`,`user_id`,`amount`,`fee`,`time_create`,`pay_time`,`time_end`,`time_update`,`platform`,`way`,`institution`,`ip`,`from_user`,`to_user`,`cause`,`note`",
     "field_default": "`discount_id`,`state`,`to_user_id`,`seller_id`,`user_id`,`amount`,`fee`,`time_create`,`pay_time`,`time_end`,`time_update`,`platform`,`way`,`institution`,`ip`,`from_user`,`to_user`,`cause`,`note`",
     "method": "get",
     "query": {

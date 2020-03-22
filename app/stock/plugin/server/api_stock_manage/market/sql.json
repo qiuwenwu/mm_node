@@ -1,9 +1,10 @@
 {
     "name": "stock_market2",
-    "title": "",
+    "title": "股票行情",
     "table": "stock_market",
     "key": "market_id",
     "orderby_default": "`market_id` desc",
+    "field_obj": "`market_id`,`code`,`HIGH`,`LOW`,`OPEN`,`CLOSE`,`VOL`,`CHG`,`TOTAL`,`DATETIME`",
     "field_default": "`market_id`,`code`,`HIGH`,`LOW`,`OPEN`,`CLOSE`,`VOL`,`CHG`,`TOTAL`,`DATETIME`",
     "query": {
         "code": "`code` like '%{0}%'",

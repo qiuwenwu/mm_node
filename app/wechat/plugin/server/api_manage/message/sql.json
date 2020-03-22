@@ -1,10 +1,11 @@
 {
     "name": "wechat_message2",
-    "title": "",
+    "title": "微信消息",
     "table": "wechat_message",
     "key": "message_id",
     "orderby_default": "`message_id` desc",
-    "field_default": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`content`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
+    "field_obj": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`content`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
+    "field_default": "`message_id`,`end`,`group`,`type`,`from_user`,`to_user`,`robot`,`cmd`,`keyword`,`check`,`note`,`msg_type`,`form`,`stage`,`create_time`,`update_time`",
     "query": {
         "group": "`group` like '%{0}%'",
         "type": "`type` like '%{0}%'",

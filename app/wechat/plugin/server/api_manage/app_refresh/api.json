@@ -1,7 +1,7 @@
 {
     "name": "wechat_app_refresh2",
-    "title": "",
-    "description": "",
+    "title": "微信刷新访问牌",
+    "description": "用于微信公众号Oauth2.0刷新临时访问牌Token",
     "path": "/apis/wechat/app_refresh",
     "method": "ALL",
     "cache": 0,

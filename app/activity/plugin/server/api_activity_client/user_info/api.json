@@ -1,7 +1,7 @@
 {
     "name": "activity_user_info",
-    "title": "",
-    "description": "",
+    "title": "参与者信息",
+    "description": "用来记录参与的用户的个人信息",
     "path": "/api/activity/user_info",
     "method": "GET",
     "cache": 0,

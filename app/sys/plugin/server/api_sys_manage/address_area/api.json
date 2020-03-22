@@ -1,6 +1,6 @@
 {
     "name": "sys_address_area2",
-    "title": "",
+    "title": "地区",
     "description": "",
     "path": "/apis/sys/address_area",
     "method": "ALL",

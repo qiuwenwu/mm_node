@@ -1,6 +1,6 @@
 {
     "name": "mall_config2",
-    "title": "",
+    "title": "商城配置",
     "description": "",
     "path": "/apis/mall/config",
     "method": "ALL",

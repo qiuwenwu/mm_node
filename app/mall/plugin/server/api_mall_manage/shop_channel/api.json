@@ -1,6 +1,6 @@
 {
     "name": "mall_shop_channel2",
-    "title": "",
+    "title": "店铺专区",
     "description": "",
     "path": "/apis/mall/shop_channel",
     "method": "ALL",

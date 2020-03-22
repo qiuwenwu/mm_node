@@ -1,6 +1,6 @@
 {
     "name": "stock_info2",
-    "title": "",
+    "title": "股票信息",
     "description": "",
     "path": "/apis/stock/info",
     "method": "ALL",

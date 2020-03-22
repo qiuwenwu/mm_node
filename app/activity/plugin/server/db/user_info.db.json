@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "参与者信息",
+    "description": "用来记录参与的用户的个人信息",
     "name": "activity_user_info",
     "table": "activity_user_info",
     "key": "info_id",

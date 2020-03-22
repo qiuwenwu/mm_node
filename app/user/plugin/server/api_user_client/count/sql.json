@@ -1,9 +1,10 @@
 {
     "name": "user_count",
-    "title": "",
+    "title": "用户统计",
     "table": "user_count",
     "key": "user_id",
     "orderby_default": "`user_id` desc",
+    "field_obj": "`user_id`,`level`,`iq`,`credit`,`credit_points`,`exp`,`extcredits1`,`extcredits2`,`extcredits3`,`extcredits4`,`extcredits5`,`extcredits6`,`extcredits7`,`extcredits8`,`money`,`coin`",
     "field_default": "`user_id`,`level`,`iq`,`credit`,`credit_points`,`exp`,`extcredits1`,`extcredits2`,`extcredits3`,`extcredits4`,`extcredits5`,`extcredits6`,`extcredits7`,`extcredits8`,`money`,`coin`",
     "method": "get",
     "query": {

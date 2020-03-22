@@ -1,7 +1,7 @@
 {
     "name": "activity_action_log",
-    "title": "",
-    "description": "",
+    "title": "活动操作日志",
+    "description": "记录谁操作过什么",
     "path": "/api/activity/action_log",
     "method": "GET",
     "cache": 0,

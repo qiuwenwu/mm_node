@@ -1,9 +1,10 @@
 {
     "name": "sys_app_refresh2",
-    "title": "",
+    "title": "应用刷新",
     "table": "sys_app_refresh",
     "key": "refresh_id",
     "orderby_default": "`refresh_id` desc",
+    "field_obj": "`refresh_id`,`user_id`,`appid`,`refresh_token`",
     "field_default": "`refresh_id`,`user_id`,`time_create`,`time_update`,`appid`,`refresh_token`",
     "query": {
         "time_create_min": "`time_create` >= '{0}'",

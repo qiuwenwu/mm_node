@@ -102,11 +102,8 @@
             "level": 2,
             "oauth": {
                 "signIn": true,
-                "vip": 0,
                 "gm": 2,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "user_admin": []
             }
         },
         {
@@ -116,11 +113,8 @@
             "level": 3,
             "oauth": {
                 "signIn": true,
-                "vip": 0,
                 "gm": 2,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "user_admin": []
             }
         },
         {
@@ -130,11 +124,8 @@
             "level": 2,
             "oauth": {
                 "signIn": true,
-                "vip": 0,
                 "gm": 2,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "user_admin": []
             }
         },
         {
@@ -144,11 +135,8 @@
             "level": 3,
             "oauth": {
                 "signIn": true,
-                "vip": 0,
                 "gm": 2,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "user_admin": []
             }
         },
         {
@@ -188,28 +176,6 @@
             "name": "mall_shop_channel_form",
             "path": "/mall/shop_channel_form",
             "component": "/mall/admin_pc/src/pages/shop_channel_form.vue",
-            "level": 3,
-            "oauth": {
-                "signIn": true,
-                "gm": 2,
-                "user_admin": []
-            }
-        },
-        {
-            "name": "mall_shop_collect",
-            "path": "/mall/shop_collect",
-            "component": "/mall/admin_pc/src/pages/shop_collect.vue",
-            "level": 2,
-            "oauth": {
-                "signIn": true,
-                "gm": 2,
-                "user_admin": []
-            }
-        },
-        {
-            "name": "mall_shop_collect_form",
-            "path": "/mall/shop_collect_form",
-            "component": "/mall/admin_pc/src/pages/shop_collect_form.vue",
             "level": 3,
             "oauth": {
                 "signIn": true,
@@ -322,12 +288,6 @@
                     "show": false,
                     "name": "mall_shop_channel",
                     "url": "/mall/shop_channel"
-                },
-                {
-                    "title": "",
-                    "show": false,
-                    "name": "mall_shop_collect",
-                    "url": "/mall/shop_collect"
                 },
                 {
                     "title": "店铺评论",

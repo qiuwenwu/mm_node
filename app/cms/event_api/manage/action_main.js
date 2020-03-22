@@ -1,4 +1,4 @@
-var api_test = $.api_admin('cms_manage', '内容管理系统API');
+var api_test = $.api_admin('cms_manage', '内容管理系统');
 // 首次启动更新api接口;
 api_test.update('cms/');
 

@@ -1,6 +1,6 @@
 {
     "name": "stock_formula",
-    "title": "",
+    "title": "股票公式",
     "add": {
         "body": [
             "weight",
@@ -27,7 +27,8 @@
             "weight_min",
             "weight_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -50,7 +51,8 @@
             "weight_min",
             "weight_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": []
     },
@@ -154,6 +156,14 @@
             "description": "用于分析走势，返回逻辑值",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索公式名称(name)、公式简介(description)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

@@ -1,9 +1,10 @@
 {
     "name": "stock_subscribe",
-    "title": "",
+    "title": "股票订阅",
     "table": "stock_subscribe",
     "key": "subscribe_id",
     "orderby_default": "`subscribe_id` desc",
+    "field_obj": "`subscribe_id`,`user_id`,`time1`,`time2`,`time3`,`way`,`stocks`",
     "field_default": "`subscribe_id`,`user_id`,`time1`,`time2`,`time3`,`way`,`stocks`",
     "method": "get",
     "query": {

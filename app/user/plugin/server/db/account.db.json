@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "用户账户",
+    "description": "用于保存用户登录信息",
     "name": "user_account",
     "table": "user_account",
     "key": "user_id",

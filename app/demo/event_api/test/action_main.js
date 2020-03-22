@@ -1,5 +1,5 @@
 
-var api_test = $.api_admin('test', '测试用API');
+var api_test = $.api_admin('test', '测试用');
 // 首次启动更新api接口;
 api_test.update('demo/');
 

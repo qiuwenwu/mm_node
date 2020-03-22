@@ -36,11 +36,8 @@
             "level": 2,
             "oauth": {
                 "signIn": true,
-                "vip": 0,
                 "gm": 2,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "user_admin": []
             }
         },
         {
@@ -50,11 +47,8 @@
             "level": 3,
             "oauth": {
                 "signIn": true,
-                "vip": 0,
                 "gm": 2,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "user_admin": []
             }
         },
         {

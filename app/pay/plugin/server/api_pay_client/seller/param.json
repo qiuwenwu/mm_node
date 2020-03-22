@@ -1,6 +1,6 @@
 {
     "name": "pay_seller",
-    "title": "",
+    "title": "商户信息",
     "add": {
         "body": [
             "institution_state",
@@ -28,7 +28,8 @@
             "seller_id",
             "institution_state_min",
             "institution_state_max",
-            "name"
+            "name",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -52,7 +53,8 @@
             "seller_id",
             "institution_state_min",
             "institution_state_max",
-            "name"
+            "name",
+            "keyword"
         ],
         "query_required": []
     },
@@ -187,6 +189,14 @@
             "description": "",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索商户名称(name)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]

@@ -1,6 +1,6 @@
 {
     "name": "mall_shop_channel",
-    "title": "",
+    "title": "店铺专区",
     "add": {
         "body": [
             "available",
@@ -34,7 +34,8 @@
             "display_min",
             "display_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -64,7 +65,8 @@
             "display_min",
             "display_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": []
     },
@@ -222,6 +224,14 @@
             "name": "description",
             "title": "描述",
             "description": "描述该频道的作用",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索频道名称(name)、描述(description)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

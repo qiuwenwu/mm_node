@@ -1,16 +1,18 @@
 {
     "name": "cms_article_section",
-    "title": "",
+    "title": "文章正文章节",
     "table": "cms_article_section",
     "key": "content_id",
     "orderby_default": "`content_id` desc",
-    "field_default": "`content_id`,`article_id`,`title`,`content`,`img`,`tag`",
+    "field_obj": "`content_id`,`article_id`,`title`,`content`,`img`,`tag`",
+    "field_default": "`article_id`,`title`,`img`,`tag`",
     "method": "get",
     "query": {
         "title": "`title` like '%{0}%'",
         "content": "`content` like '%{0}%'",
         "img": "`img` like '%{0}%'",
-        "tag": "`tag` like '%{0}%'"
+        "tag": "`tag` like '%{0}%'",
+        "keyword": "(`title` like '%{0}%' || `tag` like '%{0}%')"
     },
     "query_default": {},
     "update": {}

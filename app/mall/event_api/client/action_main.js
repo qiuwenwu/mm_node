@@ -1,4 +1,4 @@
-var api_test = $.api_admin('mall_client', '商城客户端API');
+var api_test = $.api_admin('mall_client', '商城客户端');
 // 首次启动更新api接口;
 api_test.update('mall/');
 

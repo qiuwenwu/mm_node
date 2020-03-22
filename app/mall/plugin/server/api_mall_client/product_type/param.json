@@ -1,6 +1,6 @@
 {
     "name": "mall_product_type",
-    "title": "",
+    "title": "商品分类",
     "add": {
         "body": [
             "display",
@@ -24,7 +24,8 @@
             "display_min",
             "display_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -45,7 +46,8 @@
             "display_min",
             "display_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": []
     },
@@ -139,6 +141,14 @@
             "name": "description",
             "title": "分类描述",
             "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索分类名称(name)、分类描述(description)",
             "type": "string",
             "dataType": "varchar",
             "string": {}

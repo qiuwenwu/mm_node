@@ -1,6 +1,6 @@
 {
     "name": "wechat_app2",
-    "title": "",
+    "title": "微信应用",
     "add": {
         "body": [
             "available",
@@ -46,7 +46,8 @@
             "max_age_max",
             "times_count_min",
             "times_count_max",
-            "name"
+            "name",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -94,7 +95,8 @@
             "times_count_max",
             "name",
             "update_time_min",
-            "update_time_max"
+            "update_time_max",
+            "keyword"
         ],
         "query_required": []
     },
@@ -418,6 +420,14 @@
                 "notEmpty": true,
                 "format": "datetime"
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索应用名称(name)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

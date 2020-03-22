@@ -1,4 +1,4 @@
-var api_test = $.api_admin('sys_manage', '系统管理端API');
+var api_test = $.api_admin('sys_manage', '系统管理端');
 // 首次启动更新api接口;
 api_test.update('sys/');
 

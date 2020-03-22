@@ -1,6 +1,6 @@
 {
     "name": "coin_subscribe2",
-    "title": "",
+    "title": "数字货币订阅",
     "add": {
         "body": [
             "user_id",

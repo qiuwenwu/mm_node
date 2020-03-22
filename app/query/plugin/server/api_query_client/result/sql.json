@@ -1,9 +1,10 @@
 {
     "name": "query_result",
-    "title": "",
+    "title": "查询结果",
     "table": "query_result",
     "key": "result_id",
     "orderby_default": "`result_id` desc",
+    "field_obj": "`result_id`,`task_id`,`time`,`engine`,`city`,`query`,`ip`,`html`,`create_time`,`update_time`",
     "field_default": "`result_id`,`task_id`,`time`,`engine`,`city`,`query`,`ip`,`html`,`create_time`,`update_time`",
     "method": "get",
     "query": {

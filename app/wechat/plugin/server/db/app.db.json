@@ -1,6 +1,6 @@
 {
-    "title": "",
-    "description": "",
+    "title": "微信应用",
+    "description": "用于管理微信公众号、小程序",
     "name": "wechat_app",
     "table": "wechat_app",
     "key": "app_id",

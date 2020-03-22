@@ -1,6 +1,6 @@
 {
     "name": "cms_article_channel2",
-    "title": "",
+    "title": "文章频道",
     "add": {
         "body": [
             "available",
@@ -34,7 +34,8 @@
             "display_min",
             "display_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -64,7 +65,8 @@
             "display_min",
             "display_max",
             "name",
-            "description"
+            "description",
+            "keyword"
         ],
         "query_required": []
     },
@@ -225,6 +227,14 @@
             "string": {
                 "format": "url"
             }
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索频道名称(name)、描述(description)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         }
     ]
 }

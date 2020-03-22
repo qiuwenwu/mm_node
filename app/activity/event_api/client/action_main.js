@@ -1,4 +1,4 @@
-var api = $.api_admin('activity_client', '活动客户端API');
+var api = $.api_admin('activity_client', '活动客户端');
 // 首次启动更新api接口;
 api.update('activity/');
 

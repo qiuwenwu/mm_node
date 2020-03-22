@@ -126,37 +126,37 @@
     "quick": [],
     "main": [
         {
-            "title": "金融分析器",
+            "title": "数字货币",
             "name": "coin",
             "url": "/coin",
             "display": 0,
             "sub": [
                 {
-                    "title": "",
+                    "title": "数字货币分析",
                     "show": false,
                     "name": "coin_analyse",
                     "url": "/coin/analyse"
                 },
                 {
-                    "title": "",
+                    "title": "数字货币公式",
                     "show": false,
                     "name": "coin_formula",
                     "url": "/coin/formula"
                 },
                 {
-                    "title": "",
+                    "title": "数字货币信息",
                     "show": false,
                     "name": "coin_info",
                     "url": "/coin/info"
                 },
                 {
-                    "title": "",
+                    "title": "数字货币行情",
                     "show": false,
                     "name": "coin_market",
                     "url": "/coin/market"
                 },
                 {
-                    "title": "",
+                    "title": "数字货币订阅",
                     "show": false,
                     "name": "coin_subscribe",
                     "url": "/coin/subscribe"

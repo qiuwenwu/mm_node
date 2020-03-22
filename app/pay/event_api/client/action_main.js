@@ -1,4 +1,4 @@
-var api_test = $.api_admin('pay_client', '支付系统客户端API');
+var api_test = $.api_admin('pay_client', '支付系统客户端');
 // 首次启动更新api接口;
 api_test.update('pay/');
 

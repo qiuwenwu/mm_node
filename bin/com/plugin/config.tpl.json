@@ -6,6 +6,6 @@
 	"version": "1.0",
 	"lang_path": "./lang/",
 	"icon": "/img/logo.png",
-	"cmd": "",
+	"cmd": "{2}",
 	"sort": 10
 }

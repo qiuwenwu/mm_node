@@ -1,6 +1,6 @@
 {
     "name": "bbs_thread_comment",
-    "title": "",
+    "title": "主题评论",
     "add": {
         "body": [
             "available",
@@ -29,7 +29,8 @@
             "display_min",
             "display_max",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": [],
         "body": [
@@ -56,7 +57,8 @@
             "display_min",
             "display_max",
             "tag",
-            "content"
+            "content",
+            "keyword"
         ],
         "query_required": []
     },
@@ -192,6 +194,14 @@
             "description": "评论内容",
             "type": "string",
             "dataType": "text",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索标签(tag)、正文(content)",
+            "type": "string",
+            "dataType": "varchar",
             "string": {}
         }
     ]
