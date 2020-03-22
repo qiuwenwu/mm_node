@@ -4,7 +4,7 @@
 			<mm_col width="33">
 				<mm_form class="card">
 					<header class="arrow">
-						<h5>{{ form.user_id ? '修改' : '创建' }}用户</h5>
+						<h5>{{ form[field] ? '修改' : '创建' }}应用刷新</h5>
 					</header>
 					<dl>
 						<dt>头像</dt>
@@ -13,9 +13,7 @@
 						</dd>
 						<dt>昵称</dt>
 						<dd>
-							<label>
-								<input type="text" v-model="form.nickname" placeholder="由2-16个字符组成" />
-							</label>
+							<mm_input type="text" v-model="form.nickname" desc="由2-16个字符组成"></mm_input>
 						</dd>
 						<dt>会员级别</dt>
 						<dd>
@@ -26,10 +24,12 @@
 							<mm_select v-model="form.gm" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
 						</dd>
 						<dt>商户级别</dt>
-						<dd><mm_select v-model="form.mc" :options="$to_kv(['',1,2,3,4,5])"></mm_select></dd>
+						<dd>
+							<mm_select v-model="form.mc" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
+						</dd>
 						<dt>个性签名</dt>
 						<dd>
-							<textarea v-model="form.signature" placeholder="由2-16个字符组成" />
+							<textarea v-model="form.signature" placeholder="由2-16个字符组成"></textarea>
 						</dd>
 					</dl>
 					<footer>
@@ -46,29 +46,24 @@
 
 
 <script>
-	import mm_upload_img from '/src/components/form/mm_upload_img.vue';
-		
 	import mixin from '/src/mixins/page.js';
-	
+
 	export default {
 		mixins: [mixin],
-		components: {
-			mm_upload_img
-		},
+		components: {},
 		data() {
 			return {
-				url_submit: "/apis/user/account?",
-				url_get_obj: "/apis/user/account",
-				field: "user_id",
+				url_submit: "/apis/sys/app_refresh?",
+				url_get_obj: "/apis/sys/app_refresh",
+				field: "refresh_id",
 				query: {
-					user_id: 0
+					"refresh_id": 0
 				},
-				form: {
-				}
+				form: {}
 			}
 		},
 		methods: {
-			
+
 		}
 	}
 </script>
@@ -79,7 +74,7 @@
 
 	/* 表单 */
 	#sys_app_form .mm_form {}
-	
+
 	/* 筛选栏栏 */
 	#sys_app_form .mm_filter {}
 

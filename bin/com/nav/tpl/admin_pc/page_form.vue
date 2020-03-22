@@ -1,10 +1,10 @@
 <template>
-	<main id="${model.name}">
+	<main id="${model.id}">
 		<mm_grid>
 			<mm_col width="33">
 				<mm_form class="card">
 					<header class="arrow">
-						<h5>{{ form.user_id ? '修改' : '创建' }}用户</h5>
+						<h5>{{ form[field] ? '修改' : '创建' }}${model.api.title}</h5>
 					</header>
 					<dl>
 						<dt>头像</dt>
@@ -13,9 +13,7 @@
 						</dd>
 						<dt>昵称</dt>
 						<dd>
-							<label>
-								<input type="text" v-model="form.nickname" placeholder="由2-16个字符组成" />
-							</label>
+							<mm_input type="text" v-model="form.nickname" desc="由2-16个字符组成"></mm_input>
 						</dd>
 						<dt>会员级别</dt>
 						<dd>
@@ -26,10 +24,12 @@
 							<mm_select v-model="form.gm" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
 						</dd>
 						<dt>商户级别</dt>
-						<dd><mm_select v-model="form.mc" :options="$to_kv(['',1,2,3,4,5])"></mm_select></dd>
+						<dd>
+							<mm_select v-model="form.mc" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
+						</dd>
 						<dt>个性签名</dt>
 						<dd>
-							<textarea v-model="form.signature" placeholder="由2-16个字符组成" />
+							<textarea v-model="form.signature" placeholder="由2-16个字符组成"></textarea>
 						</dd>
 					</dl>
 					<footer>
@@ -46,52 +46,47 @@
 
 
 <script>
-	import mm_upload_img from '/src/components/form/mm_upload_img.vue';
-		
 	import mixin from '/src/mixins/page.js';
-	
+
 	export default {
 		mixins: [mixin],
-		components: {
-			mm_upload_img
-		},
+		components: {},
 		data() {
 			return {
-				url_submit: "/apis/user/account?",
-				url_get_obj: "/apis/user/account",
-				field: "user_id",
+				url_submit: "${model.api.path}?",
+				url_get_obj: "${model.api.path}",
+				field: "${model.sql.key}",
 				query: {
-					user_id: 0
+					"${model.sql.key}": 0
 				},
-				form: {
-				}
+				form: {}
 			}
 		},
 		methods: {
-			
+
 		}
 	}
 </script>
 
 <style>
 	/* 页面 */
-	#${model.name} {}
+	#${model.id} {}
 
 	/* 表单 */
-	#${model.name} .mm_form {}
-	
+	#${model.id} .mm_form {}
+
 	/* 筛选栏栏 */
-	#${model.name} .mm_filter {}
+	#${model.id} .mm_filter {}
 
 	/* 操作栏 */
-	#${model.name} .mm_action {}
+	#${model.id} .mm_action {}
 
 	/* 模态窗 */
-	#${model.name} .mm_modal {}
+	#${model.id} .mm_modal {}
 
 	/* 表格 */
-	#${model.name} .mm_table {}
+	#${model.id} .mm_table {}
 
 	/* 数据统计 */
-	#${model.name} .mm_data_count {}
+	#${model.id} .mm_data_count {}
 </style>

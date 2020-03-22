@@ -27,6 +27,7 @@
 						<div class="mm_action">
 							<h5><span>操作</span></h5>
 							<div class="">
+								<mm_btn class="btn_primary-x" url="./account_form">添加</mm_btn>
 								<mm_btn class="font_default">批量修改</mm_btn>
 							</div>
 						</div>
@@ -167,7 +168,7 @@
 			this.$get('~/apis/user/group?', null, function(json) {
 				if (json.result) {
 					_this.user_group.clear();
-					_this.user_group.addList(json.result.list)
+					_this.user_group.addList(json.result.list);
 				}
 			});
 		}

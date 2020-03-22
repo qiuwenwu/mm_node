@@ -1,10 +1,10 @@
 <template>
-	<main id="${model.name}">
+	<main id="${model.id}">
 		<mm_grid>
 			<mm_col>
 				<mm_view>
 					<header class="arrow">
-						<h5>用户账户</h5>
+						<h5>${model.api.title}</h5>
 					</header>
 					<mm_body>
 						<mm_form class="mm_filter">
@@ -24,7 +24,7 @@
 						<div class="mm_action">
 							<h5><span>操作</span></h5>
 							<div class="">
-								<mm_btn class="btn_primary-x" url="./info_form">添加</mm_btn>
+								<mm_btn class="btn_primary-x" url="./${model.name}_form">添加</mm_btn>
 								<mm_btn @click.native="show = true" class="btn_primary-x" v-bind:class="{ 'disabled': !selects }">批量修改</mm_btn>
 							</div>
 						</div>
@@ -56,8 +56,8 @@
 							</thead>
 							<tbody>
 								<tr v-for="(o, idx) in list" :key="idx">
-									<th scope="row"><input type="checkbox" :checked="select_has(o.user_id)"  @click="select_change(o.user_id)"/></th>
-									<th scope="row">{{ o.user_id }}</th>
+									<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+									<th scope="row">{{ o[field] }}</th>
 									<td><span class="name">{{ o.username }}</span></td>
 									<td><span class="name">{{ o.nickname }}</span></td>
 									<td><span class="name">{{ get_name(user_group, o.user_group, 'group_id') }}</span></td>
@@ -65,8 +65,8 @@
 									<td><span class="email">{{ o.email }}</span></td>
 									<td><span class="state" v-bind:class="colors[o.state]">{{ states[o.state] }}</span></td>
 									<td>
-										<mm_btn class="btn_primary" :url="'./account_form?user_id=' + o.user_id">修改</mm_btn>
-										<mm_btn class="btn_warning" @click.native="del_show(o, 'user_id')">删除</mm_btn>
+										<mm_btn class="btn_primary" :url="'./${model.name}_form?${model.sql.key}=' + o[field]">修改</mm_btn>
+										<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
 									</td>
 								</tr>
 							</tbody>
@@ -131,12 +131,12 @@
 		data() {
 			return {
 				// 列表请求地址
-				url_get_list: "/apis/user/account",
-				url_del: "/apis/user/account?method=del&",
-				url_set: "/apis/user/account?method=set&",
-				field: "user_id",
+				url_get_list: "${model.api.path}",
+				url_del: "${model.api.path}?method=del&",
+				url_set: "${model.api.path}?method=set&",
+				field: "${model.sql.key}",
 				query_set: {
-					user_id: ''
+					"${model.sql.key}": ""
 				},
 				user_group: [],
 				// 查询条件
@@ -150,8 +150,7 @@
 					// 关键词
 					keyword: "",
 				},
-				form: {
-				},
+				form: {},
 				// 状态
 				states: ['', '正常', '异常', '已冻结', '已注销'],
 				colors: ['', 'font_success', 'font_warning', 'font_yellow', 'font_default'],
@@ -159,8 +158,7 @@
 				vm: {}
 			}
 		},
-		methods: {
-		},
+		methods: {},
 		created() {
 			var _this = this;
 			this.$get('~/apis/user/group?', null, function(json) {
@@ -175,23 +173,23 @@
 
 <style>
 	/* 页面 */
-	#${model.name} {}
+	#${model.id} {}
 
 	/* 表单 */
-	#${model.name} .mm_form {}
-	
+	#${model.id} .mm_form {}
+
 	/* 筛选栏栏 */
-	#${model.name} .mm_filter {}
+	#${model.id} .mm_filter {}
 
 	/* 操作栏 */
-	#${model.name} .mm_action {}
+	#${model.id} .mm_action {}
 
 	/* 模态窗 */
-	#${model.name} .mm_modal {}
+	#${model.id} .mm_modal {}
 
 	/* 表格 */
-	#${model.name} .mm_table {}
+	#${model.id} .mm_table {}
 
 	/* 数据统计 */
-	#${model.name} .mm_data_count {}
+	#${model.id} .mm_data_count {}
 </style>

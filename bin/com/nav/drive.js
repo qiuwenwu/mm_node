@@ -355,22 +355,23 @@ Drive.prototype.load = function(cg) {
  * @return {Object} 返回api配置
  */
 Drive.prototype.get_api = function(app, route) {
-	var {path, component} = route;
+	var {
+		path,
+		component
+	} = route;
 	var scope = app;
 	var api_route = "";
 	var p = path.replace('_table', '').replace('_list', '').replace('_view', '').replace('_form', '');
-	if(component.indexOf('/admin') !== -1){
+	if (component.indexOf('/admin') !== -1) {
 		scope += "_manage";
 		api_route = "/apis" + p
-	}
-	else {
+	} else {
 		scope += "_client";
 		api_route = "/api" + p
 	}
 	var api = $.pool.api[scope];
 	// $.log.debug('api', scope, api);
-	if(!api)
-	{
+	if (!api) {
 		return null;
 	}
 	var lt = api.list;
@@ -379,10 +380,9 @@ Drive.prototype.get_api = function(app, route) {
 		param: {},
 		sql: {}
 	};
-	for(var i = 0; i <  lt.length; i++)
-	{
+	for (var i = 0; i < lt.length; i++) {
 		var o = lt[i];
-		if(o.config.path.indexOf(api_route) === 0){
+		if (o.config.path.indexOf(api_route) === 0) {
 			config = {
 				api: o.config,
 				param: o.param.config,
@@ -437,17 +437,23 @@ Drive.prototype.create_vue = function(file, route) {
 	}
 	f = f.fullname(__dirname);
 	var model = {
-		name: app + '_' + name,
+		id: app + '_' + name,
+		name: name,
 		app,
 		plugin,
 		group: arr[arr.length - 2],
 		nav_config: this.config,
 		route,
-		config: this.get_api(app, route)
+		api: {},
+		param: {},
+		sql: {}
 	};
+	$.push(model, this.get_api(app, route), true)
 	// $.log.debug(file, route);
 	$.log.debug('更新vue文件：', model.name);
 	// $.log.debug('路径', f, route, model);
+
+	console.log(model.sql.key);
 	var vue = tpl.view(f, model);
 	// $.log.debug(f, f.hasFile());
 	file.saveText(vue);

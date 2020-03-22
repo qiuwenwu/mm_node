@@ -108,10 +108,6 @@
 		color: #fff;
 	}
 
-	#nav_side .router-link-active {
-		color: #3388ff;
-	}
-
 	#nav_side .btn:hover:before {
 		content: "";
 		display: block;
