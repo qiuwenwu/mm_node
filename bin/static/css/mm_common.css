@@ -199,7 +199,7 @@ ol.mm_list li:nth-child(3)::before{background-color: #ff9000;}
 	width: 8rem;
 }
 .th_type {
-	width: 10rem;
+	width: 6rem;
 }
 .th_address {
 	min-width: 15rem;
@@ -228,6 +228,10 @@ width: 5.5rem;
 
 .th_handle {
 	width: 10rem;
+}
+
+.th_desc {
+	width: 20rem;
 }
 
 /* ===  图标大小  === */

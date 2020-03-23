@@ -125,8 +125,10 @@
             "title": "图标",
             "description": "用于标识用户组",
             "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "text",
+            "string": {
+                "max": 0
+            }
         },
         {
             "name": "keyword",
