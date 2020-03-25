@@ -1,0 +1,16 @@
+{
+    "name": "wechat_bot",
+    "title": "微信个人机器人接入",
+    "description": "用于开发个人号对话指令",
+    "path": "/api/wechat/bot/*",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": false
+}

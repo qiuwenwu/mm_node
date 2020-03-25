@@ -1,0 +1,20 @@
+{
+	"name": "redirect",
+	"title": "重定向",
+	"description": "方便本地调试和第三方接入",
+	"sort": 1001,
+	"group": "default",
+	"type": "service",
+	"match": ["*"],
+	"not": [],
+	"remove": [],
+	"extract": [],
+	"stage1": {
+		"mode": "fill",
+		"param": []
+	},
+	"stage2": {
+		"mode": "update",
+		"param": []
+	}
+}

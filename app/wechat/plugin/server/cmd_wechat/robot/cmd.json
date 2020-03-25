@@ -1,0 +1,21 @@
+{
+	"name": "robot",
+	"title": "机器人回复",
+	"description": "帮助实现问答效果",
+	"tense": "after",
+	"sort": 1002,
+	"group": "default",
+	"type": "service",
+	"match": ["*"],
+	"not": [],
+	"remove": [],
+	"extract": [],
+	"stage1": {
+		"mode": "fill",
+		"param": []
+	},
+	"stage2": {
+		"mode": "update",
+		"param": []
+	}
+}

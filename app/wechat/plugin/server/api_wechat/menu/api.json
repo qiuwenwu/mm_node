@@ -1,0 +1,16 @@
+{
+    "name": "wechat_menu",
+    "title": "微信菜单",
+    "description": "用于操作微信菜单的API接口",
+    "path": "/api/wechat/menu/*",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": false
+}

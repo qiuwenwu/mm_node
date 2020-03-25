@@ -1,0 +1,21 @@
+{
+	"name": "command",
+	"title": "基础指令",
+	"description": "用于取消指令会切换指令",
+	"tense": "before",
+	"sort": 999,
+	"group": "default",
+	"type": "service",
+	"match": ["取消*"],
+	"not": [],
+	"remove": [],
+	"extract": [],
+	"stage1": {
+		"mode": "fill",
+		"param": []
+	},
+	"stage2": {
+		"mode": "update",
+		"param": []
+	}
+}

@@ -1,13 +1,13 @@
 {
 	"name": "mm_node",
-	"version": "2.4.1",
+	"version": "2.5.0",
 	"description": "这是超级美眉基于nodeJS和Koa开发的服务端框架，可用于中小型商城和游戏、CMS。",
 	"main": "server.js",
 	"scripts": {
 		"start": "node server.js",
 		"server": "node nw.js",
 		"start_group": "node cluster.js",
-		"dev": "./node_modules/.bin/cross-env NODE_ENV=development PORT=8000 nodemon"
+		"dev": "./node_modules/.bin/cross-env NODE_ENV=development PORT=5000 nodemon"
 	},
 	"keywords": [
 		"mm",

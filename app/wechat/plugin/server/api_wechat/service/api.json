@@ -1,0 +1,16 @@
+{
+    "name": "wechat/service",
+    "title": "微信客服接口",
+    "description": "用于发送客服消息和管理客服账号",
+    "path": "/api/wechat/service/*",
+    "type": "api",
+    "contentType": "json",
+    "func_file": "./index.js",
+    "func_name": "",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "",
+    "sql_path": "",
+    "check_param": false
+}

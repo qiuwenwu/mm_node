@@ -1,6 +1,6 @@
-var api_test = $.api_admin('query_manage', '测评管理端');
+var api = $.api_admin('query_manage', '测评管理端');
 // 首次启动更新api接口;
-api_test.update('query/');
+api.update('query/');
 
 var sql = $.mysql_admin('sys', __dirname);
 sql.setConfig($.config.mysql);
@@ -14,6 +14,6 @@ sql.open();
  */
 async function main(ctx, db) {
 	$.push(db, sql.db(), true);
-	return api_test.run(ctx, db);
+	return api.run(ctx, db);
 };
 exports.main = main;

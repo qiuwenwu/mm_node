@@ -1,0 +1,98 @@
+{
+    "name": "wechat_contact",
+    "title": "",
+    "add": {
+        "body": [
+            "appid",
+            "account",
+            "nickname",
+            "avatar"
+        ],
+        "body_required": []
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "contact_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "contact_id",
+            "nickname",
+            "keyword"
+        ],
+        "query_required": [],
+        "body": [
+            "appid",
+            "account",
+            "nickname",
+            "avatar"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "contact_id",
+            "nickname",
+            "keyword"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "contact_id",
+            "title": "联系人ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "appid",
+            "title": "应用ID",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "account",
+            "title": "联系人账户",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "nickname",
+            "title": "联系人昵称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "avatar",
+            "title": "联系人头像",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "keyword",
+            "title": "关键词",
+            "description": "用于搜索联系人昵称(nickname)",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        }
+    ]
+}

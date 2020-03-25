@@ -1,0 +1,37 @@
+{
+    "name": "wechat_message2",
+    "title": "微信消息",
+    "table": "wechat_message",
+    "key": "message_id",
+    "orderby_default": "`message_id` desc",
+    "field_obj": "`message_id`,`end`,`stage`,`msgid`,`update_time`,`create_time`,`group`,`msg_type`,`name`,`type`,`cmd`,`appid`,`from_user`,`to_user`,`robot`,`avatar`,`check`,`keyword`,`form`,`content_last`,`content`,`note`",
+    "field_default": "`message_id`,`end`,`stage`,`msgid`,`update_time`,`create_time`,`group`,`msg_type`,`name`,`type`,`cmd`,`appid`,`from_user`,`to_user`,`robot`,`avatar`,`check`,`keyword`,`form`,`note`",
+    "query": {
+        "stage_min": "`stage` >= {0}",
+        "stage_max": "`stage` <= {0}",
+        "update_time_min": "`update_time` >= '{0}'",
+        "update_time_max": "`update_time` <= '{0}'",
+        "create_time_min": "`create_time` >= '{0}'",
+        "create_time_max": "`create_time` <= '{0}'",
+        "group": "`group` like '%{0}%'",
+        "msg_type": "`msg_type` like '%{0}%'",
+        "name": "`name` like '%{0}%'",
+        "type": "`type` like '%{0}%'",
+        "cmd": "`cmd` like '%{0}%'",
+        "appid": "`appid` like '%{0}%'",
+        "from_user": "`from_user` like '%{0}%'",
+        "to_user": "`to_user` like '%{0}%'",
+        "robot": "`robot` like '%{0}%'",
+        "avatar": "`avatar` like '%{0}%'",
+        "check": "`check` like '%{0}%'",
+        "keyword": "(`name` like '%{0}%')",
+        "form": "`form` like '%{0}%'",
+        "content_last": "`content_last` like '%{0}%'",
+        "content": "`content` like '%{0}%'",
+        "note": "`note` like '%{0}%'"
+    },
+    "update": {
+        "stage_add": "`stage` = `stage` + {0}"
+    },
+    "field_hide": []
+}

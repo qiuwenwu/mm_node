@@ -1,6 +1,6 @@
 [{
 	"target": "/apis/cms/*",
-	"name": "apis_client",
+	"name": "cms_manage",
 	"title": "home的管理端api接口",
 	"description": "用于门户后台访问接口",
 	"stage": "action",

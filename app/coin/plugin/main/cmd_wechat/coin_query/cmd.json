@@ -1,0 +1,15 @@
+{
+	"name": "coin_query",
+	"title": "数字货币走势",
+	"description": "用于查询数字货币",
+	"sort": 1000,
+	"group": "default",
+	"type": "query",
+	"match": ["*走势", "分析*"],
+	"not": [],
+	"remove": ["走势", "分析"],
+	"extract": [],
+	"stage1": {
+		"param": []
+	}
+}

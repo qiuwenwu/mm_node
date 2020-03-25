@@ -1,0 +1,18 @@
+{
+    "name": "wechat_contact2",
+    "title": "",
+    "table": "wechat_contact",
+    "key": "contact_id",
+    "orderby_default": "`contact_id` desc",
+    "field_obj": "`contact_id`,`appid`,`account`,`nickname`,`avatar`",
+    "field_default": "`contact_id`,`appid`,`account`,`nickname`,`avatar`",
+    "query": {
+        "appid": "`appid` like '%{0}%'",
+        "account": "`account` like '%{0}%'",
+        "nickname": "`nickname` like '%{0}%'",
+        "avatar": "`avatar` like '%{0}%'",
+        "keyword": "(`nickname` like '%{0}%')"
+    },
+    "update": {},
+    "field_hide": []
+}

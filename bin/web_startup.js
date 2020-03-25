@@ -55,6 +55,7 @@ function startup(config) {
 	$.event_admin = require('./com/event').event_admin;
 	$.api_admin = require('./com/api').api_admin;
 	$.nav_admin = require('./com/nav').nav_admin;
+	$.cmd_admin = require('./com/cmd').cmd_admin;
 	
 	/**
 	 * @description 跨域spa应用

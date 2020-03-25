@@ -1,7 +1,7 @@
 
-var api_test = $.api_admin('test', '测试用');
+var api = $.api_admin('test', '测试用');
 // 首次启动更新api接口;
-api_test.update('demo/');
+api.update('demo/');
 
 /**
  * @description 接口主函数
@@ -12,6 +12,6 @@ api_test.update('demo/');
 async function main(ctx, db) {
 	db.tpl = new $.Tpl();
 	db.tpl.viewBag.app = "mm";
-	return api_test.run(ctx, db);
+	return api.run(ctx, db);
 };
 exports.main = main;

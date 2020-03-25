@@ -30,6 +30,8 @@ class Drive extends Item {
 			"description": "暂无描述",
 			// 文件名
 			"func_file": "./index.js",
+			// 时态, 分before之前、main主要、after之后三个时态,
+			"tense": "main",
 			// 加载顺序，数字越大越后面加载
 			"sort": 1000,
 			// 分组
@@ -242,8 +244,11 @@ Drive.prototype.fill = async function(msg, db, stage) {
 	if (!stage) {
 		return "";
 	}
-	var form = {};
 	var list = stage.param;
+	if(!list || list.length === 0){
+		return "";
+	}
+	var form = {};
 	var keyword = "";
 	// 是否有进行填充
 	var has_fill = false;
@@ -383,6 +388,23 @@ Drive.prototype.end = async function(msg, db, ret) {
 };
 
 /**
+ * @description 执行但不记录指令
+ * @param {Object} msg 消息上下文
+ * @param {Object} db 数据管理器
+ * @return {Object} 返回行动结果
+ */
+Drive.prototype.run_cmd = async function(msg, db) {
+	var ret;
+	// 第一步, 验证阶段
+	var bl = await this.check(msg, db);
+	if (bl) {
+		ret = await this.run(msg, db);
+	}
+	return ret;
+};
+
+
+/**
  * @description 执行
  * @param {Object} msg 消息上下文
  * @param {Object} db 数据管理器
@@ -393,9 +415,11 @@ Drive.prototype.run_first = async function(msg, db) {
 	// 第一步, 验证阶段
 	var bl = await this.check(msg, db);
 	if (bl) {
-		// 如果匹配指令则将该消息定义为使用该指令
-		db.msg.cmd = this.config.name;
 		ret = await this.run(msg, db);
+		if(ret){
+			// 如果匹配指令则将该消息定义为使用该指令
+			db.msg.cmd = this.config.name;
+		}
 	}
 	return ret;
 };
