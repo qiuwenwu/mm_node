@@ -291,6 +291,25 @@
             "join_out": []
         },
         {
+            "name": "chatid",
+            "title": "聊天ID",
+            "description": "用于消息回复和推送消息",
+            "type": "varchar",
+            "key": false,
+            "auto": "",
+            "symbol": false,
+            "fill_zero": false,
+            "not_null": 0,
+            "min_length": 0,
+            "max_length": 64,
+            "min": 0,
+            "max": 0,
+            "decimal": 0,
+            "default": null,
+            "join_in": [],
+            "join_out": []
+        },
+        {
             "name": "avatar",
             "title": "发信人头像",
             "description": "",

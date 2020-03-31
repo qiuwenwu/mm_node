@@ -310,7 +310,7 @@ label~label {margin-left:1rem;}
 .mobile .mm_input {margin-top:-1px;padding-top:.25rem;padding-bottom:.25rem;border-top:1px #DBDBDB;border-bottom:1px solid #DBDBDB;}
 .mobile .mm_input .title {height:2rem;line-height:2rem;}
 .mobile .mm_input input {line-height:2rem;height:2rem;padding:0 .5rem;flex:1;}
-.mobile .mm_input .title~.value {width:calc(100% - 5.5rem);overflow:hidden;display:flex;}
+.mobile .mm_input .title~.value {overflow:hidden;display:flex;}
 .mobile .mm_input .unit {line-height:2rem;height:2rem;}
 
 /* 发送验证码输入框 */

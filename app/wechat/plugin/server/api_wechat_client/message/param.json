@@ -17,6 +17,7 @@
             "from_user",
             "to_user",
             "robot",
+            "chatid",
             "avatar",
             "check",
             "keyword",
@@ -61,6 +62,7 @@
             "from_user",
             "to_user",
             "robot",
+            "chatid",
             "avatar",
             "check",
             "keyword",
@@ -285,6 +287,14 @@
             "name": "robot",
             "title": "服务的机器人",
             "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
+        },
+        {
+            "name": "chatid",
+            "title": "聊天ID",
+            "description": "用于消息回复和推送消息",
             "type": "string",
             "dataType": "varchar",
             "string": {}

@@ -8,6 +8,7 @@ async function main(ctx, db) {
 	// 获取请求参数
 	var req = ctx.request;
 	var msg = req.body;
+	
 	return "";
 };
 

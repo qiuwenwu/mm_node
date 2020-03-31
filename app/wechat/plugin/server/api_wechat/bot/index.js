@@ -36,24 +36,30 @@ async function main(ctx, db) {
 	console.log(ctx.path, req.body);
 	var msg = req.body.data;
 	var arr = ctx.path.split('/');
-
-	var message = {
-		appid: arr[arr.length - 2],
-		msgid: msg.messageId,
-		from_user: msg.contactId,
-		to_user: "",
-		group: msg.roomId || '',
-		content: msg.payload.text,
-		name: msg.contactName,
-		avatar: msg.avatar,
-		type: 1,
-		msg_type: msg.type,
-	};
-
-	var ret = await $.cmd.run(message, db, table_name);
-	if (ret) {
-		console.log(ret);
-		send(msg.chatId, ret);
+	
+	var content = msg.payload.text || '';
+	if(content.indexOf('@AI') !== -1 || !msg.roomId)
+	{
+		content = content.right(' ', true);
+		var message = {
+			chatid: msg.chatId,
+			appid: arr[arr.length - 2],
+			msgid: msg.messageId,
+			from_user: msg.contactId,
+			to_user: "",
+			group: msg.roomId || '',
+			content,
+			name: msg.contactName,
+			avatar: msg.avatar,
+			type: 1,
+			msg_type: msg.type,
+		};
+		
+		var ret = await $.cmd.run(message, db, table_name);
+		if (ret) {
+			// console.log(ret);
+			send(msg.chatId, ret);
+		}
 	}
 	return ret;
 };

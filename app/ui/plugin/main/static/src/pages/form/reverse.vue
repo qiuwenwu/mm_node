@@ -16,14 +16,13 @@
 			<mm_grid>
 				<mm_col width="100">
 					<mm_view>
-						<h5>样式一</h5>
+						<h5 @click="$copy(code_1)">样式一</h5>
 						<mm_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback"></mm_reverse>
 						<mm_reverse title="人气" v-model="query.orderby" :options="options_hot" :func="callback"></mm_reverse>
 					</mm_view>
 
-					
 					<mm_view>
-						<h5>样式二</h5>
+						<h5 @click="$copy(code_2)">样式二</h5>
 						<mm_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback" display="2"></mm_reverse>
 						<mm_reverse title="人气" v-model="query.orderby" :options="options_hot" :func="callback" display="2"></mm_reverse>
 					</mm_view>
@@ -45,7 +44,13 @@
 					orderby: "`create_time` asc"
 				},
 				options_time: ["`create_time` asc", "`create_time` desc"],
-				options_hot: ["`hot` asc", "`hot` desc"]
+				options_hot: ["`hot` asc", "`hot` desc"],
+				code_1: `
+<mm_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback"></mm_reverse>
+`,
+				code_2: `
+<mm_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback" display="2"></mm_reverse>
+`
 			}
 		},
 		methods: {

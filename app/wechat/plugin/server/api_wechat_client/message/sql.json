@@ -4,8 +4,8 @@
     "table": "wechat_message",
     "key": "message_id",
     "orderby_default": "`message_id` desc",
-    "field_obj": "`message_id`,`end`,`stage`,`msgid`,`update_time`,`create_time`,`group`,`msg_type`,`name`,`type`,`cmd`,`appid`,`from_user`,`to_user`,`robot`,`avatar`,`check`,`keyword`,`form`,`content_last`,`content`,`note`",
-    "field_default": "`message_id`,`end`,`stage`,`msgid`,`update_time`,`create_time`,`group`,`msg_type`,`name`,`type`,`cmd`,`appid`,`from_user`,`to_user`,`robot`,`avatar`,`check`,`keyword`,`form`,`note`",
+    "field_obj": "`message_id`,`end`,`stage`,`msgid`,`update_time`,`create_time`,`group`,`msg_type`,`name`,`type`,`cmd`,`appid`,`from_user`,`to_user`,`robot`,`chatid`,`avatar`,`check`,`keyword`,`form`,`content_last`,`content`,`note`",
+    "field_default": "`message_id`,`end`,`stage`,`msgid`,`update_time`,`create_time`,`group`,`msg_type`,`name`,`type`,`cmd`,`appid`,`from_user`,`to_user`,`robot`,`chatid`,`avatar`,`check`,`keyword`,`form`,`note`",
     "method": "get",
     "query": {
         "stage_min": "`stage` >= {0}",
@@ -29,7 +29,8 @@
         "form": "`form` like '%{0}%'",
         "content_last": "`content_last` like '%{0}%'",
         "content": "`content` like '%{0}%'",
-        "note": "`note` like '%{0}%'"
+        "note": "`note` like '%{0}%'",
+        "chatid": "`chatid` like '%{0}%'"
     },
     "query_default": {},
     "update": {

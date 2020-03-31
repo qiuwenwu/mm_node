@@ -16,11 +16,11 @@
 			<mm_grid>
 				<mm_col width="100">
 					<mm_view class="pc">
-						<h5>样式一(PC)</h5>
+						<h5 @click="$copy(code_1)">样式一(PC)</h5>
 						<mm_checkbox v-model="value" :options="options"></mm_checkbox>
 					</mm_view>
 					<mm_view class="mobile">
-						<h5>样式二(mobile)</h5>
+						<h5 @click="$copy(code_2)">样式二(mobile)</h5>
 						<mm_checkbox v-model="value" :options="options"></mm_checkbox>
 					</mm_view>
 				</mm_col>
@@ -46,7 +46,18 @@
 						name: "选项三",
 						value: "3",
 					}
-				]
+				],
+				code_1: `
+<mm_view class="pc">
+<mm_checkbox v-model="value" :options="options"></mm_checkbox>
+</mm_view>
+`,
+				code_2: `
+<mm_view class="mobile">
+<mm_checkbox v-model="value" :options="options"></mm_checkbox>
+</mm_view>
+`
+
 			}
 		}
 	}

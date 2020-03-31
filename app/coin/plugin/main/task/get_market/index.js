@@ -21,7 +21,7 @@ async function send_wechat_msg(message) {
 	if (res.body) {
 		$.log.info('send_wechat_msg', res.body);
 	}
-	param["chatId"] = "5e245b53bd6faa1c4e5cdaa0";
+	param["chatId"] = "5e812c6dbd6faa1c4e9a8a47";
 	await http.post(url, param);
 }
 

@@ -1,0 +1,21 @@
+{
+	"name": "group",
+	"title": "群指令",
+	"description": "用于操作群",
+	"tense": "before",
+	"sort": 999,
+	"group": "default",
+	"type": "service",
+	"match": ["查看群ID"],
+	"not": [],
+	"remove": [],
+	"extract": [],
+	"stage1": {
+		"mode": "fill",
+		"param": []
+	},
+	"stage2": {
+		"mode": "update",
+		"param": []
+	}
+}
