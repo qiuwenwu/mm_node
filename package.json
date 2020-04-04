@@ -1,6 +1,6 @@
 {
 	"name": "mm_node",
-	"version": "2.5.0",
+	"version": "2.5.1",
 	"description": "这是超级美眉基于nodeJS和Koa开发的服务端框架，可用于中小型商城和游戏、CMS。",
 	"main": "server.js",
 	"scripts": {

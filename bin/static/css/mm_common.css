@@ -188,51 +188,21 @@ ol.mm_list li:nth-child(3)::before{background-color: #ff9000;}
 
 
 /* ===  表格  === */
-.table-sm td,.table-sm th {padding:.25rem .5rem;}
-.th_id {
-	width: 4rem;
-}
-.th_uin {
-	width: 12rem;
-}
-.th_name {
-	width: 8rem;
-}
-.th_type {
-	width: 6rem;
-}
-.th_address {
-	min-width: 15rem;
-}
-.th_username {
-	width: 10rem;
-}
-.th_nickname {
-	width: 10rem;
-}
-.th_title { width: 15rem; }
-.th_phone {width: 9rem;}
-.th_email,
-.th_time {
-	width: 10rem;
-}
-
-.th_num {
-	width: 8rem;
-}
-
-.th_score,
-.th_state {
-width: 5.5rem;
-}
-
-.th_handle {
-	width: 10rem;
-}
-
-.th_desc {
-	width: 20rem;
-}
+.table-sm td,.table-sm th{padding:.25rem .5rem}
+.th_id{min-width:4rem}
+.th_uin{min-width:12rem}
+.th_name{min-width:8rem}
+.th_type{min-width:6rem}
+.th_address{min-width:15rem}
+.th_username{min-width:10rem}
+.th_nickname{min-width:10rem}
+.th_phone{min-width:9rem}
+.th_email,.th_time{min-width:10rem}
+.th_num{min-width:8rem}
+.th_score,.th_state{min-width:5.5rem}
+.th_handle{min-width:10rem}
+.th_title{width:15rem}
+.th_desc{width:20rem}
 
 /* ===  图标大小  === */
 .img-5, .icon_5 img {width:1.25rem;height:1.25rem;}

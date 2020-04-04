@@ -96,9 +96,8 @@ define(function() {
 			 */
 			events: function events(name, param1, param2) {
 				// console.log(name);
-				var func = this[name];
-				if (func) {
-					return func(param1, param2);
+				if (this[name]) {
+					return this[name](param1, param2);
 				} else {
 					return null;
 				}
@@ -166,7 +165,7 @@ define(function() {
 					// console.log('确定删除!');
 					var query = {};
 					query[id] = o[id];
-					_this.del(query, function(){
+					_this.del(query, function() {
 						_this.list.del(query);
 						_this.count -= 1;
 					});
@@ -178,17 +177,18 @@ define(function() {
 			 * @description 修改数据
 			 * @param {Object} param 修改项
 			 * @param {String} query 查询条件
+			 * @param {Boolean} includeZero 是否包括0
 			 */
-			set: function set(param, query, func) {
+			set: function set(param, query, func, includeZero) {
 				if (!param) {
 					param = this.obj;
 				}
 				if (query) {
 					this.query_set = query;
 				} else if (!this.query_set) {
-					this.query_set = Object.assign(this.query);
+					this.query_set = Object.assign({}, this.query);
 				}
-				var pm = this.events("set_before", param) || param;
+				var pm = this.events("set_before", param, includeZero) || param;
 				var msg = this.events("set_check", pm);
 				var ret;
 				if (!msg) {
@@ -199,15 +199,17 @@ define(function() {
 			/**
 			 * 修改前事件
 			 * @param {Object} param
+			 * @param {Boolean} includeZero 是否包括0
+			 * @param {Object} 返回新的参数
 			 */
-			set_before: function set_before(param) {
+			set_before: function set_before(param, includeZero) {
 				// console.log('修改前', $.toJson(param));
-				return $.delete(param);
+				return $.delete(param, includeZero);
 			},
 			/**
 			 * 批量修改
 			 */
-			set_bath: function set_bath() {
+			batchSet: function batchSet() {
 				var _this = this;
 				$.confirm('批量修改数据无法挽回<br/>确定要操作吗?', function() {
 					var q = Object.assign({}, _this.query, _this.query_set);
@@ -220,7 +222,7 @@ define(function() {
 							_this.show = false;
 							_this.get();
 						}
-					});
+					}, true);
 				});
 			},
 			/**
@@ -335,7 +337,7 @@ define(function() {
 				}
 				this.$post(url, value, function(json) {
 					if (json.result) {
-						$.toast('添加' + json.result.tip);
+						$.toast(json.result.tip);
 					} else if (json.error) {
 						$.toast(json.error.message);
 					} else {
@@ -359,7 +361,7 @@ define(function() {
 				this.$get(url, query, function(json) {
 					_this.events("del_after", json, func);
 					if (json.result) {
-						$.toast('删除' + json.result.tip);
+						$.toast(json.result.tip);
 					} else if (json.error) {
 						$.toast(json.error.message);
 					} else {
@@ -372,8 +374,8 @@ define(function() {
 			 * @param {Object} json 返回的结果
 			 * @param {Object} func 回调函数
 			 */
-			del_after: function del_after(json, func){
-				if(func){
+			del_after: function del_after(json, func) {
+				if (func) {
 					func();
 				}
 			},
@@ -396,7 +398,7 @@ define(function() {
 				this.$post(this.toUrl(this.query_set, url), value, function(json, status) {
 					_this.events("set_after", json, func);
 					if (json.result) {
-						$.toast('修改' + json.result.tip);
+						$.toast(json.result.tip);
 					} else if (json.error) {
 						$.toast(json.error.message);
 					} else {

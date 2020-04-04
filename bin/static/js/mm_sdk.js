@@ -310,15 +310,27 @@ function keys(obj, file) {
 
 /**
  * @description 删除对象空属性
- * @param {Object} obj
+ * @param {Object} obj 对象
+ * @param {Object} includeZero 是否包括0
+ * @return {Object} 返回新对象 
  */
-function delete_prop(obj){
+function delete_prop(obj, includeZero) {
 	var o = Object.assign({}, obj);
-	for(var k in o)
-	{
-		var v = o[k];
-		if(!v){
-			delete o[k];
+	console.log('是否包含0', includeZero);
+	if (includeZero) {
+		for (var k in o) {
+			var v = o[k];
+			if (!v) {
+				delete o[k];
+			}
+		}
+	} else {
+		console.log('这地套');
+		for (var k in o) {
+			var v = o[k];
+			if (v === '' || v === null || v === undefined) {
+				delete o[k];
+			}
 		}
 	}
 	return o;
@@ -1246,7 +1258,7 @@ if (typeof($) === "undefined") {
 		}
 		return this;
 	};
-	
+
 	/**
 	 * @description 给数组添加一个对象或列表
 	 * @param {Object|Array} objOrList 对象或数组
@@ -1254,16 +1266,14 @@ if (typeof($) === "undefined") {
 	 * @return {Array} 对象数组
 	 */
 	Array.prototype.add = function(objOrList, query) {
-		if(Array.isArray(objOrList))
-		{
+		if (Array.isArray(objOrList)) {
 			this.addList(objOrList, query);
-		}
-		else {
+		} else {
 			this.addObj(objOrList, query);
 		}
 		return this;
 	};
-	
+
 	/**
 	 * @description 删除数组中对象的属性
 	 * @param {String} key 对象属性键
@@ -2200,13 +2210,12 @@ if (typeof($) === "undefined") {
 	 * 等待连接成功, 然后发送消息
 	 */
 	function connect(_this) {
-		if(_this.try_connect)
-		{
+		if (_this.try_connect) {
 			return;
 		}
 		_this.try_connect = true;
 		var ws = CreateWebSocket(_this.url);
-		ws.onmessage = function(event){
+		ws.onmessage = function(event) {
 			_this.message(event);
 		};
 		ws.onclose = function() {
@@ -2220,7 +2229,7 @@ if (typeof($) === "undefined") {
 			var arr = _this.arr_message;
 			var len = arr.length;
 			for (var i = 0; i < len; i++) {
-				if(ws.readyState === 1) {
+				if (ws.readyState === 1) {
 					_this.ws.send(arr[i]);
 				}
 			}
@@ -2249,7 +2258,7 @@ if (typeof($) === "undefined") {
 			_this.noticy('error', '服务器连接失败!');
 		}
 	};
-	
+
 	/**
 	 * 构造通讯函数
 	 * @param {String} url
@@ -2287,14 +2296,13 @@ if (typeof($) === "undefined") {
 		}
 		// 连接地址
 		this.url = u;
-		
-		if(name) {
+
+		if (name) {
 			this.name = name
-		}
-		else {
+		} else {
 			this.name = u;
 		}
-		
+
 		this.receive = receive;
 
 		// 消息数组, 在等待连接的过程中, 如果有多条消息, 则保存至此, 等待连接成功后发送
@@ -2305,7 +2313,7 @@ if (typeof($) === "undefined") {
 		} else {
 			this.seconds = 6000;
 		}
-		
+
 		/**
 		 * 尝试重连次数
 		 */
@@ -2315,47 +2323,47 @@ if (typeof($) === "undefined") {
 		 * 最大尝试次数, 如果每次重试间隔1分钟, 那么10分钟后就不再重连
 		 */
 		this.try_max_times = 10;
-		
+
 		/**
 		 * 是否正在尝试连接
 		 */
 		this.try_connect = false;
-		
+
 		// 连接 socket服务
 		connect(this);
 	}
-	
-	
+
+
 	/**
 	 * 打开服务
 	 */
-	WS.prototype.open = function(){
+	WS.prototype.open = function() {
 		connect(this);
 	};
-	
+
 	/**
 	 * 关闭服务
 	 */
-	WS.prototype.close = function(){
-		this.ws.onclose = function(event){};
+	WS.prototype.close = function() {
+		this.ws.onclose = function(event) {};
 		this.ws.close()
 	};
-	
-	
+
+
 	/**
 	 * 释放
 	 */
-	WS.prototype.clear = function(){
+	WS.prototype.clear = function() {
 		this.close();
 		delete $.ws[key];
 	};
-	
+
 	/**
 	 * 收到消息
 	 */
-	WS.prototype.message = function(event){
+	WS.prototype.message = function(event) {
 		var data = event.data;
-		if(data && this.receive){
+		if (data && this.receive) {
 			this.receive(data);
 		}
 	};
@@ -2383,7 +2391,7 @@ if (typeof($) === "undefined") {
 				this.arr_message.push(bodyStr);
 				break;
 			default:
-				if(this.try_times > 9){
+				if (this.try_times > 9) {
 					this.try_times = 0;
 					this.try_connect = false;
 				}
@@ -2401,7 +2409,7 @@ if (typeof($) === "undefined") {
 	WS.prototype.close = function() {
 		this.ws.close();
 	};
-	
+
 	/**
 	 * 创建web socket通讯服务
 	 * @param {String} url URL地址

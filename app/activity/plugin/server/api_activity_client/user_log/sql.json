@@ -24,7 +24,8 @@
         "time_create_max": "`time_create` <= '{0}'",
         "uin_user": "`uin_user` like '%{0}%'",
         "uin_prize winners": "`uin_prize winners` like '%{0}%'",
-        "img_prove": "`img_prove` like '%{0}%'"
+        "img_prove": "`img_prove` like '%{0}%'",
+        "prize": "`prize_1` = {0} || `prize_2` = {0} || `prize_3` = {0} || `prize_t` = {0}"
     },
     "query_default": {},
     "update": {

@@ -35,40 +35,40 @@
 						<dd>
 							<input type="number" style="width:5rem;text-align: center;margin-top: -3px;position: relative; top: -1px; " v-model="form.period_num" /> <mm_select v-model="form.period_unit" :options="$to_kv(['', '日', '周', '月','年'])" /><span> /期</span>
 						</dd>
-						<dt>参与人数</dt>
-						<dd>
-							<mm_number v-model="form.num_people" :num="100" />
-						</dd>
 						<dt>中奖人数</dt>
 						<dd>
 							<mm_number v-model="form.num_winner" :num="1" />
+						</dd>
+						<dt>参与人数</dt>
+						<dd>
+							<mm_number v-model="form.num_people" :num="100" />
 						</dd>
 						<dt>一等奖</dt>
 						<dd>
 							<select v-model="form.prize_1">
 								<option :value="'0'"></option>
-								<option v-for="(o, k) in item_group" :value="o.item_id">{{ o.name }}</option>
+								<option v-for="(o, k) in item_group" :key="k" :value="o.item_id">{{ o.name }}</option>
 							</select>
 						</dd>
 						<dt>二等奖</dt>
 						<dd>
 							<select v-model="form.prize_2">
 								<option :value="'0'"></option>
-								<option v-for="(o, k) in item_group" :value="o.item_id">{{ o.name }}</option>
+								<option v-for="(o, k) in item_group" :key="k" :value="o.item_id">{{ o.name }}</option>
 							</select>
 						</dd>
 						<dt>三等奖</dt>
 						<dd>
 							<select v-model="form.prize_3">
 								<option :value="'0'"></option>
-								<option v-for="(o, k) in item_group" :value="o.item_id">{{ o.name }}</option>
+								<option v-for="(o, k) in item_group" :key="k" :value="o.item_id">{{ o.name }}</option>
 							</select>
 						</dd>
 						<dt>特等奖</dt>
 						<dd>
 							<select v-model="form.prize_t">
 								<option :value="'0'"></option>
-								<option v-for="(o, k) in item_group" :value="o.item_id">{{ o.name }}</option>
+								<option v-for="(o, k) in item_group" :key="k" :value="o.item_id">{{ o.name }}</option>
 							</select>
 						</dd>
 					</dl>

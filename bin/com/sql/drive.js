@@ -81,7 +81,7 @@ class Drive extends Item {
 			"func_file": "",
 			// 回调函数名 用于决定调用脚本的哪个函数
 			"func_name": "",
-			/* 导入导出转换 */ 
+			/* 导入导出转换 */
 			"convert": {
 				/*
 				需要转换的字段名
@@ -180,161 +180,292 @@ Drive.prototype.run = async function(query, body, db) {
 	return null;
 };
 
+
 /**
- * @description 执行模板操作
- * @param {Object} params 参数对象 (object) 包含query和body
- * @param {Object} db 数据管理器
+ * SQL操作准备
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {Object} 返回准备参数
  */
-Drive.prototype.main = async function(params, db) {
-	var {
-		query,
-		body
-	} = params;
-	var ret;
+Drive.prototype.ready = async function(db, query, body) {
 	var cg = this.config;
 	var qy = Object.assign({}, query);
-	// 过滤查询参数
-	var f = cg.filter;
 	$.push(db.config.filter, cg.filter, true);
 	db.filter(qy);
-	if (!db.method) {
-		db.method = "get";
-	}
-	if (!cg.method.has("*" + db.method + "*")) {
-		return $.ret.error(50001, '不支持的操作方式')
-	}
-	var table = query[f.table];
+	return {
+		cg,
+		qy
+	};
+};
 
-	// 设置操作的数据表
-	if (cg.table.has("*{0}*")) {
-		if (table) {
-			db.table = cg.table.replace("{0}", table);
-		} else {
-			return $.ret.error(70000, '表名不能为空');
+/**
+ * 查询(主要)
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @return {Object} 返回查询结果
+ */
+Drive.prototype.get_main = async function(db, query) {
+	var ret;
+	var {
+		cg,
+		qy
+	} = await this.ready(db, query, {});
+	db.config.separator = cg.separator;
+	if (!query.size && cg.page_size) {
+		db.size = cg.page_size + 0;
+	}
+	if (db.size > 0 && db.page === 0) {
+		db.page = 1;
+	}
+	var f = db.config.filter;
+	// 设置查询字段
+	var field = query[f.field];
+	if (cg.field.has("*{0}*")) {
+		if (field) {
+			if (cg.field_hide.getMatch(field)) {
+				return $.ret.error(70003, '不合法的查询参数');
+			}
+			db.field = cg.field.replace("{0}", field);
+		} else if (cg.field_default) {
+			db.field = cg.field_default + '';
 		}
 	} else {
-		db.table = cg.table + '';
-		if (table) {
-			qy[f.table] = table;
+		db.field = cg.field + '';
+		if (field) {
+			qy[f.field] = field;
 		}
 	}
-	switch (db.method) {
-		case "get":
-			db.config.separator = cg.separator;
-			if (!query.size && cg.page_size) {
-				db.size = cg.page_size + 0;
-			}
-			if (db.size > 0 && db.page === 0) {
-				db.page = 1;
-			}
-			// 设置查询字段
-			var field = query[f.field];
-			if (cg.field.has("*{0}*")) {
-				if (field) {
-					if (cg.field_hide.getMatch(field)) {
-						return $.ret.error(70003, '不合法的查询参数');
-					}
-					db.field = cg.field.replace("{0}", field);
-				} else if (cg.field_default) {
-					db.field = cg.field_default + '';
-				}
-			} else {
-				db.field = cg.field + '';
-				if (field) {
-					qy[f.field] = field;
-				}
-			}
 
-			// 设置排序方式
-			var orderby = query[f.orderby];
-			if (cg.orderby.has("*{0}*")) {
-				if (orderby) {
-					db.orderby = cg.orderby.replace("{0}", orderby);
-				} else if (cg.orderby_default) {
-					db.orderby = cg.orderby_default + '';
-				}
-			} else {
-				db.orderby = cg.orderby + '';
-				if (orderby) {
-					qy[f.orderby] = orderby;
-				}
+	// 设置排序方式
+	var orderby = query[f.orderby];
+	if (cg.orderby.has("*{0}*")) {
+		if (orderby) {
+			db.orderby = cg.orderby.replace("{0}", orderby);
+		} else if (cg.orderby_default) {
+			db.orderby = cg.orderby_default + '';
+		}
+	} else {
+		db.orderby = cg.orderby + '';
+		if (orderby) {
+			qy[f.orderby] = orderby;
+		}
+	}
+	var query_str = db.tpl_query(qy, cg.query);
+	var qt = cg.query_default;
+	if (Object.keys(qt).length > 0) {
+		var id = $.dict.user_id;
+		var word = "{" + id + "}";
+		var user_id = "0";
+		if (db.user && db.user[id]) {
+			user_id = db.user[id];
+		}
+		for (var k in qt) {
+			if (!qy[k]) {
+				query_str += " && " + qt[k].replace(word, user_id);
 			}
-			var query_str = db.tpl_query(qy, cg.query);
-			var qt = cg.query_default;
-			if (Object.keys(qt).length > 0) {
-				var id = $.dict.user_id;
-				var word = "{" + id + "}";
-				var user_id = "0";
-				if (db.user && db.user[id]) {
-					user_id = db.user[id];
-				}
-				for (var k in qt) {
-					if (!qy[k]) {
-						query_str += " && " + qt[k].replace(word, user_id);
-					}
-				}
-				if (query_str.startsWith(" && ")) {
-					query_str = query_str.replace(" && ", "");
-				}
-			}
+		}
+		if (query_str.startsWith(" && ")) {
+			query_str = query_str.replace(" && ", "");
+		}
+	}
 
-			// 查询
-			if (db.count_ret === "true") {
-				ret = $.ret.body(await db.getCountSql(query_str, db.orderby, db.field));
-			} else {
-				ret = $.ret.list(await db.getSql(query_str, db.orderby, db.field));
-			}
-			break;
-		case "set":
-			if(body[this.config.key])
-			{
-				qy[this.config.key] = body[this.config.key];
-			}
-			// 修改
-			var query_str = db.tpl_query(qy, cg.query);
-			var set_str = db.tpl_body(body, cg.update);
-			
-			ret = $.ret.bl(await db.setSql(query_str, set_str));
-			
-			// $.log.debug(db.sql);
-			if (ret.result.bl < 1) {
-				ret.result.tip = '没有改变任何数据'
-			}
-			break;
-		case "add":
-			// 添加
-			if (Object.keys(body).length > 0) {
-				ret = $.ret.bl(await db.add(body));
-			} else {
-				ret = $.ret.error(70000, '参数不能为空');
-			}
-			break;
-		case "del":
-			// 删除
-			var query_str = db.tpl_query(qy, cg.query);
-			ret = $.ret.bl(await db.delSql(query_str));
-			break;
-		case "addOrSet":
-			if (Object.keys(body).length > 0 && Object.keys(qy).length > 0) {
-				ret = $.ret.bl(await db.addOrSet(qy, body));
-			} else {
-				ret = $.ret.error(70000, '参数不能为空');
-			}
-		case "import":
-			// 导入
-			break;
-		case "export":
-			// 导出
-			break;
-		default:
-			ret = $.ret.error(50001, '不支持的操作方式');
-			break;
+	// 查询
+	if (db.count_ret === "true") {
+		ret = $.ret.body(await db.getCountSql(query_str, db.orderby, db.field));
+	} else {
+		ret = $.ret.list(await db.getSql(query_str, db.orderby, db.field));
 	}
-	if(cg.log){
-		$.log.debug('SQL语句', db.sql)
+	if (cg.log) {
+		$.log.debug('查询SQL语句', db.sql)
 	}
-	// $.log.debug(db.sql);
-	// 				case "import": //导入
+	if (db.error) {
+		$.log.error('查询SQL', db.sql, db.error);
+	}
+	return ret;
+};
+
+/**
+ * 查询
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {Object} 返回查询结果
+ */
+Drive.prototype.get = async function(db, query, body) {
+	return await this.get_main(db, query);
+};
+
+/**
+ * 修改(主要)
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {Object} 返回修改结果
+ */
+Drive.prototype.set_main = async function(db, query, body) {
+	var ret;
+	var {
+		cg,
+		qy
+	} = await this.ready(db, query, body);
+	var key = cg.key;
+	if (body[key]) {
+		qy[key] = body[key];
+	}
+	var query_str = db.tpl_query(qy, cg.query);
+	var set_str = db.tpl_body(body, cg.update);
+
+	var n = await db.setSql(query_str, set_str);
+
+	if (n < 1) {
+		ret = $.ret.error(500, '修改失败！\n' + db.error.message);
+		$.log.error('修改SQL', db.sql, db.error);
+	} else {
+		ret = $.ret.bl(true, '修改成功！');
+	}
+	return ret;
+};
+
+
+/**
+ * 修改
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {Object} 返回查询结果
+ */
+Drive.prototype.set = async function(db, query, body) {
+	return await this.set_main(db, query, body);
+};
+
+/**
+ * 添加(主要)
+ * @param {Object} db 数据库操作类
+ * @param {Object} body 修改项
+ * @return {Object} 返回查询结果
+ */
+Drive.prototype.add_main = async function(db, body) {
+	var ret;
+	var {
+		cg
+	} = await this.ready(db, {}, body);
+	if (Object.keys(body).length > 0) {
+		var n = await db.add(body);
+		if (n < 1) {
+			ret = $.ret.error(500, '添加失败！\n' + db.error.message);
+			$.log.error('添加SQL', db.sql, db.error);
+		} else {
+			ret = $.ret.bl(true, '添加成功！');
+		}
+	} else {
+		ret = $.ret.error(70000, '参数不能为空');
+	}
+	if (cg.log) {
+		$.log.debug('添加SQL语句', db.sql)
+	}
+	return ret;
+};
+
+/**
+ * 添加
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {Object} 返回添加结果
+ */
+Drive.prototype.add = async function(db, query, body) {
+	return await this.add_main(db, body);
+};
+
+
+/**
+ * 删除(主要)
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @return {Object} 返回查询结果
+ */
+Drive.prototype.del_main = async function(db, query) {
+	var ret;
+	var {
+		cg,
+		qy
+	} = await this.ready(db, query, {});
+	var query_str = db.tpl_query(qy, cg.query);
+	var bl = await db.delSql(query_str);
+	if (bl < 1) {
+		ret = $.ret.error(500, '删除失败！\n' + db.error.message);
+		$.log.error('删除SQL', db.sql, db.error);
+	} else {
+		ret = $.ret.bl(true, '删除成功！');
+	}
+	if (cg.log) {
+		$.log.debug('删除SQL语句', db.sql)
+	}
+	return ret;
+};
+
+/**
+ * 删除
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {Object} 返回删除结果
+ */
+Drive.prototype.del = async function(db, query, body) {
+	return await this.del_main(db, query);
+};
+
+
+/**
+ * 添加或修改(主要)
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {Object} 返回修改结果
+ */
+Drive.prototype.addOrSet_main = async function(db, query, body) {
+	var ret;
+	var {
+		cg,
+		qy
+	} = await this.ready(db, query, body);
+	if (Object.keys(body).length > 0 && Object.keys(qy).length > 0) {
+		var n = await db.addOrSet(qy, body);
+		if (n < 1) {
+			ret = $.ret.error(500, '操作失败！\n' + db.error.message);
+			$.log.error('添加或修改SQL', db.sql, db.error);
+		} else {
+			ret = $.ret.bl(true, '操作成功！');
+		}
+	} else {
+		ret = $.ret.error(70000, '参数不能为空');
+	}
+	if (cg.log) {
+		$.log.debug('添加或修改SQL语句', db.sql)
+	}
+	return ret;
+};
+
+
+/**
+ * 添加或修改
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {Object} 返回查询结果
+ */
+Drive.prototype.addOrSet = async function(db, query, body) {
+	return await this.addOrSet_main(db, query, body);
+};
+
+/**
+ * 导入数据(主要)
+ * @param {Object} db 数据库操作类
+ * @param {Object} path 返回查询结果
+ * @return {Object} 返回导入结果
+ */
+Drive.prototype.import_main = async function(db, path) {
 	// 					if (can.Contains("export")) {
 	// 						if (paracg.TryGetValue("url", out object fileToken)) {
 	// 							var url = fileToken.ToString();
@@ -377,8 +508,28 @@ Drive.prototype.main = async function(params, db) {
 	// 					} else {
 	// 						ret = ToRet("", null, 20000);
 	// 					}
-	// 					break;
-	// 				case "export": //导出
+};
+
+/**
+ * 导入数据
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {String} 返回文件下载地址
+ */
+Drive.prototype.import = async function(db, query, body) {
+
+};
+
+/**
+ * 导出数据(主要)
+ * @param {Object} db 数据库操作类
+ * @param {String} field 需要导出的字段 例如: `username`,`gm`,`vip`
+ * @param {String} name 文件名 例如: 用户名.xlsx 、用户信息.csv 、用户账户.xls
+ * @param {String} path 文件路径 例如: /static/download, 可不填写
+ * @return {String} 返回文件下载地址
+ */
+Drive.prototype.export_main = async function(db, path, name) {
 	// 					if (can.Contains("export")) {
 	// 						var convert = false;
 	// 						if (paracg.TryGetValue(cg.Convert, out object ctb)) {
@@ -425,7 +576,62 @@ Drive.prototype.main = async function(params, db) {
 	// 					ret = ToRet("", null, 10003);
 	// 					break;
 	// 			}
-	return ret;
+}
+
+/**
+ * 导出数据
+ * @param {Object} db 数据库操作类
+ * @param {Object} query 查询条件
+ * @param {Object} body 修改项
+ * @return {String} 返回文件下载地址
+ */
+Drive.prototype.export = async function(db, query, body) {};
+
+/**
+ * @description 执行模板操作
+ * @param {Object} params 参数对象 (object) 包含query和body
+ * @param {Object} db 数据管理器
+ */
+Drive.prototype.main = async function(params, db) {
+	var {
+		query,
+		body
+	} = params;
+
+	var cg = this.config;
+	var method = query.method;
+	if (!method) {
+		method = "get";
+	}
+	if (!cg.method.has("*" + method + "*")) {
+		return $.ret.error(50001, '不支持的操作方式')
+	}
+
+	if (this[method]) {
+		db.method = method;
+
+		// 过滤查询参数
+		var f = cg.filter;
+		var table = query[f.table];
+
+		// 设置操作的数据表
+		if (cg.table.has("*{0}*")) {
+			if (table) {
+				db.table = cg.table.replace("{0}", table);
+			} else {
+				return $.ret.error(70000, '表名不能为空');
+			}
+		} else {
+			db.table = cg.table + '';
+			if (table) {
+				db.table = table;
+			}
+		}
+
+		return await this[method](db, query, body);
+	} else {
+		return $.ret.error(50001, '不支持的操作方式');
+	}
 };
 
 module.exports = Drive;

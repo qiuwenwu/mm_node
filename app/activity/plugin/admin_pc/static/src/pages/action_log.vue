@@ -16,7 +16,7 @@
 										<mm_reverse title="UIN" v-model="query.orderby" field="uin" :func="search"></mm_reverse>
 									</th>
 									<th scope="col" class="th_name">
-										<mm_reverse title="用户" v-model="query.orderby" field="func_name" :func="search"></mm_reverse>
+										<mm_reverse title="方法" v-model="query.orderby" field="func_name" :func="search"></mm_reverse>
 									</th>
 									<th scope="col" class="th_time">
 										<mm_reverse title="操作时间" v-model="query.orderby" field="time_create" :func="search"></mm_reverse>
@@ -86,7 +86,7 @@
 				<footer>
 					<div class="mm_group">
 						<button class="btn_default" type="reset" @click="show = false">取消</button>
-						<button class="btn_primary" type="button" @click="set_bath()">提交</button>
+						<button class="btn_primary" type="button" @click="batchSet()">提交</button>
 					</div>
 				</footer>
 			</mm_view>

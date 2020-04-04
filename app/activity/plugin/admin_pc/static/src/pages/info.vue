@@ -98,22 +98,20 @@
 				</header>
 				<mm_body>
 					<dl>
-						<dt>昵称</dt>
+						<dt>中奖人数</dt>
 						<dd>
-							<label>
-								<input type="text" v-model="form.nickname" placeholder="由2-16个字符组成" />
-							</label>
+							<mm_number v-model="form.num_winner" :num="1" />
 						</dd>
-						<dt>状态</dt>
+						<dt>参与人数</dt>
 						<dd>
-							<mm_select v-model="form.state" :options="$to_kv(states)" />
+							<mm_number v-model="form.num_people" :num="1" />
 						</dd>
 					</dl>
 				</mm_body>
 				<footer>
 					<div class="mm_group">
 						<button class="btn_default" type="reset" @click="show = false">取消</button>
-						<button class="btn_primary" type="button" @click="set_bath()">提交</button>
+						<button class="btn_primary" type="button" @click="batchSet()">提交</button>
 					</div>
 				</footer>
 			</mm_view>
@@ -148,8 +146,6 @@
 					size: 10,
 					// 关键词
 					keyword: "",
-					// 状态
-					state: "0",
 					// 奖品
 					prize: "",
 					// 活动ID
