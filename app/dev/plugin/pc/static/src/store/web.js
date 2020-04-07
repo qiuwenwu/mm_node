@@ -1,70 +1,57 @@
-define(function() {
+define(["nav"], function(nav) {
 	"use strict";
 
-	return {
+	var web = {
 		state: function state() {
+			var n = Object.assign({}, nav);
+			delete n.routes;
 			return {
-				lang_now: "zh",
-				lang: [],
-				nav: {
-					top: [{
-						title: "应用",
-						name: "app",
-						url: "/app",
-						message: 0
-					}, {
-						title: "事件",
-						name: "event",
-						url: "/event",
-						message: 0
-					}, {
-						title: "接口",
-						name: "api",
-						url: "/api",
-						message: 0
-					}, {
-						title: "素材",
-						name: "source",
-						url: "/source",
-						message: 0
-					}, {
-						title: "数据库",
-						name: "db",
-						url: "/db",
-						message: 0
-					}, {
-						title: "控制台",
-						name: "cmd",
-						url: "/cmd",
-						message: 0
-					}],
-					side: [],
-					bottom: [{
-						title: "加入我们",
-						name: "support",
-						url: "http://dev.elins.cn/",
-						message: 0
-					}],
-					float: []
-				},
-				diy: {
-					head_left: [],
-					foot_left: [],
-					foot_right: []
-				}
+				config: [],
+				nav_cache: [{
+					title: "首页",
+					name: "index",
+					url: "/",
+				}],
+				nav: n,
+				lang_now: "",
+				lang: []
 			};
 		},
 		mutations: {
-			set_config: function set_config(state, obj) {
-				$.push(state, obj);
+			set_web: function set_web(state, obj) {
+				$.push(state, obj, true);
 			},
-			set_lang: function set_lang(state, arr) {
-				state.lang.clear();
-				$.push(state.lang, arr);
+			set_config: function set_config(state, arr) {
+				state.config.clear();
+				state.config.addList(arr);
 			},
 			set_nav: function set_nav(state, obj) {
-				$.push(state.nav, obj);
+				$.push(state.nav, obj, true);
+			},
+			set_nav_cache: function set_nav_cache(state, o) {
+				var list = state.nav_cache;
+				var has = false;
+				for (var i = 0; i < list.length; i++) {
+					if (list[i].name === o.name) {
+						list[i] = o;
+						has = true;
+						break;
+					}
+				}
+				if (!has) {
+					list.push(o);
+				}
+			},
+			del_nav_cache: function del_nav_cache(state, o) {
+				var list = state.nav_cache;
+				for (var i = 0; i < list.length; i++) {
+					if (list[i].name === o.name) {
+						list.splice(i, 1);
+						break;
+					}
+				}
 			}
 		}
 	};
+	return web;
 });

@@ -1,0 +1,81 @@
+{
+	"name": "admin",
+	"sort": 1,
+	"routes": [{
+			"name": "root",
+			"path": "/",
+			"component": "/admin/pc/src/pages/index.vue",
+			"level": 1,
+			"oauth": {
+				"signIn": true,
+				"gm": 2,
+				"user_admin": []
+			}
+		},
+		{
+			"name": "sign_in",
+			"path": "/sign_in",
+			"component": "/admin/pc/src/pages/sign_in.vue",
+			"level": 2
+		}, {
+			"name": "sign_up",
+			"path": "/sign_up",
+			"component": "/admin/pc/src/pages/sign_up.vue",
+			"level": 2
+		}, {
+			"name": "forgot",
+			"path": "/forgot",
+			"component": "/admin/pc/src/pages/forgot.vue",
+			"level": 2
+		}
+	],
+	"top": [],
+	"left": [],
+	"bottom": [],
+	"right": [],
+	"quick": [],
+	"desktop": [],
+	"main": [{
+		"title": "配置",
+		"name": "config",
+		"url": "/config",
+		"display": 0,
+		"sub": [{
+				"title": "接口",
+				"show": false,
+				"name": "config_api",
+				"url": "/config/api"
+			},
+			{
+				"title": "应用",
+				"show": false,
+				"name": "config_api",
+				"url": "/config/config_api"
+			},
+			{
+				"title": "事件",
+				"show": false,
+				"name": "config_event",
+				"url": "/config/event"
+			},
+			{
+				"title": "素材",
+				"show": false,
+				"name": "config_source",
+				"url": "/config/source"
+			},
+			{
+				"title": "数据库",
+				"show": false,
+				"name": "config_db",
+				"url": "/config/db"
+			},
+			{
+				"title": "控制台",
+				"show": false,
+				"name": "config_console",
+				"url": "/config/console"
+			}
+		]
+	}]
+}

@@ -242,10 +242,10 @@ Drive.prototype.update_config = async function(db, cover) {
 			cg.description = arr[1];
 		}
 	}
-	
+
 	// 设置表名
 	db.table = cg.table + "";
-	
+
 	// 获取所有字段
 	var fields = await db.fields();
 	for (var i = 0; i < fields.length; i++) {
@@ -808,9 +808,12 @@ Drive.prototype.new_param = async function(client, manage, cover) {
 			m_max.name = n + "_max";
 			m_max.title += "——结束时间";
 			cm.list.push(m_max);
+			
+			if (n.indexOf('create') !== -1 && n.indexOf('update') !== -1) {
+				cm.add.body.push(n);
+				cm.set.body.push(n);
+			}
 
-			cm.add.body.push(n);
-			cm.set.body.push(n);
 			cm.get.query.push(n + "_min");
 			cm.get.query.push(n + "_max");
 		} else {
@@ -964,8 +967,7 @@ Drive.prototype.new_api = async function(client, manage, cover) {
 		var o = Object.assign({}, m);
 
 		var lt = cg.fields;
-		if(cg.title.indexOf('user') !== -1)
-		{
+		if (cg.title.indexOf('user') !== -1) {
 			// 判断该表是否含用户ID，如果含有则需要验证才能访问
 			var has = false;
 			for (var i = 0, item; item = lt[i++];) {

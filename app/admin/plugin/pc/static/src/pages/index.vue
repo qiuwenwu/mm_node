@@ -1,5 +1,5 @@
 <template>
-	<main id="main_">
+	<main id="main_index">
 		<mm_grid>
 			<mm_col width="100">
 				<mm_view>

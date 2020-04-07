@@ -1,11 +1,11 @@
 {
-	"target": "/dev/*",
+	"target": "/dev*",
 	"name": "dev_pc",
-	"title": "开发者工具(PC版)调用的接口事件",
-	"description": "用于开发者访问服务端时调用的接口",
+	"title": "电脑端",
+	"description": "用于访问电脑端页面",
 	"stage": "action",
 	"tense": "main",
 	"func_file": "./action_main.js",
-	"sort": 100,
+	"sort": 130,
 	"end": true
 }

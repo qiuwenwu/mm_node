@@ -1,7 +1,8 @@
 "use strict";
 
 require({
-	baseUrl: '/dev/src/',
+	// 基础路径, 会将 ./ 替换成该路径
+	baseUrl: '/dev/pc/src/',
 	// 是否保留注释
 	preserveLicenseComments: true,
 	waitSeconds: 0,
@@ -20,14 +21,26 @@ require({
 		mm_sdk: '/js/mm_sdk',
 		mm_vue: '/js/mm_vue',
 		ui: '/js/mm_vue_ui',
+		nav: '/api/nav.js?scope=dev_pc',
 		store: './store',
 		router: './router',
 		echarts: '/js/echarts',
+		kindeditor: '/kindeditor/kindeditor-all-min',
 		page: '/src/mixins/page.js'
 	},
 	shim: {
 		clipboard: {
 			deps: ['jquery']
+		},
+		kindeditor: {
+			exports: 'Kindeditor',
+			deps: ['jquery']
+		},
+		vuex: {
+			deps: ['Vue']
+		},
+		VueRouter: {
+			deps: ['Vue']
 		},
 		swiper: {
 			deps: ['jquery']
@@ -35,17 +48,8 @@ require({
 		mm_sdk: {
 			deps: ['jquery']
 		},
-		ui: {
-			deps: ['jquery']
-		},
 		mm_vue: {
 			deps: ['mm_sdk']
-		},
-		vuex: {
-			deps: ['Vue']
-		},
-		VueRouter: {
-			deps: ['Vue']
 		}
 	},
 	config: {
@@ -55,9 +59,9 @@ require({
 			'templateVar': '__template__'
 		}
 	}
-}, ['Vue', 'mm_sdk', 'ui', 'clipboard', 'mm_vue', 'store', 'router', 'vue!./App.vue'], function(Vue, mm_sdk, ui,
-	clipboard, mm_vue, store, router,
-	app) {
+}, ['Vue', 'mm_sdk', 'mm_vue', 'store', 'router', 'ui', 'clipboard', 'vue!./App.vue'], function(Vue, mm_sdk, mm_vue,
+	store, router,
+	ui, clipboard, app) {
 	// 开启调试模式
 	Vue.config.debug = true;
 	// 使用UI组件

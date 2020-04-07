@@ -1,5 +1,4 @@
 {
-	"path": "/dev",
 	"index": "index.html",
 	"maxAge": 0,
 	"immutable": false,

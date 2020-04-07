@@ -2,7 +2,7 @@
     "name": "dev",
     "title": "开发者后台",
     "description": "描述接口使用方法",
-    "path": "/dev/*",
+    "path": "/dev*",
     "type": "web",
     "contentType": "html",
     "func_file": "./index.js",

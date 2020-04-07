@@ -8,11 +8,12 @@ const file = './../../static/index.html'.fullname(__dirname);
  */
 async function main(ctx, db) {
 	var req = ctx.request;
-	if(req.path.startWith("/dev/doc")){
+	var p = req.path;
+	if (p.startWith("/dev/doc")) {
 		return null;
 	}
 	// 过滤静态文件
-	if (req.path.indexOf('.') === -1) {
+	if (p.indexOf('.') === -1) {
 		var model = {
 			title: "超级美眉——开发者",
 			description: "超级美眉mm_koa版服务端框架是一个高并发、分布式服务端框架, 适用于开发中小型商城、游戏、saas平台",
