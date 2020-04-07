@@ -1,144 +1,147 @@
 {
-	"name": "bbs",
-	"sort": 1,
-	"routes": [{
-		"name": "bbs",
-		"path": "/bbs",
-		"redirect": "/bbs/thread"
-	}, {
-		"name": "bbs_thread",
-		"path": "/bbs/thread",
-		"component": "/bbs/home_pc/src/pages/thread.vue",
-		"level": 3,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"user_group": []
-		}
-	}, {
-		"name": "bbs_thread_view",
-		"path": "/bbs/thread_view",
-		"component": "/bbs/home_pc/src/pages/thread_view.vue",
-		"level": 4,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"user_group": []
-		}
-	}, {
-		"name": "bbs_thread_channel",
-		"path": "/bbs/thread_channel",
-		"component": "/bbs/home_pc/src/pages/thread_channel.vue",
-		"level": 2,
-		"oauth": {
-			"signIn": false,
-			"vip": 0,
-			"gm": 0,
-			"mc": 0,
-			"user_admin": [],
-			"user_group": []
-		}
-	}, {
-		"name": "bbs_thread_channel_view",
-		"path": "/bbs/thread_channel_view",
-		"component": "/bbs/home_pc/src/pages/thread_channel_view.vue",
-		"level": 3,
-		"oauth": {
-			"signIn": false,
-			"vip": 0,
-			"gm": 0,
-			"mc": 0,
-			"user_admin": [],
-			"user_group": []
-		}
-	}, {
-		"name": "bbs_thread_comment",
-		"path": "/bbs/thread_comment",
-		"component": "/bbs/home_pc/src/pages/thread_comment.vue",
-		"level": 2,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"user_group": []
-		}
-	}, {
-		"name": "bbs_thread_comment_view",
-		"path": "/bbs/thread_comment_view",
-		"component": "/bbs/home_pc/src/pages/thread_comment_view.vue",
-		"level": 3,
-		"oauth": {
-			"signIn": true,
-			"vip": 0,
-			"user_group": []
-		}
-	}, {
-		"name": "bbs_thread_type",
-		"path": "/bbs/thread_type",
-		"component": "/bbs/home_pc/src/pages/thread_type.vue",
-		"level": 2,
-		"oauth": {
-			"signIn": false
-		}
-	}, {
-		"name": "bbs_thread_type_view",
-		"path": "/bbs/thread_type_view",
-		"component": "/bbs/home_pc/src/pages/thread_type_view.vue",
-		"level": 3,
-		"oauth": {
-			"signIn": false
-		}
-	}],
-	"top": [],
-	"left": [],
-	"bottom": [],
-	"right": [],
-	"desktop": [],
-	"quick": [],
-	"main": [{
-		"title": "社区",
-		"name": "bbs",
-		"url": "/bbs",
-		"display": 0,
-		"sub": [{
-			"title": "社区主题",
-			"show": false,
-			"name": "bbs_thread",
-			"url": "/bbs/thread"
-		}, {
-			"title": "社区主题",
-			"show": false,
-			"name": "bbs_thread_view",
-			"url": "/bbs/thread_view"
-		}, {
-			"title": "主题板块",
-			"show": false,
-			"name": "bbs_thread_channel",
-			"url": "/bbs/thread_channel"
-		}, {
-			"title": "主题板块",
-			"show": false,
-			"name": "bbs_thread_channel_view",
-			"url": "/bbs/thread_channel_view"
-		}, {
-			"title": "主题评论",
-			"show": false,
-			"name": "bbs_thread_comment",
-			"url": "/bbs/thread_comment"
-		}, {
-			"title": "主题评论",
-			"show": false,
-			"name": "bbs_thread_comment_view",
-			"url": "/bbs/thread_comment_view"
-		}, {
-			"title": "主题分类",
-			"show": false,
-			"name": "bbs_thread_type",
-			"url": "/bbs/thread_type"
-		}, {
-			"title": "主题分类",
-			"show": false,
-			"name": "bbs_thread_type_view",
-			"url": "/bbs/thread_type_view"
-		}]
-	}]
+    "name": "home_pc",
+    "sort": 1,
+    "routes": [
+        {
+            "name": "bbs",
+            "path": "/bbs",
+            "redirect": "/bbs/config"
+        },
+        {
+            "name": "bbs_config",
+            "path": "/bbs/config",
+            "component": "/bbs/home_pc/src/pages/config.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "bbs_config_view",
+            "path": "/bbs/config_view",
+            "component": "/bbs/home_pc/src/pages/config_view.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "bbs_thread",
+            "path": "/bbs/thread",
+            "component": "/bbs/home_pc/src/pages/thread.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "bbs_thread_view",
+            "path": "/bbs/thread_view",
+            "component": "/bbs/home_pc/src/pages/thread_view.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "bbs_thread_channel",
+            "path": "/bbs/thread_channel",
+            "component": "/bbs/home_pc/src/pages/thread_channel.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "bbs_thread_channel_view",
+            "path": "/bbs/thread_channel_view",
+            "component": "/bbs/home_pc/src/pages/thread_channel_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "bbs_thread_comment",
+            "path": "/bbs/thread_comment",
+            "component": "/bbs/home_pc/src/pages/thread_comment.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "bbs_thread_comment_view",
+            "path": "/bbs/thread_comment_view",
+            "component": "/bbs/home_pc/src/pages/thread_comment_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "bbs_thread_type",
+            "path": "/bbs/thread_type",
+            "component": "/bbs/home_pc/src/pages/thread_type.vue",
+            "level": 2,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "bbs_thread_type_view",
+            "path": "/bbs/thread_type_view",
+            "component": "/bbs/home_pc/src/pages/thread_type_view.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        }
+    ],
+    "top": [],
+    "left": [],
+    "bottom": [],
+    "right": [],
+    "desktop": [],
+    "quick": [],
+    "main": [
+        {
+            "title": "社区",
+            "name": "bbs",
+            "url": "/bbs",
+            "display": 0,
+            "sub": [
+                {
+                    "title": "社区配置",
+                    "show": false,
+                    "name": "bbs_config",
+                    "url": "/bbs/config"
+                },
+                {
+                    "title": "社区主题",
+                    "show": false,
+                    "name": "bbs_thread",
+                    "url": "/bbs/thread"
+                },
+                {
+                    "title": "主题板块",
+                    "show": false,
+                    "name": "bbs_thread_channel",
+                    "url": "/bbs/thread_channel"
+                },
+                {
+                    "title": "主题评论",
+                    "show": false,
+                    "name": "bbs_thread_comment",
+                    "url": "/bbs/thread_comment"
+                },
+                {
+                    "title": "主题分类",
+                    "show": false,
+                    "name": "bbs_thread_type",
+                    "url": "/bbs/thread_type"
+                }
+            ]
+        }
+    ]
 }

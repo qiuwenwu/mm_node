@@ -7,9 +7,7 @@
             "user_id",
             "result_id_left",
             "result_id_right",
-            "score",
-            "create_time",
-            "update_time"
+            "score"
         ],
         "body_required": []
     },
@@ -38,9 +36,7 @@
             "result_id_right",
             "result_id_right_add",
             "score",
-            "score_add",
-            "create_time",
-            "update_time"
+            "score_add"
         ],
         "body_required": [],
         "body_not": []

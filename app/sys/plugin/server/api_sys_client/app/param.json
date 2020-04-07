@@ -10,7 +10,6 @@
             "max_age",
             "user_id",
             "times_count",
-            "time_update",
             "token",
             "encoding_aes_key",
             "icon",
@@ -63,7 +62,6 @@
             "user_id",
             "times_count",
             "times_count_add",
-            "time_update",
             "name",
             "appid",
             "token",
@@ -376,8 +374,10 @@
             "title": "应用图标",
             "description": "用于用户登录时显示",
             "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "text",
+            "string": {
+                "max": 0
+            }
         },
         {
             "name": "url",

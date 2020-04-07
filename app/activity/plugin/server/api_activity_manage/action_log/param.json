@@ -3,8 +3,6 @@
     "title": "活动操作日志",
     "add": {
         "body": [
-            "time_create",
-            "time_update",
             "func_name",
             "uin_action",
             "method",
@@ -26,8 +24,6 @@
         ],
         "query_required": [],
         "body": [
-            "time_create",
-            "time_update",
             "func_name",
             "uin_action",
             "method",

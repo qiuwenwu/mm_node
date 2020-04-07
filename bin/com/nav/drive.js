@@ -300,7 +300,6 @@ Drive.prototype.new_config = function(file) {
 					cg.routes.push(obj2);
 
 					nav.push(_this.new_nav(o.title, name, obj.path));
-					nav.push(_this.new_nav(o.title, name + '_view', obj2.path));
 				}
 			});
 		}

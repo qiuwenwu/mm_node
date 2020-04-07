@@ -3,9 +3,7 @@
     "title": "微信刷新访问牌",
     "add": {
         "body": [
-            "user_id",
-            "create_time",
-            "update_time"
+            "user_id"
         ],
         "body_required": [
             "appid",
@@ -26,9 +24,7 @@
         "body": [
             "user_id",
             "appid",
-            "refresh_token",
-            "create_time",
-            "update_time"
+            "refresh_token"
         ],
         "body_required": [],
         "body_not": []

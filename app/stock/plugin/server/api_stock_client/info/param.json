@@ -11,8 +11,7 @@
             "pe",
             "pb",
             "profit",
-            "num",
-            "time_to_market"
+            "num"
         ],
         "body_required": [
             "code"
@@ -60,8 +59,7 @@
             "profit",
             "profit_add",
             "num",
-            "num_add",
-            "time_to_market"
+            "num_add"
         ],
         "body_required": [],
         "body_not": []

@@ -8,7 +8,6 @@
             "gm",
             "mc",
             "referee_id",
-            "login_time",
             "phone",
             "phone_state",
             "nickname",
@@ -20,8 +19,7 @@
             "signature",
             "avatar",
             "friends",
-            "admin_group",
-            "create_time"
+            "admin_group"
         ],
         "body_required": [
             "salt",
@@ -64,7 +62,6 @@
             "mc",
             "mc_add",
             "referee_id",
-            "login_time",
             "salt",
             "invite_code",
             "phone",
@@ -80,8 +77,7 @@
             "signature",
             "avatar",
             "friends",
-            "admin_group",
-            "create_time"
+            "admin_group"
         ],
         "body_required": [],
         "body_not": []

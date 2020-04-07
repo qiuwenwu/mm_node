@@ -4,8 +4,6 @@
     "add": {
         "body": [
             "price",
-            "time_create",
-            "time_update",
             "num",
             "type",
             "creator_uin",
@@ -38,8 +36,6 @@
         "body": [
             "price",
             "price_add",
-            "time_create",
-            "time_update",
             "num",
             "num_add",
             "name",

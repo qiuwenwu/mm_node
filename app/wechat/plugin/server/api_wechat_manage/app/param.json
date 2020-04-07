@@ -17,8 +17,7 @@
             "bind_ip",
             "scope",
             "scope_not",
-            "users",
-            "update_time"
+            "users"
         ],
         "body_required": [
             "name",
@@ -73,8 +72,7 @@
             "bind_ip",
             "scope",
             "scope_not",
-            "users",
-            "update_time"
+            "users"
         ],
         "body_required": [],
         "body_not": []
@@ -343,8 +341,10 @@
             "title": "应用图标",
             "description": "用于用户登录时显示",
             "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "text",
+            "string": {
+                "max": 0
+            }
         },
         {
             "name": "url",

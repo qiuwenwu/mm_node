@@ -1,5 +1,5 @@
 <template>
-	<div id="error_404">
+	<mm_page id="error_404">
 		<div class="box">
 			<h1>404</h1>
 			<div class="mm_grid">
@@ -14,7 +14,7 @@
 		</div>
 		<div class="border"></div>
 		<div class="border br2"></div>
-	</div>
+	</mm_page>
 </template>
 
 <script>

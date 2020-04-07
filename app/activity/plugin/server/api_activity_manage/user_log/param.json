@@ -9,8 +9,6 @@
             "prize_3",
             "prize_t",
             "activity_id",
-            "time_update",
-            "time_create",
             "uin_user",
             "uin_prize winners",
             "img_prove"
@@ -50,8 +48,6 @@
             "prize_t",
             "prize_t_add",
             "activity_id",
-            "time_update",
-            "time_create",
             "uin_user",
             "uin_prize winners",
             "img_prove"

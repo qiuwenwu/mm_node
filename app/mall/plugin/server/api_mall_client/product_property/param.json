@@ -104,8 +104,10 @@
             "title": "分类图标",
             "description": "",
             "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "text",
+            "string": {
+                "max": 0
+            }
         },
         {
             "name": "description",

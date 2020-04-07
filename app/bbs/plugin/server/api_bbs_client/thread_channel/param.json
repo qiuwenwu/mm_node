@@ -215,8 +215,10 @@
             "title": "频道图标",
             "description": "",
             "type": "string",
-            "dataType": "varchar",
-            "string": {}
+            "dataType": "text",
+            "string": {
+                "max": 0
+            }
         },
         {
             "name": "url",

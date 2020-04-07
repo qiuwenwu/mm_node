@@ -9,8 +9,7 @@
             "CLOSE",
             "VOL",
             "CHG",
-            "TOTAL",
-            "DATETIME"
+            "TOTAL"
         ],
         "body_required": [
             "code"
@@ -56,8 +55,7 @@
             "CHG",
             "CHG_add",
             "TOTAL",
-            "TOTAL_add",
-            "DATETIME"
+            "TOTAL_add"
         ],
         "body_required": [],
         "body_not": []

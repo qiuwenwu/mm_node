@@ -4,8 +4,6 @@
     "add": {
         "body": [
             "weight",
-            "update_time",
-            "datetime",
             "policy_buy",
             "policy_hold",
             "policy_sell",
@@ -47,8 +45,6 @@
         "body": [
             "weight",
             "weight_add",
-            "update_time",
-            "datetime",
             "policy_buy",
             "policy_buy_add",
             "policy_hold",

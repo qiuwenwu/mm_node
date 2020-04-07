@@ -1,5 +1,5 @@
 {
-	"target": "/phone*",
+	"target": "/home/phone*",
 	"name": "home_phone",
 	"title": "手机端",
 	"description": "用于访问手机端页面",

@@ -12,6 +12,10 @@ dev_class.update_vue = async function(req, db) {
 	var q = req.query;
 	var scope = q["scope"];
 	var pool = $.pool.nav[scope];
+	if(!pool)
+	{
+		return $.ret.error(10000, scope + '作用域(scope) 不存在！');
+	}
 	var msg = await pool.update_vue(q);
 	if (msg) {
 		return $.ret.bl(false, msg);

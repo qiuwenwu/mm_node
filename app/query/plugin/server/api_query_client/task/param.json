@@ -8,9 +8,7 @@
             "people_num",
             "name",
             "note",
-            "query",
-            "create_time",
-            "update_time"
+            "query"
         ],
         "body_required": []
     },
@@ -39,9 +37,7 @@
             "people_num_add",
             "name",
             "note",
-            "query",
-            "create_time",
-            "update_time"
+            "query"
         ],
         "body_required": [],
         "body_not": []

@@ -1,36 +1,6 @@
 <template>
 	<div id="app">
-		<mm_page v-if="is_sign">
-			<router-view></router-view>
-		</mm_page>
-		<mm_page v-else>
-			<header>
-				<div class="logo" :style="'width: ' + width + 'px'" @click="$router.push('/')">
-					<mm_icon src="/img/logo.png"></mm_icon>
-					<span>超级美眉</span>
-				</div>
-				<nav_quick></nav_quick>
-				<nav_top></nav_top>
-			</header>
-			<main>
-				<mm_side id="side" :func="set_width">
-					<nav_main></nav_main>
-				</mm_side>
-				<mm_main id="main" :style="'margin-left: ' + (width || 192) + 'px;'">
-					<div class="mm_tab_head" id="tabs">
-						<div v-for="(o, idx) in nav.cache" :key="idx" :class="{ 'active': o.url === url_now }">
-							<i class="fa-times-circle" v-if="idx > 0" @click="del_tab(o)"></i>
-							<router-link :to="o.url">
-								{{ o.title }}
-							</router-link>
-						</div>
-						<div></div>
-					</div>
-					<router-view class="mm_grid"></router-view>
-				</mm_main>
-			</main>
-			<nav_float></nav_float>
-		</mm_page>
+		<router-view></router-view>
 	</div>
 </template>
 
@@ -40,7 +10,7 @@
 	import nav_main from './components/nav_main.vue'
 	import nav_quick from './components/nav_quick.vue'
 	import nav_float from './components/nav_float.vue'
-
+	
 	export default {
 		components: {
 			nav_top,

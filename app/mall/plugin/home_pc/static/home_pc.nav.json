@@ -1,11 +1,29 @@
 {
-    "name": "mall",
+    "name": "home_pc",
     "sort": 1,
     "routes": [
         {
             "name": "mall",
             "path": "/mall",
-            "redirect": "/mall/product"
+            "redirect": "/mall/config"
+        },
+        {
+            "name": "mall_config",
+            "path": "/mall/config",
+            "component": "/mall/home_pc/src/pages/config.vue",
+            "level": 3,
+            "oauth": {
+                "signIn": false
+            }
+        },
+        {
+            "name": "mall_config_view",
+            "path": "/mall/config_view",
+            "component": "/mall/home_pc/src/pages/config_view.vue",
+            "level": 4,
+            "oauth": {
+                "signIn": false
+            }
         },
         {
             "name": "mall_product",
@@ -49,9 +67,7 @@
             "component": "/mall/home_pc/src/pages/product_comment.vue",
             "level": 2,
             "oauth": {
-                "signIn": true,
-                "vip": 0,
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -60,9 +76,7 @@
             "component": "/mall/home_pc/src/pages/product_comment_view.vue",
             "level": 3,
             "oauth": {
-                "signIn": true,
-                "vip": 0,
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -71,12 +85,7 @@
             "component": "/mall/home_pc/src/pages/product_property.vue",
             "level": 2,
             "oauth": {
-                "signIn": false,
-                "vip": 0,
-                "gm": 0,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -85,12 +94,7 @@
             "component": "/mall/home_pc/src/pages/product_property_view.vue",
             "level": 3,
             "oauth": {
-                "signIn": false,
-                "vip": 0,
-                "gm": 0,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -99,12 +103,7 @@
             "component": "/mall/home_pc/src/pages/product_type.vue",
             "level": 2,
             "oauth": {
-                "signIn": false,
-                "vip": 0,
-                "gm": 0,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -113,12 +112,7 @@
             "component": "/mall/home_pc/src/pages/product_type_view.vue",
             "level": 3,
             "oauth": {
-                "signIn": false,
-                "vip": 0,
-                "gm": 0,
-                "mc": 0,
-                "user_admin": [],
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -127,9 +121,7 @@
             "component": "/mall/home_pc/src/pages/shop.vue",
             "level": 3,
             "oauth": {
-                "signIn": true,
-                "vip": 0,
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -138,9 +130,7 @@
             "component": "/mall/home_pc/src/pages/shop_view.vue",
             "level": 4,
             "oauth": {
-                "signIn": true,
-                "vip": 0,
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -167,9 +157,7 @@
             "component": "/mall/home_pc/src/pages/shop_comment.vue",
             "level": 2,
             "oauth": {
-                "signIn": true,
-                "vip": 0,
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -178,9 +166,7 @@
             "component": "/mall/home_pc/src/pages/shop_comment_view.vue",
             "level": 3,
             "oauth": {
-                "signIn": true,
-                "vip": 0,
-                "user_group": []
+                "signIn": false
             }
         },
         {
@@ -216,16 +202,16 @@
             "display": 0,
             "sub": [
                 {
-                    "title": "商品信息",
+                    "title": "商城配置",
                     "show": false,
-                    "name": "mall_product",
-                    "url": "/mall/product"
+                    "name": "mall_config",
+                    "url": "/mall/config"
                 },
                 {
                     "title": "商品信息",
                     "show": false,
-                    "name": "mall_product_view",
-                    "url": "/mall/product_view"
+                    "name": "mall_product",
+                    "url": "/mall/product"
                 },
                 {
                     "title": "商品专区",
@@ -234,22 +220,10 @@
                     "url": "/mall/product_channel"
                 },
                 {
-                    "title": "商品专区",
-                    "show": false,
-                    "name": "mall_product_channel_view",
-                    "url": "/mall/product_channel_view"
-                },
-                {
                     "title": "商品评论",
                     "show": false,
                     "name": "mall_product_comment",
                     "url": "/mall/product_comment"
-                },
-                {
-                    "title": "商品评论",
-                    "show": false,
-                    "name": "mall_product_comment_view",
-                    "url": "/mall/product_comment_view"
                 },
                 {
                     "title": "商品属性",
@@ -258,22 +232,10 @@
                     "url": "/mall/product_property"
                 },
                 {
-                    "title": "商品属性",
-                    "show": false,
-                    "name": "mall_product_property_view",
-                    "url": "/mall/product_property_view"
-                },
-                {
                     "title": "商品分类",
                     "show": false,
                     "name": "mall_product_type",
                     "url": "/mall/product_type"
-                },
-                {
-                    "title": "商品分类",
-                    "show": false,
-                    "name": "mall_product_type_view",
-                    "url": "/mall/product_type_view"
                 },
                 {
                     "title": "店铺信息",
@@ -282,22 +244,10 @@
                     "url": "/mall/shop"
                 },
                 {
-                    "title": "店铺信息",
-                    "show": false,
-                    "name": "mall_shop_view",
-                    "url": "/mall/shop_view"
-                },
-                {
                     "title": "店铺专区",
                     "show": false,
                     "name": "mall_shop_channel",
                     "url": "/mall/shop_channel"
-                },
-                {
-                    "title": "店铺专区",
-                    "show": false,
-                    "name": "mall_shop_channel_view",
-                    "url": "/mall/shop_channel_view"
                 },
                 {
                     "title": "店铺评论",
@@ -306,22 +256,10 @@
                     "url": "/mall/shop_comment"
                 },
                 {
-                    "title": "店铺评论",
-                    "show": false,
-                    "name": "mall_shop_comment_view",
-                    "url": "/mall/shop_comment_view"
-                },
-                {
                     "title": "店铺分类",
                     "show": false,
                     "name": "mall_shop_type",
                     "url": "/mall/shop_type"
-                },
-                {
-                    "title": "店铺分类",
-                    "show": false,
-                    "name": "mall_shop_type_view",
-                    "url": "/mall/shop_type_view"
                 }
             ]
         }

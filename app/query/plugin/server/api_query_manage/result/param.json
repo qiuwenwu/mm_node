@@ -4,14 +4,11 @@
     "add": {
         "body": [
             "task_id",
-            "time",
             "engine",
             "city",
             "query",
             "ip",
-            "html",
-            "create_time",
-            "update_time"
+            "html"
         ],
         "body_required": []
     },
@@ -28,14 +25,11 @@
         "query_required": [],
         "body": [
             "task_id",
-            "time",
             "engine",
             "city",
             "query",
             "ip",
-            "html",
-            "create_time",
-            "update_time"
+            "html"
         ],
         "body_required": [],
         "body_not": []

@@ -4,9 +4,6 @@
     "add": {
         "body": [
             "user_id",
-            "time1",
-            "time2",
-            "time3",
             "stocks"
         ],
         "body_required": [
@@ -26,9 +23,6 @@
         "query_required": [],
         "body": [
             "user_id",
-            "time1",
-            "time2",
-            "time3",
             "way",
             "stocks"
         ],

@@ -1,19 +1,22 @@
 <template>
-	<mm_grid id="sign_in">
-		<mm_col>
-			<mm_view id="account_sign_in">
-				<mm_title>
-					<span class="h5">超级美眉 — 后台管理系统</span>
-				</mm_title>
-				<mm_form class="pc" id="form_account">
-					<mm_input title="账号" type="text" v-model="form.account" desc="用户名/手机/邮箱"></mm_input>
-					<mm_input title="密码" type="password" v-model="form.password" desc="由6-12位英文+数字符号组成"></mm_input>
-					<label id="remember_me"><input type="checkbox" v-model="remember_me" /><span>记住账户</span></label>
-					<mm_btn type="primary" class="wave linear_blue-1" @click.native="sign_in()">登录</mm_btn>
-				</mm_form>
-			</mm_view>
-		</mm_col>
-	</mm_grid>
+	<mm_page>
+		<mm_grid id="sign_in">
+			<mm_col>
+				<mm_view id="account_sign_in">
+					<mm_title>
+						<span class="h5">后台管理系统</span>
+					</mm_title>
+					<mm_form class="pc" id="form_account">
+						<mm_input title="账号" type="text" v-model="form.account" desc="用户名/手机/邮箱"></mm_input>
+						<mm_input title="密码" type="password" v-model="form.password" desc="由6-12位英文+数字符号组成"></mm_input>
+						<mm_btn class="btn_primary wave linear_blue-1" @click.native="sign_in()">登录</mm_btn>
+						<mm_switch title="记住账户" v-model="remember_me"></mm_switch>
+					</mm_form>
+					<p class="copyright"><span>@ 超级美眉工作室</span></p>
+				</mm_view>
+			</mm_col>
+		</mm_grid>
+	</mm_page>
 </template>
 
 <script>
@@ -27,7 +30,7 @@
 					account: "",
 					password: ""
 				},
-				remember_me: false
+				remember_me: 1
 			}
 		},
 		methods: {
@@ -53,7 +56,6 @@
 						}
 						var url = _this.$redirect();
 						_this.$router.push(url);
-
 					} else if (res.error) {
 						$.toast(res.error.message);
 					}
@@ -78,7 +80,8 @@
 
 <style>
 	#sign_in {
-		background: url(/admin/img/bg_sign.png) center center no-repeat;
+		background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+		max-width: initial;
 		height: 100vh;
 	}
 
@@ -86,20 +89,15 @@
 		color: #fff;
 	}
 
-	#account_sign_in .mm_title {
-		background: none;
-	}
-
 	#account_sign_in {
 		position: absolute;
-		width: 22rem;
-		top: 50%;
+		min-width: 27rem;
+		width: 25%;
+		top: 45%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		margin-left: 25rem;
-		background: rgba(255, 255, 255, 0.35);
+		background: rgba(255, 255, 255, 0.25);
 		border-radius: 0.25rem;
-		overflow: hidden;
 		box-shadow: 0 1px 0.25rem 0 rgba(0, 0, 0, .3);
 	}
 
@@ -114,35 +112,51 @@
 		color: #38f;
 	}
 
-	#sign_in #remember_me {
-		display: inline-block;
-		margin-left: 1rem;
-		color: #fff;
-	}
-
 	#sign_in #form_account {
 		text-align: left;
-		padding: 2rem 1rem;
+		padding: 2rem 1rem 3rem 1rem;
 	}
 
 	#sign_in #form_account input {
 		border: 1px solid #01d1e4;
 	}
 
-	#sign_in #remember_me input {
-		margin-right: .5rem;
-		position: relative;
-		top: .125rem;
+	#account_sign_in .copyright {
+		position: absolute;
+		top: 120%;
+		left: 50%;
+		transform: translate(-50%, 0);
+		color: rgba(255, 255, 255, 0.5);
 	}
-	
+
 	#account_sign_in .mm_title {
-		color: #38f;
+		color: #fff;
+		background: none;
+		border-color: #fff;
 	}
-	
+
 	#account_sign_in .btn_primary {
-		float: right;
-		width: 7.5rem;
+		float: left;
+		margin-left: 1rem;
+		width: calc(55% - 1rem);
 		border-radius: 0.5rem;
+	}
+
+	#account_sign_in .mm_switch {
+		transform: scale(.85);
+		padding: 0 0.75rem;
+		width: 45%;
+		float: right;
+	}
+
+	.mm_switch .onoff {
+		float: right;
+		border: none;
+	}
+
+	.mm_switch .onoff::after {
+		border: none;
+		box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.15);
 	}
 
 	#account_sign_in .btn_primary:active {

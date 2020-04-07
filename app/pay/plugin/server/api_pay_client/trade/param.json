@@ -10,7 +10,6 @@
             "total",
             "amount",
             "fee",
-            "pay_time",
             "platform",
             "way",
             "app",
@@ -22,10 +21,7 @@
             "to_user",
             "description",
             "note",
-            "content",
-            "create_time",
-            "end_time",
-            "update_time"
+            "content"
         ],
         "body_required": []
     },
@@ -64,7 +60,6 @@
             "amount_add",
             "fee",
             "fee_add",
-            "pay_time",
             "platform",
             "way",
             "app",
@@ -76,10 +71,7 @@
             "to_user",
             "description",
             "note",
-            "content",
-            "create_time",
-            "end_time",
-            "update_time"
+            "content"
         ],
         "body_required": [],
         "body_not": []

@@ -1,17 +1,19 @@
 <template>
-	<mm_grid id="root_index">
-		<mm_col>
-			<mm_view>
-				<mm_title>
-					<h5>超级美眉</h5>
-					<span class="arrow"></span>
-				</mm_title>
-				<mm_body>
-				
-				</mm_body>
-			</mm_view>
-		</mm_col>
-	</mm_grid>
+	<mm_page>
+		<mm_grid id="root_index">
+			<mm_col>
+				<mm_view>
+					<mm_title>
+						<h5>超级美眉</h5>
+						<span class="arrow"></span>
+					</mm_title>
+					<mm_body>
+					
+					</mm_body>
+				</mm_view>
+			</mm_col>
+		</mm_grid>
+	</mm_page>
 </template>
 
 <script>
