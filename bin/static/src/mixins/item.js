@@ -40,7 +40,7 @@ define(function() {
 			// 对象
 			obj: {
 				type: Object,
-				default: function () {
+				default: function() {
 					return {
 						url: ""
 					};
@@ -49,7 +49,7 @@ define(function() {
 			// 视图模型
 			vm: {
 				type: Object,
-				default: function () {
+				default: function() {
 					return {
 						// 当前ID
 						id: 'id',

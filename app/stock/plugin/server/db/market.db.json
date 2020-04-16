@@ -120,6 +120,25 @@
             "join_out": []
         },
         {
+            "name": "LCLOSE",
+            "title": "上个收盘价",
+            "description": "",
+            "type": "double",
+            "key": false,
+            "auto": "",
+            "symbol": false,
+            "fill_zero": false,
+            "not_null": 1,
+            "min_length": 0,
+            "max_length": 8,
+            "min": 0,
+            "max": 0,
+            "decimal": 2,
+            "default": "0",
+            "join_in": [],
+            "join_out": []
+        },
+        {
             "name": "VOL",
             "title": "成交量",
             "description": "",

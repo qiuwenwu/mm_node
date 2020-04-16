@@ -6,24 +6,20 @@ sql.open();
 
 async function update_stock() {
 	// 获取所有股票代码和名称
-	var list = await com.get_stock();
-
+	var list = await com.get_stock_list();
 	// 实例一个数据操作器
 	var db = sql.db();
 	// 选择要操作的数据表
-	db.table = "stock_stock";
+	db.table = "stock_info";
 	// 获取数据表中所有数据, 即获取现有的股票代码和名称;
-	var lt_old = await db.get();
+	var lt = await db.get();
+	var len = 0;
 	for (var i = 0, o; o = list[i++];) {
+		var m = com.model(o);
 		var query = {
-			code: o.code
+			code: m.code
 		};
-		var bl = lt_old.has(query);
-		if (bl) {
-			db.set(query, o)
-		} else {
-			db.add(o);
-		}
+		db.addOrSet(query, m);
 	}
 }
 
@@ -32,5 +28,5 @@ async function update_stock() {
  */
 exports.main = async function main() {
 	update_stock();
-	$.log.debug('更新股票列表');
+	$.log.info('更新股票列表');
 };

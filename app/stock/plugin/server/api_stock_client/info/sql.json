@@ -4,8 +4,8 @@
     "table": "stock_info",
     "key": "stock_id",
     "orderby_default": "`stock_id` desc",
-    "field_obj": "`stock_id`,`name`,`code`,`company`,`description`,`bonus`,`issue_price`,`pe`,`pb`,`profit`,`num`,`time_to_market`",
-    "field_default": "`stock_id`,`name`,`code`,`company`,`description`,`bonus`,`issue_price`,`pe`,`pb`,`profit`,`num`,`time_to_market`",
+    "field_obj": "`stock_id`,`code`,`name`,`company`,`description`,`bonus`,`issue_price`,`pe`,`pb`,`profit`,`num`,`time_to_market`",
+    "field_default": "`stock_id`,`code`,`name`,`company`,`description`,`bonus`,`issue_price`,`pe`,`pb`,`profit`,`num`,`time_to_market`",
     "method": "get",
     "query": {
         "name": "`name` like '%{0}%'",

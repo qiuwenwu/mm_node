@@ -44,8 +44,8 @@
         ],
         "query_required": [],
         "body": [
-            "name",
             "code",
+            "name",
             "company",
             "description",
             "bonus",
@@ -102,14 +102,6 @@
             }
         },
         {
-            "name": "name",
-            "title": "股票名称",
-            "description": "",
-            "type": "string",
-            "dataType": "varchar",
-            "string": {}
-        },
-        {
             "name": "code",
             "title": "股票代码",
             "description": "",
@@ -118,6 +110,14 @@
             "string": {
                 "notEmpty": 1
             }
+        },
+        {
+            "name": "name",
+            "title": "股票名称",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {}
         },
         {
             "name": "company",
@@ -161,7 +161,7 @@
         },
         {
             "name": "issue_price",
-            "title": "",
+            "title": "发行价",
             "description": "",
             "type": "number",
             "dataType": "double",
@@ -169,7 +169,7 @@
         },
         {
             "name": "issue_price_min",
-            "title": "——最小值",
+            "title": "发行价——最小值",
             "description": "",
             "type": "number",
             "dataType": "double",
@@ -177,7 +177,7 @@
         },
         {
             "name": "issue_price_max",
-            "title": "——最大值",
+            "title": "发行价——最大值",
             "description": "",
             "type": "number",
             "dataType": "double",

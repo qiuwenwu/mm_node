@@ -7,6 +7,7 @@
             "LOW",
             "OPEN",
             "CLOSE",
+            "LCLOSE",
             "VOL",
             "CHG",
             "TOTAL"
@@ -32,6 +33,8 @@
             "OPEN_max",
             "CLOSE_min",
             "CLOSE_max",
+            "LCLOSE_min",
+            "LCLOSE_max",
             "VOL_min",
             "VOL_max",
             "CHG_min",
@@ -50,6 +53,8 @@
             "OPEN_add",
             "CLOSE",
             "CLOSE_add",
+            "LCLOSE",
+            "LCLOSE_add",
             "VOL",
             "VOL_add",
             "CHG",
@@ -71,6 +76,8 @@
             "OPEN_max",
             "CLOSE_min",
             "CLOSE_max",
+            "LCLOSE_min",
+            "LCLOSE_max",
             "VOL_min",
             "VOL_max",
             "CHG_min",
@@ -197,6 +204,30 @@
         {
             "name": "CLOSE_max",
             "title": "收盘价——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "LCLOSE",
+            "title": "上个收盘价",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "LCLOSE_min",
+            "title": "上个收盘价——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "LCLOSE_max",
+            "title": "上个收盘价——最大值",
             "description": "",
             "type": "number",
             "dataType": "double",
