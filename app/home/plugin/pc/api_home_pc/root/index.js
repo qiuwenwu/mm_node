@@ -10,7 +10,7 @@ async function main(ctx, db) {
 	var path = ctx.path;
 	if(path.indexOf('.') === -1)
 	{
-		db.tpl.globalBag.congfig = $.config;
+		$.globalBag.congfig = $.config;
 		var model = {
 			os: "mm",
 			app: "home",

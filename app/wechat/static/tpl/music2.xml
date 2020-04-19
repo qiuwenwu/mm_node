@@ -1,13 +1,13 @@
 <xml>
-  <ToUserName><![CDATA[${model.FromUserName}]]></ToUserName>
-  <FromUserName><![CDATA[${model.ToUserName}]]></FromUserName>
-  <CreateTime>${model.CreateTime}</CreateTime>
+  <ToUserName><![CDATA[${FromUserName}]]></ToUserName>
+  <FromUserName><![CDATA[${ToUserName}]]></FromUserName>
+  <CreateTime>${CreateTime}</CreateTime>
   <MsgType><![CDATA[music]]></MsgType>
   <Music>
-	  <Title><![CDATA[${model.Title}]]></Title>
-	  <Description><![CDATA[${model.Description}]]></Description>
-	  <MusicUrl><![CDATA[${model.MusicUrl}]]></MusicUrl>
-	  <HQMusicUrl><![CDATA[${model.HQMusicUrl}]]></HQMusicUrl>
+	  <Title><![CDATA[${Title}]]></Title>
+	  <Description><![CDATA[${Description}]]></Description>
+	  <MusicUrl><![CDATA[${MusicUrl}]]></MusicUrl>
+	  <HQMusicUrl><![CDATA[${HQMusicUrl}]]></HQMusicUrl>
   </Music>
-  <MsgId>${model.MsgId}</MsgId>
+  <MsgId>${MsgId}</MsgId>
 </xml>

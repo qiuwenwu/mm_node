@@ -1,10 +1,10 @@
 <template>
-	<main id="${model.id}">
+	<main id="${id}">
 		<mm_grid>
 			<mm_col>
 				<mm_view>
 					<header class="arrow">
-						<h5>${model.api.title}</h5>
+						<h5>${api.title}</h5>
 					</header>
 					<mm_body>
 						<mm_form class="mm_filter">
@@ -24,7 +24,7 @@
 						<div class="mm_action">
 							<h5><span>操作</span></h5>
 							<div class="">
-								<mm_btn class="btn_primary-x" url="./${model.name}_form">添加</mm_btn>
+								<mm_btn class="btn_primary-x" url="./${name}_form">添加</mm_btn>
 								<mm_btn @click.native="show = true" class="btn_primary-x" v-bind:class="{ 'disabled': !selects }">批量修改</mm_btn>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 									<td><span class="email">{{ o.email }}</span></td>
 									<td><span class="state" v-bind:class="colors[o.state]">{{ states[o.state] }}</span></td>
 									<td>
-										<mm_btn class="btn_primary" :url="'./${model.name}_form?${model.sql.key}=' + o[field]">修改</mm_btn>
+										<mm_btn class="btn_primary" :url="'./${name}_form?${sql.key}=' + o[field]">修改</mm_btn>
 										<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
 									</td>
 								</tr>
@@ -131,12 +131,12 @@
 		data() {
 			return {
 				// 列表请求地址
-				url_get_list: "${model.api.path}",
-				url_del: "${model.api.path}?method=del&",
-				url_set: "${model.api.path}?method=set&",
-				field: "${model.sql.key}",
+				url_get_list: "${api.path}",
+				url_del: "${api.path}?method=del&",
+				url_set: "${api.path}?method=set&",
+				field: "${sql.key}",
 				query_set: {
-					"${model.sql.key}": ""
+					"${sql.key}": ""
 				},
 				user_group: [],
 				// 查询条件
@@ -173,23 +173,23 @@
 
 <style>
 	/* 页面 */
-	#${model.id} {}
+	#${id} {}
 
 	/* 表单 */
-	#${model.id} .mm_form {}
+	#${id} .mm_form {}
 
 	/* 筛选栏栏 */
-	#${model.id} .mm_filter {}
+	#${id} .mm_filter {}
 
 	/* 操作栏 */
-	#${model.id} .mm_action {}
+	#${id} .mm_action {}
 
 	/* 模态窗 */
-	#${model.id} .mm_modal {}
+	#${id} .mm_modal {}
 
 	/* 表格 */
-	#${model.id} .mm_table {}
+	#${id} .mm_table {}
 
 	/* 数据统计 */
-	#${model.id} .mm_data_count {}
+	#${id} .mm_data_count {}
 </style>

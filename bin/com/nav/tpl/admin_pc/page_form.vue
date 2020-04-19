@@ -1,10 +1,10 @@
 <template>
-	<main id="${model.id}">
+	<main id="${id}">
 		<mm_grid>
 			<mm_col width="33">
 				<mm_form class="card">
 					<header class="arrow">
-						<h5>{{ form[field] ? '修改' : '创建' }}${model.api.title}</h5>
+						<h5>{{ form[field] ? '修改' : '创建' }}${api.title}</h5>
 					</header>
 					<dl>
 						<dt>头像</dt>
@@ -53,11 +53,11 @@
 		components: {},
 		data() {
 			return {
-				url_submit: "${model.api.path}?",
-				url_get_obj: "${model.api.path}",
-				field: "${model.sql.key}",
+				url_submit: "${api.path}?",
+				url_get_obj: "${api.path}",
+				field: "${sql.key}",
 				query: {
-					"${model.sql.key}": 0
+					"${sql.key}": 0
 				},
 				form: {}
 			}
@@ -70,23 +70,23 @@
 
 <style>
 	/* 页面 */
-	#${model.id} {}
+	#${id} {}
 
 	/* 表单 */
-	#${model.id} .mm_form {}
+	#${id} .mm_form {}
 
 	/* 筛选栏栏 */
-	#${model.id} .mm_filter {}
+	#${id} .mm_filter {}
 
 	/* 操作栏 */
-	#${model.id} .mm_action {}
+	#${id} .mm_action {}
 
 	/* 模态窗 */
-	#${model.id} .mm_modal {}
+	#${id} .mm_modal {}
 
 	/* 表格 */
-	#${model.id} .mm_table {}
+	#${id} .mm_table {}
 
 	/* 数据统计 */
-	#${model.id} .mm_data_count {}
+	#${id} .mm_data_count {}
 </style>

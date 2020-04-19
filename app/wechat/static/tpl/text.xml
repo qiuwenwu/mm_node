@@ -1,8 +1,8 @@
 <xml>
-  <ToUserName><![CDATA[${model.FromUserName}]]></ToUserName>
-  <FromUserName><![CDATA[${model.ToUserName}]]></FromUserName>
-  <CreateTime>${model.CreateTime}</CreateTime>
+  <ToUserName><![CDATA[${FromUserName}]]></ToUserName>
+  <FromUserName><![CDATA[${ToUserName}]]></FromUserName>
+  <CreateTime>${CreateTime}</CreateTime>
   <MsgType><![CDATA[text]]></MsgType>
-  <Content><![CDATA[${model.Content}]]></Content>
-  <MsgId>${model.MsgId}</MsgId>
+  <Content><![CDATA[${Content}]]></Content>
+  <MsgId>${MsgId}</MsgId>
 </xml>

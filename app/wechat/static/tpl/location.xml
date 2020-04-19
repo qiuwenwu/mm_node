@@ -1,11 +1,11 @@
 <xml>
-  <ToUserName><![CDATA[${model.FromUserName}]]></ToUserName>
-  <FromUserName><![CDATA[${model.ToUserName}]]></FromUserName>
-  <CreateTime>${model.CreateTime}</CreateTime>
+  <ToUserName><![CDATA[${FromUserName}]]></ToUserName>
+  <FromUserName><![CDATA[${ToUserName}]]></FromUserName>
+  <CreateTime>${CreateTime}</CreateTime>
   <MsgType><![CDATA[location]]></MsgType>
-  <Location_X>${model.Location_X}</Location_X>
-  <Location_Y>${model.Location_Y}</Location_Y>
-  <Scale>${model.Scale}</Scale>
-  <Label><![CDATA[${model.Label}]]></Label>
-  <MsgId>${model.MsgId}</MsgId>
+  <Location_X>${Location_X}</Location_X>
+  <Location_Y>${Location_Y}</Location_Y>
+  <Scale>${Scale}</Scale>
+  <Label><![CDATA[${Label}]]></Label>
+  <MsgId>${MsgId}</MsgId>
 </xml>

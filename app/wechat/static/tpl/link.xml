@@ -1,10 +1,10 @@
 <xml>
-  <ToUserName><![CDATA[${model.FromUserName}]]></ToUserName>
-  <FromUserName><![CDATA[${model.ToUserName}]]></FromUserName>
-  <CreateTime>${model.CreateTime}</CreateTime>
+  <ToUserName><![CDATA[${FromUserName}]]></ToUserName>
+  <FromUserName><![CDATA[${ToUserName}]]></FromUserName>
+  <CreateTime>${CreateTime}</CreateTime>
   <MsgType><![CDATA[link]]></MsgType>
-  <Title><![CDATA[${model.Title}]]></Title>
-  <Description><![CDATA[${model.Description}]]></Description>
-  <Url><![CDATA[${model.Url}]]></Url>
-  <MsgId>${model.MsgId}</MsgId>
+  <Title><![CDATA[${Title}]]></Title>
+  <Description><![CDATA[${Description}]]></Description>
+  <Url><![CDATA[${Url}]]></Url>
+  <MsgId>${MsgId}</MsgId>
 </xml>

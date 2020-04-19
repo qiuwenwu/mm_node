@@ -1,15 +1,15 @@
 <xml>
-  <ToUserName><![CDATA[${model.FromUserName}]]></ToUserName>
-  <FromUserName><![CDATA[${model.ToUserName}]]></FromUserName>
-  <CreateTime>${model.CreateTime}</CreateTime>
+  <ToUserName><![CDATA[${FromUserName}]]></ToUserName>
+  <FromUserName><![CDATA[${ToUserName}]]></FromUserName>
+  <CreateTime>${CreateTime}</CreateTime>
   <MsgType><![CDATA[news]]></MsgType>
   <ArticleCount>1</ArticleCount>
   <Articles>
     <item>
-		<Title><![CDATA[${model.Title}]]></Title>
-		<Description><![CDATA[${model.Description}]]></Description>
-		<PicUrl><![CDATA[${model.PicUrl}]]></PicUrl>
-		<Url><![CDATA[${model.Url}]]></Url>
+		<Title><![CDATA[${Title}]]></Title>
+		<Description><![CDATA[${Description}]]></Description>
+		<PicUrl><![CDATA[${PicUrl}]]></PicUrl>
+		<Url><![CDATA[${Url}]]></Url>
     </item>
   </Articles>
 </xml>
