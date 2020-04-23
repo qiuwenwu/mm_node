@@ -4,7 +4,7 @@ async function main() {
 	// 实例化数据库操作类
 	await com.get_market();
 }
-main();
+// main();
 /**
  * @description 定时任务函数
  */

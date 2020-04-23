@@ -23,8 +23,9 @@
 								<tr>
 									<th scope="col" class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 									<th scope="col" class="th_id">#</th>
+									<th scope="col" class="th_name"><mm_reverse title="应用" v-model="query.orderby" field="app" :func="search"></mm_reverse></th>
+									<th scope="col" class="th_name"><mm_reverse title="名称" v-model="query.orderby" field="name" :func="search"></mm_reverse></th>
 									<th scope="col" class="th_icon">图标</th>
-									<th scope="col" class="th_name"><mm_reverse title="名称" v-model="query.orderby" field="level" :func="search"></mm_reverse></th>
 									<th scope="col" class="th_level"><mm_reverse title="等级" v-model="query.orderby" field="level" :func="search"></mm_reverse></th>
 									<th scope="col" class="th_exp"><mm_reverse title="升级所需" v-model="query.orderby" field="exp" :func="search"></mm_reverse></th>
 									<th scope="col" class="th_discount"><mm_reverse title="折扣" v-model="query.orderby" field="discount" :func="search"></mm_reverse></th>
@@ -37,10 +38,13 @@
 								<tr v-for="(o, idx) in list" :key="idx">
 									<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 									<th scope="row">{{ o[field] }}</th>
-									<td><mm_icon :src="o.icon" style="width:1.5rem;" v-if="o.icon"></mm_icon></td>
+									<td>
+										<span class="name">{{ o.app }}</span>
+									</td>
 									<td>
 										<span class="name">{{ o.name }}</span>
 									</td>
+									<td><mm_icon :src="o.icon" style="width:1.5rem;" v-if="o.icon"></mm_icon></td>
 									<td>
 										<span class="level">{{ o.level }}</span>
 									</td>
