@@ -115,7 +115,7 @@
 				<footer>
 					<div class="mm_group">
 						<button class="btn_default" type="reset" @click="show = false">取消</button>
-						<button class="btn_primary" type="button" @click="batchSet()">提交</button>
+						<button class="btn_primary" type="button" @click="set_bath()">提交</button>
 					</div>
 				</footer>
 			</mm_view>

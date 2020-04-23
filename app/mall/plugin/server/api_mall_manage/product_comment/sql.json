@@ -15,7 +15,9 @@
         "tag": "`tag` like '%{0}%'",
         "content": "`content` like '%{0}%'",
         "reply": "`reply` like '%{0}%'",
-        "keyword": "(`name` like '%{0}%' || `tag` like '%{0}%')"
+        "keyword": "(`name` like '%{0}%' || `tag` like '%{0}%')",
+        "keyword_user": "`user_id` in (select `user_id` from `user_account` where `username` like '%{0}%' || `nickname` like '%{0}%')",
+        "keyword_product": "`product_id` in (select `product_id` from `mall_product` where `title` like '%{0}%' || `keywords` like '%{0}%' )"
     },
     "update": {
         "score_add": "`score` = `score` + {0}",

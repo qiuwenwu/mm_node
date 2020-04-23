@@ -1,0 +1,42 @@
+{
+    "name": "stock_market_3_7",
+    "title": "股票行情",
+    "table": "stock_market_3_7",
+    "key": "market_id",
+    "orderby_default": "`market_id` desc",
+    "field_obj": "`market_id`,`code`,`HIGH`,`LOW`,`OPEN`,`CLOSE`,`LCLOSE`,`VOL`,`CHG`,`TOTAL`,`DATETIME`",
+    "field_default": "`market_id`,`code`,`HIGH`,`LOW`,`OPEN`,`CLOSE`,`LCLOSE`,`VOL`,`CHG`,`TOTAL`,`DATETIME`",
+    "method": "get",
+    "query": {
+        "code": "`code` like '%{0}%'",
+        "HIGH_min": "`HIGH` >= {0}",
+        "HIGH_max": "`HIGH` <= {0}",
+        "LOW_min": "`LOW` >= {0}",
+        "LOW_max": "`LOW` <= {0}",
+        "OPEN_min": "`OPEN` >= {0}",
+        "OPEN_max": "`OPEN` <= {0}",
+        "CLOSE_min": "`CLOSE` >= {0}",
+        "CLOSE_max": "`CLOSE` <= {0}",
+        "LCLOSE_min": "`LCLOSE` >= {0}",
+        "LCLOSE_max": "`LCLOSE` <= {0}",
+        "VOL_min": "`VOL` >= {0}",
+        "VOL_max": "`VOL` <= {0}",
+        "CHG_min": "`CHG` >= {0}",
+        "CHG_max": "`CHG` <= {0}",
+        "TOTAL_min": "`TOTAL` >= {0}",
+        "TOTAL_max": "`TOTAL` <= {0}",
+        "DATETIME_min": "`DATETIME` >= '{0}'",
+        "DATETIME_max": "`DATETIME` <= '{0}'"
+    },
+    "query_default": {},
+    "update": {
+        "HIGH_add": "`HIGH` = `HIGH` + {0}",
+        "LOW_add": "`LOW` = `LOW` + {0}",
+        "OPEN_add": "`OPEN` = `OPEN` + {0}",
+        "CLOSE_add": "`CLOSE` = `CLOSE` + {0}",
+        "LCLOSE_add": "`LCLOSE` = `LCLOSE` + {0}",
+        "VOL_add": "`VOL` = `VOL` + {0}",
+        "CHG_add": "`CHG` = `CHG` + {0}",
+        "TOTAL_add": "`TOTAL` = `TOTAL` + {0}"
+    }
+}

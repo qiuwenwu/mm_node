@@ -1,0 +1,348 @@
+{
+    "name": "stock_market_6_2",
+    "title": "股票行情",
+    "add": {
+        "body": [
+            "HIGH",
+            "LOW",
+            "OPEN",
+            "CLOSE",
+            "LCLOSE",
+            "VOL",
+            "CHG",
+            "TOTAL"
+        ],
+        "body_required": [
+            "code"
+        ]
+    },
+    "del": {
+        "query": [],
+        "query_required": [
+            "market_id"
+        ]
+    },
+    "set": {
+        "query": [
+            "market_id",
+            "HIGH_min",
+            "HIGH_max",
+            "LOW_min",
+            "LOW_max",
+            "OPEN_min",
+            "OPEN_max",
+            "CLOSE_min",
+            "CLOSE_max",
+            "LCLOSE_min",
+            "LCLOSE_max",
+            "VOL_min",
+            "VOL_max",
+            "CHG_min",
+            "CHG_max",
+            "TOTAL_min",
+            "TOTAL_max"
+        ],
+        "query_required": [],
+        "body": [
+            "code",
+            "HIGH",
+            "HIGH_add",
+            "LOW",
+            "LOW_add",
+            "OPEN",
+            "OPEN_add",
+            "CLOSE",
+            "CLOSE_add",
+            "LCLOSE",
+            "LCLOSE_add",
+            "VOL",
+            "VOL_add",
+            "CHG",
+            "CHG_add",
+            "TOTAL",
+            "TOTAL_add"
+        ],
+        "body_required": [],
+        "body_not": []
+    },
+    "get": {
+        "query": [
+            "market_id",
+            "HIGH_min",
+            "HIGH_max",
+            "LOW_min",
+            "LOW_max",
+            "OPEN_min",
+            "OPEN_max",
+            "CLOSE_min",
+            "CLOSE_max",
+            "LCLOSE_min",
+            "LCLOSE_max",
+            "VOL_min",
+            "VOL_max",
+            "CHG_min",
+            "CHG_max",
+            "TOTAL_min",
+            "TOTAL_max",
+            "DATETIME_min",
+            "DATETIME_max"
+        ],
+        "query_required": []
+    },
+    "list": [
+        {
+            "name": "market_id",
+            "title": "行情ID",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "range": [
+                    1,
+                    2147483647
+                ]
+            }
+        },
+        {
+            "name": "code",
+            "title": "股票代码",
+            "description": "",
+            "type": "string",
+            "dataType": "varchar",
+            "string": {
+                "notEmpty": 1
+            }
+        },
+        {
+            "name": "HIGH",
+            "title": "最高价",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "HIGH_min",
+            "title": "最高价——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "HIGH_max",
+            "title": "最高价——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "LOW",
+            "title": "最低价",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "LOW_min",
+            "title": "最低价——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "LOW_max",
+            "title": "最低价——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "OPEN",
+            "title": "开盘价",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "OPEN_min",
+            "title": "开盘价——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "OPEN_max",
+            "title": "开盘价——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "CLOSE",
+            "title": "收盘价",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "CLOSE_min",
+            "title": "收盘价——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "CLOSE_max",
+            "title": "收盘价——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "LCLOSE",
+            "title": "上个收盘价",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "LCLOSE_min",
+            "title": "上个收盘价——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "LCLOSE_max",
+            "title": "上个收盘价——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "VOL",
+            "title": "成交量",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "VOL_min",
+            "title": "成交量——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "VOL_max",
+            "title": "成交量——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "int",
+            "number": {
+                "max": 2147483647
+            }
+        },
+        {
+            "name": "CHG",
+            "title": "涨跌幅",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "CHG_min",
+            "title": "涨跌幅——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "CHG_max",
+            "title": "涨跌幅——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "TOTAL",
+            "title": "总成交额",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "TOTAL_min",
+            "title": "总成交额——最小值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "TOTAL_max",
+            "title": "总成交额——最大值",
+            "description": "",
+            "type": "number",
+            "dataType": "double",
+            "number": {}
+        },
+        {
+            "name": "DATETIME",
+            "title": "交易日期",
+            "description": "",
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": true,
+                "format": "date"
+            }
+        },
+        {
+            "name": "DATETIME_min",
+            "title": "交易日期——开始时间",
+            "description": "",
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": true,
+                "format": "date"
+            }
+        },
+        {
+            "name": "DATETIME_max",
+            "title": "交易日期——结束时间",
+            "description": "",
+            "type": "string",
+            "dataType": "date",
+            "string": {
+                "notEmpty": true,
+                "format": "date"
+            }
+        }
+    ]
+}

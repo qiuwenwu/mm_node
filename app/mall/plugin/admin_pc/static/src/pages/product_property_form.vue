@@ -7,34 +7,26 @@
 						<h5>{{ form[field] ? '修改' : '创建' }}商品属性</h5>
 					</header>
 					<dl>
-						<dt>头像</dt>
+						<dt>图标</dt>
 						<dd>
-							<mm_upload_img width="10rem" height="10rem" name="avatar" type="text" v-model="form.avatar"></mm_upload_img>
+							<mm_upload_img width="10rem" height="10rem" name="icon" type="text" v-model="form.icon"></mm_upload_img>
 						</dd>
-						<dt>昵称</dt>
+						<dt>名称</dt>
 						<dd>
-							<mm_input type="text" v-model="form.nickname" desc="由2-16个字符组成"></mm_input>
+							<mm_input type="text" v-model="form.name" desc="由2-16个字符组成"></mm_input>
 						</dd>
-						<dt>会员级别</dt>
+						<dt>顺序</dt>
 						<dd>
-							<mm_select v-model="form.vip" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
+							<mm_number v-model="form.display" :min="0" :max="1000"></mm_number>
 						</dd>
-						<dt>管理级别</dt>
+						<dt>描述</dt>
 						<dd>
-							<mm_select v-model="form.gm" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
-						</dd>
-						<dt>商户级别</dt>
-						<dd>
-							<mm_select v-model="form.mc" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
-						</dd>
-						<dt>个性签名</dt>
-						<dd>
-							<textarea v-model="form.signature" placeholder="由2-16个字符组成"></textarea>
+							<textarea v-model="form.description" :options="$to_kv(['',1,2,3,4,5])"></textareas>
 						</dd>
 					</dl>
 					<footer>
 						<div class="mm_group">
-							<button class="btn_default" type="reset">重置</button>
+							<button class="btn_default" type="button" @click="cancel">取消</button>
 							<button class="btn_primary" type="button" @click="submit()">提交</button>
 						</div>
 					</footer>
@@ -59,7 +51,17 @@
 				query: {
 					"property_id": 0
 				},
-				form: {}
+				form: {
+					"property_id": 0,
+					// 显示顺序
+					"display":0,
+					// 分类名称
+					"name":"",
+					// 分类图标
+					"icon":"",
+					// 分类描述
+					"description":""
+				}
 			}
 		},
 		methods: {

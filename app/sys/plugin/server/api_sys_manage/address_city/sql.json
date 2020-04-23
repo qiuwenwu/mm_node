@@ -1,42 +1,22 @@
 {
+    "name": "sys_address_city2",
     "title": "城市",
     "table": "sys_address_city",
     "key": "city_id",
-    "orderby": "{0}",
     "orderby_default": "`city_id` desc",
-    "field": "{0}",
     "field_obj": "`city_id`,`show`,`province_id`,`name`",
     "field_default": "`city_id`,`show`,`display`,`province_id`,`name`",
-    "field_hide": [],
-    "separator": "|",
-    "keyword": {
-        "table": "table",
-        "orderby": "orderby",
-        "field": "field",
-        "page": "page",
-        "size": "size",
-        "count": "count",
-        "method": "method"
-    },
-    "method": "add del set get import export",
     "query": {
-        "name": "`name` like '%{0}%'",
         "show_min": "`show` >= {0}",
         "show_max": "`show` <= {0}",
         "display_min": "`display` >= {0}",
         "display_max": "`display` <= {0}",
+        "name": "`name` like '%{0}%'",
         "keyword": "(`name` like '%{0}%')"
     },
-    "where": {
-        "uid": "`uid` = '{0}'"
-    },
     "update": {
-        "name": "`name` = '{0}'",
         "show_add": "`show` = `show` + {0}",
         "display_add": "`display` = `display` + {0}"
     },
-    "func_file": "",
-    "convert": {},
-    "del_repeat": {},
-    "name": "sys_address_city2"
+    "field_hide": []
 }

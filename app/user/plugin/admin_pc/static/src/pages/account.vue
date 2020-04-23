@@ -1,17 +1,17 @@
 <template>
-	<main id="account">
+	<main id="user_admin">
 		<mm_grid>
 			<mm_col>
 				<mm_view>
 					<header class="arrow">
-						<h5>超级美眉</h5>
+						<h5>管理组</h5>
 					</header>
 					<mm_body>
 						<mm_form class="mm_filter">
 							<h5><span>筛选条件</span></h5>
 							<mm_list col="2">
 								<mm_col>
-									<mm_input v-model="query.keyword" title="关键词" desc="用户名/手机号/邮箱/姓名" @blur="search()" />
+									<mm_input v-model="query.keyword" title="关键词" desc="用户名 / 手机号 / 邮箱 / 昵称" @blur="search()" />
 								</mm_col>
 								<mm_col width="25">
 									<mm_select v-model="query.user_group" title="用户组" :options="$to_kv(user_group, 'group_id')" @change="search()" />
@@ -19,28 +19,28 @@
 								<mm_col width="25">
 									<mm_select v-model="query.state" title="状态" :options="$to_kv(states)" @change="search()" />
 								</mm_col>
-								<!-- <mm_col width="25">
-									<mm_select v-model="query.vip" title="会员级别" :options="[0,1,2,3,4,5]" />
-								</mm_col> -->
 							</mm_list>
 						</mm_form>
 						<div class="mm_action">
 							<h5><span>操作</span></h5>
 							<div class="">
 								<mm_btn class="btn_primary-x" url="./account_form">添加</mm_btn>
-								<mm_btn class="font_default">批量修改</mm_btn>
+								<mm_btn @click.native="show = true" class="btn_primary-x" v-bind:class="{ 'disabled': !selects }">批量修改</mm_btn>
 							</div>
 						</div>
 						<mm_table type="2">
 							<thead>
 								<tr>
-									<th scope="col" class="th_selected"><input type="checkbox" /></th>
+									<th scope="col" class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 									<th scope="col" class="th_id">#</th>
-									<th scope="col" class="th_name">
+									<th scope="col" class="th_username">
 										<mm_reverse title="用户名" v-model="query.orderby" field="username" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_name">
+									<th scope="col" class="th_nickname">
 										<mm_reverse title="昵称" v-model="query.orderby" field="nickname" :func="search"></mm_reverse>
+									</th>
+									<th scope="col" class="th_name">
+										<mm_reverse title="用户组" v-model="query.orderby" field="user_group" :func="search"></mm_reverse>
 									</th>
 									<th scope="col" class="th_phone">
 										<mm_reverse title="手机" v-model="query.orderby" field="phone" :func="search"></mm_reverse>
@@ -56,32 +56,36 @@
 							</thead>
 							<tbody>
 								<tr v-for="(o, idx) in list" :key="idx">
-									<th scope="row"><input type="checkbox" :checked="has_selected(o.user_id)" /></th>
-									<th scope="row">{{ o.user_id }}</th>
+									<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
+									<th scope="row">{{ o[field] }}</th>
 									<td><span class="name">{{ o.username }}</span></td>
 									<td><span class="name">{{ o.nickname }}</span></td>
+									<td><span class="name">{{ get_name(user_group, o.user_group, 'group_id') }}</span></td>
 									<td><span class="time">{{ o.phone }}</span></td>
 									<td><span class="email">{{ o.email }}</span></td>
 									<td><span class="state" v-bind:class="colors[o.state]">{{ states[o.state] }}</span></td>
 									<td>
-										<mm_btn class="btn_primary" :url="'./account_form?user_id=' + o.user_id">修改</mm_btn>
-										<mm_btn class="btn_warning" @click="del(o)">删除</mm_btn>
+										<mm_btn class="btn_primary" :url="'./account_form?user_id=' + o[field]">修改</mm_btn>
+										<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
 									</td>
 								</tr>
 							</tbody>
 						</mm_table>
 					</mm_body>
 					<footer>
-						<mm_grid col="4">
+						<mm_grid col="4" class="mm_data_count">
 							<mm_col>
-								<mm_select v-model="query.size" @change="search()" />
+								<mm_select v-model="query.size" :options="$to_size()" @change="search()" />
 							</mm_col>
 							<mm_col width="50">
 								<mm_pager display="2" v-model="query.page" :count="count / query.size" :func="goTo" :icons="['首页', '上一页', '下一页', '尾页']"></mm_pager>
 							</mm_col>
 							<mm_col>
-								<div>
-									<span>共 {{ count }} 条</span><span></span>
+								<div class="right plr">
+									<span class="fl">共 {{ count }} 条</span>
+									<span>当前</span>
+									<input class="pager_now" v-model.number="page_now" @blur="goTo(page_now)" @change="page_change" />
+									<span>/{{ page_count }}页</span>
 								</div>
 							</mm_col>
 						</mm_grid>
@@ -89,6 +93,33 @@
 				</mm_view>
 			</mm_col>
 		</mm_grid>
+		<mm_modal v-model="show" mask="true">
+			<mm_view class="card bg_no">
+				<header class="bg_white">
+					<h5>批量修改</h5>
+				</header>
+				<mm_body>
+					<dl>
+						<dt>昵称</dt>
+						<dd>
+							<label>
+								<input type="text" v-model="form.nickname" placeholder="由2-16个字符组成" />
+							</label>
+						</dd>
+						<dt>状态</dt>
+						<dd>
+							<mm_select v-model="form.state" :options="$to_kv(states)" />
+						</dd>
+					</dl>
+				</mm_body>
+				<footer>
+					<div class="mm_group">
+						<button class="btn_default" type="reset" @click="show = false">取消</button>
+						<button class="btn_primary" type="button" @click="set_bath()">提交</button>
+					</div>
+				</footer>
+			</mm_view>
+		</mm_modal>
 	</main>
 </template>
 
@@ -101,12 +132,12 @@
 			return {
 				// 列表请求地址
 				url_get_list: "/apis/user/account",
+				url_del: "/apis/user/account?method=del&",
+				url_set: "/apis/user/account?method=set&",
+				field: "user_id",
 				query_set: {
-					user_id: ''
+					"user_id": ""
 				},
-				// 状态
-				states: ['全部', '正常', '异常', '已冻结', '已注销'],
-				colors: ['', 'font_success', 'font_warning', 'font_yellow', 'font_default'],
 				user_group: [],
 				// 查询条件
 				query: {
@@ -118,57 +149,22 @@
 					size: 10,
 					// 关键词
 					keyword: "",
-					// 用户组
-					user_group: 0,
-					// 用户ID
-					"user_id": 0,
-					// 账户状态——最小值
-					"state": 0,
-					// 会员级别——最小值
-					"vip_min": 0,
-					// 会员级别——最大值
-					"vip_max": 0,
-					// 管理员级别——最小值
-					"gm_min": 0,
-					// 管理员级别——最大值
-					"gm_max": 0,
-					// 商家级别——最小值
-					"mc_min": 0,
-					// 商家级别——最大值
-					"mc_max": 0,
-					// 创建时间——开始时间
-					"create_time_min": "",
-					// 创建时间——结束时间
-					"create_time_max": "",
-					// 上次登录时间——开始时间
-					"login_time_min": "",
-					// 上次登录时间——结束时间
-					"login_time_max": "",
-					// 手机号码认证
-					"phone_state": 0,
-					// 用户名
-					"username": "",
-					// 昵称
-					"nickname": "",
-					// 邮箱认证
-					"email_state": 0
 				},
+				form: {},
+				// 状态
+				states: ['', '正常', '异常', '已冻结', '已注销'],
+				colors: ['', 'font_success', 'font_warning', 'font_yellow', 'font_default'],
 				// 视图模型
 				vm: {}
 			}
 		},
-		methods: {
-			has_selected(id) {
-				var ids = '|' + this.selects + '|';
-				return ids.indexOf('|' + id + '|') !== -1;
-			}
-		},
-		created(func) {
+		methods: {},
+		created() {
 			var _this = this;
 			this.$get('~/apis/user/group?', null, function(json) {
 				if (json.result) {
 					_this.user_group.clear();
-					_this.user_group.addList(json.result.list);
+					_this.user_group.addList(json.result.list)
 				}
 			});
 		}
@@ -176,21 +172,24 @@
 </script>
 
 <style>
-	/* {title} */
-	#id {}
+	/* 页面 */
+	#user_admin {}
 
-	/* 标题栏 */
-	#id #title {}
+	/* 表单 */
+	#user_admin .mm_form {}
 
-	/* 搜索栏 */
-	#id #search {}
+	/* 筛选栏栏 */
+	#user_admin .mm_filter {}
 
-	/* 排序栏 */
-	#id #sort {}
+	/* 操作栏 */
+	#user_admin .mm_action {}
 
-	/* 列表 */
-	#id #table {}
+	/* 模态窗 */
+	#user_admin .mm_modal {}
 
-	/* 选择栏 */
-	#id #options {}
+	/* 表格 */
+	#user_admin .mm_table {}
+
+	/* 数据统计 */
+	#user_admin .mm_data_count {}
 </style>

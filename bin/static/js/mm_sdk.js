@@ -316,7 +316,6 @@ function keys(obj, file) {
  */
 function delete_prop(obj, includeZero) {
 	var o = Object.assign({}, obj);
-	console.log('是否包含0', includeZero);
 	if (includeZero) {
 		for (var k in o) {
 			var v = o[k];
@@ -325,7 +324,6 @@ function delete_prop(obj, includeZero) {
 			}
 		}
 	} else {
-		console.log('这地套');
 		for (var k in o) {
 			var v = o[k];
 			if (v === '' || v === null || v === undefined) {

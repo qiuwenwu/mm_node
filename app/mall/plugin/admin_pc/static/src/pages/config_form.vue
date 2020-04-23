@@ -1,5 +1,5 @@
 <template>
-	<main id="mall_config_form">
+	<main id="sys_config_form">
 		<mm_grid>
 			<mm_col width="33">
 				<mm_form class="card">
@@ -7,34 +7,22 @@
 						<h5>{{ form[field] ? '修改' : '创建' }}商城配置</h5>
 					</header>
 					<dl>
-						<dt>头像</dt>
-						<dd>
-							<mm_upload_img width="10rem" height="10rem" name="avatar" type="text" v-model="form.avatar"></mm_upload_img>
-						</dd>
-						<dt>昵称</dt>
-						<dd>
-							<mm_input type="text" v-model="form.nickname" desc="由2-16个字符组成"></mm_input>
-						</dd>
-						<dt>会员级别</dt>
-						<dd>
-							<mm_select v-model="form.vip" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
-						</dd>
-						<dt>管理级别</dt>
-						<dd>
-							<mm_select v-model="form.gm" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
-						</dd>
-						<dt>商户级别</dt>
-						<dd>
-							<mm_select v-model="form.mc" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
-						</dd>
-						<dt>个性签名</dt>
-						<dd>
-							<textarea v-model="form.signature" placeholder="由2-16个字符组成"></textarea>
-						</dd>
+						<dt>类型</dt>
+						<dd><mm_select v-model="form.type" :options="type"></mm_select></dd>
+						<dt>变量名</dt>
+						<dd><mm_input v-model="form.name" type="text"></mm_input></dd>
+						<dt>标题</dt>
+						<dd><mm_input v-model="form.title" type="text" placeholder="可以用中文名"></mm_input></dd>
+						<dt>值</dt>
+						<dd><mm_input v-model="form.value" type="text"></mm_input></dd>
+						<dt>描述</dt>
+						<dd><mm_input v-model="form.description" type="text"></mm_input></dd>
+						<dt>数据模型</dt>
+						<dd><mm_input v-model="form.model" type="text" placeholder="json格式，用于单选、多选模式"></mm_input></dd>
 					</dl>
 					<footer>
 						<div class="mm_group">
-							<button class="btn_default" type="reset">重置</button>
+							<button class="btn_default" type="button" @click="cancel">取消</button>
 							<button class="btn_primary" type="button" @click="submit()">提交</button>
 						</div>
 					</footer>
@@ -44,49 +32,81 @@
 	</main>
 </template>
 
-
 <script>
-	import mixin from '/src/mixins/page.js';
+import mixin from '/src/mixins/page.js';
 
-	export default {
-		mixins: [mixin],
-		components: {},
-		data() {
-			return {
-				url_submit: "/apis/mall/config?",
-				url_get_obj: "/apis/mall/config",
-				field: "config_id",
-				query: {
-					"config_id": 0
+export default {
+	mixins: [mixin],
+	components: {},
+	data() {
+		return {
+			url_submit: '/apis/mall/config?',
+			url_get_obj: '/apis/mall/config',
+			field: 'config_id',
+			query: {
+				config_id: 0
+			},
+			form: {
+				config_id: 0,
+				// 数据类型
+				type: 'string',
+				// 变量名
+				name: '',
+				// 变量标题
+				title: '',
+				// 变量值
+				value: '',
+				// 变量描述
+				description: '',
+				// 数据模型
+				model: ''
+			},
+			type: [
+				{
+					name: '文本型',
+					value: 'string'
 				},
-				form: {}
-			}
-		},
-		methods: {
-
-		}
-	}
+				{
+					name: '数字型',
+					value: 'number'
+				},
+				{
+					name: '布尔型',
+					value: 'boolean'
+				}
+			]
+		};
+	},
+	methods: {}
+};
 </script>
 
 <style>
-	/* 页面 */
-	#mall_config_form {}
+/* 页面 */
+#sys_config_form {
+}
 
-	/* 表单 */
-	#mall_config_form .mm_form {}
+/* 表单 */
+#sys_config_form .mm_form {
+}
 
-	/* 筛选栏栏 */
-	#mall_config_form .mm_filter {}
+/* 筛选栏栏 */
+#sys_config_form .mm_filter {
+}
 
-	/* 操作栏 */
-	#mall_config_form .mm_action {}
+/* 操作栏 */
+#sys_config_form .mm_action {
+}
 
-	/* 模态窗 */
-	#mall_config_form .mm_modal {}
+/* 模态窗 */
+#sys_config_form .mm_modal {
+}
 
-	/* 表格 */
-	#mall_config_form .mm_table {}
+/* 表格 */
+#sys_config_form .mm_table {
+}
 
-	/* 数据统计 */
-	#mall_config_form .mm_data_count {}
+/* 数据统计 */
+#sys_config_form .mm_data_count {
+}
 </style>

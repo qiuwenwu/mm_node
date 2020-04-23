@@ -1,0 +1,163 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200423.081531.35564.0.001.json",
+    "dumpEventTime": "2020-04-23T08:15:31Z",
+    "dumpEventTimeStamp": "1587600931706",
+    "processId": 35564,
+    "cwd": "F:\\mm_node",
+    "commandLine": [
+      "node",
+      "--harmony",
+      "server.js"
+    ],
+    "nodejsVersion": "v12.16.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.16.1",
+      "v8": "7.8.279.23-node.31",
+      "uv": "1.34.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "http_parser": "2.9.3",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.16.1/node-v12.16.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.16.1/node-v12.16.1.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.16.1/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18363",
+    "osVersion": "Windows 10 Home China",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 5805125,
+        "nice": 0,
+        "sys": 7761718,
+        "idle": 118459609,
+        "irq": 937484
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 3558859,
+        "nice": 0,
+        "sys": 3112828,
+        "idle": 125354500,
+        "irq": 71890
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 14280062,
+        "nice": 0,
+        "sys": 11170468,
+        "idle": 106575656,
+        "irq": 137390
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 5923734,
+        "nice": 0,
+        "sys": 4370656,
+        "idle": 121731796,
+        "irq": 46593
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 10721734,
+        "nice": 0,
+        "sys": 8371718,
+        "idle": 112932734,
+        "irq": 116796
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 4136937,
+        "nice": 0,
+        "sys": 3526546,
+        "idle": 124362703,
+        "irq": 106296
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 9221265,
+        "nice": 0,
+        "sys": 6969046,
+        "idle": 115835875,
+        "irq": 109562
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 4076453,
+        "nice": 0,
+        "sys": 2273359,
+        "idle": 125676375,
+        "irq": 35218
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 6567796,
+        "nice": 0,
+        "sys": 6371187,
+        "idle": 119087203,
+        "irq": 98000
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 4054187,
+        "nice": 0,
+        "sys": 2891781,
+        "idle": 125080218,
+        "irq": 29828
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 6339250,
+        "nice": 0,
+        "sys": 5927250,
+        "idle": 119759656,
+        "irq": 103437
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
+        "speed": 2592,
+        "user": 4285359,
+        "nice": 0,
+        "sys": 3630734,
+        "idle": 124110062,
+        "irq": 38703
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "WLAN",
+      

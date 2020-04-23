@@ -4,13 +4,14 @@
     "reportVersion": 1,
     "event": "Allocation failed - JavaScript heap out of memory",
     "trigger": "FatalError",
-    "filename": "report.20200413.235206.15528.0.001.json",
-    "dumpEventTime": "2020-04-13T23:52:06Z",
-    "dumpEventTimeStamp": "1586793126086",
-    "processId": 15528,
+    "filename": "report.20200423.074938.21648.0.001.json",
+    "dumpEventTime": "2020-04-23T07:49:38Z",
+    "dumpEventTimeStamp": "1587599378342",
+    "processId": 21648,
     "cwd": "F:\\mm_node",
     "commandLine": [
       "node",
+      "--harmony",
       "server.js"
     ],
     "nodejsVersion": "v12.16.1",
@@ -50,110 +51,110 @@
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 1156843,
+        "user": 5367750,
         "nice": 0,
-        "sys": 861406,
-        "idle": 9871359,
-        "irq": 71515
+        "sys": 7571484,
+        "idle": 117533859,
+        "irq": 920593
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 888437,
+        "user": 3210468,
         "nice": 0,
-        "sys": 449828,
-        "idle": 10551078,
-        "irq": 5750
+        "sys": 3001218,
+        "idle": 124261140,
+        "irq": 68437
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 1988328,
+        "user": 13738531,
         "nice": 0,
-        "sys": 1019718,
-        "idle": 8881296,
-        "irq": 8078
+        "sys": 10975765,
+        "idle": 105758531,
+        "irq": 134828
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 1036859,
+        "user": 5485609,
         "nice": 0,
-        "sys": 411671,
-        "idle": 10440812,
-        "irq": 3359
+        "sys": 4237875,
+        "idle": 120749343,
+        "irq": 45140
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 1539375,
+        "user": 10259031,
         "nice": 0,
-        "sys": 827140,
-        "idle": 9522828,
-        "irq": 6453
+        "sys": 8075531,
+        "idle": 112138265,
+        "irq": 97734
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 880359,
+        "user": 3818984,
         "nice": 0,
-        "sys": 303218,
-        "idle": 10705765,
-        "irq": 4781
+        "sys": 3206781,
+        "idle": 123447062,
+        "irq": 77765
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 1488625,
+        "user": 8717000,
         "nice": 0,
-        "sys": 719000,
-        "idle": 9681718,
-        "irq": 6562
+        "sys": 6793921,
+        "idle": 114961906,
+        "irq": 107515
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 932359,
+        "user": 3686234,
         "nice": 0,
-        "sys": 242265,
-        "idle": 10714718,
-        "irq": 3093
+        "sys": 2171750,
+        "idle": 124614843,
+        "irq": 34031
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 1244250,
+        "user": 6101468,
         "nice": 0,
-        "sys": 672312,
-        "idle": 9972781,
-        "irq": 7781
+        "sys": 6208359,
+        "idle": 118163000,
+        "irq": 95828
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 975703,
+        "user": 3662421,
         "nice": 0,
-        "sys": 425484,
-        "idle": 10488140,
-        "irq": 2593
+        "sys": 2779406,
+        "idle": 124031000,
+        "irq": 28640
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 1251921,
+        "user": 5839171,
         "nice": 0,
-        "sys": 716828,
-        "idle": 9920562,
-        "irq": 7234
+        "sys": 5752562,
+        "idle": 118881062,
+        "irq": 101515
       },
       {
         "model": "Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz",
         "speed": 2592,
-        "user": 1000000,
+        "user": 3911062,
         "nice": 0,
-        "sys": 465218,
-        "idle": 10424093,
-        "irq": 3015
+        "sys": 3539109,
+        "idle": 123022625,
+        "irq": 37343
       }
     ],
     "networkInterfaces": [
@@ -170,7 +171,7 @@
         "name": "WLAN",
         "internal": false,
         "mac": "ac:67:5d:64:2f:f8",
-        "address": "192.168.1.110",
+        "address": "192.168.1.103",
         "netmask": "255.255.255.0",
         "family": "IPv4"
       },
@@ -202,91 +203,71 @@
   },
   "nativeStack": [
     {
-      "pc": "0x00007ff66b0c19f9",
+      "pc": "0x00007ff6733319f9",
       "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10873"
     },
     {
-      "pc": "0x00007ff66b0c5e1c",
+      "pc": "0x00007ff673335e1c",
       "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+28316"
     },
     {
-      "pc": "0x00007ff66b0c4dd8",
+      "pc": "0x00007ff673334dd8",
       "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+24152"
     },
     {
-      "pc": "0x00007ff66b1c34cb",
+      "pc": "0x00007ff6734334cb",
       "symbol": "v8::base::CPU::has_sse+38363"
     },
     {
-      "pc": "0x00007ff66b9d9f4e",
+      "pc": "0x00007ff673c49f4e",
       "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
     },
     {
-      "pc": "0x00007ff66b9c2021",
+      "pc": "0x00007ff673c32021",
       "symbol": "v8::SharedArrayBuffer::Externalize+833"
     },
     {
-      "pc": "0x00007ff66b88e57c",
+      "pc": "0x00007ff673afe57c",
       "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
     },
     {
-      "pc": "0x00007ff66b8997d0",
+      "pc": "0x00007ff673b097d0",
       "symbol": "v8::internal::Heap::ProtectUnprotectedMemoryChunks+1312"
     },
     {
-      "pc": "0x00007ff66b8962f4",
+      "pc": "0x00007ff673b062f4",
       "symbol": "v8::internal::Heap::PageFlagsAreConsistent+3204"
     },
     {
-      "pc": "0x00007ff66b88bb13",
+      "pc": "0x00007ff673afbb13",
       "symbol": "v8::internal::Heap::CollectGarbage+1283"
     },
     {
-      "pc": "0x00007ff66b88a184",
+      "pc": "0x00007ff673afa184",
       "symbol": "v8::internal::Heap::AddRetainedMap+2452"
     },
     {
-      "pc": "0x00007ff66b8b1e1f",
-      "symbol": "v8::internal::Factory::NewRawTwoByteString+95"
+      "pc": "0x00007ff673b1b36d",
+      "symbol": "v8::internal::Factory::NewFillerObject+61"
     },
     {
-      "pc": "0x00007ff66b6d384c",
-      "symbol": "v8::internal::String::SlowFlatten+492"
+      "pc": "0x00007ff673880c51",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+1665"
     },
     {
-      "pc": "0x00007ff66b59b23f",
-      "symbol": "unibrow::Utf8::EncodeOneByte+687"
-    },
-    {
-      "pc": "0x00007ff66b6d1c6e",
-      "symbol": "v8::Name::GetIdentityHash+558"
-    },
-    {
-      "pc": "0x00007ff66b5d61ca",
-      "symbol": "v8::internal::StubCache::value_reference+11418"
-    },
-    {
-      "pc": "0x00007ff66be24ddd",
+      "pc": "0x00007ff674094ddd",
       "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+546637"
     },
     {
-      "pc": "0x00007ff66bda8a73",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+37859"
-    },
-    {
-      "pc": "0x00007ff66be11a82",
-      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+467954"
-    },
-    {
-      "pc": "0x000003bfd5278fd6",
+      "pc": "0x0000020f0e898474",
       "symbol": ""
     }
   ],
   "javascriptHeap": {
-    "totalMemory": 2163834880,
-    "totalCommittedMemory": 2163834880,
-    "usedMemory": 2137622640,
-    "availableMemory": 48545696,
+    "totalMemory": 2161491968,
+    "totalCommittedMemory": 2161491968,
+    "usedMemory": 2136952976,
+    "availableMemory": 48694272,
     "memoryLimit": 2197815296,
     "heapSpaces": {
       "read_only_space": {
@@ -297,38 +278,38 @@
         "available": 0
       },
       "new_space": {
-        "memorySize": 10485760,
-        "committedMemory": 10485760,
-        "capacity": 5237280,
-        "used": 635144,
-        "available": 4602136
+        "memorySize": 8388608,
+        "committedMemory": 8388608,
+        "capacity": 4189824,
+        "used": 381128,
+        "available": 3808696
       },
       "old_space": {
-        "memorySize": 2139766784,
-        "committedMemory": 2139766784,
-        "capacity": 2129269752,
-        "used": 2124543888,
-        "available": 4725864
+        "memorySize": 2138980352,
+        "committedMemory": 2138980352,
+        "capacity": 2128190560,
+        "used": 2123845304,
+        "available": 4345256
       },
       "code_space": {
-        "memorySize": 692224,
-        "committedMemory": 692224,
-        "capacity": 547168,
-        "used": 547168,
-        "available": 0
+        "memorySize": 954368,
+        "committedMemory": 954368,
+        "capacity": 567008,
+        "used": 539840,
+        "available": 27168
       },
       "map_space": {
         "memorySize": 1576960,
         "committedMemory": 1576960,
-        "capacity": 902080,
-        "used": 902080,
+        "capacity": 912640,
+        "used": 912640,
         "available": 0
       },
       "large_object_space": {
-        "memorySize": 11001856,
-        "committedMemory": 11001856,
-        "capacity": 10958768,
-        "used": 10958768,
+        "memorySize": 11280384,
+        "committedMemory": 11280384,
+        "capacity": 11238472,
+        "used": 11238472,
         "available": 0
       },
       "code_large_object_space": {
@@ -341,24 +322,24 @@
       "new_large_object_space": {
         "memorySize": 0,
         "committedMemory": 0,
-        "capacity": 5237280,
+        "capacity": 4189824,
         "used": 0,
-        "available": 5237280
+        "available": 4189824
       }
     }
   },
   "resourceUsage": {
-    "userCpuSeconds": 161.14,
-    "kernelCpuSeconds": 12.078,
-    "cpuConsumptionPercent": 41.6389,
-    "maxRss": 2266673152,
+    "userCpuSeconds": 328.406,
+    "kernelCpuSeconds": 23.468,
+    "cpuConsumptionPercent": 78.3684,
+    "maxRss": 2267197440,
     "pageFaults": {
-      "IORequired": 682430,
+      "IORequired": 686989,
       "IONotRequired": 0
     },
     "fsActivity": {
-      "reads": 1612,
-      "writes": 35
+      "reads": 1595,
+      "writes": 13
     }
   },
   "libuv": [
@@ -372,6 +353,7 @@
     "CommonProgramW6432": "D:\\Program Files\\Common Files",
     "COMPUTERNAME": "DESKTOP-O9L4O5Q",
     "ComSpec": "C:\\Windows\\system32\\cmd.exe",
+    "dp0": "C:\\Users\\57324\\AppData\\Roaming\\npm\\",
     "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
     "HOME": "C:\\Users\\57324",
     "HOMEDRIVE": "C:",
@@ -380,13 +362,14 @@
     "LOCALAPPDATA": "C:\\Users\\57324\\AppData\\Local",
     "LOGONSERVER": "\\\\DESKTOP-O9L4O5Q",
     "NODE": "C:\\Program Files\\nodejs\\node.exe",
+    "NODE_ENV": "development",
     "NODE_EXE": "C:\\Program Files\\nodejs\\\\node.exe",
     "NPM_CLI_JS": "C:\\Users\\57324\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
     "npm_config_access": "",
     "npm_config_allow_same_version": "",
     "npm_config_also": "",
     "npm_config_always_auth": "",
-    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"start\"],\"original\":[\"run\",\"start\"]}",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"dev\"],\"original\":[\"run\",\"dev\"]}",
     "npm_config_audit": "true",
     "npm_config_audit_level": "low",
     "npm_config_auth_type": "legacy",
@@ -509,8 +492,8 @@
     "npm_config_versions": "",
     "npm_config_viewer": "browser",
     "npm_execpath": "C:\\Users\\57324\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
-    "npm_lifecycle_event": "start",
-    "npm_lifecycle_script": "node server.js",
+    "npm_lifecycle_event": "dev",
+    "npm_lifecycle_script": "cross-env NODE_ENV=development PORT=5000 nodemon",
     "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
     "npm_package_author_name": "邱文武",
     "npm_package_dependencies_colors": "^1.4.0",
@@ -525,6 +508,7 @@
     "npm_package_dependencies_mm_check": "^1.3.3",
     "npm_package_dependencies_mm_crypto": "^1.0.6",
     "npm_package_dependencies_mm_es6_to_amd": "^1.3.1",
+    "npm_package_dependencies_mm_expand": "^1.3.7",
     "npm_package_dependencies_mm_html": "^1.0.2",
     "npm_package_dependencies_mm_https": "^1.3.5",
     "npm_package_dependencies_mm_logs": "^1.0.0",
@@ -539,12 +523,12 @@
     "npm_package_dependencies_mm_statics": "^1.3.6",
     "npm_package_dependencies_mm_stock": "^1.0.8",
     "npm_package_dependencies_mm_timer": "^1.3.1",
-    "npm_package_dependencies_mm_tpl": "^1.2.9",
+    "npm_package_dependencies_mm_tpl": "^2.0.3",
     "npm_package_dependencies_mm_xml": "^1.0.6",
     "npm_package_dependencies_njwt": "^1.0.0",
     "npm_package_description": "这是超级美眉基于nodeJS和Koa开发的服务端框架，可用于中小型商城和游戏、CMS。",
     "npm_package_devDependencies_loadtest": "*",
-    "npm_package_gitHead": "9ead4bb58596e86d577a17720ee32bfdfe231d74",
+    "npm_package_gitHead": "7ef18e06778f77d436a8609c62ce15ec7289ad24",
     "npm_package_keywords_0": "mm",
     "npm_package_keywords_1": "nodejs",
     "npm_package_keywords_10": "sqlite",
@@ -566,15 +550,17 @@
     "npm_package_scripts_server": "node nw.js",
     "npm_package_scripts_start": "node server.js",
     "npm_package_scripts_start_group": "node cluster.js",
-    "npm_package_scripts_start_task": "node --max-nex-space-size=4096 server.js",
-    "npm_package_version": "2.5.1",
+    "npm_package_scripts_start_task": "node --max_old_space_size=4096 server.js",
+    "npm_package_version": "2.5.2",
     "NPM_PREFIX_NPM_CLI_JS": "C:\\Users\\57324\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
     "NUMBER_OF_PROCESSORS": "12",
     "OneDrive": "C:\\Users\\57324\\OneDrive",
     "OneDriveConsumer": "C:\\Users\\57324\\OneDrive",
     "OS": "Windows_NT",
     "Path": "C:\\Users\\57324\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\npm-lifecycle\\node-gyp-bin;F:\\mm_node\\node_modules\\.bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\Git\\cmd;C:\\Users\\57324\\.windows-build-tools\\python27\\;C:\\Users\\57324\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\57324\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\57324\\AppData\\Roaming\\npm",
-    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+    "PATH": "F:\\mm_node/node_modules/.bin:C:\\Users\\57324\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\npm-lifecycle\\node-gyp-bin;F:\\mm_node\\node_modules\\.bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files\\nodejs\\;C:\\Program Files\\Git\\cmd;C:\\Users\\57324\\.windows-build-tools\\python27\\;C:\\Users\\57324\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\57324\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\57324\\AppData\\Roaming\\npm",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "PORT": "5000",
     "PROCESSOR_ARCHITECTURE": "AMD64",
     "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
     "PROCESSOR_LEVEL": "6",
@@ -594,7 +580,8 @@
     "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-O9L4O5Q",
     "USERNAME": "57324",
     "USERPROFILE": "C:\\Users\\57324",
-    "windir": "C:\\Windows"
+    "windir": "C:\\Windows",
+    "_prog": "node"
   },
   "sharedObjects": [
     "C:\\Program Files\\nodejs\\node.exe",
@@ -605,19 +592,19 @@
     "C:\\Windows\\System32\\RPCRT4.dll",
     "C:\\Windows\\System32\\PSAPI.DLL",
     "C:\\Windows\\System32\\ADVAPI32.dll",
-    "C:\\Windows\\System32\\msvcrt.dll",
     "C:\\Windows\\SYSTEM32\\dbghelp.dll",
-    "C:\\Windows\\System32\\sechost.dll",
+    "C:\\Windows\\System32\\msvcrt.dll",
     "C:\\Windows\\System32\\ucrtbase.dll",
+    "C:\\Windows\\System32\\sechost.dll",
     "C:\\Windows\\System32\\USER32.dll",
     "C:\\Windows\\System32\\win32u.dll",
     "C:\\Windows\\System32\\GDI32.dll",
-    "C:\\Windows\\System32\\gdi32full.dll",
-    "C:\\Windows\\System32\\msvcp_win.dll",
     "C:\\Windows\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\Windows\\System32\\gdi32full.dll",
     "C:\\Windows\\SYSTEM32\\USERENV.dll",
-    "C:\\Windows\\System32\\CRYPT32.dll",
+    "C:\\Windows\\System32\\msvcp_win.dll",
     "C:\\Windows\\System32\\profapi.dll",
+    "C:\\Windows\\System32\\CRYPT32.dll",
     "C:\\Windows\\System32\\MSASN1.dll",
     "C:\\Windows\\System32\\bcrypt.dll",
     "C:\\Windows\\SYSTEM32\\WINMM.dll",

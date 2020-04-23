@@ -11,7 +11,8 @@
         "wechat": "`wechat` like '%{0}%'",
         "mm": "`mm` like '%{0}%'",
         "baidu": "`baidu` like '%{0}%'",
-        "taobao": "`taobao` like '%{0}%'"
+        "taobao": "`taobao` like '%{0}%'",
+        "keyword": "(`qq` like '%{0}%' || `wechat` like '%{0}%' || `mm` like '%{0}%' || `baidu` like '%{0}%' || `taobao` like '%{0}%')"
     },
     "update": {},
     "field_hide": []

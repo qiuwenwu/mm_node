@@ -61,7 +61,7 @@ define(["Vue", "VueRouter", "mm_sdk", "nav"], function(Vue, VueRouter, mm_sdk, n
 		var o = routes.getObj({ path });
 		if (o.oauth) {
 			var token = $.db.get("token");
-			console.log(token);
+			// console.log(token);
 			if (o.oauth.signIn && !token) {
 				$.route.redirect_url = to.path + "?" + $.toUrl(to.query);
 				next("/sign_in");

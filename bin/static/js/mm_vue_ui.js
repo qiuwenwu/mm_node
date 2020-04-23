@@ -1550,7 +1550,7 @@ define(['jquery'], function(jquery) {
 				wh = this.height;
 			} else {
 				if (this.display === "1") {
-					ht = "1.5rem";
+					ht = "auto";
 				} else if (this.display === "2") {
 					ht = "4px";
 				}
@@ -2003,7 +2003,7 @@ define(['jquery'], function(jquery) {
 		}
 	};
 	var mm_radio = {
-		template: "<!-- \u5355\u9009\u6846 --><div class=\"mm_radio\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': value === o[field] }\" @click=\"$emit('input', $event.target.value)\"><input type=\"radio\" :name=\"name\" :value=\"o[field]\" /><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
+		template: "<!-- \u5355\u9009\u6846 --><div class=\"mm_radio\"><div class=\"title\" v-if=\"title\" v-html=\"title\"></div><div class=\"value\" v-bind:class=\"{'disabled': disabled }\"><label v-for=\"(o, idx) in options\" :key=\"idx\" :class=\"{ 'active': value == o[field] }\" @click=\"$emit('input', $event.target.value)\"><input type=\"radio\" :name=\"name\" :value=\"o[field]\" /><span class=\"figure\"></span><span class=\"name\">{{ o.name }}</span></label></div><div class=\"tip\" v-if=\"tip\">{{ tip }}</div></div>",
 		mixins: [form_mixin],
 		data: function data() {
 			var name = this.name;

@@ -13,12 +13,6 @@
 								<mm_col>
 									<mm_input v-model="query.keyword" title="关键词" desc="用户名 / 手机号 / 邮箱 / 姓名" @blur="search()" />
 								</mm_col>
-								<mm_col width="25">
-									<mm_select v-model="query.user_group" title="用户组" :options="$to_kv(user_group, 'group_id')" @change="search()" />
-								</mm_col>
-								<mm_col width="25">
-									<mm_select v-model="query.state" title="状态" :options="$to_kv(states)" @change="search()" />
-								</mm_col>
 							</mm_list>
 						</mm_form>
 						<div class="mm_action">
@@ -33,23 +27,20 @@
 								<tr>
 									<th scope="col" class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 									<th scope="col" class="th_id">#</th>
-									<th scope="col" class="th_username">
-										<mm_reverse title="用户名" v-model="query.orderby" field="username" :func="search"></mm_reverse>
+									<th scope="col" class="th_mm">
+										<mm_reverse title="MM号" v-model="query.orderby" field="mm" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_nickname">
-										<mm_reverse title="昵称" v-model="query.orderby" field="nickname" :func="search"></mm_reverse>
+									<th scope="col" class="th_qq">
+										<mm_reverse title="QQ号" v-model="query.orderby" field="qq" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_name">
-										<mm_reverse title="用户组" v-model="query.orderby" field="user_group" :func="search"></mm_reverse>
+									<th scope="col" class="th_wechat">
+										<mm_reverse title="微信号" v-model="query.orderby" field="wechat	" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_phone">
-										<mm_reverse title="手机" v-model="query.orderby" field="phone" :func="search"></mm_reverse>
+									<th scope="col" class="th_baidu">
+										<mm_reverse title="百度账号" v-model="query.orderby" field="baidu" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_email">
-										<mm_reverse title="邮箱" v-model="query.orderby" field="email" :func="search"></mm_reverse>
-									</th>
-									<th scope="col" class="th_state">
-										<mm_reverse title="状态" v-model="query.orderby" field="state" :func="search"></mm_reverse>
+									<th scope="col" class="th_taobao">
+										<mm_reverse title="淘宝账号" v-model="query.orderby" field="taobao" :func="search"></mm_reverse>
 									</th>
 									<th scope="col" class="th_handle">操作</th>
 								</tr>
@@ -58,12 +49,11 @@
 								<tr v-for="(o, idx) in list" :key="idx">
 									<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 									<th scope="row">{{ o[field] }}</th>
-									<td><span class="name">{{ o.username }}</span></td>
-									<td><span class="name">{{ o.nickname }}</span></td>
-									<td><span class="name">{{ get_name(user_group, o.user_group, 'group_id') }}</span></td>
-									<td><span class="time">{{ o.phone }}</span></td>
-									<td><span class="email">{{ o.email }}</span></td>
-									<td><span class="state" v-bind:class="colors[o.state]">{{ states[o.state] }}</span></td>
+									<td><span class="text">{{ o.mm }}</span> <i class="fa-check-square font_success" v-if="o.mm_state"></i></td>
+									<td><span class="text">{{ o.qq }}</span> <i class="fa-check-square font_success" v-if="o.qq_state"></i></td>
+									<td><span class="text">{{ o.wechat }}</span> <i class="fa-check-square font_success" v-if="o.wechat_state"></i></td>
+									<td><span class="text">{{ o.baidu }}</span> <i class="fa-check-square font_success" v-if="o.baidu_state"></i></td>
+									<td><span class="text">{{ o.taobao }}</span> <i class="fa-check-square font_success" v-if="o.taobao_state"></i></td>
 									<td>
 										<mm_btn class="btn_primary" :url="'./sns_form?user_id=' + o[field]">修改</mm_btn>
 										<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
@@ -100,22 +90,22 @@
 				</header>
 				<mm_body>
 					<dl>
-						<dt>昵称</dt>
-						<dd>
-							<label>
-								<input type="text" v-model="form.nickname" placeholder="由2-16个字符组成" />
-							</label>
-						</dd>
-						<dt>状态</dt>
-						<dd>
-							<mm_select v-model="form.state" :options="$to_kv(states)" />
-						</dd>
+						<dt>MM认证</dt>
+						<dd><mm_switch v-model="form.mm_state"></mm_switch></dd>
+						<dt>QQ认证</dt>
+						<dd><mm_switch v-model="form.qq_state"></mm_switch></dd>
+						<dt>微信认证</dt>
+						<dd><mm_switch v-model="form.wechat_state"></mm_switch></dd>
+						<dt>百度认证</dt>
+						<dd><mm_switch v-model="form.baidu_state"></mm_switch></dd>
+						<dt>淘宝认证</dt>
+						<dd><mm_switch v-model="form.taobao_state"></mm_switch></dd>
 					</dl>
 				</mm_body>
 				<footer>
 					<div class="mm_group">
 						<button class="btn_default" type="reset" @click="show = false">取消</button>
-						<button class="btn_primary" type="button" @click="batchSet()">提交</button>
+						<button class="btn_primary" type="button" @click="set_bath()">提交</button>
 					</div>
 				</footer>
 			</mm_view>
@@ -150,7 +140,13 @@
 					// 关键词
 					keyword: "",
 				},
-				form: {},
+				form: {
+					mm_state: 0,
+					qq_state: 0,
+					wechat_state: 0,
+					baidu_state: 0,
+					taobao_state: 0
+				},
 				// 状态
 				states: ['', '正常', '异常', '已冻结', '已注销'],
 				colors: ['', 'font_success', 'font_warning', 'font_yellow', 'font_default'],

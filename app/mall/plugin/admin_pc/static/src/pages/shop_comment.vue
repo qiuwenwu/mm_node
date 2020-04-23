@@ -13,12 +13,6 @@
 								<mm_col>
 									<mm_input v-model="query.keyword" title="关键词" desc="用户名 / 手机号 / 邮箱 / 姓名" @blur="search()" />
 								</mm_col>
-								<mm_col width="25">
-									<mm_select v-model="query.user_group" title="用户组" :options="$to_kv(user_group, 'group_id')" @change="search()" />
-								</mm_col>
-								<mm_col width="25">
-									<mm_select v-model="query.state" title="状态" :options="$to_kv(states)" @change="search()" />
-								</mm_col>
 							</mm_list>
 						</mm_form>
 						<div class="mm_action">
@@ -33,23 +27,20 @@
 								<tr>
 									<th scope="col" class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 									<th scope="col" class="th_id">#</th>
-									<th scope="col" class="th_username">
-										<mm_reverse title="用户名" v-model="query.orderby" field="username" :func="search"></mm_reverse>
+									<th scope="col" class="th_name">
+										<mm_reverse title="店铺" v-model="query.orderby" field="shop" :func="search"></mm_reverse>
 									</th>
 									<th scope="col" class="th_nickname">
-										<mm_reverse title="昵称" v-model="query.orderby" field="nickname" :func="search"></mm_reverse>
+										<mm_reverse title="名称" v-model="query.orderby" field="nickname" :func="search"></mm_reverse>
 									</th>
 									<th scope="col" class="th_name">
-										<mm_reverse title="用户组" v-model="query.orderby" field="user_group" :func="search"></mm_reverse>
+										<mm_reverse title="留言者" v-model="query.orderby" field="name" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_phone">
-										<mm_reverse title="手机" v-model="query.orderby" field="phone" :func="search"></mm_reverse>
+									<th scope="col" class="th_onoff">
+										<mm_reverse title="启用" v-model="query.orderby" field="available" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_email">
-										<mm_reverse title="邮箱" v-model="query.orderby" field="email" :func="search"></mm_reverse>
-									</th>
-									<th scope="col" class="th_state">
-										<mm_reverse title="状态" v-model="query.orderby" field="state" :func="search"></mm_reverse>
+									<th scope="col" class="th_content">
+										<mm_reverse title="正文" v-model="query.orderby" field="content" :func="search"></mm_reverse>
 									</th>
 									<th scope="col" class="th_handle">操作</th>
 								</tr>
@@ -58,12 +49,11 @@
 								<tr v-for="(o, idx) in list" :key="idx">
 									<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 									<th scope="row">{{ o[field] }}</th>
-									<td><span class="name">{{ o.username }}</span></td>
+									<td><span class="name">{{ o.shop }}</span></td>
 									<td><span class="name">{{ o.nickname }}</span></td>
-									<td><span class="name">{{ get_name(user_group, o.user_group, 'group_id') }}</span></td>
-									<td><span class="time">{{ o.phone }}</span></td>
-									<td><span class="email">{{ o.email }}</span></td>
-									<td><span class="state" v-bind:class="colors[o.state]">{{ states[o.state] }}</span></td>
+									<td><span class="name">{{ o.name }}</span></td>
+									<td><span class="onOff">{{ avas[o.available]}}</span></td>
+									<td><span class="content">{{ o.content}}</span></td>
 									<td>
 										<mm_btn class="btn_primary" :url="'./shop_comment_form?comment_id=' + o[field]">修改</mm_btn>
 										<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
@@ -100,22 +90,18 @@
 				</header>
 				<mm_body>
 					<dl>
-						<dt>昵称</dt>
+						<dt>启用</dt>
 						<dd>
 							<label>
-								<input type="text" v-model="form.nickname" placeholder="由2-16个字符组成" />
+								<mm_switch v-model="form.available" > </mm_switch>
 							</label>
-						</dd>
-						<dt>状态</dt>
-						<dd>
-							<mm_select v-model="form.state" :options="$to_kv(states)" />
 						</dd>
 					</dl>
 				</mm_body>
 				<footer>
 					<div class="mm_group">
 						<button class="btn_default" type="reset" @click="show = false">取消</button>
-						<button class="btn_primary" type="button" @click="batchSet()">提交</button>
+						<button class="btn_primary" type="button" @click="set_bath()">提交</button>
 					</div>
 				</footer>
 			</mm_view>
@@ -154,19 +140,57 @@
 				// 状态
 				states: ['', '正常', '异常', '已冻结', '已注销'],
 				colors: ['', 'font_success', 'font_warning', 'font_yellow', 'font_default'],
+				list_user: [],
+				avas:["否","是"],
 				// 视图模型
 				vm: {}
 			}
 		},
-		methods: {},
-		created() {
-			var _this = this;
-			this.$get('~/apis/user/group?', null, function(json) {
-				if (json.result) {
-					_this.user_group.clear();
-					_this.user_group.addList(json.result.list)
+		methods: {
+			get_list_after(json, status) {
+				if (json.list) {
+					var arr = json.list.toArr('user_id');
+					this.get_user(arr.join('|'), json.list);
 				}
-			});
+				return json.list;
+			},
+			get_user(user_id, list) {
+				var _this = this;
+				this.$get('/apis/user/account?', { user_id }, function(json, status) {
+					if(json.result){
+						var lt = json.result.list;
+						for (var i = 0; i < lt.length; i++) {
+							var o = lt[i];
+							var obj = list.getObj({user_id:o.user_id});
+							if(obj){
+								obj.username = o.username;
+								obj.nickname = o.nickname;
+							}
+						}
+						var arr = list.toArr('shop_id');
+						_this.get_shop(arr.join('|'), list);
+					}
+				});
+			},
+			get_shop(shop_id, list) {
+				var _this = this;
+				this.$get('/apis/mall/shop?', { shop_id }, function(json, status) {
+					if(json.result){
+						var lt = json.result.list;
+						for (var i = 0; i < lt.length; i++) {
+							var o = lt[i];
+							var obj = list.getObj({shop_id:o.shop_id});
+							if(obj){
+								obj.shop = o.name;
+							}
+						}
+						_this.list = list;
+					}
+				});
+			}
+		},
+		created() {
+			
 		}
 	}
 </script>

@@ -33,23 +33,17 @@
 								<tr>
 									<th scope="col" class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 									<th scope="col" class="th_id">#</th>
-									<th scope="col" class="th_username">
-										<mm_reverse title="用户名" v-model="query.orderby" field="username" :func="search"></mm_reverse>
-									</th>
-									<th scope="col" class="th_nickname">
-										<mm_reverse title="昵称" v-model="query.orderby" field="nickname" :func="search"></mm_reverse>
+									<th scope="col" class="th_icon">
+										图标
 									</th>
 									<th scope="col" class="th_name">
-										<mm_reverse title="用户组" v-model="query.orderby" field="user_group" :func="search"></mm_reverse>
+										名称
 									</th>
-									<th scope="col" class="th_phone">
-										<mm_reverse title="手机" v-model="query.orderby" field="phone" :func="search"></mm_reverse>
+									<th scope="col" class="th_num">
+										<mm_reverse title="顺序" v-model="query.orderby" field="display" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_email">
-										<mm_reverse title="邮箱" v-model="query.orderby" field="email" :func="search"></mm_reverse>
-									</th>
-									<th scope="col" class="th_state">
-										<mm_reverse title="状态" v-model="query.orderby" field="state" :func="search"></mm_reverse>
+									<th scope="col" class="th_desc">
+										描述
 									</th>
 									<th scope="col" class="th_handle">操作</th>
 								</tr>
@@ -58,12 +52,10 @@
 								<tr v-for="(o, idx) in list" :key="idx">
 									<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 									<th scope="row">{{ o[field] }}</th>
-									<td><span class="name">{{ o.username }}</span></td>
-									<td><span class="name">{{ o.nickname }}</span></td>
-									<td><span class="name">{{ get_name(user_group, o.user_group, 'group_id') }}</span></td>
-									<td><span class="time">{{ o.phone }}</span></td>
-									<td><span class="email">{{ o.email }}</span></td>
-									<td><span class="state" v-bind:class="colors[o.state]">{{ states[o.state] }}</span></td>
+									<td><mm_icon :src="o.icon" style="width:1.5rem;" v-if="o.icon"></mm_icon></td>
+									<td><span class="name">{{ o.name }}</span></td>
+									<td><span class="num">{{ o.display }}</span></td>
+									<td><span class="desc">{{ o.description }}</span></td>
 									<td>
 										<mm_btn class="btn_primary" :url="'./product_property_form?property_id=' + o[field]">修改</mm_btn>
 										<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
@@ -115,7 +107,7 @@
 				<footer>
 					<div class="mm_group">
 						<button class="btn_default" type="reset" @click="show = false">取消</button>
-						<button class="btn_primary" type="button" @click="batchSet()">提交</button>
+						<button class="btn_primary" type="button" @click="set_bath()">提交</button>
 					</div>
 				</footer>
 			</mm_view>

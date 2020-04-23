@@ -1,0 +1,18 @@
+{
+    "name": "stock_market_3_52",
+    "title": "股票行情",
+    "description": "",
+    "path": "/apis/stock/market_3_5",
+    "method": "ALL",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true,
+    "oauth": {
+        "scope": true,
+        "signIn": true,
+        "gm": 2,
+        "user_admin": []
+    }
+}

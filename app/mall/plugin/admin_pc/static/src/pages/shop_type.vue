@@ -33,23 +33,20 @@
 								<tr>
 									<th scope="col" class="th_selected"><input type="checkbox" :checked="select_state" @click="select_all()" /></th>
 									<th scope="col" class="th_id">#</th>
-									<th scope="col" class="th_username">
-										<mm_reverse title="用户名" v-model="query.orderby" field="username" :func="search"></mm_reverse>
-									</th>
-									<th scope="col" class="th_nickname">
-										<mm_reverse title="昵称" v-model="query.orderby" field="nickname" :func="search"></mm_reverse>
+									<th scope="col" class="th_icon">
+										<mm_reverse title="图标" v-model="query.orderby" field="icon" :func="search"></mm_reverse>
 									</th>
 									<th scope="col" class="th_name">
-										<mm_reverse title="用户组" v-model="query.orderby" field="user_group" :func="search"></mm_reverse>
+										<mm_reverse title="名称" v-model="query.orderby" field="name" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_phone">
-										<mm_reverse title="手机" v-model="query.orderby" field="phone" :func="search"></mm_reverse>
+									<th scope="col" class="th_name">
+										<mm_reverse title="频道" v-model="query.orderby" field="channel_id" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_email">
-										<mm_reverse title="邮箱" v-model="query.orderby" field="email" :func="search"></mm_reverse>
+									<th scope="col" class="th_name">
+										<mm_reverse title="上级" v-model="query.orderby" field="father_id" :func="search"></mm_reverse>
 									</th>
-									<th scope="col" class="th_state">
-										<mm_reverse title="状态" v-model="query.orderby" field="state" :func="search"></mm_reverse>
+									<th scope="col" class="th_desc">
+										<mm_reverse title="描述" v-model="query.orderby" field="description" :func="search"></mm_reverse>
 									</th>
 									<th scope="col" class="th_handle">操作</th>
 								</tr>
@@ -58,12 +55,11 @@
 								<tr v-for="(o, idx) in list" :key="idx">
 									<th scope="row"><input type="checkbox" :checked="select_has(o[field])" @click="select_change(o[field])" /></th>
 									<th scope="row">{{ o[field] }}</th>
-									<td><span class="name">{{ o.username }}</span></td>
-									<td><span class="name">{{ o.nickname }}</span></td>
-									<td><span class="name">{{ get_name(user_group, o.user_group, 'group_id') }}</span></td>
-									<td><span class="time">{{ o.phone }}</span></td>
-									<td><span class="email">{{ o.email }}</span></td>
-									<td><span class="state" v-bind:class="colors[o.state]">{{ states[o.state] }}</span></td>
+									<td><mm_icon :src="o.icon" style="width:1.5rem;" v-if="o.icon"></mm_icon></td>
+									<td><span class="name">{{ o.name }}</span></td>
+									<td><span class="name">{{ o.channel }}</span></td>
+									<td><span class="name">{{ o.father }}</span></td>
+									<td><span class="name">{{ o.description }}</span></td>
 									<td>
 										<mm_btn class="btn_primary" :url="'./shop_type_form?type_id=' + o[field]">修改</mm_btn>
 										<mm_btn class="btn_warning" @click.native="del_show(o, field)">删除</mm_btn>
@@ -115,7 +111,7 @@
 				<footer>
 					<div class="mm_group">
 						<button class="btn_default" type="reset" @click="show = false">取消</button>
-						<button class="btn_primary" type="button" @click="batchSet()">提交</button>
+						<button class="btn_primary" type="button" @click="set_bath()">提交</button>
 					</div>
 				</footer>
 			</mm_view>
@@ -158,15 +154,51 @@
 				vm: {}
 			}
 		},
-		methods: {},
-		created() {
-			var _this = this;
-			this.$get('~/apis/user/group?', null, function(json) {
-				if (json.result) {
-					_this.user_group.clear();
-					_this.user_group.addList(json.result.list)
+		methods: {
+			get_list_after(json, status) {
+				if (json.list) {
+					var arr = json.list.toArr('channel_id');
+					this.get_channel(arr.join('|'), json.list);
 				}
-			});
+				return json.list;
+			},
+			get_channel(channel_id, list) {
+				var _this = this;
+				this.$get('/apis/mall/shop_channel?', { channel_id }, function(json, status) {
+					if(json.result){
+						var lt = json.result.list;
+						for (var i = 0; i < lt.length; i++) {
+							var o = lt[i];
+							var obj = list.getObj({channel_id:o.channel_id});
+							if(obj){
+								obj.channel = o.name;
+							}
+						}
+						
+						var arr = list.toArr('father_id');
+						_this.get_father(arr.join('|'), list);
+					}
+				});
+			},
+			get_father(father_id, list) {
+				var _this = this;
+				this.$get('/apis/mall/shop_type?', { father_id }, function(json, status) {
+					if(json.result){
+						var lt = json.result.list;
+						for (var i = 0; i < lt.length; i++) {
+							var o = lt[i];
+							var obj = list.getObj({father_id:o.type_id});
+							if(obj){
+								obj.father = o.name;
+							}
+						}
+						_this.list = list;
+					}
+				});
+			},
+		},
+		created() {
+			
 		}
 	}
 </script>

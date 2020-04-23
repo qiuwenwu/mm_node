@@ -1,0 +1,12 @@
+{
+    "name": "stock_market_0_4",
+    "title": "股票行情",
+    "description": "",
+    "path": "/api/stock/market_0_4",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+    "sql_path": "./sql.json",
+    "check_param": true
+}

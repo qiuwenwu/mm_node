@@ -325,7 +325,7 @@ define(function() {
 			 * @description 添加数据
 			 * @param {Object} value 要添加的数据
 			 */
-			add_main: function add_main(value) {
+			add_main: function add_main(value, func) {
 				var url = "";
 				if (this.url) {
 					url = this.url + "method=add";
@@ -335,7 +335,9 @@ define(function() {
 				if (!url) {
 					return;
 				}
+				var _this = this;
 				this.$post(url, value, function(json) {
+					_this.events("add_after", json, func);
 					if (json.result) {
 						$.toast(json.result.tip);
 					} else if (json.error) {
@@ -709,7 +711,7 @@ define(function() {
 			/**
 			 * 提交表单
 			 */
-			submit_main: function submit_main(param) {
+			submit_main: function submit_main(param, func) {
 				var url = this.url ? this.url : this.url_submit;
 				if (url) {
 					if (this.field) {
@@ -729,7 +731,6 @@ define(function() {
 				} else {
 					if (this.field) {
 						var id = param[this.field];
-						console.log('提交的ID', id);
 						if (id) {
 							url = this.url_set;
 						} else {
@@ -738,13 +739,18 @@ define(function() {
 					}
 				}
 
-				console.log('提交', url);
+				// console.log('提交', url);
 				if (url) {
 					var _this = this;
 					this.$post(url, param, function(json, status) {
-						var msg = _this.events("submit_after", json, status);
-						if (msg) {
-							_this.toast(msg);
+						_this.events("submit_after", json, func);
+						if (json.result) {
+							// _this.toast(json.result.tip);
+							_this.$back();
+						} else if (json.error) {
+							_this.toast(json.error.message);
+						} else {
+							_this.toast("服务器连接失败！");
 						}
 					});
 				}
@@ -760,15 +766,11 @@ define(function() {
 			/**
 			 * @description 获取到对象后事件
 			 * @param {Object} json 响应结果
-			 * @param {Number} status 服务器状态码
+			 * @param {Function} func 回调函数
 			 */
-			submit_after: function submit_after(json, status) {
-				if (json.result) {
-					this.toast(json.result.tip);
-				} else if (json.error) {
-					this.toast(json.error.message);
-				} else {
-					this.toast("服务器连接失败！");
+			submit_after: function submit_after(json, func) {
+				if (func) {
+					func(json);
 				}
 			},
 			/**
@@ -990,6 +992,12 @@ define(function() {
 					}
 				}
 				return name.replace('|', '');
+			},
+			/**
+			 * 取消并返回
+			 */
+			cancel: function cancel() {
+				this.$back();
 			}
 		},
 		computed: {

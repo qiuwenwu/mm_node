@@ -7,34 +7,24 @@
 						<h5>{{ form[field] ? '修改' : '创建' }}用户统计</h5>
 					</header>
 					<dl>
-						<dt>头像</dt>
-						<dd>
-							<mm_upload_img width="10rem" height="10rem" name="avatar" type="text" v-model="form.avatar"></mm_upload_img>
-						</dd>
-						<dt>昵称</dt>
-						<dd>
-							<mm_input type="text" v-model="form.nickname" desc="由2-16个字符组成"></mm_input>
-						</dd>
-						<dt>会员级别</dt>
-						<dd>
-							<mm_select v-model="form.vip" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
-						</dd>
-						<dt>管理级别</dt>
-						<dd>
-							<mm_select v-model="form.gm" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
-						</dd>
-						<dt>商户级别</dt>
-						<dd>
-							<mm_select v-model="form.mc" :options="$to_kv(['',1,2,3,4,5])"></mm_select>
-						</dd>
-						<dt>个性签名</dt>
-						<dd>
-							<textarea v-model="form.signature" placeholder="由2-16个字符组成"></textarea>
-						</dd>
+						<dt>等级</dt>
+						<dd><mm_number v-model="form.level" :min="0" :max="1000" ></mm_number></dd>
+						<dt>IQ智商</dt>
+						<dd><mm_number v-model="form.iq" :min="80" :max="200" ></mm_number></dd>
+						<dt>信用度</dt>
+						<dd><mm_number v-model="form.credit" :min="0" :max="2147483647" ></mm_number></dd>
+						<dt>积分</dt>
+						<dd><mm_number v-model="form.credit_points" :min="0" :max="2147483647" ></mm_number></dd>
+						<dt>经验值</dt>
+						<dd><mm_number v-model="form.exp" :min="0" :max="2147483647" ></mm_number></dd>
+						<dt>钱</dt>
+						<dd><mm_number v-model="form.money" ></mm_number></dd>
+						<dt>货币</dt>
+						<dd><mm_number v-model="form.coin" ></mm_number></dd>
 					</dl>
 					<footer>
 						<div class="mm_group">
-							<button class="btn_default" type="reset">重置</button>
+							<button class="btn_default" type="button" @click="cancel">取消</button>
 							<button class="btn_primary" type="button" @click="submit()">提交</button>
 						</div>
 					</footer>
@@ -44,49 +34,85 @@
 	</main>
 </template>
 
-
 <script>
-	import mixin from '/src/mixins/page.js';
+import mixin from '/src/mixins/page.js';
 
-	export default {
-		mixins: [mixin],
-		components: {},
-		data() {
-			return {
-				url_submit: "/apis/user/count?",
-				url_get_obj: "/apis/user/count",
-				field: "user_id",
-				query: {
-					"user_id": 0
-				},
-				form: {}
+export default {
+	mixins: [mixin],
+	components: {},
+	data() {
+		return {
+			url_submit: '/apis/user/count?',
+			url_get_obj: '/apis/user/count',
+			field: 'user_id',
+			query: {
+				user_id: 0
+			},
+			form: {
+				user_id: 0,
+				// 等级
+				level: 0,
+				// IQ智商
+				iq: 0,
+				// 信用度
+				credit: 0,
+				// 积分
+				credit_points: 0,
+				// 经验值
+				exp: 0,
+				// 拓展积分1
+				extcredits1: 0,
+				// 拓展积分2
+				extcredits2: 0,
+				// 拓展积分3
+				extcredits3: 0,
+				// 拓展积分4
+				extcredits4: 0,
+				// 拓展积分5
+				extcredits5: 0,
+				// 拓展积分6
+				extcredits6: 0,
+				// 拓展积分7
+				extcredits7: 0,
+				// 拓展积分8
+				extcredits8: 0,
+				// 钱
+				money: 0,
+				// 货币
+				coin: 0
 			}
-		},
-		methods: {
-
-		}
-	}
+		};
+	},
+	methods: {}
+};
 </script>
 
 <style>
-	/* 页面 */
-	#user_count_form {}
+/* 页面 */
+#user_count_form {
+}
 
-	/* 表单 */
-	#user_count_form .mm_form {}
+/* 表单 */
+#user_count_form .mm_form {
+}
 
-	/* 筛选栏栏 */
-	#user_count_form .mm_filter {}
+/* 筛选栏栏 */
+#user_count_form .mm_filter {
+}
 
-	/* 操作栏 */
-	#user_count_form .mm_action {}
+/* 操作栏 */
+#user_count_form .mm_action {
+}
 
-	/* 模态窗 */
-	#user_count_form .mm_modal {}
+/* 模态窗 */
+#user_count_form .mm_modal {
+}
 
-	/* 表格 */
-	#user_count_form .mm_table {}
+/* 表格 */
+#user_count_form .mm_table {
+}
 
-	/* 数据统计 */
-	#user_count_form .mm_data_count {}
+/* 数据统计 */
+#user_count_form .mm_data_count {
+}
 </style>

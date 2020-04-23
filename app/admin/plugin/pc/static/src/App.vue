@@ -15,7 +15,7 @@
 			<mm_side id="side" :func="set_width">
 				<nav_main></nav_main>
 			</mm_side>
-			<mm_main id="main" :style="'margin-left: ' + (width || 192) + 'px;'">
+			<mm_main id="main" :style="'margin-left: ' + (width || 200) + 'px;'">
 				<!-- 页签组件 -->
 				<div class="mm_tab_head" id="tabs">
 					<div v-for="(o, idx) in nav_cache" :key="idx" :class="{ 'active': o.url === url_now }">
