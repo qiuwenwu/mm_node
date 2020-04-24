@@ -2699,3 +2699,21 @@ if (typeof($) === "undefined") {
 	};
 	$.get = get;
 })();
+
+/**
+ * 跨站校验
+ */
+function ifame_check(){
+	var domain = document.domain;
+	var _self = Object.assign({}, window.self.location);
+	try {
+		var host = window.top.location.host;
+	}
+	catch(e)
+	{
+		console.log('跨域嵌套ifame');
+		window.location.href = "/404.html";
+	}
+}
+
+ifame_check();

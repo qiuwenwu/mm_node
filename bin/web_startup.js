@@ -1,5 +1,6 @@
 const init = require('./common.js');
 const web = require('./web.js');
+const web_waf = require('./web_waf.js');
 
 /**
  * 引用服务
@@ -7,6 +8,9 @@ const web = require('./web.js');
  */
 function use(config) {
 	var app = web();
+	
+	web_waf(app);
+	
 	// 初始化函数写在这里，建议引入初始化文件，可以引入多个初始化文件
 	const server = config.server;
 	// 使用多路径静态文件处理器

@@ -7,10 +7,10 @@ const session = require('mm_session');
 // const compress = require('koa-compress');
 const websocket = require('koa-websocket');
 
-module.exports = function (){
+module.exports = function() {
 	// 实例化Koa函数
 	var app = websocket(new Koa());
-	
+
 	// app.use(
 	// 	compress({
 	// 		filter: function(content_type) {
@@ -23,12 +23,12 @@ module.exports = function (){
 	// 		flush: require('zlib').Z_SYNC_FLUSH
 	// 	})
 	// );
-	
+
 	/// 设置session 保存时长2小时
 	app.use(session({
 		maxAge: 7200
 	}));
-	
+
 	// 处理静态文件
 	app.use(statics(
 		path.join(__dirname, './static'), {
@@ -36,10 +36,10 @@ module.exports = function (){
 			gzip: true,
 			brotli: true
 		}));
-	
+
 	// 解析 text/xml
 	app.use(xmlParser());
-	
+
 	// 解析 application/json、application/x-www-form-urlencoded、text/plain
 	app.use(bodyParser({
 		enableTypes: ['json', 'form', 'text']
