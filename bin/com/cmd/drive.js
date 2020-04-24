@@ -2,13 +2,13 @@ const Item = require('mm_machine').Item;
 const Param = require('../param/drive.js');
 
 /**
- * @description 指令驱动类
+ * 指令驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */
@@ -36,7 +36,7 @@ class Drive extends Item {
 			"sort": 1000,
 			// 分组
 			"group": "default",
-			// 类型: query便民查询，action行动，game游戏，orther其他，为空表示未分类
+			// 类型: query便民查询，action执行，game游戏，orther其他，为空表示未分类
 			"type": "",
 			// 匹配关键词
 			"match": [],
@@ -155,7 +155,7 @@ Drive.prototype.not_match = function(content, db) {
 
 
 /**
- * @description 抽取正文
+ * 抽取正文
  * @param {String} content 正文
  * @param {Object} db 数据管理器
  * @return {Object} 返回过滤后的参数
@@ -176,7 +176,7 @@ Drive.prototype.extract = async function(content, db) {
 
 
 /**
- * @description 移除关键词
+ * 移除关键词
  * @param {String} content 正文
  * @param {Object} db 数据管理器
  * @return {Object} 返回过滤后的参数
@@ -195,7 +195,7 @@ Drive.prototype.remove = async function(content, db) {
 };
 
 /**
- * @description 修改提示
+ * 修改提示
  * @param {Object} msg 消息上下文
  * @param {Object} db 数据管理器
  * @return {Object} 返回过滤后的参数
@@ -356,10 +356,10 @@ Drive.prototype.update = async function(msg, db, stage) {
 };
 
 /**
- * 4. 行动阶段
+ * 4. 执行阶段
  * @param {Object} msg 消息上下文
  * @param {Object} db 数据管理器
- * @return {Object} 返回行动结果
+ * @return {Object} 返回执行结果
  */
 Drive.prototype.main = async function(msg, db) {
 	return "你好";
@@ -369,7 +369,7 @@ Drive.prototype.main = async function(msg, db) {
  * 5. 结束阶段 用来判断是否结束会话
  * @param {Object} msg 消息上下文
  * @param {Object} db 数据管理器
- * @param {Object} ret 行动结果
+ * @param {Object} ret 执行结果
  * @return {Boolean} 返回会话结果
  */
 Drive.prototype.end = async function(msg, db, ret) {
@@ -388,10 +388,10 @@ Drive.prototype.end = async function(msg, db, ret) {
 };
 
 /**
- * @description 执行但不记录指令
+ * 执行但不记录指令
  * @param {Object} msg 消息上下文
  * @param {Object} db 数据管理器
- * @return {Object} 返回行动结果
+ * @return {Object} 返回执行结果
  */
 Drive.prototype.run_cmd = async function(msg, db) {
 	var ret;
@@ -405,10 +405,10 @@ Drive.prototype.run_cmd = async function(msg, db) {
 
 
 /**
- * @description 执行
+ * 执行
  * @param {Object} msg 消息上下文
  * @param {Object} db 数据管理器
- * @return {Object} 返回行动结果
+ * @return {Object} 返回执行结果
  */
 Drive.prototype.run_first = async function(msg, db) {
 	var ret;
@@ -446,10 +446,10 @@ Drive.prototype.run_after = async function(msg, db, ret) {
 };
 
 /**
- * @description 执行
+ * 执行
  * @param {Object} param 状态参数
  * @param {Object} db 数据管理器
- * @return {Object} 返回行动结果
+ * @return {Object} 返回执行结果
  */
 Drive.prototype.run = async function(msg, db) {
 
@@ -469,7 +469,7 @@ Drive.prototype.run = async function(msg, db) {
 		}
 
 		if (!ret) {
-			// 第五步, 行动阶段
+			// 第五步, 执行阶段
 			ret = await this.main(msg, db);
 
 			// 第六步, 结束会话阶段

@@ -2,13 +2,13 @@ const Index = require('mm_machine').Index;
 const Drive = require('./drive');
 
 /**
- * @description Plugin插件类
+ * Plugin插件类
  * @extends {Index}
  * @class 
  */
 class Plugin extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {Object} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -22,7 +22,7 @@ class Plugin extends Index {
 }
 
 /**
- * @description 执行程序
+ * 执行程序
  * @param {Object} param1 参数1
  * @param {Object} param2 参数2
  * @return {Object} 返回执行结果
@@ -42,7 +42,7 @@ Plugin.prototype.run = function(param1, param2) {
 };
 
 /**
- * @description 聊天（通过聊天的方式驱动插件, 用于机器人开发）
+ * 聊天（通过聊天的方式驱动插件, 用于机器人开发）
  * @param {String} from_user 发送消息人
  * @param {String} to_user 接收消息人
  * @param {String} content 内容
@@ -67,7 +67,7 @@ Plugin.prototype.chat = async function(from_user, to_user, group, content, type,
 };
 
 /**
- * @description 指令（类似命令提示符）
+ * 指令（类似命令提示符）
  * @param {String} content 指令内容
  * @return {String} 执行结果
  */
@@ -90,7 +90,7 @@ Plugin.prototype.cmd = async function(content) {
 
 
 /**
- * @description 执行插件方法
+ * 执行插件方法
  * @param {String} name 插件名称
  * @param {String} method 方法名称
  * @param {Object} option 配置参数
@@ -113,7 +113,7 @@ Plugin.prototype.exec = function(name, method, option) {
 };
 
 /**
- * @description 初始化插件
+ * 初始化插件
  * @param {Object} option 配置参数
  * @return {String} 执行结果
  */
@@ -131,7 +131,7 @@ Plugin.prototype.sort = function() {
 };
 
 /**
- * @description 加载插件
+ * 加载插件
  * @param {String} path 检索路径
  * @param {Boolean} isApp 是否APP
  */
@@ -179,14 +179,14 @@ exports.Plugin = Plugin;
 
 
 /**
- * @description 创建全局管理器
+ * 创建全局管理器
  */
 if (!$.pool.plugin) {
 	$.pool.plugin = {};
 }
 
 /**
- * @description plugin管理器, 用于管理插件
+ * plugin管理器, 用于管理插件
  * @param {string} scope 作用域
  * @param {string} title 标题
  * @return {Object} 返回一个缓存类

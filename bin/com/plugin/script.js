@@ -5,11 +5,11 @@
  */
 
 /**
- * @description 插件对象
+ * 插件对象
  */
 module.exports = {
 	/**
-	 * @description 初始化
+	 * 初始化
 	 * @param {Object} option 配置参数
 	 * @return {String} 成功返回null, 否则返回错误提示
 	 */
@@ -19,7 +19,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 安装
+	 * 安装
 	 * @param {Object} option 配置参数
 	 * @return {String} 成功返回null,否则返回错误提示
 	 */
@@ -29,7 +29,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 卸载
+	 * 卸载
 	 * @param {Object} option 配置参数
 	 * @return {String} 成功返回null,否则返回错误提示
 	 */
@@ -39,7 +39,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 更新
+	 * 更新
 	 * @param {Object} option 配置参数
 	 * @return {String} 成功返回null, 否则返回错误提示
 	 */
@@ -49,7 +49,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 启动
+	 * 启动
 	 * @param {Object} opiton 配置参数
 	 * @return {String} 成功返回null,否则返回错误提示
 	 */
@@ -59,7 +59,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 暂停
+	 * 暂停
 	 * @param {Object} opiton 配置参数
 	 * @return {String} 成功返回null,否则返回错误提示
 	 */
@@ -69,7 +69,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 结束
+	 * 结束
 	 * @param {Object} opiton 配置参数
 	 * @return {String} 成功返回null,否则返回错误提示
 	 */
@@ -79,7 +79,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 插件
+	 * 插件
 	 * @param {String} item 插件项
 	 * @return {Object} 旗下插件和信息
 	 */
@@ -95,7 +95,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 主程序
+	 * 主程序
 	 * @param {Object} param1 参数1
 	 * @param {Object} param2 参数2
 	 * @return {Object} 返回执行结果
@@ -106,7 +106,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 指令（类似命令提示符）
+	 * 指令（类似命令提示符）
 	 * @param {String} content 指令内容
 	 * @return {String} 执行结果
 	 */
@@ -116,7 +116,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description API接口（用于其他插件调用该插件时）
+	 * API接口（用于其他插件调用该插件时）
 	 * @param {Object} ctx HTTP上下文
 	 * @param {Object} db 数据库管理器
 	 * @return {Object} 执行结果
@@ -127,7 +127,7 @@ module.exports = {
 	},
 
 	/**
-	 * @description 聊天（通过聊天的方式驱动插件, 用于机器人开发）
+	 * 聊天（通过聊天的方式驱动插件, 用于机器人开发）
 	 * @param {String} from_user 发送消息人
 	 * @param {String} to_user 接收消息人
 	 * @param {String} content 内容

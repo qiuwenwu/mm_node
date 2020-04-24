@@ -1,6 +1,6 @@
 
 /**
- * @description 执行前, 用于过滤参数
+ * 执行前, 用于过滤参数
  * @param {Object} params 参数对象，包含query和body 如：{ query: {} body: {} }
  * @return {Object} 过滤后的参数
  */
@@ -9,7 +9,7 @@ function before(params) {
 };
 
 /**
- * @description 验证, 用于判断是否执行
+ * 验证, 用于判断是否执行
  * @param {Object} params 参数对象，包含query和body 如：{ query: {} body: {} }
  * @return {Boolean} 验证通过返回true, 失败返回false
  */
@@ -18,7 +18,7 @@ function check(params) {
 };
 
 /**
- * @description 执行后 可用于附加执行
+ * 执行后 可用于附加执行
  * @param {Object} params 参数对象，包含query和body 如：{ query: {} body: {} }
  * @param {Object} sql SQL模板对象
  * @param {Object} ret 最终执行结果
@@ -28,7 +28,7 @@ function after(params, sql, ret) {
 };
 
 /**
- * @description 执行主函数
+ * 执行主函数
  * @param {Object} params 参数对象，包含query和body 如：{ query: {} body: {} }
  * @return {Object} 返回执行结果
  */

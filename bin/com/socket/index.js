@@ -2,13 +2,13 @@ const Index = require('mm_machine').Index;
 const Drive = require('./drive');
 
 /**
- * @description 任务类
+ * 任务类
  * @extends {Index}
  * @class
  */
 class Socket extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {Object} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -23,7 +23,7 @@ class Socket extends Index {
 }
 
 /**
- * @description 处理socket请求
+ * 处理socket请求
  * @param {Object} ctx 请求上下文
  * @param {Function} next 跳过当前, 然后继续执行函数
  */
@@ -40,7 +40,7 @@ Socket.prototype.run = async function(ctx, next) {
 };
 
 /**
- * @description 加载插件
+ * 加载插件
  * @param {String} path 检索路径
  * @param {Boolean} isApp 是否APP
  */

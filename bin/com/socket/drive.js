@@ -6,13 +6,13 @@ if (!$.methods) {
 }
 
 /**
- * @description websocket驱动类
+ * websocket驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */
@@ -48,7 +48,7 @@ class Drive extends Item {
 }
 
 /**
- * @description 新建脚本
+ * 新建脚本
  * @param {String} 文件
  */
 Drive.prototype.new_script = function(file) {
@@ -67,7 +67,7 @@ Drive.prototype.new_script = function(file) {
 };
 
 /**
- * @description 新建配置
+ * 新建配置
  * @param {String} 文件
  */
 Drive.prototype.new_config = function(file) {
@@ -86,7 +86,7 @@ Drive.prototype.new_config = function(file) {
 };
 
 /**
- * @description 获取session ID
+ * 获取session ID
  * @param {Object} ctx HTTP上下文
  * @return {String} 返回用户的uuid
  */
@@ -341,7 +341,7 @@ Drive.prototype.init = async function init() {
 };
 
 /**
- * @description 加载完成时
+ * 加载完成时
  */
 Drive.prototype.load_after = function() {
 	this.init();

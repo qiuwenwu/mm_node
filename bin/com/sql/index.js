@@ -2,13 +2,13 @@ const Index = require('mm_machine').Index;
 const Drive = require('./drive');
 
 /**
- * @description Sql语句拓展类
+ * Sql语句拓展类
  * @extends {Index}
  * @class
  */
 class Sql extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -22,7 +22,7 @@ class Sql extends Index {
 }
 
 /**
- * @description 加载
+ * 加载
  * @param {String} path 加载的路径
  */
 Sql.prototype.load = function(path) {
@@ -48,14 +48,14 @@ Sql.prototype.load = function(path) {
 };
 
 /**
- * @description 排序
+ * 排序
  */
 Sql.prototype.sort = function() {
 	this.list.sortBy('asc', 'name');
 };
 
 /**
- * @description 执行sql
+ * 执行sql
  * @param {String} name 名称
  * @param {Object} query 查询参数
  * @param {Object} body 修改参数
@@ -74,14 +74,14 @@ exports.Sql = Sql;
 
 
 /**
- * @description Sql模板池
+ * Sql模板池
  */
 if (!$.pool.sql) {
 	$.pool.sql = {};
 }
 
 /**
- * @description Sql管理器,用于创建缓存
+ * Sql管理器,用于创建缓存
  * @sql {string} scope 作用域
  * @param {string} title 标题
  * @return {Object} 返回一个缓存类

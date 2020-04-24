@@ -3,9 +3,8 @@
 	"name": "home_tv",
 	"title": "电视端",
 	"description": "用于访问电视端页面",
-	"stage": "action",
-	"tense": "main",
-	"func_file": "./action_main.js",
+	"stage": "main",
+	"func_file": "./main.js",
 	"sort": 50,
 	"end": true
 }

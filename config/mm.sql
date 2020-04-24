@@ -380,7 +380,7 @@ CREATE TABLE `coin_analyse`  (
   `presage_next` smallint(2) NOT NULL DEFAULT 0 COMMENT '预示后市：[-99,99]之后涨跌走势评分，负分看跌，正分看涨',
   `code` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '数字货币代码：[0,16]',
   `tip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分析提示：[0,255]技术分析名称',
-  `action` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '行动方式：[0,16]买、卖、留',
+  `action` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '执行方式：[0,16]买、卖、留',
   `predict` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '预言：[0,255]告知近日和将来走势',
   PRIMARY KEY (`analyse_id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '数字货币分析：' ROW_FORMAT = Dynamic;
@@ -881,7 +881,7 @@ CREATE TABLE `stock_analyse`  (
   `presage_next` smallint(2) NOT NULL DEFAULT 0 COMMENT '预示后市：[-99,99]之后涨跌走势评分，负分看跌，正分看涨',
   `code` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '股票代码：[0,16]',
   `tip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '分析提示：[0,255]技术分析名称',
-  `action` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '行动方式：[0,16]买、卖、留',
+  `action` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '执行方式：[0,16]买、卖、留',
   `predict` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '预言：[0,255]告知近日和将来走势',
   PRIMARY KEY (`analyse_id`) USING BTREE
 ) ENGINE = MyISAM AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '股票分析：' ROW_FORMAT = Dynamic;

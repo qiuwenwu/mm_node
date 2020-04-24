@@ -2,13 +2,13 @@ const Index = require('mm_machine').Index;
 const Drive = require('./drive');
 
 /**
- * @description Event事件类
+ * Event事件类
  * @extends {Index}
  * @class
  */
 class Event extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {Object} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -18,60 +18,43 @@ class Event extends Index {
 		this.Drive = Drive;
 		this.type = "event";
 		this.title = title;
-		
+
 		/* ===  验证  === */
-		/// 验证前
-		this.check_before = [];
-		/// 验证主
-		this.check_main = [];
-		/// 验证后
-		this.check_after = [];
-		/* ===  执行  === */
-		// 行动前
-		this.action_before = [];
-		// 行动主
-		this.action_main = [];
-		// 行动后
-		this.action_after = [];
-		/* ===  渲染  === */
-		// 渲染前
-		this.render_before = [];
-		// 渲染主
-		this.render_main = [];
+		// 验证前
+		this.list_before = [];
+		// 验证
+		this.list_check = [];
+		// 执行
+		this.list_main = [];
+		// 渲染
+		this.list_render = [];
 		// 渲染后
-		this.render_after = [];
+		this.list_after = [];
 	}
 }
 
 /**
- * @description 清除事件
- * @param {String} situation 事态
+ * 清除事件
+ * @param {String} stage 阶段
  */
-Event.prototype.clear = function(situation) {
-	if (situation) {
-		if (this[situation]) {
-			this[situation] = [];
+Event.prototype.clear = function(stage) {
+	if (stage) {
+		if (this[stage]) {
+			this[stage] = [];
 		} else {
-			$.log.debug('清空失败，事态{0}不存在！'.replace("{0}", situation));
+			$.log.debug('清空失败，事件发展阶段{0}不存在！'.replace("{0}", stage));
 		}
 	} else {
-		/// 验证前
-		this.check_before = [];
-		this.check_main = [];
-		this.check_after = [];
-		/* ===  执行  === */
-		this.action_before = [];
-		this.action_main = [];
-		this.action_after = [];
-		/* ===  渲染  === */
-		this.render_before = [];
-		this.render_main = [];
-		this.render_after = [];
+		this.list_before = [];
+		this.list_check = [];
+		this.list_main = [];
+		this.list_render = [];
+		this.list_after = [];
 	}
 };
 
 /**
- * @description 加载事件
+ * 加载事件
  * @param {String} path 加载的路径
  */
 Event.prototype.load = function(path) {
@@ -100,7 +83,7 @@ Event.prototype.load = function(path) {
 			if (obj) {
 				if (obj.constructor == Array) {
 					obj.map(function(o) {
-						var key = o.stage + '_' + o.tense;
+						var key = 'list_' + o.stage;
 						var list = _this[key];
 						if (list) {
 							// 实例化一个驱动
@@ -111,7 +94,7 @@ Event.prototype.load = function(path) {
 						}
 					});
 				} else {
-					var key = obj.stage + '_' + obj.tense;
+					var key = 'list_' + obj.stage;
 					var list = _this[key];
 					if (list) {
 						var drive = new Drive(dir);
@@ -128,8 +111,8 @@ Event.prototype.load = function(path) {
 	});
 };
 /**
- * @description 事件排序
- * @param {String} situation 事态
+ * 事件排序
+ * @param {String} list 列表
  */
 Event.prototype.sort_sub = function(list) {
 	list.sort(function(o1, o2) {
@@ -138,41 +121,34 @@ Event.prototype.sort_sub = function(list) {
 };
 
 /**
- * @description 事件排序
- * @param {String} situation 事态
+ * 事件排序
+ * @param {String} stage 阶段
  */
-Event.prototype.sort = function(situation) {
-	if (situation) {
-		if (this[situation]) {
-			this.sort_sub(this[situation]);
+Event.prototype.sort = function(stage) {
+	if (stage) {
+		if (this[stage]) {
+			this[stage] = [];
 		} else {
-			$.log.debug('排序失败，事态{0}不存在！'.replace("{0}", situation));
+			$.log.debug('清空失败，事件发展阶段{0}不存在！'.replace("{0}", stage));
 		}
 	} else {
-		/// 验证前
-		this.sort_sub(this.check_before);
-		this.sort_sub(this.check_main);
-		this.sort_sub(this.check_after);
-		/* ===  执行  === */
-		this.sort_sub(this.action_before);
-		this.sort_sub(this.action_main);
-		this.sort_sub(this.action_after);
-		/* ===  渲染  === */
-		this.sort_sub(this.render_before);
-		this.sort_sub(this.render_main);
-		this.sort_sub(this.render_after);
+		this.sort_sub(this.list_before);
+		this.sort_sub(this.list_check);
+		this.sort_sub(this.list_main);
+		this.sort_sub(this.list_render);
+		this.sort_sub(this.list_after);
 	}
 };
 
 /**
- * @description 执行函数
+ * 执行函数
  * @param {Array} list 列表
  * @param {String} target 目标
  * @param {Object} ctx 请求上下文
  * @param {Object} db 数据管理器
  * @return {Object} 执行结果
  */
-Event.prototype.exec_sub = async function(list, target, ctx, db) {
+Event.prototype.run_sub = async function(list, target, ctx, db) {
 	for (var i = 0, o; o = list[i++];) {
 		if (o.onOff && target.has(o.config.target)) {
 			var ret = await o.run(ctx, db);
@@ -188,27 +164,63 @@ Event.prototype.exec_sub = async function(list, target, ctx, db) {
 };
 
 /**
- * @description 执行阶段
- * @param {String} stage 阶段
+ * 之前
  * @param {String} target 目标
  * @param {Object} ctx 请求上下文
  * @param {Object} db 数据管理器
  * @return {Object} 执行结果
  */
-Event.prototype.exec = async function(stage, target, ctx, db) {
-	var ret = await this.exec_sub(this[stage + '_before'], target, ctx, db);
-	if(!ret){
-		ret = await this.exec_sub(this[stage + '_main'], target, ctx, db);
-		this.exec_sub(this[stage + '_after'], target, ctx, db);
-	}
-	else {
-		db.ret = ret;
-	}
-	return ret;
+Event.prototype.before = async function(target, ctx, db) {
+	return await this.run_sub(this.list_before, target, ctx, db);
 };
 
 /**
- * @description 执行事件
+ * 验证
+ * @param {String} target 目标
+ * @param {Object} ctx 请求上下文
+ * @param {Object} db 数据管理器
+ * @return {Object} 执行结果
+ */
+Event.prototype.check = async function(target, ctx, db) {
+	return await this.run_sub(this.list_check, target, ctx, db);
+};
+
+
+/**
+ * 主要
+ * @param {String} target 目标
+ * @param {Object} ctx 请求上下文
+ * @param {Object} db 数据管理器
+ * @return {Object} 执行结果
+ */
+Event.prototype.main = async function(target, ctx, db) {
+	return await this.run_sub(this.list_main, target, ctx, db);
+};
+
+/**
+ * 渲染
+ * @param {String} target 目标
+ * @param {Object} ctx 请求上下文
+ * @param {Object} db 数据管理器
+ * @return {Object} 执行结果
+ */
+Event.prototype.render = async function(target, ctx, db) {
+	return await this.run_sub(this.list_render, target, ctx, db);
+};
+
+/**
+ * 之后
+ * @param {String} target 目标
+ * @param {Object} ctx 请求上下文
+ * @param {Object} db 数据管理器
+ * @return {Object} 执行结果
+ */
+Event.prototype.after = async function(target, ctx, db) {
+	return await this.run_sub(this.list_after, target, ctx, db);
+};
+
+/**
+ * 执行事件
  * @param {String} target 目标
  * @param {Object} ctx 请求上下文
  * @param {Object} db 数据管理器
@@ -220,12 +232,17 @@ Event.prototype.run = async function(target, ctx, db) {
 			ret: null
 		};
 	}
-	
-	var ret = await this.exec('check', target, ctx, db);
+	var ret = await this.before(target, ctx, db);
 	if (!ret) {
-		ret = await this.exec('action', target, ctx, db);
+		ret = await this.check(target, ctx, db);
+		if (!ret) {
+			ret = await this.main(target, ctx, db);
+		}
+		ret = await this.render(target, ctx, db);
+		if (ret) {
+			ret = await this.after(target, ctx, db);
+		}
 	}
-	ret = await this.exec('render', target, ctx, db);
 	return ret;
 };
 
@@ -235,14 +252,14 @@ Event.prototype.run = async function(target, ctx, db) {
 exports.Event = Event;
 
 /**
- * @description Event事件池
+ * Event事件池
  */
 if (!$.pool.event) {
 	$.pool.event = {};
 }
 
 /**
- * @description Event管理器，用于创建缓存
+ * Event管理器，用于创建缓存
  * @param {String} scope 作用域
  * @param {string} title 标题
  * @return {Object} 返回一个缓存类

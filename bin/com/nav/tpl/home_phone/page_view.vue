@@ -17,7 +17,7 @@
 		},
 		methods: {
 			/**
-			 * @description 查询数据
+			 * 查询数据
 			 * @param {Function} func 回调函数
 			 */
 			get: function get(query, func) {

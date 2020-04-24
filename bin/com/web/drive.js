@@ -1,13 +1,13 @@
 const Item = require('mm_machine').Item;
 
 /**
- * @description 网站SEO驱动类
+ * 网站SEO驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */

@@ -4,7 +4,7 @@ const Drive = require('./drive');
 if ($.timer) {
 	$.timer.add({
 		/**
-		 * @description 缓存
+		 * 缓存
 		 */
 		name: "task_timer",
 		/**
@@ -20,13 +20,13 @@ if ($.timer) {
 }
 
 /**
- * @description 任务类
+ * 任务类
  * @extends {Index}
  * @class
  */
 class Task extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {Object} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -40,7 +40,7 @@ class Task extends Index {
 }
 
 /**
- * @description 执行任务
+ * 执行任务
  */
 Task.prototype.run = async function() {
 	var lt = this.list;
@@ -50,7 +50,7 @@ Task.prototype.run = async function() {
 };
 
 /**
- * @description 加载项
+ * 加载项
  * @param {String} dir 文件路径
  * @param {Object} cg 配置参数
  * @param {String} file 配置文件
@@ -64,7 +64,7 @@ Task.prototype.load_item = function(dir, cg, file) {
 };
 
 /**
- * @description 加载列表
+ * 加载列表
  * @param {Array} list 文件列表
  */
 Task.prototype.load_list = function(list) {
@@ -95,14 +95,14 @@ Task.prototype.load_list = function(list) {
 exports.Task = Task;
 
 /**
- * @description Task模板池
+ * Task模板池
  */
 if (!$.pool.task) {
 	$.pool.task = {};
 }
 
 /**
- * @description Task管理器,用于创建缓存
+ * Task管理器,用于创建缓存
  * @task {String} scope 作用域
  * @param {string} title 标题
  * @return {Object} 返回一个缓存类

@@ -2,13 +2,13 @@ const Index = require('mm_machine').Index;
 const Drive = require('./drive');
 
 /**
- * @description Nav导航类
+ * Nav导航类
  * @extends {Index}
  * @class
  */
 class Nav extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {Object} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -74,7 +74,7 @@ Nav.prototype.sort = async function() {
 };
 
 /**
- * @description 加载
+ * 加载
  * @param {String} path 加载的路径
  */
 Nav.prototype.load = function(path) {
@@ -87,7 +87,7 @@ Nav.prototype.load = function(path) {
 };
 
 /**
- * @description 加载列表
+ * 加载列表
  * @param {Array} list 文件列表
  */
 Nav.prototype.load_list = function(list) {
@@ -150,14 +150,14 @@ exports.Nav = Nav;
 
 
 /**
- * @description 创建全局管理器
+ * 创建全局管理器
  */
 if (!$.pool.nav) {
 	$.pool.nav = {};
 }
 
 /**
- * @description nav管理器,用于创建缓存
+ * nav管理器,用于创建缓存
  * @param {string} scope 作用域
  * @param {string} title 标题
  * @return {Object} 返回一个缓存类

@@ -1,13 +1,13 @@
 const Item = require('mm_machine').Item;
 
 /**
- * @description Plugin插件驱动类
+ * Plugin插件驱动类
  * @extends {Item}
  * @class 
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */
@@ -62,7 +62,7 @@ class Drive extends Item {
 }
 
 /**
- * @description 新建脚本
+ * 新建脚本
  * @param {String} 文件
  */
 Drive.prototype.new_script = function(file) {
@@ -89,7 +89,7 @@ Drive.prototype.new_script = function(file) {
 };
 
 /**
- * @description 新建配置
+ * 新建配置
  * @param {String} 文件
  */
 Drive.prototype.new_config = function(file) {
@@ -116,7 +116,7 @@ Drive.prototype.new_config = function(file) {
 };
 
 /**
- * @description 设置语言
+ * 设置语言
  * @param {Sting} lang
  * @return {String} 成功返回null,否则返回错误提示
  */
@@ -140,7 +140,7 @@ Drive.prototype.set_lang = function(lang) {
 };
 
 /**
- * @description 初始化
+ * 初始化
  * @param {Object} option 配置参数
  * @return {String} 成功返回null, 否则返回错误提示
  */
@@ -150,7 +150,7 @@ Drive.prototype.init = function(option) {
 };
 
 /**
- * @description 更新
+ * 更新
  * @param {Object} option 配置参数
  * @return {String} 成功返回null, 否则返回错误提示
  */
@@ -160,7 +160,7 @@ Drive.prototype.update = function(option) {
 };
 
 /**
- * @description 安装
+ * 安装
  * @param {Object} option 配置参数
  * @return {String} 成功返回null,否则返回错误提示
  */
@@ -170,7 +170,7 @@ Drive.prototype.install = function(option) {
 };
 
 /**
- * @description 卸载
+ * 卸载
  * @param {Object} option 配置参数
  * @return {String} 成功返回null,否则返回错误提示
  */
@@ -180,7 +180,7 @@ Drive.prototype.uninstall = function(option) {
 };
 
 /**
- * @description 启动
+ * 启动
  * @param {Object} opiton 配置参数
  * @return {String} 成功返回null,否则返回错误提示
  */
@@ -190,7 +190,7 @@ Drive.prototype.start = function(opiton) {
 };
 
 /**
- * @description 暂停
+ * 暂停
  * @param {Object} opiton 配置参数
  * @return {String} 成功返回null,否则返回错误提示
  */
@@ -200,7 +200,7 @@ Drive.prototype.stop = function(opiton) {
 };
 
 /**
- * @description 结束
+ * 结束
  * @param {Object} opiton 配置参数
  * @return {String} 成功返回null,否则返回错误提示
  */
@@ -210,7 +210,7 @@ Drive.prototype.end = function(opiton) {
 };
 
 /**
- * @description API接口（用于其他插件调用该插件时）
+ * API接口（用于其他插件调用该插件时）
  * @param {Object} ctx HTTP上下文
  * @param {Object} db 数据库管理器
  * @return {Object} 执行结果
@@ -221,7 +221,7 @@ Drive.prototype.api = function(ctx, db) {
 };
 
 /**
- * @description 商店（用于下载插件相关模块）
+ * 商店（用于下载插件相关模块）
  * @param {String} item 插件项
  * @return {String} 成功返回null,否则返回错误提示
  */
@@ -231,7 +231,7 @@ Drive.prototype.store = function(item) {
 };
 
 /**
- * @description 插件
+ * 插件
  * @param {String} item 插件项
  * @return {Object} 旗下插件和信息
  */
@@ -240,7 +240,7 @@ Drive.prototype.plugin = function(item) {
 };
 
 /**
- * @description 帮助（讲解插件使用方法）
+ * 帮助（讲解插件使用方法）
  * @param {String} item 帮助项
  * @return {String} 返回使用方法明细
  */
@@ -250,7 +250,7 @@ Drive.prototype.help = function(item) {
 };
 
 /**
- * @description 主程序
+ * 主程序
  * @param {Object} param1 参数1
  * @param {Object} param2 参数2
  * @return {Object} 返回执行结果
@@ -260,7 +260,7 @@ Drive.prototype.main = function(param1, param2) {
 };
 
 /**
- * @description 执行程序
+ * 执行程序
  * @param {Object} param1 参数1
  * @param {Object} param2 参数2
  * @return {Object} 返回执行结果
@@ -270,7 +270,7 @@ Drive.prototype.run = function(param1, param2) {
 };
 
 /**
- * @description 指令（类似命令提示符）
+ * 指令（类似命令提示符）
  * @param {String} content 指令内容
  * @return {String} 执行结果
  */
@@ -280,7 +280,7 @@ Drive.prototype.cmd = function(content) {
 };
 
 /**
- * @description 聊天（通过聊天的方式驱动插件, 用于机器人开发）
+ * 聊天（通过聊天的方式驱动插件, 用于机器人开发）
  * @param {String} from_user 发送消息人
  * @param {String} to_user 接收消息人
  * @param {String} content 内容
@@ -296,7 +296,7 @@ Drive.prototype.chat = async function(from_user, to_user, group, content, type, 
 };
 
 /**
- * @description 指令（类似命令提示符）
+ * 指令（类似命令提示符）
  * @param {String} content 指令内容
  * @return {String} 执行结果
  */
@@ -312,7 +312,7 @@ Drive.prototype.run_cmd = async function(content) {
 };
 
 /**
- * @description 聊天（通过聊天的方式驱动插件, 用于机器人开发）
+ * 聊天（通过聊天的方式驱动插件, 用于机器人开发）
  * @param {String} from_user 发送消息人
  * @param {String} to_user 接收消息人
  * @param {String} content 内容
@@ -339,7 +339,7 @@ Drive.prototype.run_chat = async function(from_user, to_user, content, group, ty
 };
 
 /**
- * @description 执行程序
+ * 执行程序
  * @param {Object} param1 参数1
  * @param {Object} param2 参数2
  * @return {Object} 返回执行结果

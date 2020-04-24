@@ -7,13 +7,13 @@ if (!$.dict.user_id) {
 }
 
 /**
- * @description db数据库开发驱动类
+ * db数据库开发驱动类
  * @extends {Item}
  * @class 
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */
@@ -58,7 +58,7 @@ class Drive extends Item {
 }
 
 /**
- * @description 创建字段模型
+ * 创建字段模型
  * @param {Object} obj
  * @property {String} obj.name 字段名称
  * @param {Object} dflt_value 默认值
@@ -221,7 +221,7 @@ Drive.prototype.model = function(fields) {
 */
 
 /**
- * @description 从数据库更新配置
+ * 从数据库更新配置
  * @param {Object} db 数据库管理器
  * @param {Boolean} cover 是否覆盖文件
  */
@@ -260,7 +260,7 @@ Drive.prototype.update_config = async function(db, cover) {
 };
 
 /**
- * @description 通过配置更新数据库
+ * 通过配置更新数据库
  * @param {Object} db 数据库管理器
  * @return {String} 更新成功返回空，否则返回错误提示
  */
@@ -406,7 +406,7 @@ Drive.prototype.update_db = async function(db) {
 };
 
 /**
- * @description 更新应用，根据表生成目录结构和文件
+ * 更新应用，根据表生成目录结构和文件
  * @param {Boolean} cover 是否覆盖文件
  */
 Drive.prototype.update_app = async function(cover) {
@@ -473,7 +473,7 @@ Drive.prototype.update_app = async function(cover) {
 };
 
 /**
- * @description 更新API及相关配置文件
+ * 更新API及相关配置文件
  * @param {String} dir API存放目录
  * @param {Boolean} cover 是否覆盖文件
  */
@@ -523,7 +523,7 @@ Drive.prototype.update_api = async function(dir, cover) {
 };
 
 /**
- * @description 新建event配置文件和文件
+ * 新建event配置文件和文件
  * @param {String} dir 保存的路径
  * @param {String} path 检索路径
  * @param {String} scope 接口域
@@ -543,7 +543,7 @@ Drive.prototype.new_event = async function(dir, path, scope) {
 	// 					this.new_event(event_dir, dir_arr[0], dir_arr[1]);
 	// 				}
 
-	var f = dir + "/action_main.js";
+	var f = dir + "/main.js";
 	if (!f.hasFile()) {
 		var code = (__dirname + '/event_script.js').loadText();
 		code = code.replaceAll('{0}', path).replaceAll('{1}', scope);
@@ -552,7 +552,7 @@ Drive.prototype.new_event = async function(dir, path, scope) {
 };
 
 /**
- * @description 新建sql配置文件
+ * 新建sql配置文件
  * @param {String} client 客户端配置保存路径
  * @param {String} manage 管理端配置保存路径
  * @param {Boolean} cover 是否覆盖文件
@@ -653,7 +653,7 @@ Drive.prototype.new_sql = async function(client, manage, cover) {
 }
 
 /**
- * @description 保存sql配置
+ * 保存sql配置
  * @param {String} file 文件名
  * @param {Object} model 配置模型
  * @param {Boolean} cover 是否覆盖文件
@@ -675,7 +675,7 @@ Drive.prototype.save_file = function(file, model, cover) {
 };
 
 /**
- * @description 新建param配置文件
+ * 新建param配置文件
  * @param {String} client 客户端配置保存路径
  * @param {String} manage 管理端配置保存路径
  * @param {Boolean} cover 是否覆盖文件
@@ -935,7 +935,7 @@ Drive.prototype.isCan = function(name, arr) {
 
 
 /**
- * @description 新建api配置文件
+ * 新建api配置文件
  * @param {String} client 客户端配置保存路径
  * @param {String} manage 管理端配置保存路径
  * @param {Boolean} cover 是否覆盖文件

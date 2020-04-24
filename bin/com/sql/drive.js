@@ -1,13 +1,13 @@
 const Item = require('mm_machine').Item;
 
 /**
- * @description Sql操作驱动类
+ * Sql操作驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前路径
 	 * @constructor
 	 */
@@ -120,7 +120,7 @@ class Drive extends Item {
 }
 
 /**
- * @description 执行前, 可用于过滤参数
+ * 执行前, 可用于过滤参数
  * @param {Object} params 参数对象 (object) 包含query和body 如{ query, body }
  * @param {Object} db 数据库管理器
  * @return {Object} 过滤后的参数
@@ -130,7 +130,7 @@ Drive.prototype.before = async function(params, db) {
 };
 
 /**
- * @description 验证, 用于判断是否执行
+ * 验证, 用于判断是否执行
  * @param {Object} params 参数对象 (object) 包含query和body
  * @param {Object} db 数据管理器
  * @return {Boolean} 验证通过返回true, 失败返回false
@@ -149,7 +149,7 @@ Drive.prototype.after = async function(params, db) {
 };
 
 /**
- * @description 更新缓存
+ * 更新缓存
  * @param {Object} sql
  */
 Drive.prototype.update_cache = async function(table, sql) {
@@ -588,7 +588,7 @@ Drive.prototype.export_main = async function(db, path, name) {
 Drive.prototype.export = async function(db, query, body) {};
 
 /**
- * @description 执行模板操作
+ * 执行模板操作
  * @param {Object} params 参数对象 (object) 包含query和body
  * @param {Object} db 数据管理器
  */

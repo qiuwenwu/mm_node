@@ -2,13 +2,13 @@ const Index = require('mm_machine').Index;
 const Drive = require('./drive');
 
 /**
- * @description 参数类
+ * 参数类
  * @extends {Index}
  * @class
  */
 class Param extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -22,7 +22,7 @@ class Param extends Index {
 }
 
 /**
- * @description 加载配置
+ * 加载配置
  * @param {String} path 检索路径
  */
 Param.prototype.load = function(path) {
@@ -48,14 +48,14 @@ Param.prototype.load = function(path) {
 };
 
 /**
- * @description 排序
+ * 排序
  */
 Param.prototype.sort = function() {
 	this.list.sortBy('asc', 'name');
 };
 
 /**
- * @description 配置对象或配置路径
+ * 配置对象或配置路径
  * @param {Object} db 数据库管理器 (object) 只支持可用sql语句的数据库
  * @param {String} name 名称
  * @param {Object} query url参数
@@ -74,14 +74,14 @@ exports.Param = Param;
 
 
 /**
- * @description Param参数池
+ * Param参数池
  */
 if (!$.pool.param) {
 	$.pool.param = {};
 }
 
 /**
- * @description Param管理器,用于创建缓存
+ * Param管理器,用于创建缓存
  * @param {string} scope 作用域
  * @param {string} title 标题
  * @return {Object} 返回一个缓存类

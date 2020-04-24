@@ -3,9 +3,8 @@
 	"name": "activity_admin_api",
 	"title": "活动管理端调用的接口事件",
 	"description": "用于管理活动时调用的接口",
-	"stage": "action",
-	"tense": "main",
-	"func_file": "./action_main.js",
+	"stage": "main",
+	"func_file": "./main.js",
 	"sort": 99,
 	"end": true
 }

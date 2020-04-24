@@ -2,13 +2,13 @@ const Item = require('mm_machine').Item;
 const Param = require('../param/drive.js');
 
 /**
- * @description 指令驱动类
+ * 指令驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */
@@ -34,7 +34,7 @@ class Drive extends Item {
 			"sort": 1000,
 			// 分组
 			"group": "default",
-			// 类型: query便民查询，action行动，game游戏，orther其他，为空表示未分类
+			// 类型: query便民查询，action执行，game游戏，orther其他，为空表示未分类
 			"type": "",
 			// 匹配关键词
 			"match": [],
@@ -82,7 +82,7 @@ Drive.prototype.model = function() {
 };
 
 /**
- * @description 为什么要这样做(疑问)
+ * 为什么要这样做(疑问)
  * @param {Object} param 状态参数
  */
 Drive.prototype.why = async function(param, db) {
@@ -90,7 +90,7 @@ Drive.prototype.why = async function(param, db) {
 };
 
 /**
- * @description 什么时候(时间)
+ * 什么时候(时间)
  * @param {Object} param 状态参数
  * @param {Object} db 数据管理器
  * @return {Boolean} 条件满足返回true, 否则返回false
@@ -100,7 +100,7 @@ Drive.prototype.when = async function(param, db) {
 };
 
 /**
- * @description 什么地方(地点)
+ * 什么地方(地点)
  * @param {Object} param 状态参数
  * @param {Object} db 数据管理器
  * @return {Boolean} 条件满足返回true, 否则返回false
@@ -110,7 +110,7 @@ Drive.prototype.where = async function(param, db) {
 };
 
 /**
- * @description 什么人(人物)
+ * 什么人(人物)
  * @param {Object} param 状态参数
  * @param {Object} db 数据管理器
  * @return {Boolean} 条件满足返回true, 否则返回false
@@ -120,7 +120,7 @@ Drive.prototype.who = async function(param, db) {
 };
 
 /**
- * @description 做什么(事件)
+ * 做什么(事件)
  * @param {Object} param 状态参数
  * @param {Object} db 数据管理器
  * @return {Boolean} 条件满足返回true, 否则返回false
@@ -130,10 +130,10 @@ Drive.prototype.what = async function(param, db) {
 };
 
 /**
- * @description 怎么做(方法), 对行为做决策
+ * 怎么做(方法), 对行为做决策
  * @param {Object} param 状态参数
  * @param {Object} db 数据管理器
- * @return {String} 返回行动函数
+ * @return {String} 返回执行函数
  */
 Drive.prototype.how = async function(param, db) {
 	var obj = {
@@ -192,11 +192,11 @@ Drive.prototype.how = async function(param, db) {
 };
 
 /**
- * @description 做到什么程度(结束条件)
+ * 做到什么程度(结束条件)
  * @param {Object} param 状态参数
- * @param {Object} ret 行动结果
+ * @param {Object} ret 执行结果
  * @param {Object} db 数据管理器
- * @return {Boolean} 返回行动结果判断 true表示已完成一个行为周期,false为未完成,未完成则继续缓存
+ * @return {Boolean} 返回执行结果判断 true表示已完成一个行为周期,false为未完成,未完成则继续缓存
  */
 Drive.prototype.how_much = async function(param, db, ret) {
 	if (param.content.length > 255) {
@@ -252,7 +252,7 @@ Drive.prototype.supply = async function(content, db) {
 };
 
 /**
- * @description 检验条件是否满足
+ * 检验条件是否满足
  * @param {Object} form 表单
  * @param {Object} db 数据管理器
  * @param {Boolean} first 是否第一次验证，第一次验证时会将错误参数清空，提示填写。而非第一次验证则提示错误重填
@@ -264,20 +264,20 @@ Drive.prototype.check = async function(form, db, first) {
 };
 
 /**
- * @description 行动
+ * 执行
  * @param {Object} param 状态参数
  * @param {Object} db 数据管理器
- * @return {Object} 返回行动结果
+ * @return {Object} 返回执行结果
  */
 Drive.prototype.main = async function(param, db) {
 	return "你好";
 };
 
 /**
- * @description 执行
+ * 执行
  * @param {Object} param 状态参数
  * @param {Object} db 数据管理器
- * @return {Object} 返回行动结果
+ * @return {Object} 返回执行结果
  */
 Drive.prototype.run = async function(param, db) {
 	var content = await this.extract(param.content);
@@ -359,7 +359,7 @@ Drive.prototype.not_match = function(content, db) {
 };
 
 /**
- * @description 过滤正文
+ * 过滤正文
  * @param {String} content 正文
  * @param {Object} db 数据管理器
  * @return {Object} 返回过滤后的参数
@@ -384,7 +384,7 @@ Drive.prototype.filter = async function(content, db) {
 };
 
 /**
- * @description 抽取正文
+ * 抽取正文
  * @param {String} content 正文
  * @param {Object} db 数据管理器
  * @return {Object} 返回过滤后的参数

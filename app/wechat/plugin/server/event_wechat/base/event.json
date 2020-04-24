@@ -3,8 +3,7 @@
 		"name": "wechat_text",
 		"title": "微信公众号文本消息",
 		"description": "用于处理微信公众号文本消息",
-		"stage": "action",
-		"tense": "main",
+		"stage": "main",
 		"func_file": "./text.js",
 		"sort": 101
 	},
@@ -13,8 +12,7 @@
 		"name": "wechat_image",
 		"title": "微信公众号图片消息",
 		"description": "用于处理微信公众号图片",
-		"stage": "action",
-		"tense": "main",
+		"stage": "main",
 		"func_file": "./image.js",
 		"sort": 101
 	},
@@ -23,8 +21,7 @@
 		"name": "wechat_voice",
 		"title": "微信公众号语音消息",
 		"description": "用于处理发送的语音",
-		"stage": "action",
-		"tense": "main",
+		"stage": "main",
 		"func_file": "./voice.js",
 		"sort": 101
 	},
@@ -33,8 +30,7 @@
 		"name": "wechat_location",
 		"title": "微信公众号地理位置消息",
 		"description": "用于处理用户发送的地理位置",
-		"stage": "action",
-		"tense": "main",
+		"stage": "main",
 		"func_file": "./location.js",
 		"sort": 101
 	},
@@ -43,8 +39,7 @@
 		"name": "wechat_link",
 		"title": "微信公众号链接消息",
 		"description": "用于处理用户发送的链接",
-		"stage": "action",
-		"tense": "main",
+		"stage": "main",
 		"func_file": "./link.js",
 		"sort": 101
 	},
@@ -53,8 +48,7 @@
 		"name": "wechat_event",
 		"title": "微信公众号事件消息",
 		"description": "用于处理用户触发的事件",
-		"stage": "action",
-		"tense": "main",
+		"stage": "main",
 		"func_file": "./event.js",
 		"sort": 101
 	}

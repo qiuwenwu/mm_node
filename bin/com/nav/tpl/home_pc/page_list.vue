@@ -51,7 +51,7 @@
 		},
 		methods: {
 			/**
-			 * @description 查询数据
+			 * 查询数据
 			 * @param {Object} query 查询参数
 			 * @param {Function} func 回调函数
 			 */
@@ -60,7 +60,7 @@
 				// 如果页面需要其他查询，可将函数写在这
 			},
 			/**
-			 * @description 滚动刷新
+			 * 滚动刷新
 			 * @param {Number} n 滚动的方向，-1是向上， 1是向下
 			 */
 			scoll(n) {

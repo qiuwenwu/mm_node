@@ -1,11 +1,10 @@
 [{
 	"target": "/test/*",
 	"name": "test",
-	"title": "示例事件(验证前)",
-	"description": "验证前，可以统计访问次数",
-	"stage": "check",
-	"tense": "before",
-	"func_file": "./check_before.js",
+	"title": "执行前",
+	"description": "执行前，可以统计访问次数和返回缓存",
+	"stage": "before",
+	"func_file": "./before.js",
 	"sort": 100
 }, {
 	"target": "/test/*",
@@ -13,44 +12,23 @@
 	"title": "示例事件(验证)",
 	"description": "验证，可以验证是否有权限调用",
 	"stage": "check",
-	"tense": "main",
-	"func_file": "./check_main.js",
+	"func_file": "./check.js",
 	"sort": 100
 }, {
 	"target": "/test/*",
 	"name": "test",
-	"title": "示例事件(验证后)",
-	"description": "验证后，可以缓存验证结果，下次免重新验证",
-	"stage": "check",
-	"tense": "after",
-	"func_file": "./check_after.js",
-	"sort": 100
-}, {
-	"target": "/test/*",
-	"name": "test",
-	"title": "示例事件(行动前)",
-	"description": "行动前，可以统计行动次数",
-	"stage": "action",
-	"tense": "before",
-	"func_file": "./action_before.js",
-	"sort": 100
-}, {
-	"target": "/test/*",
-	"name": "test",
-	"title": "示例事件(行动)",
-	"description": "行动，处理请求并响应",
-	"stage": "action",
-	"tense": "main",
-	"func_file": "./action_main.js",
+	"title": "示例事件(主要)",
+	"description": "主要阶段，处理请求并响应",
+	"stage": "main",
+	"func_file": "./main.js",
 	"sort": 100,
 	"end": true
 }, {
 	"target": "/test/*",
 	"name": "test",
-	"title": "示例事件(行动后)",
-	"description": "行动后，可以记录行动结果，下次免重新行动，还可以并发事务",
-	"stage": "action",
-	"tense": "after",
-	"func_file": "./action_after.js",
+	"title": "示例事件(执行后)",
+	"description": "执行后，可以记录执行结果，下次免重新执行，还可以并发事务",
+	"stage": "after",
+	"func_file": "./after.js",
 	"sort": 100
 }]

@@ -3,9 +3,8 @@
 	"name": "home_pc",
 	"title": "电脑端",
 	"description": "用于访问电脑端页面",
-	"stage": "action",
-	"tense": "main",
-	"func_file": "./action_main.js",
+	"stage": "main",
+	"func_file": "./main.js",
 	"sort": 130,
 	"end": true
 }

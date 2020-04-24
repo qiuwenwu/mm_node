@@ -3,9 +3,8 @@
 	"name": "wechat",
 	"title": "微信公众号接口事件",
 	"description": "用于管理微信公众号的接口事件",
-	"stage": "action",
-	"tense": "main",
-	"func_file": "./action_main.js",
+	"stage": "main",
+	"func_file": "./main.js",
 	"sort": 101,
 	"end": true
 }]

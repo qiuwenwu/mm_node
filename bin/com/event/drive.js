@@ -1,23 +1,23 @@
 const Item = require('mm_machine').Item;
 
 /**
- * @description Event事件驱动类
+ * Event事件驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */
 	constructor(dir) {
 		super(dir, __dirname);
 		this.default_file = "./event.json";
-		
+
 		// 开关，开启可使用使用
 		this.onOff = true;
-		
+
 		/* 通用项 */
 		// 配置参数
 		this.config = {
@@ -29,10 +29,8 @@ class Drive extends Item {
 			"name": "demo",
 			// 目标
 			"target": "",
-			// 事件阶段, check 验证、action 行动、render 渲染
-			"stage": "action",
-			// 发生时态, before 发生前、after发生后、main发生
-			"tense": "main",
+			// 阶段, 分执行前before、验证check、主要main、渲染render、执行后after阶段
+			"stage": "main",
 			// 文件路径, 当调用函数不存在时，会先从文件中加载
 			"func_file": "./index.js",
 			// 回调函数名 用于决定调用脚本的哪个函数
@@ -46,7 +44,7 @@ class Drive extends Item {
 }
 
 /**
- * @description 执行事件
+ * 执行事件
  * @param {Object} ctx 请求上下文
  * @param {Object} db 数据管理器
  * @return {Object} 执行结果
@@ -57,7 +55,7 @@ Drive.prototype.run = async function(ctx, db) {
 };
 
 /**
- * @description 脚本主函数
+ * 脚本主函数
  * @param {Object} ctx 请求上下文
  * @param {Object} db 数据管理器
  * @return {Object} 执行结果

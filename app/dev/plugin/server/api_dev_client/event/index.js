@@ -10,12 +10,9 @@ var dev_class = new dev('event');
  */
 dev_class.get_before = function(req, cs) {
 	if (!req.query["stage"]) {
-		req.query["stage"] = "action";
+		req.query["stage"] = "main";
 	}
-	if (!req.query["tense"]) {
-		req.query["tense"] = "main";
-	}
-	var key = req.query["stage"] + "_" + req.query["tense"];
+	var key = "list_" + req.query["stage"];
 	var list = cs[key];
 	if (!list) {
 		list = [];

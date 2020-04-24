@@ -4,13 +4,13 @@ const tpl = new $.Tpl('nav_tpl');
 tpl.dir = __dirname;
 
 /**
- * @description Catch抓包驱动类
+ * Catch抓包驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @param {String} scope 作用域
 	 * @constructor
@@ -98,7 +98,7 @@ class Drive extends Item {
 };
 
 /**
- * @description 调用函数
+ * 调用函数
  * @param {Object} type
  * @return {Object} 执行结果
  */
@@ -170,7 +170,7 @@ Drive.prototype.merge = function(o) {
 };
 
 /**
- * @description 新建导航
+ * 新建导航
  * @param {String} app 应用名
  * @param {String} name 插件名
  * @param {String} gm 是否管理员
@@ -187,7 +187,7 @@ Drive.prototype.new_nav = function(title, name, url) {
 };
 
 /**
- * @description 新建路由
+ * 新建路由
  * @param {String} app 应用名
  * @param {String} plugin 插件名
  * @param {String} name 接口名
@@ -230,7 +230,7 @@ Drive.prototype.new_routes = function(app, plugin, name, group, oauth) {
 };
 
 /**
- * @description 新建配置
+ * 新建配置
  * @param {String} file
  */
 Drive.prototype.new_config = function(file) {
@@ -330,7 +330,7 @@ Drive.prototype.new_config = function(file) {
 };
 
 /**
- * @description 载入配置
+ * 载入配置
  * @param {Object|String} cg 配置对象或配置路径
  */
 Drive.prototype.load = function(cg) {

@@ -3,9 +3,8 @@
 	"name": "api_sys",
 	"title": "sys的客户端api接口",
 	"description": "用于系统访问接口",
-	"stage": "action",
-	"tense": "main",
-	"func_file": "./action_main.js",
+	"stage": "main",
+	"func_file": "./main.js",
 	"sort": 100,
 	"end": true
 }]

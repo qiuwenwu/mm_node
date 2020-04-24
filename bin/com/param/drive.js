@@ -2,7 +2,7 @@ const Item = require('mm_machine').Item;
 const Check = require('mm_check');
 
 /**
- * @description Param参数驱动类
+ * Param参数驱动类
  * @extends {Item}
  * @class
  */
@@ -95,7 +95,7 @@ Drive.prototype.updateCheck = function() {
 };
 
 /**
- * @description 加载之后
+ * 加载之后
  */
 Drive.prototype.load_after = function() {
 	this.updateCheck();
@@ -154,7 +154,7 @@ Drive.prototype.model = function() {
 };
 
 /**
- * @description 验证值是否符合
+ * 验证值是否符合
  * @param {Object} model 验证模型
  * @param {Object} value 被验证的值
  * @param {String} method 请求方式, post提交、get增、del删、set改、get查、import导入、export导出
@@ -179,7 +179,7 @@ Drive.prototype.check_item = function(model, value, method) {
 };
 
 /**
- * @description 获取模型
+ * 获取模型
  * @param {String} name 名称
  * @return {Object} 配置模型
  */
@@ -196,7 +196,7 @@ Drive.prototype.getModel = function(name) {
 };
 
 /**
- * @description 执行验证
+ * 执行验证
  * @param {Object} params 请求参数集合
  * @param {Array} arr 要验证的参数名数组
  * @param {Array} required 必填项名称数组
@@ -245,7 +245,7 @@ Drive.prototype.check_sub = function(params, arr, required) {
 };
 
 /**
- * @description 验证参数是否符合
+ * 验证参数是否符合
  * @param {Object} query url参数集合
  * @param {Object} body 正文参数集合
  * @param {String} method 请求方式，get增、del删、set改、get查、import导入、export导出
@@ -307,7 +307,7 @@ Drive.prototype.check = function(query, body, method) {
 };
 
 /**
- * @description 取字段
+ * 取字段
  * @param {Object} model 验证模型
  * @return {String} 返回名称
  */
@@ -320,7 +320,7 @@ Drive.prototype.title = function(model) {
 };
 
 /**
- * @description 验证回调函数
+ * 验证回调函数
  * @param {Object} model 当前的验证模型
  * @param {Object} value 当前的验证值
  * @return {Object} 没通过返回信息,否则返回空

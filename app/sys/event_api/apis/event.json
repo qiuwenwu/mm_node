@@ -3,9 +3,8 @@
 	"name": "manage_api",
 	"title": "管理端调用的接口事件",
 	"description": "用于管理端访问服务端时调用的接口",
-	"stage": "action",
-	"tense": "main",
-	"func_file": "./action_main.js",
+	"stage": "main",
+	"func_file": "./main.js",
 	"sort": 120,
 	"end": true
 }

@@ -7,12 +7,10 @@
 	"title": "示例事件",
 	// 描述, 用于介绍该事件是做什么用的
 	"description": "描述事件使用方法",
-	// 阶段, 分check验证阶段、action执行阶段、render渲染阶段, check阶段验证未通过不会进入main, 最后都会进入render阶段
-	"stage": "action",
-	// 时态, 分before之前、main主要、after之后三个时态,
-	"tense": "main",
+	// 阶段, 分执行前before、验证check、主要main、渲染render、执行后after阶段
+	"stage": "main",
 	// 函数文件, 当事件触发时执行指定的脚本
-	"func_file": "./action_main.js",
+	"func_file": "./main.js",
 	// 执行顺序, 数值越小越优先执行
 	"sort": 100
 }]

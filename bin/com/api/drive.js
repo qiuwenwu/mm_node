@@ -16,13 +16,13 @@ if (!$.cache) {
 }
 
 /**
- * @description Api接口驱动类
+ * Api接口驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */
@@ -100,7 +100,7 @@ class Drive extends Item {
 }
 
 /**
- * @description 加载完成后执行
+ * 加载完成后执行
  */
 Drive.prototype.load_after = function() {
 	var cg = this.config;
@@ -111,7 +111,7 @@ Drive.prototype.load_after = function() {
 };
 
 /**
- * @description 设置参数对象
+ * 设置参数对象
  * @param {Object} param 参数对象
  */
 Drive.prototype.setParam = function(param) {
@@ -136,7 +136,7 @@ Drive.prototype.setParam = function(param) {
 };
 
 /**
- * @description 获取现有参数
+ * 获取现有参数
  * @param {String} file 文件名
  * @return {Object} 获取的对象
  */
@@ -153,7 +153,7 @@ Drive.prototype.getParam = function(file) {
 };
 
 /**
- * @description 加载参数
+ * 加载参数
  * @param {String} file_path 文件路径
  */
 Drive.prototype.loadParam = async function(file_path) {
@@ -171,7 +171,7 @@ Drive.prototype.loadParam = async function(file_path) {
 };
 
 /**
- * @description 设置Sql
+ * 设置Sql
  * @param {Object} param sql对象
  */
 Drive.prototype.setSql = function(sql) {
@@ -196,7 +196,7 @@ Drive.prototype.setSql = function(sql) {
 };
 
 /**
- * @description 获取现有sql模板
+ * 获取现有sql模板
  * @param {String} file 文件名
  * @return {Object} 获取的对象
  */
@@ -216,7 +216,7 @@ Drive.prototype.getSql = function(file) {
 };
 
 /**
- * @description 加载sql模板
+ * 加载sql模板
  * @param {String} file_path 文件路径
  */
 Drive.prototype.loadSql = async function(file_path) {
@@ -234,7 +234,7 @@ Drive.prototype.loadSql = async function(file_path) {
 };
 
 /**
- * @description 加载RPC方法
+ * 加载RPC方法
  * @param {String} file_path 文件路径
  */
 Drive.prototype.loadRPC = async function(file_path) {
@@ -256,7 +256,7 @@ Drive.prototype.loadRPC = async function(file_path) {
 };
 
 /**
- * @description 卸载RPC方法
+ * 卸载RPC方法
  * @param {String} file_path 文件路径
  */
 Drive.prototype.unloadRPC = async function(file_path) {
@@ -270,7 +270,7 @@ Drive.prototype.unloadRPC = async function(file_path) {
 };
 
 /**
- * @description 加载身份验证配置
+ * 加载身份验证配置
  * @param {Object} cg 配置对象
  */
 Drive.prototype.loadOauth = function() {
@@ -283,7 +283,7 @@ Drive.prototype.loadOauth = function() {
 
 /* 回调函数集 */
 /**
- * @description 主要函数
+ * 主要函数
  * @param {Object} ctx 请求上下文
  * @param {Object} db 数据管理器
  * @return {Object} 执行结果
@@ -303,7 +303,7 @@ Drive.prototype.main = async function(ctx, db) {
 };
 
 /**
- * @description 调用函数
+ * 调用函数
  * @param {Object} ctx  请求上下文
  * @param {Object} db 数据管理器
  * @return {Object} 执行结果
@@ -332,7 +332,7 @@ Drive.prototype.run = async function(ctx, db) {
 };
 
 /**
- * @description 获取缓存
+ * 获取缓存
  * @param {Object} ctx 请求上下文
  * @return {String} 响应内容
  */
@@ -366,7 +366,7 @@ Drive.prototype.getCache = async function(ctx) {
 };
 
 /**
- * @description 设置缓存
+ * 设置缓存
  * @param {Object} ctx 请求上下文
  * @param {Object} body 正文参数
  */
@@ -393,7 +393,7 @@ Drive.prototype.setCache = async function(ctx, body) {
 };
 
 /**
- * @description 调用函数
+ * 调用函数
  * @param {Object} ret 设置响应结果
  * @param {Object} res 响应器
  * @param {String} t 请求类型
@@ -452,7 +452,7 @@ Drive.prototype.body = function(ret, res, t) {
 };
 
 /**
- * @description 验证参数
+ * 验证参数
  * @param {Object} query url参数
  * @param {Object} body 内容参数
  * @param {String} method 方法
@@ -469,7 +469,7 @@ Drive.prototype.checkParam = function(query, body, method) {
 };
 
 /**
- * @description 验证参数
+ * 验证参数
  * @param {Object} ctx 内容上下文
  * @return {Object} 验证结果
  */
@@ -486,7 +486,7 @@ Drive.prototype.check = async function(ctx) {
 };
 
 /**
- * @description 验证身份
+ * 验证身份
  * @param {Object} ctx 内容上下文
  * @return {Object} 验证结果
  */

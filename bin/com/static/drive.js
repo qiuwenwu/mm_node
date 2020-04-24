@@ -4,13 +4,13 @@ const fs = require("fs");
 const send = require('koa-send');
 
 /**
- * @description Plugin插件驱动类
+ * Plugin插件驱动类
  * @extends {Item}
  * @class 
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @param {Object} config 配置
 	 * @constructor
@@ -75,12 +75,12 @@ class Drive extends Item {
 }
 
 /**
- * @description 发送文件函数
+ * 发送文件函数
  */
 Drive.prototype.send = send;
 
 /**
- * @description 加载配置对象
+ * 加载配置对象
  * @param {Object} obj 配置对象
  */
 Drive.prototype.loadObj = function(obj) {
@@ -113,14 +113,14 @@ Drive.prototype.loadObj = function(obj) {
 };
 
 /**
- * @description 执行前
+ * 执行前
  * @param {Object} ctx http请求上下文
  * @param {Object} path 文件路径
  */
 Drive.prototype.before = async function(ctx, path) {};
 
 /**
- * @description 执行
+ * 执行
  * @param {Object} ctx http请求上下文
  * @param {Object} path 文件路径
  * @return {Boolean} 成功发送返回true，失败返回false
@@ -130,14 +130,14 @@ Drive.prototype.main = async function(ctx, path) {
 };
 
 /**
- * @description 执行后
+ * 执行后
  * @param {Object} ctx http请求上下文
  * @param {Object} path 文件路径
  */
 Drive.prototype.after = async function(ctx, path) {};
 
 /**
- * @description 切换模式
+ * 切换模式
  * @param {Boolean} convert_amd 是否将ES6转换AMD
  */
 Drive.prototype.mode = async function(convert_amd) {
@@ -191,7 +191,7 @@ Drive.prototype.mode = async function(convert_amd) {
 };
 
 /**
- * @description 执行静态文件
+ * 执行静态文件
  * @param {Object} ctx Http请求上下文
  * @param {Object} path 路由路径
  * @param {Object} next 跳过当前函数

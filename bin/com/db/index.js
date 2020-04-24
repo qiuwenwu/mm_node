@@ -2,13 +2,13 @@ const Index = require('mm_machine').Index;
 const Drive = require('./drive');
 
 /**
- * @description 数据库帮助类
+ * 数据库帮助类
  * @extends {Index}
  * @class
  */
 class DB extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {Object} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -22,7 +22,7 @@ class DB extends Index {
 }
 
 /**
- * @description 加载配置
+ * 加载配置
  * @param {String} path 加载的路径
  */
 DB.prototype.load = function(path) {
@@ -50,7 +50,7 @@ DB.prototype.load = function(path) {
 
 
 /**
- * @description 获取驱动项
+ * 获取驱动项
  * @param {String} table 表
  */
 DB.prototype.getObj = function(table) {
@@ -66,7 +66,7 @@ DB.prototype.getObj = function(table) {
 };
 
 /**
- * @description 通过数据库更新配置
+ * 通过数据库更新配置
  * @param {Object} db 数据库管理器
  * @param {String} name 要更新的配置名
  * @param {String} table 表名关键词, 支持*table后缀匹配、table*前缀匹配、*table*包含匹配
@@ -105,7 +105,7 @@ DB.prototype.update_config = async function(db, name, table, cover = true) {
 };
 
 /**
- * @description 通过配置修改数据库
+ * 通过配置修改数据库
  * @param {Object} db 数据库管理器
  * @param {String} name 要更新的配置名
  * @param {String} table 表名关键词, 支持*table后缀匹配、table*前缀匹配、*table*包含匹配
@@ -145,14 +145,14 @@ DB.prototype.update_db = async function(db, name, table, all) {
 exports.DB = DB;
 
 /**
- * @description DB数据库池
+ * DB数据库池
  */
 if (!$.pool.db) {
 	$.pool.db = {};
 }
 
 /**
- * @description DB数据库管理器，用于创建缓存
+ * DB数据库管理器，用于创建缓存
  * @param {String} scope 作用域
  * @param {string} title 标题
  * @return {Object} 返回一个缓存类

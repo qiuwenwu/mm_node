@@ -19,7 +19,7 @@
 		},
 		methods: {
 			/**
-			 * @description 查询数据
+			 * 查询数据
 			 * @param {Object} query 查询参数
 			 * @param {Function} func 回调函数
 			 */

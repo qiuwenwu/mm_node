@@ -3,9 +3,8 @@
 	"name": "apis_coin",
 	"title": "coin的管理端api接口",
 	"description": "用于金融分析后台访问接口",
-	"stage": "action",
-	"tense": "main",
-	"func_file": "./action_main.js",
+	"stage": "main",
+	"func_file": "./main.js",
 	"sort": 100,
 	"end": true
 }]

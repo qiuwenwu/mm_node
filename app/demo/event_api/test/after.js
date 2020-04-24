@@ -5,7 +5,7 @@
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	// $.log.debug('验证后，可以缓存验证结果，下次免重新验证');
+	// $.log.debug('执行后，可以记录执行结果，下次免重新执行，还可以并发事务');
 	return null;
 };
 

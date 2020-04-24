@@ -7,13 +7,13 @@ const {
 } = require('path');
 
 /**
- * @description 静态文件管理类
+ * 静态文件管理类
  * @extends {Index}
  * @class
  */
 class Static extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {Object} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -26,7 +26,7 @@ class Static extends Index {
 		var $this = this;
 
 		/**
-		 * @description 执行静态文件处理了
+		 * 执行静态文件处理了
 		 * @param {Object} ctx Http请求上下文
 		 * @param {Object} next 跳过函数
 		 */
@@ -82,7 +82,7 @@ class Static extends Index {
 }
 
 /**
- * @description 获取静态对象
+ * 获取静态对象
  * @param {Object} dir 目录
  * @return {Drive} 静态文件驱动类
  */
@@ -104,7 +104,7 @@ Static.prototype.getObj = function(dir) {
 };
 
 /**
- * @description 加载接口
+ * 加载接口
  * @param {String} path 加载的路径
  */
 Static.prototype.load = function(path) {

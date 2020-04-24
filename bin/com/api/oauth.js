@@ -1,10 +1,10 @@
 /**
- * @description Oauth身份验证驱动类
+ * Oauth身份验证驱动类
  * @class
  */
 class Oauth {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前路径
 	 * @constructor
 	 */
@@ -35,7 +35,7 @@ class Oauth {
 }
 
 /**
- * @description 加载配置对象
+ * 加载配置对象
  * @param {Object} obj 配置对象
  */
 Oauth.prototype.loadObj = function(obj) {
@@ -53,7 +53,7 @@ Oauth.prototype.loadObj = function(obj) {
 };
 
 /**
- * @description 身份验证主程序
+ * 身份验证主程序
  * @param {Object} ctx HTTP请求上下文
  */
 Oauth.prototype.main = async function(ctx) {
@@ -61,7 +61,7 @@ Oauth.prototype.main = async function(ctx) {
 };
 
 /**
- * @description 验证身份
+ * 验证身份
  * @param {Object} ctx HTTP请求上下文
  * @return {Object} 验证失败返回错误提示，验证通过返回null
  */

@@ -5,13 +5,13 @@ function span(t1, t2) {
 }
 
 /**
- * @description Task任务驱动类
+ * Task任务驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */
@@ -61,7 +61,7 @@ class Drive extends Item {
 }
 
 /**
- * @description 设置时期执行
+ * 设置时期执行
  * @param {Object} _this 当前类
  * @param {Function} func 回调函数
  */
@@ -152,7 +152,7 @@ Drive.prototype.setPeriod = function(_this, func) {
 };
 
 /**
- * @description 设置按次数执行
+ * 设置按次数执行
  * @param {Object} _this 当前类
  */
 Drive.prototype.setNum = function(_this) {
@@ -243,7 +243,7 @@ Drive.prototype.destroy = function() {
 };
 
 /**
- * @description 开关计时器 改变状态
+ * 开关计时器 改变状态
  * @param {String} state = [start|stop|end] 状态, 如果什么都不传则切换开始或暂停
  */
 Drive.prototype.set_state = function(state) {
@@ -270,7 +270,7 @@ Drive.prototype.set_state = function(state) {
 };
 
 /**
- * @description 定时执行函数
+ * 定时执行函数
  */
 Drive.prototype.main = async function() {
 	$.log.debug('定时任务, 执行中...')

@@ -1,13 +1,13 @@
 const Item = require('mm_machine').Item;
 
 /**
- * @description Catch抓包驱动类
+ * Catch抓包驱动类
  * @extends {Item}
  * @class
  */
 class Drive extends Item {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {String} dir 当前目录
 	 * @constructor
 	 */
@@ -58,7 +58,7 @@ class Drive extends Item {
 }
 
 /**
- * @description 调用函数
+ * 调用函数
  * @param {Object} ctx  请求上下文
  * @param {Object} db 数据管理器
  * @return {Object} 执行结果

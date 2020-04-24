@@ -2,13 +2,13 @@ const Index = require('mm_machine').Index;
 const Drive = require('./drive');
 
 /**
- * @description Cmd导航类
+ * Cmd导航类
  * @extends {Index}
  * @class
  */
 class Cmd extends Index {
 	/**
-	 * @description 构造函数
+	 * 构造函数
 	 * @param {Object} scope 作用域
 	 * @param {String} title 标题
 	 * @constructor
@@ -183,14 +183,14 @@ Cmd.prototype.sort_tense = async function() {
 exports.Cmd = Cmd;
 
 /**
- * @description Cmd事件池
+ * Cmd事件池
  */
 if (!$.pool.cmd) {
 	$.pool.cmd = {};
 }
 
 /**
- * @description Cmd管理器，用于创建缓存
+ * Cmd管理器，用于创建缓存
  * @param {String} scope 作用域
  * @param {string} title 标题
  * @return {Object} 返回一个缓存类
