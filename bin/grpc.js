@@ -36,8 +36,17 @@ module.exports = function(){
 	// 启动函数
 	var file = dir + file;
 	
-	var packageDefinition = protoLoader.loadSync(file, options);
-	var proto = grpc.loadPackageDefinition(packageDefinition).Activity;
+	/* grpc配置 */
+	const options = Object.assign({
+		keepCase: true,
+		longs: String,
+		enums: String,
+		defaults: true,
+		oneofs: true
+	}, config);
+	
+	var packageDefinition = protoLoader.loadSync('./proto/mm.proto'.fullname(__dirname), options);
+	var proto = grpc.loadPackageDefinition(packageDefinition).mm;
 	
 	// 创建一个微服务
 	var server = new grpc.Server();

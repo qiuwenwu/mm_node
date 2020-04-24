@@ -50,7 +50,7 @@ module.exports = function(app){
 			$.log.danger('检测到攻击', "规则:", danger);
 		}
 		else {
-			next();
+			await next();
 		}
 	});
 }

@@ -8,7 +8,6 @@ const grpc = require('./grpc.js');
  */
 function use(config){
 	var app = grpc();
-	
 	return app;
 }
 
