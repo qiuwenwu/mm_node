@@ -1,0 +1,10 @@
+{
+	"target": "/upload*",
+	"name": "upload",
+	"title": "上传文件",
+	"description": "用于前端上传文件",
+	"stage": "main",
+	"func_file": "./main.js",
+	"sort": 129,
+	"end": true
+}

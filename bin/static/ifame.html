@@ -3,8 +3,22 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	</head>
 	<body>
 		<iframe src="http://localhost:5000/home"></iframe>
+		<form action="/upload" method="POST"  enctype="multipart/form-data">
+		    <p>姓名：</p>
+		    <input type="text" name="stuName"><br>
+		    <p>学号：</p>
+		    <input type="text" name="stuNo"><br>
+		    <p>爱好：</p>
+		    <input type="text" name="hobby"><br>
+		 
+		    <p>选择文件</p>
+		    <input type="file" name="file"><br>
+		    <br>
+		    <input type="submit">
+		</form>
 	</body>
 </html>

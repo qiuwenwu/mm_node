@@ -6,6 +6,7 @@ const xmlParser = require("mm_xml");
 const session = require('mm_session');
 // const compress = require('koa-compress');
 const websocket = require('koa-websocket');
+const koaBody = require('koa-body');
 
 module.exports = function() {
 	// 实例化Koa函数
@@ -44,5 +45,13 @@ module.exports = function() {
 	app.use(bodyParser({
 		enableTypes: ['json', 'form', 'text']
 	}));
+
+	app.use(koaBody({
+		multipart: true,
+		formidable: {
+			maxFileSize: 2000 * 1024 * 1024 // 设置上传文件大小最大限制，默认20M
+		}
+	}));
+
 	return app;
 }

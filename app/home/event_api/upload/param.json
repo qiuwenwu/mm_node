@@ -1,0 +1,107 @@
+{
+	"name": "upload",
+	"func_file": "",
+	"func_name": "",
+	"title": "上传",
+	"filter": true,
+	"method": "post",
+	"add": {
+		"body": [],
+		"body_required": []
+	},
+	"del": {
+		"query": [],
+		"query_required": []
+	},
+	"set": {
+		"query": [],
+		"query_required": [],
+		"body": [],
+		"body_required": [],
+		"body_not": []
+	},
+	"get": {
+		"query": [],
+		"query_required": []
+	},
+	"post": {
+		"query": [],
+		"query_required": [],
+		"body": ["name", "type", "file"],
+		"body_required": [],
+		"body_not": []
+	},
+	"list": [{
+			"name": "name",
+			"title": "文件名",
+			"description": "决定文件最后保存的名字",
+			"dataType": "varchar",
+			"splitter": "|",
+			"type": "string",
+			"string": {
+				"notEmpty": false,
+				"min": 2,
+				"max": 32,
+				"range": [],
+				"regex": "",
+				"identical": "",
+				"different": "",
+				"extension": "",
+				"format": ""
+			},
+			"number": {
+				"min": 0,
+				"max": 0,
+				"range": []
+			}
+		},
+		{
+			"name": "type",
+			"title": "类型",
+			"description": "决定文件最后保存的格式",
+			"dataType": "varchar",
+			"splitter": "|",
+			"type": "string",
+			"string": {
+				"notEmpty": false,
+				"min": 2,
+				"max": 16,
+				"range": [],
+				"regex": "^(png|jpg|jpeg|svg|gif|bmp|xlsx|xls|doc|docx|ppt|pptx|mov|mp4|mp3|rmvb|flv|avi|3pg|htm|html|vue|js|py|css|less|sess|txt|md|zip|7z|gz)$",
+				"identical": "",
+				"different": "",
+				"extension": "",
+				"format": ""
+			},
+			"number": {
+				"min": 0,
+				"max": 0,
+				"range": []
+			}
+		},
+		{
+			"name": "file",
+			"title": "文件数据",
+			"description": "文件的主体内容,可以是二进制，也可以是base64编码",
+			"dataType": "varchar",
+			"splitter": "|",
+			"type": "string",
+			"string": {
+				"notEmpty": false,
+				"min": 0,
+				"max": 0,
+				"range": [],
+				"regex": "",
+				"identical": "",
+				"different": "",
+				"extension": "",
+				"format": ""
+			},
+			"number": {
+				"min": 0,
+				"max": 0,
+				"range": []
+			}
+		}
+	]
+}
