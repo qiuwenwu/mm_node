@@ -1,0 +1,12 @@
+{
+    "name": "list",
+    "title": "分析数字能量",
+    "description": "用于找出比较好的手机号码、QQ号码、身份证号码",
+    "path": "/api/geomancy/list",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+	"func_file": "./index.js",
+    "check_param": true
+}

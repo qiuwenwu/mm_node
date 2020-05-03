@@ -1,0 +1,10 @@
+[{
+	"target": "/apis/geomancy*",
+	"name": "apis_geomancy",
+	"title": "mall的管理端api接口",
+	"description": "用于商城后台访问接口",
+	"stage": "main",
+	"func_file": "./main.js",
+	"sort": 100,
+	"end": true
+}]

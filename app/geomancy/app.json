@@ -1,0 +1,11 @@
+{
+	"name": "geomancy",
+	"title": "风水",
+	"description": "用于占卜、测吉凶、能量",
+	"version": "1.0",
+	"identifier": "geomancy",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "geomancy",
+	"sort": 10
+}

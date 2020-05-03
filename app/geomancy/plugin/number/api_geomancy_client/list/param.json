@@ -1,0 +1,98 @@
+{
+	// 是否启用过滤, 启用过滤后, 不符合的参数会被过滤掉
+	"filter": true,
+	// 校验脚本文件, 可以使用脚本的方式加一步进行校验, 让传参更加安全
+	"func_file": "",
+	"get": {
+		"query": ["url", "count", "page", "size", "number"],
+		"query_required": []
+	},
+	"list": [{
+			"name": "url",
+			"title": "API接口地址",
+			"type": "string",
+			"string": {
+				"min": 8,
+				"max": 255
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "number",
+			"title": "数字字段名",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "count",
+			"title": "统计字段名",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "page",
+			"title": "页码字段名",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "size",
+			"title": "单页大小字段名",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "type",
+			"title": "数据类型",
+			"description": "jarr或jobj, 默认为jobj",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "list",
+			"title": "列表字段",
+			"description": "默认值为list",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "price",
+			"title": "价格字段",
+			"description": "默认值为price",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "score_min",
+			"title": "最小得分",
+			"description": "默认值为1",
+			"type": "number",
+			"string": {
+				"min": -99,
+				"max": 99
+			},
+			"splitter": "|"
+		}
+	]
+}

@@ -1,0 +1,11 @@
+{
+	"name": "number",
+	"title": "数字能量",
+	"description": "用于测风水磁场能量",
+	"version": "1.0",
+	"identifier": "number",
+	"lang_path": "./lang/",
+	"icon": "/img/logo.png",
+	"cmd": "number",
+	"sort": 10
+}

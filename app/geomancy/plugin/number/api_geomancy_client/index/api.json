@@ -1,0 +1,12 @@
+{
+    "name": "number",
+    "title": "数字能量",
+    "description": "用于测算手机号码、QQ号码、身份证等是好是坏",
+    "path": "/api/geomancy/number",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+	"func_file": "./index.js",
+    "check_param": true
+}
