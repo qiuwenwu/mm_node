@@ -4,7 +4,23 @@
 	// 校验脚本文件, 可以使用脚本的方式加一步进行校验, 让传参更加安全
 	"func_file": "",
 	"get": {
-		"query": ["url", "count", "page", "size", "number"],
+		"query": [
+			"page",
+			"size",
+			"count",
+			"number",
+			"url",
+			"type",
+			"list",
+			"score_min",
+			"price",
+			"price_max",
+			"name_only",
+			"page_now",
+			"page_size",
+			"number_has",
+			"number_only"
+		],
 		"query_required": []
 	},
 	"list": [{
@@ -14,6 +30,15 @@
 			"string": {
 				"min": 8,
 				"max": 255
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "price",
+			"title": "价格字段名",
+			"type": "string",
+			"string": {
+				"min": 0
 			},
 			"splitter": "|"
 		},
@@ -29,24 +54,6 @@
 		{
 			"name": "count",
 			"title": "统计字段名",
-			"type": "string",
-			"string": {
-				"min": 0
-			},
-			"splitter": "|"
-		},
-		{
-			"name": "page",
-			"title": "页码字段名",
-			"type": "string",
-			"string": {
-				"min": 0
-			},
-			"splitter": "|"
-		},
-		{
-			"name": "size",
-			"title": "单页大小字段名",
 			"type": "string",
 			"string": {
 				"min": 0
@@ -74,12 +81,24 @@
 			"splitter": "|"
 		},
 		{
-			"name": "price",
-			"title": "价格字段",
-			"description": "默认值为price",
+			"name": "number_only",
+			"title": "只含数字",
+			"description": "默认值为空,可填写如：139286",
 			"type": "string",
 			"string": {
-				"min": 0
+				"min": 0,
+				"max": 9
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "price_max",
+			"title": "最大价格",
+			"description": "默认值为9999999",
+			"type": "number",
+			"number": {
+				"min": 0,
+				"max": 9999999
 			},
 			"splitter": "|"
 		},
@@ -88,9 +107,64 @@
 			"title": "最小得分",
 			"description": "默认值为1",
 			"type": "number",
-			"string": {
+			"number": {
 				"min": -99,
 				"max": 99
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "page_size",
+			"title": "分页大小",
+			"description": "默认值为10000",
+			"type": "number",
+			"number": {
+				"min": 100,
+				"max": 100000
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "page_now",
+			"title": "当前页",
+			"description": "默认值为1",
+			"type": "number",
+			"number": {
+				"min": 1,
+				"max": 1000000
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "number_has",
+			"title": "包含数字",
+			"description": "支持_和%,其他可由0-9的数字组成",
+			"type": "string",
+			"string": {
+				"min": 1,
+				"max": 32
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "name_only",
+			"title": "仅含名",
+			"description": "默认为：天医 延年 生气 伏位 六煞 五鬼 祸害 绝命 潜藏 显露",
+			"type": "string",
+			"string": {
+				"min": 1,
+				"max": 32
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "number_not",
+			"title": "不含数字",
+			"description": "由0-9的数字组成",
+			"type": "string",
+			"string": {
+				"min": 1,
+				"max": 32
 			},
 			"splitter": "|"
 		}
