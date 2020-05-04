@@ -80,9 +80,17 @@ class Energy {
 			},
 
 			/* 坏的 */
+			huo_hai: {
+				name: "祸害",
+				score: -2,
+				method: "+",
+				meaning: "财难积聚，官灾是非，争执被骗",
+				value: ["17", "32", "46", "98", "71", "23", "64", "89"]
+			},
+			
 			liu_sha: {
 				name: "六煞",
-				score: -2,
+				score: -4,
 				method: "+",
 				meaning: "财运不好，灾祸连连，身体多病",
 				value: ["16", "38", "47", "92", "61", "83", "74", "29"]
@@ -90,18 +98,10 @@ class Energy {
 
 			wu_gui: {
 				name: "五鬼",
-				score: -4,
+				score: -6,
 				method: "+",
 				meaning: "破财连连，身体甚差，容易招鬼",
 				value: ["18", "36", "42", "97", "81", "63", "24", "79"]
-			},
-
-			huo_hai: {
-				name: "祸害",
-				score: -6,
-				method: "+",
-				meaning: "财难积聚，官灾是非，争执被骗",
-				value: ["17", "32", "46", "98", "71", "23", "64", "89"]
 			},
 
 			jue_ming: {

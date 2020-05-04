@@ -1,4 +1,4 @@
-var api = $.api_admin('geomancy_client', '商城客户端');
+var api = $.api_admin('geomancy_client', '风水客户端');
 // 首次启动更新api接口;
 api.update('geomancy');
 

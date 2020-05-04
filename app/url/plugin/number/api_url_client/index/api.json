@@ -1,0 +1,12 @@
+{
+    "name": "url_redirect",
+    "title": "短域名转发",
+    "description": "用于短域名转发至别人的网站",
+    "path": "/url/*",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+	"func_file": "./index.js",
+    "check_param": true
+}

@@ -1,6 +1,6 @@
-var api = $.api_admin('geomancy_manage', '商城管理端');
+var api = $.api_admin('url_client', '短域名客户端');
 // 首次启动更新api接口;
-api.update('geomancy');
+api.update('url');
 
 var sql = $.mysql_admin('sys', __dirname);
 sql.setConfig($.config.mysql);

@@ -1,0 +1,172 @@
+{
+	// 是否启用过滤, 启用过滤后, 不符合的参数会被过滤掉
+	"filter": true,
+	// 校验脚本文件, 可以使用脚本的方式加一步进行校验, 让传参更加安全
+	"func_file": "",
+	"get": {
+		"query": [
+			"page",
+			"size",
+			"count",
+			"number",
+			"url",
+			"type",
+			"list",
+			"score_min",
+			"price",
+			"price_max",
+			"name_only",
+			"page_now",
+			"page_size",
+			"number_has",
+			"number_only"
+		],
+		"query_required": []
+	},
+	"list": [{
+			"name": "url",
+			"title": "API接口地址",
+			"type": "string",
+			"string": {
+				"min": 8,
+				"max": 255
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "price",
+			"title": "价格字段名",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "number",
+			"title": "数字字段名",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "count",
+			"title": "统计字段名",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "type",
+			"title": "数据类型",
+			"description": "jarr或jobj, 默认为jobj",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "list",
+			"title": "列表字段",
+			"description": "默认值为list",
+			"type": "string",
+			"string": {
+				"min": 0
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "number_only",
+			"title": "只含数字",
+			"description": "默认值为空,可填写如：139286",
+			"type": "string",
+			"string": {
+				"min": 0,
+				"max": 9
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "price_max",
+			"title": "最大价格",
+			"description": "默认值为9999999",
+			"type": "number",
+			"number": {
+				"min": 0,
+				"max": 9999999
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "score_min",
+			"title": "最小得分",
+			"description": "默认值为1",
+			"type": "number",
+			"number": {
+				"min": -99,
+				"max": 99
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "page_size",
+			"title": "分页大小",
+			"description": "默认值为10000",
+			"type": "number",
+			"number": {
+				"min": 100,
+				"max": 100000
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "page_now",
+			"title": "当前页",
+			"description": "默认值为1",
+			"type": "number",
+			"number": {
+				"min": 1,
+				"max": 1000000
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "number_has",
+			"title": "包含数字",
+			"description": "支持_和%,其他可由0-9的数字组成",
+			"type": "string",
+			"string": {
+				"min": 1,
+				"max": 32
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "name_only",
+			"title": "仅含名",
+			"description": "默认为：天医 延年 生气 伏位 六煞 五鬼 祸害 绝命 潜藏 显露",
+			"type": "string",
+			"string": {
+				"min": 1,
+				"max": 32
+			},
+			"splitter": "|"
+		},
+		{
+			"name": "number_not",
+			"title": "不含数字",
+			"description": "由0-9的数字组成",
+			"type": "string",
+			"string": {
+				"min": 1,
+				"max": 32
+			},
+			"splitter": "|"
+		}
+	]
+}
