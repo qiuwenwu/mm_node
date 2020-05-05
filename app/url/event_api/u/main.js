@@ -20,12 +20,15 @@ async function main(ctx, db) {
 	var obj = await db.getObj({
 		key
 	});
-	
+
 	if (obj) {
 		obj.times += 1;
 		db.table = "url_log";
 		db.add({
-			key
+			key,
+			query: req.querystring,
+			// 判断是否有反向代理 IP
+			ip: req.ip
 		});
 		ctx.response.redirect(obj.url_redirect);
 	}
