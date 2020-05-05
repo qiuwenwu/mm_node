@@ -2,22 +2,6 @@ const Energy = require('../../com/energy/index.js');
 
 var energy = new Energy();
 
-/**
- * 是否仅有
- * @param {Array} arr_name
- * @param {String} str_name
- */
-function only(arr_name, str_name) {
-	var bl = true;
-	for (var i = 0; i < arr_name.length; i++) {
-		var name = arr_name[i];
-		if (str_name.indexOf(name) === -1) {
-			bl = false;
-			break;
-		}
-	}
-	return bl;
-}
 
 /**
  * 接口主函数
@@ -26,79 +10,53 @@ function only(arr_name, str_name) {
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
+	var req = ctx.request;
 	var {
-		count,
-		number,
-		url,
-		type,
-		list,
-		score_min,
-		price_max,
-		name_only,
-		page_now,
-		page_size,
-		number_has,
-		number_not,
-		number_only,
-		price
-	} = ctx.request.query;
-	url = url || "http://lianghao365.com/api/number?cityID=6&kid=1&&page={page_now}&pageSize={page_size}&number={number_has}&bubaohan={number_not}&max={price_max}&onlynum={number_only}";
-	count = count || "count";
-	number = number || "number";
-	type = type || "jobj";
-	list = list || "list";
-	price = price || "price";
-	score_min = score_min || 1;
-	price_max = price_max || 9999999;
-	page_size = page_size || 10000;
-	page_now = page_now || 1;
-	number_has = number_has || "";
-	number_only = number_only || "";
-	name_only = name_only || "天医 延年 生气 伏位 六煞 五鬼 祸害 绝命 潜藏 显露";
-	number_not = number_not || "";
-	var http = new $.Http();
-	var u = url.replace(`{page_size}`, page_size).replace(`{page_now}`, page_now).replace(`{number_has}`, number_has).replace(`{number_not}`, number_not).replace(`{price_max}`, price_max).replace(`{number_only}`, number_only);
-	// console.log(u);
-	var {
-		body
-	} = await http.get(u);
-	var arr = [];
-	if (body) {
-		var json = body.toJson();
-		if (json) {
-			var lt = json;
-			var arr_k = list.split('.');
-			if (arr_k.length === 1) {
-				lt = json[list];
-			} else {
-				for (var i = 0; i < arr_k.length; i++) {
-					var key = arr_k[i];
-					lt = lt[key];
-					if (!lt) {
-						break;
-					}
+		url_redirect,
+	} = req.query;
+
+	db.table = "url_info";
+
+	var obj = await db.getObj({
+		url_redirect
+	});
+	
+	var ret = "";
+	if (obj) {
+		ret = $.ret.obj({
+			url: "/u/" + obj.key
+		});
+	} else {
+		
+		var url = "";
+		var try_times = 5;
+		for (var i = 0; i < try_times; i++) {
+			var key = energy.run(url_redirect);
+			var has = await db.getObj({
+				key
+			});
+			if (!has) {
+				var host = req.origin;
+				var bl = await db.add({
+					url_redirect,
+					key
+				});
+				if(bl){
+					url = "/u/" + key;
 				}
+				break;
 			}
-			if (lt) {
-				for (var i = 0; i < lt.length; i++) {
-					var o = lt[i];
-					var ret = energy.run(o[number]);
-					if (ret.score >= score_min && only(ret.name, name_only)) {
-						arr.push(Object.assign({}, o, ret));
-					}
-				}
-			}
+		}
+		if(url){
+			 ret =  $.ret.obj({
+				url
+			})
+		}
+		else {
+			ret = $.ret.error(10000, "生成短域名失败！");
 		}
 	}
-	return arr.sort(function(a, b) {
-		var n = a[price] - b[price];
-		if (n == 0) {
-			return a.score - b.score;
-		}
-		return n;
-	});
+	return ret;
 };
 
-// http://localhost:5000/api/url/list?list=data.list&score_min=20&price=maiJia&price_max=300&name_only=天医 延年 生气 伏位&page_now=1&page_size=100000&number_has=188_
-// http://localhost:5000/api/url/list?list=data.list&score_min=2&price=maiJia&price_max=1000&name_only=天医 延年 生气 伏位&page_now=1&page_size=100000&number_not=47502
 exports.main = main;

@@ -7,9 +7,9 @@ class Energy {
 	 * @param {Object} arg
 	 */
 	constructor(arg) {
-		
+
 		this.config = {
-			
+
 		};
 
 		this.dict = {
@@ -30,43 +30,55 @@ class Energy {
  * @param {Object} num 数值
  * @return {Object} 返回新值
  */
-Energy.prototype.create = function(num) {
+Energy.prototype.create = function(num = 19) {
+	var arr_num = [];
+	var arr = ["1", "3", "4", "9", "2", "7", "8", "6"];
+
+	var y = 0;
+	var n = 0;
+	if (num < arr.length) {
+		y = arr.length % num;
+	} else {
+		y = num % arr.length;
+	}
+	n = arr[y];
+	arr_num.push(n);
+
+	arr = this.dict[n];
+	if (num < arr.length) {
+		y = arr.length % num;
+	} else {
+		y = num % arr.length;
+	}
+	n = arr[y];
+	arr_num.push(n);
 	
+	for (var i = 0; i < 6; i++) {
+		num = Math.floor((Math.random() * 100) + 1);
+		if (num < arr.length) {
+			y = arr.length % num;
+		} else {
+			y = num % arr.length;
+		}
+		n = arr[y];
+		arr = this.dict[n];
+		arr_num.push(n);
+	}
+	return arr_num.join('');
 };
 
 /**
  * 执行运算
- * @param {Object} num 数字
+ * @param {Object} redirect_url 重定向地址
  */
-Energy.prototype.run = function(num){
-	var len = num.length;
-	var ln = len - 1;
-	var ret = {
-		score: 0,
-		name: [],
-		num: [],
-		last: {
-			score: 0
-		}
-	};
-	if (len % 2 === 0) {
-		for (var i = 0; i < ln; i += 2) {
-			var n = num.substring(i, i + 2);
-			ret.num.push(n);
-			var obj = this.meaning(n);
-			ret = this.count(ret, obj);
-		}
-	} else {
-		for (var i = 1; i < ln; i += 2) {
-			var n = num.substring(i, i + 2);
-			ret.num.push(n);
-			var obj = this.meaning(n);
-			ret = this.count(ret, obj);
-		}
+Energy.prototype.run = function(redirect_url) {
+	var str = redirect_url.md5().replace(/[a-z]/gi, '');
+	if (str.length > 11) {
+		str = str.substring(0, 10);
 	}
-	delete ret.last;
-	ret.number = num;
-	return ret;
-}
+	return this.create(Number(str));
+	// var num = this.create(Number(str));
+	// return parseInt(num, 16);
+};
 
 module.exports = Energy;

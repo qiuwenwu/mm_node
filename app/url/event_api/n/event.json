@@ -1,0 +1,10 @@
+[{
+	"target": "/n/*",
+	"name": "api_n",
+	"title": "短域名重定向(网红自用)",
+	"description": "用于短域名访问重定向",
+	"stage": "main",
+	"func_file": "./main.js",
+	"sort": 100,
+	"end": true
+}]

@@ -1,18 +1,16 @@
-const Energy = require('../../com/energy/index.js');
-
-var energy = new Energy();
-
+var sql = $.mysql_admin('sys', __dirname);
+sql.setConfig($.config.mysql);
+sql.open();
 
 /**
- * 接口主函数
+ * @description 接口主函数
  * @param {Object} ctx HTTP上下文
  * @param {Object} db 数据管理器,如: { next: async function{}, ret: {} }
  * @return {Object} 执行结果
  */
 async function main(ctx, db) {
-	var qy = ctx.request.query;
-	var num = qy["num"];
-	return energy.run(num);
+	$.push(db, sql.db(), true);
+	db.table = "";
+	return api.run(ctx, db);
 };
-
 exports.main = main;
