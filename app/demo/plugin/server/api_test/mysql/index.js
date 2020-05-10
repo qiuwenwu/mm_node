@@ -24,17 +24,25 @@ async function main(ctx, db) {
 
 	// 过滤查询
 	db2.filter(q);
-
+	
+	db2.key = "id";
 	// 查询表
-	// var list = await db2.get(q);
+	// var ret = await db2.get(q);
 	// var count = await db2.count(q);
-
-	// ret = await db2.getSql("`name` like '%asd3%'");
+	// ret = await db2.getSql("`name` like '%" + q.name + "%'");
+	// await db2.set({ id: ret[0].id }, { age: 21 });
+	// ret[0].age = 21;
+	// return ret;
 	// return JSON.stringify('{ "test": 123 }');
 	// $.log.debug(ret);
 	// var ret = $.list(list, count);
 	// ret.id = id;
-	var obj = await db2.get(q);
+	var obj = await db2.getObj(q);
+	if(obj)
+	{
+		console.log(obj);
+		obj.age -= 10;
+	}
 	return $.ret.obj(obj, id);
 };
 

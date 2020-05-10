@@ -76,7 +76,7 @@
 
 .modal-inner {
 	background: #fff;
-	border-radius: .3rem .3rem 0 0;
+	border-radius: .25rem .25rem 0 0;
 	padding: .75rem;
 	position: relative;
 }
@@ -140,11 +140,11 @@
 }
 
 .modal-button:first-child {
-	border-radius: 0 0 0 .3rem;
+	border-radius: 0 0 0 .25rem;
 }
 
 .modal-button:last-child {
-	border-radius: 0 0 .3rem 0;
+	border-radius: 0 0 .25rem 0;
 }
 
 .modal-button.active-state,
@@ -157,7 +157,7 @@ html:not(.watch-active-state) .modal-button:active {
 }
 
 .modal-no-buttons .modal-inner {
-	border-radius: .3rem;
+	border-radius: .25rem;
 }
 
 .actions-modal {
@@ -241,17 +241,17 @@ html:not(.watch-active-state) .modal-button:active {
 
 .actions-modal-button:first-child,
 .actions-modal-label:first-child {
-	border-radius: .2rem .2rem 0 0;
+	border-radius: .25rem .25rem 0 0;
 }
 
 .actions-modal-button:last-child,
 .actions-modal-label:last-child {
-	border-radius: 0 0 .2rem .2rem;
+	border-radius: 0 0 .25rem .25rem;
 }
 
 .actions-modal-button:first-child:last-child,
 .actions-modal-label:first-child:last-child {
-	border-radius: .2rem;
+	border-radius: .25rem;
 }
 
 .actions-modal-button.disabled,
@@ -440,7 +440,7 @@ html.with-statusbar-overlay .popup.tablet-fullscreen {
 }
 
 .modal-button:first-child:last-child {
-	border-radius: 0 0 .3rem .3rem;
+	border-radius: 0 0 .25rem .25rem;
 }
 
 .modal-button.modal-button-bold {
@@ -514,7 +514,7 @@ input.modal-text-input+input.modal-text-input {
 .modal-button:first-child:last-child,
 .modal-buttons-vertical .modal-button:last-child,
 .modal-buttons-vertical .modal-button:last-child {
-	border-radius: 0 0 .35rem .35rem;
+	border-radius: 0 0 .25rem .25rem;
 }
 
 .modal-button.modal-button-bold,

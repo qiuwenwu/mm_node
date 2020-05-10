@@ -329,7 +329,7 @@
             "title": "创建时间",
             "description": "",
             "type": "string",
-            "dataType": "datetime",
+            "dataType": "timestamp",
             "string": {
                 "notEmpty": true,
                 "format": "datetime"
@@ -340,7 +340,7 @@
             "title": "创建时间——开始时间",
             "description": "",
             "type": "string",
-            "dataType": "datetime",
+            "dataType": "timestamp",
             "string": {
                 "notEmpty": true,
                 "format": "datetime"
@@ -351,7 +351,7 @@
             "title": "创建时间——结束时间",
             "description": "",
             "type": "string",
-            "dataType": "datetime",
+            "dataType": "timestamp",
             "string": {
                 "notEmpty": true,
                 "format": "datetime"

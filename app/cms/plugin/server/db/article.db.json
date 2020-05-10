@@ -218,7 +218,7 @@
             "name": "time_create",
             "title": "创建时间",
             "description": "",
-            "type": "datetime",
+            "type": "timestamp",
             "key": false,
             "auto": "",
             "symbol": false,
@@ -229,7 +229,7 @@
             "min": 0,
             "max": 0,
             "decimal": 0,
-            "default": "1997-01-01 00:00:00",
+            "default": "CURRENT_TIMESTAMP",
             "join_in": [],
             "join_out": []
         },
