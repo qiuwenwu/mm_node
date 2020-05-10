@@ -24,10 +24,9 @@ async function main(ctx, db) {
 	var ret = "";
 	if (obj) {
 		ret = $.ret.obj({
-			url: "/u/" + obj.key
+			url: "/n/" + obj.key
 		});
 	} else {
-		
 		var url = "";
 		var try_times = 5;
 		for (var i = 0; i < try_times; i++) {
@@ -42,7 +41,7 @@ async function main(ctx, db) {
 					key
 				});
 				if(bl){
-					url = "/u/" + key;
+					url = "/n/" + key;
 				}
 				break;
 			}

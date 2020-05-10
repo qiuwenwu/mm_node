@@ -1,0 +1,21 @@
+{
+	// 是否启用过滤, 启用过滤后, 不符合的参数会被过滤掉
+	"filter": true,
+	// 校验脚本文件, 可以使用脚本的方式加一步进行校验, 让传参更加安全
+	"func_file": "",
+	"get": {
+		"query": [],
+		"query_required": ["url_redirect"]
+	},
+	"list": [{
+			"name": "url_redirect",
+			"title": "重定向地址是必须的",
+			"type": "string",
+			"string": {
+				"min": 8,
+				"max": 255
+			},
+			"splitter": "|"
+		}
+	]
+}

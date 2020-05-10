@@ -1,0 +1,12 @@
+{
+    "name": "url_share",
+    "title": "短域名创建",
+    "description": "用于域名生成短域名",
+    "path": "/api/url/share",
+    "method": "GET",
+    "cache": 0,
+    "client_cache": false,
+    "param_path": "./param.json",
+	"func_file": "./index.js",
+    "check_param": true
+}

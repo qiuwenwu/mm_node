@@ -10,7 +10,28 @@ sql.open();
  */
 async function main(ctx, db) {
 	$.push(db, sql.db(), true);
-	db.table = "";
-	return api.run(ctx, db);
+	var req = ctx.request;
+	var path = req.path;
+
+	var arr = path.split('/');
+	var key = arr[arr.length - 1];
+	db.table = "url_info";
+	// db.key = "url_id";
+	var obj = await db.getObj({
+		key
+	});
+
+	if (obj) {
+		// obj.times += 1;
+		db.table = "url_log";
+		db.add({
+			key,
+			query: req.querystring,
+			// 判断是否有反向代理 IP
+			ip: req.ip
+		});
+		ctx.response.redirect(obj.url_redirect);
+	}
+	return null;
 };
 exports.main = main;
